@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036CF636251CDF2700E5EFA3 /* Composer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036CF635251CDF2700E5EFA3 /* Composer.swift */; };
+		036CF638251CDF3C00E5EFA3 /* UIDeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036CF637251CDF3C00E5EFA3 /* UIDeviceInterface.swift */; };
+		036CF63A251CDF4600E5EFA3 /* UIDeviceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036CF639251CDF4600E5EFA3 /* UIDeviceWrapper.swift */; };
 		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
 		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
 		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -132,6 +135,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		036CF635251CDF2700E5EFA3 /* Composer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composer.swift; sourceTree = "<group>"; };
+		036CF637251CDF3C00E5EFA3 /* UIDeviceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceInterface.swift; sourceTree = "<group>"; };
+		036CF639251CDF4600E5EFA3 /* UIDeviceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceWrapper.swift; sourceTree = "<group>"; };
 		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
 		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -285,6 +291,9 @@
 		48B792D7251CA256007032CD /* UIDeviceHelper */ = {
 			isa = PBXGroup;
 			children = (
+				036CF635251CDF2700E5EFA3 /* Composer.swift */,
+				036CF637251CDF3C00E5EFA3 /* UIDeviceInterface.swift */,
+				036CF639251CDF4600E5EFA3 /* UIDeviceWrapper.swift */,
 				48B792E2251CA256007032CD /* UIDeviceHelperTests */,
 				48B792D8251CA256007032CD /* UIDeviceHelper.h */,
 				48B792D9251CA256007032CD /* Info.plist */,
@@ -720,6 +729,7 @@
 				TargetAttributes = {
 					48B792D5251CA256007032CD = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					48B792DD251CA256007032CD = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -883,6 +893,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036CF636251CDF2700E5EFA3 /* Composer.swift in Sources */,
+				036CF638251CDF3C00E5EFA3 /* UIDeviceInterface.swift in Sources */,
+				036CF63A251CDF4600E5EFA3 /* UIDeviceWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,6 +1060,7 @@
 		48B792E8251CA256007032CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -1063,6 +1077,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.UIDeviceHelper;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1071,6 +1086,7 @@
 		48B792E9251CA256007032CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -1095,6 +1111,7 @@
 		48B792EB251CA256007032CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SupportingModules/UIDeviceHelper/UIDeviceHelperTests/Info.plist;
@@ -1113,6 +1130,7 @@
 		48B792EC251CA256007032CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SupportingModules/UIDeviceHelper/UIDeviceHelperTests/Info.plist;
