@@ -32,4 +32,11 @@ public struct SDKConfiguration: General.SDKConfiguration {
     public var clientSecret: String
     public var apiUrl: String?
     public var graphApiUrl: String?
+
+    public init(appCode: String, clientSecret: String, apiUrl: String? = nil, graphApiUrl: String? = nil) {
+        self.appCode = appCode
+        self.clientSecret = clientSecret
+        self.apiUrl = apiUrl
+        self.graphApiUrl = graphApiUrl
+    }
 }

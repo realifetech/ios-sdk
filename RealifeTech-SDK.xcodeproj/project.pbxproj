@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
+		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
+		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48B792FB251CA279007032CD /* ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792F2251CA279007032CD /* ReachabilityChecker.framework */; };
+		48B79300251CA279007032CD /* ReachabilityCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792FF251CA279007032CD /* ReachabilityCheckerTests.swift */; };
+		48B79302251CA279007032CD /* ReachabilityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792F4251CA279007032CD /* ReachabilityChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48E67739251BA7F0007E2741 /* RealifeTech_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6772F251BA7F0007E2741 /* RealifeTech_SDK.framework */; };
 		48E6773E251BA7F0007E2741 /* RealifeTech_SDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E6773D251BA7F0007E2741 /* RealifeTech_SDKTests.swift */; };
 		48E67740251BA7F0007E2741 /* RealifeTech_SDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E67732251BA7F0007E2741 /* RealifeTech_SDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,6 +40,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		48B792E0251CA256007032CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48B792D5251CA256007032CD;
+			remoteInfo = UIDeviceHelper;
+		};
+		48B792FC251CA279007032CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48B792F1251CA279007032CD;
+			remoteInfo = ReachabilityChecker;
+		};
 		48E6773A251BA7F0007E2741 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
@@ -112,6 +132,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
+		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48B792DE251CA256007032CD /* UIDeviceHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIDeviceHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceHelperTests.swift; sourceTree = "<group>"; };
+		48B792E5251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48B792F2251CA279007032CD /* ReachabilityChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReachabilityChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B792F4251CA279007032CD /* ReachabilityChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReachabilityChecker.h; sourceTree = "<group>"; };
+		48B792F5251CA279007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48B792FA251CA279007032CD /* ReachabilityCheckerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReachabilityCheckerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B792FF251CA279007032CD /* ReachabilityCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityCheckerTests.swift; sourceTree = "<group>"; };
+		48B79301251CA279007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E6772F251BA7F0007E2741 /* RealifeTech_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RealifeTech_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E67732251BA7F0007E2741 /* RealifeTech_SDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealifeTech_SDK.h; sourceTree = "<group>"; };
 		48E67733251BA7F0007E2741 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,6 +178,36 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		48B792D3251CA256007032CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792DB251CA256007032CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792EF251CA279007032CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792F7251CA279007032CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B792FB251CA279007032CD /* ReachabilityChecker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48E6772C251BA7F0007E2741 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,17 +273,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48B792D0251CA1E0007032CD /* SupportingModules */ = {
+			isa = PBXGroup;
+			children = (
+				48B792D7251CA256007032CD /* UIDeviceHelper */,
+				48B792F3251CA279007032CD /* ReachabilityChecker */,
+			);
+			path = SupportingModules;
+			sourceTree = "<group>";
+		};
+		48B792D7251CA256007032CD /* UIDeviceHelper */ = {
+			isa = PBXGroup;
+			children = (
+				48B792E2251CA256007032CD /* UIDeviceHelperTests */,
+				48B792D8251CA256007032CD /* UIDeviceHelper.h */,
+				48B792D9251CA256007032CD /* Info.plist */,
+			);
+			path = UIDeviceHelper;
+			sourceTree = "<group>";
+		};
+		48B792E2251CA256007032CD /* UIDeviceHelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */,
+				48B792E5251CA256007032CD /* Info.plist */,
+			);
+			path = UIDeviceHelperTests;
+			sourceTree = "<group>";
+		};
+		48B792F3251CA279007032CD /* ReachabilityChecker */ = {
+			isa = PBXGroup;
+			children = (
+				48B792F4251CA279007032CD /* ReachabilityChecker.h */,
+				48B792F5251CA279007032CD /* Info.plist */,
+				48B792FE251CA279007032CD /* ReachabilityCheckerTests */,
+			);
+			path = ReachabilityChecker;
+			sourceTree = "<group>";
+		};
+		48B792FE251CA279007032CD /* ReachabilityCheckerTests */ = {
+			isa = PBXGroup;
+			children = (
+				48B792FF251CA279007032CD /* ReachabilityCheckerTests.swift */,
+				48B79301251CA279007032CD /* Info.plist */,
+			);
+			path = ReachabilityCheckerTests;
+			sourceTree = "<group>";
+		};
 		48E67725251BA7F0007E2741 = {
 			isa = PBXGroup;
 			children = (
 				48E67731251BA7F0007E2741 /* RealifeTech-SDK */,
-				48E6773C251BA7F0007E2741 /* RealifeTech-SDKTests */,
 				48E6774F251BA843007E2741 /* General */,
-				48E6775A251BA843007E2741 /* GeneralTests */,
 				48E67771251BA86D007E2741 /* Communicate */,
-				48E6777C251BA86D007E2741 /* CommunicateTests */,
+				48B792D0251CA1E0007032CD /* SupportingModules */,
 				48E67792251BAC37007E2741 /* DummyProject */,
-				48E677A9251BAC39007E2741 /* DummyProjectTests */,
 				48E67730251BA7F0007E2741 /* Products */,
 				48E67765251BA85B007E2741 /* Frameworks */,
 			);
@@ -238,6 +344,10 @@
 				48E67778251BA86D007E2741 /* CommunicateTests.xctest */,
 				48E67791251BAC37007E2741 /* DummyProject.app */,
 				48E677A6251BAC39007E2741 /* DummyProjectTests.xctest */,
+				48B792D6251CA256007032CD /* UIDeviceHelper.framework */,
+				48B792DE251CA256007032CD /* UIDeviceHelperTests.xctest */,
+				48B792F2251CA279007032CD /* ReachabilityChecker.framework */,
+				48B792FA251CA279007032CD /* ReachabilityCheckerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,6 +358,7 @@
 				48E67732251BA7F0007E2741 /* RealifeTech_SDK.h */,
 				48E67733251BA7F0007E2741 /* Info.plist */,
 				48E6778B251BA921007E2741 /* SDKInterface.swift */,
+				48E6773C251BA7F0007E2741 /* RealifeTech-SDKTests */,
 			);
 			path = "RealifeTech-SDK";
 			sourceTree = "<group>";
@@ -267,6 +378,7 @@
 				48E67750251BA843007E2741 /* General.h */,
 				48E67751251BA843007E2741 /* Info.plist */,
 				48E677B8251BAF4B007E2741 /* GeneralImplementing.swift */,
+				48E6775A251BA843007E2741 /* GeneralTests */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -292,6 +404,7 @@
 			children = (
 				48E67772251BA86D007E2741 /* Communicate.h */,
 				48E67773251BA86D007E2741 /* Info.plist */,
+				48E6777C251BA86D007E2741 /* CommunicateTests */,
 			);
 			path = Communicate;
 			sourceTree = "<group>";
@@ -315,6 +428,7 @@
 				48E6779C251BAC39007E2741 /* Assets.xcassets */,
 				48E6779E251BAC39007E2741 /* LaunchScreen.storyboard */,
 				48E677A1251BAC39007E2741 /* Info.plist */,
+				48E677A9251BAC39007E2741 /* DummyProjectTests */,
 			);
 			path = DummyProject;
 			sourceTree = "<group>";
@@ -331,6 +445,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		48B792D1251CA256007032CD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792ED251CA279007032CD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B79302251CA279007032CD /* ReachabilityChecker.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48E6772A251BA7F0007E2741 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,6 +488,78 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		48B792D5251CA256007032CD /* UIDeviceHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B792E7251CA256007032CD /* Build configuration list for PBXNativeTarget "UIDeviceHelper" */;
+			buildPhases = (
+				48B792D1251CA256007032CD /* Headers */,
+				48B792D2251CA256007032CD /* Sources */,
+				48B792D3251CA256007032CD /* Frameworks */,
+				48B792D4251CA256007032CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UIDeviceHelper;
+			productName = UIDeviceHelper;
+			productReference = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		48B792DD251CA256007032CD /* UIDeviceHelperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B792EA251CA256007032CD /* Build configuration list for PBXNativeTarget "UIDeviceHelperTests" */;
+			buildPhases = (
+				48B792DA251CA256007032CD /* Sources */,
+				48B792DB251CA256007032CD /* Frameworks */,
+				48B792DC251CA256007032CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48B792E1251CA256007032CD /* PBXTargetDependency */,
+			);
+			name = UIDeviceHelperTests;
+			productName = UIDeviceHelperTests;
+			productReference = 48B792DE251CA256007032CD /* UIDeviceHelperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		48B792F1251CA279007032CD /* ReachabilityChecker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B79303251CA279007032CD /* Build configuration list for PBXNativeTarget "ReachabilityChecker" */;
+			buildPhases = (
+				48B792ED251CA279007032CD /* Headers */,
+				48B792EE251CA279007032CD /* Sources */,
+				48B792EF251CA279007032CD /* Frameworks */,
+				48B792F0251CA279007032CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReachabilityChecker;
+			productName = ReachabilityChecker;
+			productReference = 48B792F2251CA279007032CD /* ReachabilityChecker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		48B792F9251CA279007032CD /* ReachabilityCheckerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48B79306251CA279007032CD /* Build configuration list for PBXNativeTarget "ReachabilityCheckerTests" */;
+			buildPhases = (
+				48B792F6251CA279007032CD /* Sources */,
+				48B792F7251CA279007032CD /* Frameworks */,
+				48B792F8251CA279007032CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48B792FD251CA279007032CD /* PBXTargetDependency */,
+			);
+			name = ReachabilityCheckerTests;
+			productName = ReachabilityCheckerTests;
+			productReference = 48B792FA251CA279007032CD /* ReachabilityCheckerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		48E6772E251BA7F0007E2741 /* RealifeTech-SDK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48E67743251BA7F0007E2741 /* Build configuration list for PBXNativeTarget "RealifeTech-SDK" */;
@@ -516,6 +718,18 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Olivier Butler";
 				TargetAttributes = {
+					48B792D5251CA256007032CD = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					48B792DD251CA256007032CD = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					48B792F1251CA279007032CD = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					48B792F9251CA279007032CD = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					48E6772E251BA7F0007E2741 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -566,11 +780,43 @@
 				48E67777251BA86D007E2741 /* CommunicateTests */,
 				48E67790251BAC37007E2741 /* DummyProject */,
 				48E677A5251BAC39007E2741 /* DummyProjectTests */,
+				48B792D5251CA256007032CD /* UIDeviceHelper */,
+				48B792DD251CA256007032CD /* UIDeviceHelperTests */,
+				48B792F1251CA279007032CD /* ReachabilityChecker */,
+				48B792F9251CA279007032CD /* ReachabilityCheckerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		48B792D4251CA256007032CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792DC251CA256007032CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792F0251CA279007032CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792F8251CA279007032CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48E6772D251BA7F0007E2741 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -633,6 +879,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		48B792D2251CA256007032CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792DA251CA256007032CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792EE251CA279007032CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48B792F6251CA279007032CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48B79300251CA279007032CD /* ReachabilityCheckerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48E6772B251BA7F0007E2741 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -701,6 +977,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		48B792E1251CA256007032CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48B792D5251CA256007032CD /* UIDeviceHelper */;
+			targetProxy = 48B792E0251CA256007032CD /* PBXContainerItemProxy */;
+		};
+		48B792FD251CA279007032CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48B792F1251CA279007032CD /* ReachabilityChecker */;
+			targetProxy = 48B792FC251CA279007032CD /* PBXContainerItemProxy */;
+		};
 		48E6773B251BA7F0007E2741 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 48E6772E251BA7F0007E2741 /* RealifeTech-SDK */;
@@ -758,6 +1044,174 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		48B792E8251CA256007032CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SupportingModules/UIDeviceHelper/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.UIDeviceHelper;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48B792E9251CA256007032CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SupportingModules/UIDeviceHelper/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.UIDeviceHelper;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		48B792EB251CA256007032CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				INFOPLIST_FILE = SupportingModules/UIDeviceHelper/UIDeviceHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.UIDeviceHelperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48B792EC251CA256007032CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				INFOPLIST_FILE = SupportingModules/UIDeviceHelper/UIDeviceHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.UIDeviceHelperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		48B79304251CA279007032CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SupportingModules/ReachabilityChecker/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.ReachabilityChecker;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48B79305251CA279007032CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SupportingModules/ReachabilityChecker/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.ReachabilityChecker;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		48B79307251CA279007032CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				INFOPLIST_FILE = SupportingModules/ReachabilityChecker/ReachabilityCheckerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.ReachabilityCheckerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48B79308251CA279007032CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				INFOPLIST_FILE = SupportingModules/ReachabilityChecker/ReachabilityCheckerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.ReachabilityCheckerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		48E67741251BA7F0007E2741 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -935,7 +1389,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = "RealifeTech-SDKTests/Info.plist";
+				INFOPLIST_FILE = "RealifeTech-SDK/RealifeTech-SDKTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -954,7 +1408,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = "RealifeTech-SDKTests/Info.plist";
+				INFOPLIST_FILE = "RealifeTech-SDK/RealifeTech-SDKTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1028,7 +1482,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = GeneralTests/Info.plist;
+				INFOPLIST_FILE = General/GeneralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1047,7 +1501,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = GeneralTests/Info.plist;
+				INFOPLIST_FILE = General/GeneralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1117,7 +1571,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = CommunicateTests/Info.plist;
+				INFOPLIST_FILE = Communicate/CommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1135,7 +1589,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = CommunicateTests/Info.plist;
+				INFOPLIST_FILE = Communicate/CommunicateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1191,7 +1645,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = DummyProjectTests/Info.plist;
+				INFOPLIST_FILE = DummyProject/DummyProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1213,7 +1667,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = DummyProjectTests/Info.plist;
+				INFOPLIST_FILE = DummyProject/DummyProjectTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1231,6 +1685,42 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		48B792E7251CA256007032CD /* Build configuration list for PBXNativeTarget "UIDeviceHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B792E8251CA256007032CD /* Debug */,
+				48B792E9251CA256007032CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48B792EA251CA256007032CD /* Build configuration list for PBXNativeTarget "UIDeviceHelperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B792EB251CA256007032CD /* Debug */,
+				48B792EC251CA256007032CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48B79303251CA279007032CD /* Build configuration list for PBXNativeTarget "ReachabilityChecker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B79304251CA279007032CD /* Debug */,
+				48B79305251CA279007032CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48B79306251CA279007032CD /* Build configuration list for PBXNativeTarget "ReachabilityCheckerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B79307251CA279007032CD /* Debug */,
+				48B79308251CA279007032CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		48E67729251BA7F0007E2741 /* Build configuration list for PBXProject "RealifeTech-SDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -13,8 +13,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        RealifeTech.configureSDK(with: .init(appCode: "hello", clientSecret: "no-one"))
+        let configuration = SDKConfiguration(appCode: "hello", clientSecret: "no-one")
+        RealifeTech.configureSDK(with: configuration)
         print(RealifeTech.General.sdkReady)
         return true
     }
