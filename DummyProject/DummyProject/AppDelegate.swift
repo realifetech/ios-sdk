@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  DummyProject
 //
-//  Created by Olivier Butler on 23/09/2020.
-//  Copyright © 2020 Olivier Butler. All rights reserved.
+//  Created by Realife Tech on 23/09/2020.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import RealifeTech
@@ -26,8 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 

@@ -2,8 +2,8 @@
 //  UIDeviceHelper.h
 //  UIDeviceHelper
 //
-//  Created by Olivier Butler on 24/09/2020.
-//  Copyright © 2020 Olivier Butler. All rights reserved.
+//  Created by Realife Tech on 24/09/2020.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
