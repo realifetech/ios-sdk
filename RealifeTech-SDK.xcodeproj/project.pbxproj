@@ -35,6 +35,16 @@
 		480BCDFA251E360700266617 /* APIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480BCDF1251E360700266617 /* APIUtilities.framework */; };
 		480BCDFF251E360700266617 /* APIUtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDFE251E360700266617 /* APIUtilitiesTests.swift */; };
 		480BCE01251E360700266617 /* APIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 480BCDF3251E360700266617 /* APIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		480BCE0A251E384200266617 /* APIV3Requester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE09251E384200266617 /* APIV3Requester.swift */; };
+		480BCE0C251E385C00266617 /* LanguageHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE0B251E385C00266617 /* LanguageHeaderRequestInserting.swift */; };
+		480BCE0E251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */; };
+		480BCE10251E38A000266617 /* DefaultRequestParameterProvidingV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE0F251E38A000266617 /* DefaultRequestParameterProvidingV3.swift */; };
+		480BCE12251E38D200266617 /* DeviceIdHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */; };
+		480BCE14251E38EB00266617 /* OAuthHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */; };
+		480BCE16251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */; };
+		480BCE17251E392A00266617 /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480BCD9D251E2CFD00266617 /* APILayer.framework */; };
+		480BCE18251E392A00266617 /* APILayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 480BCD9D251E2CFD00266617 /* APILayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE1C251E3BA100266617 /* RequestHeader.swift */; };
 		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
 		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
 		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,6 +86,13 @@
 			remoteGlobalIDString = 480BCDF0251E360700266617;
 			remoteInfo = APIUtilities;
 		};
+		480BCE19251E392A00266617 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 480BCD9C251E2CFD00266617;
+			remoteInfo = APILayer;
+		};
 		48B792E0251CA256007032CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
@@ -112,6 +129,20 @@
 			remoteInfo = Communicate;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		480BCE1B251E392A00266617 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				480BCE18251E392A00266617 /* APILayer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		025E46441AC01E58CE861E07 /* Pods_RealifeTech_SDK_RealifeTech_SDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech_SDK_RealifeTech_SDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +189,14 @@
 		480BCDF9251E360700266617 /* APIUtilitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APIUtilitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		480BCDFE251E360700266617 /* APIUtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtilitiesTests.swift; sourceTree = "<group>"; };
 		480BCE00251E360700266617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		480BCE09251E384200266617 /* APIV3Requester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3Requester.swift; sourceTree = "<group>"; };
+		480BCE0B251E385C00266617 /* LanguageHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHeaderRequestInserting.swift; sourceTree = "<group>"; };
+		480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONContentTypeHeaderRequestInserting.swift; sourceTree = "<group>"; };
+		480BCE0F251E38A000266617 /* DefaultRequestParameterProvidingV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRequestParameterProvidingV3.swift; sourceTree = "<group>"; };
+		480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdHeaderRequestInserting.swift; sourceTree = "<group>"; };
+		480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthHeaderRequestInserting.swift; sourceTree = "<group>"; };
+		480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
+		480BCE1C251E3BA100266617 /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
 		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
 		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -254,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E2A1715BF91A92227FEA41 /* Pods_APIUtilities.framework in Frameworks */,
+				480BCE17251E392A00266617 /* APILayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +484,14 @@
 				480BCDF3251E360700266617 /* APIUtilities.h */,
 				480BCDF4251E360700266617 /* Info.plist */,
 				480BCDFD251E360700266617 /* APIUtilitiesTests */,
+				480BCE09251E384200266617 /* APIV3Requester.swift */,
+				480BCE1C251E3BA100266617 /* RequestHeader.swift */,
+				480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */,
+				480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */,
+				480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */,
+				480BCE0B251E385C00266617 /* LanguageHeaderRequestInserting.swift */,
+				480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */,
+				480BCE0F251E38A000266617 /* DefaultRequestParameterProvidingV3.swift */,
 			);
 			path = APIUtilities;
 			sourceTree = "<group>";
@@ -777,10 +825,12 @@
 				480BCDED251E360700266617 /* Sources */,
 				480BCDEE251E360700266617 /* Frameworks */,
 				480BCDEF251E360700266617 /* Resources */,
+				480BCE1B251E392A00266617 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				480BCE1A251E392A00266617 /* PBXTargetDependency */,
 			);
 			name = APIUtilities;
 			productName = APIUtilities;
@@ -1032,6 +1082,7 @@
 					};
 					480BCDF0251E360700266617 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					480BCDF8251E360700266617 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -1838,6 +1889,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */,
+				480BCE0C251E385C00266617 /* LanguageHeaderRequestInserting.swift in Sources */,
+				480BCE16251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
+				480BCE10251E38A000266617 /* DefaultRequestParameterProvidingV3.swift in Sources */,
+				480BCE12251E38D200266617 /* DeviceIdHeaderRequestInserting.swift in Sources */,
+				480BCE0A251E384200266617 /* APIV3Requester.swift in Sources */,
+				480BCE14251E38EB00266617 /* OAuthHeaderRequestInserting.swift in Sources */,
+				480BCE0E251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1938,6 +1997,11 @@
 			target = 480BCDF0251E360700266617 /* APIUtilities */;
 			targetProxy = 480BCDFB251E360700266617 /* PBXContainerItemProxy */;
 		};
+		480BCE1A251E392A00266617 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 480BCD9C251E2CFD00266617 /* APILayer */;
+			targetProxy = 480BCE19251E392A00266617 /* PBXContainerItemProxy */;
+		};
 		48B792E1251CA256007032CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 48B792D5251CA256007032CD /* UIDeviceHelper */;
@@ -1973,6 +2037,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2002,6 +2067,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2070,6 +2136,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DECB72092265E41D80C418B /* Pods-APIUtilities.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -2087,6 +2154,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.APIUtilities;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2096,6 +2164,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B4707D4BEAABF43B523160B /* Pods-APIUtilities.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -2122,6 +2191,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C94B619AD6DB342A7BE8EF3B /* Pods-APIUtilities-APIUtilitiesTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SupportingModules/APIUtilities/APIUtilitiesTests/Info.plist;
@@ -2142,6 +2212,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 04FD51743DE5E6409A71CC91 /* Pods-APIUtilities-APIUtilitiesTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SupportingModules/APIUtilities/APIUtilitiesTests/Info.plist;
