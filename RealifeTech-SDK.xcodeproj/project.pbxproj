@@ -45,6 +45,9 @@
 		480BCE17251E392A00266617 /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480BCD9D251E2CFD00266617 /* APILayer.framework */; };
 		480BCE18251E392A00266617 /* APILayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 480BCD9D251E2CFD00266617 /* APILayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE1C251E3BA100266617 /* RequestHeader.swift */; };
+		480BCE1F251E3E2000266617 /* TestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE1E251E3E2000266617 /* TestFile.swift */; };
+		480BCE21251E3EAD00266617 /* StandardV3SenderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */; };
+		480BCE23251E40FB00266617 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE22251E40FB00266617 /* File.swift */; };
 		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
 		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
 		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -197,6 +200,9 @@
 		480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthHeaderRequestInserting.swift; sourceTree = "<group>"; };
 		480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
 		480BCE1C251E3BA100266617 /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
+		480BCE1E251E3E2000266617 /* TestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFile.swift; sourceTree = "<group>"; };
+		480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardV3SenderResponse.swift; sourceTree = "<group>"; };
+		480BCE22251E40FB00266617 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
 		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -484,6 +490,9 @@
 				480BCDF3251E360700266617 /* APIUtilities.h */,
 				480BCDF4251E360700266617 /* Info.plist */,
 				480BCDFD251E360700266617 /* APIUtilitiesTests */,
+				480BCE1E251E3E2000266617 /* TestFile.swift */,
+				480BCE22251E40FB00266617 /* File.swift */,
+				480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */,
 				480BCE09251E384200266617 /* APIV3Requester.swift */,
 				480BCE1C251E3BA100266617 /* RequestHeader.swift */,
 				480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */,
@@ -1890,12 +1899,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */,
+				480BCE1F251E3E2000266617 /* TestFile.swift in Sources */,
 				480BCE0C251E385C00266617 /* LanguageHeaderRequestInserting.swift in Sources */,
+				480BCE21251E3EAD00266617 /* StandardV3SenderResponse.swift in Sources */,
 				480BCE16251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
 				480BCE10251E38A000266617 /* DefaultRequestParameterProvidingV3.swift in Sources */,
 				480BCE12251E38D200266617 /* DeviceIdHeaderRequestInserting.swift in Sources */,
 				480BCE0A251E384200266617 /* APIV3Requester.swift in Sources */,
 				480BCE14251E38EB00266617 /* OAuthHeaderRequestInserting.swift in Sources */,
+				480BCE23251E40FB00266617 /* File.swift in Sources */,
 				480BCE0E251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

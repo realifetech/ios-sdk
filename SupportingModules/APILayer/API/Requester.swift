@@ -12,6 +12,7 @@ public enum RequesterDateFormat {
     case timestampSeconds
     case formatted(format: String, localeIdentifier: String)
 }
+
 public protocol Requester {
     static func root() -> RequestRootURL
     static var endpoint: String? { get }
@@ -19,6 +20,7 @@ public protocol Requester {
     static func interceptors() -> [(URLRequest) -> (URLRequest)]?
     static func dateFormat() -> RequesterDateFormat?
 }
+
 public extension Requester {
     static func request(forId id: String? = nil) -> URLRequest {
         var theEndpoint = endpoint ?? ""
