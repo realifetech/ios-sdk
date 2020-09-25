@@ -123,6 +123,8 @@ public struct RequestCreator {
 
 fileprivate extension String {
     var safelyUrlEncoded: String {
-        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        var urlEncodedCharSet: CharacterSet = .urlHostAllowed
+        urlEncodedCharSet.remove("+")
+        return addingPercentEncoding(withAllowedCharacters: urlEncodedCharSet) ?? ""
     }
 }
