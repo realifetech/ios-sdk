@@ -56,6 +56,19 @@ target 'APILayer' do
 
 end
 
+target 'APIUtilities' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for APILayer
+
+  target 'APIUtilitiesTests' do
+    # Pods for testing
+
+  end
+
+end
+
 target 'ReachabilityChecker' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
