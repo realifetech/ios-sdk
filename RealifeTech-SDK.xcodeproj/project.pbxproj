@@ -11,6 +11,11 @@
 		149CBEE979A59578F9F8EE6E /* Pods_General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C8813D8888CCA220256A9A /* Pods_General.framework */; };
 		33203EE1EA42134F3C1F88AC /* Pods_ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B17B060E66ABB0188C0C4278 /* Pods_ReachabilityChecker.framework */; };
 		4535060D57FA65BB122DFF7C /* Pods_Communicate_CommunicateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9A4084D90EFD590178247E /* Pods_Communicate_CommunicateTests.framework */; };
+		480BCD8F251E252600266617 /* DeviceRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8C251E252600266617 /* DeviceRegistering.swift */; };
+		480BCD90251E252600266617 /* GeneralImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8D251E252600266617 /* GeneralImplementing.swift */; };
+		480BCD91251E252600266617 /* SDKConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8E251E252600266617 /* SDKConfigurable.swift */; };
+		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
+		480BCD95251E254D00266617 /* SDKInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKInterface.swift */; };
 		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
 		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
 		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -85,6 +90,11 @@
 		3B8D0ED403EAF954FE6B626A /* Pods_DummyProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F340472842D4549931DF84F /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		41D8341C7BB6E2B11092E639 /* Pods-UIDeviceHelper-UIDeviceHelperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDeviceHelper-UIDeviceHelperTests.release.xcconfig"; path = "Target Support Files/Pods-UIDeviceHelper-UIDeviceHelperTests/Pods-UIDeviceHelper-UIDeviceHelperTests.release.xcconfig"; sourceTree = "<group>"; };
+		480BCD8C251E252600266617 /* DeviceRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistering.swift; sourceTree = "<group>"; };
+		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
+		480BCD8E251E252600266617 /* SDKConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfigurable.swift; sourceTree = "<group>"; };
+		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
+		480BCD93251E254D00266617 /* SDKInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKInterface.swift; sourceTree = "<group>"; };
 		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
 		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -309,6 +319,8 @@
 		48D6F13B251E158E006CA623 /* RealifeTech */ = {
 			isa = PBXGroup;
 			children = (
+				480BCD92251E254D00266617 /* SDKConfiguration.swift */,
+				480BCD93251E254D00266617 /* SDKInterface.swift */,
 				48D6F13C251E158E006CA623 /* RealifeTech.h */,
 				48D6F13D251E158E006CA623 /* Info.plist */,
 				48D6F146251E158E006CA623 /* RealifeTechTests */,
@@ -358,6 +370,9 @@
 		48E6774F251BA843007E2741 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				480BCD8C251E252600266617 /* DeviceRegistering.swift */,
+				480BCD8D251E252600266617 /* GeneralImplementing.swift */,
+				480BCD8E251E252600266617 /* SDKConfigurable.swift */,
 				48E67750251BA843007E2741 /* General.h */,
 				48E67751251BA843007E2741 /* Info.plist */,
 				48E6775A251BA843007E2741 /* GeneralTests */,
@@ -700,6 +715,7 @@
 					};
 					48D6F139251E158E006CA623 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					48D6F141251E158E006CA623 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -1247,6 +1263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480BCD95251E254D00266617 /* SDKInterface.swift in Sources */,
+				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1262,6 +1280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480BCD8F251E252600266617 /* DeviceRegistering.swift in Sources */,
+				480BCD91251E252600266617 /* SDKConfigurable.swift in Sources */,
+				480BCD90251E252600266617 /* GeneralImplementing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1507,6 +1528,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81D1DD4D43FE63907D705044 /* Pods-RealifeTech.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -1525,6 +1547,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1534,6 +1557,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 818F487500FB74F21A23D7DE /* Pods-RealifeTech.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -1561,6 +1585,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C446CB4FA2306982848D77D4 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = RealifeTech/RealifeTechTests/Info.plist;
@@ -1581,6 +1606,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F340472842D4549931DF84F /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = RealifeTech/RealifeTechTests/Info.plist;
@@ -1780,6 +1806,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D8775D4DFBE15099A48616A /* Pods-General-GeneralTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = General/GeneralTests/Info.plist;
@@ -1799,6 +1826,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C5E92802842EBF01660FDE8 /* Pods-General-GeneralTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = General/GeneralTests/Info.plist;

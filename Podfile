@@ -2,11 +2,16 @@
 platform :ios, '12.1'
 inhibit_all_warnings!
 
-pod 'SwiftLint'
+workspace 'RealifeTech-SDK'
+project 'RealifeTech-SDK'
+project 'DummyProject/DummyProject'
+
+# pod 'SwiftLint'
 
 target 'RealifeTech' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  project 'RealifeTech-SDK'
 
   # Pods for RealifeTech-SDK
 
@@ -20,6 +25,7 @@ end
 target 'Communicate' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  project 'RealifeTech-SDK'
 
   # Pods for Communicate
 
@@ -32,6 +38,7 @@ end
 target 'General' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  project 'RealifeTech-SDK'
 
   # Pods for General
 
@@ -44,6 +51,7 @@ end
 target 'ReachabilityChecker' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  project 'RealifeTech-SDK'
 
   # Pods for ReachabilityChecker
 
@@ -56,11 +64,26 @@ end
 target 'UIDeviceHelper' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  project 'RealifeTech-SDK'
 
   # Pods for UIDeviceHelper
 
   target 'UIDeviceHelperTests' do
     # Pods for testing
+  end
+
+end
+
+target 'DummyProject' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  project 'DummyProject/DummyProject'
+
+  # Pods for DummyProject
+  pod 'SwiftLint'
+  target 'DummyProjectTests' do
+    # Pods for testing
+    pod 'SwiftLint'
   end
 
 end
