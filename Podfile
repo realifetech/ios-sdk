@@ -3,6 +3,8 @@ platform :ios, '12.1'
 inhibit_all_warnings!
 
 pod 'SwiftLint'
+pod 'RxSwift', '~> 5.1.1'
+pod 'RxCocoa', '~> 5.1.1'
 
 target 'RealifeTech' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -37,6 +39,19 @@ target 'General' do
 
   target 'GeneralTests' do
     # Pods for testing
+  end
+
+end
+
+target 'APILayer' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for APILayer
+
+  target 'APILayerTests' do
+    # Pods for testing
+
   end
 
 end
