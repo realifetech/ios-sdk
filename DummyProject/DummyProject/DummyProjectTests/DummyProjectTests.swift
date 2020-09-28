@@ -1,15 +1,15 @@
 //
-//  UIDeviceHelperTests.swift
-//  UIDeviceHelperTests
+//  DummyProjectTests.swift
+//  DummyProjectTests
 //
-//  Created by Realife Tech on 24/09/2020.
+//  Created by Realife Tech on 25/09/2020.
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import XCTest
-@testable import UIDeviceHelper
+@testable import DummyProject
 
-class UIDeviceHelperTests: XCTestCase {
+class DummyProjectTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
