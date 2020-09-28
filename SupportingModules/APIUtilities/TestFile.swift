@@ -10,6 +10,19 @@ import Foundation
 import APILayer
 import RxSwift
 
+let bag: DisposeBag = DisposeBag()
+
+public func testMethod() {
+    OAuthSender.requestInitialAccessToken()
+        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { token in
+            print("I gots a token!", token)
+        }, onError: { error in
+            print("I gots a error, not a token!", error)
+        }).disposed(by: bag)
+}
+
 struct Device: Codable {
     var jsonRepresentation: [String: Any] { [:] }
 }
@@ -32,24 +45,6 @@ extension DeviceRequester {
             body: nil,
             headers: nil)
     }
-
-//public static func createRequest(
-//    withRoot root: String,
-//    andEndpoint endpoint: String,
-//    httpMethod: HttpMethod,
-//    body: [String: Any]? = nil,
-//    bodyData: Data? = nil,
-//    headers: [String: String]? = nil) -> URLRequest {
-//}
-//public static func createRequest(
-//    withRoot root: RequestRootURL,
-//    andEndpoint endpoint: String,
-//    httpMethod: HttpMethod,
-//    body: [String: Any]? = nil,
-//    bodyData: Data? = nil,
-//    headers: [String: String]? = nil) -> URLRequest {
-//
-//    }
 
     static func register(device: Device) -> URLRequest {
         return RequestCreator.createRequest(

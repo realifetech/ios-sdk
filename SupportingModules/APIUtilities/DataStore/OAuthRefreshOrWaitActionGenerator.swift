@@ -22,7 +22,7 @@ extension OAuthRefreshOrWaitActionGenerator {
         return refresh.do(onError: { (error) in
             OAuthTokenRefreshWatcher.shared.updateRefreshingStatus(newValue: .invalid)
             guard isLoggedIn, let error = error as? APIError, error.clientError else { return }
-            LogoutManager.logoutUser()
+            // TODO: Insert refrence to clearing the user's data
         })
             .map {
                 OAuthTokenRefreshWatcher.shared.updateRefreshingStatus(newValue: .valid)

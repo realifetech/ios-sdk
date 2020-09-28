@@ -36,9 +36,7 @@
 		480BCDFF251E360700266617 /* APIUtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDFE251E360700266617 /* APIUtilitiesTests.swift */; };
 		480BCE01251E360700266617 /* APIUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 480BCDF3251E360700266617 /* APIUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		480BCE0A251E384200266617 /* APIV3Requester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE09251E384200266617 /* APIV3Requester.swift */; };
-		480BCE0C251E385C00266617 /* LanguageHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE0B251E385C00266617 /* LanguageHeaderRequestInserting.swift */; };
 		480BCE0E251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */; };
-		480BCE10251E38A000266617 /* DefaultRequestParameterProvidingV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE0F251E38A000266617 /* DefaultRequestParameterProvidingV3.swift */; };
 		480BCE12251E38D200266617 /* DeviceIdHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */; };
 		480BCE14251E38EB00266617 /* OAuthHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */; };
 		480BCE16251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -47,7 +45,20 @@
 		480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE1C251E3BA100266617 /* RequestHeader.swift */; };
 		480BCE1F251E3E2000266617 /* TestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE1E251E3E2000266617 /* TestFile.swift */; };
 		480BCE21251E3EAD00266617 /* StandardV3SenderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */; };
-		480BCE23251E40FB00266617 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE22251E40FB00266617 /* File.swift */; };
+		480BCE23251E40FB00266617 /* RequestBaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE22251E40FB00266617 /* RequestBaseURL.swift */; };
+		480BCE302522086A00266617 /* OAuthTokenRefreshWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */; };
+		480BCE332522093600266617 /* UserAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE322522093600266617 /* UserAuthenticator.swift */; };
+		480BCE352522097200266617 /* UserProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE342522097200266617 /* UserProfileDataManager.swift */; };
+		480BCE372522098800266617 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE362522098800266617 /* UserProfile.swift */; };
+		480BCE3925220A6F00266617 /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3825220A6F00266617 /* KeychainSwift.swift */; };
+		480BCE3C25220E0500266617 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */; };
+		480BCE3E2522104C00266617 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3D2522104C00266617 /* UserRepository.swift */; };
+		480BCE412522121B00266617 /* OAuthSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE402522121B00266617 /* OAuthSender.swift */; };
+		480BCE432522123900266617 /* OAuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE422522123900266617 /* OAuthToken.swift */; };
+		480BCE452522126200266617 /* OAuthRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE442522126200266617 /* OAuthRequester.swift */; };
+		480BCE4A2522154B00266617 /* RxUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE492522154B00266617 /* RxUser.swift */; };
+		480BCE4C252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */; };
+		480BCE50252216A500266617 /* UserRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE4F252216A500266617 /* UserRequester.swift */; };
 		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
 		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
 		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -193,16 +204,27 @@
 		480BCDFE251E360700266617 /* APIUtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtilitiesTests.swift; sourceTree = "<group>"; };
 		480BCE00251E360700266617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		480BCE09251E384200266617 /* APIV3Requester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3Requester.swift; sourceTree = "<group>"; };
-		480BCE0B251E385C00266617 /* LanguageHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHeaderRequestInserting.swift; sourceTree = "<group>"; };
 		480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONContentTypeHeaderRequestInserting.swift; sourceTree = "<group>"; };
-		480BCE0F251E38A000266617 /* DefaultRequestParameterProvidingV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRequestParameterProvidingV3.swift; sourceTree = "<group>"; };
 		480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdHeaderRequestInserting.swift; sourceTree = "<group>"; };
 		480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthHeaderRequestInserting.swift; sourceTree = "<group>"; };
 		480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
 		480BCE1C251E3BA100266617 /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
 		480BCE1E251E3E2000266617 /* TestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFile.swift; sourceTree = "<group>"; };
 		480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardV3SenderResponse.swift; sourceTree = "<group>"; };
-		480BCE22251E40FB00266617 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		480BCE22251E40FB00266617 /* RequestBaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBaseURL.swift; sourceTree = "<group>"; };
+		480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenRefreshWatcher.swift; sourceTree = "<group>"; };
+		480BCE322522093600266617 /* UserAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticator.swift; sourceTree = "<group>"; };
+		480BCE342522097200266617 /* UserProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDataManager.swift; sourceTree = "<group>"; };
+		480BCE362522098800266617 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		480BCE3825220A6F00266617 /* KeychainSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwift.swift; sourceTree = "<group>"; };
+		480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
+		480BCE3D2522104C00266617 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		480BCE402522121B00266617 /* OAuthSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthSender.swift; sourceTree = "<group>"; };
+		480BCE422522123900266617 /* OAuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthToken.swift; sourceTree = "<group>"; };
+		480BCE442522126200266617 /* OAuthRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRequester.swift; sourceTree = "<group>"; };
+		480BCE492522154B00266617 /* RxUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxUser.swift; sourceTree = "<group>"; };
+		480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultV3DiskCacheStrategyProviding.swift; sourceTree = "<group>"; };
+		480BCE4F252216A500266617 /* UserRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequester.swift; sourceTree = "<group>"; };
 		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
 		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -491,16 +513,13 @@
 				480BCDF4251E360700266617 /* Info.plist */,
 				480BCDFD251E360700266617 /* APIUtilitiesTests */,
 				480BCE1E251E3E2000266617 /* TestFile.swift */,
-				480BCE22251E40FB00266617 /* File.swift */,
+				480BCE3A25220DF100266617 /* Utils */,
+				480BCE2E2522083A00266617 /* DataStore */,
+				480BCE22251E40FB00266617 /* RequestBaseURL.swift */,
+				480BCE5125222AE200266617 /* HeaderRequestInserter */,
+				480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */,
 				480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */,
 				480BCE09251E384200266617 /* APIV3Requester.swift */,
-				480BCE1C251E3BA100266617 /* RequestHeader.swift */,
-				480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */,
-				480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */,
-				480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */,
-				480BCE0B251E385C00266617 /* LanguageHeaderRequestInserting.swift */,
-				480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */,
-				480BCE0F251E38A000266617 /* DefaultRequestParameterProvidingV3.swift */,
 			);
 			path = APIUtilities;
 			sourceTree = "<group>";
@@ -512,6 +531,60 @@
 				480BCE00251E360700266617 /* Info.plist */,
 			);
 			path = APIUtilitiesTests;
+			sourceTree = "<group>";
+		};
+		480BCE2E2522083A00266617 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */,
+				480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */,
+				480BCE322522093600266617 /* UserAuthenticator.swift */,
+				480BCE342522097200266617 /* UserProfileDataManager.swift */,
+				480BCE362522098800266617 /* UserProfile.swift */,
+				480BCE3825220A6F00266617 /* KeychainSwift.swift */,
+				480BCE482522153D00266617 /* User */,
+				480BCE3F252211FC00266617 /* OAuth */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		480BCE3A25220DF100266617 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		480BCE3F252211FC00266617 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE402522121B00266617 /* OAuthSender.swift */,
+				480BCE442522126200266617 /* OAuthRequester.swift */,
+				480BCE422522123900266617 /* OAuthToken.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
+		480BCE482522153D00266617 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE3D2522104C00266617 /* UserRepository.swift */,
+				480BCE492522154B00266617 /* RxUser.swift */,
+				480BCE4F252216A500266617 /* UserRequester.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		480BCE5125222AE200266617 /* HeaderRequestInserter */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE1C251E3BA100266617 /* RequestHeader.swift */,
+				480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */,
+				480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */,
+				480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */,
+			);
+			path = HeaderRequestInserter;
 			sourceTree = "<group>";
 		};
 		48B792D0251CA1E0007032CD /* SupportingModules */ = {
@@ -1900,15 +1973,26 @@
 			files = (
 				480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */,
 				480BCE1F251E3E2000266617 /* TestFile.swift in Sources */,
-				480BCE0C251E385C00266617 /* LanguageHeaderRequestInserting.swift in Sources */,
+				480BCE3E2522104C00266617 /* UserRepository.swift in Sources */,
+				480BCE452522126200266617 /* OAuthRequester.swift in Sources */,
+				480BCE372522098800266617 /* UserProfile.swift in Sources */,
+				480BCE4A2522154B00266617 /* RxUser.swift in Sources */,
+				480BCE50252216A500266617 /* UserRequester.swift in Sources */,
 				480BCE21251E3EAD00266617 /* StandardV3SenderResponse.swift in Sources */,
 				480BCE16251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
-				480BCE10251E38A000266617 /* DefaultRequestParameterProvidingV3.swift in Sources */,
+				480BCE3925220A6F00266617 /* KeychainSwift.swift in Sources */,
+				480BCE3C25220E0500266617 /* Dictionary+Extensions.swift in Sources */,
 				480BCE12251E38D200266617 /* DeviceIdHeaderRequestInserting.swift in Sources */,
+				480BCE4C252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift in Sources */,
 				480BCE0A251E384200266617 /* APIV3Requester.swift in Sources */,
+				480BCE352522097200266617 /* UserProfileDataManager.swift in Sources */,
+				480BCE302522086A00266617 /* OAuthTokenRefreshWatcher.swift in Sources */,
 				480BCE14251E38EB00266617 /* OAuthHeaderRequestInserting.swift in Sources */,
-				480BCE23251E40FB00266617 /* File.swift in Sources */,
+				480BCE23251E40FB00266617 /* RequestBaseURL.swift in Sources */,
 				480BCE0E251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift in Sources */,
+				480BCE432522123900266617 /* OAuthToken.swift in Sources */,
+				480BCE332522093600266617 /* UserAuthenticator.swift in Sources */,
+				480BCE412522121B00266617 /* OAuthSender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
