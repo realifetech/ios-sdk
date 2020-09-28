@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03D583952521EB7B00E516F9 /* ReachabilityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */; };
+		03D583962521EB7B00E516F9 /* ReachabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */; };
+		03D583972521EB7B00E516F9 /* ReachabilityComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583932521EB7B00E516F9 /* ReachabilityComposer.swift */; };
+		03D583982521EB7B00E516F9 /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583942521EB7B00E516F9 /* ReachabilityHelper.swift */; };
 		0CBFFEAF366E5F0B32A65A3B /* Pods_General_GeneralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F260272EC72D00EA48CAB01 /* Pods_General_GeneralTests.framework */; };
 		149CBEE979A59578F9F8EE6E /* Pods_General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C8813D8888CCA220256A9A /* Pods_General.framework */; };
 		33203EE1EA42134F3C1F88AC /* Pods_ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B17B060E66ABB0188C0C4278 /* Pods_ReachabilityChecker.framework */; };
@@ -74,6 +78,10 @@
 
 /* Begin PBXFileReference section */
 		025E46441AC01E58CE861E07 /* Pods_RealifeTech_SDK_RealifeTech_SDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech_SDK_RealifeTech_SDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityChecking.swift; sourceTree = "<group>"; };
+		03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityChecker.swift; sourceTree = "<group>"; };
+		03D583932521EB7B00E516F9 /* ReachabilityComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityComposer.swift; sourceTree = "<group>"; };
+		03D583942521EB7B00E516F9 /* ReachabilityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityHelper.swift; sourceTree = "<group>"; };
 		055B95D09E4948D6EA2EBB6E /* Pods_RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08E482AD70B055F9624323D2 /* Pods-Communicate-CommunicateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communicate-CommunicateTests.release.xcconfig"; path = "Target Support Files/Pods-Communicate-CommunicateTests/Pods-Communicate-CommunicateTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C352EE87793B26330666B58 /* Pods-Communicate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communicate.debug.xcconfig"; path = "Target Support Files/Pods-Communicate/Pods-Communicate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +277,10 @@
 		48B792F3251CA279007032CD /* ReachabilityChecker */ = {
 			isa = PBXGroup;
 			children = (
+				03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */,
+				03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */,
+				03D583932521EB7B00E516F9 /* ReachabilityComposer.swift */,
+				03D583942521EB7B00E516F9 /* ReachabilityHelper.swift */,
 				48B792F4251CA279007032CD /* ReachabilityChecker.h */,
 				48B792F5251CA279007032CD /* Info.plist */,
 				48B792FE251CA279007032CD /* ReachabilityCheckerTests */,
@@ -694,6 +706,7 @@
 					};
 					48B792F1251CA279007032CD = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					48B792F9251CA279007032CD = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -1232,6 +1245,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D583982521EB7B00E516F9 /* ReachabilityHelper.swift in Sources */,
+				03D583962521EB7B00E516F9 /* ReachabilityChecker.swift in Sources */,
+				03D583952521EB7B00E516F9 /* ReachabilityChecking.swift in Sources */,
+				03D583972521EB7B00E516F9 /* ReachabilityComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1415,6 +1432,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 12E56D8DFA3ADF7521CA0B33 /* Pods-ReachabilityChecker.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -1433,6 +1451,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1442,6 +1461,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A86B0051B0AFB2DC5BE7F0A4 /* Pods-ReachabilityChecker.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -1469,6 +1489,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C2B89CC3748C9CE1FB033F30 /* Pods-ReachabilityChecker-ReachabilityCheckerTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SupportingModules/ReachabilityChecker/ReachabilityCheckerTests/Info.plist;
@@ -1488,6 +1509,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E65C991E4B7753F93E7952C2 /* Pods-ReachabilityChecker-ReachabilityCheckerTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SupportingModules/ReachabilityChecker/ReachabilityCheckerTests/Info.plist;
