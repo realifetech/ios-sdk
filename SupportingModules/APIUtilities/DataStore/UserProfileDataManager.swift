@@ -42,7 +42,7 @@ import Foundation
             super.init()
         } else {
             // TODO: Insert UIDevice wrapper here
-            userProfile = UserProfile(deviceID: "B384BF66-B0A9-4553-9E31-A2CB66565E6F")
+            userProfile = UserProfile(deviceID: "B384BFF6-B0A9-4553-9HG3-A2CB66565E6F")
             super.init()
             saveUserProfile()
         }

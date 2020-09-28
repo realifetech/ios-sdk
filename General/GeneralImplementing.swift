@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import APIUtilities
 
 public class GeneralImplementing: DeviceRegistering, SDKConfigurable {
     public init() {}
@@ -23,6 +24,7 @@ public class GeneralImplementing: DeviceRegistering, SDKConfigurable {
 
     public func registerDevice(_: (DeviceRegistrationResult) -> Void) {
         print("Someone wanted to register the device")
+        testMethod()
     }
 
     public func setConfiguration(_: SDKConfiguration) {

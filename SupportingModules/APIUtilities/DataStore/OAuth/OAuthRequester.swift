@@ -31,7 +31,7 @@ extension OAuthRequester {
     }
     static func getDefaultOAuthParameters() -> [String: Any] {
         // Both of these come from the Environments.plist
-        return ["client_id": "LS",
+        return ["client_id": "LS_0",
             // TODO: Add access to some envrionmental variables store. EnvironmentVariableAccessor.sharedInstance.oAuthCodeV3,
                 "client_secret": "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C"
             // TODO: Add access to some envrionmental variables store. EnvironmentVariableAccessor.sharedInstance.oAuthClientSecretV3

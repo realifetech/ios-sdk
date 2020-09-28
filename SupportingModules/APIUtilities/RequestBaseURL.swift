@@ -16,7 +16,7 @@ enum RequestBaseURL: RequestRootURL {
         switch self {
         case .LSBaseURLV3:
             // TODO: Add refrence to some Environment store. EnvironmentVariableAccessor.sharedInstance.concertLiveAPIBaseURLV3
-            return "api-dev.livestyled.com"
+            return "http://api-dev.livestyled.com/v3"
         }
     }
     var rawValue: String {

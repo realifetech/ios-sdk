@@ -13,7 +13,11 @@ import RxSwift
 let bag: DisposeBag = DisposeBag()
 
 public func testMethod() {
-    OAuthSender.requestInitialAccessToken()
+    let device = Device(token: "MWIwMjMyZTI0N2ZjMDM1Y2NjNDFmN2YyM2E4MWQ5ZmZiMTI0NTUzMmM2MDczMDVhYmI0Y2MyZjM3MjJlMTQ1Mg",
+                        type: "IOS",
+                        appVersion: "sdk_0.0.1alpha",
+                        osVersion: "13.3")
+    DeviceSender.register(device: device)
         .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
         .observeOn(MainScheduler.instance)
         .subscribe(onNext: { token in
@@ -24,7 +28,15 @@ public func testMethod() {
 }
 
 struct Device: Codable {
-    var jsonRepresentation: [String: Any] { [:] }
+    let token: String
+    let type: String
+    let appVersion: String
+    let osVersion: String
+
+    var jsonRepresentation: [String: Any] {
+        guard let data = try? JSONEncoder().encode(self), let json = try? JSONSerialization.jsonObject(with: data, options: []), let jsonDict = json as? [String: Any] else { return [:] }
+        return jsonDict
+    }
 }
 
 struct DeviceToken: Codable {
