@@ -41,6 +41,7 @@ class ReachabilityCheckerTests: XCTestCase {
     }
 
     private class MockBluetoothManager: CBCentralManager {
+
         var bluetoothEnabled: Bool = false
 
         override var state: CBManagerState {
@@ -49,6 +50,7 @@ class ReachabilityCheckerTests: XCTestCase {
     }
 
     private class MockWifiConnectivityChecker: WifiConnectivityChecker {
+
         var wifiEnabled: Bool = false
 
         override var wifiConnected: Bool {
