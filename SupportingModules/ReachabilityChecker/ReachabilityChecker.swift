@@ -10,17 +10,18 @@ import Foundation
 import CoreBluetooth
 
 public class ReachabilityChecker: NSObject {
+
     private var bluetoothEnabled: Bool = false
     private var bluetoothManager: CBCentralManager
-    private var reachabilityHelper: ReachabilityHelper
+    private var wifiConnectivityChecker: WifiConnectivityChecker
 
     init(
         bluetoothManager: CBCentralManager = CBCentralManager(delegate: nil,
                                                               queue: nil,
                                                               options: [CBCentralManagerOptionShowPowerAlertKey: 0]),
-        reachabilityHelper: ReachabilityHelper = ReachabilityHelper()) {
+        wifiConnectivityChecker: WifiConnectivityChecker = WifiConnectivityChecker()) {
         self.bluetoothManager = bluetoothManager
-        self.reachabilityHelper = reachabilityHelper
+        self.wifiConnectivityChecker = wifiConnectivityChecker
         super.init()
         self.bluetoothManager.delegate = self
     }
@@ -33,7 +34,7 @@ extension ReachabilityChecker: ReachabilityChecking {
     }
 
     public var isConnectedToWifi: Bool {
-        return reachabilityHelper.wifiConnected
+        return wifiConnectivityChecker.wifiConnected
     }
 }
 

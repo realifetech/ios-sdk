@@ -1,5 +1,5 @@
 //
-//  ReachabilityComposer.swift
+//  ReachabilityFactory.swift
 //  ReachabilityChecker
 //
 //  Created by Jonathon Albert on 24/09/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ReachabilityComposer {
+public struct ReachabilityFactory {
 
     func makeReachabilityHelper() -> ReachabilityChecking {
         return ReachabilityChecker()

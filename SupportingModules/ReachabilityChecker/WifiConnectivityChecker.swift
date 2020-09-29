@@ -1,5 +1,5 @@
 //
-//  ReachabilityHelper.swift
+//  WifiConnectivityChecker.swift
 //  RealifeTech-SDK
 //
 //  Created by Jonathon Albert on 25/09/2020.
@@ -9,7 +9,7 @@
 import Foundation
 import SystemConfiguration
 
-public class ReachabilityHelper {
+public class WifiConnectivityChecker {
 
     var wifiConnected: Bool {
         return connectionStatus
