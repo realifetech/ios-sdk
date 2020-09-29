@@ -19,7 +19,8 @@ public class ReachabilityChecker: NSObject {
         bluetoothManager: CBCentralManager = CBCentralManager(delegate: nil,
                                                               queue: nil,
                                                               options: [CBCentralManagerOptionShowPowerAlertKey: 0]),
-        wifiConnectivityChecker: WifiConnectivityChecker = WifiConnectivityChecker()) {
+        wifiConnectivityChecker: WifiConnectivityChecker = WifiConnectivityChecker()
+    ) {
         self.bluetoothManager = bluetoothManager
         self.wifiConnectivityChecker = wifiConnectivityChecker
         super.init()
