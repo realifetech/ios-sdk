@@ -3,7 +3,7 @@
 //  RX
 //
 //  Created by Ross Patman on 18/09/2017.
-//  Copyright © 2017 RossPatman. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 import Foundation
 import CommonCrypto

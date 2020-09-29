@@ -2,8 +2,7 @@
 //  RequestLogger.swift
 //  CLArena
 //
-//  Created by apple on 06/02/2019.
-//  Copyright © 2019 ConcertLive. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import Foundation

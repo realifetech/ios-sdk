@@ -3,7 +3,7 @@
 //  CLArena
 //
 //  Created by Mickey Lee on 11/06/2019.
-//  Copyright © 2019 ConcertLive. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import Foundation

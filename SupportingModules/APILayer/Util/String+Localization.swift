@@ -2,8 +2,7 @@
 //  String+Localization.swift
 //  APILayer
 //
-//  Created by apple on 13/09/2019.
-//  Copyright © 2019 LiveStyled. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import Foundation

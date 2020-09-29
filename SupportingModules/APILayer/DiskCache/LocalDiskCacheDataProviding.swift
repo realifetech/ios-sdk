@@ -3,7 +3,7 @@
 //  CLArena
 //
 //  Created by Ross Patman on 18/06/2018.
-//  Copyright © 2018 ConcertLive. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import Foundation

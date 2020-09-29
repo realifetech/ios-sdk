@@ -3,7 +3,7 @@
 //  RX
 //
 //  Created by Ross Patman on 21/10/2017.
-//  Copyright © 2017 RossPatman. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import Foundation
