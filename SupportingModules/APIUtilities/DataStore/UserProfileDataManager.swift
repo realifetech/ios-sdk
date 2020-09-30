@@ -33,19 +33,21 @@ import Foundation
     }()
 
     override init() {
-        let fileManager = FileManager.default
-        if let data = fileManager.contents(atPath: userProfileDataFilePath.path),
-            let dic = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSDictionary.self], from: data) as? NSDictionary,
-            let userProfile = UserProfile(propertyListRepresentation: dic),
-            fileManager.fileExists(atPath: userProfileDataFilePath.path) {
-            self.userProfile = userProfile
-            super.init()
-        } else {
+// TODO: Insert data store for the User profile
+
+//        let fileManager = FileManager.default
+//        if let data = fileManager.contents(atPath: userProfileDataFilePath.path),
+//            let dic = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSDictionary.self], from: data) as? NSDictionary,
+//            let userProfile = UserProfile(propertyListRepresentation: dic),
+//            fileManager.fileExists(atPath: userProfileDataFilePath.path) {
+//            self.userProfile = userProfile
+//            super.init()
+//        } else {
             // TODO: Insert UIDevice wrapper here
             userProfile = UserProfile(deviceID: "B384BFF6-B0A9-4553-9HG3-A2CB66565E6F")
             super.init()
             saveUserProfile()
-        }
+//        }
     }
 
     func updateUserProfile(token: String? = nil) {
@@ -55,13 +57,14 @@ import Foundation
 
     fileprivate func saveUserProfile() {
         // Question: Do we need to log analytics when the device ID is set?
-        // We should already perform a new device registration call. (remove when done)
-        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: userProfile.propertyListRepresentation(), requiringSecureCoding: true) else { return }
-        do {
-            try data.write(to: userProfileDataFilePath)
-        } catch let error as NSError {
-            print("error: could not write userProfile file: \(error)")
-        }
+        // TODO: We should already perform a new device registration call when the token gets set (which is when this gets called). (remove this note when done)
+// Commented out to ensure we're generating fresh tokens.
+//        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: userProfile.propertyListRepresentation(), requiringSecureCoding: true) else { return }
+//        do {
+//            try data.write(to: userProfileDataFilePath)
+//        } catch let error as NSError {
+//            print("error: could not write userProfile file: \(error)")
+//        }
     }
 
     @objc func isUserLoggedIn() -> Bool {
