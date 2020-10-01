@@ -57,13 +57,10 @@
 		480BCE372522098800266617 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE362522098800266617 /* UserProfile.swift */; };
 		480BCE3925220A6F00266617 /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3825220A6F00266617 /* KeychainSwift.swift */; };
 		480BCE3C25220E0500266617 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */; };
-		480BCE3E2522104C00266617 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3D2522104C00266617 /* UserRepository.swift */; };
 		480BCE412522121B00266617 /* OAuthSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE402522121B00266617 /* OAuthSender.swift */; };
 		480BCE432522123900266617 /* OAuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE422522123900266617 /* OAuthToken.swift */; };
 		480BCE452522126200266617 /* OAuthRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE442522126200266617 /* OAuthRequester.swift */; };
-		480BCE4A2522154B00266617 /* RxUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE492522154B00266617 /* RxUser.swift */; };
 		480BCE4C252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */; };
-		480BCE50252216A500266617 /* UserRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE4F252216A500266617 /* UserRequester.swift */; };
 		480BCE5225222F7700266617 /* APIUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480BCDF1251E360700266617 /* APIUtilities.framework */; };
 		480BCE5325222F7700266617 /* APIUtilities.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 480BCDF1251E360700266617 /* APIUtilities.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48343CD82522343E00AC80BD /* General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; };
@@ -268,13 +265,10 @@
 		480BCE362522098800266617 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		480BCE3825220A6F00266617 /* KeychainSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwift.swift; sourceTree = "<group>"; };
 		480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
-		480BCE3D2522104C00266617 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		480BCE402522121B00266617 /* OAuthSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthSender.swift; sourceTree = "<group>"; };
 		480BCE422522123900266617 /* OAuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthToken.swift; sourceTree = "<group>"; };
 		480BCE442522126200266617 /* OAuthRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRequester.swift; sourceTree = "<group>"; };
-		480BCE492522154B00266617 /* RxUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxUser.swift; sourceTree = "<group>"; };
 		480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultV3DiskCacheStrategyProviding.swift; sourceTree = "<group>"; };
-		480BCE4F252216A500266617 /* UserRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequester.swift; sourceTree = "<group>"; };
 		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
 		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -594,7 +588,6 @@
 				480BCE342522097200266617 /* UserProfileDataManager.swift */,
 				480BCE362522098800266617 /* UserProfile.swift */,
 				480BCE3825220A6F00266617 /* KeychainSwift.swift */,
-				480BCE482522153D00266617 /* User */,
 				480BCE3F252211FC00266617 /* OAuth */,
 			);
 			path = DataStore;
@@ -616,16 +609,6 @@
 				480BCE422522123900266617 /* OAuthToken.swift */,
 			);
 			path = OAuth;
-			sourceTree = "<group>";
-		};
-		480BCE482522153D00266617 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				480BCE3D2522104C00266617 /* UserRepository.swift */,
-				480BCE492522154B00266617 /* RxUser.swift */,
-				480BCE4F252216A500266617 /* UserRequester.swift */,
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		480BCE5125222AE200266617 /* HeaderRequestInserter */ = {
@@ -2035,11 +2018,8 @@
 			files = (
 				480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */,
 				480BCE1F251E3E2000266617 /* TestFile.swift in Sources */,
-				480BCE3E2522104C00266617 /* UserRepository.swift in Sources */,
 				480BCE452522126200266617 /* OAuthRequester.swift in Sources */,
 				480BCE372522098800266617 /* UserProfile.swift in Sources */,
-				480BCE4A2522154B00266617 /* RxUser.swift in Sources */,
-				480BCE50252216A500266617 /* UserRequester.swift in Sources */,
 				480BCE21251E3EAD00266617 /* StandardV3SenderResponse.swift in Sources */,
 				480BCE16251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
 				480BCE3925220A6F00266617 /* KeychainSwift.swift in Sources */,

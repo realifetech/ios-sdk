@@ -19,23 +19,6 @@ struct UserAuthenticator {
         case refreshTokenExpiryDate = "livestyled-refreshTokenExpiryDate"
     }
 
-    static var performInitialUserAuthentication: Observable<Bool> {
-        let standardResponse: Observable<Bool> = Observable.from(optional: true)
-        guard let userId = UserProfileDataManager.sharedInstance.userProfile.userID else { return standardResponse }
-        if !UserAuthenticator.refreshTokenValid {
-            // TODO: We need to clear the token from wherever it's stored
-            return standardResponse
-        }
-        return UserRepository.profile(withID: userId, forceUpdate: true) // This will force the access token to refresh if necessary
-            .map { $0.id != nil }
-            .catchError({ (error) -> Observable<Bool> in
-                if let unAuthenticatedError = error as? APIError, unAuthenticatedError.unAuthenticated == true {
-                    // TODO: We need to clear the token from wherever it's stored
-                }
-                return standardResponse
-            })
-    }
-
     //oAuth calls
     static var requestInitialAccessToken: Observable<Any?>? {
         guard accessTokenValid == false else { return nil }

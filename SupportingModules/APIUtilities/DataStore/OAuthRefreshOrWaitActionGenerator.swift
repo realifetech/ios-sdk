@@ -13,8 +13,9 @@ import RxSwift
 protocol OAuthRefreshOrWaitActionGenerator { }
 
 extension OAuthRefreshOrWaitActionGenerator {
+    /// Nil if we have a valid token. If no token exists, or it is invalid, or being currently refreshed, this will return an observable which will emit once the token action is complete.
     static var refreshTokenOrWaitAction: Observable<Any?>? {
-        //we take 1 so that observables don't keep listening for refreshes after a refresh has been successful
+        // We take 1 because we only care about the ongoing refresh, not subsequent ones.
         if let refreshSuccessfulIfRefreshing = OAuthTokenRefreshWatcher.shared.refreshSuccessfulIfRefreshing { return refreshSuccessfulIfRefreshing.take(1).map { $0 as Any? } }
         let isLoggedIn = UserProfileDataManager.sharedInstance.isUserLoggedIn()
         guard let refresh = isLoggedIn ? UserAuthenticator.refreshAccessToken : UserAuthenticator.requestInitialAccessToken else { return nil }

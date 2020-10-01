@@ -56,7 +56,6 @@ import Foundation
     }
 
     fileprivate func saveUserProfile() {
-        // Question: Do we need to log analytics when the device ID is set?
         // TODO: We should already perform a new device registration call when the token gets set (which is when this gets called). (remove this note when done)
 // Commented out to ensure we're generating fresh tokens.
 //        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: userProfile.propertyListRepresentation(), requiringSecureCoding: true) else { return }
@@ -68,6 +67,7 @@ import Foundation
     }
 
     @objc func isUserLoggedIn() -> Bool {
+        // Note: The User ID is the current token value.
         return userProfile.userID != nil
     }
 

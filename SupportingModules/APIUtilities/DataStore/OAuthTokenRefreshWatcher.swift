@@ -20,9 +20,12 @@ class OAuthTokenRefreshWatcher {
 
     fileprivate var status: BehaviorRelay<OAuthTokenStatus>
 
+    /// If the status is currently refreshing, this variable can be used to observe whether the refresh succeeds or fails.
     var refreshSuccessfulIfRefreshing: Observable<Bool>? {
         guard status.value == .refreshing else { return nil }
-        return status.asObservable().skip(1).filter { $0 == .valid }.map { $0 == .valid }   //we skip the first to stop firing on init
+        // We skip the first result to avoid immediately firing (behaviour subjects always emit their last value, which would be 'refreshing' in this case).
+        // TODO: Look into if we should be returning Bool here. We never return false and will only ever complete at all for successes.
+        return status.asObservable().skip(1).filter { $0 == .valid }.map { $0 == .valid }
     }
 
     init() {
