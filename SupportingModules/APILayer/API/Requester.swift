@@ -24,6 +24,7 @@ public protocol Requester {
 }
 
 public extension Requester {
+    
     static func request(forId id: String? = nil) -> URLRequest {
         var theEndpoint = endpoint ?? ""
         if let id = id { theEndpoint += "/\(id)" }
