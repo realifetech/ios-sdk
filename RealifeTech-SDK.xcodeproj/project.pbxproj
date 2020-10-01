@@ -16,6 +16,8 @@
 		480BCD91251E252600266617 /* SDKConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8E251E252600266617 /* SDKConfigurable.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKInterface.swift */; };
+		48A6844B2526132A001F8CB1 /* General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; };
+		48A6844C2526132A001F8CB1 /* General.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
 		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
 		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,6 +42,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		48A6844D2526132A001F8CB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48E6774D251BA843007E2741;
+			remoteInfo = General;
+		};
 		48B792E0251CA256007032CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
@@ -76,6 +85,20 @@
 			remoteInfo = Communicate;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		48A6844F2526132B001F8CB1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				48A6844C2526132A001F8CB1 /* General.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		025E46441AC01E58CE861E07 /* Pods_RealifeTech_SDK_RealifeTech_SDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech_SDK_RealifeTech_SDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				640CCEBB84C5BF5434903412 /* Pods_RealifeTech.framework in Frameworks */,
+				48A6844B2526132A001F8CB1 /* General.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,10 +605,12 @@
 				48D6F137251E158E006CA623 /* Frameworks */,
 				48D6F138251E158E006CA623 /* Resources */,
 				48D6F15B251E18A0006CA623 /* ShellScript */,
+				48A6844F2526132B001F8CB1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				48A6844E2526132A001F8CB1 /* PBXTargetDependency */,
 			);
 			name = RealifeTech;
 			productName = RealifeTech;
@@ -1312,6 +1338,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		48A6844E2526132A001F8CB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48E6774D251BA843007E2741 /* General */;
+			targetProxy = 48A6844D2526132A001F8CB1 /* PBXContainerItemProxy */;
+		};
 		48B792E1251CA256007032CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 48B792D5251CA256007032CD /* UIDeviceHelper */;

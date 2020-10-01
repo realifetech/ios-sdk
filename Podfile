@@ -6,7 +6,7 @@ workspace 'RealifeTech-SDK'
 project 'RealifeTech-SDK'
 project 'DummyProject/DummyProject'
 
-# pod 'SwiftLint'
+pod 'SwiftLint'
 
 target 'RealifeTech' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -80,10 +80,10 @@ target 'DummyProject' do
   project 'DummyProject/DummyProject'
 
   # Pods for DummyProject
-  pod 'SwiftLint'
+
   target 'DummyProjectTests' do
     # Pods for testing
-    pod 'SwiftLint'
+
   end
 
 end
