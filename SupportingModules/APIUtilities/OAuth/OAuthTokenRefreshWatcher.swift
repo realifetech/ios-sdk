@@ -18,12 +18,14 @@ class OAuthTokenRefreshWatcher {
 
     static let shared = OAuthTokenRefreshWatcher()
 
+    /// Returns the current token status.
     fileprivate var status: BehaviorRelay<OAuthTokenStatus>
 
     /// If the status is currently refreshing, this variable can be used to observe whether the refresh succeeds or fails.
-    var refreshSuccessfulIfRefreshing: Observable<Bool>? {
+    /// Returns nil when no refresh is taking place.
+    var ongoingTokenRefresh: Observable<Bool>? {
         guard status.value == .refreshing else { return nil }
-        // We skip the first result to avoid immediately firing (behaviour subjects always emit their last value, which would be 'refreshing' in this case).
+        // NOTE: Behaviour subjects always emit their current value, we only care about the next value, so we skip one.
         // TODO: Look into if we should be returning Bool here. We never return false and will only ever complete at all for successes.
         return status.asObservable().skip(1).filter { $0 == .valid }.map { $0 == .valid }
     }
@@ -32,6 +34,7 @@ class OAuthTokenRefreshWatcher {
         status = BehaviorRelay(value: .valid)
     }
 
+    /// Sets the current token status, skipping values identical to the current one
     func updateRefreshingStatus(newValue: OAuthTokenStatus) {
         guard status.value != newValue else { return }
         status.accept(newValue)

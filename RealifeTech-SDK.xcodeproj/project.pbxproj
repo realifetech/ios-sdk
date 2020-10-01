@@ -54,7 +54,6 @@
 		480BCE302522086A00266617 /* OAuthTokenRefreshWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */; };
 		480BCE332522093600266617 /* UserAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE322522093600266617 /* UserAuthenticator.swift */; };
 		480BCE352522097200266617 /* UserProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE342522097200266617 /* UserProfileDataManager.swift */; };
-		480BCE372522098800266617 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE362522098800266617 /* UserProfile.swift */; };
 		480BCE3925220A6F00266617 /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3825220A6F00266617 /* KeychainSwift.swift */; };
 		480BCE3C25220E0500266617 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */; };
 		480BCE412522121B00266617 /* OAuthSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE402522121B00266617 /* OAuthSender.swift */; };
@@ -262,7 +261,6 @@
 		480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenRefreshWatcher.swift; sourceTree = "<group>"; };
 		480BCE322522093600266617 /* UserAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticator.swift; sourceTree = "<group>"; };
 		480BCE342522097200266617 /* UserProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDataManager.swift; sourceTree = "<group>"; };
-		480BCE362522098800266617 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		480BCE3825220A6F00266617 /* KeychainSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwift.swift; sourceTree = "<group>"; };
 		480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		480BCE402522121B00266617 /* OAuthSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthSender.swift; sourceTree = "<group>"; };
@@ -560,9 +558,10 @@
 				480BCDFD251E360700266617 /* APIUtilitiesTests */,
 				480BCE1E251E3E2000266617 /* TestFile.swift */,
 				480BCE3A25220DF100266617 /* Utils */,
-				480BCE2E2522083A00266617 /* DataStore */,
+				480BCE3F252211FC00266617 /* User */,
+				480BCE2E2522083A00266617 /* OAuth */,
+				480BCE5125222AE200266617 /* RequestHeader */,
 				480BCE22251E40FB00266617 /* RequestBaseURL.swift */,
-				480BCE5125222AE200266617 /* HeaderRequestInserter */,
 				480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */,
 				480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */,
 				480BCE09251E384200266617 /* APIV3Requester.swift */,
@@ -579,31 +578,11 @@
 			path = APIUtilitiesTests;
 			sourceTree = "<group>";
 		};
-		480BCE2E2522083A00266617 /* DataStore */ = {
+		480BCE2E2522083A00266617 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
 				480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */,
 				480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */,
-				480BCE322522093600266617 /* UserAuthenticator.swift */,
-				480BCE342522097200266617 /* UserProfileDataManager.swift */,
-				480BCE362522098800266617 /* UserProfile.swift */,
-				480BCE3825220A6F00266617 /* KeychainSwift.swift */,
-				480BCE3F252211FC00266617 /* OAuth */,
-			);
-			path = DataStore;
-			sourceTree = "<group>";
-		};
-		480BCE3A25220DF100266617 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		480BCE3F252211FC00266617 /* OAuth */ = {
-			isa = PBXGroup;
-			children = (
 				480BCE402522121B00266617 /* OAuthSender.swift */,
 				480BCE442522126200266617 /* OAuthRequester.swift */,
 				480BCE422522123900266617 /* OAuthToken.swift */,
@@ -611,7 +590,25 @@
 			path = OAuth;
 			sourceTree = "<group>";
 		};
-		480BCE5125222AE200266617 /* HeaderRequestInserter */ = {
+		480BCE3A25220DF100266617 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE3825220A6F00266617 /* KeychainSwift.swift */,
+				480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		480BCE3F252211FC00266617 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE322522093600266617 /* UserAuthenticator.swift */,
+				480BCE342522097200266617 /* UserProfileDataManager.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		480BCE5125222AE200266617 /* RequestHeader */ = {
 			isa = PBXGroup;
 			children = (
 				480BCE1C251E3BA100266617 /* RequestHeader.swift */,
@@ -619,7 +616,7 @@
 				480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */,
 				480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */,
 			);
-			path = HeaderRequestInserter;
+			path = RequestHeader;
 			sourceTree = "<group>";
 		};
 		48B792D0251CA1E0007032CD /* SupportingModules */ = {
@@ -2019,7 +2016,6 @@
 				480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */,
 				480BCE1F251E3E2000266617 /* TestFile.swift in Sources */,
 				480BCE452522126200266617 /* OAuthRequester.swift in Sources */,
-				480BCE372522098800266617 /* UserProfile.swift in Sources */,
 				480BCE21251E3EAD00266617 /* StandardV3SenderResponse.swift in Sources */,
 				480BCE16251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
 				480BCE3925220A6F00266617 /* KeychainSwift.swift in Sources */,
