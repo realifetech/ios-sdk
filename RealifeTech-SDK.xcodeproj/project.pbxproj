@@ -2342,7 +2342,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C94B619AD6DB342A7BE8EF3B /* Pods-APIUtilities-APIUtilitiesTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SupportingModules/APIUtilities/APIUtilitiesTests/Info.plist;
@@ -2363,7 +2362,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 04FD51743DE5E6409A71CC91 /* Pods-APIUtilities-APIUtilitiesTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SupportingModules/APIUtilities/APIUtilitiesTests/Info.plist;
@@ -2625,7 +2623,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C446CB4FA2306982848D77D4 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = RealifeTech/RealifeTechTests/Info.plist;
@@ -2646,7 +2643,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F340472842D4549931DF84F /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = RealifeTech/RealifeTechTests/Info.plist;
@@ -2846,7 +2842,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D8775D4DFBE15099A48616A /* Pods-General-GeneralTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = General/GeneralTests/Info.plist;
@@ -2866,7 +2861,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C5E92802842EBF01660FDE8 /* Pods-General-GeneralTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = General/GeneralTests/Info.plist;
