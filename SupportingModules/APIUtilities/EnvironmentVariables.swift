@@ -32,17 +32,27 @@ protocol SharedApiHeaderVaribleStorage {
     static var sharedInstance: RealifeApiHeaderVariableHolding { get }
 }
 
+public func setupAPI(with deviceID: String) -> RealifeApiHeaderVariableHolding {
+    let apiVariables = RealifeApiHeaderVariables(deviceID: deviceID)
+    RealifeApiHeaderVariables.sharedInstance = apiVariables
+    return apiVariables
+}
+
 public class RealifeApiHeaderVariables: RealifeApiHeaderVariableHolding, SharedApiHeaderVaribleStorage, OAuthRefreshOrWaitActionGenerator {
 
     static var sharedInstance: RealifeApiHeaderVariableHolding = EmptyHeaderVariables()
 
-    public var deviceID: String = ""
+    public var deviceID: String
     public var token: String { AuthorisationStore.accessToken ?? "" }
     public var tokenIsValid: Bool {
         AuthorisationStore.accessTokenValid
     }
 
     private let disposeBag: DisposeBag = DisposeBag()
+
+    init(deviceID: String) {
+        self.deviceID = deviceID
+    }
 
     public func getValidToken(_ completion: (() -> Void)?) {
         guard let getTokenObservable = Self.refreshTokenOrWaitAction else {
