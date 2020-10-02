@@ -16,7 +16,7 @@ protocol DeviceIdHeaderRequestInserting {
 extension DeviceIdHeaderRequestInserting {
     static func addDeviceIdHeader(toRequest request: URLRequest) -> URLRequest {
         var request = request
-        let deviceIdHeader = RequestHeader.generateDeviceIdHeader(deviceId: UserProfileDataManager.sharedInstance.deviceID)
+        let deviceIdHeader = RequestHeader.generateDeviceIdHeader(deviceId: RealifeApiHeaderVariables.sharedInstance.deviceID)
         request.addValue(deviceIdHeader.valueForHeader, forHTTPHeaderField: deviceIdHeader.header)
         return request
     }

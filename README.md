@@ -32,11 +32,11 @@ All the modules within the SDK Project have their own build targets with their o
 3. Add CocoaPods to the target
     - Open the Podfile under the Pods project
     - Add the new target + test boilerplate (copy an existing one)
-    - Move one of the pods to directly inside the new target, and a copy into the test target
+    - Move one of the pods to directly inside the new target, and a copy into the test target*
     - Run `$ pod install`
     - Move the pod back to the head of the file
 
-A bug in CocoaPods means that unless we add a specific pod for that target at least one, the target never has the right build steps added, hence the extra steps.
+*A bug in CocoaPods means that unless we add a specific pod for that target at least one, the target never has the right build steps added.
 
 ## Dependencies
 

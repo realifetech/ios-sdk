@@ -18,7 +18,7 @@ extension OAuthRequester {
     static func interceptors() -> [(URLRequest) -> (URLRequest)]? {
         func addOAuthHeader(toRequest request: URLRequest) -> URLRequest {  //This has a custom implementation, as we don't want to add Basic/credentialString for open calls
             var request = request
-            guard UserAuthenticator.accessTokenValid == true, let accessToken = UserAuthenticator.accessToken else { return request }
+            guard AuthorisationStore.accessTokenValid == true, let accessToken = AuthorisationStore.accessToken else { return request }
             let oAuthHeader = RequestHeader.generateAuthHeader(accessToken: accessToken)
             request.addValue(oAuthHeader.valueForHeader, forHTTPHeaderField: oAuthHeader.header)
             return request

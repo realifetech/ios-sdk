@@ -13,15 +13,15 @@ import RxSwift
 let bag: DisposeBag = DisposeBag()
 
 public func testMethod() {
-    let device = Device(token: "MWIwMjMyZTI0N2ZjMDM1Y2NjNDFmN2YyM2E4MWQ5ZmZiMTI0NTUzMmM2MDczMDVhYmI0Y2MyZjM3MjJlMTQ1Mg",
+    let device = Device(token: RealifeApiHeaderVariables.sharedInstance.token,
                         type: "IOS",
                         appVersion: "sdk_0.0.1alpha",
                         osVersion: "13.3")
     DeviceSender.register(device: device)
         .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
         .observeOn(MainScheduler.instance)
-        .subscribe(onNext: { token in
-            print("I gots a token!", token)
+        .subscribe(onNext: { success in
+            print("I gots a token!", success)
         }, onError: { error in
             print("I gots a error, not a token!", error)
         }).disposed(by: bag)

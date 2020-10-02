@@ -19,7 +19,7 @@ extension OAuthRefreshOrWaitActionGenerator {
             // We take 1 because we only care about the ongoing refresh, not subsequent ones.
             return currentTokenRefresh.take(1).map { $0 as Any? }
         }
-        guard let refresh = UserAuthenticator.requestInitialAccessToken else {
+        guard let refresh = AuthorisationStore.requestInitialAccessToken else {
             // If we don't get an observable, it's because we don't need to refresh the current token
             return nil
         }

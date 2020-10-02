@@ -9,13 +9,11 @@ import Foundation
 import APILayer
 import RxSwift
 
-struct UserAuthenticator {
+struct AuthorisationStore {
 
     enum KeychainKey: String {
         case token = "livestyled-token"
-        case refreshToken = "livestyled-refreshToken"
         case expiryDate = "livestyled-tokenExpiryDate"
-        case refreshTokenExpiryDate = "livestyled-refreshTokenExpiryDate"
     }
 
     private static let keychain = KeychainSwift()
@@ -34,7 +32,7 @@ struct UserAuthenticator {
         return OAuthSender.requestInitialAccessToken()
             .map { (token: OAuthToken) -> OAuthToken in
                 if let accessToken = token.accessToken, let expiresIn = token.expiresIn {
-                    UserAuthenticator.saveCredentials(
+                    AuthorisationStore.saveCredentials(
                         token: accessToken,
                         secondsExpiresIn: expiresIn)
                 }
@@ -54,14 +52,15 @@ struct UserAuthenticator {
         keychain.delete(KeychainKey.expiryDate.rawValue)
     }
 
-    private static func expiryDateValid(expiryDateString: String?) -> Bool {
-        guard let expiryDateString = expiryDateString, let timestamp = Int64(expiryDateString) else { return false }
-        return Date().toMilliseconds() < timestamp
-    }
-
     private static func update(accessToken: String, withSecondsExpiresIn seconds: Int) {
         let expiryDate = "\(Date().addingTimeInterval(Double(seconds)).toMilliseconds())"
         keychain.set(accessToken, forKey: KeychainKey.token.rawValue)
         keychain.set(expiryDate, forKey: KeychainKey.expiryDate.rawValue)
+    }
+
+    private static func expiryDateValid(expiryDateString: String?) -> Bool {
+        guard let expiryDateString = expiryDateString, let timestamp = Int64(expiryDateString) else { return false }
+        // TODO: Reduce duplication with RealifeApiHeaderVariables
+        return Date().toMilliseconds() < timestamp
     }
 }
