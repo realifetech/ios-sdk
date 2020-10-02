@@ -3,32 +3,58 @@
 //  ReachabilityCheckerTests
 //
 //  Created by Olivier Butler on 24/09/2020.
-//  Copyright © 2020 Olivier Butler. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import XCTest
+import CoreBluetooth
 @testable import ReachabilityChecker
 
 class ReachabilityCheckerTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_bluetooth_enabled() {
+        let mockBluetoothManager = MockBluetoothManager()
+        mockBluetoothManager.bluetoothEnabled = true
+        let sut = ReachabilityChecker(bluetoothManager: mockBluetoothManager)
+        sut.centralManagerDidUpdateState(mockBluetoothManager)
+        XCTAssertTrue(sut.isBluetoothConnected)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_bluetooth_disabled() {
+        let mockBluetoothManager = MockBluetoothManager()
+        let sut = ReachabilityChecker(bluetoothManager: mockBluetoothManager)
+        sut.centralManagerDidUpdateState(mockBluetoothManager)
+        XCTAssertFalse(sut.isBluetoothConnected)
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_wifi_connected() {
+        let mockHelper = MockWifiConnectivityChecker()
+        mockHelper.wifiEnabled = true
+        let sut = ReachabilityChecker(wifiConnectivityChecker: mockHelper)
+        XCTAssertTrue(sut.isConnectedToWifi)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_wifi_notConnected() {
+        let mockHelper = MockWifiConnectivityChecker()
+        let sut = ReachabilityChecker(wifiConnectivityChecker: mockHelper)
+        XCTAssertFalse(sut.isConnectedToWifi)
+    }
+
+    private class MockBluetoothManager: CBCentralManager {
+
+        var bluetoothEnabled: Bool = false
+
+        override var state: CBManagerState {
+            return bluetoothEnabled ? .poweredOn : .poweredOff
         }
     }
 
+    private class MockWifiConnectivityChecker: WifiConnectivityChecker {
+
+        var wifiEnabled: Bool = false
+
+        override var wifiConnected: Bool {
+            return wifiEnabled
+        }
+    }
 }
