@@ -3,7 +3,7 @@
 //  UIDeviceHelperTests
 //
 //  Created by Olivier Butler on 24/09/2020.
-//  Copyright © 2020 Olivier Butler. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import XCTest
@@ -11,24 +11,40 @@ import XCTest
 
 class UIDeviceHelperTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_deviceUUID() {
+        let mockDevice = MockDevice()
+        let sut = UIDeviceFactory().makeUIDeviceHelper(device: mockDevice)
+        XCTAssertEqual(sut.deviceId, "00000000-4321-1234-4321-000000000000")
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_deviceModel() {
+        let mockDevice = MockDevice()
+        let sut = UIDeviceFactory().makeUIDeviceHelper(device: mockDevice)
+        XCTAssertEqual(sut.model, "iPhone")
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_deviceSystemVersion() {
+        let mockDevice = MockDevice()
+        let sut = UIDeviceFactory().makeUIDeviceHelper(device: mockDevice)
+        XCTAssertEqual(sut.osVersion, "14.0")
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    private class MockDevice: UIDevice {
+
+        override class var current: UIDevice {
+            return MockDevice()
+        }
+
+        override var identifierForVendor: UUID? {
+            return UUID(uuidString: "00000000-4321-1234-4321-000000000000")
+        }
+
+        override var model: String {
+            return "iPhone"
+        }
+
+        override var systemVersion: String {
+            return "14.0"
         }
     }
-
 }
