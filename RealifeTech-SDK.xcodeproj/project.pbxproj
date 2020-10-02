@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0317B924252768EA00863EC6 /* GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0317B91B252768EA00863EC6 /* GraphQL.framework */; };
+		0317B929252768EA00863EC6 /* GraphQLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B928252768EA00863EC6 /* GraphQLTests.swift */; };
+		0317B92B252768EA00863EC6 /* GraphQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317B91D252768EA00863EC6 /* GraphQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0317B933252769D900863EC6 /* ApolloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B932252769D900863EC6 /* ApolloClient.swift */; };
 		03D5838E2521E44F00E516F9 /* UIDeviceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838B2521E44F00E516F9 /* UIDeviceFactory.swift */; };
 		03D5838F2521E44F00E516F9 /* UIDeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838C2521E44F00E516F9 /* UIDeviceInterface.swift */; };
 		03D583902521E44F00E516F9 /* UIDeviceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838D2521E44F00E516F9 /* UIDeviceWrapper.swift */; };
@@ -55,15 +59,24 @@
 		48E67780251BA86D007E2741 /* Communicate.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E67772251BA86D007E2741 /* Communicate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55A766E8DCB434F29B0D38D0 /* Pods_UIDeviceHelper_UIDeviceHelperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D2802DDF8DE36DBC545A8D /* Pods_UIDeviceHelper_UIDeviceHelperTests.framework */; };
 		640CCEBB84C5BF5434903412 /* Pods_RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055B95D09E4948D6EA2EBB6E /* Pods_RealifeTech.framework */; };
+		7C7697EE4B5FC78C0B492FC7 /* Pods_GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE06FAACB47A051677CFC14 /* Pods_GraphQL.framework */; };
 		7CFE9B29E960ED65254F30D3 /* Pods_ReachabilityChecker_ReachabilityCheckerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D9400D2509F1987132C73 /* Pods_ReachabilityChecker_ReachabilityCheckerTests.framework */; };
 		84EB54A11E9EBE301EA65A47 /* Pods_RealifeTech_RealifeTechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7B8426F2EF95022226B325 /* Pods_RealifeTech_RealifeTechTests.framework */; };
 		9499E626963603780ECBB389 /* Pods_APILayer_APILayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44498AF4BB866A3EC34C7147 /* Pods_APILayer_APILayerTests.framework */; };
 		B63DED0384A4853B81AD9DA3 /* Pods_UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACCD022749117F24F5CEE35 /* Pods_UIDeviceHelper.framework */; };
 		BB2A2C1FB1520DFAEB1084F7 /* Pods_Communicate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BB3702C51484F89B7F356A /* Pods_Communicate.framework */; };
 		DED0C1BB79198E01327AF57C /* Pods_APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1EAC04079BED764E0831AB3 /* Pods_APILayer.framework */; };
+		FEE72D4FF52E03BFA622E31E /* Pods_GraphQL_GraphQLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006BA6AEE19D5CC0B500059B /* Pods_GraphQL_GraphQLTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0317B925252768EA00863EC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0317B91A252768EA00863EC6;
+			remoteInfo = GraphQL;
+		};
 		480BCDA7251E2CFD00266617 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
@@ -109,7 +122,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		006BA6AEE19D5CC0B500059B /* Pods_GraphQL_GraphQLTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraphQL_GraphQLTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		025E46441AC01E58CE861E07 /* Pods_RealifeTech_SDK_RealifeTech_SDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech_SDK_RealifeTech_SDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0317B91B252768EA00863EC6 /* GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0317B91D252768EA00863EC6 /* GraphQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphQL.h; sourceTree = "<group>"; };
+		0317B91E252768EA00863EC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0317B923252768EA00863EC6 /* GraphQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0317B928252768EA00863EC6 /* GraphQLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTests.swift; sourceTree = "<group>"; };
+		0317B92A252768EA00863EC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0317B932252769D900863EC6 /* ApolloClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApolloClient.swift; sourceTree = "<group>"; };
 		03D5838B2521E44F00E516F9 /* UIDeviceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceFactory.swift; sourceTree = "<group>"; };
 		03D5838C2521E44F00E516F9 /* UIDeviceInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceInterface.swift; sourceTree = "<group>"; };
 		03D5838D2521E44F00E516F9 /* UIDeviceWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceWrapper.swift; sourceTree = "<group>"; };
@@ -125,6 +146,7 @@
 		1ACCD022749117F24F5CEE35 /* Pods_UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27ED3087846CC4943778A90B /* Pods-UIDeviceHelper-UIDeviceHelperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDeviceHelper-UIDeviceHelperTests.debug.xcconfig"; path = "Target Support Files/Pods-UIDeviceHelper-UIDeviceHelperTests/Pods-UIDeviceHelper-UIDeviceHelperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2EA210280F02D8290DE858A6 /* Pods-APILayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APILayer_Tests.release.xcconfig"; path = "Target Support Files/Pods-APILayer_Tests/Pods-APILayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		2F54C2E2BF15E3129DB0D1DB /* Pods-GraphQL-GraphQLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL-GraphQLTests.debug.xcconfig"; path = "Target Support Files/Pods-GraphQL-GraphQLTests/Pods-GraphQL-GraphQLTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B8D0ED403EAF954FE6B626A /* Pods_DummyProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F340472842D4549931DF84F /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		41D8341C7BB6E2B11092E639 /* Pods-UIDeviceHelper-UIDeviceHelperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIDeviceHelper-UIDeviceHelperTests.release.xcconfig"; path = "Target Support Files/Pods-UIDeviceHelper-UIDeviceHelperTests/Pods-UIDeviceHelper-UIDeviceHelperTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +209,7 @@
 		4B3A66C829357A9C3D526064 /* Pods-Communicate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communicate.release.xcconfig"; path = "Target Support Files/Pods-Communicate/Pods-Communicate.release.xcconfig"; sourceTree = "<group>"; };
 		4E2B81E9C2E20E826C41D504 /* Pods-DummyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.release.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.release.xcconfig"; sourceTree = "<group>"; };
 		4F260272EC72D00EA48CAB01 /* Pods_General_GeneralTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_General_GeneralTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55F31C33CC541E43394914FE /* Pods-GraphQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL.debug.xcconfig"; path = "Target Support Files/Pods-GraphQL/Pods-GraphQL.debug.xcconfig"; sourceTree = "<group>"; };
 		58C8813D8888CCA220256A9A /* Pods_General.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_General.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D08A832A28D7F1D5C225423 /* Pods-DummyProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.debug.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.debug.xcconfig"; sourceTree = "<group>"; };
 		5D9A4084D90EFD590178247E /* Pods_Communicate_CommunicateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Communicate_CommunicateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +232,7 @@
 		A1EAC04079BED764E0831AB3 /* Pods_APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86B0051B0AFB2DC5BE7F0A4 /* Pods-ReachabilityChecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReachabilityChecker.release.xcconfig"; path = "Target Support Files/Pods-ReachabilityChecker/Pods-ReachabilityChecker.release.xcconfig"; sourceTree = "<group>"; };
 		B17B060E66ABB0188C0C4278 /* Pods_ReachabilityChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReachabilityChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B27F43A032D39AF550EF7C7B /* Pods-GraphQL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL.release.xcconfig"; path = "Target Support Files/Pods-GraphQL/Pods-GraphQL.release.xcconfig"; sourceTree = "<group>"; };
 		BDCF9A6D9D1C20C22E994CE5 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B8426F2EF95022226B325 /* Pods_RealifeTech_RealifeTechTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech_RealifeTechTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BB3702C51484F89B7F356A /* Pods_Communicate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Communicate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,10 +242,29 @@
 		D5917E54C63C4704A44DF3CF /* Pods_RealifeTech_SDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech_SDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13D9400D2509F1987132C73 /* Pods_ReachabilityChecker_ReachabilityCheckerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReachabilityChecker_ReachabilityCheckerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E65C991E4B7753F93E7952C2 /* Pods-ReachabilityChecker-ReachabilityCheckerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReachabilityChecker-ReachabilityCheckerTests.release.xcconfig"; path = "Target Support Files/Pods-ReachabilityChecker-ReachabilityCheckerTests/Pods-ReachabilityChecker-ReachabilityCheckerTests.release.xcconfig"; sourceTree = "<group>"; };
+		EAE06FAACB47A051677CFC14 /* Pods_GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F258BC0C609ADCB7E978CC65 /* Pods-GraphQL-GraphQLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL-GraphQLTests.release.xcconfig"; path = "Target Support Files/Pods-GraphQL-GraphQLTests/Pods-GraphQL-GraphQLTests.release.xcconfig"; sourceTree = "<group>"; };
 		F2C16F0EAF14EAA9D38FDFFB /* Pods-APILayer-APILayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APILayer-APILayerTests.release.xcconfig"; path = "Target Support Files/Pods-APILayer-APILayerTests/Pods-APILayer-APILayerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0317B918252768EA00863EC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C7697EE4B5FC78C0B492FC7 /* Pods_GraphQL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0317B920252768EA00863EC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0317B924252768EA00863EC6 /* GraphQL.framework in Frameworks */,
+				FEE72D4FF52E03BFA622E31E /* Pods_GraphQL_GraphQLTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		480BCD9A251E2CFD00266617 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -327,6 +370,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0317B91C252768EA00863EC6 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				0317B932252769D900863EC6 /* ApolloClient.swift */,
+				0317B91D252768EA00863EC6 /* GraphQL.h */,
+				0317B91E252768EA00863EC6 /* Info.plist */,
+				0317B927252768EA00863EC6 /* GraphQLTests */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		0317B927252768EA00863EC6 /* GraphQLTests */ = {
+			isa = PBXGroup;
+			children = (
+				0317B928252768EA00863EC6 /* GraphQLTests.swift */,
+				0317B92A252768EA00863EC6 /* Info.plist */,
+			);
+			path = GraphQLTests;
+			sourceTree = "<group>";
+		};
 		480BCD9E251E2CFD00266617 /* APILayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +477,7 @@
 		48B792D0251CA1E0007032CD /* SupportingModules */ = {
 			isa = PBXGroup;
 			children = (
+				0317B91C252768EA00863EC6 /* GraphQL */,
 				480BCD9E251E2CFD00266617 /* APILayer */,
 				48B792D7251CA256007032CD /* UIDeviceHelper */,
 				48B792F3251CA279007032CD /* ReachabilityChecker */,
@@ -485,6 +549,8 @@
 				BF7B8426F2EF95022226B325 /* Pods_RealifeTech_RealifeTechTests.framework */,
 				A1EAC04079BED764E0831AB3 /* Pods_APILayer.framework */,
 				44498AF4BB866A3EC34C7147 /* Pods_APILayer_APILayerTests.framework */,
+				EAE06FAACB47A051677CFC14 /* Pods_GraphQL.framework */,
+				006BA6AEE19D5CC0B500059B /* Pods_GraphQL_GraphQLTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -536,6 +602,8 @@
 				48D6F142251E158E006CA623 /* RealifeTechTests.xctest */,
 				480BCD9D251E2CFD00266617 /* APILayer.framework */,
 				480BCDA5251E2CFD00266617 /* APILayerTests.xctest */,
+				0317B91B252768EA00863EC6 /* GraphQL.framework */,
+				0317B923252768EA00863EC6 /* GraphQLTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -615,6 +683,10 @@
 				6D6C864A757FB4425382D50C /* Pods-APILayer.release.xcconfig */,
 				47BD46C540C04AD2D30D608F /* Pods-APILayer-APILayerTests.debug.xcconfig */,
 				F2C16F0EAF14EAA9D38FDFFB /* Pods-APILayer-APILayerTests.release.xcconfig */,
+				55F31C33CC541E43394914FE /* Pods-GraphQL.debug.xcconfig */,
+				B27F43A032D39AF550EF7C7B /* Pods-GraphQL.release.xcconfig */,
+				2F54C2E2BF15E3129DB0D1DB /* Pods-GraphQL-GraphQLTests.debug.xcconfig */,
+				F258BC0C609ADCB7E978CC65 /* Pods-GraphQL-GraphQLTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -622,6 +694,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0317B916252768EA00863EC6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0317B92B252768EA00863EC6 /* GraphQL.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		480BCD98251E2CFD00266617 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -673,6 +753,45 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0317B91A252768EA00863EC6 /* GraphQL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0317B92C252768EA00863EC6 /* Build configuration list for PBXNativeTarget "GraphQL" */;
+			buildPhases = (
+				C027342A8C2466CB51D3C553 /* [CP] Check Pods Manifest.lock */,
+				0317B916252768EA00863EC6 /* Headers */,
+				0317B917252768EA00863EC6 /* Sources */,
+				0317B918252768EA00863EC6 /* Frameworks */,
+				0317B919252768EA00863EC6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GraphQL;
+			productName = GraphQL;
+			productReference = 0317B91B252768EA00863EC6 /* GraphQL.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0317B922252768EA00863EC6 /* GraphQLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0317B92F252768EA00863EC6 /* Build configuration list for PBXNativeTarget "GraphQLTests" */;
+			buildPhases = (
+				E1C10931BA64B28F85A81641 /* [CP] Check Pods Manifest.lock */,
+				0317B91F252768EA00863EC6 /* Sources */,
+				0317B920252768EA00863EC6 /* Frameworks */,
+				0317B921252768EA00863EC6 /* Resources */,
+				7D58039A4AF21B40C0464352 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0317B926252768EA00863EC6 /* PBXTargetDependency */,
+			);
+			name = GraphQLTests;
+			productName = GraphQLTests;
+			productReference = 0317B923252768EA00863EC6 /* GraphQLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		480BCD9C251E2CFD00266617 /* APILayer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 480BCDAE251E2CFD00266617 /* Build configuration list for PBXNativeTarget "APILayer" */;
@@ -927,6 +1046,13 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Olivier Butler";
 				TargetAttributes = {
+					0317B91A252768EA00863EC6 = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+					};
+					0317B922252768EA00863EC6 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					480BCD9C251E2CFD00266617 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -995,11 +1121,27 @@
 				48D6F141251E158E006CA623 /* RealifeTechTests */,
 				480BCD9C251E2CFD00266617 /* APILayer */,
 				480BCDA4251E2CFD00266617 /* APILayerTests */,
+				0317B91A252768EA00863EC6 /* GraphQL */,
+				0317B922252768EA00863EC6 /* GraphQLTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0317B919252768EA00863EC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0317B921252768EA00863EC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		480BCD9B251E2CFD00266617 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1441,6 +1583,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7D58039A4AF21B40C0464352 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GraphQL-GraphQLTests/Pods-GraphQL-GraphQLTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GraphQL-GraphQLTests/Pods-GraphQL-GraphQLTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GraphQL-GraphQLTests/Pods-GraphQL-GraphQLTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7FFF3F21D415083651D47C30 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1519,6 +1678,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReachabilityChecker-ReachabilityCheckerTests/Pods-ReachabilityChecker-ReachabilityCheckerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C027342A8C2466CB51D3C553 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GraphQL-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D52F030F3EDD7BBB5F9555D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1585,6 +1766,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E1C10931BA64B28F85A81641 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GraphQL-GraphQLTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E38D95D1AA7693A1DA62A843 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1627,6 +1830,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0317B917252768EA00863EC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0317B933252769D900863EC6 /* ApolloClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0317B91F252768EA00863EC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0317B929252768EA00863EC6 /* GraphQLTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		480BCD99251E2CFD00266617 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1743,6 +1962,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0317B926252768EA00863EC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0317B91A252768EA00863EC6 /* GraphQL */;
+			targetProxy = 0317B925252768EA00863EC6 /* PBXContainerItemProxy */;
+		};
 		480BCDA8251E2CFD00266617 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -1777,6 +2001,103 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0317B92D252768EA00863EC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55F31C33CC541E43394914FE /* Pods-GraphQL.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SupportingModules/GraphQL/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.GraphQL;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0317B92E252768EA00863EC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B27F43A032D39AF550EF7C7B /* Pods-GraphQL.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SupportingModules/GraphQL/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.GraphQL;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0317B930252768EA00863EC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F54C2E2BF15E3129DB0D1DB /* Pods-GraphQL-GraphQLTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				INFOPLIST_FILE = SupportingModules/GraphQL/GraphQLTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.GraphQLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0317B931252768EA00863EC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F258BC0C609ADCB7E978CC65 /* Pods-GraphQL-GraphQLTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				INFOPLIST_FILE = SupportingModules/GraphQL/GraphQLTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.GraphQLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		480BCDAF251E2CFD00266617 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70E44E27E948B21167D6B253 /* Pods-APILayer.debug.xcconfig */;
@@ -2479,6 +2800,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0317B92C252768EA00863EC6 /* Build configuration list for PBXNativeTarget "GraphQL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0317B92D252768EA00863EC6 /* Debug */,
+				0317B92E252768EA00863EC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0317B92F252768EA00863EC6 /* Build configuration list for PBXNativeTarget "GraphQLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0317B930252768EA00863EC6 /* Debug */,
+				0317B931252768EA00863EC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		480BCDAE251E2CFD00266617 /* Build configuration list for PBXNativeTarget "APILayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

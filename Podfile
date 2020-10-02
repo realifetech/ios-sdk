@@ -79,3 +79,16 @@ target 'UIDeviceHelper' do
   end
 
 end
+
+target 'GraphQL' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for GraphQL
+  pod "Apollo", "0.30.0"
+
+  target 'GraphQLTests' do
+    # Pods for testing
+  end
+
+end
