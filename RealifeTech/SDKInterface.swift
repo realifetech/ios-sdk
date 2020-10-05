@@ -20,7 +20,7 @@ public class RealifeTech {
     /// - Parameter configuration: Struct containing the desired SDK configuration
     public static func configureSDK(with configuration: SDKConfiguration) {
         print("Someone called to configure the SDK")
-        let sharedApiHeaderVariables = APIUtilities.setupV3API(
+        _ = APIUtilities.setupV3API(
             deviceID: "MWIwMjMyZTI0N2ZjMDM1Y2NjNDFmN2YyM2E4MWQ5ZmZiMTI0NTUzMmM2MDczMDVhYmI0Y2MyZjM3MjJlMTQ1Mg",
             clientID: "LS_0",
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
