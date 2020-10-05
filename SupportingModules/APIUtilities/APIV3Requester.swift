@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import APILayer
 
-protocol APIV3Requester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting, OAuthRefreshOrWaitActionGenerator {
+protocol APIV3Requester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting {
     static func root() -> RequestRootURL
     static func preDispatchAction() -> Observable<Any?>?
     static func interceptors() -> [(URLRequest) -> (URLRequest)]?
@@ -23,7 +23,7 @@ extension APIV3Requester {
     }
 
     static func preDispatchAction() -> Observable<Any?>? {
-        return refreshTokenOrWaitAction
+        return OAuthRefreshOrWaitActionGenerator.refreshTokenOrWaitAction
     }
 
     static func interceptors() -> [(URLRequest) -> (URLRequest)]? {

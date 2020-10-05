@@ -9,56 +9,47 @@ import Foundation
 import APILayer
 import RxSwift
 
-struct AuthorisationStore {
+protocol AuthorisationStoring {
+    var accessToken: String? { get }
+    var accessTokenValid: Bool { get }
+
+    func saveCredentials(token: String, secondsExpiresIn: Int)
+    func removeCredentials()
+}
+
+struct AuthorisationStore: AuthorisationStoring {
 
     enum KeychainKey: String {
         case token = "livestyled-token"
         case expiryDate = "livestyled-tokenExpiryDate"
     }
 
-    private static let keychain = KeychainSwift()
+    private let keychain = KeychainSwift()
 
-    static var accessToken: String? {
+    var accessToken: String? {
         return keychain.get(KeychainKey.token.rawValue)
     }
 
-    static var accessTokenValid: Bool {
+    var accessTokenValid: Bool {
         return expiryDateValid(expiryDateString: keychain.get(KeychainKey.expiryDate.rawValue))
     }
 
-    //oAuth calls
-    static var requestInitialAccessToken: Observable<Any?>? {
-        guard accessTokenValid == false else { return nil }
-        return OAuthSender.requestInitialAccessToken()
-            .map { (token: OAuthToken) -> OAuthToken in
-                if let accessToken = token.accessToken, let expiresIn = token.expiresIn {
-                    AuthorisationStore.saveCredentials(
-                        token: accessToken,
-                        secondsExpiresIn: expiresIn)
-                }
-                return token
-        }
-    }
-
-    //oAuth direct keychain access and manipulation
-
-    /// Use this function instead of calling update(accessToken/refreshToken directly)
-    static func saveCredentials(token: String, secondsExpiresIn: Int) {
+    func saveCredentials(token: String, secondsExpiresIn: Int) {
         update(accessToken: token, withSecondsExpiresIn: secondsExpiresIn)
     }
 
-    static func removeCredentials() {
+    func removeCredentials() {
         keychain.delete(KeychainKey.token.rawValue)
         keychain.delete(KeychainKey.expiryDate.rawValue)
     }
 
-    private static func update(accessToken: String, withSecondsExpiresIn seconds: Int) {
+    private func update(accessToken: String, withSecondsExpiresIn seconds: Int) {
         let expiryDate = "\(Date().addingTimeInterval(Double(seconds)).toMilliseconds())"
         keychain.set(accessToken, forKey: KeychainKey.token.rawValue)
         keychain.set(expiryDate, forKey: KeychainKey.expiryDate.rawValue)
     }
 
-    private static func expiryDateValid(expiryDateString: String?) -> Bool {
+    private func expiryDateValid(expiryDateString: String?) -> Bool {
         guard let expiryDateString = expiryDateString, let timestamp = Int64(expiryDateString) else { return false }
         // TODO: Reduce duplication with RealifeApiHeaderVariables
         return Date().toMilliseconds() < timestamp

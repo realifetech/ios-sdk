@@ -1,0 +1,34 @@
+//
+//  AuthorisationWorker.swift
+//  APIUtilities
+//
+//  Created by Olivier Butler on 02/10/2020.
+//  Copyright © 2020 Realife Tech. All rights reserved.
+//
+
+import Foundation
+import RxSwift
+
+protocol AuthorisationWorkable {
+    var requestInitialAccessToken: Observable<OAuthToken> { get }
+}
+
+struct AuthorisationWorker: AuthorisationWorkable {
+    private var authorisationStore: AuthorisationStoring
+
+    init(authorisationStore: AuthorisationStoring) {
+        self.authorisationStore = authorisationStore
+    }
+
+    var requestInitialAccessToken: Observable<OAuthToken> {
+        return OAuthRepository.requestInitialAccessToken()
+            .map { (token: OAuthToken) -> OAuthToken in
+                if let accessToken = token.accessToken, let expiresIn = token.expiresIn {
+                    self.authorisationStore.saveCredentials(
+                        token: accessToken,
+                        secondsExpiresIn: expiresIn)
+                }
+                return token
+        }
+    }
+}

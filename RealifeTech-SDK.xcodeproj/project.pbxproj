@@ -54,7 +54,7 @@
 		480BCE302522086A00266617 /* OAuthTokenRefreshWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */; };
 		480BCE3925220A6F00266617 /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3825220A6F00266617 /* KeychainSwift.swift */; };
 		480BCE3C25220E0500266617 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */; };
-		480BCE412522121B00266617 /* OAuthSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE402522121B00266617 /* OAuthSender.swift */; };
+		480BCE412522121B00266617 /* OAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE402522121B00266617 /* OAuthRepository.swift */; };
 		480BCE432522123900266617 /* OAuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE422522123900266617 /* OAuthToken.swift */; };
 		480BCE452522126200266617 /* OAuthRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE442522126200266617 /* OAuthRequester.swift */; };
 		480BCE4C252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */; };
@@ -64,6 +64,12 @@
 		48343CD92522343E00AC80BD /* General.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48A6845F25277CA2001F8CB1 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6845E25277CA2001F8CB1 /* EnvironmentVariables.swift */; };
 		48A6846325279F6C001F8CB1 /* AuthorisationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */; };
+		48A684662527C43C001F8CB1 /* AuthorisationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */; };
+		48A684692528C53D001F8CB1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A684682528C53D001F8CB1 /* Device.swift */; };
+		48A6846B2528C548001F8CB1 /* DeviceRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6846A2528C548001F8CB1 /* DeviceRequester.swift */; };
+		48A6846D2528C55F001F8CB1 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6846C2528C55F001F8CB1 /* DeviceRepository.swift */; };
+		48A6846F2528C5DB001F8CB1 /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6846E2528C5DB001F8CB1 /* DeviceToken.swift */; };
+		48A68471252B3FE2001F8CB1 /* setupV3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A68470252B3FE2001F8CB1 /* setupV3API.swift */; };
 		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
 		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
 		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -261,12 +267,18 @@
 		480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenRefreshWatcher.swift; sourceTree = "<group>"; };
 		480BCE3825220A6F00266617 /* KeychainSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSwift.swift; sourceTree = "<group>"; };
 		480BCE3B25220E0500266617 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
-		480BCE402522121B00266617 /* OAuthSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthSender.swift; sourceTree = "<group>"; };
+		480BCE402522121B00266617 /* OAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRepository.swift; sourceTree = "<group>"; };
 		480BCE422522123900266617 /* OAuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthToken.swift; sourceTree = "<group>"; };
 		480BCE442522126200266617 /* OAuthRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRequester.swift; sourceTree = "<group>"; };
 		480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultV3DiskCacheStrategyProviding.swift; sourceTree = "<group>"; };
 		48A6845E25277CA2001F8CB1 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
 		48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationStore.swift; sourceTree = "<group>"; };
+		48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationWorker.swift; sourceTree = "<group>"; };
+		48A684682528C53D001F8CB1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		48A6846A2528C548001F8CB1 /* DeviceRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRequester.swift; sourceTree = "<group>"; };
+		48A6846C2528C55F001F8CB1 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
+		48A6846E2528C5DB001F8CB1 /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
+		48A68470252B3FE2001F8CB1 /* setupV3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setupV3API.swift; sourceTree = "<group>"; };
 		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
 		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -557,15 +569,17 @@
 				480BCDF4251E360700266617 /* Info.plist */,
 				480BCDFD251E360700266617 /* APIUtilitiesTests */,
 				480BCE1E251E3E2000266617 /* TestFile.swift */,
+				48A6845E25277CA2001F8CB1 /* EnvironmentVariables.swift */,
+				48A68470252B3FE2001F8CB1 /* setupV3API.swift */,
 				480BCE3A25220DF100266617 /* Utils */,
-				480BCE3F252211FC00266617 /* User */,
-				480BCE2E2522083A00266617 /* OAuth */,
+				48A684672528C527001F8CB1 /* DeviceRepository */,
+				480BCE2E2522083A00266617 /* OAuthRepository */,
+				48A684642527C40F001F8CB1 /* Authorisation */,
 				480BCE5125222AE200266617 /* RequestHeader */,
 				480BCE22251E40FB00266617 /* RequestBaseURL.swift */,
 				480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */,
 				480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */,
 				480BCE09251E384200266617 /* APIV3Requester.swift */,
-				48A6845E25277CA2001F8CB1 /* EnvironmentVariables.swift */,
 			);
 			path = APIUtilities;
 			sourceTree = "<group>";
@@ -579,16 +593,14 @@
 			path = APIUtilitiesTests;
 			sourceTree = "<group>";
 		};
-		480BCE2E2522083A00266617 /* OAuth */ = {
+		480BCE2E2522083A00266617 /* OAuthRepository */ = {
 			isa = PBXGroup;
 			children = (
-				480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */,
-				480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */,
-				480BCE402522121B00266617 /* OAuthSender.swift */,
+				480BCE402522121B00266617 /* OAuthRepository.swift */,
 				480BCE442522126200266617 /* OAuthRequester.swift */,
 				480BCE422522123900266617 /* OAuthToken.swift */,
 			);
-			path = OAuth;
+			path = OAuthRepository;
 			sourceTree = "<group>";
 		};
 		480BCE3A25220DF100266617 /* Utils */ = {
@@ -600,14 +612,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		480BCE3F252211FC00266617 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
 		480BCE5125222AE200266617 /* RequestHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -617,6 +621,28 @@
 				480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */,
 			);
 			path = RequestHeader;
+			sourceTree = "<group>";
+		};
+		48A684642527C40F001F8CB1 /* Authorisation */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */,
+				480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */,
+				48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */,
+				48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */,
+			);
+			path = Authorisation;
+			sourceTree = "<group>";
+		};
+		48A684672528C527001F8CB1 /* DeviceRepository */ = {
+			isa = PBXGroup;
+			children = (
+				48A684682528C53D001F8CB1 /* Device.swift */,
+				48A6846E2528C5DB001F8CB1 /* DeviceToken.swift */,
+				48A6846A2528C548001F8CB1 /* DeviceRequester.swift */,
+				48A6846C2528C55F001F8CB1 /* DeviceRepository.swift */,
+			);
+			path = DeviceRepository;
 			sourceTree = "<group>";
 		};
 		48B792D0251CA1E0007032CD /* SupportingModules */ = {
@@ -2014,10 +2040,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				480BCE1D251E3BA100266617 /* RequestHeader.swift in Sources */,
+				48A684662527C43C001F8CB1 /* AuthorisationWorker.swift in Sources */,
 				480BCE1F251E3E2000266617 /* TestFile.swift in Sources */,
 				480BCE452522126200266617 /* OAuthRequester.swift in Sources */,
 				480BCE21251E3EAD00266617 /* StandardV3SenderResponse.swift in Sources */,
+				48A6846F2528C5DB001F8CB1 /* DeviceToken.swift in Sources */,
 				480BCE16251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
+				48A68471252B3FE2001F8CB1 /* setupV3API.swift in Sources */,
 				480BCE3925220A6F00266617 /* KeychainSwift.swift in Sources */,
 				480BCE3C25220E0500266617 /* Dictionary+Extensions.swift in Sources */,
 				480BCE12251E38D200266617 /* DeviceIdHeaderRequestInserting.swift in Sources */,
@@ -2025,12 +2054,15 @@
 				480BCE0A251E384200266617 /* APIV3Requester.swift in Sources */,
 				480BCE302522086A00266617 /* OAuthTokenRefreshWatcher.swift in Sources */,
 				480BCE14251E38EB00266617 /* OAuthHeaderRequestInserting.swift in Sources */,
+				48A6846B2528C548001F8CB1 /* DeviceRequester.swift in Sources */,
 				48A6846325279F6C001F8CB1 /* AuthorisationStore.swift in Sources */,
 				480BCE23251E40FB00266617 /* RequestBaseURL.swift in Sources */,
 				480BCE0E251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift in Sources */,
 				480BCE432522123900266617 /* OAuthToken.swift in Sources */,
-				480BCE412522121B00266617 /* OAuthSender.swift in Sources */,
+				480BCE412522121B00266617 /* OAuthRepository.swift in Sources */,
+				48A6846D2528C55F001F8CB1 /* DeviceRepository.swift in Sources */,
 				48A6845F25277CA2001F8CB1 /* EnvironmentVariables.swift in Sources */,
+				48A684692528C53D001F8CB1 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

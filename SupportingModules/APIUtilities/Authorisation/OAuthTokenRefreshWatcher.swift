@@ -10,23 +10,25 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class OAuthTokenRefreshWatcher {
+protocol OAuthTokenRefreshWatchable {
+    var ongoingTokenRefresh: Observable<Bool>? { get }
+    func updateRefreshingStatus(newValue: OAuthTokenStatus)
+}
 
-    enum OAuthTokenStatus {
-        case valid, invalid, refreshing
-    }
+enum OAuthTokenStatus {
+    case valid, invalid, refreshing
+}
 
-    static let shared = OAuthTokenRefreshWatcher()
+class OAuthTokenRefreshWatcher: OAuthTokenRefreshWatchable {
 
     /// Returns the current token status.
-    fileprivate var status: BehaviorRelay<OAuthTokenStatus>
+    private var status: BehaviorRelay<OAuthTokenStatus>
 
     /// If the status is currently refreshing, this variable can be used to observe whether the refresh succeeds or fails.
     /// Returns nil when no refresh is taking place.
     var ongoingTokenRefresh: Observable<Bool>? {
         guard status.value == .refreshing else { return nil }
         // NOTE: Behaviour subjects always emit their current value, we only care about the next value, so we skip one.
-        // TODO: Look into if we should be returning Bool here. We never return false and will only ever complete at all for successes.
         return status.asObservable().skip(1).filter { $0 == .valid }.map { $0 == .valid }
     }
 
