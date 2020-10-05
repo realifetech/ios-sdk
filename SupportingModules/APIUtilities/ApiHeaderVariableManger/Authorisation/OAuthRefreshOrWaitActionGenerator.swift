@@ -45,5 +45,8 @@ struct OAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating {
             .map { _ in
                 return ()
             }
+            .catchError { _ in
+                Observable.just(())
+            }
     }
 }

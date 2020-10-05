@@ -1,48 +1,32 @@
 //
-//  EnvironmentVariables.swift
+//  ApiHeaderVariables.swift
 //  APIUtilities
 //
-//  Created by Olivier Butler on 02/10/2020.
+//  Created by Olivier Butler on 05/10/2020.
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 
-public protocol RealifeApiHeaderVariableHolding {
-    var deviceID: String { get }
-    var token: String? { get }
-    var tokenIsValid: Bool { get }
-
-    func getValidToken(_: (() -> Void)?)
-}
-
-struct EmptyHeaderVariables: RealifeApiHeaderVariableHolding {
-
-    var deviceID: String = ""
-    var token: String?
-    var tokenIsValid: Bool = false
-
-    func getValidToken(_ completion: (() -> Void)?) {
-        completion?()
-    }
-}
-
+// This protocol is used to allow our statically typed V3 API layer to make use of a specific instance.
 protocol SharedApiHeaderVaribleStorage {
-    static var sharedInstance: RealifeApiHeaderVariableHolding { get }
+    static var sharedInstance: ApiHeaderVariableHolding { get }
 }
 
-public class RealifeApiHeaderVariables: RealifeApiHeaderVariableHolding, SharedApiHeaderVaribleStorage {
+public class ApiHeaderVariables: ApiHeaderVariableHolding, SharedApiHeaderVaribleStorage {
 
-    static var sharedInstance: RealifeApiHeaderVariableHolding = EmptyHeaderVariables()
+    static var sharedInstance: ApiHeaderVariableHolding = EmptyHeaderVariables()
 
     public var deviceID: String
     public var token: String? { authorisationStore.accessToken }
     public var tokenIsValid: Bool { authorisationStore.accessTokenValid }
+    public var getTokenObservable: Observable<Void>? {
+        oAuthRefreshOrWaitActionGenerator.refreshTokenOrWaitAction
+    }
 
     private let authorisationStore: AuthorisationStoring
     private let oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
-
     private let disposeBag: DisposeBag = DisposeBag()
 
     init(deviceID: String, authorisationStore: AuthorisationStore, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating) {
@@ -52,16 +36,13 @@ public class RealifeApiHeaderVariables: RealifeApiHeaderVariableHolding, SharedA
     }
 
     public func getValidToken(_ completion: (() -> Void)?) {
-        guard let getTokenObservable = oAuthRefreshOrWaitActionGenerator.refreshTokenOrWaitAction else {
+        guard let getTokenObservable = getTokenObservable else {
             completion?()
             return
         }
         getTokenObservable
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
-            .catchError { _ in
-                Observable.just(())
-            }
             .subscribe { _ in
                 completion?()
             }

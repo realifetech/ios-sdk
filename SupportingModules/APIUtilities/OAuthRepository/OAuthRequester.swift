@@ -11,7 +11,7 @@ import RxSwift
 
 struct OAuthRequester: Requester, APIV3Requester {
     static var endpoint: String? = "/oauth/v2/token"
-    static var apiHeaderVariableStore: SharedApiHeaderVaribleStorage.Type = RealifeApiHeaderVariables.self
+    static var apiHeaderVariableStore: SharedApiHeaderVaribleStorage.Type = ApiHeaderVariables.self
     private static var defaultOAuthParameters: [String: Any] = [:]
 }
 

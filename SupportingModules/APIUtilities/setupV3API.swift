@@ -12,7 +12,7 @@ import Foundation
 /// - Parameter deviceID: An id unique to the specific physical device. Usually a 40 charachter UUID string.
 /// - Parameter clientID: The id used by the client e.g. "LS_0"
 /// - Parameter clientSecret: Code used to initially authenticate with our backend.
-public func setupV3API(deviceID: String, clientID: String, clientSecret: String) -> RealifeApiHeaderVariableHolding {
+public func setupV3API(deviceID: String, clientID: String, clientSecret: String) -> ApiHeaderVariableHolding {
     // First setup any static properties
     OAuthRequester.setDefaultOAuthParameters(clientId: clientID, clientSecret: clientSecret)
 
@@ -24,12 +24,12 @@ public func setupV3API(deviceID: String, clientID: String, clientSecret: String)
         authorisationWorker: authorisationWorker,
         oAuthTokenRefreshWatcher: oAuthTokenRefreshWatcher,
         authorisationStore: authorisationStore)
-    let apiVariables = RealifeApiHeaderVariables(
+    let apiVariables = ApiHeaderVariables(
         deviceID: deviceID,
         authorisationStore: authorisationStore,
         oAuthRefreshOrWaitActionGenerator: oAuthRefreshOrWaitActionGenerator)
 
     // Finally expose the variables store and return it for use with other API modules.
-    RealifeApiHeaderVariables.sharedInstance = apiVariables
+    ApiHeaderVariables.sharedInstance = apiVariables
     return apiVariables
 }

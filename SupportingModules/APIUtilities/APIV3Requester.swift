@@ -23,7 +23,9 @@ extension APIV3Requester {
     }
 
     static func preDispatchAction() -> Observable<Any?>? {
-        return OAuthRefreshOrWaitActionGenerator.refreshTokenOrWaitAction
+        return ApiHeaderVariables.sharedInstance.getTokenObservable?.map {
+            $0 as Any
+        }
     }
 
     static func interceptors() -> [(URLRequest) -> (URLRequest)]? {

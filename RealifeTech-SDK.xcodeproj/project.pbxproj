@@ -62,7 +62,7 @@
 		480BCE5325222F7700266617 /* APIUtilities.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 480BCDF1251E360700266617 /* APIUtilities.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48343CD82522343E00AC80BD /* General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; };
 		48343CD92522343E00AC80BD /* General.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48A6845F25277CA2001F8CB1 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6845E25277CA2001F8CB1 /* EnvironmentVariables.swift */; };
+		48A6845F25277CA2001F8CB1 /* ApiHeaderVariableHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6845E25277CA2001F8CB1 /* ApiHeaderVariableHolding.swift */; };
 		48A6846325279F6C001F8CB1 /* AuthorisationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */; };
 		48A684662527C43C001F8CB1 /* AuthorisationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */; };
 		48A684692528C53D001F8CB1 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A684682528C53D001F8CB1 /* Device.swift */; };
@@ -70,6 +70,7 @@
 		48A6846D2528C55F001F8CB1 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6846C2528C55F001F8CB1 /* DeviceRepository.swift */; };
 		48A6846F2528C5DB001F8CB1 /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6846E2528C5DB001F8CB1 /* DeviceToken.swift */; };
 		48A68471252B3FE2001F8CB1 /* setupV3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A68470252B3FE2001F8CB1 /* setupV3API.swift */; };
+		48A68474252B4CAA001F8CB1 /* ApiHeaderVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A68473252B4CAA001F8CB1 /* ApiHeaderVariables.swift */; };
 		48B792DF251CA256007032CD /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; };
 		48B792E4251CA256007032CD /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */; };
 		48B792E6251CA256007032CD /* UIDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792D8251CA256007032CD /* UIDeviceHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -271,7 +272,7 @@
 		480BCE422522123900266617 /* OAuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthToken.swift; sourceTree = "<group>"; };
 		480BCE442522126200266617 /* OAuthRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRequester.swift; sourceTree = "<group>"; };
 		480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultV3DiskCacheStrategyProviding.swift; sourceTree = "<group>"; };
-		48A6845E25277CA2001F8CB1 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
+		48A6845E25277CA2001F8CB1 /* ApiHeaderVariableHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeaderVariableHolding.swift; sourceTree = "<group>"; };
 		48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationStore.swift; sourceTree = "<group>"; };
 		48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationWorker.swift; sourceTree = "<group>"; };
 		48A684682528C53D001F8CB1 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -279,6 +280,7 @@
 		48A6846C2528C55F001F8CB1 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		48A6846E2528C5DB001F8CB1 /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		48A68470252B3FE2001F8CB1 /* setupV3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setupV3API.swift; sourceTree = "<group>"; };
+		48A68473252B4CAA001F8CB1 /* ApiHeaderVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHeaderVariables.swift; sourceTree = "<group>"; };
 		48B792D6251CA256007032CD /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792D8251CA256007032CD /* UIDeviceHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIDeviceHelper.h; sourceTree = "<group>"; };
 		48B792D9251CA256007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -569,13 +571,12 @@
 				480BCDF4251E360700266617 /* Info.plist */,
 				480BCDFD251E360700266617 /* APIUtilitiesTests */,
 				480BCE1E251E3E2000266617 /* TestFile.swift */,
-				48A6845E25277CA2001F8CB1 /* EnvironmentVariables.swift */,
 				48A68470252B3FE2001F8CB1 /* setupV3API.swift */,
-				480BCE3A25220DF100266617 /* Utils */,
+				48A68472252B4C4D001F8CB1 /* ApiHeaderVariableManger */,
 				48A684672528C527001F8CB1 /* DeviceRepository */,
 				480BCE2E2522083A00266617 /* OAuthRepository */,
-				48A684642527C40F001F8CB1 /* Authorisation */,
 				480BCE5125222AE200266617 /* RequestHeader */,
+				480BCE3A25220DF100266617 /* Utils */,
 				480BCE22251E40FB00266617 /* RequestBaseURL.swift */,
 				480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */,
 				480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */,
@@ -643,6 +644,16 @@
 				48A6846C2528C55F001F8CB1 /* DeviceRepository.swift */,
 			);
 			path = DeviceRepository;
+			sourceTree = "<group>";
+		};
+		48A68472252B4C4D001F8CB1 /* ApiHeaderVariableManger */ = {
+			isa = PBXGroup;
+			children = (
+				48A6845E25277CA2001F8CB1 /* ApiHeaderVariableHolding.swift */,
+				48A68473252B4CAA001F8CB1 /* ApiHeaderVariables.swift */,
+				48A684642527C40F001F8CB1 /* Authorisation */,
+			);
+			path = ApiHeaderVariableManger;
 			sourceTree = "<group>";
 		};
 		48B792D0251CA1E0007032CD /* SupportingModules */ = {
@@ -2061,7 +2072,8 @@
 				480BCE432522123900266617 /* OAuthToken.swift in Sources */,
 				480BCE412522121B00266617 /* OAuthRepository.swift in Sources */,
 				48A6846D2528C55F001F8CB1 /* DeviceRepository.swift in Sources */,
-				48A6845F25277CA2001F8CB1 /* EnvironmentVariables.swift in Sources */,
+				48A6845F25277CA2001F8CB1 /* ApiHeaderVariableHolding.swift in Sources */,
+				48A68474252B4CAA001F8CB1 /* ApiHeaderVariables.swift in Sources */,
 				48A684692528C53D001F8CB1 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
