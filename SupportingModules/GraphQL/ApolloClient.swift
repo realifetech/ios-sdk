@@ -14,7 +14,7 @@ class Network {
 
     // Configure the network transport to use the singleton as the delegate.
     private lazy var networkTransport: HTTPNetworkTransport = {
-        let transport = HTTPNetworkTransport(url: URL(string: "https://6mkushoirf.execute-api.eu-west-1.amazonaws.com/dev/graphql")!)
+        let transport = HTTPNetworkTransport(url: URL(string: "https://graphql-mock.realifetech.com/graphql")!)
         transport.delegate = self
         return transport
     }()
