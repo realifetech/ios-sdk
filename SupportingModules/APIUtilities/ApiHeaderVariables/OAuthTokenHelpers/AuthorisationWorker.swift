@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 
+/// Used to request our OAuth token. When new tokens are received, this worker will save them to its store.
 protocol AuthorisationWorkable {
     var requestInitialAccessToken: Observable<OAuthToken> { get }
 }

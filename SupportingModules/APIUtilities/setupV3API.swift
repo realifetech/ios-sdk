@@ -12,9 +12,11 @@ import Foundation
 /// - Parameter deviceID: An id unique to the specific physical device. Usually a 40 charachter UUID string.
 /// - Parameter clientID: The id used by the client e.g. "LS_0"
 /// - Parameter clientSecret: Code used to initially authenticate with our backend.
-public func setupV3API(deviceID: String, clientID: String, clientSecret: String) -> ApiHeaderVariableHolding {
+/// - Parameter baseUrl: The API root which should be used for all queries, e.g. "http://api.website.com/production"
+public func setupV3API(deviceID: String, clientID: String, clientSecret: String, baseUrl: String) -> ApiHeaderVariableHolding {
     // First setup any static properties
     OAuthRequester.setDefaultOAuthParameters(clientId: clientID, clientSecret: clientSecret)
+    RequestBaseURL.baseURLV3 = baseUrl
 
     // Then build the API Variables Store
     let authorisationStore = AuthorisationStore()

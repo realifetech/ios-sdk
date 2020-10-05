@@ -570,13 +570,13 @@
 				480BCDF3251E360700266617 /* APIUtilities.h */,
 				480BCDF4251E360700266617 /* Info.plist */,
 				480BCDFD251E360700266617 /* APIUtilitiesTests */,
-				480BCE1E251E3E2000266617 /* TestFile.swift */,
+				48A68475252B5614001F8CB1 /* ScratchPad */,
 				48A68470252B3FE2001F8CB1 /* setupV3API.swift */,
-				48A68472252B4C4D001F8CB1 /* ApiHeaderVariableManger */,
-				48A684672528C527001F8CB1 /* DeviceRepository */,
+				48A68472252B4C4D001F8CB1 /* ApiHeaderVariables */,
 				480BCE2E2522083A00266617 /* OAuthRepository */,
-				480BCE5125222AE200266617 /* RequestHeader */,
+				480BCE5125222AE200266617 /* RequestInserters */,
 				480BCE3A25220DF100266617 /* Utils */,
+				480BCE1C251E3BA100266617 /* RequestHeader.swift */,
 				480BCE22251E40FB00266617 /* RequestBaseURL.swift */,
 				480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */,
 				480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */,
@@ -613,18 +613,17 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		480BCE5125222AE200266617 /* RequestHeader */ = {
+		480BCE5125222AE200266617 /* RequestInserters */ = {
 			isa = PBXGroup;
 			children = (
-				480BCE1C251E3BA100266617 /* RequestHeader.swift */,
 				480BCE13251E38EB00266617 /* OAuthHeaderRequestInserting.swift */,
 				480BCE11251E38D200266617 /* DeviceIdHeaderRequestInserting.swift */,
 				480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */,
 			);
-			path = RequestHeader;
+			path = RequestInserters;
 			sourceTree = "<group>";
 		};
-		48A684642527C40F001F8CB1 /* Authorisation */ = {
+		48A684642527C40F001F8CB1 /* OAuthTokenHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */,
@@ -632,7 +631,7 @@
 				48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */,
 				48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */,
 			);
-			path = Authorisation;
+			path = OAuthTokenHelpers;
 			sourceTree = "<group>";
 		};
 		48A684672528C527001F8CB1 /* DeviceRepository */ = {
@@ -646,14 +645,23 @@
 			path = DeviceRepository;
 			sourceTree = "<group>";
 		};
-		48A68472252B4C4D001F8CB1 /* ApiHeaderVariableManger */ = {
+		48A68472252B4C4D001F8CB1 /* ApiHeaderVariables */ = {
 			isa = PBXGroup;
 			children = (
 				48A6845E25277CA2001F8CB1 /* ApiHeaderVariableHolding.swift */,
 				48A68473252B4CAA001F8CB1 /* ApiHeaderVariables.swift */,
-				48A684642527C40F001F8CB1 /* Authorisation */,
+				48A684642527C40F001F8CB1 /* OAuthTokenHelpers */,
 			);
-			path = ApiHeaderVariableManger;
+			path = ApiHeaderVariables;
+			sourceTree = "<group>";
+		};
+		48A68475252B5614001F8CB1 /* ScratchPad */ = {
+			isa = PBXGroup;
+			children = (
+				480BCE1E251E3E2000266617 /* TestFile.swift */,
+				48A684672528C527001F8CB1 /* DeviceRepository */,
+			);
+			path = ScratchPad;
 			sourceTree = "<group>";
 		};
 		48B792D0251CA1E0007032CD /* SupportingModules */ = {

@@ -10,16 +10,14 @@ import Foundation
 import APILayer
 
 enum RequestBaseURL: RequestRootURL {
+    static var baseURLV3: String = ""
+
     case LSBaseURLV3
 
-    var urlString: String {
+    var rawValue: String {
         switch self {
         case .LSBaseURLV3:
-            // TODO: Add refrence to some Environment store. EnvironmentVariableAccessor.sharedInstance.concertLiveAPIBaseURLV3
-            return "http://api-dev.livestyled.com/v3"
+            return RequestBaseURL.baseURLV3
         }
-    }
-    var rawValue: String {
-        return urlString
     }
 }

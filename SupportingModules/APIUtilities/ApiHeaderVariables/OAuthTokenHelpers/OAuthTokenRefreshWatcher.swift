@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// Getter/Setter for current token state & whether it is currently being refreshed.
 protocol OAuthTokenRefreshWatchable {
     var ongoingTokenRefresh: Observable<Bool>? { get }
     func updateRefreshingStatus(newValue: OAuthTokenStatus)

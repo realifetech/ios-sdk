@@ -14,6 +14,7 @@ protocol OAuthRefreshOrWaitActionGenerating {
     var refreshTokenOrWaitAction: Observable<Void>? { get }
 }
 
+/// Ensures we only make a new request when one is required
 struct OAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating {
 
     private let authorisationWorker: AuthorisationWorkable
@@ -26,7 +27,7 @@ struct OAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating {
         self.oAuthTokenRefreshWatcher = oAuthTokenRefreshWatcher
     }
 
-    /// Nil if we have a valid token. If no token exists, or it is invalid, or being currently refreshed, this will return an observable which will emit once the token action is complete.
+    /// Nil if we have a valid token. If no token exists, or is invalid, or is being currently refreshed, this will return an observable which will emit once the token action is complete.
     var refreshTokenOrWaitAction: Observable<Void>? {
         if let ongoingTokenRefresh = oAuthTokenRefreshWatcher.ongoingTokenRefresh {
             // We take 1 because we only care about the current refresh.

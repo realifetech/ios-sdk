@@ -29,7 +29,10 @@ public class ApiHeaderVariables: ApiHeaderVariableHolding, SharedApiHeaderVaribl
     private let oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
     private let disposeBag: DisposeBag = DisposeBag()
 
-    init(deviceID: String, authorisationStore: AuthorisationStore, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating) {
+    init(deviceID: String,
+         authorisationStore: AuthorisationStore,
+         oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
+    ) {
         self.authorisationStore = authorisationStore
         self.oAuthRefreshOrWaitActionGenerator = oAuthRefreshOrWaitActionGenerator
         self.deviceID = deviceID

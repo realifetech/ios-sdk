@@ -9,6 +9,7 @@ import Foundation
 import APILayer
 import RxSwift
 
+/// Used to store authorisation tokens
 protocol AuthorisationStoring {
     var accessToken: String? { get }
     var accessTokenValid: Bool { get }
@@ -17,6 +18,7 @@ protocol AuthorisationStoring {
     func removeCredentials()
 }
 
+/// Implements a secure (keychain based) storage for token storage
 struct AuthorisationStore: AuthorisationStoring {
 
     enum KeychainKey: String {
