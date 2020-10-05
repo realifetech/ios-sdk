@@ -63,6 +63,6 @@ extension OAuthRequester {
             withRoot: root(),
             andEndpoint: endpoint!,
             httpMethod: .POST,
-            body: defaultOAuthParameters)
+            body: parameters)
     }
 }
