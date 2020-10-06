@@ -11,7 +11,6 @@ import RxSwift
 
 struct OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, Requester {
     static var endpoint: String? = "/oauth/v2/token"
-    static var apiHeaderVariableStore: SharedApiHeaderVaribleStorage.Type = ApiHeaderVariables.self
     private static var defaultOAuthParameters: [String: Any] = [:]
 }
 
@@ -29,14 +28,14 @@ extension OAuthRequester {
     // MARK: Implementing Requester
 
     static func root() -> RequestRootURL {
-        return RequestBaseURL.LSBaseURLV3
+        return apiRoot
     }
 
     static func dateFormat() -> RequesterDateFormat? {
         return .formatted(format: "yyyy-MM-dd'T'HH:mm:ssZ", localeIdentifier: "en_US_POSIX")
     }
 
-    static func preDispatchAction() -> Observable<Any?>? { return nil } // Otherwise it will infinitely try to refresh the access token
+    static func preDispatchAction() -> Observable<Any?>? { return nil }
 
     static func interceptors() -> [(URLRequest) -> (URLRequest)]? {
         return [
@@ -48,7 +47,7 @@ extension OAuthRequester {
 
     private static func addAuthorisationHeader(toRequest request: URLRequest) -> URLRequest {
         var request = request
-        guard apiHeaderVariableStore.sharedInstance.tokenIsValid, let accessToken = apiHeaderVariableStore.sharedInstance.token else { return request }
+        guard tokenManager.tokenIsValid, let accessToken = tokenManager.token else { return request }
         let oAuthHeader = RequestHeader.generateAuthHeader(accessToken: accessToken)
         request.addValue(oAuthHeader.valueForHeader, forHTTPHeaderField: oAuthHeader.header)
         return request

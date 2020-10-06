@@ -53,7 +53,7 @@ struct AuthorisationStore: AuthorisationStoring {
 
     private func expiryDateValid(expiryDateString: String?) -> Bool {
         guard let expiryDateString = expiryDateString, let timestamp = Int64(expiryDateString) else { return false }
-        // TODO: Reduce duplication with ApiHeaderVariables
+        // TODO: Reduce duplication with V3APITokenManager
         return Date().toMilliseconds() < timestamp
     }
 }

@@ -9,8 +9,7 @@
 import Foundation
 import RxSwift
 
-public protocol ApiHeaderVariableHolding {
-    var deviceID: String { get }
+public protocol V3APITokenManagable {
     var token: String? { get }
     var tokenIsValid: Bool { get }
     /// Deprecated, please use func getValidToken where possible.
@@ -19,9 +18,8 @@ public protocol ApiHeaderVariableHolding {
     func getValidToken(_: (() -> Void)?)
 }
 
-struct EmptyHeaderVariables: ApiHeaderVariableHolding {
+struct EmptyTokenManager: V3APITokenManagable {
 
-    var deviceID: String = ""
     var token: String?
     var tokenIsValid: Bool = false
     var getTokenObservable: Observable<Void>?

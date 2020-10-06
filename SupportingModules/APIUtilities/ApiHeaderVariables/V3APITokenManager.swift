@@ -1,5 +1,5 @@
 //
-//  ApiHeaderVariables.swift
+//  V3APITokenManager.swift
 //  APIUtilities
 //
 //  Created by Olivier Butler on 05/10/2020.
@@ -9,16 +9,8 @@
 import Foundation
 import RxSwift
 
-// This protocol is used to allow our statically typed V3 API layer to make use of a specific instance.
-protocol SharedApiHeaderVaribleStorage {
-    static var sharedInstance: ApiHeaderVariableHolding { get }
-}
+public class V3APITokenManager: V3APITokenManagable {
 
-public class ApiHeaderVariables: ApiHeaderVariableHolding, SharedApiHeaderVaribleStorage {
-
-    static var sharedInstance: ApiHeaderVariableHolding = EmptyHeaderVariables()
-
-    public var deviceID: String
     public var token: String? { authorisationStore.accessToken }
     public var tokenIsValid: Bool { authorisationStore.accessTokenValid }
     public var getTokenObservable: Observable<Void>? {
@@ -29,13 +21,9 @@ public class ApiHeaderVariables: ApiHeaderVariableHolding, SharedApiHeaderVaribl
     private let oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
     private let disposeBag: DisposeBag = DisposeBag()
 
-    init(deviceID: String,
-         authorisationStore: AuthorisationStore,
-         oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
-    ) {
+    init(authorisationStore: AuthorisationStore, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating) {
         self.authorisationStore = authorisationStore
         self.oAuthRefreshOrWaitActionGenerator = oAuthRefreshOrWaitActionGenerator
-        self.deviceID = deviceID
     }
 
     public func getValidToken(_ completion: (() -> Void)?) {

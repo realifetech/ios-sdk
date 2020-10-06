@@ -13,7 +13,7 @@ import Foundation
 /// - Parameter clientID: The id used by the client e.g. "LS_0"
 /// - Parameter clientSecret: Code used to initially authenticate with our backend.
 /// - Parameter baseUrl: The API root which should be used for all queries, e.g. "http://api.website.com/production"
-public func setupV3API(deviceID: String, clientID: String, clientSecret: String, baseUrl: String) -> ApiHeaderVariableHolding {
+public func setupV3API(deviceID: String, clientID: String, clientSecret: String, baseUrl: String) -> V3APITokenManagable {
     // First setup any static properties
     OAuthRequester.setDefaultOAuthParameters(clientId: clientID, clientSecret: clientSecret)
     RequestBaseURL.baseURLV3 = baseUrl
@@ -26,12 +26,12 @@ public func setupV3API(deviceID: String, clientID: String, clientSecret: String,
         authorisationWorker: authorisationWorker,
         oAuthTokenRefreshWatcher: oAuthTokenRefreshWatcher,
         authorisationStore: authorisationStore)
-    let apiVariables = ApiHeaderVariables(
+    let apiVariables = V3APITokenManager(
         deviceID: deviceID,
         authorisationStore: authorisationStore,
         oAuthRefreshOrWaitActionGenerator: oAuthRefreshOrWaitActionGenerator)
 
     // Finally expose the variables store and return it for use with other API modules.
-    ApiHeaderVariables.sharedInstance = apiVariables
+    V3APITokenManager.sharedInstance = apiVariables
     return apiVariables
 }

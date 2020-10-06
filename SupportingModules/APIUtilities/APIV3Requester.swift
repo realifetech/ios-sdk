@@ -19,7 +19,7 @@ protocol APIV3Requester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRe
 
 extension APIV3Requester {
     static func preDispatchAction() -> Observable<Any?>? {
-        return ApiHeaderVariables.sharedInstance.getTokenObservable?.map {
+        return tokenManager.getTokenObservable?.map {
             $0 as Any
         }
     }
@@ -33,7 +33,7 @@ extension APIV3Requester {
     }
 
     static func root() -> RequestRootURL {
-        return RequestBaseURL.LSBaseURLV3
+        return apiRoot
     }
 
     static func dateFormatString() -> String {
