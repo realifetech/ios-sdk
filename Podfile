@@ -53,6 +53,7 @@ end
 target 'APILayer' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  project 'RealifeTech-SDK'
 
   # Pods for APILayer
 
