@@ -2,8 +2,8 @@
 //  General.h
 //  General
 //
-//  Created by Olivier Butler on 23/09/2020.
-//  Copyright © 2020 Olivier Butler. All rights reserved.
+//  Created by Realife Tech on 23/09/2020.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
