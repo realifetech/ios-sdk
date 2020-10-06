@@ -11,6 +11,8 @@
 		0317B929252768EA00863EC6 /* GraphQLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B928252768EA00863EC6 /* GraphQLTests.swift */; };
 		0317B92B252768EA00863EC6 /* GraphQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317B91D252768EA00863EC6 /* GraphQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0317B933252769D900863EC6 /* ApolloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B932252769D900863EC6 /* ApolloClient.swift */; };
+		03B0D109252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */; };
+		03B0D10A252C83040037D504 /* Types.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D108252C83040037D504 /* Types.graphql.swift */; };
 		03D5838E2521E44F00E516F9 /* UIDeviceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838B2521E44F00E516F9 /* UIDeviceFactory.swift */; };
 		03D5838F2521E44F00E516F9 /* UIDeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838C2521E44F00E516F9 /* UIDeviceInterface.swift */; };
 		03D583902521E44F00E516F9 /* UIDeviceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838D2521E44F00E516F9 /* UIDeviceWrapper.swift */; };
@@ -131,6 +133,8 @@
 		0317B928252768EA00863EC6 /* GraphQLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTests.swift; sourceTree = "<group>"; };
 		0317B92A252768EA00863EC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0317B932252769D900863EC6 /* ApolloClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApolloClient.swift; sourceTree = "<group>"; };
+		03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchDeviceBelongsToAudience.graphql.swift; sourceTree = "<group>"; };
+		03B0D108252C83040037D504 /* Types.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.graphql.swift; sourceTree = "<group>"; };
 		03D5838B2521E44F00E516F9 /* UIDeviceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceFactory.swift; sourceTree = "<group>"; };
 		03D5838C2521E44F00E516F9 /* UIDeviceInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceInterface.swift; sourceTree = "<group>"; };
 		03D5838D2521E44F00E516F9 /* UIDeviceWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceWrapper.swift; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 		0317B91C252768EA00863EC6 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				03B0D106252C83040037D504 /* API */,
 				03E9F6C9252B1CC30076F59B /* schema.json */,
 				0317B932252769D900863EC6 /* ApolloClient.swift */,
 				0317B91D252768EA00863EC6 /* GraphQL.h */,
@@ -390,6 +395,15 @@
 				0317B92A252768EA00863EC6 /* Info.plist */,
 			);
 			path = GraphQLTests;
+			sourceTree = "<group>";
+		};
+		03B0D106252C83040037D504 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */,
+				03B0D108252C83040037D504 /* Types.graphql.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		480BCD9E251E2CFD00266617 /* APILayer */ = {
@@ -1856,6 +1870,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0317B933252769D900863EC6 /* ApolloClient.swift in Sources */,
+				03B0D10A252C83040037D504 /* Types.graphql.swift in Sources */,
+				03B0D109252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
