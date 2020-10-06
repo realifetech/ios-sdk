@@ -7,6 +7,8 @@ project 'RealifeTech-SDK'
 project 'DummyProject/DummyProject'
 
 pod 'SwiftLint'
+pod 'RxSwift', '~> 5.1.1'
+pod 'RxCocoa', '~> 5.1.1'
 
 target 'RealifeTech' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -44,6 +46,19 @@ target 'General' do
 
   target 'GeneralTests' do
     # Pods for testing
+  end
+
+end
+
+target 'APILayer' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for APILayer
+
+  target 'APILayerTests' do
+    # Pods for testing
+
   end
 
 end
