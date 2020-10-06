@@ -16,7 +16,7 @@ protocol DeviceIdHeaderRequestInserting {
 extension DeviceIdHeaderRequestInserting {
     static func addDeviceIdHeader(toRequest request: URLRequest) -> URLRequest {
         var request = request
-        let deviceIdHeader = RequestHeader.generateDeviceIdHeader(deviceId: deviceId)
+        let deviceIdHeader = RequestHeader.generateDeviceIdHeader(deviceId: APIV3RequesterHelper.deviceId)
         request.addValue(deviceIdHeader.valueForHeader, forHTTPHeaderField: deviceIdHeader.header)
         return request
     }

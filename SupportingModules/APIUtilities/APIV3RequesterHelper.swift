@@ -9,7 +9,7 @@
 import Foundation
 import APILayer
 
-struct APIV3RequesterHelper {
+public struct APIV3RequesterHelper {
 
     static var tokenManager: V3APITokenManagable = EmptyTokenManager()
     static var deviceId: String = ""
@@ -21,11 +21,9 @@ struct APIV3RequesterHelper {
     /// - Parameter clientSecret: Code used to initially authenticate with our backend.
     /// - Parameter baseUrl: The API root which should be used for all queries, e.g. "http://api.website.com/production"
     public static func setupV3API(deviceID: String, clientID: String, clientSecret: String, baseUrl: String) -> V3APITokenManagable {
-        // First setup any static properties
         OAuthRequester.setDefaultOAuthParameters(clientId: clientID, clientSecret: clientSecret)
         v3baseUrl = APIRoot(rawValue: baseUrl)
         deviceId = deviceID
-        // Then make and return a token manager
         let v3ApiTokenManager = constructTokenManager()
         tokenManager = v3ApiTokenManager
         return v3ApiTokenManager

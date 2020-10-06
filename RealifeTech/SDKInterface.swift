@@ -22,11 +22,17 @@ public class RealifeTech {
     public static func configureSDK(with configuration: SDKConfiguration) {
         print("Someone called to configure the SDK")
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
-        _ = APIUtilities.setupV3API(
+        let helper = APIV3RequesterHelper.setupV3API(
             deviceID: deviceHelper.deviceId,
             clientID: "LS_0",
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             baseUrl: "http://api-dev.livestyled.com/v3")
         General = GeneralImplementing()
+        helper.getValidToken {
+            print("I got a token?")
+            General.registerDevice { thing in
+                print("I got a thing?", thing)
+            }
+        }
     }
 }

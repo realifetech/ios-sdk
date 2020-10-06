@@ -24,7 +24,7 @@ public class GeneralImplementing: DeviceRegistering, SDKConfigurable {
 
     public func registerDevice(_: (DeviceRegistrationResult) -> Void) {
         print("Someone wanted to register the device")
-        testMethod()
+        APIUtilities.testMethod()
     }
 
     public func setConfiguration(_: SDKConfiguration) {

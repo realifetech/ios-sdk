@@ -28,7 +28,7 @@ extension OAuthRequester {
     // MARK: Implementing Requester
 
     static func root() -> RequestRootURL {
-        return v3baseUrl
+        return APIV3RequesterHelper.v3baseUrl
     }
 
     static func dateFormat() -> RequesterDateFormat? {
@@ -47,7 +47,7 @@ extension OAuthRequester {
 
     private static func addAuthorisationHeader(toRequest request: URLRequest) -> URLRequest {
         var request = request
-        guard tokenManager.tokenIsValid, let accessToken = tokenManager.token else { return request }
+        guard APIV3RequesterHelper.tokenManager.tokenIsValid, let accessToken = APIV3RequesterHelper.tokenManager.token else { return request }
         let oAuthHeader = RequestHeader.generateAuthHeader(accessToken: accessToken)
         request.addValue(oAuthHeader.valueForHeader, forHTTPHeaderField: oAuthHeader.header)
         return request
