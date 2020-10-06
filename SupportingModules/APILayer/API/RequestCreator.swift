@@ -3,7 +3,7 @@
 //  RX
 //
 //  Created by Ross Patman on 18/09/2017.
-//  Copyright © 2017 RossPatman. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 import Foundation
 import CommonCrypto
@@ -26,7 +26,11 @@ public extension URLRequest {
         var string = url.absoluteString
         if let httpMethod = httpMethod { string += httpMethod }
         if let allHTTPHeaderFields = allHTTPHeaderFields {
-            let safeHeaderFields = allHTTPHeaderFields.filter { return $0.key != "Authorization" }.sorted { $0.key < $1.key }.map { "\($0.key)=\($0.value)" }.joined(separator: ",")
+            let safeHeaderFields = allHTTPHeaderFields
+                .filter { return $0.key != "Authorization" }
+                .sorted { $0.key < $1.key }
+                .map { "\($0.key)=\($0.value)" }
+                .joined(separator: ",")
             string += safeHeaderFields.description
         }
         if let httpBody = httpBody, let bodyString = String(data: httpBody, encoding: .utf8) { string += bodyString }
@@ -121,8 +125,10 @@ public struct RequestCreator {
     }
 }
 
-fileprivate extension String {
+private extension String {
     var safelyUrlEncoded: String {
-        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        var urlEncodedCharSet: CharacterSet = .urlHostAllowed
+        urlEncodedCharSet.remove("+")
+        return addingPercentEncoding(withAllowedCharacters: urlEncodedCharSet) ?? ""
     }
 }

@@ -2,8 +2,7 @@
 //  DictionaryExtensions.swift
 //  ConcertLiveCore
 //
-//  Created by Nico on 20/01/2016.
-//  Copyright © 2016 ConcertLive. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 import Foundation
 extension Dictionary {

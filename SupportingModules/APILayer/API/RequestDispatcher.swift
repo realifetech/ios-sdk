@@ -3,8 +3,9 @@
 //  RX
 //
 //  Created by Ross Patman on 22/10/2017.
-//  Copyright © 2017 RossPatman. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
+
 import Foundation
 import RxSwift
 import RxCocoa
@@ -22,9 +23,9 @@ public struct RequestDispatcher {
                     } else {
                         return Observable.error(APIError.constructedError(data: data, statusCode: response.statusCode))
                     }
-				} else {
-					return Observable.error(APIError.unparseableError())
-				}
+                } else {
+                    return Observable.error(APIError.unparseableError())
+                }
             })
             .do(onNext: { (_) in
                 RequestTimeLogger.shared.removeRequest(withIdentifier: request.identifier)

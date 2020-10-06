@@ -3,7 +3,7 @@
 //  ConcertLiveCore
 //
 //  Created by Emal SAIFI on 23/11/2017.
-//  Copyright © 2017 ConcertLive. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import Foundation

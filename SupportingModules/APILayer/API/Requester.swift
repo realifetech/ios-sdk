@@ -3,10 +3,12 @@
 //  RX
 //
 //  Created by Ross Patman on 22/10/2017.
-//  Copyright © 2017 RossPatman. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
+
 import Foundation
 import RxSwift
+
 public enum RequesterDateFormat {
     case timestampMilliseconds
     case timestampSeconds
@@ -22,6 +24,7 @@ public protocol Requester {
 }
 
 public extension Requester {
+    
     static func request(forId id: String? = nil) -> URLRequest {
         var theEndpoint = endpoint ?? ""
         if let id = id { theEndpoint += "/\(id)" }

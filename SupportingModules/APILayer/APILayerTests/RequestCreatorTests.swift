@@ -2,8 +2,7 @@
 //  RequestCreatorTests.swift
 //  CLArenaTests
 //
-//  Created by apple on 24/09/2018.
-//  Copyright © 2018 ConcertLive. All rights reserved.
+//  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import XCTest
