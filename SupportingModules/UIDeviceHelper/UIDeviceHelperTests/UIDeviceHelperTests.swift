@@ -13,19 +13,19 @@ class UIDeviceHelperTests: XCTestCase {
 
     func test_deviceUUID() {
         let mockDevice = MockDevice()
-        let sut = UIDeviceFactory().makeUIDeviceHelper(device: mockDevice)
+        let sut = UIDeviceFactory.makeUIDeviceHelper(device: mockDevice)
         XCTAssertEqual(sut.deviceId, "00000000-4321-1234-4321-000000000000")
     }
 
     func test_deviceModel() {
         let mockDevice = MockDevice()
-        let sut = UIDeviceFactory().makeUIDeviceHelper(device: mockDevice)
+        let sut = UIDeviceFactory.makeUIDeviceHelper(device: mockDevice)
         XCTAssertEqual(sut.model, "iPhone")
     }
 
     func test_deviceSystemVersion() {
         let mockDevice = MockDevice()
-        let sut = UIDeviceFactory().makeUIDeviceHelper(device: mockDevice)
+        let sut = UIDeviceFactory.makeUIDeviceHelper(device: mockDevice)
         XCTAssertEqual(sut.osVersion, "14.0")
     }
 

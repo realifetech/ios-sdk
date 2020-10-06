@@ -13,7 +13,7 @@ import RxSwift
 let bag: DisposeBag = DisposeBag()
 
 public func testMethod() {
-    let device = Device(token: V3APITokenManager.sharedInstance.token ?? "",
+    let device = Device(token: tokenManager.token ?? "",
                         type: "IOS",
                         appVersion: "sdk_0.0.1alpha",
                         osVersion: "13.3")

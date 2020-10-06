@@ -33,7 +33,7 @@ extension APIV3Requester {
     }
 
     static func root() -> RequestRootURL {
-        return apiRoot
+        return v3baseUrl
     }
 
     static func dateFormatString() -> String {

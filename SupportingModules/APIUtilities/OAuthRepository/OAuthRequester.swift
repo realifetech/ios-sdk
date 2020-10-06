@@ -28,7 +28,7 @@ extension OAuthRequester {
     // MARK: Implementing Requester
 
     static func root() -> RequestRootURL {
-        return apiRoot
+        return v3baseUrl
     }
 
     static func dateFormat() -> RequesterDateFormat? {

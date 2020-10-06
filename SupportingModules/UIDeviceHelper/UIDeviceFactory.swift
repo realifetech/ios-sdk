@@ -10,7 +10,7 @@ import UIKit
 
 public struct UIDeviceFactory {
 
-    func makeUIDeviceHelper(device: UIDevice = UIDevice.current) -> UIDeviceInterface {
+    public static func makeUIDeviceHelper(device: UIDevice = UIDevice.current) -> UIDeviceInterface {
         return UIDeviceWrapper(device: device)
     }
 }
