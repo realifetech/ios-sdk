@@ -8,6 +8,7 @@
 
 import Foundation
 import Apollo
+import UIDeviceHelper
 
 class Network {
     static let shared = Network()
@@ -40,7 +41,8 @@ extension Network: HTTPNetworkTransportPreflightDelegate {
         // Add any new headers you need
 //        headers["Authorization"] = "Bearer \(UserManager.shared.currentAuthToken)"
         // Re-assign the updated headers to the request.
-        headers["X-Ls-DeviceId"] = "40A6AD83-8926-494A-9F28-7935B800EF11" //TODO: make it dynamic
+        let deviceHelper: UIDeviceInterface = UIDeviceFactory.makeUIDeviceHelper()
+        headers["X-Ls-DeviceId"] = deviceHelper.deviceId
         request.allHTTPHeaderFields = headers
     }
 }
