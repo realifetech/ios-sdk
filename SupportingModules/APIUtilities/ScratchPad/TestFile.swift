@@ -13,16 +13,19 @@ import RxSwift
 let bag: DisposeBag = DisposeBag()
 
 public func testMethod() {
-    let device = Device(token: APIV3RequesterHelper.tokenManager.token ?? "",
-                        type: "IOS",
-                        appVersion: "sdk_0.0.1alpha",
-                        osVersion: "13.3")
-    DeviceRepository.register(device: device)
-        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-        .observeOn(MainScheduler.instance)
-        .subscribe(onNext: { success in
-            print("I gots a token!", success)
-        }, onError: { error in
-            print("I gots a error, not a token!", error)
-        }).disposed(by: bag)
+    APIV3RequesterHelper.tokenManager.getValidToken {
+        print("🖨️ TestFile: We got a valid token, apprently, now it's time to register")
+        let device = Device(token: APIV3RequesterHelper.tokenManager.token ?? "",
+                            type: "IOS",
+                            appVersion: "sdk_0.0.1alpha",
+                            osVersion: "13.3")
+        DeviceRepository.register(device: device)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { success in
+                print("We registered the deivce!", success)
+            }, onError: { error in
+                print("No device registration for you!", error)
+            }).disposed(by: bag)
+    }
 }

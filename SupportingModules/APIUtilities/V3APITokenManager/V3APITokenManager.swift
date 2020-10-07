@@ -27,14 +27,19 @@ public class V3APITokenManager: V3APITokenManagable {
     }
 
     public func getValidToken(_ completion: (() -> Void)?) {
+        print("🌟 V3 Token Manager: We were asked to get a valid token")
         guard let getTokenObservable = getTokenObservable else {
             completion?()
             return
         }
+        print("🌟 V3 Token Manager: We got a token observable!")
         getTokenObservable
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
+            .take(1)
             .subscribe { _ in
+                // This is executed twice...
+                print("🌟 V3 Token Manager: Our 'getValidToken' method returned")
                 completion?()
             }
             .disposed(by: disposeBag)

@@ -585,7 +585,7 @@
 				480BCDF4251E360700266617 /* Info.plist */,
 				480BCDFD251E360700266617 /* APIUtilitiesTests */,
 				48A68475252B5614001F8CB1 /* ScratchPad */,
-				48A68472252B4C4D001F8CB1 /* ApiHeaderVariables */,
+				48A68472252B4C4D001F8CB1 /* V3APITokenManager */,
 				480BCE2E2522083A00266617 /* OAuthRepository */,
 				480BCE5125222AE200266617 /* RequestInserters */,
 				480BCE3A25220DF100266617 /* Utils */,
@@ -659,14 +659,14 @@
 			path = DeviceRepository;
 			sourceTree = "<group>";
 		};
-		48A68472252B4C4D001F8CB1 /* ApiHeaderVariables */ = {
+		48A68472252B4C4D001F8CB1 /* V3APITokenManager */ = {
 			isa = PBXGroup;
 			children = (
 				48A6845E25277CA2001F8CB1 /* V3APITokenManagable.swift */,
 				48A68473252B4CAA001F8CB1 /* V3APITokenManager.swift */,
 				48A684642527C40F001F8CB1 /* OAuthTokenHelpers */,
 			);
-			path = ApiHeaderVariables;
+			path = V3APITokenManager;
 			sourceTree = "<group>";
 		};
 		48A68475252B5614001F8CB1 /* ScratchPad */ = {

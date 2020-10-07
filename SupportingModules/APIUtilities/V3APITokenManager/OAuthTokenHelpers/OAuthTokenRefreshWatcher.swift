@@ -29,8 +29,14 @@ class OAuthTokenRefreshWatcher: OAuthTokenRefreshWatchable {
     /// Returns nil when no refresh is taking place.
     var ongoingTokenRefresh: Observable<Bool>? {
         guard status.value == .refreshing else { return nil }
+        print("👀 RefreshWatcher: Generating a refresh observable")
         // NOTE: Behaviour subjects always emit their current value, we only care about the next value, so we skip one.
-        return status.asObservable().skip(1).filter { $0 == .valid }.map { $0 == .valid }
+        return status
+            .asObservable()
+            .skip(1)
+            .take(1)
+            .filter { $0 == .valid }
+            .map { $0 == .valid }
     }
 
     init() {
@@ -39,6 +45,7 @@ class OAuthTokenRefreshWatcher: OAuthTokenRefreshWatchable {
 
     /// Sets the current token status, skipping values identical to the current one
     func updateRefreshingStatus(newValue: OAuthTokenStatus) {
+        print("👀 RefreshWatcher: Updating refresh status to", newValue)
         guard status.value != newValue else { return }
         status.accept(newValue)
     }
