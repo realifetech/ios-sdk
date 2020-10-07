@@ -17,7 +17,6 @@ struct DeviceRepository: RemoteDiskCacheDataProviding {
 
 extension DeviceRepository {
     static func register(device: Device) -> Observable<Bool> {
-        print("📱 DeviceRepo: Got call to register the device")
         return retrieve(type: StandardV3SenderResponse.self, forRequest: Rqstr.register(device: device), strategy: .remoteWithoutCachingResponse).map { $0.isSuccess }
     }
 

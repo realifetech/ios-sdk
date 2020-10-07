@@ -29,7 +29,6 @@ struct AuthorisationWorker: AuthorisationWorkable {
                         token: accessToken,
                         secondsExpiresIn: expiresIn)
                 }
-                print("👮 AuthorisationWorker: We got one token and saved it")
                 return token
         }
     }

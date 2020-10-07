@@ -31,13 +31,10 @@ struct OAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating {
     var refreshTokenOrWaitAction: Observable<Void>? {
         if let ongoingTokenRefresh = oAuthTokenRefreshWatcher.ongoingTokenRefresh {
             // We take 1 because we only care about the current refresh.
-            print("🥬 RefreshOrAwayGen: Token is already refreshing.")
             return ongoingTokenRefresh.take(1).map { _ in return () }
         } else if authorisationStore.accessTokenValid {
-            print("🥬 RefreshOrAwayGen: Token is valid...")
             return nil
         }
-        print("🥬 RefreshOrAwayGen: Token needs refreshing!")
         self.oAuthTokenRefreshWatcher.updateRefreshingStatus(newValue: .refreshing)
         return authorisationWorker.requestInitialAccessToken
             .do(onNext: { _ in
@@ -45,13 +42,7 @@ struct OAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating {
             }, onError: { _ in
                 self.oAuthTokenRefreshWatcher.updateRefreshingStatus(newValue: .invalid)
             })
-            .map { _ in
-                print("🖨️ RefreshOrAwayGen: Mapping values to void")
-                return ()
-            }
-            .catchError { _ in
-                print("🖨️ RefreshOrAwayGen: Catching error and mapping to void")
-                return Observable.just(())
-            }
+            .map { _ in return () }
+            .catchError { _ in return Observable.just(()) }
     }
 }

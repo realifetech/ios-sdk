@@ -28,8 +28,6 @@ public class RealifeTech {
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             baseUrl: "http://api-dev.livestyled.com/v3")
         General = GeneralImplementing()
-        helper.getValidToken {
-            print("🌋 SDKInterface: Finished getting a token from the RealifeTech setup method")
-        }
+        helper.getValidToken { }
     }
 }

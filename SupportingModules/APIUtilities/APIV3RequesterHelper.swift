@@ -31,6 +31,7 @@ public struct APIV3RequesterHelper {
 
     private static func constructTokenManager() -> V3APITokenManagable {
         let authorisationStore = AuthorisationStore()
+        authorisationStore.removeCredentials() // TODO: Remove when done testing
         let authorisationWorker = AuthorisationWorker(authorisationStore: authorisationStore)
         let oAuthTokenRefreshWatcher = OAuthTokenRefreshWatcher()
         let oAuthRefreshOrWaitActionGenerator = OAuthRefreshOrWaitActionGenerator(
