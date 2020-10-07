@@ -7,7 +7,6 @@
 //
 
 import RealifeTech
-import General
 import UIKit
 
 @UIApplicationMain

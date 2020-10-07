@@ -42,7 +42,9 @@ extension Network: HTTPNetworkTransportPreflightDelegate {
 //        headers["Authorization"] = "Bearer \(UserManager.shared.currentAuthToken)"
         // Re-assign the updated headers to the request.
         let deviceHelper: UIDeviceInterface = UIDeviceFactory.makeUIDeviceHelper()
+        let token = "Bearer NjZlYjQ3YzgxZDk0MDY1OWIwYzlkYWIwZjA2OThmOGNkOGFiYTVkMTU3ZjBlZWZmNDZmNzM0YjMxNTIzYmViMQ"
         headers["X-Ls-DeviceId"] = deviceHelper.deviceId
+        headers["Authorization"] = token
         request.allHTTPHeaderFields = headers
     }
 }
@@ -55,19 +57,19 @@ extension Network: HTTPNetworkTransportTaskCompletedDelegate {
                           withData data: Data?,
                           response: URLResponse?,
                           error: Error?) {
-        if let error = error {
-            print("Error: \(error)")
-        }
-        if let response = response {
-            print("Response: \(response)")
-        } else {
-            print("No URL Response received!")
-        }
-        if let data = data {
-            print("Data: \(String(describing: String(bytes: data, encoding: .utf8)))")
-        } else {
-            print("No data received!")
-        }
+//        if let error = error {
+//            print("Error: \(error)")
+//        }
+//        if let response = response {
+//            print("Response: \(response)")
+//        } else {
+//            print("No URL Response received!")
+//        }
+//        if let data = data {
+//            print("Data: \(String(describing: String(bytes: data, encoding: .utf8)))")
+//        } else {
+//            print("No data received!")
+//        }
     }
 }
 
@@ -84,37 +86,30 @@ extension Network: HTTPNetworkTransportRetryDelegate {
     }
 }
 
-public typealias FetchCompletion = (_ jsonObject: JSONObject?, _ error: Error?) -> Void
 public typealias MutationCompletion = (_ jsonObject: JSONObject?, _ error: Error?) -> Void
 
 public struct GraphQLDispatcher {
-    public static func dispatch<T: GraphQLQuery>(query: T, completion: @escaping FetchCompletion) {
+    public static func dispatch<T: GraphQLQuery>(
+        query: T,
+        completion: @escaping (_ object: T.Data?, _ error: Error?) -> Void) {
         Network.shared.apollo.fetch(query: query) { result in
             switch result {
             case .success(let graphQLResult):
-                //print(graphQLResult.data)
-                if let jsonObject = graphQLResult.data?.jsonObject {
-                    return completion(jsonObject, nil)
-                }
-                return completion(nil, nil)
+                return completion(graphQLResult.data, nil)
             case .failure(let error):
-                print("Failure! Error: \(error)")
                 return completion(nil, error)
             }
         }
     }
 
-    public static func dispatchMutation<T: GraphQLMutation>(mutation: T, completion: @escaping MutationCompletion) {
+    public static func dispatchMutation<T: GraphQLMutation>(
+        mutation: T,
+        completion:  @escaping (_ object: T.Data?, _ error: Error?) -> Void) {
         Network.shared.apollo.perform(mutation: mutation) { result in
             switch result {
             case .success(let graphQLResult):
-                print(graphQLResult.data)
-                if let jsonObject = graphQLResult.data?.jsonObject {
-                    return completion(jsonObject, nil)
-                }
-                return completion(nil, nil)
+                return completion(graphQLResult.data, nil)
             case .failure(let error):
-                print("Failure! Error: \(error)")
                 return completion(nil, error)
             }
         }

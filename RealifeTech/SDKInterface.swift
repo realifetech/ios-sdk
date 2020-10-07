@@ -7,11 +7,13 @@
 //
 
 import General
+import Audiences
 import Foundation
 
 public class RealifeTech {
 
     public static var General: GeneralImplementing!
+    public static var Audiences: AudienceChecking!
 
     /// Provides information required for the SDK to operate.
     /// This MUST be called before any other SDK functionality is acessed.
@@ -20,5 +22,6 @@ public class RealifeTech {
     public static func configureSDK(with configuration: SDKConfiguration) {
         print("Someone called to configure the SDK")
         General = GeneralImplementing()
+        Audiences = AudiencesImplementing()
     }
 }

@@ -20,6 +20,17 @@
 		03D583962521EB7B00E516F9 /* ReachabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */; };
 		03D583972521EB7B00E516F9 /* ReachabilityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */; };
 		03D583982521EB7B00E516F9 /* WifiConnectivityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */; };
+		03EEB8A5252E04DB00C868AD /* Audiences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EEB89C252E04DB00C868AD /* Audiences.framework */; };
+		03EEB8AA252E04DB00C868AD /* AudiencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */; };
+		03EEB8AC252E04DB00C868AD /* Audiences.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EEB89E252E04DB00C868AD /* Audiences.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03EEB8B4252E05E700C868AD /* AudienceChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EEB8B3252E05E700C868AD /* AudienceChecking.swift */; };
+		03EEB8B6252E08B400C868AD /* AudiencesImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */; };
+		03EEB8B7252E09E700C868AD /* Audiences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EEB89C252E04DB00C868AD /* Audiences.framework */; };
+		03EEB8B8252E09E700C868AD /* Audiences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03EEB89C252E04DB00C868AD /* Audiences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03EEB8BB252E09ED00C868AD /* GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0317B91B252768EA00863EC6 /* GraphQL.framework */; };
+		03EEB8BC252E09ED00C868AD /* GraphQL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0317B91B252768EA00863EC6 /* GraphQL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03EEB8C0252E0C1A00C868AD /* General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; };
+		03EEB8C1252E0C1A00C868AD /* General.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0CBFFEAF366E5F0B32A65A3B /* Pods_General_GeneralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F260272EC72D00EA48CAB01 /* Pods_General_GeneralTests.framework */; };
 		149CBEE979A59578F9F8EE6E /* Pods_General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C8813D8888CCA220256A9A /* Pods_General.framework */; };
 		33203EE1EA42134F3C1F88AC /* Pods_ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B17B060E66ABB0188C0C4278 /* Pods_ReachabilityChecker.framework */; };
@@ -86,6 +97,34 @@
 			remoteGlobalIDString = 0317B91A252768EA00863EC6;
 			remoteInfo = GraphQL;
 		};
+		03EEB8A6252E04DB00C868AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03EEB89B252E04DB00C868AD;
+			remoteInfo = Audiences;
+		};
+		03EEB8B9252E09E700C868AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03EEB89B252E04DB00C868AD;
+			remoteInfo = Audiences;
+		};
+		03EEB8BD252E09ED00C868AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0317B91A252768EA00863EC6;
+			remoteInfo = GraphQL;
+		};
+		03EEB8C2252E0C1A00C868AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48E6774D251BA843007E2741;
+			remoteInfo = General;
+		};
 		480BCDA7251E2CFD00266617 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
@@ -138,12 +177,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		03EEB8BF252E09ED00C868AD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				03EEB8BC252E09ED00C868AD /* GraphQL.framework in Embed Frameworks */,
+				03EEB8C1252E0C1A00C868AD /* General.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48A6844F2526132B001F8CB1 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				03EEB8B8252E09E700C868AD /* Audiences.framework in Embed Frameworks */,
 				48A6844C2526132A001F8CB1 /* General.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -171,6 +223,14 @@
 		03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityFactory.swift; sourceTree = "<group>"; };
 		03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiConnectivityChecker.swift; sourceTree = "<group>"; };
 		03E9F6C9252B1CC30076F59B /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		03EEB89C252E04DB00C868AD /* Audiences.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Audiences.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		03EEB89E252E04DB00C868AD /* Audiences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Audiences.h; sourceTree = "<group>"; };
+		03EEB89F252E04DB00C868AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03EEB8A4252E04DB00C868AD /* AudiencesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudiencesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesTests.swift; sourceTree = "<group>"; };
+		03EEB8AB252E04DB00C868AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
+		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
 		055B95D09E4948D6EA2EBB6E /* Pods_RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08E482AD70B055F9624323D2 /* Pods-Communicate-CommunicateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communicate-CommunicateTests.release.xcconfig"; path = "Target Support Files/Pods-Communicate-CommunicateTests/Pods-Communicate-CommunicateTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C352EE87793B26330666B58 /* Pods-Communicate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communicate.debug.xcconfig"; path = "Target Support Files/Pods-Communicate/Pods-Communicate.debug.xcconfig"; sourceTree = "<group>"; };
@@ -303,6 +363,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03EEB899252E04DB00C868AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03EEB8BB252E09ED00C868AD /* GraphQL.framework in Frameworks */,
+				03EEB8C0252E0C1A00C868AD /* General.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03EEB8A1252E04DB00C868AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03EEB8A5252E04DB00C868AD /* Audiences.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		480BCD9A251E2CFD00266617 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				640CCEBB84C5BF5434903412 /* Pods_RealifeTech.framework in Frameworks */,
+				03EEB8B7252E09E700C868AD /* Audiences.framework in Frameworks */,
 				48A6844B2526132A001F8CB1 /* General.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +516,27 @@
 				03B0D108252C83040037D504 /* Types.graphql.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		03EEB89D252E04DB00C868AD /* Audiences */ = {
+			isa = PBXGroup;
+			children = (
+				03EEB8B3252E05E700C868AD /* AudienceChecking.swift */,
+				03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */,
+				03EEB8A8252E04DB00C868AD /* AudiencesTests */,
+				03EEB89E252E04DB00C868AD /* Audiences.h */,
+				03EEB89F252E04DB00C868AD /* Info.plist */,
+			);
+			path = Audiences;
+			sourceTree = "<group>";
+		};
+		03EEB8A8252E04DB00C868AD /* AudiencesTests */ = {
+			isa = PBXGroup;
+			children = (
+				03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */,
+				03EEB8AB252E04DB00C868AD /* Info.plist */,
+			);
+			path = AudiencesTests;
 			sourceTree = "<group>";
 		};
 		480BCD9E251E2CFD00266617 /* APILayer */ = {
@@ -631,6 +730,7 @@
 			children = (
 				48E6774F251BA843007E2741 /* General */,
 				48E67771251BA86D007E2741 /* Communicate */,
+				03EEB89D252E04DB00C868AD /* Audiences */,
 				48B792D0251CA1E0007032CD /* SupportingModules */,
 				48D6F13B251E158E006CA623 /* RealifeTech */,
 				48E67730251BA7F0007E2741 /* Products */,
@@ -656,6 +756,8 @@
 				480BCDA5251E2CFD00266617 /* APILayerTests.xctest */,
 				0317B91B252768EA00863EC6 /* GraphQL.framework */,
 				0317B923252768EA00863EC6 /* GraphQLTests.xctest */,
+				03EEB89C252E04DB00C868AD /* Audiences.framework */,
+				03EEB8A4252E04DB00C868AD /* AudiencesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -757,6 +859,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03EEB897252E04DB00C868AD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03EEB8AC252E04DB00C868AD /* Audiences.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		480BCD98251E2CFD00266617 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,6 +956,45 @@
 			name = GraphQLTests;
 			productName = GraphQLTests;
 			productReference = 0317B923252768EA00863EC6 /* GraphQLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		03EEB89B252E04DB00C868AD /* Audiences */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03EEB8B1252E04DB00C868AD /* Build configuration list for PBXNativeTarget "Audiences" */;
+			buildPhases = (
+				03EEB897252E04DB00C868AD /* Headers */,
+				03EEB898252E04DB00C868AD /* Sources */,
+				03EEB899252E04DB00C868AD /* Frameworks */,
+				03EEB89A252E04DB00C868AD /* Resources */,
+				03EEB8BF252E09ED00C868AD /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03EEB8BE252E09ED00C868AD /* PBXTargetDependency */,
+				03EEB8C3252E0C1A00C868AD /* PBXTargetDependency */,
+			);
+			name = Audiences;
+			productName = Audiences;
+			productReference = 03EEB89C252E04DB00C868AD /* Audiences.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		03EEB8A3252E04DB00C868AD /* AudiencesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03EEB8B2252E04DB00C868AD /* Build configuration list for PBXNativeTarget "AudiencesTests" */;
+			buildPhases = (
+				03EEB8A0252E04DB00C868AD /* Sources */,
+				03EEB8A1252E04DB00C868AD /* Frameworks */,
+				03EEB8A2252E04DB00C868AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03EEB8A7252E04DB00C868AD /* PBXTargetDependency */,
+			);
+			name = AudiencesTests;
+			productName = AudiencesTests;
+			productReference = 03EEB8A4252E04DB00C868AD /* AudiencesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		480BCD9C251E2CFD00266617 /* APILayer */ = {
@@ -985,6 +1134,7 @@
 			);
 			dependencies = (
 				48A6844E2526132A001F8CB1 /* PBXTargetDependency */,
+				03EEB8BA252E09E700C868AD /* PBXTargetDependency */,
 			);
 			name = RealifeTech;
 			productName = RealifeTech;
@@ -1111,6 +1261,13 @@
 					0317B922252768EA00863EC6 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
+					03EEB89B252E04DB00C868AD = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+					};
+					03EEB8A3252E04DB00C868AD = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					480BCD9C251E2CFD00266617 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -1182,6 +1339,8 @@
 				480BCDA4251E2CFD00266617 /* APILayerTests */,
 				0317B91A252768EA00863EC6 /* GraphQL */,
 				0317B922252768EA00863EC6 /* GraphQLTests */,
+				03EEB89B252E04DB00C868AD /* Audiences */,
+				03EEB8A3252E04DB00C868AD /* AudiencesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1195,6 +1354,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0317B921252768EA00863EC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03EEB89A252E04DB00C868AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03EEB8A2252E04DB00C868AD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1925,6 +2098,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03EEB898252E04DB00C868AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03EEB8B4252E05E700C868AD /* AudienceChecking.swift in Sources */,
+				03EEB8B6252E08B400C868AD /* AudiencesImplementing.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03EEB8A0252E04DB00C868AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03EEB8AA252E04DB00C868AD /* AudiencesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		480BCD99251E2CFD00266617 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2051,6 +2241,26 @@
 			target = 0317B91A252768EA00863EC6 /* GraphQL */;
 			targetProxy = 0317B925252768EA00863EC6 /* PBXContainerItemProxy */;
 		};
+		03EEB8A7252E04DB00C868AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03EEB89B252E04DB00C868AD /* Audiences */;
+			targetProxy = 03EEB8A6252E04DB00C868AD /* PBXContainerItemProxy */;
+		};
+		03EEB8BA252E09E700C868AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03EEB89B252E04DB00C868AD /* Audiences */;
+			targetProxy = 03EEB8B9252E09E700C868AD /* PBXContainerItemProxy */;
+		};
+		03EEB8BE252E09ED00C868AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0317B91A252768EA00863EC6 /* GraphQL */;
+			targetProxy = 03EEB8BD252E09ED00C868AD /* PBXContainerItemProxy */;
+		};
+		03EEB8C3252E0C1A00C868AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48E6774D251BA843007E2741 /* General */;
+			targetProxy = 03EEB8C2252E0C1A00C868AD /* PBXContainerItemProxy */;
+		};
 		480BCDA8251E2CFD00266617 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -2097,13 +2307,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SupportingModules/GraphQL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2112,9 +2323,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.GraphQL;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2125,13 +2337,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SupportingModules/GraphQL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2140,8 +2353,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.GraphQL;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -2181,6 +2395,101 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.GraphQLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		03EEB8AD252E04DB00C868AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Audiences/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.Audiences;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03EEB8AE252E04DB00C868AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Audiences/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.Audiences;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		03EEB8AF252E04DB00C868AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				INFOPLIST_FILE = Audiences/AudiencesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.AudiencesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03EEB8B0252E04DB00C868AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BL7QL4ZK6J;
+				INFOPLIST_FILE = Audiences/AudiencesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.realifetech.AudiencesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2902,6 +3211,24 @@
 			buildConfigurations = (
 				0317B930252768EA00863EC6 /* Debug */,
 				0317B931252768EA00863EC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03EEB8B1252E04DB00C868AD /* Build configuration list for PBXNativeTarget "Audiences" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03EEB8AD252E04DB00C868AD /* Debug */,
+				03EEB8AE252E04DB00C868AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03EEB8B2252E04DB00C868AD /* Build configuration list for PBXNativeTarget "AudiencesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03EEB8AF252E04DB00C868AD /* Debug */,
+				03EEB8B0252E04DB00C868AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
