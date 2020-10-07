@@ -64,16 +64,16 @@ target 'APILayer' do
 
 end
 
-target 'APIUtilities' do
+target 'APIV3Utilities' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   project 'RealifeTech-SDK'
 
   # Pods for APILayer
 
-  target 'APIUtilitiesTests' do
+  target 'APIV3UtilitiesTests' do
     # Pods for testing
-
+    pod 'RxCocoa', '~> 5.1.1'
   end
 
 end

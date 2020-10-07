@@ -1,4 +1,4 @@
 excluded:
    - Pods
    - SupportingModules/APILayer
-   - SupportingModules/APIUtilities
+   - APIV3Utilities
