@@ -17,6 +17,7 @@ final class AuthorisationWorkerTests: XCTestCase {
 
     let testTokenString = "KENOT"
     let testExpirySeconds = 1234
+    let disposeBag = DisposeBag()
 
     override func setUp() {
         storeSpy = MockAuthorisationStore()
@@ -57,11 +58,8 @@ final class AuthorisationWorkerTests: XCTestCase {
     }
 
     private func emitInitialAccessToken(initialToken: OAuthToken, completion: @escaping (OAuthToken) -> ()) {
-        let disposeBag = DisposeBag()
         let observable = sut.requestInitialAccessToken
         observable
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { token in
                 XCTAssertEqual(token, initialToken)
                 completion(token)

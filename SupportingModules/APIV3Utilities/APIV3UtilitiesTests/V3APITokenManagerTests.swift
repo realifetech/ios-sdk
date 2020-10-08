@@ -12,8 +12,8 @@ import RxSwift
 
 class V3APITokenManagerTests: XCTestCase {
 
-    var testStore: MockStore!
-    var testRefreshGenerator: MockRefreshGenerator!
+    private var testStore: MockStore!
+    private var testRefreshGenerator: MockRefreshGenerator!
     var sut: V3APITokenManager!
 
     override func setUp() {
@@ -62,7 +62,7 @@ class V3APITokenManagerTests: XCTestCase {
     
 }
 
-class MockStore: AuthorisationStoring {
+private final class MockStore: AuthorisationStoring {
 
     var accessToken: String?
     var accessTokenValid: Bool = false
@@ -78,6 +78,6 @@ class MockStore: AuthorisationStoring {
     }
 }
 
-class MockRefreshGenerator: OAuthRefreshOrWaitActionGenerating {
+private final class MockRefreshGenerator: OAuthRefreshOrWaitActionGenerating {
     var refreshTokenOrWaitAction: Observable<Void>?
 }

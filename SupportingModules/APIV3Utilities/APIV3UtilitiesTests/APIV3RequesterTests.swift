@@ -110,8 +110,6 @@ class APIV3RequesterTests: XCTestCase  {
         }
         let expectation = XCTestExpectation(description: "Pre-dispatch action did execute")
         resultObservable
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
             .subscribe({ _ in
                 expectation.fulfill()
             })
