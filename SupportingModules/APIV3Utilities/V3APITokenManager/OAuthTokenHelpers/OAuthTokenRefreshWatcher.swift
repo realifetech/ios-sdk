@@ -33,7 +33,6 @@ class OAuthTokenRefreshWatcher: OAuthTokenRefreshWatchable {
         return status
             .asObservable()
             .skip(1)
-            .take(1)
             .filter { $0 == .valid }
             .map { $0 == .valid }
     }

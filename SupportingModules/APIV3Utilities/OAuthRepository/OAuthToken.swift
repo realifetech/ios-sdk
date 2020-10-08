@@ -23,3 +23,5 @@ struct OAuthToken: Codable {
     let tokenType: String?
     let scope: String?
 }
+
+extension OAuthToken: Equatable {}
