@@ -11,7 +11,7 @@ import RxSwift
 import RxTest
 @testable import APIV3Utilities
 
-class OAuthRefreshOrWaitActionGeneratorTests: XCTest {
+class OAuthRefreshOrWaitActionGeneratorTests: XCTestCase {
 
     let emptyToken = OAuthToken(accessToken: nil,
                                 refreshToken: nil,

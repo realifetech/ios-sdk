@@ -57,7 +57,7 @@ class V3APITokenManagerTests: XCTestCase {
             expectation.fulfill()
         }
         observableSource.onNext(())
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.2)
     }
     
 }
