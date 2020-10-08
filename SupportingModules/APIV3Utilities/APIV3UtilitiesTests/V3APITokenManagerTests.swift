@@ -19,7 +19,10 @@ class V3APITokenManagerTests: XCTestCase {
     override func setUp() {
         testStore = MockStore()
         testRefreshGenerator = MockRefreshGenerator()
-        sut = V3APITokenManager(authorisationStore: testStore, oAuthRefreshOrWaitActionGenerator: testRefreshGenerator)
+        sut = V3APITokenManager(
+            authorisationStore: testStore,
+            oAuthRefreshOrWaitActionGenerator: testRefreshGenerator,
+            subscibeOnScheduler: MainScheduler.instance)
     }
 
     func test_token() {
