@@ -92,6 +92,8 @@
 		48E67780251BA86D007E2741 /* Communicate.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E67772251BA86D007E2741 /* Communicate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48F9BC23252E10C600B801D1 /* RequestHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4817D84C252E102400A786C0 /* RequestHeaderTests.swift */; };
 		48F9BC25252E1C4E00B801D1 /* APIV3RequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */; };
+		48F9BC27252F101A00B801D1 /* APIV3RequesterHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */; };
+		48F9BC29252F171000B801D1 /* V3APITokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC28252F171000B801D1 /* V3APITokenManagerTests.swift */; };
 		55A766E8DCB434F29B0D38D0 /* Pods_UIDeviceHelper_UIDeviceHelperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D2802DDF8DE36DBC545A8D /* Pods_UIDeviceHelper_UIDeviceHelperTests.framework */; };
 		640CCEBB84C5BF5434903412 /* Pods_RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055B95D09E4948D6EA2EBB6E /* Pods_RealifeTech.framework */; };
 		7CFE9B29E960ED65254F30D3 /* Pods_ReachabilityChecker_ReachabilityCheckerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D9400D2509F1987132C73 /* Pods_ReachabilityChecker_ReachabilityCheckerTests.framework */; };
@@ -328,6 +330,8 @@
 		48E6777D251BA86D007E2741 /* CommunicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateTests.swift; sourceTree = "<group>"; };
 		48E6777F251BA86D007E2741 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterTests.swift; sourceTree = "<group>"; };
+		48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterHelperTests.swift; sourceTree = "<group>"; };
+		48F9BC28252F171000B801D1 /* V3APITokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagerTests.swift; sourceTree = "<group>"; };
 		4ACB2EA8853A656DF66BED23 /* Pods-DummyProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-DummyProjectTests/Pods-DummyProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4B3A66C829357A9C3D526064 /* Pods-Communicate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communicate.release.xcconfig"; path = "Target Support Files/Pods-Communicate/Pods-Communicate.release.xcconfig"; sourceTree = "<group>"; };
 		4E2B81E9C2E20E826C41D504 /* Pods-DummyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.release.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -641,8 +645,10 @@
 			children = (
 				4859F99B252E022400158F5E /* StandardV3SenderResponseTests.swift */,
 				4817D84C252E102400A786C0 /* RequestHeaderTests.swift */,
-				4859F99D252E022400158F5E /* Info.plist */,
 				48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */,
+				48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */,
+				4859F99D252E022400158F5E /* Info.plist */,
+				48F9BC28252F171000B801D1 /* V3APITokenManagerTests.swift */,
 			);
 			path = APIV3UtilitiesTests;
 			sourceTree = "<group>";
@@ -2103,7 +2109,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F9BC27252F101A00B801D1 /* APIV3RequesterHelperTests.swift in Sources */,
 				48F9BC23252E10C600B801D1 /* RequestHeaderTests.swift in Sources */,
+				48F9BC29252F171000B801D1 /* V3APITokenManagerTests.swift in Sources */,
 				48F9BC25252E1C4E00B801D1 /* APIV3RequesterTests.swift in Sources */,
 				4859F99C252E022400158F5E /* StandardV3SenderResponseTests.swift in Sources */,
 			);

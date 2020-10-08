@@ -21,7 +21,7 @@ public class V3APITokenManager: V3APITokenManagable {
     private let oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
     private let disposeBag: DisposeBag = DisposeBag()
 
-    init(authorisationStore: AuthorisationStore, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating) {
+    init(authorisationStore: AuthorisationStoring, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating) {
         self.authorisationStore = authorisationStore
         self.oAuthRefreshOrWaitActionGenerator = oAuthRefreshOrWaitActionGenerator
     }
