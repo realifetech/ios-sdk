@@ -8,11 +8,6 @@
 
 import Foundation
 
-public enum AudienceCheckingResult {
-    case success
-    case failure
-}
-
 public protocol AudienceChecking {
     func deviceIsMemberOfAudience(audienceId: String, callback: @escaping (Result<Bool, Error>) -> Void)
 }
