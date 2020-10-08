@@ -95,6 +95,30 @@ class APIV3RequesterTests: XCTestCase  {
             return key == expectedHeader.header && value == expectedHeader.valueForHeader
         }))
     }
+
+    func test_preDispatchAction_none() {
+        testTokenManager.getTokenObservable = nil
+        XCTAssertNil(MockRequester.preDispatchAction())
+    }
+
+    func test_preDispatchAction_some() {
+        let bag = DisposeBag()
+        let source = PublishSubject<Void>()
+        testTokenManager.getTokenObservable = source.asObservable()
+        guard let resultObservable = MockRequester.preDispatchAction() else {
+            return XCTFail("No pre-dispatch action returned")
+        }
+        let expectation = XCTestExpectation(description: "Pre-dispatch action did execute")
+        resultObservable
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe({ _ in
+                expectation.fulfill()
+            })
+            .disposed(by: bag)
+        source.onNext(())
+        wait(for: [expectation], timeout: 0.2)
+    }
 }
 
 private struct MockRequester: APIV3Requester {}
