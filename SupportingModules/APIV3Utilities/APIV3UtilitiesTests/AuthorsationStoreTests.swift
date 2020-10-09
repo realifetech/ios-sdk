@@ -49,12 +49,21 @@ final class AuthorisationStoreTests: XCTestCase {
     func test_saveCredentials() {
         let testToken = "THE_BEST_TOKEN"
         let testExpirySeconds = 1234
-        let expectedExpiryMilliseconds = Date()
+        let expectedExpiryInt = Date()
             .addingTimeInterval(Double(testExpirySeconds))
             .toMilliseconds()
         sut.saveCredentials(token: testToken, secondsExpiresIn: testExpirySeconds)
         XCTAssertEqual(keychain.mutatedKeyValues[tokenKey], testToken)
-        XCTAssertEqual(keychain.mutatedKeyValues[expiryKey], String(expectedExpiryMilliseconds))
+        // Note: The store will calculate its expiry value later than we make our expected result
+        //       This means the expiry times can differ by 1ms, so we check for a range
+        guard
+            let resultString = keychain.mutatedKeyValues[expiryKey],
+            let resultExpiryInt = Int(resultString)
+            else {
+                return XCTFail("Token expiry was not an Int")
+        }
+        XCTAssertGreaterThan(Int(expectedExpiryInt + 2), resultExpiryInt)
+        XCTAssertGreaterThan(resultExpiryInt, Int(expectedExpiryInt - 1))
     }
 
     func test_removeCredentials() {

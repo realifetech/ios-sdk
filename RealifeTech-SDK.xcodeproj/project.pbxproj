@@ -21,6 +21,8 @@
 		33203EE1EA42134F3C1F88AC /* Pods_ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B17B060E66ABB0188C0C4278 /* Pods_ReachabilityChecker.framework */; };
 		4535060D57FA65BB122DFF7C /* Pods_Communicate_CommunicateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9A4084D90EFD590178247E /* Pods_Communicate_CommunicateTests.framework */; };
 		48005DC72530571B00B4E8BD /* OAuthTokenRefreshWatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DC62530571B00B4E8BD /* OAuthTokenRefreshWatcherTests.swift */; };
+		48005DCA2530675200B4E8BD /* EmptyTokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */; };
+		48005DCC2530697E00B4E8BD /* Dictionary+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DCB2530697E00B4E8BD /* Dictionary+ExtensionsTests.swift */; };
 		480BCD8F251E252600266617 /* DeviceRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8C251E252600266617 /* DeviceRegistering.swift */; };
 		480BCD90251E252600266617 /* GeneralImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8D251E252600266617 /* GeneralImplementing.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
@@ -250,6 +252,8 @@
 		4709C6CB92CDA8F091D75B32 /* Pods-APIV3Utilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIV3Utilities.debug.xcconfig"; path = "Target Support Files/Pods-APIV3Utilities/Pods-APIV3Utilities.debug.xcconfig"; sourceTree = "<group>"; };
 		47BD46C540C04AD2D30D608F /* Pods-APILayer-APILayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APILayer-APILayerTests.debug.xcconfig"; path = "Target Support Files/Pods-APILayer-APILayerTests/Pods-APILayer-APILayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		48005DC62530571B00B4E8BD /* OAuthTokenRefreshWatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenRefreshWatcherTests.swift; sourceTree = "<group>"; };
+		48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTokenManagerTests.swift; sourceTree = "<group>"; };
+		48005DCB2530697E00B4E8BD /* Dictionary+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		480BCD8C251E252600266617 /* DeviceRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistering.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
@@ -661,6 +665,8 @@
 				48F9BC30252F61DC00B801D1 /* OAuthRefreshOrWaitActionGeneratorTests.swift */,
 				4859F99D252E022400158F5E /* Info.plist */,
 				48005DC62530571B00B4E8BD /* OAuthTokenRefreshWatcherTests.swift */,
+				48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */,
+				48005DCB2530697E00B4E8BD /* Dictionary+ExtensionsTests.swift */,
 			);
 			path = APIV3UtilitiesTests;
 			sourceTree = "<group>";
@@ -2127,7 +2133,9 @@
 				48F9BC23252E10C600B801D1 /* RequestHeaderTests.swift in Sources */,
 				48F9BC29252F171000B801D1 /* V3APITokenManagerTests.swift in Sources */,
 				48F9BC2F252F2FC900B801D1 /* AuthorisationWorkerTests.swift in Sources */,
+				48005DCC2530697E00B4E8BD /* Dictionary+ExtensionsTests.swift in Sources */,
 				48F9BC31252F61DC00B801D1 /* OAuthRefreshOrWaitActionGeneratorTests.swift in Sources */,
+				48005DCA2530675200B4E8BD /* EmptyTokenManagerTests.swift in Sources */,
 				48F9BC25252E1C4E00B801D1 /* APIV3RequesterTests.swift in Sources */,
 				4859F99C252E022400158F5E /* StandardV3SenderResponseTests.swift in Sources */,
 			);
