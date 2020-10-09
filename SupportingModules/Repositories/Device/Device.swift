@@ -8,20 +8,6 @@
 
 import Foundation
 
-struct DeviceToken: Codable {
-
-    enum Providers: String {
-        case apple = "APPLE"
-        case sns = "SNS"
-    }
-    let provider: String?
-    let providerToken: String?
-
-    static func defaultDeviceToken(withProviderToken providerToken: String) -> DeviceToken {
-        return DeviceToken(provider: Providers.apple.rawValue, providerToken: providerToken)
-    }
-}
-
 struct Device: Codable {
     let deviceTokens: [DeviceToken]?
     let token: String?
