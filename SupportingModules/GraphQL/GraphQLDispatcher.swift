@@ -10,10 +10,17 @@ import Foundation
 import Apollo
 
 public struct GraphQLDispatcher {
-    public static func dispatch<T: GraphQLQuery>(
+
+    let client: GraphNetwork
+
+    public init(client: GraphNetwork) {
+        self.client = client
+    }
+
+    public func dispatch<T: GraphQLQuery>(
         query: T,
         completion: @escaping (_ object: T.Data?, _ error: Error?) -> Void) {
-        Network.shared.apollo.fetch(query: query) { result in
+        client.apollo.fetch(query: query) { result in
             switch result {
             case .success(let graphQLResult):
                 return completion(graphQLResult.data, nil)
@@ -23,10 +30,10 @@ public struct GraphQLDispatcher {
         }
     }
 
-    public static func dispatchMutation<T: GraphQLMutation>(
+    public func dispatchMutation<T: GraphQLMutation>(
         mutation: T,
         completion:  @escaping (_ object: T.Data?, _ error: Error?) -> Void) {
-        Network.shared.apollo.perform(mutation: mutation) { result in
+        client.apollo.perform(mutation: mutation) { result in
             switch result {
             case .success(let graphQLResult):
                 return completion(graphQLResult.data, nil)
