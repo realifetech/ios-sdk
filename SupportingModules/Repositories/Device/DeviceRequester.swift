@@ -10,9 +10,10 @@ import Foundation
 import APILayer
 import APIV3Utilities
 
-struct DeviceRequester: Requester, APIV3Requester {
-    static var endpoint: String? = "/device"
+public struct DeviceRequester: Requester, APIV3Requester {
+    public static var endpoint: String? = "/device"
 }
+
 extension DeviceRequester {
     static var current: URLRequest {
         return RequestCreator.createRequest(withRoot: root(), andEndpoint: endpoint!, httpMethod: .GET, body: nil, headers: nil)
@@ -27,27 +28,5 @@ extension DeviceRequester {
         body["provider"] = deviceToken.provider ?? ""
         body["providerToken"] = deviceToken.providerToken ?? ""
         return RequestCreator.createRequest(withRoot: root(), andEndpoint: endpoint! + "/me/token", httpMethod: .POST, body: body, headers: nil)
-    }
-
-    static func post(deviceCapabilityConsents consents: [String: Any]) -> URLRequest {
-        return RequestCreator.createRequest(withRoot: root(), andEndpoint: endpoint! + "/me/consent", httpMethod: .POST, body: consents)
-    }
-
-    static func post(devicePushNotificationConsents consents: [String: Any]) -> URLRequest {
-        return RequestCreator.createRequest(withRoot: root(), andEndpoint: endpoint! + "/me/push-consent", httpMethod: .POST, body: consents)
-    }
-
-    static func getGranularPushConsents() -> URLRequest {
-        return RequestCreator.createRequest(withRoot: root(), andEndpoint: endpoint! + "/me/push-consent", httpMethod: .GET)
-    }
-
-    static var selectedEvent: URLRequest {
-        return RequestCreator.createRequest(withRoot: root(), andEndpoint: endpoint! + "/me/event", httpMethod: .GET)
-    }
-
-    static func updateSelectedEvent(withId id: Int?) -> URLRequest {
-        var body: [String: Any]?
-        if let id = id { body = ["eventId": id] }
-        return RequestCreator.createRequest(withRoot: root(), andEndpoint: endpoint! + "/me/event", httpMethod: .POST, body: body)
     }
 }

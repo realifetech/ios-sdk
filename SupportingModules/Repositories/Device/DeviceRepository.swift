@@ -2,30 +2,37 @@
 //  DeviceRepository.swift
 //  CLArena
 //
-//  Created by Ross Patman on 10/09/2018.
+//  Created by apple on 25/11/2018.
 //  Copyright © 2018 ConcertLive. All rights reserved.
 //
 
 import Foundation
-import RxSwift
-import APIV3Utilities
 import APILayer
+import APIV3Utilities
+import RxSwift
 
-struct DeviceRepository: RemoteDiskCacheDataProviding {
-    typealias Cdble = Device
-    typealias Rqstr = DeviceRequester
+public struct DeviceRepository: RemoteDiskCacheDataProviding {
+
+    public typealias Cdble = StandardV3SenderResponse
+    public typealias Rqstr = DeviceRequester
+
+	enum DeviceUpdateKeys: String {
+		case deviceConsent // ⤵
+		case pushNotification, locationCapture, camera, photoSharing, calendar, locationGranular
+	}
 }
 
-extension DeviceRepository: DeviceProviding {
-    var current: Observable<Device> {
-        return DeviceRepository.retrieve(type: Cdble.self, forRequest: Rqstr.current, privateObj: false, strategy: .localOrRemoteIfExpired)
+extension DeviceRepository {
+    
+    public struct TokenRegistrationResponse: Codable {
+        let snsEndpoint: String?
     }
 
-    var granularPushConsents: Observable<[GranularPushConsent]> {
-        return DeviceRepository.retrieve(type: DevicePushConsentResponse.self, forRequest: Rqstr.getGranularPushConsents(), strategy: .remote).map { return $0.items }
+    public static func register(device: Device) -> Observable<Bool> {
+        return retrieve(type: StandardV3SenderResponse.self, forRequest: Rqstr.register(device: device), strategy: .remoteWithoutCachingResponse).map { $0.isSuccess }
     }
 
-    var selectedEvent: Observable<Event> {
-        return DeviceRepository.retrieve(type: Event.self, forRequest: Rqstr.selectedEvent, strategy: .localAndForcedRemote)
+    public static func register(tokenForPushNotificationsWithDeviceToken deviceToken: DeviceToken) -> Observable<TokenRegistrationResponse> {
+        return retrieve(type: TokenRegistrationResponse.self, forRequest: Rqstr.register(tokenForPushNotificationsWithDeviceToken: deviceToken), strategy: .remoteWithoutCachingResponse)
     }
 }

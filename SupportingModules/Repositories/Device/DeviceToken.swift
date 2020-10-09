@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DeviceToken: Codable {
+public struct DeviceToken: Codable {
 
     enum Providers: String {
         case apple = "APPLE"
@@ -17,7 +17,7 @@ struct DeviceToken: Codable {
     let provider: String?
     let providerToken: String?
 
-    static func defaultDeviceToken(withProviderToken providerToken: String) -> DeviceToken {
+    public static func defaultDeviceToken(withProviderToken providerToken: String) -> DeviceToken {
         return DeviceToken(provider: Providers.apple.rawValue, providerToken: providerToken)
     }
 }

@@ -8,9 +8,8 @@
 
 import Foundation
 
-struct Device: Codable {
-    let deviceTokens: [DeviceToken]?
-    let token: String?
+public struct Device: Codable {
+    let token: String? // Device ID
     let type: String?
     let model: String?
     let manufacturer: String?
@@ -18,20 +17,28 @@ struct Device: Codable {
     let osVersion: String?
     let bluetoothOn: Bool?
     let wifiConnected: Bool?
-    let venueId: Int?
-    let eventId: Int?
-}
 
-extension Device {
-    var registeredSNSEndpoint: String? {
-        guard let snsEndpoint = deviceTokens?.filter({ $0.provider == DeviceToken.Providers.sns.rawValue }).first, let endpoint = snsEndpoint.providerToken else { return nil }
-        return endpoint
+    public init(id: String, type: String = "IOS", model: String, manufacturer: String = "APPL", sdkVersion: String, osVersion: String, bluetoothOn: Bool, wifiConnected: Bool) {
+        self.token = id
+        self.type = type
+        self.model = model
+        self.manufacturer = manufacturer
+        self.appVersion = sdkVersion
+        self.osVersion = osVersion
+        self.wifiConnected = wifiConnected
+        self.bluetoothOn = bluetoothOn
     }
 }
 
 extension Device {
     var jsonRepresentation: [String: Any] {
-        guard let data = try? JSONEncoder().encode(self), let json = try? JSONSerialization.jsonObject(with: data, options: []), let jsonDict = json as? [String: Any] else { return [:] }
+        guard
+            let data = try? JSONEncoder().encode(self),
+            let json = try? JSONSerialization.jsonObject(with: data, options: []),
+            let jsonDict = json as? [String: Any]
+            else {
+                return [:]
+        }
         return jsonDict
     }
 }

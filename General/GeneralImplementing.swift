@@ -7,9 +7,13 @@
 //
 
 import Foundation
-import APIV3Utilities
+import Repositories
+import RxSwift
 
 public class GeneralImplementing: DeviceRegistering {
+
+    var hasRegistered: Bool = false
+
     public init() {}
 
     public var sdkReady: Bool {
@@ -24,5 +28,22 @@ public class GeneralImplementing: DeviceRegistering {
 
     public func registerDevice(_: (Result<Void, Error>) -> Void) {
         print("Someone wanted to register the device")
+        let device = Device(id: "123",
+                            model: "OlivierPhone",
+                            sdkVersion: "0.0.1alpha",
+                            osVersion: "4",
+                            bluetoothOn: false,
+                            wifiConnected: true)
+        DeviceRepository
+            .register(device: device)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { registered in
+                if registered { self.hasRegistered = true }
+                
+            }, onError: { error in
+
+            }, onCompleted: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, onDisposed: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        
     }
 }
