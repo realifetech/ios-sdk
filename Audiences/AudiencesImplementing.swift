@@ -19,7 +19,7 @@ public class AudiencesImplementing: AudienceChecking {
     public init(tokenHelper: V3APITokenManagable, graphQLAPIUrl: String) {
         self.graphQLAPIUrl = graphQLAPIUrl
         if let graphQLUrl = URL(string: graphQLAPIUrl) {
-            let client = Network(graphQLAPIUrl: graphQLUrl, tokenHelper: tokenHelper)
+            let client = GraphNetwork(graphQLAPIUrl: graphQLUrl, tokenHelper: tokenHelper)
             self.dispatcher = GraphQLDispatcher(client: client)
         } else {
             self.dispatcher = nil

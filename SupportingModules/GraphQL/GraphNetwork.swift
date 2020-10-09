@@ -46,9 +46,6 @@ extension GraphNetwork: HTTPNetworkTransportPreflightDelegate {
                                  willSend request: inout URLRequest) {
         // Get the existing headers, or create new ones if they're nil
         var headers = request.allHTTPHeaderFields ?? [String: String]()
-        // Add any new headers you need
-        //        headers["Authorization"] = "Bearer \(UserManager.shared.currentAuthToken)"
-        // Re-assign the updated headers to the request.
         let deviceHelper: UIDeviceInterface = UIDeviceFactory.makeUIDeviceHelper()
         headers["X-Ls-DeviceId"] = deviceHelper.deviceId
         if tokenHelper.tokenIsValid, let token = tokenHelper.token {

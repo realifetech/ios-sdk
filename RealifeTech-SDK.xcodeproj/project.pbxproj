@@ -13,7 +13,7 @@
 		0317B92B252768EA00863EC6 /* GraphQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317B91D252768EA00863EC6 /* GraphQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0317B933252769D900863EC6 /* GraphNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B932252769D900863EC6 /* GraphNetwork.swift */; };
 		034CBB3A2530595000E607C2 /* GraphQLDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */; };
-		03B0D109252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */; };
+		035721BB2530A25200FD1E23 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */; };
 		03B0D10A252C83040037D504 /* Types.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D108252C83040037D504 /* Types.graphql.swift */; };
 		03D5838E2521E44F00E516F9 /* UIDeviceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838B2521E44F00E516F9 /* UIDeviceFactory.swift */; };
 		03D5838F2521E44F00E516F9 /* UIDeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838C2521E44F00E516F9 /* UIDeviceInterface.swift */; };
@@ -2413,7 +2413,7 @@
 				034CBB3A2530595000E607C2 /* GraphQLDispatcher.swift in Sources */,
 				0317B933252769D900863EC6 /* GraphNetwork.swift in Sources */,
 				03B0D10A252C83040037D504 /* Types.graphql.swift in Sources */,
-				03B0D109252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */,
+				035721BB2530A25200FD1E23 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
