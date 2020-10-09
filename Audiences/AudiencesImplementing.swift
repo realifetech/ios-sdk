@@ -18,8 +18,7 @@ public class AudiencesImplementing: AudienceChecking, SDKConfigurable {
         GraphQLDispatcher.dispatch(query: BelongsToAudienceQuery(audienceId: audienceId)) { (object, error) in
             if let error = error {
                 return callback(.failure(error))
-            }
-            if let belongsToAudience = object?.me?.device?.belongsToAudience {
+            } else if let belongsToAudience = object?.me?.device?.belongsToAudience {
                 return callback(.success(belongsToAudience))
             } else {
                 return callback(.success(false))

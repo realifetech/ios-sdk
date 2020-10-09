@@ -52,24 +52,25 @@ extension Network: HTTPNetworkTransportPreflightDelegate {
 // MARK: - Task Completed Delegate
 
 extension Network: HTTPNetworkTransportTaskCompletedDelegate {
+
     func networkTransport(_ networkTransport: HTTPNetworkTransport,
                           didCompleteRawTaskForRequest request: URLRequest,
                           withData data: Data?,
                           response: URLResponse?,
                           error: Error?) {
-//        if let error = error {
-//            print("Error: \(error)")
-//        }
-//        if let response = response {
-//            print("Response: \(response)")
-//        } else {
-//            print("No URL Response received!")
-//        }
-//        if let data = data {
-//            print("Data: \(String(describing: String(bytes: data, encoding: .utf8)))")
-//        } else {
-//            print("No data received!")
-//        }
+        if let error = error {
+            print("Error: \(error)")
+        }
+        if let response = response {
+            print("Response: \(response)")
+        } else {
+            print("No URL Response received!")
+        }
+        if let data = data {
+            print("Data: \(String(describing: String(bytes: data, encoding: .utf8)))")
+        } else {
+            print("No data received!")
+        }
     }
 }
 
@@ -83,35 +84,6 @@ extension Network: HTTPNetworkTransportRetryDelegate {
                           response: URLResponse?,
                           continueHandler: @escaping (_ action: HTTPNetworkTransport.ContinueAction) -> Void) {
         // investigate error to handle appropriately
-    }
-}
-
-public typealias MutationCompletion = (_ jsonObject: JSONObject?, _ error: Error?) -> Void
-
-public struct GraphQLDispatcher {
-    public static func dispatch<T: GraphQLQuery>(
-        query: T,
-        completion: @escaping (_ object: T.Data?, _ error: Error?) -> Void) {
-        Network.shared.apollo.fetch(query: query) { result in
-            switch result {
-            case .success(let graphQLResult):
-                return completion(graphQLResult.data, nil)
-            case .failure(let error):
-                return completion(nil, error)
-            }
-        }
-    }
-
-    public static func dispatchMutation<T: GraphQLMutation>(
-        mutation: T,
-        completion:  @escaping (_ object: T.Data?, _ error: Error?) -> Void) {
-        Network.shared.apollo.perform(mutation: mutation) { result in
-            switch result {
-            case .success(let graphQLResult):
-                return completion(graphQLResult.data, nil)
-            case .failure(let error):
-                return completion(nil, error)
-            }
-        }
+        print("\(error.localizedDescription)")
     }
 }
