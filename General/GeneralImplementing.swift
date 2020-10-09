@@ -22,7 +22,7 @@ public class GeneralImplementing: DeviceRegistering {
         return "x"
     }
 
-    public func registerDevice(_: (DeviceRegistrationResult) -> Void) {
+    public func registerDevice(_: (Result<Void, Error>) -> Void) {
         print("Someone wanted to register the device")
     }
 }

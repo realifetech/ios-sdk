@@ -12,10 +12,5 @@ public protocol DeviceRegistering {
     var sdkReady: Bool { get }
     var deviceId: String { get }
 
-    func registerDevice(_: (DeviceRegistrationResult) -> Void)
-}
-
-public enum DeviceRegistrationResult {
-    case success
-    case error(Error)
+    func registerDevice(_: (Result<Void, Error>) -> Void)
 }

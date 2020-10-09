@@ -114,6 +114,7 @@ target 'DummyProject' do
   project 'DummyProject/DummyProject'
 
   # Pods for DummyProject
+
   target 'DummyProjectTests' do
     # Pods for testing
     pod 'RxTest', '~> 5.1.1'
