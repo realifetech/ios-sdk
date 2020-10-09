@@ -10,7 +10,7 @@ import Foundation
 import General
 import GraphQL
 
-public class AudiencesImplementing: AudienceChecking, SDKConfigurable {
+public class AudiencesImplementing: AudienceChecking {
 
     public init() {}
 
@@ -24,8 +24,5 @@ public class AudiencesImplementing: AudienceChecking, SDKConfigurable {
                 return callback(.success(false))
             }
         }
-    }
-
-    public func setConfiguration(_: SDKConfiguration) {
     }
 }
