@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import APILayer
 
-protocol APIV3Requester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting {
+public protocol APIV3Requester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting {
     static func root() -> RequestRootURL
     static func preDispatchAction() -> Observable<Any?>?
     static func interceptors() -> [(URLRequest) -> (URLRequest)]?
@@ -18,13 +18,13 @@ protocol APIV3Requester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRe
 }
 
 extension APIV3Requester {
-    static func preDispatchAction() -> Observable<Any?>? {
+    public static func preDispatchAction() -> Observable<Any?>? {
         return APIV3RequesterHelper.tokenManager.getTokenObservable?.map {
             $0 as Any
         }
     }
 
-    static func interceptors() -> [(URLRequest) -> (URLRequest)]? {
+    public static func interceptors() -> [(URLRequest) -> (URLRequest)]? {
         return [
             addJSONContentTypeHeader,
             addDeviceIdHeader,
@@ -32,15 +32,15 @@ extension APIV3Requester {
         ]
     }
 
-    static func root() -> RequestRootURL {
+    public static func root() -> RequestRootURL {
         return APIV3RequesterHelper.v3baseUrl
     }
 
-    static func dateFormatString() -> String {
+    public static func dateFormatString() -> String {
         return "yyyy-MM-dd'T'HH:mm:ssZ"
     }
 
-    static func dateFormat() -> RequesterDateFormat? {
+    public static func dateFormat() -> RequesterDateFormat? {
         return .formatted(format: dateFormatString(), localeIdentifier: "en_US_POSIX")
     }
 }

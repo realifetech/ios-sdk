@@ -9,12 +9,12 @@
 import Foundation
 import APILayer
 
-protocol DeviceIdHeaderRequestInserting {
+public protocol DeviceIdHeaderRequestInserting {
     static func addDeviceIdHeader(toRequest request: URLRequest) -> URLRequest
 }
 
 extension DeviceIdHeaderRequestInserting {
-    static func addDeviceIdHeader(toRequest request: URLRequest) -> URLRequest {
+    public static func addDeviceIdHeader(toRequest request: URLRequest) -> URLRequest {
         var request = request
         let deviceIdHeader = RequestHeader.generateDeviceIdHeader(deviceId: APIV3RequesterHelper.deviceId)
         request.addValue(deviceIdHeader.valueForHeader, forHTTPHeaderField: deviceIdHeader.header)
