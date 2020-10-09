@@ -26,7 +26,11 @@ struct AuthorisationStore: AuthorisationStoring {
         case expiryDate = "livestyled-tokenExpiryDate"
     }
 
-    private let keychain = KeychainSwift()
+    private let keychain: KeychainSwift
+
+    init(keychain: KeychainSwift = KeychainSwift()) {
+        self.keychain = keychain
+    }
 
     var accessToken: String? {
         return keychain.get(KeychainKey.token.rawValue)

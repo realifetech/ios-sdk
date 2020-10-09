@@ -16,13 +16,15 @@ protocol AuthorisationWorkable {
 
 struct AuthorisationWorker: AuthorisationWorkable {
     private var authorisationStore: AuthorisationStoring
+    private var oAuthRepositoryType: OAuthProviding.Type
 
-    init(authorisationStore: AuthorisationStoring) {
+    init(authorisationStore: AuthorisationStoring, oAuthRepositoryType: OAuthProviding.Type = OAuthRepository.self) {
         self.authorisationStore = authorisationStore
+        self.oAuthRepositoryType = oAuthRepositoryType
     }
 
     var requestInitialAccessToken: Observable<OAuthToken> {
-        return OAuthRepository.requestInitialAccessToken()
+        return oAuthRepositoryType.requestInitialAccessToken()
             .map { (token: OAuthToken) -> OAuthToken in
                 if let accessToken = token.accessToken, let expiresIn = token.expiresIn {
                     self.authorisationStore.saveCredentials(

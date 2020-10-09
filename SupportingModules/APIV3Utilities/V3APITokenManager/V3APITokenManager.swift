@@ -19,9 +19,11 @@ public class V3APITokenManager: V3APITokenManagable {
 
     private let authorisationStore: AuthorisationStoring
     private let oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
+    private let scheduler: SchedulerType
     private let disposeBag: DisposeBag = DisposeBag()
 
-    init(authorisationStore: AuthorisationStore, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating) {
+    init(authorisationStore: AuthorisationStoring, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating, subscibeOnScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)) {
+        self.scheduler = subscibeOnScheduler
         self.authorisationStore = authorisationStore
         self.oAuthRefreshOrWaitActionGenerator = oAuthRefreshOrWaitActionGenerator
     }
@@ -32,7 +34,7 @@ public class V3APITokenManager: V3APITokenManagable {
             return
         }
         getTokenObservable
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .subscribeOn(scheduler)
             .observeOn(MainScheduler.instance)
             .take(1)
             .subscribe(onNext: { _ in

@@ -17,7 +17,7 @@ protocol OAuthTokenRefreshWatchable {
 }
 
 enum OAuthTokenStatus {
-    case valid, invalid, refreshing
+    case unknown, valid, invalid, refreshing
 }
 
 class OAuthTokenRefreshWatcher: OAuthTokenRefreshWatchable {
@@ -33,13 +33,12 @@ class OAuthTokenRefreshWatcher: OAuthTokenRefreshWatchable {
         return status
             .asObservable()
             .skip(1)
-            .take(1)
             .filter { $0 == .valid }
             .map { $0 == .valid }
     }
 
-    init() {
-        status = BehaviorRelay(value: .valid)
+    init(tokenStatusSource: BehaviorRelay<OAuthTokenStatus>? = nil) {
+        status = tokenStatusSource ?? BehaviorRelay(value: .unknown)
     }
 
     /// Sets the current token status, skipping values identical to the current one

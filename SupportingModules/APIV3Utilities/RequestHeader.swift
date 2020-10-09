@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RequestHeader {
+public struct RequestHeader {
 
     private enum HeaderKeys: String {
         case deviceId = "X-Ls-DeviceId"
@@ -19,11 +19,11 @@ struct RequestHeader {
     var header: String
     var valueForHeader: String
 
-    static func generateDeviceIdHeader(deviceId: String) -> RequestHeader {
+    public static func generateDeviceIdHeader(deviceId: String) -> RequestHeader {
         return RequestHeader(header: HeaderKeys.deviceId.rawValue, valueForHeader: deviceId)
     }
 
-    static func generateAuthHeader(accessToken: String) -> RequestHeader {
+    public static func generateAuthHeader(accessToken: String) -> RequestHeader {
         return RequestHeader(header: HeaderKeys.authorization.rawValue, valueForHeader: "\(HeaderKeys.bearerAuthorization.rawValue) \(accessToken)")
     }
 }
