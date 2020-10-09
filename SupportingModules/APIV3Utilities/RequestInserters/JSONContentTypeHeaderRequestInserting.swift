@@ -9,12 +9,12 @@
 import Foundation
 import APILayer
 
-protocol JSONContentTypeHeaderRequestInserting {
+public protocol JSONContentTypeHeaderRequestInserting {
     static func addJSONContentTypeHeader(toRequest request: URLRequest) -> URLRequest
 }
 
 extension JSONContentTypeHeaderRequestInserting {
-    static func addJSONContentTypeHeader(toRequest request: URLRequest) -> URLRequest {
+    public static func addJSONContentTypeHeader(toRequest request: URLRequest) -> URLRequest {
         var request = request
         if request.value(forHTTPHeaderField: "Content-Type") == nil {
             request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
