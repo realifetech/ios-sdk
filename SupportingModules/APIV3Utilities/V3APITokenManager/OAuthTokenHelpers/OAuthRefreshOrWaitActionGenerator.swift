@@ -37,6 +37,7 @@ struct OAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating {
         }
         self.oAuthTokenRefreshWatcher.updateRefreshingStatus(newValue: .refreshing)
         return authorisationWorker.requestInitialAccessToken
+            .take(1)
             .do(onNext: { _ in
                 self.oAuthTokenRefreshWatcher.updateRefreshingStatus(newValue: .valid)
             }, onError: { _ in

@@ -35,12 +35,12 @@ class OAuthRefreshOrWaitActionGeneratorTests: XCTestCase {
     func test_refreshOrWaitAction_refreshInProgress() {
         let scheduler = TestScheduler(initialClock: 0)
         let disposeBag = DisposeBag()
-        let refreshCompletion = scheduler.createColdObservable([
+        let refreshCompleteStream = scheduler.createColdObservable([
             Recorded.next(100, true),
             Recorded.next(300, true),
             Recorded.completed(500)])
         let watcher = MockWatcher()
-        watcher.ongoingTokenRefresh = refreshCompletion.asObservable()
+        watcher.ongoingTokenRefresh = refreshCompleteStream.asObservable()
         let store = MockStore()
         let worker = MockWorker(oAuthTokenObservable: Observable.just(emptyToken))
         let sut = OAuthRefreshOrWaitActionGenerator(
@@ -53,7 +53,39 @@ class OAuthRefreshOrWaitActionGeneratorTests: XCTestCase {
         let observer = scheduler.createObserver(Bool.self)
         outputStream
             .asDriver(onErrorJustReturn: Void())
-            .map({ _ in return true })
+            .map({ _ in return true }) // We have to map to a Bool since Void is not equatable
+            .drive(observer)
+            .disposed(by: disposeBag)
+        scheduler.start()
+
+        let expectedEvents = [
+            Recorded.next(100, true),
+            Recorded.completed(100)
+        ]
+        XCTAssertEqual(expectedEvents, observer.events)
+    }
+
+    func test_refreshOrWaitAction_getToken() {
+        let scheduler = TestScheduler(initialClock: 0)
+        let disposeBag = DisposeBag()
+        let tokenStream = scheduler.createColdObservable([
+            Recorded.next(100, emptyToken),
+            Recorded.next(300, emptyToken),
+            Recorded.completed(500)])
+        let watcher = MockWatcher()
+        let store = MockStore()
+        let worker = MockWorker(oAuthTokenObservable: tokenStream.asObservable())
+        let sut = OAuthRefreshOrWaitActionGenerator(
+            authorisationWorker: worker,
+            oAuthTokenRefreshWatcher: watcher,
+            authorisationStore: store)
+        guard let outputStream = sut.refreshTokenOrWaitAction else {
+            return XCTFail("No refreshOrWait observable provided")
+        }
+        let observer = scheduler.createObserver(Bool.self)
+        outputStream
+            .asDriver(onErrorJustReturn: Void())
+            .map({ _ in return true }) // We have to map to a Bool since Void is not equatable
             .drive(observer)
             .disposed(by: disposeBag)
         scheduler.start()
