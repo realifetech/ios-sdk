@@ -2,15 +2,17 @@
 platform :ios, '12.1'
 inhibit_all_warnings!
 
+<<<<<<< HEAD
+pod 'SwiftLint'
+pod 'RxSwift', '~> 5.1.1'
+pod 'RxCocoa', '~> 5.1.1'
+=======
 workspace 'RealifeTech-SDK'
 project 'RealifeTech-SDK'
 project 'DummyProject/DummyProject'
 
-pod 'SwiftLint'
-pod 'RxSwift', '~> 5.1.1'
-pod 'RxCocoa', '~> 5.1.1'
-pod "Apollo", "0.30.0"
-pod 'RxTest', '~> 5.1.1'
+# pod 'SwiftLint'
+>>>>>>> feature/addingDummyProject
 
 target 'RealifeTech' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -55,7 +57,6 @@ end
 target 'APILayer' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  project 'RealifeTech-SDK'
 
   # Pods for APILayer
 
@@ -66,16 +67,15 @@ target 'APILayer' do
 
 end
 
-target 'APIV3Utilities' do
+target 'APIUtilities' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  project 'RealifeTech-SDK'
 
   # Pods for APILayer
 
-  target 'APIV3UtilitiesTests' do
+  target 'APIUtilitiesTests' do
     # Pods for testing
-    pod 'RxCocoa', '~> 5.1.1'
+
   end
 
 end
@@ -106,28 +106,16 @@ target 'UIDeviceHelper' do
 
 end
 
-target 'GraphQL' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-  project 'RealifeTech-SDK'
-
-  target 'GraphQLTests' do
-    # Pods for testing
-
-  end
-
-end
-
 target 'DummyProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   project 'DummyProject/DummyProject'
 
   # Pods for DummyProject
-
+  pod 'SwiftLint'
   target 'DummyProjectTests' do
     # Pods for testing
-
+    pod 'SwiftLint'
   end
 
 end

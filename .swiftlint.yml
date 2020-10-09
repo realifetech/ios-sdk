@@ -2,3 +2,5 @@ excluded:
    - Pods
    - SupportingModules/APILayer
    - SupportingModules/GraphQL/API
+   - SupportingModules/APIV3Utilities
+   - APIV3Utilities
