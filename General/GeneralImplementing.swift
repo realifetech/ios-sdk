@@ -9,7 +9,7 @@
 import Foundation
 import APIV3Utilities
 
-public class GeneralImplementing: DeviceRegistering, SDKConfigurable {
+public class GeneralImplementing: DeviceRegistering {
     public init() {}
 
     public var sdkReady: Bool {

@@ -9,7 +9,6 @@ project 'DummyProject/DummyProject'
 pod 'SwiftLint'
 pod 'RxSwift', '~> 5.1.1'
 pod 'RxCocoa', '~> 5.1.1'
-pod 'RxTest', '~> 5.1.1'
 
 target 'RealifeTech' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -20,7 +19,7 @@ target 'RealifeTech' do
 
   target 'RealifeTechTests' do
     # Pods for testing
-
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -34,6 +33,7 @@ target 'Communicate' do
 
   target 'CommunicateTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -47,6 +47,7 @@ target 'General' do
 
   target 'GeneralTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -60,7 +61,7 @@ target 'APILayer' do
 
   target 'APILayerTests' do
     # Pods for testing
-
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -74,7 +75,7 @@ target 'APIV3Utilities' do
 
   target 'APIV3UtilitiesTests' do
     # Pods for testing
-    pod 'RxCocoa', '~> 5.1.1'
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -88,6 +89,7 @@ target 'ReachabilityChecker' do
 
   target 'ReachabilityCheckerTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -101,6 +103,7 @@ target 'UIDeviceHelper' do
 
   target 'UIDeviceHelperTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -111,10 +114,9 @@ target 'DummyProject' do
   project 'DummyProject/DummyProject'
 
   # Pods for DummyProject
-  pod 'SwiftLint'
   target 'DummyProjectTests' do
     # Pods for testing
-    pod 'SwiftLint'
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end

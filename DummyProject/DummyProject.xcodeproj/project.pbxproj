@@ -46,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		48D6F167251E1ECF006CA623 /* DummyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F16A251E1ECF006CA623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 		48D6F18C251E1F6D006CA623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48005DCD253072E900B4E8BD /* XCTest.framework */,
 				48D6F18D251E1F6D006CA623 /* RealifeTech.framework */,
 				022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */,
 				87831F4462866B37A786DC40 /* Pods_DummyProject_DummyProjectTests.framework */,
