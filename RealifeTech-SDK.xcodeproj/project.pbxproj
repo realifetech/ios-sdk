@@ -25,7 +25,7 @@
 		48005DCA2530675200B4E8BD /* EmptyTokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */; };
 		48005DCC2530697E00B4E8BD /* Dictionary+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DCB2530697E00B4E8BD /* Dictionary+ExtensionsTests.swift */; };
 		48005DFB2530A73800B4E8BD /* Repositories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48005DF22530A73800B4E8BD /* Repositories.framework */; };
-		48005E002530A73800B4E8BD /* RepositoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DFF2530A73800B4E8BD /* RepositoriesTests.swift */; };
+		48005E002530A73800B4E8BD /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DFF2530A73800B4E8BD /* DeviceTests.swift */; };
 		48005E022530A73800B4E8BD /* Repositories.h in Headers */ = {isa = PBXBuildFile; fileRef = 48005DF42530A73800B4E8BD /* Repositories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		480BCD8F251E252600266617 /* DeviceRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8C251E252600266617 /* DeviceRegistering.swift */; };
 		480BCD90251E252600266617 /* GeneralImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8D251E252600266617 /* GeneralImplementing.swift */; };
@@ -337,7 +337,7 @@
 		48005DF42530A73800B4E8BD /* Repositories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Repositories.h; sourceTree = "<group>"; };
 		48005DF52530A73800B4E8BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48005DFA2530A73800B4E8BD /* RepositoriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepositoriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48005DFF2530A73800B4E8BD /* RepositoriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTests.swift; sourceTree = "<group>"; };
+		48005DFF2530A73800B4E8BD /* DeviceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
 		48005E012530A73800B4E8BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		480BCD8C251E252600266617 /* DeviceRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistering.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
@@ -822,7 +822,7 @@
 		489F06372530A8B600BF4974 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				48005DFF2530A73800B4E8BD /* RepositoriesTests.swift */,
+				48005DFF2530A73800B4E8BD /* DeviceTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2385,7 +2385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48005E002530A73800B4E8BD /* RepositoriesTests.swift in Sources */,
+				48005E002530A73800B4E8BD /* DeviceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
