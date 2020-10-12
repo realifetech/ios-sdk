@@ -62,7 +62,6 @@ class V3APITokenManagerTests: XCTestCase {
         observableSource.onNext(())
         wait(for: [expectation], timeout: 0.2)
     }
-    
 }
 
 private final class MockStore: AuthorisationStoring {

@@ -9,7 +9,7 @@
 import Foundation
 
 func dictionaryRemovingNilValuesFromDictionary(_ sourceDictionary: [String: AnyObject?]) -> [String: AnyObject] {
-    var result = [String: AnyObject]()
+    var result: [String: AnyObject] = [:]
     for (key, value) in sourceDictionary {
         if let value = value {
             result[key] = value

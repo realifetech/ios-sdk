@@ -73,7 +73,6 @@ class APIV3RequesterTests: XCTestCase  {
             return XCTFail("Did not get interceptors")
         }
         XCTAssertEqual(sutInterceptors.count, 3)
-
         sutInterceptors.forEach {
             request = $0(request)
         }

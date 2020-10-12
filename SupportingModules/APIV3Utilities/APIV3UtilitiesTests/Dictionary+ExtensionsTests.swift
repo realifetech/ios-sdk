@@ -11,7 +11,7 @@ import XCTest
 
 class DictionaryExtensionsTests: XCTestCase {
 
-    func testExample() {
+    func test_dictionaryRemovingNilValuesFromDictionary() {
         let testDict = [
             "hello": 123,
             "my": nil,
