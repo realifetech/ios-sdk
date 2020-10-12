@@ -15,14 +15,6 @@ public struct DeviceRequester: Requester, APIV3Requester {
 }
 
 extension DeviceRequester {
-    static var current: URLRequest {
-        return RequestCreator.createRequest(
-            withRoot: root(),
-            andEndpoint: endpoint!,
-            httpMethod: .GET,
-            body: nil,
-            headers: nil)
-    }
 
     static func register(device: Device) -> URLRequest {
         return RequestCreator.createRequest(

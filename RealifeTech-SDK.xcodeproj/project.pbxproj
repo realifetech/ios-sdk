@@ -111,6 +111,7 @@
 		48EC5A402534595E0076138F /* Repositories.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48005DF22530A73800B4E8BD /* Repositories.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48EC5A44253459670076138F /* Communicate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E67770251BA86D007E2741 /* Communicate.framework */; };
 		48EC5A45253459670076138F /* Communicate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48E67770251BA86D007E2741 /* Communicate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48EC5A4C2534CA160076138F /* DeviceTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EC5A4A2534CA100076138F /* DeviceTokenTests.swift */; };
 		48F9BC23252E10C600B801D1 /* RequestHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4817D84C252E102400A786C0 /* RequestHeaderTests.swift */; };
 		48F9BC25252E1C4E00B801D1 /* APIV3RequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */; };
 		48F9BC27252F101A00B801D1 /* APIV3RequesterHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */; };
@@ -429,6 +430,7 @@
 		48E6777F251BA86D007E2741 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48EC5A3A2534561B0076138F /* PushNotificationRegistering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistering.swift; sourceTree = "<group>"; };
 		48EC5A3C253456900076138F /* CommunicateImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateImplementing.swift; sourceTree = "<group>"; };
+		48EC5A4A2534CA100076138F /* DeviceTokenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenTests.swift; sourceTree = "<group>"; };
 		48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterTests.swift; sourceTree = "<group>"; };
 		48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterHelperTests.swift; sourceTree = "<group>"; };
 		48F9BC28252F171000B801D1 /* V3APITokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagerTests.swift; sourceTree = "<group>"; };
@@ -823,6 +825,7 @@
 			isa = PBXGroup;
 			children = (
 				48005DFF2530A73800B4E8BD /* DeviceTests.swift */,
+				48EC5A4A2534CA100076138F /* DeviceTokenTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2386,6 +2389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48005E002530A73800B4E8BD /* DeviceTests.swift in Sources */,
+				48EC5A4C2534CA160076138F /* DeviceTokenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
