@@ -7,6 +7,7 @@
 //
 
 import General
+import Communicate
 import APIV3Utilities
 import UIDeviceHelper
 import Foundation
@@ -14,6 +15,7 @@ import Foundation
 public class RealifeTech {
 
     public static var General: GeneralImplementing!
+    public static var Communicate: CommunicateImplementing!
 
     /// Provides information required for the SDK to operate.
     /// This MUST be called before any other SDK functionality is acessed.
@@ -28,6 +30,7 @@ public class RealifeTech {
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             baseUrl: "http://api-dev.livestyled.com/v3")
         General = GeneralImplementing()
+        Communicate = CommunicateImplementing()
         helper.getValidToken {}
     }
 }

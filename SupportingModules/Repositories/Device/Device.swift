@@ -18,8 +18,16 @@ public struct Device: Codable {
     let bluetoothOn: Bool?
     let wifiConnected: Bool?
 
-    public init(id: String, type: String = "IOS", model: String, manufacturer: String = "APPL", sdkVersion: String, osVersion: String, bluetoothOn: Bool, wifiConnected: Bool) {
-        self.token = id
+    public init(deviceId: String,
+                type: String = "IOS",
+                model: String,
+                manufacturer: String = "APPL",
+                sdkVersion: String,
+                osVersion: String,
+                bluetoothOn: Bool,
+                wifiConnected: Bool
+    ) {
+        self.token = deviceId
         self.type = type
         self.model = model
         self.manufacturer = manufacturer

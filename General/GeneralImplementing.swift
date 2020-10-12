@@ -13,6 +13,7 @@ import RxSwift
 public class GeneralImplementing: DeviceRegistering {
 
     var hasRegistered: Bool = false
+    private var disposeBag = DisposeBag()
 
     public init() {}
 
@@ -26,24 +27,23 @@ public class GeneralImplementing: DeviceRegistering {
         return "x"
     }
 
-    public func registerDevice(_: (Result<Void, Error>) -> Void) {
+    public func registerDevice(_ completion: @escaping(Result<Void, Error>) -> Void) {
         print("Someone wanted to register the device")
-        let device = Device(id: "123",
+        let device = Device(deviceId: "123",
                             model: "OlivierPhone",
                             sdkVersion: "0.0.1alpha",
                             osVersion: "4",
                             bluetoothOn: false,
                             wifiConnected: true)
         DeviceRepository
-            .register(device: device)
+            .registerDevice(device)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { registered in
                 if registered { self.hasRegistered = true }
-                
+                completion(.success(()))
             }, onError: { error in
-
-            }, onCompleted: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, onDisposed: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-        
+                completion(.failure(error))
+            }).disposed(by: disposeBag)
     }
 }

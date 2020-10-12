@@ -8,6 +8,7 @@
 
 import RealifeTech
 import General
+import Communicate
 import UIKit
 
 @UIApplicationMain
@@ -17,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = SDKConfiguration(appCode: "hello", clientSecret: "no-one")
         RealifeTech.configureSDK(with: configuration)
-        RealifeTech.General.registerDevice { _ in }
+        RealifeTech.General.registerDevice { result in
+            print("Device Registration - ", result)
+        }
+        RealifeTech.Communicate.registerForPushNotifications(token: "NotARealToken") { result in
+            print("Push notification registration call = ", result)
+        }
         print(RealifeTech.General.sdkReady)
         return true
     }

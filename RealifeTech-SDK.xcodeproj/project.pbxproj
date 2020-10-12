@@ -105,6 +105,12 @@
 		48E67780251BA86D007E2741 /* Communicate.h in Headers */ = {isa = PBXBuildFile; fileRef = 48E67772251BA86D007E2741 /* Communicate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48EC5A352530C8680076138F /* Repositories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48005DF22530A73800B4E8BD /* Repositories.framework */; };
 		48EC5A362530C8680076138F /* Repositories.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48005DF22530A73800B4E8BD /* Repositories.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48EC5A3B2534561B0076138F /* PushNotificationRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EC5A3A2534561B0076138F /* PushNotificationRegistering.swift */; };
+		48EC5A3D253456900076138F /* CommunicateImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EC5A3C253456900076138F /* CommunicateImplementing.swift */; };
+		48EC5A3F2534595E0076138F /* Repositories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48005DF22530A73800B4E8BD /* Repositories.framework */; };
+		48EC5A402534595E0076138F /* Repositories.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48005DF22530A73800B4E8BD /* Repositories.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48EC5A44253459670076138F /* Communicate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E67770251BA86D007E2741 /* Communicate.framework */; };
+		48EC5A45253459670076138F /* Communicate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48E67770251BA86D007E2741 /* Communicate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48F9BC23252E10C600B801D1 /* RequestHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4817D84C252E102400A786C0 /* RequestHeaderTests.swift */; };
 		48F9BC25252E1C4E00B801D1 /* APIV3RequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */; };
 		48F9BC27252F101A00B801D1 /* APIV3RequesterHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */; };
@@ -222,6 +228,20 @@
 			remoteGlobalIDString = 48005DF12530A73800B4E8BD;
 			remoteInfo = Repositories;
 		};
+		48EC5A412534595E0076138F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48005DF12530A73800B4E8BD;
+			remoteInfo = Repositories;
+		};
+		48EC5A46253459670076138F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48E6776F251BA86D007E2741;
+			remoteInfo = Communicate;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -233,6 +253,7 @@
 			files = (
 				4817D848252E073A00A786C0 /* UIDeviceHelper.framework in Embed Frameworks */,
 				48343CD92522343E00AC80BD /* General.framework in Embed Frameworks */,
+				48EC5A45253459670076138F /* Communicate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +288,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				48EC5A362530C8680076138F /* Repositories.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48EC5A432534595E0076138F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				48EC5A402534595E0076138F /* Repositories.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +427,8 @@
 		48E67778251BA86D007E2741 /* CommunicateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommunicateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E6777D251BA86D007E2741 /* CommunicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateTests.swift; sourceTree = "<group>"; };
 		48E6777F251BA86D007E2741 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48EC5A3A2534561B0076138F /* PushNotificationRegistering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistering.swift; sourceTree = "<group>"; };
+		48EC5A3C253456900076138F /* CommunicateImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateImplementing.swift; sourceTree = "<group>"; };
 		48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterTests.swift; sourceTree = "<group>"; };
 		48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterHelperTests.swift; sourceTree = "<group>"; };
 		48F9BC28252F171000B801D1 /* V3APITokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagerTests.swift; sourceTree = "<group>"; };
@@ -549,6 +583,7 @@
 			files = (
 				640CCEBB84C5BF5434903412 /* Pods_RealifeTech.framework in Frameworks */,
 				4817D847252E073A00A786C0 /* UIDeviceHelper.framework in Frameworks */,
+				48EC5A44253459670076138F /* Communicate.framework in Frameworks */,
 				48343CD82522343E00AC80BD /* General.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +619,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48EC5A3F2534595E0076138F /* Repositories.framework in Frameworks */,
 				BB2A2C1FB1520DFAEB1084F7 /* Pods_Communicate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -982,6 +1018,8 @@
 				48E67772251BA86D007E2741 /* Communicate.h */,
 				48E67773251BA86D007E2741 /* Info.plist */,
 				48E6777C251BA86D007E2741 /* CommunicateTests */,
+				48EC5A3A2534561B0076138F /* PushNotificationRegistering.swift */,
+				48EC5A3C253456900076138F /* CommunicateImplementing.swift */,
 			);
 			path = Communicate;
 			sourceTree = "<group>";
@@ -1339,6 +1377,7 @@
 			dependencies = (
 				48343CDB2522343E00AC80BD /* PBXTargetDependency */,
 				4817D84A252E073A00A786C0 /* PBXTargetDependency */,
+				48EC5A47253459670076138F /* PBXTargetDependency */,
 			);
 			name = RealifeTech;
 			productName = RealifeTech;
@@ -1419,10 +1458,12 @@
 				48E6776D251BA86D007E2741 /* Frameworks */,
 				48E6776E251BA86D007E2741 /* Resources */,
 				48D6F155251E1871006CA623 /* ShellScript */,
+				48EC5A432534595E0076138F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				48EC5A422534595E0076138F /* PBXTargetDependency */,
 			);
 			name = Communicate;
 			productName = Communicate;
@@ -1511,6 +1552,7 @@
 					};
 					48E6776F251BA86D007E2741 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					48E67777251BA86D007E2741 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -2498,6 +2540,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48EC5A3D253456900076138F /* CommunicateImplementing.swift in Sources */,
+				48EC5A3B2534561B0076138F /* PushNotificationRegistering.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2582,6 +2626,16 @@
 			isa = PBXTargetDependency;
 			target = 48005DF12530A73800B4E8BD /* Repositories */;
 			targetProxy = 48EC5A372530C8680076138F /* PBXContainerItemProxy */;
+		};
+		48EC5A422534595E0076138F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48005DF12530A73800B4E8BD /* Repositories */;
+			targetProxy = 48EC5A412534595E0076138F /* PBXContainerItemProxy */;
+		};
+		48EC5A47253459670076138F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48E6776F251BA86D007E2741 /* Communicate */;
+			targetProxy = 48EC5A46253459670076138F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3385,6 +3439,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0C352EE87793B26330666B58 /* Pods-Communicate.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
@@ -3404,6 +3459,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3413,6 +3469,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4B3A66C829357A9C3D526064 /* Pods-Communicate.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
@@ -3441,6 +3498,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 691359AFFE4AFC4EEE73DCFF /* Pods-Communicate-CommunicateTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = Communicate/CommunicateTests/Info.plist;
@@ -3460,6 +3518,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 08E482AD70B055F9624323D2 /* Pods-Communicate-CommunicateTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = Communicate/CommunicateTests/Info.plist;

@@ -23,16 +23,24 @@ public struct DeviceRepository: RemoteDiskCacheDataProviding {
 }
 
 extension DeviceRepository {
-    
+
     public struct TokenRegistrationResponse: Codable {
         let snsEndpoint: String?
     }
 
-    public static func register(device: Device) -> Observable<Bool> {
-        return retrieve(type: StandardV3SenderResponse.self, forRequest: Rqstr.register(device: device), strategy: .remoteWithoutCachingResponse).map { $0.isSuccess }
+    public static func registerDevice(_ device: Device) -> Observable<Bool> {
+        return retrieve(
+            type: StandardV3SenderResponse.self,
+            forRequest: Rqstr.register(device: device),
+            strategy: .remoteWithoutCachingResponse).map { $0.isSuccess }
     }
 
-    public static func register(tokenForPushNotificationsWithDeviceToken deviceToken: DeviceToken) -> Observable<TokenRegistrationResponse> {
-        return retrieve(type: TokenRegistrationResponse.self, forRequest: Rqstr.register(tokenForPushNotificationsWithDeviceToken: deviceToken), strategy: .remoteWithoutCachingResponse)
+    public static func registerForPushNotifications(
+        with deviceToken: DeviceToken
+    ) -> Observable<TokenRegistrationResponse> {
+        return retrieve(
+            type: TokenRegistrationResponse.self,
+            forRequest: Rqstr.register(tokenForPushNotificationsWithDeviceToken: deviceToken),
+            strategy: .remoteWithoutCachingResponse)
     }
 }
