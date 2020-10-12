@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol AudienceChecking {
-    func deviceIsMemberOfAudience(audienceId: String, callback: @escaping (Result<Bool, Error>) -> Void)
+    func deviceIsMemberOfAudience(audienceId: String, completion: @escaping (Result<Bool, Error>) -> Void)
 }

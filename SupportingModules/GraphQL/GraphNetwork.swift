@@ -8,27 +8,26 @@
 
 import Foundation
 import Apollo
-import UIDeviceHelper
 import APIV3Utilities
 
 public class GraphNetwork {
 
     let graphQLAPIUrl: URL
     let tokenHelper: V3APITokenManagable
+    let deviceId: String
 
-    public init(graphQLAPIUrl: URL, tokenHelper: V3APITokenManagable) {
+    public init(graphQLAPIUrl: URL, tokenHelper: V3APITokenManagable, deviceId: String) {
         self.graphQLAPIUrl = graphQLAPIUrl
         self.tokenHelper = tokenHelper
+        self.deviceId = deviceId
     }
 
-    // Configure the network transport to use the singleton as the delegate.
     private lazy var networkTransport: HTTPNetworkTransport = {
         let transport = HTTPNetworkTransport(url: graphQLAPIUrl)
         transport.delegate = self
         return transport
     }()
 
-    // Use the configured network transport in your Apollo client.
     private(set) lazy var apollo = ApolloClient(networkTransport: self.networkTransport)
 }
 
@@ -36,18 +35,19 @@ public class GraphNetwork {
 
 extension GraphNetwork: HTTPNetworkTransportPreflightDelegate {
 
-    public func networkTransport(_ networkTransport: HTTPNetworkTransport,
-                                 shouldSend request: URLRequest) -> Bool {
-        // If there's an authenticated user, send the request. If not, don't.
+    public func networkTransport(
+        _ networkTransport: HTTPNetworkTransport,
+        shouldSend request: URLRequest
+    ) -> Bool {
         return true
     }
 
-    public func networkTransport(_ networkTransport: HTTPNetworkTransport,
-                                 willSend request: inout URLRequest) {
-        // Get the existing headers, or create new ones if they're nil
+    public func networkTransport(
+        _ networkTransport: HTTPNetworkTransport,
+        willSend request: inout URLRequest
+    ) {
         var headers = request.allHTTPHeaderFields ?? [String: String]()
-        let deviceHelper: UIDeviceInterface = UIDeviceFactory.makeUIDeviceHelper()
-        headers["X-Ls-DeviceId"] = deviceHelper.deviceId
+        headers["X-Ls-DeviceId"] = deviceId
         if tokenHelper.tokenIsValid, let token = tokenHelper.token {
             headers["Authorization"] = "Bearer \(token)"
         }
@@ -59,11 +59,14 @@ extension GraphNetwork: HTTPNetworkTransportPreflightDelegate {
 
 extension GraphNetwork: HTTPNetworkTransportTaskCompletedDelegate {
 
-    public func networkTransport(_ networkTransport: HTTPNetworkTransport,
-                                 didCompleteRawTaskForRequest request: URLRequest,
-                                 withData data: Data?,
-                                 response: URLResponse?,
-                                 error: Error?) {
+    public func networkTransport(
+        _ networkTransport: HTTPNetworkTransport,
+        didCompleteRawTaskForRequest request: URLRequest,
+        withData data: Data?,
+        response: URLResponse?,
+        error: Error?
+    ) {
+        #if APILOGGING
         if let error = error {
             print("Error: \(error)")
         }
@@ -77,6 +80,7 @@ extension GraphNetwork: HTTPNetworkTransportTaskCompletedDelegate {
         } else {
             print("No data received!")
         }
+        #endif
     }
 }
 
@@ -84,12 +88,20 @@ extension GraphNetwork: HTTPNetworkTransportTaskCompletedDelegate {
 
 extension GraphNetwork: HTTPNetworkTransportRetryDelegate {
 
-    public func networkTransport(_ networkTransport: HTTPNetworkTransport,
-                                 receivedError error: Error,
-                                 for request: URLRequest,
-                                 response: URLResponse?,
-                                 continueHandler: @escaping (_ action: HTTPNetworkTransport.ContinueAction) -> Void) {
-        // investigate error to handle appropriately
+    public func networkTransport(
+        _ networkTransport: HTTPNetworkTransport,
+        receivedError error: Error,
+        for request: URLRequest,
+        response: URLResponse?,
+        continueHandler: @escaping (_ action: HTTPNetworkTransport.ContinueAction) -> Void
+    ) {
+        #if APILOGGING
         print("\(error.localizedDescription)")
+        #endif
+        if let urlResponse = response as? HTTPURLResponse, 400 == urlResponse.statusCode {
+            tokenHelper.getValidToken {
+                continueHandler(.retry)
+            }
+        }
     }
 }

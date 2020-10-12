@@ -19,26 +19,28 @@ public struct GraphQLDispatcher {
 
     public func dispatch<T: GraphQLQuery>(
         query: T,
-        completion: @escaping (_ object: T.Data?, _ error: Error?) -> Void) {
+        completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
+    ) {
         client.apollo.fetch(query: query) { result in
             switch result {
             case .success(let graphQLResult):
-                return completion(graphQLResult.data, nil)
+                return completion(.success(graphQLResult))
             case .failure(let error):
-                return completion(nil, error)
+                return completion(.failure(error))
             }
         }
     }
 
     public func dispatchMutation<T: GraphQLMutation>(
         mutation: T,
-        completion:  @escaping (_ object: T.Data?, _ error: Error?) -> Void) {
+        completion:  @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
+    ) {
         client.apollo.perform(mutation: mutation) { result in
             switch result {
             case .success(let graphQLResult):
-                return completion(graphQLResult.data, nil)
+                return completion(.success(graphQLResult))
             case .failure(let error):
-                return completion(nil, error)
+                return completion(.failure(error))
             }
         }
     }

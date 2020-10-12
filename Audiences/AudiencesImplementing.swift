@@ -9,31 +9,31 @@
 import Foundation
 import APIV3Utilities
 import GraphQL
-import Apollo
 
 public class AudiencesImplementing: AudienceChecking {
 
     let graphQLAPIUrl: String
     let dispatcher: GraphQLDispatcher?
 
-    public init(tokenHelper: V3APITokenManagable, graphQLAPIUrl: String) {
+    public init(tokenHelper: V3APITokenManagable, graphQLAPIUrl: String, deviceId: String) {
         self.graphQLAPIUrl = graphQLAPIUrl
         if let graphQLUrl = URL(string: graphQLAPIUrl) {
-            let client = GraphNetwork(graphQLAPIUrl: graphQLUrl, tokenHelper: tokenHelper)
+            let client = GraphNetwork(graphQLAPIUrl: graphQLUrl,
+                                      tokenHelper: tokenHelper,
+                                      deviceId: deviceId)
             self.dispatcher = GraphQLDispatcher(client: client)
         } else {
             self.dispatcher = nil
         }
     }
 
-    public func deviceIsMemberOfAudience(audienceId: String, callback: @escaping (Result<Bool, Error>) -> Void) {
-        dispatcher?.dispatch(query: BelongsToAudienceQuery(audienceId: audienceId)) { (object, error) in
-            if let error = error {
-                return callback(.failure(error))
-            } else if let belongsToAudience = object?.me?.device?.belongsToAudience {
-                return callback(.success(belongsToAudience))
-            } else {
-                return callback(.success(false))
+    public func deviceIsMemberOfAudience(audienceId: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        dispatcher?.dispatch(query: BelongsToAudienceQuery(audienceId: audienceId)) { result in
+            switch result {
+            case .success(let response):
+                return completion(.success(response.data?.me?.device?.belongsToAudience ?? false))
+            case .failure(let error):
+                return completion(.failure(error))
             }
         }
     }
