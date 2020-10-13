@@ -32,9 +32,11 @@ class AudiencesTests: XCTestCase {
         let sut = AudiencesImplementing(tokenHelper: EmptyTokenManager(),
                                         graphQLAPIUrl: "www.google.com",
                                         deviceId: "")
-        sut.dispatcher = MockGraphQLDispatcher()
+        let spy = MockGraphQLDispatcher()
+        sut.dispatcher = spy
+        sut.deviceIsMemberOfAudience(audienceId: "") { _ in }
         XCTAssertNotNil(sut.dispatcher)
-
+        XCTAssertTrue(spy.dispatchQueryIsCalled)
     }
 
     // Mocks
@@ -42,20 +44,13 @@ class AudiencesTests: XCTestCase {
     private class MockGraphQLDispatcher: GraphQLDispatching {
 
         var shouldFail: Bool = false
+        var dispatchQueryIsCalled: Bool = false
 
         func dispatch<T>(query: T, completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void) where T : GraphQLQuery {
-            if shouldFail {
-//                completion(.failure(Error()))
-            } else {
-                completion(Result.success(GraphQLResult<Bool>(data: true as Bool?,
-                                                              errors: nil,
-                                                              source: self,
-                                                              dependentKeys: nil)))
-            }
+            dispatchQueryIsCalled = true
         }
 
         func dispatchMutation<T>(mutation: T, completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void) where T : GraphQLMutation {
-
         }
     }
 }
