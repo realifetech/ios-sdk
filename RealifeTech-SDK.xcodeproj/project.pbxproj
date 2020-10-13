@@ -55,6 +55,8 @@
 		4817D848252E073A00A786C0 /* UIDeviceHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792D6251CA256007032CD /* UIDeviceHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48343CD82522343E00AC80BD /* General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; };
 		48343CD92522343E00AC80BD /* General.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6774E251BA843007E2741 /* General.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48483F642535EB7D005CACF2 /* ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792F2251CA279007032CD /* ReachabilityChecker.framework */; };
+		48483F652535EB7D005CACF2 /* ReachabilityChecker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792F2251CA279007032CD /* ReachabilityChecker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4859F997252E022400158F5E /* APIV3Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4859F98E252E022400158F5E /* APIV3Utilities.framework */; };
 		4859F99C252E022400158F5E /* StandardV3SenderResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859F99B252E022400158F5E /* StandardV3SenderResponseTests.swift */; };
 		4859F99E252E022400158F5E /* APIV3Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 4859F990252E022400158F5E /* APIV3Utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -159,6 +161,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 48E6774D251BA843007E2741;
 			remoteInfo = General;
+		};
+		48483F662535EB7D005CACF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48B792F1251CA279007032CD;
+			remoteInfo = ReachabilityChecker;
 		};
 		4859F998252E022400158F5E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -290,6 +299,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				48EC5A362530C8680076138F /* Repositories.framework in Embed Frameworks */,
+				48483F652535EB7D005CACF2 /* ReachabilityChecker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +615,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48483F642535EB7D005CACF2 /* ReachabilityChecker.framework in Frameworks */,
 				48EC5A352530C8680076138F /* Repositories.framework in Frameworks */,
 				149CBEE979A59578F9F8EE6E /* Pods_General.framework in Frameworks */,
 			);
@@ -1427,6 +1438,7 @@
 			);
 			dependencies = (
 				48EC5A382530C8680076138F /* PBXTargetDependency */,
+				48483F672535EB7D005CACF2 /* PBXTargetDependency */,
 			);
 			name = General;
 			productName = General;
@@ -2584,6 +2596,11 @@
 			isa = PBXTargetDependency;
 			target = 48E6774D251BA843007E2741 /* General */;
 			targetProxy = 48343CDA2522343E00AC80BD /* PBXContainerItemProxy */;
+		};
+		48483F672535EB7D005CACF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48B792F1251CA279007032CD /* ReachabilityChecker */;
+			targetProxy = 48483F662535EB7D005CACF2 /* PBXContainerItemProxy */;
 		};
 		4859F999252E022400158F5E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

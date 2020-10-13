@@ -8,6 +8,7 @@
 
 import Foundation
 import Repositories
+import ReachabilityChecker
 import RxSwift
 
 public class GeneralImplementing: DeviceRegistering {
@@ -17,12 +18,14 @@ public class GeneralImplementing: DeviceRegistering {
         return hasRegistered
     }
     var hasRegistered: Bool = false
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    private let reachabilityChecker: ReachabilityChecking
 
     public let deviceId: String
 
-    public init(deviceId: String) {
+    public init(deviceId: String, reachabilityChecker: ReachabilityChecking = ReachabilityFactory.makeReachabilityHelper()) {
         self.deviceId = deviceId
+        self.reachabilityChecker = reachabilityChecker
     }
 
     public func registerDevice(_ completion: @escaping(Result<Void, Error>) -> Void) {
@@ -33,6 +36,7 @@ public class GeneralImplementing: DeviceRegistering {
                             osVersion: "4",
                             bluetoothOn: false,
                             wifiConnected: true)
+        print(reachabilityChecker.isConnectedToWifi)
         DeviceRepository
             .registerDevice(device)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))

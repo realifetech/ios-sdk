@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-public class ReachabilityChecker: NSObject {
+class ReachabilityChecker: NSObject {
 
     private var bluetoothEnabled: Bool = false
     private var bluetoothManager: CBCentralManager
