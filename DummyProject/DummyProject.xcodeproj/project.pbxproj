@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		437992AE656776822C2E1A98 /* Pods_DummyProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */; };
+		48D0A4382535ED530048E823 /* Communicate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4362535ED530048E823 /* Communicate.framework */; };
+		48D0A4392535ED530048E823 /* Communicate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4362535ED530048E823 /* Communicate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D0A43A2535ED530048E823 /* General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4372535ED530048E823 /* General.framework */; };
+		48D0A43B2535ED530048E823 /* General.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4372535ED530048E823 /* General.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D0A43E2535ED7C0048E823 /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A43D2535ED7C0048E823 /* UIDeviceHelper.framework */; };
+		48D0A43F2535ED7C0048E823 /* UIDeviceHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A43D2535ED7C0048E823 /* UIDeviceHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D0A4432535EDBB0048E823 /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4412535EDBB0048E823 /* APILayer.framework */; };
+		48D0A4442535EDBB0048E823 /* APILayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4412535EDBB0048E823 /* APILayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D0A4452535EDBB0048E823 /* APIV3Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4422535EDBB0048E823 /* APIV3Utilities.framework */; };
+		48D0A4462535EDBB0048E823 /* APIV3Utilities.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4422535EDBB0048E823 /* APIV3Utilities.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D0A44A2535EDD70048E823 /* ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4482535EDD70048E823 /* ReachabilityChecker.framework */; };
+		48D0A44B2535EDD70048E823 /* ReachabilityChecker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4482535EDD70048E823 /* ReachabilityChecker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48D0A44C2535EDD70048E823 /* Repositories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4492535EDD70048E823 /* Repositories.framework */; };
+		48D0A44D2535EDD70048E823 /* Repositories.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4492535EDD70048E823 /* Repositories.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16A251E1ECF006CA623 /* AppDelegate.swift */; };
 		48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */; };
 		48D6F16F251E1ECF006CA623 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16E251E1ECF006CA623 /* ViewController.swift */; };
@@ -37,7 +51,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				48D0A4392535ED530048E823 /* Communicate.framework in Embed Frameworks */,
 				48D6F18F251E1F6D006CA623 /* RealifeTech.framework in Embed Frameworks */,
+				48D0A44D2535EDD70048E823 /* Repositories.framework in Embed Frameworks */,
+				48D0A43F2535ED7C0048E823 /* UIDeviceHelper.framework in Embed Frameworks */,
+				48D0A43B2535ED530048E823 /* General.framework in Embed Frameworks */,
+				48D0A4442535EDBB0048E823 /* APILayer.framework in Embed Frameworks */,
+				48D0A4462535EDBB0048E823 /* APIV3Utilities.framework in Embed Frameworks */,
+				48D0A44B2535EDD70048E823 /* ReachabilityChecker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,6 +68,13 @@
 /* Begin PBXFileReference section */
 		022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		48D0A4362535ED530048E823 /* Communicate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Communicate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D0A4372535ED530048E823 /* General.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = General.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D0A43D2535ED7C0048E823 /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D0A4412535EDBB0048E823 /* APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D0A4422535EDBB0048E823 /* APIV3Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APIV3Utilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D0A4482535EDD70048E823 /* ReachabilityChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReachabilityChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D0A4492535EDD70048E823 /* Repositories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Repositories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F167251E1ECF006CA623 /* DummyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F16A251E1ECF006CA623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +100,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				48D6F18E251E1F6D006CA623 /* RealifeTech.framework in Frameworks */,
+				48D0A4432535EDBB0048E823 /* APILayer.framework in Frameworks */,
 				437992AE656776822C2E1A98 /* Pods_DummyProject.framework in Frameworks */,
+				48D0A44C2535EDD70048E823 /* Repositories.framework in Frameworks */,
+				48D0A4452535EDBB0048E823 /* APIV3Utilities.framework in Frameworks */,
+				48D0A4382535ED530048E823 /* Communicate.framework in Frameworks */,
+				48D0A43A2535ED530048E823 /* General.framework in Frameworks */,
+				48D0A43E2535ED7C0048E823 /* UIDeviceHelper.framework in Frameworks */,
+				48D0A44A2535EDD70048E823 /* ReachabilityChecker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +180,13 @@
 		48D6F18C251E1F6D006CA623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48D0A4482535EDD70048E823 /* ReachabilityChecker.framework */,
+				48D0A4492535EDD70048E823 /* Repositories.framework */,
+				48D0A4412535EDBB0048E823 /* APILayer.framework */,
+				48D0A4422535EDBB0048E823 /* APIV3Utilities.framework */,
+				48D0A43D2535ED7C0048E823 /* UIDeviceHelper.framework */,
+				48D0A4362535ED530048E823 /* Communicate.framework */,
+				48D0A4372535ED530048E823 /* General.framework */,
 				48005DCD253072E900B4E8BD /* XCTest.framework */,
 				48D6F18D251E1F6D006CA623 /* RealifeTech.framework */,
 				022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */,
@@ -275,23 +317,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		60EC46CF9D9AD1DA3792090F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		84F47A6C35C8A909790E1829 /* [CP] Check Pods Manifest.lock */ = {

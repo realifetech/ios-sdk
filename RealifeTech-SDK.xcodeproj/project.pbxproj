@@ -13,7 +13,7 @@
 		03D583952521EB7B00E516F9 /* ReachabilityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */; };
 		03D583962521EB7B00E516F9 /* ReachabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */; };
 		03D583972521EB7B00E516F9 /* ReachabilityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */; };
-		03D583982521EB7B00E516F9 /* WifiConnectivityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */; };
+		03D583982521EB7B00E516F9 /* NetworkConnectivityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583942521EB7B00E516F9 /* NetworkConnectivityChecker.swift */; };
 		0CBFFEAF366E5F0B32A65A3B /* Pods_General_GeneralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F260272EC72D00EA48CAB01 /* Pods_General_GeneralTests.framework */; };
 		149CBEE979A59578F9F8EE6E /* Pods_General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C8813D8888CCA220256A9A /* Pods_General.framework */; };
 		1F280D23D41D8D97CCBF7B0C /* Pods_APIV3Utilities_APIV3UtilitiesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8ED70BC809BCC46C84F32F /* Pods_APIV3Utilities_APIV3UtilitiesTests.framework */; };
@@ -325,7 +325,7 @@
 		03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityChecking.swift; sourceTree = "<group>"; };
 		03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityChecker.swift; sourceTree = "<group>"; };
 		03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityFactory.swift; sourceTree = "<group>"; };
-		03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiConnectivityChecker.swift; sourceTree = "<group>"; };
+		03D583942521EB7B00E516F9 /* NetworkConnectivityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnectivityChecker.swift; sourceTree = "<group>"; };
 		04FD51743DE5E6409A71CC91 /* Pods-APIUtilities-APIUtilitiesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIUtilities-APIUtilitiesTests.release.xcconfig"; path = "Target Support Files/Pods-APIUtilities-APIUtilitiesTests/Pods-APIUtilities-APIUtilitiesTests.release.xcconfig"; sourceTree = "<group>"; };
 		055B95D09E4948D6EA2EBB6E /* Pods_RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08E482AD70B055F9624323D2 /* Pods-Communicate-CommunicateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Communicate-CommunicateTests.release.xcconfig"; path = "Target Support Files/Pods-Communicate-CommunicateTests/Pods-Communicate-CommunicateTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -905,7 +905,7 @@
 				03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */,
 				03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */,
 				03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */,
-				03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */,
+				03D583942521EB7B00E516F9 /* NetworkConnectivityChecker.swift */,
 				48B792F4251CA279007032CD /* ReachabilityChecker.h */,
 				48B792F5251CA279007032CD /* Info.plist */,
 				48B792FE251CA279007032CD /* ReachabilityCheckerTests */,
@@ -2507,7 +2507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03D583982521EB7B00E516F9 /* WifiConnectivityChecker.swift in Sources */,
+				03D583982521EB7B00E516F9 /* NetworkConnectivityChecker.swift in Sources */,
 				03D583962521EB7B00E516F9 /* ReachabilityChecker.swift in Sources */,
 				03D583952521EB7B00E516F9 /* ReachabilityChecking.swift in Sources */,
 				03D583972521EB7B00E516F9 /* ReachabilityFactory.swift in Sources */,

@@ -7,8 +7,6 @@
 //
 
 import RealifeTech
-import General
-import Communicate
 import UIKit
 
 @UIApplicationMain

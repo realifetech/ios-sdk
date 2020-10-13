@@ -13,16 +13,16 @@ class ReachabilityChecker: NSObject {
 
     private var bluetoothEnabled: Bool = false
     private var bluetoothManager: CBCentralManager
-    private var wifiConnectivityChecker: WifiConnectivityChecker
+    private var networkConnectivityChecker: NetworkConnectivityChecker
 
     init(
         bluetoothManager: CBCentralManager = CBCentralManager(delegate: nil,
                                                               queue: nil,
                                                               options: [CBCentralManagerOptionShowPowerAlertKey: 0]),
-        wifiConnectivityChecker: WifiConnectivityChecker = WifiConnectivityChecker()
+        networkConnectivityChecker: NetworkConnectivityChecker = NetworkConnectivityChecker()
     ) {
         self.bluetoothManager = bluetoothManager
-        self.wifiConnectivityChecker = wifiConnectivityChecker
+        self.networkConnectivityChecker = networkConnectivityChecker
         super.init()
         self.bluetoothManager.delegate = self
     }
@@ -35,7 +35,11 @@ extension ReachabilityChecker: ReachabilityChecking {
     }
 
     public var isConnectedToWifi: Bool {
-        return wifiConnectivityChecker.wifiConnected
+        return networkConnectivityChecker.wifiConnected
+    }
+
+    public var hasNetworkConnection: Bool {
+        return networkConnectivityChecker.hasNetworkConnection
     }
 }
 

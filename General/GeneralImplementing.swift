@@ -36,7 +36,6 @@ public class GeneralImplementing: DeviceRegistering {
                             osVersion: "4",
                             bluetoothOn: false,
                             wifiConnected: true)
-        print(reachabilityChecker.isConnectedToWifi)
         DeviceRepository
             .registerDevice(device)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))

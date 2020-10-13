@@ -1,5 +1,5 @@
 //
-//  WifiConnectivityChecker.swift
+//  NetworkConnectivityChecker.swift
 //  RealifeTech-SDK
 //
 //  Created by Jonathon Albert on 25/09/2020.
@@ -9,10 +9,14 @@
 import Foundation
 import SystemConfiguration
 
-public class WifiConnectivityChecker {
+public class NetworkConnectivityChecker {
 
     var wifiConnected: Bool {
-        return connectionStatus
+        return connectionStatus(wifiOnly: true)
+    }
+
+    var hasNetworkConnection: Bool {
+        return connectionStatus(wifiOnly: false)
     }
 
     private var reachabilityTarget: SCNetworkReachability? {
@@ -31,11 +35,21 @@ public class WifiConnectivityChecker {
         return defaultRouteReachability
     }
 
-    private var connectionStatus: Bool {
+    /// Checks system network reachability flags. Can check for any connectivity or wifi specifically.
+    /// - Parameter wifiOnly: Whether to check exclusively for wifi connectivity
+    /// - Returns: Whether we have a connection to the internet
+    private func connectionStatus(wifiOnly: Bool) -> Bool {
         var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
         guard let target = reachabilityTarget, SCNetworkReachabilityGetFlags(target, &flags) else { return false }
-        let isReachable = flags == .reachable
-        let needsConnection = flags == .connectionRequired
+        var isReachable = false
+        var needsConnection = false
+        if wifiOnly {
+            isReachable = flags == .reachable
+            needsConnection = flags == .connectionRequired
+        } else {
+            isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+            needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        }
         return (isReachable && !needsConnection)
     }
 }
