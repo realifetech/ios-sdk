@@ -8,6 +8,7 @@
 
 import General
 import Audiences
+import Analytics
 import APIV3Utilities
 import UIDeviceHelper
 import Foundation
@@ -16,6 +17,7 @@ public class RealifeTech {
 
     public static var General: GeneralImplementing!
     public static var Audiences: AudienceChecking!
+    public static var Analytics: AnalyticsImplementing!
 
     /// Provides information required for the SDK to operate.
     /// This MUST be called before any other SDK functionality is acessed.
@@ -31,6 +33,9 @@ public class RealifeTech {
             baseUrl: "http://api-dev.livestyled.com/v3")
         General = GeneralImplementing()
         Audiences = AudiencesImplementing(tokenHelper: helper,
+                                          graphQLAPIUrl: configuration.graphApiUrl ?? "",
+                                          deviceId: deviceHelper.deviceId)
+        Analytics = AnalyticsImplementing(tokenHelper: helper,
                                           graphQLAPIUrl: configuration.graphApiUrl ?? "",
                                           deviceId: deviceHelper.deviceId)
     }
