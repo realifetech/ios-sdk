@@ -12,11 +12,9 @@ import GraphQL
 
 public class AudiencesImplementing: AudienceChecking {
 
-    let graphQLAPIUrl: String
-    let dispatcher: GraphQLDispatcher?
+    var dispatcher: GraphQLDispatching?
 
     public init(tokenHelper: V3APITokenManagable, graphQLAPIUrl: String, deviceId: String) {
-        self.graphQLAPIUrl = graphQLAPIUrl
         if let graphQLUrl = URL(string: graphQLAPIUrl) {
             let client = GraphNetwork(graphQLAPIUrl: graphQLUrl,
                                       tokenHelper: tokenHelper,

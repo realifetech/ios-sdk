@@ -53,6 +53,20 @@ target 'General' do
 
 end
 
+target 'Audiences' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  project 'RealifeTech-SDK'
+
+  # Pods for General
+
+  target 'AudiencesTests' do
+    # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
+  end
+
+end
+
 target 'APILayer' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!

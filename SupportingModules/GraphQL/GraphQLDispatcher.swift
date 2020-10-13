@@ -9,7 +9,18 @@
 import Foundation
 import Apollo
 
-public struct GraphQLDispatcher {
+public protocol GraphQLDispatching: AnyObject {
+    func dispatch<T: GraphQLQuery>(
+        query: T,
+        completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
+    )
+    func dispatchMutation<T: GraphQLMutation>(
+        mutation: T,
+        completion:  @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
+    )
+}
+
+public class GraphQLDispatcher: GraphQLDispatching {
 
     let client: GraphNetwork
 

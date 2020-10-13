@@ -8,27 +8,54 @@
 
 import XCTest
 @testable import Audiences
+@testable import APIV3Utilities
+@testable import GraphQL
+@testable import Apollo
 
 class AudiencesTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_init_successful() {
+        let sut = AudiencesImplementing(tokenHelper: EmptyTokenManager(),
+                                        graphQLAPIUrl: "www.google.com",
+                                        deviceId: "")
+        XCTAssertNotNil(sut.dispatcher)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_init_failed() {
+        let sut = AudiencesImplementing(tokenHelper: EmptyTokenManager(),
+                                        graphQLAPIUrl: "",
+                                        deviceId: "")
+        XCTAssertNil(sut.dispatcher)
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_deviceIsMemberOfAudience_isCalled() {
+        let sut = AudiencesImplementing(tokenHelper: EmptyTokenManager(),
+                                        graphQLAPIUrl: "www.google.com",
+                                        deviceId: "")
+        sut.dispatcher = MockGraphQLDispatcher()
+        XCTAssertNotNil(sut.dispatcher)
+
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    // Mocks
+
+    private class MockGraphQLDispatcher: GraphQLDispatching {
+
+        var shouldFail: Bool = false
+
+        func dispatch<T>(query: T, completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void) where T : GraphQLQuery {
+            if shouldFail {
+//                completion(.failure(Error()))
+            } else {
+                completion(Result.success(GraphQLResult<Bool>(data: true as Bool?,
+                                                              errors: nil,
+                                                              source: self,
+                                                              dependentKeys: nil)))
+            }
+        }
+
+        func dispatchMutation<T>(mutation: T, completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void) where T : GraphQLMutation {
+
         }
     }
-
 }
