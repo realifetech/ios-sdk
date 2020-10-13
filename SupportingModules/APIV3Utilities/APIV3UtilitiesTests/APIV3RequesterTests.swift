@@ -55,7 +55,6 @@ class APIV3RequesterTests: XCTestCase  {
         formatter.dateFormat = expectedFormat
         formatter.locale = Locale(identifier: expectedLocale)
         let expectedResult = formatter.string(from: date)
-
         let result = MockRequester.format(date: date)
         XCTAssertEqual(result, expectedResult)
     }
@@ -73,7 +72,6 @@ class APIV3RequesterTests: XCTestCase  {
             return XCTFail("Did not get interceptors")
         }
         XCTAssertEqual(sutInterceptors.count, 3)
-
         sutInterceptors.forEach {
             request = $0(request)
         }

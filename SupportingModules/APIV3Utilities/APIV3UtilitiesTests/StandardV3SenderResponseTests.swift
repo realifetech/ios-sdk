@@ -17,5 +17,4 @@ class StandardV3SenderResponseTests: XCTestCase {
         XCTAssertTrue(sutSuccess.isSuccess)
         XCTAssertFalse(sutFailure.isSuccess)
     }
-
 }

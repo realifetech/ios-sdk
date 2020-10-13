@@ -9,12 +9,12 @@
 import Foundation
 import APILayer
 
-protocol OAuthHeaderRequestInserting {
+public protocol OAuthHeaderRequestInserting {
     static func addOAuthHeader(toRequest request: URLRequest) -> URLRequest
 }
 
 extension OAuthHeaderRequestInserting {
-    static func addOAuthHeader(toRequest request: URLRequest) -> URLRequest {
+    public static func addOAuthHeader(toRequest request: URLRequest) -> URLRequest {
         var request = request
         guard APIV3RequesterHelper.tokenManager.tokenIsValid, let accessToken = APIV3RequesterHelper.tokenManager.token else { return request }
         let oAuthHeader = RequestHeader.generateAuthHeader(accessToken: accessToken)

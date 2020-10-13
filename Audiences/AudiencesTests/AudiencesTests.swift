@@ -46,11 +46,16 @@ class AudiencesTests: XCTestCase {
         var shouldFail: Bool = false
         var dispatchQueryIsCalled: Bool = false
 
-        func dispatch<T>(query: T, completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void) where T : GraphQLQuery {
+        func dispatch<T>(
+            query: T,
+            completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
+        ) where T: GraphQLQuery {
             dispatchQueryIsCalled = true
         }
 
-        func dispatchMutation<T>(mutation: T, completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void) where T : GraphQLMutation {
-        }
+        func dispatchMutation<T>(
+            mutation: T,
+            completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
+        ) where T: GraphQLMutation {}
     }
 }

@@ -35,7 +35,6 @@ class APIV3RequesterHelperTests: XCTestCase {
 
     func test_setupV3API_oAuthParameters() {
         let requestToTest = OAuthRequester.requestInitialAccessToken()
-        print(requestToTest)
         XCTAssertTrue(requestToTest.url?.absoluteString.contains(testBaseUrl) ?? false)
         guard
             let bodyData = requestToTest.httpBody,
