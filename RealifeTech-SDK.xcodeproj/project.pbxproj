@@ -96,6 +96,10 @@
 		48B792FB251CA279007032CD /* ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792F2251CA279007032CD /* ReachabilityChecker.framework */; };
 		48B79300251CA279007032CD /* ReachabilityCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B792FF251CA279007032CD /* ReachabilityCheckerTests.swift */; };
 		48B79302251CA279007032CD /* ReachabilityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B792F4251CA279007032CD /* ReachabilityChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48D0A468253601F40048E823 /* RegistrationStatusWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A467253601F40048E823 /* RegistrationStatusWatcher.swift */; };
+		48D0A475253603110048E823 /* RegistrationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A474253603110048E823 /* RegistrationStatus.swift */; };
+		48D0A482253605670048E823 /* DeviceRegistrationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A481253605670048E823 /* DeviceRegistrationWorker.swift */; };
+		48D0A4B22536066B0048E823 /* GeneralFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A4B12536066B0048E823 /* GeneralFactory.swift */; };
 		48D6F143251E158E006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F13A251E158E006CA623 /* RealifeTech.framework */; };
 		48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F147251E158E006CA623 /* RealifeTechTests.swift */; };
 		48D6F14A251E158E006CA623 /* RealifeTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D6F13C251E158E006CA623 /* RealifeTech.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -421,6 +425,10 @@
 		48B792FA251CA279007032CD /* ReachabilityCheckerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReachabilityCheckerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48B792FF251CA279007032CD /* ReachabilityCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityCheckerTests.swift; sourceTree = "<group>"; };
 		48B79301251CA279007032CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48D0A467253601F40048E823 /* RegistrationStatusWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStatusWatcher.swift; sourceTree = "<group>"; };
+		48D0A474253603110048E823 /* RegistrationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationStatus.swift; sourceTree = "<group>"; };
+		48D0A481253605670048E823 /* DeviceRegistrationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationWorker.swift; sourceTree = "<group>"; };
+		48D0A4B12536066B0048E823 /* GeneralFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFactory.swift; sourceTree = "<group>"; };
 		48D6F13A251E158E006CA623 /* RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F13C251E158E006CA623 /* RealifeTech.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealifeTech.h; sourceTree = "<group>"; };
 		48D6F13D251E158E006CA623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1012,7 +1020,11 @@
 			isa = PBXGroup;
 			children = (
 				480BCD8C251E252600266617 /* DeviceRegistering.swift */,
+				48D0A4B12536066B0048E823 /* GeneralFactory.swift */,
 				480BCD8D251E252600266617 /* GeneralImplementing.swift */,
+				48D0A474253603110048E823 /* RegistrationStatus.swift */,
+				48D0A481253605670048E823 /* DeviceRegistrationWorker.swift */,
+				48D0A467253601F40048E823 /* RegistrationStatusWatcher.swift */,
 				48E67750251BA843007E2741 /* General.h */,
 				48E67751251BA843007E2741 /* Info.plist */,
 				48E6775A251BA843007E2741 /* GeneralTests */,
@@ -2543,7 +2555,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D0A482253605670048E823 /* DeviceRegistrationWorker.swift in Sources */,
+				48D0A468253601F40048E823 /* RegistrationStatusWatcher.swift in Sources */,
 				480BCD8F251E252600266617 /* DeviceRegistering.swift in Sources */,
+				48D0A4B22536066B0048E823 /* GeneralFactory.swift in Sources */,
+				48D0A475253603110048E823 /* RegistrationStatus.swift in Sources */,
 				480BCD90251E252600266617 /* GeneralImplementing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
