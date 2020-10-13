@@ -15,11 +15,6 @@ public struct DeviceRepository: RemoteDiskCacheDataProviding {
 
     public typealias Cdble = StandardV3SenderResponse
     public typealias Rqstr = DeviceRequester
-
-	enum DeviceUpdateKeys: String {
-		case deviceConsent // ⤵
-		case pushNotification, locationCapture, camera, photoSharing, calendar, locationGranular
-	}
 }
 
 extension DeviceRepository {
