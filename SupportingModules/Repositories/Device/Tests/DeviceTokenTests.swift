@@ -11,4 +11,10 @@ import XCTest
 
 class DeviceTokenTests: XCTestCase {
 
+    func test_defaultDeviceToken() {
+        let testToken = "TOKEN-TIME"
+        let sut = DeviceToken.defaultDeviceToken(withProviderToken: testToken)
+        XCTAssertEqual(sut.provider, "APPLE")
+        XCTAssertEqual(sut.providerToken, testToken)
+    }
 }
