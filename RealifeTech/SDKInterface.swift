@@ -13,6 +13,7 @@ import APIV3Utilities
 import UIDeviceHelper
 import GraphQL
 import Foundation
+import ReachabilityChecker
 
 public class RealifeTech {
 
@@ -36,7 +37,8 @@ public class RealifeTech {
         if let apiUrl = configuration.graphApiUrl, let graphQlUrl = URL(string: apiUrl) {
             let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
                                       tokenHelper: helper,
-                                      deviceId: deviceHelper.deviceId)
+                                      deviceId: deviceHelper.deviceId,
+                                      reachabilityHelper: ReachabilityFactory.makeReachabilityHelper())
             let dispatcher: GraphQLDispatching = GraphQLDispatcher(client: client)
             Audiences = AudiencesImplementing(tokenHelper: helper,
                                               graphQLAPIUrl: configuration.graphApiUrl ?? "",

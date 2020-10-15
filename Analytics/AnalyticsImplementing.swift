@@ -11,7 +11,7 @@ import GraphQL
 
 public class AnalyticsImplementing: AnalyticsLogging {
 
-    var dispatcher: GraphQLDispatching
+    let dispatcher: GraphQLDispatching
 
     public init(dispatcher: GraphQLDispatching) {
         self.dispatcher = dispatcher

@@ -9,17 +9,25 @@
 import Foundation
 import Apollo
 import APIV3Utilities
+import ReachabilityChecker
 
 public class GraphNetwork {
 
     let graphQLAPIUrl: URL
     let tokenHelper: V3APITokenManagable
     let deviceId: String
+    let reachabilityHelper: ReachabilityChecking
 
-    public init(graphQLAPIUrl: URL, tokenHelper: V3APITokenManagable, deviceId: String) {
+    public init(
+        graphQLAPIUrl: URL,
+        tokenHelper: V3APITokenManagable,
+        deviceId: String,
+        reachabilityHelper: ReachabilityChecking
+    ) {
         self.graphQLAPIUrl = graphQLAPIUrl
         self.tokenHelper = tokenHelper
         self.deviceId = deviceId
+        self.reachabilityHelper = reachabilityHelper
     }
 
     private lazy var networkTransport: HTTPNetworkTransport = {
@@ -39,6 +47,10 @@ extension GraphNetwork: HTTPNetworkTransportPreflightDelegate {
         _ networkTransport: HTTPNetworkTransport,
         shouldSend request: URLRequest
     ) -> Bool {
+        guard reachabilityHelper.isConnectedToWifi else {
+            // Save Request
+            return false
+        }
         return true
     }
 

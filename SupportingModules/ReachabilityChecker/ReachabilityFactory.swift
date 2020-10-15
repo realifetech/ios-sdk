@@ -10,7 +10,7 @@ import Foundation
 
 public struct ReachabilityFactory {
 
-    func makeReachabilityHelper() -> ReachabilityChecking {
+    public static func makeReachabilityHelper() -> ReachabilityChecking {
         return ReachabilityChecker()
     }
 }
