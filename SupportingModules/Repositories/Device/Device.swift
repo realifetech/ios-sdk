@@ -21,7 +21,7 @@ public struct Device: Codable {
     public init(deviceId: String,
                 type: String = "IOS",
                 model: String,
-                manufacturer: String = "APPL",
+                manufacturer: String = "APPLE",
                 sdkVersion: String,
                 osVersion: String,
                 bluetoothOn: Bool,
