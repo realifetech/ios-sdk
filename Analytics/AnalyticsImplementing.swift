@@ -13,6 +13,7 @@ import GraphQL
 public class AnalyticsImplementing: AnalyticsLogging {
 
     var dispatcher: GraphQLDispatching?
+    let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())))
 
     public init(tokenHelper: V3APITokenManagable, graphQLAPIUrl: String, deviceId: String) {
         if let graphQLUrl = URL(string: graphQLAPIUrl) {
@@ -20,22 +21,40 @@ public class AnalyticsImplementing: AnalyticsLogging {
                                       tokenHelper: tokenHelper,
                                       deviceId: deviceId)
             self.dispatcher = GraphQLDispatcher(client: client)
+            getOfflineEvents()
         } else {
             self.dispatcher = nil
         }
     }
 
-    public func logEvent(
-        type: String,
-        action: String,
-        new: [String: String]?,
-        old: [String: String]?,
-        completion: @escaping (Error?) -> Void
-    ) {
-        let newData: String? = escape(new)
-        let oldData: String? = escape(old)
-        let event = AnalyticEvent(type: type, action: action, new: newData, old: oldData, version: "1.0")
-        dispatcher?.dispatchMutation(mutation: PutAnalyticEventMutation(input: event), completion: { result in
+    func getOfflineEvents() {
+        do {
+            let cached: AnalyticsEvent = try storage.fetch(for: "event1")
+            print(cached)
+        } catch {
+            print(error)
+        }
+    }
+
+    func saveEventOffline(event: AnalyticsEvent) {
+        do {
+            try storage.save(event, for: "event1")
+        } catch {
+            print(error)
+        }
+    }
+
+    public func logEvent(_ event: AnalyticsEvent, completion: @escaping (_ error: Error?) -> Void) {
+        let graphEvent = AnalyticEvent(
+            type: event.type,
+            action: event.action,
+            new: event.newString,
+            old: event.oldString,
+            version: event.version
+        )
+        let mutation = PutAnalyticEventMutation(input: graphEvent)
+        saveEventOffline(event: event)
+        dispatcher?.dispatchMutation(mutation: mutation, completion: { result in
             switch result {
             case .success:
                 return completion(nil)
@@ -43,19 +62,5 @@ public class AnalyticsImplementing: AnalyticsLogging {
                 return completion(error)
             }
         })
-    }
-
-    private func escape(_ dictionary: [String: String]?) -> String? {
-        var escapedString: String?
-        let encoder = JSONEncoder()
-        guard
-            dictionary != nil,
-            let dictionaryString = try? encoder.encode(dictionary),
-            let jsonString = String(data: dictionaryString, encoding: .utf8)
-            else {
-                return nil
-        }
-        escapedString = NSRegularExpression.escapedPattern(for: jsonString)
-        return escapedString
     }
 }

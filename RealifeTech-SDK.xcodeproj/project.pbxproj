@@ -18,6 +18,7 @@
 		0317B933252769D900863EC6 /* GraphNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B932252769D900863EC6 /* GraphNetwork.swift */; };
 		034CBB3A2530595000E607C2 /* GraphQLDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */; };
 		035721BB2530A25200FD1E23 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */; };
+		036570982538635900D15CF1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036570972538635900D15CF1 /* Storage.swift */; };
 		0397093625363B0800F8EB59 /* AnalyticsImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397093525363B0800F8EB59 /* AnalyticsImplementing.swift */; };
 		0397093825363B1C00F8EB59 /* AnalyticsLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397093725363B1C00F8EB59 /* AnalyticsLogging.swift */; };
 		0397093925363BB100F8EB59 /* Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0309EDE02536397B00918D7E /* Analytics.framework */; };
@@ -310,6 +311,7 @@
 		0317B92A252768EA00863EC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0317B932252769D900863EC6 /* GraphNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetwork.swift; sourceTree = "<group>"; };
 		034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDispatcher.swift; sourceTree = "<group>"; };
+		036570972538635900D15CF1 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		0397093525363B0800F8EB59 /* AnalyticsImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsImplementing.swift; sourceTree = "<group>"; };
 		0397093725363B1C00F8EB59 /* AnalyticsLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsLogging.swift; sourceTree = "<group>"; };
 		03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchDeviceBelongsToAudience.graphql.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 			children = (
 				0397093725363B1C00F8EB59 /* AnalyticsLogging.swift */,
 				0397093525363B0800F8EB59 /* AnalyticsImplementing.swift */,
+				036570972538635900D15CF1 /* Storage.swift */,
 				0309EDE22536397B00918D7E /* Analytics.h */,
 				0309EDE32536397B00918D7E /* Info.plist */,
 				0309EDEC2536397B00918D7E /* AnalyticsTests */,
@@ -2713,6 +2716,7 @@
 			files = (
 				0397093825363B1C00F8EB59 /* AnalyticsLogging.swift in Sources */,
 				0397093625363B0800F8EB59 /* AnalyticsImplementing.swift in Sources */,
+				036570982538635900D15CF1 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

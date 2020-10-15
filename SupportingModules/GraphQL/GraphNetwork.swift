@@ -67,20 +67,31 @@ extension GraphNetwork: HTTPNetworkTransportTaskCompletedDelegate {
         error: Error?
     ) {
         #if APILOGGING
-        if let error = error {
-            print("Error: \(error)")
-        }
-        if let response = response {
-            print("Response: \(response)")
-        } else {
-            print("No URL Response received!")
-        }
-        if let data = data {
-            print("Data: \(String(describing: String(bytes: data, encoding: .utf8)))")
-        } else {
-            print("No data received!")
-        }
+//        if let error = error {
+//            print("Error: \(error)")
+//        }
+//        if let response = response {
+//            print("Response: \(response)")
+//        } else {
+//            print("No URL Response received!")
+//        }
+//        if let data = data {
+//            print("Data: \(String(describing: String(bytes: data, encoding: .utf8)))")
+//        } else {
+//            print("No data received!")
+//        }
         #endif
+    }
+}
+
+// MARK: - Error Delegate
+extension GraphNetwork: HTTPNetworkTransportGraphQLErrorDelegate {
+    public func networkTransport(
+        _ networkTransport: HTTPNetworkTransport,
+        receivedGraphQLErrors errors: [GraphQLError],
+        retryHandler: @escaping (Bool) -> Void
+    ) {
+        print(errors)
     }
 }
 
@@ -96,12 +107,18 @@ extension GraphNetwork: HTTPNetworkTransportRetryDelegate {
         continueHandler: @escaping (_ action: HTTPNetworkTransport.ContinueAction) -> Void
     ) {
         #if APILOGGING
-        print("\(error.localizedDescription)")
+//        print("\(error.localizedDescription)")
         #endif
-        if let urlResponse = response as? HTTPURLResponse, 400 == urlResponse.statusCode {
+        guard let urlResponse = response as? HTTPURLResponse else { return }
+        switch urlResponse.statusCode {
+        case -1009:
+            print("offline")
+        case 400:
             tokenHelper.getValidToken {
                 continueHandler(.retry)
             }
+        default:
+            return
         }
     }
 }
