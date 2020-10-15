@@ -7,24 +7,16 @@
 //
 
 import Foundation
-import APIV3Utilities
 import GraphQL
 
 public class AnalyticsImplementing: AnalyticsLogging {
 
-    var dispatcher: GraphQLDispatching?
+    let dispatcher: GraphQLDispatching
     let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())))
 
-    public init(tokenHelper: V3APITokenManagable, graphQLAPIUrl: String, deviceId: String) {
-        if let graphQLUrl = URL(string: graphQLAPIUrl) {
-            let client = GraphNetwork(graphQLAPIUrl: graphQLUrl,
-                                      tokenHelper: tokenHelper,
-                                      deviceId: deviceId)
-            self.dispatcher = GraphQLDispatcher(client: client)
-            getOfflineEvents()
-        } else {
-            self.dispatcher = nil
-        }
+    public init(dispatcher: GraphQLDispatching) {
+        self.dispatcher = dispatcher
+        getOfflineEvents()
     }
 
     func getOfflineEvents() {

@@ -31,6 +31,8 @@
 		03D583962521EB7B00E516F9 /* ReachabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */; };
 		03D583972521EB7B00E516F9 /* ReachabilityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */; };
 		03D583982521EB7B00E516F9 /* WifiConnectivityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */; };
+		03DE5C9F2538FA810007366C /* ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792F2251CA279007032CD /* ReachabilityChecker.framework */; };
+		03DE5CA02538FA810007366C /* ReachabilityChecker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48B792F2251CA279007032CD /* ReachabilityChecker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03EEB8A5252E04DB00C868AD /* Audiences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03EEB89C252E04DB00C868AD /* Audiences.framework */; };
 		03EEB8AA252E04DB00C868AD /* AudiencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */; };
 		03EEB8AC252E04DB00C868AD /* Audiences.h in Headers */ = {isa = PBXBuildFile; fileRef = 03EEB89E252E04DB00C868AD /* Audiences.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -169,6 +171,13 @@
 			remoteGlobalIDString = 0309EDDF2536397B00918D7E;
 			remoteInfo = Analytics;
 		};
+		03DE5CA12538FA810007366C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48B792F1251CA279007032CD;
+			remoteInfo = ReachabilityChecker;
+		};
 		03EEB8A6252E04DB00C868AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
@@ -256,6 +265,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		03DE5CA32538FA810007366C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				03DE5CA02538FA810007366C /* ReachabilityChecker.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		480BCE5625222F7700266617 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				886338D3B5FD1ACBEFA5B326 /* Pods_GraphQL.framework in Frameworks */,
+				03DE5C9F2538FA810007366C /* ReachabilityChecker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,10 +1306,12 @@
 				0317B917252768EA00863EC6 /* Sources */,
 				0317B918252768EA00863EC6 /* Frameworks */,
 				0317B919252768EA00863EC6 /* Resources */,
+				03DE5CA32538FA810007366C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				03DE5CA22538FA810007366C /* PBXTargetDependency */,
 			);
 			name = GraphQL;
 			productName = GraphQL;
@@ -2944,6 +2967,11 @@
 			isa = PBXTargetDependency;
 			target = 0309EDDF2536397B00918D7E /* Analytics */;
 			targetProxy = 0397093B25363BB100F8EB59 /* PBXContainerItemProxy */;
+		};
+		03DE5CA22538FA810007366C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48B792F1251CA279007032CD /* ReachabilityChecker */;
+			targetProxy = 03DE5CA12538FA810007366C /* PBXContainerItemProxy */;
 		};
 		03EEB8A7252E04DB00C868AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
