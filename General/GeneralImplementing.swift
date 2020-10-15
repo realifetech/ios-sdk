@@ -47,19 +47,3 @@ public class GeneralImplementing: DeviceRegistering {
         }
     }
 }
-
-// Start
-// - If already waiting, return an obsevable of the current wait logic
-// - Otherwise, start a 10s countdown
-// - Start a registration call
-// - On success, clear the timer, send completion to all the observers
-// - On failure, register a retry at the end of the timer
-
-// TODO Tomorrow
-// - The worker should check for an ongoing refresh
-// -- It should append the current completion handler to it if there is one
-// - It should check the reachability status (it will need the helper passed in)
-// -- Start a timer (make one) on the worker
-// -- If good, it should execute the call
-// -- If good, it should set the watcher to be valid, completing all those waiting
-// - If any kind of failure, *somehow* setup a retry callback which will execute at the end of the 10s.

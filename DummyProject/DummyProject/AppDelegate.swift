@@ -17,11 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = SDKConfiguration(appCode: "hello", clientSecret: "no-one")
         RealifeTech.configureSDK(with: configuration)
         RealifeTech.General.registerDevice { result in
-            // TODO: Remove if approved
             print("Device Registration - ", result)
-            RealifeTech.Communicate.registerForPushNotifications(token: UUID().uuidString) { result in
-                print("Push notification registration call = ", result)
-            }
+        }
+        RealifeTech.General.registerDevice { result in
+            print("Device Registration - ", result)
+        }
+        RealifeTech.General.registerDevice { result in
+            print("Device Registration - ", result)
         }
         print(RealifeTech.General.sdkReady)
         return true

@@ -30,7 +30,7 @@ public class RealifeTech {
             clientID: "LS_0",
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             baseUrl: "http://api-staging.livestyled.com/v3")
-        General = GeneralImplementing(deviceId: deviceId)
+        General = GeneralFactory.makeGeneralModule(deviceId: deviceId)
         Communicate = CommunicateImplementing()
         helper.getValidToken {}
     }
