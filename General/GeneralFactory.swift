@@ -13,9 +13,10 @@ public enum GeneralFactory {
     public static func makeGeneralModule(
         deviceId: String,
         reachabilityChecker: ReachabilityChecking
-    ) -> GeneralImplementing {
+    ) -> General {
         let registrationWorker = DeviceRegistrationWorker(
-            reachabilityChecker: reachabilityChecker)
+            reachabilityChecker: reachabilityChecker,
+            debounceRateSeconds: 10)
         return GeneralImplementing(
             deviceId: deviceId,
             reachabilityChecker: reachabilityChecker,

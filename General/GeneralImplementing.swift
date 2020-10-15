@@ -12,9 +12,12 @@ import ReachabilityChecker
 import RxSwift
 import RxCocoa
 
-public class GeneralImplementing: DeviceRegistering {
+class GeneralImplementing: General {
 
-    public var sdkReady: Bool
+    // TODO: fix this
+    let MODEL = "OlivierPhone"
+    let SDKVERSION = "0.0.1alpha"
+    let OSVERSION =  "4"
 
     public let deviceId: String
     private let reachabilityChecker: ReachabilityChecking
@@ -28,22 +31,24 @@ public class GeneralImplementing: DeviceRegistering {
         self.deviceId = deviceId
         self.reachabilityChecker = reachabilityChecker
         self.deviceRegistrationWorker = deviceRegistrationWorker
-        self.sdkReady = false
+    }
+}
+
+// MARK:-  Device Registration
+extension GeneralImplementing {
+
+    public var sdkReady: Bool { deviceRegistrationWorker.hasRegistered }
+
+    var device: Device {
+        Device(deviceId: deviceId,
+               model: MODEL,
+               sdkVersion: SDKVERSION,
+               osVersion: OSVERSION,
+               bluetoothOn: reachabilityChecker.isBluetoothConnected,
+               wifiConnected: reachabilityChecker.isConnectedToWifi)
     }
 
     public func registerDevice(_ completion: @escaping(Result<Void, Error>) -> Void) {
-        let device = Device(deviceId: deviceId,
-                            model: "OlivierPhone",
-                            sdkVersion: "0.0.1alpha",
-                            osVersion: "4",
-                            bluetoothOn: reachabilityChecker.isBluetoothConnected,
-                            wifiConnected: reachabilityChecker.isConnectedToWifi)
-        deviceRegistrationWorker.registerDevice(device) { result in
-            switch result {
-            case .success:
-                self.sdkReady = true
-            default: break
-            }
-        }
+        deviceRegistrationWorker.registerDevice(device, completion)
     }
 }

@@ -23,5 +23,7 @@ public struct DeviceToken: Codable {
 }
 
 public struct TokenRegistrationResponse: Codable {
+    static let empty = TokenRegistrationResponse(snsEndpoint: nil)
+
     let snsEndpoint: String?
 }

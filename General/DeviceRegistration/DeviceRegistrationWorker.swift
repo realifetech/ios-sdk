@@ -13,10 +13,16 @@ import RxSwift
 import RxCocoa
 
 protocol DeviceRegistrationWorkerProtocol {
+    var hasRegistered: Bool { get }
     func registerDevice(_: Device, _: @escaping(Result<Void, Error>) -> Void)
 }
 
+/// Handles device registration calls.
+/// Requests will repeat until network connection & success received.
+/// When registering multiple times, requests are queued.
 class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
+
+    var hasRegistered: Bool = false
 
     private let debounceRateSeconds: Int
     private let reachabilityChecker: ReachabilityChecking
@@ -26,6 +32,10 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
     private let scheduler: ImmediateSchedulerType
     private let deviceProvider: DeviceProviding.Type
 
+    /// - Parameter reachabilityChecker: Used to check if we have network connectivity
+    /// - Parameter debounceRateSeconds: How long to enforce between retry attempts.
+    /// - Parameter scheduler: [Optional] Which sheduler to use for Rx subsciptions
+    /// - Parameter deviceProvider: [Optional] The repositiory which provides a device registration observable
     init(
         reachabilityChecker: ReachabilityChecking,
         debounceRateSeconds: Int,
@@ -51,6 +61,7 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
         }
     }
 
+    /// Begins a loop to register the device, checks connectivity before attempting, and will retry on failure.
     func deviceRegistrationLoop(
         _ device: Device,
         _ completion: @escaping (Result<Void, Error>) -> Void
@@ -62,22 +73,23 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
             return
         }
         let debouncedObservable = makeDebouncedDeviceRegistrationObservable(
-            device: device,
-            retryThresholdSeconds: debounceRateSeconds)
+            device: device)
         debouncedObservable
+            .subscribeOn(scheduler)
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { _ in
-                self.semaphore.signal()
+            .subscribe(onNext: { [weak self] _ in
+                self?.semaphore.signal()
+                self?.hasRegistered = true
                 completion(.success(()))
-            }, onError: { _ in
-                self.deviceRegistrationLoop(device, completion)
+            }, onError: { [weak self] _ in
+                self?.deviceRegistrationLoop(device, completion)
             })
             .disposed(by: disposeBag)
     }
 
-    func makeDebouncedDeviceRegistrationObservable(device: Device, retryThresholdSeconds: Int = 10) -> Observable<Bool> {
+    func makeDebouncedDeviceRegistrationObservable(device: Device) -> Observable<Bool> {
         let tenSecondInterval = Observable<Int>
-            .interval(.seconds(retryThresholdSeconds), scheduler: MainScheduler.instance)
+            .interval(.seconds(debounceRateSeconds), scheduler: MainScheduler.instance)
             .take(1)
         let allDeviceRegistrationEvents = deviceProvider
             .registerDevice(device)
