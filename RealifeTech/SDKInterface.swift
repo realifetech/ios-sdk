@@ -11,6 +11,7 @@ import Audiences
 import Analytics
 import APIV3Utilities
 import UIDeviceHelper
+import GraphQL
 import Foundation
 
 public class RealifeTech {
@@ -32,11 +33,15 @@ public class RealifeTech {
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             baseUrl: "http://api-dev.livestyled.com/v3")
         General = GeneralImplementing()
-        Audiences = AudiencesImplementing(tokenHelper: helper,
-                                          graphQLAPIUrl: configuration.graphApiUrl ?? "",
-                                          deviceId: deviceHelper.deviceId)
-        Analytics = AnalyticsImplementing(tokenHelper: helper,
-                                          graphQLAPIUrl: configuration.graphApiUrl ?? "",
-                                          deviceId: deviceHelper.deviceId)
+        if let apiUrl = configuration.graphApiUrl, let graphQlUrl = URL(string: apiUrl) {
+            let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
+                                      tokenHelper: helper,
+                                      deviceId: deviceHelper.deviceId)
+            let dispatcher: GraphQLDispatching = GraphQLDispatcher(client: client)
+            Audiences = AudiencesImplementing(tokenHelper: helper,
+                                              graphQLAPIUrl: configuration.graphApiUrl ?? "",
+                                              deviceId: deviceHelper.deviceId)
+            Analytics = AnalyticsImplementing(dispatcher: dispatcher)
+        }
     }
 }

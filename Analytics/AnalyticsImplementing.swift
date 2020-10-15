@@ -7,22 +7,14 @@
 //
 
 import Foundation
-import APIV3Utilities
 import GraphQL
 
 public class AnalyticsImplementing: AnalyticsLogging {
 
-    var dispatcher: GraphQLDispatching?
+    var dispatcher: GraphQLDispatching
 
-    public init(tokenHelper: V3APITokenManagable, graphQLAPIUrl: String, deviceId: String) {
-        if let graphQLUrl = URL(string: graphQLAPIUrl) {
-            let client = GraphNetwork(graphQLAPIUrl: graphQLUrl,
-                                      tokenHelper: tokenHelper,
-                                      deviceId: deviceId)
-            self.dispatcher = GraphQLDispatcher(client: client)
-        } else {
-            self.dispatcher = nil
-        }
+    public init(dispatcher: GraphQLDispatching) {
+        self.dispatcher = dispatcher
     }
 
     public func logEvent(
@@ -35,7 +27,7 @@ public class AnalyticsImplementing: AnalyticsLogging {
         let newData: String? = escape(new)
         let oldData: String? = escape(old)
         let event = AnalyticEvent(type: type, action: action, new: newData, old: oldData, version: "1.0")
-        dispatcher?.dispatchMutation(mutation: PutAnalyticEventMutation(input: event), completion: { result in
+        dispatcher.dispatchMutation(mutation: PutAnalyticEventMutation(input: event), completion: { result in
             switch result {
             case .success:
                 return completion(nil)
