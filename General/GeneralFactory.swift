@@ -10,12 +10,15 @@ import Foundation
 import ReachabilityChecker
 
 public enum GeneralFactory {
-    public static func makeGeneralModule(deviceId: String) -> GeneralImplementing {
+    public static func makeGeneralModule(
+        deviceId: String,
+        reachabilityChecker: ReachabilityChecking
+    ) -> GeneralImplementing {
         let registrationWorker = DeviceRegistrationWorker(
-            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper())
+            reachabilityChecker: reachabilityChecker)
         return GeneralImplementing(
             deviceId: deviceId,
-            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper(),
+            reachabilityChecker: reachabilityChecker,
             deviceRegistrationWorker: registrationWorker)
     }
 }
