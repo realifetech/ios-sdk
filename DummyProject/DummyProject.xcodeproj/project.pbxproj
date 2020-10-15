@@ -46,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		48D6F167251E1ECF006CA623 /* DummyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F16A251E1ECF006CA623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 		48D6F18C251E1F6D006CA623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48005DCD253072E900B4E8BD /* XCTest.framework */,
 				48D6F18D251E1F6D006CA623 /* RealifeTech.framework */,
 				022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */,
 				87831F4462866B37A786DC40 /* Pods_DummyProject_DummyProjectTests.framework */,
@@ -163,7 +165,7 @@
 				48D6F164251E1ECF006CA623 /* Frameworks */,
 				48D6F165251E1ECF006CA623 /* Resources */,
 				48D6F190251E1F6E006CA623 /* Embed Frameworks */,
-				D47332B6C816BA2E5D3D8212 /* [CP] Embed Pods Frameworks */,
+				F008B1111D472403FC87E940 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,7 +184,7 @@
 				48D6F179251E1ED0006CA623 /* Sources */,
 				48D6F17A251E1ED0006CA623 /* Frameworks */,
 				48D6F17B251E1ED0006CA623 /* Resources */,
-				60EC46CF9D9AD1DA3792090F /* [CP] Embed Pods Frameworks */,
+				A39E75EA6EE7D8403F7AAB7B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,7 +316,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D47332B6C816BA2E5D3D8212 /* [CP] Embed Pods Frameworks */ = {
+		A39E75EA6EE7D8403F7AAB7B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F008B1111D472403FC87E940 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

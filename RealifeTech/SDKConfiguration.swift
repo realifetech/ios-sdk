@@ -9,7 +9,7 @@
 import Foundation
 import General
 
-public struct SDKConfiguration: General.SDKConfiguration {
+public struct SDKConfiguration {
     public var appCode: String
     public var clientSecret: String
     public var apiUrl: String?

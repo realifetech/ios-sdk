@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = SDKConfiguration(appCode: "hello", clientSecret: "no-one")
         RealifeTech.configureSDK(with: configuration)
+        RealifeTech.General.registerDevice { _ in }
         print(RealifeTech.General.sdkReady)
         return true
     }

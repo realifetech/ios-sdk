@@ -19,7 +19,7 @@ target 'RealifeTech' do
 
   target 'RealifeTechTests' do
     # Pods for testing
-
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -33,6 +33,7 @@ target 'Communicate' do
 
   target 'CommunicateTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -46,6 +47,7 @@ target 'General' do
 
   target 'GeneralTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -59,7 +61,21 @@ target 'APILayer' do
 
   target 'APILayerTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
+  end
 
+end
+
+target 'APIV3Utilities' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  project 'RealifeTech-SDK'
+
+  # Pods for APILayer
+
+  target 'APIV3UtilitiesTests' do
+    # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -73,6 +89,7 @@ target 'ReachabilityChecker' do
 
   target 'ReachabilityCheckerTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -86,6 +103,7 @@ target 'UIDeviceHelper' do
 
   target 'UIDeviceHelperTests' do
     # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
@@ -99,7 +117,7 @@ target 'DummyProject' do
 
   target 'DummyProjectTests' do
     # Pods for testing
-
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
