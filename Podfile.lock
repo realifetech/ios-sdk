@@ -1,4 +1,7 @@
 PODS:
+  - Apollo (0.30.0):
+    - Apollo/Core (= 0.30.0)
+  - Apollo/Core (0.30.0)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -10,6 +13,7 @@ PODS:
   - SwiftLint (0.40.3)
 
 DEPENDENCIES:
+  - Apollo (= 0.30.0)
   - RxCocoa (~> 5.1.1)
   - RxSwift (~> 5.1.1)
   - RxTest (~> 5.1.1)
@@ -17,6 +21,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Apollo
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -24,12 +29,13 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Apollo: c10bf1a4c7db5237be1056ace16347cd1cdcb863
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxTest: 711632d5644dffbeb62c936a521b5b008a1e1faa
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 9a9466e8fa74d3b90b5bac8172716184286817e5
+PODFILE CHECKSUM: a8842c3bbe8aa32fd912bb9d57e1aaac97bd317e
 
 COCOAPODS: 1.8.4

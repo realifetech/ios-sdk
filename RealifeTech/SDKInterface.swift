@@ -7,6 +7,7 @@
 //
 
 import General
+import Audiences
 import APIV3Utilities
 import UIDeviceHelper
 import Foundation
@@ -14,6 +15,7 @@ import Foundation
 public class RealifeTech {
 
     public static var General: GeneralImplementing!
+    public static var Audiences: AudienceChecking!
 
     /// Provides information required for the SDK to operate.
     /// This MUST be called before any other SDK functionality is acessed.
@@ -21,13 +23,15 @@ public class RealifeTech {
     /// - Parameter configuration: Struct containing the desired SDK configuration
     public static func configureSDK(with configuration: SDKConfiguration) {
         print("Someone called to configure the SDK")
-        //let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
+        let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
         let helper = APIV3RequesterHelper.setupV3API(
-            deviceId: UUID().uuidString,
+            deviceId: deviceHelper.deviceId,
             clientId: "LS_0",
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             baseUrl: "http://api-dev.livestyled.com/v3")
         General = GeneralImplementing()
-        helper.getValidToken {}
+        Audiences = AudiencesImplementing(tokenHelper: helper,
+                                          graphQLAPIUrl: configuration.graphApiUrl ?? "",
+                                          deviceId: deviceHelper.deviceId)
     }
 }

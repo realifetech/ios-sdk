@@ -9,6 +9,7 @@ project 'DummyProject/DummyProject'
 pod 'SwiftLint'
 pod 'RxSwift', '~> 5.1.1'
 pod 'RxCocoa', '~> 5.1.1'
+pod "Apollo", "0.30.0"
 
 target 'RealifeTech' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -46,6 +47,20 @@ target 'General' do
   # Pods for General
 
   target 'GeneralTests' do
+    # Pods for testing
+    pod 'RxTest', '~> 5.1.1'
+  end
+
+end
+
+target 'Audiences' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  project 'RealifeTech-SDK'
+
+  # Pods for General
+
+  target 'AudiencesTests' do
     # Pods for testing
     pod 'RxTest', '~> 5.1.1'
   end
@@ -108,13 +123,25 @@ target 'UIDeviceHelper' do
 
 end
 
+target 'GraphQL' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  project 'RealifeTech-SDK'
+
+  target 'GraphQLTests' do
+    # Pods for testing
+
+  end
+
+end
+
 target 'DummyProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   project 'DummyProject/DummyProject'
 
   # Pods for DummyProject
-
+  
   target 'DummyProjectTests' do
     # Pods for testing
     pod 'RxTest', '~> 5.1.1'

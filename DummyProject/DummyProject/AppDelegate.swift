@@ -7,7 +7,6 @@
 //
 
 import RealifeTech
-import General
 import UIKit
 
 @UIApplicationMain
@@ -15,7 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let configuration = SDKConfiguration(appCode: "hello", clientSecret: "no-one")
+        let configuration = SDKConfiguration(appCode: "hello",
+                                             clientSecret: "no-one",
+                                             graphApiUrl: "https://graphql-mock.realifetech.com/graphql")
         RealifeTech.configureSDK(with: configuration)
         RealifeTech.General.registerDevice { _ in }
         print(RealifeTech.General.sdkReady)
