@@ -46,5 +46,4 @@ class DeviceTests: XCTestCase {
             }
         }
     }
-
 }

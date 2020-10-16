@@ -26,7 +26,7 @@ class DeviceRequesterTests: XCTestCase {
             let data = requestToTest.httpBody,
             let jsonObject = try? JSONSerialization.jsonObject(
                 with: data,
-            options: .allowFragments) as? [String: Any]
+                options: .allowFragments) as? [String: Any]
             else {
                 return XCTFail("No http body")
         }
