@@ -18,6 +18,10 @@ public class RealifeTech {
     public static var General: General!
     public static var Communicate: CommunicateImplementing!
 
+    private static var moduleVersionString: String? {
+        Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+
     /// Provides information required for the SDK to operate.
     /// This MUST be called before any other SDK functionality is acessed.
     /// Calling this function more than once will have no effect.
@@ -35,6 +39,7 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
+            sdkVersion: moduleVersionString ?? "",
             reachabilityChecker: reachabilityChecker)
         Communicate = CommunicateImplementing()
         apiHelper.getValidToken {}

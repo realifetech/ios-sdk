@@ -14,16 +14,19 @@ public enum GeneralFactory {
         deviceId: String,
         deviceModel: String,
         osVersion: String,
+        sdkVersion: String,
         reachabilityChecker: ReachabilityChecking
     ) -> General {
-        let registrationWorker = DeviceRegistrationWorker(
+        let deviceRegistrationLoopHandler = DeviceRegistrationLoopHandler(
             reachabilityChecker: reachabilityChecker,
             debounceRateSeconds: 10)
-        return GeneralImplementing(
+        let deviceRegistrationWorker = DeviceRegistrationWorker(
             deviceId: deviceId,
             deviceModel: deviceModel,
             osVersion: osVersion,
+            sdkVersion: sdkVersion,
             reachabilityChecker: reachabilityChecker,
-            deviceRegistrationWorker: registrationWorker)
+            loopHandler: deviceRegistrationLoopHandler)
+        return GeneralImplementing(deviceRegistrationWorker: deviceRegistrationWorker)
     }
 }

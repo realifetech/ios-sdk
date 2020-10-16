@@ -2,129 +2,95 @@
 //  DeviceRegistrationWorkerTests.swift
 //  GeneralTests
 //
-//  Created by Olivier Butler on 16/10/2020.
+//  Created by Olivier Butler on 15/10/2020.
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import XCTest
 import Repositories
 import ReachabilityChecker
-import RxSwift
 @testable import General
 
 class DeviceRegistrationWorkerTests: XCTestCase {
 
-    enum TestError: Error {
-        case deviceRegistrationFailed
+    private enum TestError: Error, Equatable {
+        case registrationError(String)
     }
 
-    var sut: DeviceRegistrationWorker!
-    var reachabilityChecker: MockReachabilityChecker!
-    let debounceMilliseconds: Int = 50
+    private let testId = "123abc"
+    private let testModel = "whooze"
+    private let osVersion = "dunny"
+    private let sdkVersion = "mittens"
 
-    var testDevice = Device(
-        deviceId: "GODZILLA",
-        model: "TREX",
-        sdkVersion: "KONG",
-        osVersion: "MOTHRA",
-        bluetoothOn: true,
-        wifiConnected: false)
+    private var sut: DeviceRegistrationWorker!
+    private var deviceRegistrationSpy: MockDeviceRegistrationLoopHandler!
+    private var mockReachabilityChecker: MockReachabilityChecker!
 
     override func setUp() {
-        reachabilityChecker = MockReachabilityChecker()
-        sut = DeviceRegistrationWorker(
-            reachabilityChecker: reachabilityChecker,
-            debounceRateSeconds: Double(debounceMilliseconds)/1000,
-            scheduler: MainScheduler.instance,
-            deviceProvider: MockDeviceRepository.self)
+        deviceRegistrationSpy = MockDeviceRegistrationLoopHandler()
+        mockReachabilityChecker = MockReachabilityChecker()
+        sut = DeviceRegistrationWorker(deviceId: testId,
+                                  deviceModel: testModel,
+                                  osVersion: osVersion,
+                                  sdkVersion: sdkVersion,
+                                  reachabilityChecker: mockReachabilityChecker,
+                                  loopHandler: deviceRegistrationSpy)
     }
 
-    override func tearDown() {
-        MockDeviceRepository.deviceReceived = nil
-        MockDeviceRepository.observableToReturn = .just(false)
+    func test_initialisation() {
+        XCTAssertEqual(sut.deviceId, testId)
     }
 
-    func test_registerDevice_success() {
-        reachabilityChecker.hasNetworkConnection = true
-        let expectation = XCTestExpectation(description: "Device registered")
-        sut.registerDevice(testDevice, { _ in
+    func test_sdkReady() {
+        XCTAssertFalse(sut.sdkReady)
+        sut.registerDevice { _ in }
+        XCTAssertTrue(sut.sdkReady)
+    }
+
+    func test_registerDevice_resultIsCorrect() {
+        let expectation = XCTestExpectation(description: "Device registration completion")
+        let testError: TestError = TestError.registrationError("hello")
+        deviceRegistrationSpy.resultToReturn = .failure(testError)
+        sut.registerDevice { result in
+            switch result {
+            case .success:
+                XCTFail("Should have failed, succeeded")
+            case .failure(let error):
+                XCTAssertEqual(error as? TestError, testError)
+            }
             expectation.fulfill()
-        })
+        }
         wait(for: [expectation], timeout: 0.01)
-        XCTAssertEqual(MockDeviceRepository.deviceReceived, testDevice)
     }
 
-    func test_registerDevice_waitsForNetwork() {
-        reachabilityChecker.hasNetworkConnection = false
-        let expectation = XCTestExpectation(description: "Device registered")
-        sut.registerDevice(testDevice, { _ in
-            expectation.fulfill()
-        })
-        XCTAssertNil(MockDeviceRepository.deviceReceived)
-        DispatchQueue.main.async {
-            self.reachabilityChecker.hasNetworkConnection = true
+    func test_registerDevice_deviceIsCorect() {
+        let expectation = XCTestExpectation(description: "Device registration completion")
+        let testBluetooth = false
+        let testDevice = Device(
+            deviceId: testId,
+            model: testModel,
+            sdkVersion: sdkVersion,
+            osVersion: osVersion,
+            bluetoothOn: testBluetooth,
+            wifiConnected: mockReachabilityChecker.isConnectedToWifi)
+        mockReachabilityChecker.isBluetoothConnected = testBluetooth
+        sut.registerDevice { _ in expectation.fulfill() }
+        guard let recievedDevice = deviceRegistrationSpy.deviceReceived else {
+            return XCTFail("No device received")
         }
+        XCTAssertEqual(recievedDevice, testDevice)
         wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(MockDeviceRepository.deviceReceived, testDevice)
-    }
-
-    func test_registerDevice_sequentialQueuedCalls() {
-        reachabilityChecker.hasNetworkConnection = false
-        let expectation1 = XCTestExpectation(description: "1st Device registered")
-        let expectation2 = XCTestExpectation(description: "2nd Device registered")
-        let expectation3 = XCTestExpectation(description: "3rd Device registered")
-        sut.registerDevice(testDevice, { _ in
-            expectation1.fulfill()
-        })
-        sut.registerDevice(testDevice, { _ in
-            expectation2.fulfill()
-        })
-        sut.registerDevice(testDevice, { _ in
-            expectation3.fulfill()
-        })
-        XCTAssertNil(MockDeviceRepository.deviceReceived)
-        DispatchQueue.main.async {
-            self.reachabilityChecker.hasNetworkConnection = true
-        }
-        wait(for: [expectation1, expectation2, expectation3],
-             timeout: 0.1,
-             enforceOrder: true)
-    }
-
-    func test_registerDevice_retriesOnFailure() {
-        let expectation1 = XCTestExpectation(description: "Async block completed")
-        let expectation2 = XCTestExpectation(description: "Device registered")
-        let minimumTimeInterval = TimeInterval.init(floatLiteral: Double(self.debounceMilliseconds)/1000)
-        reachabilityChecker.hasNetworkConnection = true
-        MockDeviceRepository.observableToReturn = .error(TestError.deviceRegistrationFailed)
-        let startTime = Date()
-        sut.registerDevice(testDevice, { _ in
-            let recordedInterval = Date().timeIntervalSince(startTime)
-            XCTAssertGreaterThan(recordedInterval, minimumTimeInterval)
-            XCTAssertLessThan(recordedInterval, minimumTimeInterval*1.5)
-            expectation2.fulfill()
-        })
-        XCTAssertNil(MockDeviceRepository.deviceReceived)
-        DispatchQueue.main.async {
-            expectation1.fulfill()
-            MockDeviceRepository.observableToReturn = .just(true)
-        }
-        wait(for: [expectation1, expectation2], timeout: 0.1, enforceOrder: true)
     }
 
 }
 
-private class MockDeviceRepository: DeviceProviding {
+private class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
 
-    static var observableToReturn: Observable<Bool> = .just(false)
-    static var deviceReceived: Device?
+    var deviceReceived: Device?
+    var resultToReturn: Result<Void, Error> = .success(())
 
-    static func registerDevice(_ device: Device) -> Observable<Bool> {
-        deviceReceived = device
-        return observableToReturn
-    }
-
-    static func registerForPushNotifications(with deviceToken: DeviceToken) -> Observable<TokenRegistrationResponse> {
-        return .never()
+    func registerDevice(_ device: Device, _ completion: @escaping (Result<Void, Error>) -> Void) {
+        self.deviceReceived = device
+        completion(resultToReturn)
     }
 }

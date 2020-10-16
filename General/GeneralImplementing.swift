@@ -7,52 +7,23 @@
 //
 
 import Foundation
-import Repositories
-import ReachabilityChecker
-import RxSwift
-import RxCocoa
 
 class GeneralImplementing: General {
 
-    // TODO: fix this
-    let SDKVERSION = "0.0.1alpha"
+    private let deviceRegistrationWorker: DeviceRegistering
 
-    public let deviceId: String
-    private let deviceModel: String
-    private let osVersion: String
-    private let reachabilityChecker: ReachabilityChecking
-    private let deviceRegistrationWorker: DeviceRegistrationWorkerProtocol
-
-    init(
-        deviceId: String,
-        deviceModel: String,
-        osVersion: String,
-        reachabilityChecker: ReachabilityChecking,
-        deviceRegistrationWorker: DeviceRegistrationWorkerProtocol
-    ) {
-        self.deviceId = deviceId
-        self.deviceModel = deviceModel
-        self.osVersion = osVersion
-        self.reachabilityChecker = reachabilityChecker
+    init(deviceRegistrationWorker: DeviceRegistering) {
         self.deviceRegistrationWorker = deviceRegistrationWorker
     }
 }
 
-// MARK:-  Device Registration
+// MARK: - Device Registration
 extension GeneralImplementing {
 
-    public var sdkReady: Bool { deviceRegistrationWorker.hasRegistered }
-
-    var device: Device {
-        Device(deviceId: deviceId,
-               model: deviceModel,
-               sdkVersion: SDKVERSION,
-               osVersion: osVersion,
-               bluetoothOn: reachabilityChecker.isBluetoothConnected,
-               wifiConnected: reachabilityChecker.isConnectedToWifi)
-    }
+    public var sdkReady: Bool { deviceRegistrationWorker.sdkReady }
+    public var deviceId: String { deviceRegistrationWorker.deviceId }
 
     public func registerDevice(_ completion: @escaping(Result<Void, Error>) -> Void) {
-        deviceRegistrationWorker.registerDevice(device, completion)
+        deviceRegistrationWorker.registerDevice(completion)
     }
 }
