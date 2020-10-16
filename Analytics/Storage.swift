@@ -43,6 +43,7 @@ class DiskStorage {
 }
 
 extension DiskStorage: WritableStorage {
+
     func save(value: Data, for key: String) throws {
         let url = path.appendingPathComponent(key)
         do {

@@ -17,6 +17,8 @@
 		0317B92B252768EA00863EC6 /* GraphQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317B91D252768EA00863EC6 /* GraphQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0317B933252769D900863EC6 /* GraphNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B932252769D900863EC6 /* GraphNetwork.swift */; };
 		034CBB3A2530595000E607C2 /* GraphQLDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */; };
+		035427EC2539A79F00020470 /* Logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C30D4E2539978E005100C9 /* Logging.framework */; };
+		035427ED2539A79F00020470 /* Logging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03C30D4E2539978E005100C9 /* Logging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		035721BB2530A25200FD1E23 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */; };
 		036570982538635900D15CF1 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036570972538635900D15CF1 /* Storage.swift */; };
 		0397093625363B0800F8EB59 /* AnalyticsImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397093525363B0800F8EB59 /* AnalyticsImplementing.swift */; };
@@ -162,6 +164,13 @@
 			remoteGlobalIDString = 0317B91A252768EA00863EC6;
 			remoteInfo = GraphQL;
 		};
+		035427EE2539A79F00020470 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03C30D4D2539978E005100C9;
+			remoteInfo = Logging;
+		};
 		035721B32530782600FD1E23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
@@ -277,6 +286,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		035427F02539A79F00020470 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				035427ED2539A79F00020470 /* Logging.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03DE5CA32538FA810007366C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,6 +551,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				035427EC2539A79F00020470 /* Logging.framework in Frameworks */,
 				692399D6357F965A70A43B03 /* Pods_Analytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1333,10 +1354,12 @@
 				0309EDDC2536397B00918D7E /* Sources */,
 				0309EDDD2536397B00918D7E /* Frameworks */,
 				0309EDDE2536397B00918D7E /* Resources */,
+				035427F02539A79F00020470 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				035427EF2539A79F00020470 /* PBXTargetDependency */,
 			);
 			name = Analytics;
 			productName = Analytics;
@@ -3104,6 +3127,11 @@
 			isa = PBXTargetDependency;
 			target = 0317B91A252768EA00863EC6 /* GraphQL */;
 			targetProxy = 0317B925252768EA00863EC6 /* PBXContainerItemProxy */;
+		};
+		035427EF2539A79F00020470 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03C30D4D2539978E005100C9 /* Logging */;
+			targetProxy = 035427EE2539A79F00020470 /* PBXContainerItemProxy */;
 		};
 		0397093C25363BB100F8EB59 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

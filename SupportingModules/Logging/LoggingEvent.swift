@@ -17,7 +17,7 @@ public struct LoggingEvent: Codable {
     public let version: String
 
     public var newString: String? {
-        return escape(new)
+        escape(new)
     }
 
     public var oldString: String? {
