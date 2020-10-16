@@ -5,6 +5,7 @@
 //  Created by Ross Patman on 21/10/2017.
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
+
 import Foundation
 import RxSwift
 
@@ -13,6 +14,7 @@ public protocol RemoteDiskCacheDataProviding {
     associatedtype Cdble: Codable
     associatedtype Rqstr: Requester
 }
+
 public extension RemoteDiskCacheDataProviding {
     static func items(forRequest request: URLRequest = Rqstr.request(forId: nil), strategy: DiskCacheDataProvidingStrategy = .localOrRemoteIfExpired) -> Observable<[Cdble]> {
         return retrieve(type: [Cdble].self, forRequest: request, strategy: strategy)

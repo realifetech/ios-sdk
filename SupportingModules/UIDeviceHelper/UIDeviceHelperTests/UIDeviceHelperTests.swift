@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import UIDeviceHelper
+@testable import RealifeTech
 
 class UIDeviceHelperTests: XCTestCase {
 

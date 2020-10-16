@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import APILayer
+@testable import RealifeTech
 
 class RequestCreatorTests: XCTestCase {
 

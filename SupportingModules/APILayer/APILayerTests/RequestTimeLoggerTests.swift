@@ -7,12 +7,9 @@
 //
 
 import XCTest
-@testable import APILayer
+@testable import RealifeTech
 
 class RequestTimeLoggerTests: XCTestCase {
-
-    override func setUp() { }
-    override func tearDown() { }
 
     func testAddRequests() {
         let timeLogger = RequestTimeLogger()
