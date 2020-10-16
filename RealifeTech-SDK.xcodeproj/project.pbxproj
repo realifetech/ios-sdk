@@ -86,6 +86,7 @@
 		488959672539D8E300B978A9 /* LogEventSending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959652539D8E200B978A9 /* LogEventSending.swift */; };
 		488959692539D8EA00B978A9 /* LoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959682539D8EA00B978A9 /* LoggingTests.swift */; };
 		4889596F2539D97A00B978A9 /* putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889596E2539D97A00B978A9 /* putAnalyticEvent.graphql.swift */; };
+		488959972539DC8600B978A9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959962539DC8600B978A9 /* Storage.swift */; };
 		48D6F143251E158E006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F13A251E158E006CA623 /* RealifeTech.framework */; };
 		48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F147251E158E006CA623 /* RealifeTechTests.swift */; };
 		48D6F14A251E158E006CA623 /* RealifeTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D6F13C251E158E006CA623 /* RealifeTech.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -171,6 +172,7 @@
 		488959652539D8E200B978A9 /* LogEventSending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventSending.swift; sourceTree = "<group>"; };
 		488959682539D8EA00B978A9 /* LoggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingTests.swift; sourceTree = "<group>"; };
 		4889596E2539D97A00B978A9 /* putAnalyticEvent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = putAnalyticEvent.graphql.swift; sourceTree = "<group>"; };
+		488959962539DC8600B978A9 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		48A6845E25277CA2001F8CB1 /* V3APITokenManagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagable.swift; sourceTree = "<group>"; };
 		48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationStore.swift; sourceTree = "<group>"; };
 		48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationWorker.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 			children = (
 				4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */,
 				4889595A2539D89C00B978A9 /* AnalyticsLogging.swift */,
+				488959962539DC8600B978A9 /* Storage.swift */,
 				4889594F2539D7FB00B978A9 /* AnalyticsTests */,
 			);
 			path = Analytics;
@@ -875,6 +878,7 @@
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				488958792539D04B00B978A9 /* APIError.swift in Sources */,
 				4889587E2539D04B00B978A9 /* RequestCreator.swift in Sources */,
+				488959972539DC8600B978A9 /* Storage.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
 				488958A02539D04B00B978A9 /* UIDeviceInterface.swift in Sources */,
 				488958832539D04B00B978A9 /* OAuthRepository.swift in Sources */,

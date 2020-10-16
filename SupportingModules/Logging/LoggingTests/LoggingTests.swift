@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Logging
+@testable import RealifeTech
 
 class LoggingTests: XCTestCase {
 

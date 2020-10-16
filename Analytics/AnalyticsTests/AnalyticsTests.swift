@@ -7,9 +7,7 @@
 //
 
 import XCTest
-@testable import Analytics
-@testable import APIV3Utilities
-@testable import GraphQL
+@testable import RealifeTech
 @testable import Apollo
 
 class AnalyticsTests: XCTestCase {

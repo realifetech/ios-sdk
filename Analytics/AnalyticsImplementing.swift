@@ -26,14 +26,14 @@ public class AnalyticsImplementing: AnalyticsLogging {
 
     func getOfflineEvents() {
         do {
-            let cached: AnalyticsEvent = try storage.fetch(for: "event1")
+            let cached: LoggingEvent = try storage.fetch(for: "event1")
             print(cached)
         } catch {
             print(error)
         }
     }
 
-    func saveEventOffline(event: AnalyticsEvent) {
+    func saveEventOffline(event: LoggingEvent) {
         do {
             try storage.save(event, for: "event1")
         } catch {
