@@ -14,10 +14,15 @@ import RxSwift
 
 class DeviceRegistrationWorkerTests: XCTestCase {
 
+    enum TestError: Error {
+        case deviceRegistrationFailed
+    }
+
     var sut: DeviceRegistrationWorker!
     var reachabilityChecker: MockReachabilityChecker!
+    let debounceMilliseconds: Int = 50
 
-    lazy var testDevice = Device(
+    var testDevice = Device(
         deviceId: "GODZILLA",
         model: "TREX",
         sdkVersion: "KONG",
@@ -29,14 +34,17 @@ class DeviceRegistrationWorkerTests: XCTestCase {
         reachabilityChecker = MockReachabilityChecker()
         sut = DeviceRegistrationWorker(
             reachabilityChecker: reachabilityChecker,
-            debounceRateSeconds: 1,
+            debounceRateSeconds: Double(debounceMilliseconds)/1000,
             scheduler: MainScheduler.instance,
             deviceProvider: MockDeviceRepository.self)
     }
 
-    func test_registerDevice_success() {
+    override func tearDown() {
         MockDeviceRepository.deviceReceived = nil
-        MockDeviceRepository.observableToReturn = .just(true)
+        MockDeviceRepository.observableToReturn = .just(false)
+    }
+
+    func test_registerDevice_success() {
         reachabilityChecker.hasNetworkConnection = true
         let expectation = XCTestExpectation(description: "Device registered")
         sut.registerDevice(testDevice, { _ in
@@ -46,7 +54,63 @@ class DeviceRegistrationWorkerTests: XCTestCase {
         XCTAssertEqual(MockDeviceRepository.deviceReceived, testDevice)
     }
 
-    func test_registerDevice_
+    func test_registerDevice_waitsForNetwork() {
+        reachabilityChecker.hasNetworkConnection = false
+        let expectation = XCTestExpectation(description: "Device registered")
+        sut.registerDevice(testDevice, { _ in
+            expectation.fulfill()
+        })
+        XCTAssertNil(MockDeviceRepository.deviceReceived)
+        DispatchQueue.main.async {
+            self.reachabilityChecker.hasNetworkConnection = true
+        }
+        wait(for: [expectation], timeout: 0.1)
+        XCTAssertEqual(MockDeviceRepository.deviceReceived, testDevice)
+    }
+
+    func test_registerDevice_sequentialQueuedCalls() {
+        reachabilityChecker.hasNetworkConnection = false
+        let expectation1 = XCTestExpectation(description: "1st Device registered")
+        let expectation2 = XCTestExpectation(description: "2nd Device registered")
+        let expectation3 = XCTestExpectation(description: "3rd Device registered")
+        sut.registerDevice(testDevice, { _ in
+            expectation1.fulfill()
+        })
+        sut.registerDevice(testDevice, { _ in
+            expectation2.fulfill()
+        })
+        sut.registerDevice(testDevice, { _ in
+            expectation3.fulfill()
+        })
+        XCTAssertNil(MockDeviceRepository.deviceReceived)
+        DispatchQueue.main.async {
+            self.reachabilityChecker.hasNetworkConnection = true
+        }
+        wait(for: [expectation1, expectation2, expectation3],
+             timeout: 0.1,
+             enforceOrder: true)
+    }
+
+    func test_registerDevice_retriesOnFailure() {
+        let expectation1 = XCTestExpectation(description: "Async block completed")
+        let expectation2 = XCTestExpectation(description: "Device registered")
+        let minimumTimeInterval = TimeInterval.init(floatLiteral: Double(self.debounceMilliseconds)/1000)
+        reachabilityChecker.hasNetworkConnection = true
+        MockDeviceRepository.observableToReturn = .error(TestError.deviceRegistrationFailed)
+        let startTime = Date()
+        sut.registerDevice(testDevice, { _ in
+            let recordedInterval = Date().timeIntervalSince(startTime)
+            XCTAssertGreaterThan(recordedInterval, minimumTimeInterval)
+            XCTAssertLessThan(recordedInterval, minimumTimeInterval*1.5)
+            expectation2.fulfill()
+        })
+        XCTAssertNil(MockDeviceRepository.deviceReceived)
+        DispatchQueue.main.async {
+            expectation1.fulfill()
+            MockDeviceRepository.observableToReturn = .just(true)
+        }
+        wait(for: [expectation1, expectation2], timeout: 0.1, enforceOrder: true)
+    }
 
 }
 

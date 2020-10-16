@@ -24,7 +24,7 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
 
     var hasRegistered: Bool = false
 
-    private let debounceRateSeconds: Int
+    private let debounceRateMilliseconds: Int
     private let reachabilityChecker: ReachabilityChecking
     private let queue: DispatchQueue
     private let semaphore = DispatchSemaphore(value: 1)
@@ -38,11 +38,11 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
     /// - Parameter deviceProvider: [Optional] The repositiory which provides a device registration observable
     init(
         reachabilityChecker: ReachabilityChecking,
-        debounceRateSeconds: Int,
+        debounceRateSeconds: Double,
         scheduler: ImmediateSchedulerType? = nil,
         deviceProvider: DeviceProviding.Type = DeviceRepository.self
     ) {
-        self.debounceRateSeconds = debounceRateSeconds
+        self.debounceRateMilliseconds = Int(debounceRateSeconds * 1000)
         self.disposeBag = DisposeBag()
         self.reachabilityChecker = reachabilityChecker
         self.queue = DispatchQueue(
@@ -67,7 +67,7 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
         _ completion: @escaping (Result<Void, Error>) -> Void
     ) {
         guard reachabilityChecker.hasNetworkConnection else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(debounceRateSeconds)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(debounceRateMilliseconds)) {
                 self.deviceRegistrationLoop(device, completion)
             }
             return
@@ -77,19 +77,19 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
         debouncedObservable
             .subscribeOn(scheduler)
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                self?.semaphore.signal()
-                self?.hasRegistered = true
+            .subscribe(onNext: { _ in
+                self.semaphore.signal()
+                self.hasRegistered = true
                 completion(.success(()))
-            }, onError: { [weak self] _ in
-                self?.deviceRegistrationLoop(device, completion)
+            }, onError: { _ in
+                self.deviceRegistrationLoop(device, completion)
             })
             .disposed(by: disposeBag)
     }
 
     func makeDebouncedDeviceRegistrationObservable(device: Device) -> Observable<Bool> {
-        let tenSecondInterval = Observable<Int>
-            .interval(.seconds(debounceRateSeconds), scheduler: MainScheduler.instance)
+        let interval = Observable<Int>
+            .interval(.milliseconds(debounceRateMilliseconds), scheduler: MainScheduler.instance)
             .take(1)
         let allDeviceRegistrationEvents = deviceProvider
             .registerDevice(device)
@@ -99,7 +99,7 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
             .compactMap { $0.error }
         let successObservable: Observable<Bool> = allDeviceRegistrationEvents
             .compactMap { $0.element }
-        let retryObservable: Observable<Bool> = Observable.zip(tenSecondInterval, deviceRegistrationErrors)
+        let retryObservable: Observable<Bool> = Observable.zip(interval, deviceRegistrationErrors)
             .map { (_, error) in throw error }
         return Observable.merge(successObservable, retryObservable)
     }
