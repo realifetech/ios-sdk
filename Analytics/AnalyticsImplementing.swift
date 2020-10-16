@@ -18,7 +18,7 @@ public class AnalyticsImplementing: AnalyticsLogging {
         self.dispatcher = dispatcher
     }
 
-    func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
+    public func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
         dispatcher.logEvent(event) { error in
             completion(error)
         }

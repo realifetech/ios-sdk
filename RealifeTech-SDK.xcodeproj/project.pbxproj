@@ -16,6 +16,8 @@
 		0317B929252768EA00863EC6 /* GraphQLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B928252768EA00863EC6 /* GraphQLTests.swift */; };
 		0317B92B252768EA00863EC6 /* GraphQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 0317B91D252768EA00863EC6 /* GraphQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0317B933252769D900863EC6 /* GraphNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B932252769D900863EC6 /* GraphNetwork.swift */; };
+		033FFEF62539C49E00C68936 /* Logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C30D4E2539978E005100C9 /* Logging.framework */; };
+		033FFEF72539C49E00C68936 /* Logging.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03C30D4E2539978E005100C9 /* Logging.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		034CBB3A2530595000E607C2 /* GraphQLDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */; };
 		035721BB2530A25200FD1E23 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */; };
 		0397093625363B0800F8EB59 /* AnalyticsImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0397093525363B0800F8EB59 /* AnalyticsImplementing.swift */; };
@@ -161,6 +163,13 @@
 			remoteGlobalIDString = 0317B91A252768EA00863EC6;
 			remoteInfo = GraphQL;
 		};
+		033FFEF82539C49E00C68936 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03C30D4D2539978E005100C9;
+			remoteInfo = Logging;
+		};
 		035721B32530782600FD1E23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 48E67726251BA7F0007E2741 /* Project object */;
@@ -282,6 +291,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				033FFEF72539C49E00C68936 /* Logging.framework in Embed Frameworks */,
 				03DE5CA02538FA810007366C /* ReachabilityChecker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -548,6 +558,7 @@
 			files = (
 				886338D3B5FD1ACBEFA5B326 /* Pods_GraphQL.framework in Frameworks */,
 				03DE5C9F2538FA810007366C /* ReachabilityChecker.framework in Frameworks */,
+				033FFEF62539C49E00C68936 /* Logging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1376,6 +1387,7 @@
 			);
 			dependencies = (
 				03DE5CA22538FA810007366C /* PBXTargetDependency */,
+				033FFEF92539C49E00C68936 /* PBXTargetDependency */,
 			);
 			name = GraphQL;
 			productName = GraphQL;
@@ -3100,6 +3112,11 @@
 			isa = PBXTargetDependency;
 			target = 0317B91A252768EA00863EC6 /* GraphQL */;
 			targetProxy = 0317B925252768EA00863EC6 /* PBXContainerItemProxy */;
+		};
+		033FFEF92539C49E00C68936 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03C30D4D2539978E005100C9 /* Logging */;
+			targetProxy = 033FFEF82539C49E00C68936 /* PBXContainerItemProxy */;
 		};
 		0397093C25363BB100F8EB59 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
