@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import APILayer
-import APIV3Utilities
 import RxSwift
 
 public struct DeviceRepository: RemoteDiskCacheDataProviding {

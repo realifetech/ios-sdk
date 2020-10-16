@@ -26,7 +26,7 @@ public class RealifeTech {
             clientId: "LS_0",
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             baseUrl: "http://api-staging.livestyled.com/v3")
-        General = GeneralImplementing()
+        General = GeneralImplementing(deviceId: deviceHelper.deviceId)
         Audiences = AudiencesImplementing(tokenHelper: helper,
                                           graphQLAPIUrl: configuration.graphApiUrl ?? "",
                                           deviceId: deviceHelper.deviceId)

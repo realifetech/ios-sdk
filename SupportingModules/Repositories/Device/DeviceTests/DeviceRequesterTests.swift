@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Repositories
+@testable import RealifeTech
 
 class DeviceRequesterTests: XCTestCase {
 
@@ -21,7 +21,7 @@ class DeviceRequesterTests: XCTestCase {
                                 bluetoothOn: false,
                                 wifiConnected: true)
         let requestToTest = sut.register(device: testDevice)
-        XCTAssertEqual(requestToTest.url?.absoluteString, "/device/register")
+        XCTAssertEqual(requestToTest.url?.path, "/device/register")
         guard
             let data = requestToTest.httpBody,
             let jsonObject = try? JSONSerialization.jsonObject(
@@ -37,7 +37,7 @@ class DeviceRequesterTests: XCTestCase {
         let testTokenString = "Test_TOKEN"
         let testToken = DeviceToken.defaultDeviceToken(withProviderToken: testTokenString)
         let requestToTest = sut.register(tokenForPushNotificationsWithDeviceToken: testToken)
-        XCTAssertEqual(requestToTest.url?.absoluteString, "/device/me/token")
+        XCTAssertEqual(requestToTest.url?.path, "/device/me/token")
         guard
             let data = requestToTest.httpBody,
             let jsonObject = try? JSONSerialization.jsonObject(

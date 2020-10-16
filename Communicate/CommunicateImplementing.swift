@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import Repositories
 
 public final class CommunicateImplementing: PushNotificationRegistering {
 

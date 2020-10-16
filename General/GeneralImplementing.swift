@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 public class GeneralImplementing: DeviceRegistering {
 
