@@ -848,12 +848,21 @@
 			path = DeviceRegistration;
 			sourceTree = "<group>";
 		};
-		48953C2B25390D6500A6F078 /* Utils */ = {
+		48953C2B25390D6500A6F078 /* TestHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				48953C2925390D5E00A6F078 /* MockReachabilityChecker.swift */,
 			);
-			path = Utils;
+			path = TestHelpers;
+			sourceTree = "<group>";
+		};
+		48953C302539AFCA00A6F078 /* DeviceRegistrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				48953C232538FF5200A6F078 /* DeviceRegistrationWorkerTests.swift */,
+				48953C2725390D2B00A6F078 /* DeviceRegistrationLoopHandlerTests.swift */,
+			);
+			path = DeviceRegistrationTests;
 			sourceTree = "<group>";
 		};
 		489F06362530A87C00BF4974 /* Device */ = {
@@ -1061,10 +1070,9 @@
 			children = (
 				48E6775B251BA843007E2741 /* GeneralFactoryTests.swift */,
 				48953C2E253934B200A6F078 /* GeneralImplementingTests.swift */,
-				48953C232538FF5200A6F078 /* DeviceRegistrationWorkerTests.swift */,
-				48953C2725390D2B00A6F078 /* DeviceRegistrationLoopHandlerTests.swift */,
+				48953C302539AFCA00A6F078 /* DeviceRegistrationTests */,
+				48953C2B25390D6500A6F078 /* TestHelpers */,
 				48E6775D251BA843007E2741 /* Info.plist */,
-				48953C2B25390D6500A6F078 /* Utils */,
 			);
 			path = GeneralTests;
 			sourceTree = "<group>";

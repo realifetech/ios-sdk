@@ -32,9 +32,9 @@ public class RealifeTech {
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
         let apiHelper = APIV3RequesterHelper.setupV3API(
             deviceID: deviceHelper.deviceId,
-            clientID: "LS_0",
-            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
-            baseUrl: "http://api-staging.livestyled.com/v3")
+            clientID: configuration.appCode,
+            clientSecret: configuration.clientSecret,
+            baseUrl: configuration.apiUrl)
         General = GeneralFactory.makeGeneralModule(
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
