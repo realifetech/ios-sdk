@@ -7,26 +7,18 @@
 //
 
 import Foundation
-import APIV3Utilities
 import GraphQL
 
 public class AudiencesImplementing: AudienceChecking {
 
-    var dispatcher: GraphQLDispatching?
+    let dispatcher: GraphQLDispatching
 
-    public init(tokenHelper: V3APITokenManagable, graphQLAPIUrl: String, deviceId: String) {
-        if let graphQLUrl = URL(string: graphQLAPIUrl) {
-            let client = GraphNetwork(graphQLAPIUrl: graphQLUrl,
-                                      tokenHelper: tokenHelper,
-                                      deviceId: deviceId)
-            self.dispatcher = GraphQLDispatcher(client: client)
-        } else {
-            self.dispatcher = nil
-        }
+    public init(dispatcher: GraphQLDispatching) {
+        self.dispatcher = dispatcher
     }
 
     public func deviceIsMemberOfAudience(audienceId: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        dispatcher?.dispatch(query: BelongsToAudienceQuery(audienceId: audienceId)) { result in
+        dispatcher.dispatch(query: BelongsToAudienceQuery(audienceId: audienceId)) { result in
             switch result {
             case .success(let response):
                 return completion(.success(response.data?.me?.device?.belongsToAudience ?? false))
