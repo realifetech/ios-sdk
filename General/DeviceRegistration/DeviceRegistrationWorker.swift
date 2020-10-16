@@ -62,7 +62,7 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
     }
 
     /// Begins a loop to register the device, checks connectivity before attempting, and will retry on failure.
-    func deviceRegistrationLoop(
+    private func deviceRegistrationLoop(
         _ device: Device,
         _ completion: @escaping (Result<Void, Error>) -> Void
     ) {
@@ -87,7 +87,7 @@ class DeviceRegistrationWorker: DeviceRegistrationWorkerProtocol {
             .disposed(by: disposeBag)
     }
 
-    func makeDebouncedDeviceRegistrationObservable(device: Device) -> Observable<Bool> {
+    private func makeDebouncedDeviceRegistrationObservable(device: Device) -> Observable<Bool> {
         let interval = Observable<Int>
             .interval(.milliseconds(debounceRateMilliseconds), scheduler: MainScheduler.instance)
             .take(1)

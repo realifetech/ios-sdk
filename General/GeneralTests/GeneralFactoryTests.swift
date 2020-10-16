@@ -15,7 +15,7 @@ class GeneralFactoryTests: XCTestCase {
     func test_setsDeviceId() {
         let testId = "123"
         let sut = GeneralFactory.makeGeneralModule(
-            deviceId: testId,
+            deviceId: testId, deviceModel: "any", osVersion: "thing",
             reachabilityChecker: ReachabilityFactory.makeReachabilityHelper())
         XCTAssertEqual(testId, sut.deviceId)
     }

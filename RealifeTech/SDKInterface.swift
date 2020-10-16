@@ -15,7 +15,7 @@ import Foundation
 
 public class RealifeTech {
 
-    public static var General: GeneralImplementing!
+    public static var General: General!
     public static var Communicate: CommunicateImplementing!
 
     /// Provides information required for the SDK to operate.
@@ -26,15 +26,17 @@ public class RealifeTech {
         print("Someone called to configure the SDK")
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
-        let helper = APIV3RequesterHelper.setupV3API(
+        let apiHelper = APIV3RequesterHelper.setupV3API(
             deviceID: deviceHelper.deviceId,
             clientID: "LS_0",
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             baseUrl: "http://api-staging.livestyled.com/v3")
         General = GeneralFactory.makeGeneralModule(
             deviceId: deviceHelper.deviceId,
+            deviceModel: deviceHelper.model,
+            osVersion: deviceHelper.osVersion,
             reachabilityChecker: reachabilityChecker)
         Communicate = CommunicateImplementing()
-        helper.getValidToken {}
+        apiHelper.getValidToken {}
     }
 }

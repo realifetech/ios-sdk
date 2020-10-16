@@ -18,6 +18,8 @@ class GeneralImplementingTests: XCTestCase {
     }
 
     private let testId = "123abc"
+    private let testModel = "whooze"
+    private let osVersion = "dunniy"
 
     private var sut: GeneralImplementing!
     private var deviceRegistrationSpy: MockDeviceRegistrationWorker!
@@ -27,6 +29,8 @@ class GeneralImplementingTests: XCTestCase {
         deviceRegistrationSpy = MockDeviceRegistrationWorker()
         mockReachabilityChecker = MockReachabilityChecker()
         sut = GeneralImplementing(deviceId: testId,
+                                  deviceModel: testModel,
+                                  osVersion: osVersion,
                                   reachabilityChecker: mockReachabilityChecker,
                                   deviceRegistrationWorker: deviceRegistrationSpy)
     }
@@ -62,9 +66,9 @@ class GeneralImplementingTests: XCTestCase {
         let testBluetooth = false
         let testDevice = Device(
             deviceId: testId,
-            model: sut.MODEL,
+            model: testModel,
             sdkVersion: sut.SDKVERSION,
-            osVersion: sut.OSVERSION,
+            osVersion: osVersion,
             bluetoothOn: testBluetooth,
             wifiConnected: mockReachabilityChecker.isConnectedToWifi)
         mockReachabilityChecker.isBluetoothConnected = testBluetooth

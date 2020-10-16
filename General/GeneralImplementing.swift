@@ -15,20 +15,24 @@ import RxCocoa
 class GeneralImplementing: General {
 
     // TODO: fix this
-    let MODEL = "OlivierPhone"
     let SDKVERSION = "0.0.1alpha"
-    let OSVERSION =  "4"
 
     public let deviceId: String
+    private let deviceModel: String
+    private let osVersion: String
     private let reachabilityChecker: ReachabilityChecking
     private let deviceRegistrationWorker: DeviceRegistrationWorkerProtocol
 
     init(
         deviceId: String,
+        deviceModel: String,
+        osVersion: String,
         reachabilityChecker: ReachabilityChecking,
         deviceRegistrationWorker: DeviceRegistrationWorkerProtocol
     ) {
         self.deviceId = deviceId
+        self.deviceModel = deviceModel
+        self.osVersion = osVersion
         self.reachabilityChecker = reachabilityChecker
         self.deviceRegistrationWorker = deviceRegistrationWorker
     }
@@ -41,9 +45,9 @@ extension GeneralImplementing {
 
     var device: Device {
         Device(deviceId: deviceId,
-               model: MODEL,
+               model: deviceModel,
                sdkVersion: SDKVERSION,
-               osVersion: OSVERSION,
+               osVersion: osVersion,
                bluetoothOn: reachabilityChecker.isBluetoothConnected,
                wifiConnected: reachabilityChecker.isConnectedToWifi)
     }

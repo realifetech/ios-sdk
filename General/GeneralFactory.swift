@@ -12,6 +12,8 @@ import ReachabilityChecker
 public enum GeneralFactory {
     public static func makeGeneralModule(
         deviceId: String,
+        deviceModel: String,
+        osVersion: String,
         reachabilityChecker: ReachabilityChecking
     ) -> General {
         let registrationWorker = DeviceRegistrationWorker(
@@ -19,6 +21,8 @@ public enum GeneralFactory {
             debounceRateSeconds: 10)
         return GeneralImplementing(
             deviceId: deviceId,
+            deviceModel: deviceModel,
+            osVersion: osVersion,
             reachabilityChecker: reachabilityChecker,
             deviceRegistrationWorker: registrationWorker)
     }
