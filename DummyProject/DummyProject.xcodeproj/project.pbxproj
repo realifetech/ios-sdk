@@ -7,21 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		437992AE656776822C2E1A98 /* Pods_DummyProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */; };
-		48D0A4382535ED530048E823 /* Communicate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4362535ED530048E823 /* Communicate.framework */; };
-		48D0A4392535ED530048E823 /* Communicate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4362535ED530048E823 /* Communicate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48D0A43A2535ED530048E823 /* General.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4372535ED530048E823 /* General.framework */; };
-		48D0A43B2535ED530048E823 /* General.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4372535ED530048E823 /* General.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48D0A43E2535ED7C0048E823 /* UIDeviceHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A43D2535ED7C0048E823 /* UIDeviceHelper.framework */; };
-		48D0A43F2535ED7C0048E823 /* UIDeviceHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A43D2535ED7C0048E823 /* UIDeviceHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48D0A4432535EDBB0048E823 /* APILayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4412535EDBB0048E823 /* APILayer.framework */; };
-		48D0A4442535EDBB0048E823 /* APILayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4412535EDBB0048E823 /* APILayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48D0A4452535EDBB0048E823 /* APIV3Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4422535EDBB0048E823 /* APIV3Utilities.framework */; };
-		48D0A4462535EDBB0048E823 /* APIV3Utilities.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4422535EDBB0048E823 /* APIV3Utilities.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48D0A44A2535EDD70048E823 /* ReachabilityChecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4482535EDD70048E823 /* ReachabilityChecker.framework */; };
-		48D0A44B2535EDD70048E823 /* ReachabilityChecker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4482535EDD70048E823 /* ReachabilityChecker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48D0A44C2535EDD70048E823 /* Repositories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4492535EDD70048E823 /* Repositories.framework */; };
-		48D0A44D2535EDD70048E823 /* Repositories.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D0A4492535EDD70048E823 /* Repositories.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		34329DE35641402766E5F420 /* Pods_DummyProject_DummyProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59113E797621A1DD7AEECB84 /* Pods_DummyProject_DummyProjectTests.framework */; };
 		48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16A251E1ECF006CA623 /* AppDelegate.swift */; };
 		48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */; };
 		48D6F16F251E1ECF006CA623 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16E251E1ECF006CA623 /* ViewController.swift */; };
@@ -31,7 +17,8 @@
 		48D6F182251E1ED0006CA623 /* DummyProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F181251E1ED0006CA623 /* DummyProjectTests.swift */; };
 		48D6F18E251E1F6D006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F18D251E1F6D006CA623 /* RealifeTech.framework */; };
 		48D6F18F251E1F6D006CA623 /* RealifeTech.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F18D251E1F6D006CA623 /* RealifeTech.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		64CD338C16B9BC486A8B6AB9 /* Pods_DummyProject_DummyProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87831F4462866B37A786DC40 /* Pods_DummyProject_DummyProjectTests.framework */; };
+		6DA40A47331812C51AEE2128 /* Pods_DummyProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825FC6C67C57D0E7FE2C5054 /* Pods_DummyProject.framework */; };
+		F8F8F8E3C3933B5B390A8BDC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,14 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				48D0A4392535ED530048E823 /* Communicate.framework in Embed Frameworks */,
 				48D6F18F251E1F6D006CA623 /* RealifeTech.framework in Embed Frameworks */,
-				48D0A44D2535EDD70048E823 /* Repositories.framework in Embed Frameworks */,
-				48D0A43F2535ED7C0048E823 /* UIDeviceHelper.framework in Embed Frameworks */,
-				48D0A43B2535ED530048E823 /* General.framework in Embed Frameworks */,
-				48D0A4442535EDBB0048E823 /* APILayer.framework in Embed Frameworks */,
-				48D0A4462535EDBB0048E823 /* APIV3Utilities.framework in Embed Frameworks */,
-				48D0A44B2535EDD70048E823 /* ReachabilityChecker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,15 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		48D0A4362535ED530048E823 /* Communicate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Communicate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48D0A4372535ED530048E823 /* General.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = General.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48D0A43D2535ED7C0048E823 /* UIDeviceHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIDeviceHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48D0A4412535EDBB0048E823 /* APILayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APILayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48D0A4422535EDBB0048E823 /* APIV3Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APIV3Utilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48D0A4482535EDD70048E823 /* ReachabilityChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReachabilityChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48D0A4492535EDD70048E823 /* Repositories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Repositories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F167251E1ECF006CA623 /* DummyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F16A251E1ECF006CA623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,8 +59,9 @@
 		48D6F181251E1ED0006CA623 /* DummyProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyProjectTests.swift; sourceTree = "<group>"; };
 		48D6F183251E1ED0006CA623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D6F18D251E1F6D006CA623 /* RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59113E797621A1DD7AEECB84 /* Pods_DummyProject_DummyProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject_DummyProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		765C446279A234F52E37C0A8 /* Pods-DummyProject-DummyProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject-DummyProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
-		87831F4462866B37A786DC40 /* Pods_DummyProject_DummyProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject_DummyProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		825FC6C67C57D0E7FE2C5054 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1A822ADFCEDC15D91C34CE4 /* Pods-DummyProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.debug.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.debug.xcconfig"; sourceTree = "<group>"; };
 		C36DC0972292F70934AF9D13 /* Pods-DummyProject-DummyProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject-DummyProjectTests.release.xcconfig"; path = "Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		D12A35F425AE319FCBA17506 /* Pods-DummyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.release.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,14 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48D6F18E251E1F6D006CA623 /* RealifeTech.framework in Frameworks */,
-				48D0A4432535EDBB0048E823 /* APILayer.framework in Frameworks */,
-				437992AE656776822C2E1A98 /* Pods_DummyProject.framework in Frameworks */,
-				48D0A44C2535EDD70048E823 /* Repositories.framework in Frameworks */,
-				48D0A4452535EDBB0048E823 /* APIV3Utilities.framework in Frameworks */,
-				48D0A4382535ED530048E823 /* Communicate.framework in Frameworks */,
-				48D0A43A2535ED530048E823 /* General.framework in Frameworks */,
-				48D0A43E2535ED7C0048E823 /* UIDeviceHelper.framework in Frameworks */,
-				48D0A44A2535EDD70048E823 /* ReachabilityChecker.framework in Frameworks */,
+				6DA40A47331812C51AEE2128 /* Pods_DummyProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64CD338C16B9BC486A8B6AB9 /* Pods_DummyProject_DummyProjectTests.framework in Frameworks */,
+				F8F8F8E3C3933B5B390A8BDC /* BuildFile in Frameworks */,
+				34329DE35641402766E5F420 /* Pods_DummyProject_DummyProjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,17 +147,10 @@
 		48D6F18C251E1F6D006CA623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				48D0A4482535EDD70048E823 /* ReachabilityChecker.framework */,
-				48D0A4492535EDD70048E823 /* Repositories.framework */,
-				48D0A4412535EDBB0048E823 /* APILayer.framework */,
-				48D0A4422535EDBB0048E823 /* APIV3Utilities.framework */,
-				48D0A43D2535ED7C0048E823 /* UIDeviceHelper.framework */,
-				48D0A4362535ED530048E823 /* Communicate.framework */,
-				48D0A4372535ED530048E823 /* General.framework */,
 				48005DCD253072E900B4E8BD /* XCTest.framework */,
 				48D6F18D251E1F6D006CA623 /* RealifeTech.framework */,
-				022BB76ADFDA5EBB3CCA8837 /* Pods_DummyProject.framework */,
-				87831F4462866B37A786DC40 /* Pods_DummyProject_DummyProjectTests.framework */,
+				825FC6C67C57D0E7FE2C5054 /* Pods_DummyProject.framework */,
+				59113E797621A1DD7AEECB84 /* Pods_DummyProject_DummyProjectTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -297,6 +257,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08D357D483FB9017C33117B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2B18C6227709C026E40F1816 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,6 +521,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B1A822ADFCEDC15D91C34CE4 /* Pods-DummyProject.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -563,6 +541,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D12A35F425AE319FCBA17506 /* Pods-DummyProject.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;

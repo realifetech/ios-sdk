@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import General
 
 public struct SDKConfiguration {
     public var appCode: String

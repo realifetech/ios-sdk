@@ -6,16 +6,12 @@
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
-import General
-import Communicate
-import APIV3Utilities
-import UIDeviceHelper
-import ReachabilityChecker
 import Foundation
 
 public class RealifeTech {
 
     public static var General: General!
+    public static var Audiences: AudienceChecking!
     public static var Communicate: CommunicateImplementing!
 
     private static var moduleVersionString: String? {
@@ -31,8 +27,8 @@ public class RealifeTech {
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
         let apiHelper = APIV3RequesterHelper.setupV3API(
-            deviceID: deviceHelper.deviceId,
-            clientID: configuration.appCode,
+            deviceId: deviceHelper.deviceId,
+            clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl)
         General = GeneralFactory.makeGeneralModule(
@@ -41,6 +37,9 @@ public class RealifeTech {
             osVersion: deviceHelper.osVersion,
             sdkVersion: moduleVersionString ?? "",
             reachabilityChecker: reachabilityChecker)
+        Audiences = AudiencesImplementing(tokenHelper: apiHelper,
+                                          graphQLAPIUrl: configuration.graphApiUrl ?? "",
+                                          deviceId: deviceHelper.deviceId)
         Communicate = CommunicateImplementing()
         apiHelper.getValidToken {}
     }

@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import APILayer
 import RxSwift
 
 protocol DefaultV3DiskCacheStrategyProviding { }
 
-fileprivate extension Bool {
+private extension Bool {
     var diskCacheDataProvidingStrategy: DiskCacheDataProvidingStrategy {
         return self ? .localAndForcedRemote : .localAndRemote
     }

@@ -29,7 +29,7 @@ public class V3APITokenManager: V3APITokenManagable {
     }
 
     public func getValidToken(_ completion: (() -> Void)?) {
-        guard let getTokenObservable = getTokenObservable else {
+        guard let getTokenObservable = oAuthRefreshOrWaitActionGenerator.refreshTokenOrWaitAction else {
             completion?()
             return
         }

@@ -1,15 +1,15 @@
 //
-//  CommunicateTests.swift
-//  CommunicateTests
+//  GraphQLTests.swift
+//  GraphQLTests
 //
-//  Created by Realife Tech on 23/09/2020.
-//  Copyright © 2020 Realife Tech. All rights reserved.
+//  Created by Jonathon Albert on 02/10/2020.
+//  Copyright © 2020 Olivier Butler. All rights reserved.
 //
 
 import XCTest
 @testable import RealifeTech
 
-class CommunicateTests: XCTestCase {
+class GraphQLTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

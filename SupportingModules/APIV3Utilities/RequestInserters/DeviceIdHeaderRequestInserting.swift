@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import APILayer
 
 public protocol DeviceIdHeaderRequestInserting {
     static func addDeviceIdHeader(toRequest request: URLRequest) -> URLRequest

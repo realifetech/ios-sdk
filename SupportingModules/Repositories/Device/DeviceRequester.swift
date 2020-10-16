@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import APILayer
-import APIV3Utilities
 
 public struct DeviceRequester: Requester, APIV3Requester {
     public static var endpoint: String? = "/device"
