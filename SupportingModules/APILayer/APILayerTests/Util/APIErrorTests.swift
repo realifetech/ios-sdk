@@ -7,9 +7,10 @@
 //
 
 import XCTest
-@testable import APILayer
+@testable import RealifeTech
 
 class APIErrorTests: XCTestCase {
+    
     let errorData = ["error": "invalid_grant", "error_description": "The access token provided has expired."]
     let mockError = MockAPIError.genericError()
     

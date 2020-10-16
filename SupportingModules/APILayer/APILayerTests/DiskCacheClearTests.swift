@@ -7,14 +7,14 @@
 //
 
 import XCTest
-@testable import APILayer
+@testable import RealifeTech
 
 class DiskCacheClearTests: XCTestCase {
+
     override func setUp() {
         clearObjs()
         populateObjs()
     }
-    override func tearDown() { }
 
     fileprivate var objs: [URL] {
         guard let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { return [] }

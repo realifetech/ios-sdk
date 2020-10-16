@@ -6,14 +6,7 @@
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
-import General
-import Audiences
-import Analytics
-import APIV3Utilities
-import UIDeviceHelper
-import GraphQL
 import Foundation
-import ReachabilityChecker
 
 public class RealifeTech {
 

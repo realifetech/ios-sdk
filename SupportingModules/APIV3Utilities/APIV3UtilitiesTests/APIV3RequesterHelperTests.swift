@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import APIV3Utilities
+@testable import RealifeTech
 
 class APIV3RequesterHelperTests: XCTestCase {
 
@@ -19,8 +19,8 @@ class APIV3RequesterHelperTests: XCTestCase {
 
     override func setUp() {
         tokenManager = APIV3RequesterHelper.setupV3API(
-            deviceID: testDeviceId,
-            clientID: testClientId,
+            deviceId: testDeviceId,
+            clientId: testClientId,
             clientSecret: testClientSecret,
             baseUrl: testBaseUrl)
     }

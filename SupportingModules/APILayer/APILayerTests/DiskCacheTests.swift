@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import APILayer
+@testable import RealifeTech
 
 struct TestObj: Codable {
     let id: String

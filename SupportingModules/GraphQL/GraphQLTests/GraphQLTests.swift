@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import GraphQL
+@testable import RealifeTech
 
 class GraphQLTests: XCTestCase {
 
