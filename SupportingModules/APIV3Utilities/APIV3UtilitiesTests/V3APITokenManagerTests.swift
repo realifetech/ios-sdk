@@ -8,7 +8,7 @@
 
 import XCTest
 import RxSwift
-@testable import APIV3Utilities
+@testable import RealifeTech
 
 class V3APITokenManagerTests: XCTestCase {
 
@@ -62,7 +62,6 @@ class V3APITokenManagerTests: XCTestCase {
         observableSource.onNext(())
         wait(for: [expectation], timeout: 0.2)
     }
-    
 }
 
 private final class MockStore: AuthorisationStoring {

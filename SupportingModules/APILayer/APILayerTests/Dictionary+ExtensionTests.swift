@@ -1,17 +1,17 @@
 //
-//  Dictionary+ExtensionsTests.swift
-//  APIV3UtilitiesTests
+//  Dictionary+ExtensionTests.swift
+//  RealifeTechTests
 //
-//  Created by Olivier Butler on 09/10/2020.
+//  Created by Olivier Butler on 16/10/2020.
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import XCTest
-@testable import APIV3Utilities
+@testable import RealifeTech
 
-class DictionaryExtensionsTests: XCTestCase {
+class DictionaryExtensionTests: XCTestCase {
 
-    func testExample() {
+    func test_dictionaryRemovingNilValuesFromDictionary() {
         let testDict = [
             "hello": 123,
             "my": nil,

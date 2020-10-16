@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum MockErrorType: Int {
     case genericError
 }
@@ -54,6 +53,7 @@ public class APIError: Error {
     var logicError: Bool { //errors which the UI won't show but may need to handle
         return statusCode == 422
     }
+    
     static func constructedError(data: Data, statusCode: Int? = nil) -> APIError {
         let error = APIError()
         error.data = data

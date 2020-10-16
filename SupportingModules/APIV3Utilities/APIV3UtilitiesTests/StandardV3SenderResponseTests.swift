@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import APIV3Utilities
+@testable import RealifeTech
 
 class StandardV3SenderResponseTests: XCTestCase {
 
@@ -17,5 +17,4 @@ class StandardV3SenderResponseTests: XCTestCase {
         XCTAssertTrue(sutSuccess.isSuccess)
         XCTAssertFalse(sutFailure.isSuccess)
     }
-
 }

@@ -6,7 +6,6 @@
 //  Copyright © 2017 ConcertLive. All rights reserved.
 //
 import Foundation
-import APILayer
 import RxSwift
 
 struct OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, Requester {

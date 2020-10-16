@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import APILayer
 
 // TODO: Can we remove this type now that we don't mix APIs in the same codebase?
 struct APIRoot: RequestRootURL {
