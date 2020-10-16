@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import APILayer
 
 public protocol APIV3Requester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting {
     static func root() -> RequestRootURL

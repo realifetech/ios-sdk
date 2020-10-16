@@ -10,7 +10,7 @@ import XCTest
 import RxSwift
 import RxCocoa
 import RxTest
-@testable import APIV3Utilities
+@testable import RealifeTech
 
 class OAuthTokenRefreshWatcherTests: XCTestCase {
 

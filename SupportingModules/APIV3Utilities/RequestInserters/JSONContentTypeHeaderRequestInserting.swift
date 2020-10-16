@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import APILayer
 
 public protocol JSONContentTypeHeaderRequestInserting {
     static func addJSONContentTypeHeader(toRequest request: URLRequest) -> URLRequest

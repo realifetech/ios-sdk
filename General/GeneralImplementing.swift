@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import APIV3Utilities
 
 public class GeneralImplementing: DeviceRegistering {
     public init() {}

@@ -8,7 +8,6 @@
 
 import Foundation
 import Apollo
-import Logging
 
 public protocol GraphQLDispatching: AnyObject {
     func dispatch<T: GraphQLQuery>(
