@@ -7,7 +7,7 @@
 //
 
 import RealifeTech
-import Analytics
+import Logging
 import UIKit
 
 @UIApplicationMain
@@ -20,14 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                              graphApiUrl: "https://graphql-mock.realifetech.com/graphql")
         RealifeTech.configureSDK(with: configuration)
         RealifeTech.General.registerDevice { _ in }
-
-        let event: AnalyticsEvent = AnalyticsEvent(type: "user",
-                                                   action: "externalLogin",
-                                                   new: ["userId": "a3890e983e", "provider": "ticketmaster"],
-                                                   old: nil,
-                                                   version: "1.0")
+        let event = LoggingEvent(type: "user",
+                                 action: "externalLogin",
+                                 new: ["userId": "a3890e983e", "provider": "ticketmaster"],
+                                 old: nil, version: "1.0")
         RealifeTech.Analytics.logEvent(event) { error in
-            print("logEventError: \(error)")
+            print(error)
         }
         print(RealifeTech.General.sdkReady)
         return true

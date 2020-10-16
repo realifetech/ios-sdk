@@ -8,15 +8,22 @@
 
 import Foundation
 import GraphQL
+import Logging
 
 public class AnalyticsImplementing: AnalyticsLogging {
 
-    let dispatcher: EventSending
+    let dispatcher: LogEventSending
     let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())))
 
-    public init(dispatcher: EventSending) {
+    public init(dispatcher: LogEventSending) {
         self.dispatcher = dispatcher
         getOfflineEvents()
+    }
+
+    public func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
+        dispatcher.logEvent(event) { error in
+            completion(error)
+        }
     }
 
     func getOfflineEvents() {
@@ -34,9 +41,5 @@ public class AnalyticsImplementing: AnalyticsLogging {
         } catch {
             print(error)
         }
-    }
-
-    func logEvent(_ event: AnalyticsEvent, completion: @escaping (Error?) -> Void) {
-        dispatcher.logEvent()
     }
 }

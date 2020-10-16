@@ -39,7 +39,7 @@ public class RealifeTech {
                                       tokenHelper: helper,
                                       deviceId: deviceHelper.deviceId,
                                       reachabilityHelper: ReachabilityFactory.makeReachabilityHelper())
-            let dispatcher: GraphQLDispatching = GraphQLDispatcher(client: client)
+            let dispatcher = GraphQLDispatcher(client: client)
             Audiences = AudiencesImplementing(dispatcher: dispatcher)
             Analytics = AnalyticsImplementing(dispatcher: dispatcher)
         }
