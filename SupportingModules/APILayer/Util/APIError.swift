@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum MockErrorType: Int {
     case genericError
 }

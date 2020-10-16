@@ -7,7 +7,6 @@
 //
 
 import RealifeTech
-import Logging
 import UIKit
 
 @UIApplicationMain

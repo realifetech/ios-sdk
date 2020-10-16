@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import GraphQL
-import Logging
 
 public class AnalyticsImplementing: AnalyticsLogging {
 

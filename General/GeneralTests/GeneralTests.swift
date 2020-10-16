@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import General
+@testable import RealifeTech
 
 class GeneralTests: XCTestCase {
 

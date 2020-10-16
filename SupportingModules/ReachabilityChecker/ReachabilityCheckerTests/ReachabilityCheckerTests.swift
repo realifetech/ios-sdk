@@ -8,7 +8,7 @@
 
 import XCTest
 import CoreBluetooth
-@testable import ReachabilityChecker
+@testable import RealifeTech
 
 class ReachabilityCheckerTests: XCTestCase {
 

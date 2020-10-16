@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import APIV3Utilities
+@testable import RealifeTech
 
 final class AuthorisationStoreTests: XCTestCase {
 

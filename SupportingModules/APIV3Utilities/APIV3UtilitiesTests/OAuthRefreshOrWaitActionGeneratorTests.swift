@@ -9,7 +9,7 @@
 import XCTest
 import RxSwift
 import RxTest
-@testable import APIV3Utilities
+@testable import RealifeTech
 
 class OAuthRefreshOrWaitActionGeneratorTests: XCTestCase {
 
