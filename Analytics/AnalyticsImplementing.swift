@@ -8,17 +8,20 @@
 
 import Foundation
 import GraphQL
+import Logging
 
 public class AnalyticsImplementing: AnalyticsLogging {
 
-    let dispatcher: EventSending
+    let dispatcher: LogEventSending
 
-    public init(dispatcher: EventSending) {
+    public init(dispatcher: LogEventSending) {
         self.dispatcher = dispatcher
     }
 
-    func logEvent(_ event: AnalyticsEvent, completion: @escaping (Error?) -> Void) {
-        dispatcher.logEvent()
+    func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
+        dispatcher.logEvent(event) { error in
+            completion(error)
+        }
     }
 
     private func escape(_ dictionary: [String: String]?) -> String? {

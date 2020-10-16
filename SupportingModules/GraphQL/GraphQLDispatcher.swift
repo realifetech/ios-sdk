@@ -8,6 +8,7 @@
 
 import Foundation
 import Apollo
+import Logging
 
 public protocol GraphQLDispatching: AnyObject {
     func dispatch<T: GraphQLQuery>(
@@ -57,8 +58,8 @@ public class GraphQLDispatcher: GraphQLDispatching {
     }
 }
 
-extension GraphQLDispatcher: EventSending {
-    public func logEvent(_ event: AnalyticsEvent, completion: @escaping (Error?) -> Void) {
+extension GraphQLDispatcher: LogEventSending {
+    public func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
         let event = AnalyticEvent(type: event.type,
                                   action: event.action,
                                   new: event.newString,

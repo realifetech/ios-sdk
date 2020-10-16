@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import Logging
 
 protocol AnalyticsLogging {
-    func logEvent(_ event: AnalyticsEvent, completion: @escaping (_ error: Error?) -> Void)
+    func logEvent(_ event: LoggingEvent, completion: @escaping (_ error: Error?) -> Void)
 }
