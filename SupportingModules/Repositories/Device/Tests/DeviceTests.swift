@@ -13,7 +13,7 @@ class DeviceTests: XCTestCase {
 
     static let jsonDevice: [String: Any] = [
         "appVersion": "0.0.1alpha",
-        "manufacturer": "APPL",
+        "manufacturer": "APPLE",
         "osVersion": "4",
         "model": "OlivierPhone",
         "wifiConnected": true,
@@ -24,7 +24,9 @@ class DeviceTests: XCTestCase {
 
     static let testDevice: Device = Device(
         deviceId: "123",
+        type: "IOS",
         model: "OlivierPhone",
+        manufacturer: "APPLE",
         sdkVersion: "0.0.1alpha",
         osVersion: "4",
         bluetoothOn: false,

@@ -30,9 +30,7 @@ extension DeviceRepository {
             strategy: .remoteWithoutCachingResponse).map { $0.isSuccess }
     }
 
-    public static func registerForPushNotifications(
-        with deviceToken: DeviceToken
-    ) -> Observable<TokenRegistrationResponse> {
+    public static func registerForPushNotifications(with deviceToken: DeviceToken) -> Observable<TokenRegistrationResponse> {
         return retrieve(
             type: TokenRegistrationResponse.self,
             forRequest: Rqstr.register(tokenForPushNotificationsWithDeviceToken: deviceToken),
