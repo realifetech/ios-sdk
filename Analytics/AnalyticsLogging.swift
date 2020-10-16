@@ -8,12 +8,6 @@
 
 import Foundation
 
-public protocol AnalyticsLogging {
-    func logEvent(
-        type: String,
-        action: String,
-        new: [String: String]?,
-        old: [String: String]?,
-        completion: @escaping (_ error: Error?) -> Void
-    )
+protocol AnalyticsLogging {
+    func logEvent(_ event: AnalyticsEvent, completion: @escaping (_ error: Error?) -> Void)
 }

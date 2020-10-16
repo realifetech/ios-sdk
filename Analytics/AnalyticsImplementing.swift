@@ -11,30 +11,14 @@ import GraphQL
 
 public class AnalyticsImplementing: AnalyticsLogging {
 
-    let dispatcher: GraphQLDispatching
+    let dispatcher: EventSending
 
-    public init(dispatcher: GraphQLDispatching) {
+    public init(dispatcher: EventSending) {
         self.dispatcher = dispatcher
     }
 
-    public func logEvent(
-        type: String,
-        action: String,
-        new: [String: String]?,
-        old: [String: String]?,
-        completion: @escaping (Error?) -> Void
-    ) {
-        let newData: String? = escape(new)
-        let oldData: String? = escape(old)
-        let event = AnalyticEvent(type: type, action: action, new: newData, old: oldData, version: "1.0")
-        dispatcher.dispatchMutation(mutation: PutAnalyticEventMutation(input: event), completion: { result in
-            switch result {
-            case .success:
-                return completion(nil)
-            case .failure(let error):
-                return completion(error)
-            }
-        })
+    func logEvent(_ event: AnalyticsEvent, completion: @escaping (Error?) -> Void) {
+        dispatcher.logEvent()
     }
 
     private func escape(_ dictionary: [String: String]?) -> String? {
