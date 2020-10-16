@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 internal struct RequestLogger {
     static func log(request: URLRequest) {
         

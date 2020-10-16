@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Communicate
+@testable import RealifeTech
 
 class CommunicateTests: XCTestCase {
 

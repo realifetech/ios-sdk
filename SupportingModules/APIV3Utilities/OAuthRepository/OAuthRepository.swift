@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import APILayer
 import RxSwift
 
 protocol OAuthProviding {

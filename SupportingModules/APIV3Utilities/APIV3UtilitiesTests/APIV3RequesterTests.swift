@@ -8,7 +8,7 @@
 
 import XCTest
 import RxSwift
-@testable import APIV3Utilities
+@testable import RealifeTech
 
 class APIV3RequesterTests: XCTestCase  {
 

@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import APIV3Utilities
-import GraphQL
 
 public class AudiencesImplementing: AudienceChecking {
 
