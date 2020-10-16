@@ -30,7 +30,7 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
-            baseUrl: configuration.apiUrl)
+            baseUrl: configuration.apiUrl ?? "")
         General = GeneralFactory.makeGeneralModule(
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,

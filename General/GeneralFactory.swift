@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ReachabilityChecker
 
 public enum GeneralFactory {
     public static func makeGeneralModule(
