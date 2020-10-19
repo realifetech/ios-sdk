@@ -8,20 +8,22 @@
 
 import Foundation
 
-public class GeneralImplementing: DeviceRegistering {
-    public init() {}
+class GeneralImplementing: General {
 
-    public var sdkReady: Bool {
-        print("someone asked if the SDK was ready")
-        return true
+    private let deviceRegistrationWorker: DeviceRegistering
+
+    init(deviceRegistrationWorker: DeviceRegistering) {
+        self.deviceRegistrationWorker = deviceRegistrationWorker
     }
+}
 
-    public var deviceId: String {
-        print("someone asked for the device ID")
-        return "x"
-    }
+// MARK: - Device Registration
+extension GeneralImplementing {
 
-    public func registerDevice(_: (Result<Void, Error>) -> Void) {
-        print("Someone wanted to register the device")
+    public var sdkReady: Bool { deviceRegistrationWorker.sdkReady }
+    public var deviceId: String { deviceRegistrationWorker.deviceId }
+
+    public func registerDevice(_ completion: @escaping() -> Void) {
+        deviceRegistrationWorker.registerDevice(completion)
     }
 }
