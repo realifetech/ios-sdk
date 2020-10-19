@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34329DE35641402766E5F420 /* Pods_DummyProject_DummyProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59113E797621A1DD7AEECB84 /* Pods_DummyProject_DummyProjectTests.framework */; };
 		48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16A251E1ECF006CA623 /* AppDelegate.swift */; };
 		48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */; };
 		48D6F16F251E1ECF006CA623 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16E251E1ECF006CA623 /* ViewController.swift */; };
@@ -59,12 +58,9 @@
 		48D6F181251E1ED0006CA623 /* DummyProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyProjectTests.swift; sourceTree = "<group>"; };
 		48D6F183251E1ED0006CA623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48D6F18D251E1F6D006CA623 /* RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59113E797621A1DD7AEECB84 /* Pods_DummyProject_DummyProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject_DummyProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		765C446279A234F52E37C0A8 /* Pods-DummyProject-DummyProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject-DummyProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		825FC6C67C57D0E7FE2C5054 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1A822ADFCEDC15D91C34CE4 /* Pods-DummyProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.debug.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.debug.xcconfig"; sourceTree = "<group>"; };
-		C36DC0972292F70934AF9D13 /* Pods-DummyProject-DummyProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject-DummyProjectTests.release.xcconfig"; path = "Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests.release.xcconfig"; sourceTree = "<group>"; };
-		D12A35F425AE319FCBA17506 /* Pods-DummyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.release.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.release.xcconfig"; sourceTree = "<group>"; };
+		B1A822ADFCEDC15D91C34CE4 /* Pods-DummyProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.debug.xcconfig"; path = "../DummyProject/Pods/Target Support Files/Pods-DummyProject/Pods-DummyProject.debug.xcconfig"; sourceTree = "<group>"; };
+		D12A35F425AE319FCBA17506 /* Pods-DummyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.release.xcconfig"; path = "../DummyProject/Pods/Target Support Files/Pods-DummyProject/Pods-DummyProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8F8F8E3C3933B5B390A8BDC /* BuildFile in Frameworks */,
-				34329DE35641402766E5F420 /* Pods_DummyProject_DummyProjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +88,6 @@
 			children = (
 				B1A822ADFCEDC15D91C34CE4 /* Pods-DummyProject.debug.xcconfig */,
 				D12A35F425AE319FCBA17506 /* Pods-DummyProject.release.xcconfig */,
-				765C446279A234F52E37C0A8 /* Pods-DummyProject-DummyProjectTests.debug.xcconfig */,
-				C36DC0972292F70934AF9D13 /* Pods-DummyProject-DummyProjectTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = ../Pods;
@@ -150,7 +142,6 @@
 				48005DCD253072E900B4E8BD /* XCTest.framework */,
 				48D6F18D251E1F6D006CA623 /* RealifeTech.framework */,
 				825FC6C67C57D0E7FE2C5054 /* Pods_DummyProject.framework */,
-				59113E797621A1DD7AEECB84 /* Pods_DummyProject_DummyProjectTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -167,7 +158,6 @@
 				48D6F164251E1ECF006CA623 /* Frameworks */,
 				48D6F165251E1ECF006CA623 /* Resources */,
 				48D6F190251E1F6E006CA623 /* Embed Frameworks */,
-				F008B1111D472403FC87E940 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,11 +172,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48D6F189251E1ED0006CA623 /* Build configuration list for PBXNativeTarget "DummyProjectTests" */;
 			buildPhases = (
-				2B18C6227709C026E40F1816 /* [CP] Check Pods Manifest.lock */,
 				48D6F179251E1ED0006CA623 /* Sources */,
 				48D6F17A251E1ED0006CA623 /* Frameworks */,
 				48D6F17B251E1ED0006CA623 /* Resources */,
-				A39E75EA6EE7D8403F7AAB7B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -257,45 +245,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		08D357D483FB9017C33117B7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2B18C6227709C026E40F1816 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DummyProject-DummyProjectTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		84F47A6C35C8A909790E1829 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,40 +265,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A39E75EA6EE7D8403F7AAB7B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DummyProject-DummyProjectTests/Pods-DummyProject-DummyProjectTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F008B1111D472403FC87E940 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DummyProject/Pods-DummyProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -559,7 +474,6 @@
 		};
 		48D6F18A251E1ED0006CA623 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 765C446279A234F52E37C0A8 /* Pods-DummyProject-DummyProjectTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -581,7 +495,6 @@
 		};
 		48D6F18B251E1ED0006CA623 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C36DC0972292F70934AF9D13 /* Pods-DummyProject-DummyProjectTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
