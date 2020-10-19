@@ -48,7 +48,7 @@ public class AnalyticsImplementing: AnalyticsLogging {
         do {
             offlineEvents = try storage.fetchAll(for: StorageType.loggingEvent.rawValue)
             let debouncedFunction = debounce(
-                interval: 4000,
+                interval: 45000,
                 queue: DispatchQueue.main,
                 action: { (event: LoggingEvent) in
                     self.storage.delete(key: event.storedName ?? "")
