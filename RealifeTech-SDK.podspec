@@ -24,7 +24,9 @@ Pod::Spec.new do |spec|
 
   spec.homepage     = "https://github.com/realifetech"
   spec.license      = "MIT"
-  spec.author       = { "NitishSharma" => "punj.nitish@gmail.com" }
+  spec.authors       = { "Jonathon Albert" => "jonathon.albert@live.com",
+			"Olivier Butler" => "olivier.butler@gmail.com" ,
+			"Mickey Lee" => "mickey.lee@realifetech.com" }
 
   spec.ios.deployment_target = "12.0"
   spec.swift_version = "5.0"
