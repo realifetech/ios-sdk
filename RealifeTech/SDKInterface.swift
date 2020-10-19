@@ -10,9 +10,14 @@ import Foundation
 
 public class RealifeTech {
 
-    public static var General: GeneralImplementing!
+    public static var General: General!
     public static var Audiences: AudienceChecking!
     public static var Analytics: AnalyticsImplementing!
+    public static var Communicate: CommunicateImplementing!
+
+    private static var moduleVersionString: String? {
+        Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String
+    }
 
     /// Provides information required for the SDK to operate.
     /// This MUST be called before any other SDK functionality is acessed.
@@ -21,20 +26,28 @@ public class RealifeTech {
     public static func configureSDK(with configuration: SDKConfiguration) {
         print("Someone called to configure the SDK")
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
-        let helper = APIV3RequesterHelper.setupV3API(
+        let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
+        let apiHelper = APIV3RequesterHelper.setupV3API(
             deviceId: deviceHelper.deviceId,
-            clientId: "LS_0",
-            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
-            baseUrl: "http://api-dev.livestyled.com/v3")
-        General = GeneralImplementing()
+            clientId: configuration.appCode,
+            clientSecret: configuration.clientSecret,
+            baseUrl: configuration.apiUrl ?? "")
+        General = GeneralFactory.makeGeneralModule(
+            deviceId: deviceHelper.deviceId,
+            deviceModel: deviceHelper.model,
+            osVersion: deviceHelper.osVersion,
+            sdkVersion: moduleVersionString ?? "123", // TODO: Fix this
+            reachabilityChecker: reachabilityChecker)
         if let apiUrl = configuration.graphApiUrl, let graphQlUrl = URL(string: apiUrl) {
             let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
-                                      tokenHelper: helper,
+                                      tokenHelper: apiHelper,
                                       deviceId: deviceHelper.deviceId,
                                       reachabilityHelper: ReachabilityFactory.makeReachabilityHelper())
             let dispatcher = GraphQLDispatcher(client: client)
             Audiences = AudiencesImplementing(dispatcher: dispatcher)
             Analytics = AnalyticsImplementing(dispatcher: dispatcher)
         }
+        Communicate = CommunicateImplementing()
+        apiHelper.getValidToken {}
     }
 }

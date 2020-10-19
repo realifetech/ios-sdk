@@ -7,41 +7,35 @@
 //
 
 import XCTest
-@testable import Analytics
-@testable import APIV3Utilities
-@testable import GraphQL
+@testable import RealifeTech
 @testable import Apollo
 
 class AnalyticsTests: XCTestCase {
 
     func test_init_successful() {
-        let sut = AnalyticsImplementing(tokenHelper: EmptyTokenManager(),
-                                        graphQLAPIUrl: "www.google.com",
-                                        deviceId: "")
+        let spy = MockGraphQLDispatcher()
+        let sut = AnalyticsImplementing(dispatcher: spy)
         XCTAssertNotNil(sut.dispatcher)
     }
 
     func test_init_failed() {
-        let sut = AnalyticsImplementing(tokenHelper: EmptyTokenManager(),
-                                        graphQLAPIUrl: "",
-                                        deviceId: "")
+        let spy = MockGraphQLDispatcher()
+        let sut = AnalyticsImplementing(dispatcher: spy)
         XCTAssertNil(sut.dispatcher)
     }
 
     func test_deviceIsMemberOfAudience_isCalled() {
-        let sut = AnalyticsImplementing(tokenHelper: EmptyTokenManager(),
-                                        graphQLAPIUrl: "www.google.com",
-                                        deviceId: "")
         let spy = MockGraphQLDispatcher()
-        sut.dispatcher = spy
-        sut.logEvent(type: "", action: "", new: nil, old: nil, completion: { _ in })
+        let sut = AnalyticsImplementing(dispatcher: spy)
+        let logEvent = LoggingEvent(type: "", action: "", new: nil, old: nil, version: "")
+        sut.logEvent(logEvent, completion: { _ in })
         XCTAssertNotNil(sut.dispatcher)
         XCTAssertTrue(spy.dispatchMutationIsCalled)
     }
 
     // Mocks
 
-    private class MockGraphQLDispatcher: GraphQLDispatching {
+    private class MockGraphQLDispatcher: GraphQLDispatching, LogEventSending {
 
         var shouldFail: Bool = false
         var dispatchMutationIsCalled: Bool = false
@@ -56,6 +50,9 @@ class AnalyticsTests: XCTestCase {
             completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
         ) where T: GraphQLMutation {
             dispatchMutationIsCalled = true
+        }
+
+        func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void) {
         }
     }
 }
