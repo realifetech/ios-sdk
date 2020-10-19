@@ -7,8 +7,7 @@
 //
 
 import XCTest
-import ReachabilityChecker
-@testable import General
+@testable import RealifeTech
 
 class GeneralFactoryTests: XCTestCase {
 

@@ -7,9 +7,7 @@
 //
 
 import XCTest
-import Repositories
-import ReachabilityChecker
-@testable import General
+@testable import RealifeTech
 
 class DeviceRegistrationWorkerTests: XCTestCase {
 
@@ -44,7 +42,7 @@ class DeviceRegistrationWorkerTests: XCTestCase {
 
     func test_sdkReady() {
         XCTAssertFalse(sut.sdkReady)
-        sut.registerDevice { _ in }
+        sut.registerDevice { }
         XCTAssertTrue(sut.sdkReady)
     }
 
@@ -52,13 +50,7 @@ class DeviceRegistrationWorkerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Device registration completion")
         let testError: TestError = TestError.registrationError("hello")
         deviceRegistrationSpy.resultToReturn = .failure(testError)
-        sut.registerDevice { result in
-            switch result {
-            case .success:
-                XCTFail("Should have failed, succeeded")
-            case .failure(let error):
-                XCTAssertEqual(error as? TestError, testError)
-            }
+        sut.registerDevice {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -75,7 +67,7 @@ class DeviceRegistrationWorkerTests: XCTestCase {
             bluetoothOn: testBluetooth,
             wifiConnected: mockReachabilityChecker.isConnectedToWifi)
         mockReachabilityChecker.isBluetoothConnected = testBluetooth
-        sut.registerDevice { _ in expectation.fulfill() }
+        sut.registerDevice { expectation.fulfill() }
         guard let recievedDevice = deviceRegistrationSpy.deviceReceived else {
             return XCTFail("No device received")
         }
@@ -89,8 +81,8 @@ private class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling 
     var deviceReceived: Device?
     var resultToReturn: Result<Void, Error> = .success(())
 
-    func registerDevice(_ device: Device, _ completion: @escaping (Result<Void, Error>) -> Void) {
-        self.deviceReceived = device
-        completion(resultToReturn)
+    func registerDevice(_: Device, _: @escaping () -> Void) {
+//        self.deviceReceived = device
+//        completion(resultToReturn)
     }
 }

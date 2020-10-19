@@ -30,13 +30,13 @@ class ReachabilityCheckerTests: XCTestCase {
     func test_wifi_connected() {
         let mockHelper = MockWifiConnectivityChecker()
         mockHelper.wifiEnabled = true
-        let sut = ReachabilityChecker(wifiConnectivityChecker: mockHelper)
+        let sut = ReachabilityChecker(networkConnectivityChecker: mockHelper)
         XCTAssertTrue(sut.isConnectedToWifi)
     }
 
     func test_wifi_notConnected() {
         let mockHelper = MockWifiConnectivityChecker()
-        let sut = ReachabilityChecker(wifiConnectivityChecker: mockHelper)
+        let sut = ReachabilityChecker(networkConnectivityChecker: mockHelper)
         XCTAssertFalse(sut.isConnectedToWifi)
     }
 

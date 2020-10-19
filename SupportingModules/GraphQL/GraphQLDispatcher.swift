@@ -56,3 +56,21 @@ public class GraphQLDispatcher: GraphQLDispatching {
         }
     }
 }
+
+extension GraphQLDispatcher: LogEventSending {
+    public func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void) {
+        let event = AnalyticEvent(type: event.type,
+                                  action: event.action,
+                                  new: event.newString,
+                                  old: event.oldString,
+                                  version: event.version)
+        dispatchMutation(mutation: PutAnalyticEventMutation(input: event), completion: { result in
+            switch result {
+            case .success:
+                return completion(.success(()))
+            case .failure(let error):
+                return completion(.failure(error))
+            }
+        })
+    }
+}

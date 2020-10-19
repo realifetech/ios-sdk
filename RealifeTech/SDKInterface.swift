@@ -12,6 +12,7 @@ public class RealifeTech {
 
     public static var General: General!
     public static var Audiences: AudienceChecking!
+    public static var Analytics: AnalyticsImplementing!
     public static var Communicate: CommunicateImplementing!
 
     private static var moduleVersionString: String? {
@@ -37,9 +38,15 @@ public class RealifeTech {
             osVersion: deviceHelper.osVersion,
             sdkVersion: moduleVersionString ?? "123", // TODO: Fix this
             reachabilityChecker: reachabilityChecker)
-        Audiences = AudiencesImplementing(tokenHelper: apiHelper,
-                                          graphQLAPIUrl: configuration.graphApiUrl ?? "",
-                                          deviceId: deviceHelper.deviceId)
+        if let apiUrl = configuration.graphApiUrl, let graphQlUrl = URL(string: apiUrl) {
+            let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
+                                      tokenHelper: apiHelper,
+                                      deviceId: deviceHelper.deviceId,
+                                      reachabilityHelper: ReachabilityFactory.makeReachabilityHelper())
+            let dispatcher = GraphQLDispatcher(client: client)
+            Audiences = AudiencesImplementing(dispatcher: dispatcher)
+            Analytics = AnalyticsImplementing(dispatcher: dispatcher)
+        }
         Communicate = CommunicateImplementing()
         apiHelper.getValidToken {}
     }

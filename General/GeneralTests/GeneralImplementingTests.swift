@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import General
+@testable import RealifeTech
 
 class GeneralImplementingTests: XCTestCase {
 
@@ -22,7 +22,7 @@ class GeneralImplementingTests: XCTestCase {
     func test_deviceRegistering_forwardsFunctionality() {
         mockDeviceRegistering.deviceId = "HattyTurnip"
         mockDeviceRegistering.sdkReady = true
-        sut.registerDevice { _ in}
+        sut.registerDevice { }
         XCTAssertEqual(sut.deviceId, mockDeviceRegistering.deviceId)
         XCTAssertEqual(sut.sdkReady, mockDeviceRegistering.sdkReady)
         XCTAssertTrue(mockDeviceRegistering.receivedCallToRegisterDevice)
@@ -35,7 +35,7 @@ private class DeviceRegisteringMock: DeviceRegistering {
     var deviceId: String = ""
     var receivedCallToRegisterDevice: Bool = false
 
-    func registerDevice(_: @escaping (Result<Void, Error>) -> Void) {
+    func registerDevice(_: @escaping () -> Void) {
         receivedCallToRegisterDevice = true
     }
 }

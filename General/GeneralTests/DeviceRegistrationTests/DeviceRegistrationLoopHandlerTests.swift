@@ -7,10 +7,8 @@
 //
 
 import XCTest
-import Repositories
-import ReachabilityChecker
 import RxSwift
-@testable import General
+@testable import RealifeTech
 
 class DeviceRegistrationLoopHandlerTests: XCTestCase {
 
@@ -47,7 +45,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
     func test_registerDevice_success() {
         reachabilityChecker.hasNetworkConnection = true
         let expectation = XCTestExpectation(description: "Device registered")
-        sut.registerDevice(testDevice, { _ in
+        sut.registerDevice(testDevice, {
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 0.01)
@@ -57,7 +55,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
     func test_registerDevice_waitsForNetwork() {
         reachabilityChecker.hasNetworkConnection = false
         let expectation = XCTestExpectation(description: "Device registered")
-        sut.registerDevice(testDevice, { _ in
+        sut.registerDevice(testDevice, {
             expectation.fulfill()
         })
         XCTAssertNil(MockDeviceRepository.deviceReceived)
@@ -73,13 +71,13 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
         let expectation1 = XCTestExpectation(description: "1st Device registered")
         let expectation2 = XCTestExpectation(description: "2nd Device registered")
         let expectation3 = XCTestExpectation(description: "3rd Device registered")
-        sut.registerDevice(testDevice, { _ in
+        sut.registerDevice(testDevice, {
             expectation1.fulfill()
         })
-        sut.registerDevice(testDevice, { _ in
+        sut.registerDevice(testDevice, {
             expectation2.fulfill()
         })
-        sut.registerDevice(testDevice, { _ in
+        sut.registerDevice(testDevice, {
             expectation3.fulfill()
         })
         XCTAssertNil(MockDeviceRepository.deviceReceived)
@@ -98,7 +96,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
         reachabilityChecker.hasNetworkConnection = true
         MockDeviceRepository.observableToReturn = .error(TestError.deviceRegistrationFailed)
         let startTime = Date()
-        sut.registerDevice(testDevice, { _ in
+        sut.registerDevice(testDevice, {
             let recordedInterval = Date().timeIntervalSince(startTime)
             XCTAssertGreaterThan(recordedInterval, minimumTimeInterval)
             XCTAssertLessThan(recordedInterval, minimumTimeInterval*1.5)
