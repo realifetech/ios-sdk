@@ -97,9 +97,6 @@ extension DiskStorage: ReadableStorage {
 
     func fetchValue(for key: String) throws -> Data {
         let url = path.appendingPathComponent(key)
-        let fileArray = try fileManager.contentsOfDirectory(at: path,
-                                                            includingPropertiesForKeys: nil,
-                                                            options: [.skipsHiddenFiles]) as [NSURL]
         guard let data = fileManager.contents(atPath: url.path) else {
             throw StorageError.notFound
         }
