@@ -35,7 +35,7 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
-            sdkVersion: moduleVersionString ?? "",
+            sdkVersion: moduleVersionString ?? "123", // TODO: Fix this
             reachabilityChecker: reachabilityChecker)
         Audiences = AudiencesImplementing(tokenHelper: apiHelper,
                                           graphQLAPIUrl: configuration.graphApiUrl ?? "",

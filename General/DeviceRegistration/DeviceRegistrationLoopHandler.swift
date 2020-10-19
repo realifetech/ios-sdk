@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol DeviceRegistrationLoopHandling {
-    func registerDevice(_: Device, _: @escaping(Result<Void, Error>) -> Void)
+    func registerDevice(_: Device, _: @escaping() -> Void)
 }
 
 /// Sends and manages device registration calls.
@@ -49,7 +49,7 @@ class DeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
 
     /// Will register a device with the backend.
     /// Calls will repeat when they fail. Device registration calls will queued.
-    func registerDevice(_ device: Device, _ completion: @escaping (Result<Void, Error>) -> Void) {
+    func registerDevice(_ device: Device, _ completion: @escaping () -> Void) {
         queue.async {
             self.semaphore.wait()
             self.deviceRegistrationLoop(device, completion)
@@ -59,7 +59,7 @@ class DeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
     /// Begins a loop to register the device, checks connectivity before attempting, and will retry on failure.
     private func deviceRegistrationLoop(
         _ device: Device,
-        _ completion: @escaping (Result<Void, Error>) -> Void
+        _ completion: @escaping () -> Void
     ) {
         guard reachabilityChecker.hasNetworkConnection else {
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(debounceRateMilliseconds)) {
@@ -74,7 +74,7 @@ class DeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { _ in
                 self.semaphore.signal()
-                completion(.success(()))
+                completion()
             }, onError: { _ in
                 self.deviceRegistrationLoop(device, completion)
             })

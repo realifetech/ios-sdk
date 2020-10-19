@@ -46,12 +46,10 @@ class DeviceRegistrationWorker: DeviceRegistering {
         self.loopHandler = loopHandler
     }
 
-    func registerDevice(_ completion: @escaping (Result<Void, Error>) -> Void) {
-        loopHandler.registerDevice(device) { result in
-            if case .success = result {
-                self.sdkReady = true
-            }
-            completion(result)
+    func registerDevice(_ completion: @escaping () -> Void) {
+        loopHandler.registerDevice(device) {
+            self.sdkReady = true
+            completion()
         }
     }
 }
