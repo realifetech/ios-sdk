@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import APILayer
 
 public protocol OAuthHeaderRequestInserting {
     static func addOAuthHeader(toRequest request: URLRequest) -> URLRequest

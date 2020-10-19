@@ -8,7 +8,6 @@
 
 import Foundation
 import Apollo
-import APIV3Utilities
 
 public class GraphNetwork {
 

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import APILayer
 
 public struct APIV3RequesterHelper {
 

@@ -8,7 +8,7 @@
 
 import XCTest
 import RxSwift
-@testable import APIV3Utilities
+@testable import RealifeTech
 
 final class AuthorisationWorkerTests: XCTestCase {
 
