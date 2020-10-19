@@ -26,6 +26,7 @@ public class RealifeTech {
     public static func configureSDK(with configuration: SDKConfiguration) {
         print("Someone called to configure the SDK")
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
+<<<<<<< Updated upstream
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
         let apiHelper = APIV3RequesterHelper.setupV3API(
             deviceId: deviceHelper.deviceId,
@@ -33,6 +34,10 @@ public class RealifeTech {
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl ?? "")
         General = GeneralFactory.makeGeneralModule(
+=======
+        let reachabilityHelper = ReachabilityFactory.makeReachabilityHelper()
+        let helper = APIV3RequesterHelper.setupV3API(
+>>>>>>> Stashed changes
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
@@ -42,11 +47,11 @@ public class RealifeTech {
             let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
                                       tokenHelper: apiHelper,
                                       deviceId: deviceHelper.deviceId,
-                                      reachabilityHelper: reachabilityChecker)
+                                      reachabilityHelper: reachabilityHelper)
             let dispatcher = GraphQLDispatcher(client: client)
             Audiences = AudiencesImplementing(dispatcher: dispatcher)
             Analytics = AnalyticsImplementing(dispatcher: dispatcher,
-                                              reachabilityHelper: reachabilityChecker)
+                                              reachabilityHelper: reachabilityHelper)
         }
         Communicate = CommunicateImplementing()
         apiHelper.getValidToken {}
