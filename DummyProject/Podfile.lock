@@ -16,7 +16,7 @@ PODS:
   - SwiftLint (0.40.3)
 
 DEPENDENCIES:
-  - RealifeTech-SDK (from `..`)
+  - RealifeTech-SDK (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -28,16 +28,16 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   RealifeTech-SDK:
-    :path: ".."
+    :path: "../"
 
 SPEC CHECKSUMS:
   Apollo: c10bf1a4c7db5237be1056ace16347cd1cdcb863
-  RealifeTech-SDK: d646d4b20ae3da658b2da0c255c88941573e235f
+  RealifeTech-SDK: 2505f61410f3f8fb96c13f0e9320f8c95f63b167
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: e30e9a60214837e2841c128fcc020de22a0f4f38
+PODFILE CHECKSUM: 9a92b4e36ba63527d21c9771dacf8fcc9d6c6992
 
 COCOAPODS: 1.8.4

@@ -6,6 +6,6 @@ target 'DummyProject' do
   use_frameworks!
 
   # Pods for DummyProject
-  pod 'RealifeTech-SDK', :path => '..'
+  pod 'RealifeTech-SDK', :path => '../'
 
 end

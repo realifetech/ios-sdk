@@ -16,6 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "RealifeTech-SDK"
+  spec.module_name  = "RealifeTech"
   spec.version      = "0.0.1"
   spec.summary      = "A short description of RealifeTech-SDK."
 
@@ -28,7 +29,17 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = "12.0"
   spec.swift_version = "5.0"
   spec.source        = { :path => '.' }
-  spec.source_files  = "RealifeTech/**/*.{h,m}"
+  spec.source_files = [ 'General/**/*.swift', 'Communicate/**/*.swift', 'Audiences/**/*.swift', 'SupportingModules/**/*.swift', 'RealifeTech/**/*.swift', 'RealifeTech/RealifeTech.h']
+  spec.exclude_files =  [
+      'General/GeneralTests/**/*',
+      'Communicate/CommunicateTests/**/*',
+      'Audiences/AudiencesTests/**/*',
+      'SupportingModules/GraphQL/GraphQLTests/**/*',
+      'SupportingModules/APIV3Utilities/APIV3UtilitiesTests/**/*',
+      'SupportingModules/APILayer/APILayerTests/**/*',
+      'SupportingModules/UIDeviceHelper/UIDeviceHelperTests/**/*',
+      'SupportingModules/ReachabilityChecker/ReachabilityCheckerTests/**/*',
+      'RealifeTech/RealifeTechTests/**/*']
 
   spec.dependency "RxSwift", "> 4.2"
   spec.dependency "RxCocoa", "> 4.2"
