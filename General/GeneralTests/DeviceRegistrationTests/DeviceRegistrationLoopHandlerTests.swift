@@ -111,7 +111,6 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
         }
         wait(for: [expectation1, expectation2], timeout: 0.1, enforceOrder: true)
     }
-
 }
 
 private class MockDeviceRepository: DeviceProviding {

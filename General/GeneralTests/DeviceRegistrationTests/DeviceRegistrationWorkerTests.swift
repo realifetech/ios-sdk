@@ -29,12 +29,13 @@ class DeviceRegistrationWorkerTests: XCTestCase {
     override func setUp() {
         deviceRegistrationSpy = MockDeviceRegistrationLoopHandler()
         mockReachabilityChecker = MockReachabilityChecker()
-        sut = DeviceRegistrationWorker(deviceId: testId,
-                                  deviceModel: testModel,
-                                  osVersion: osVersion,
-                                  sdkVersion: sdkVersion,
-                                  reachabilityChecker: mockReachabilityChecker,
-                                  loopHandler: deviceRegistrationSpy)
+        sut = DeviceRegistrationWorker(
+            deviceId: testId,
+            deviceModel: testModel,
+            osVersion: osVersion,
+            sdkVersion: sdkVersion,
+            reachabilityChecker: mockReachabilityChecker,
+            loopHandler: deviceRegistrationSpy)
     }
 
     func test_initialisation() {
