@@ -82,7 +82,6 @@ class DeviceRegistrationWorkerTests: XCTestCase {
         XCTAssertEqual(recievedDevice, testDevice)
         wait(for: [expectation], timeout: 0.1)
     }
-
 }
 
 private class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
