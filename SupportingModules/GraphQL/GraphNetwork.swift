@@ -45,11 +45,7 @@ extension GraphNetwork: HTTPNetworkTransportPreflightDelegate {
         _ networkTransport: HTTPNetworkTransport,
         shouldSend request: URLRequest
     ) -> Bool {
-        guard reachabilityHelper.isConnectedToWifi else {
-            // Save Request
-            return false
-        }
-        return true
+        return reachabilityHelper.isConnectedToWifi
     }
 
     public func networkTransport(

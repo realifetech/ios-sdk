@@ -16,23 +16,9 @@ public class AnalyticsImplementing: AnalyticsLogging {
         self.dispatcher = dispatcher
     }
 
-    public func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
-        dispatcher.logEvent(event) { error in
-            completion(error)
+    public func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void) {
+        dispatcher.logEvent(event) { result in
+            completion(result)
         }
-    }
-
-    private func escape(_ dictionary: [String: String]?) -> String? {
-        var escapedString: String?
-        let encoder = JSONEncoder()
-        guard
-            dictionary != nil,
-            let dictionaryString = try? encoder.encode(dictionary),
-            let jsonString = String(data: dictionaryString, encoding: .utf8)
-            else {
-                return nil
-        }
-        escapedString = NSRegularExpression.escapedPattern(for: jsonString)
-        return escapedString
     }
 }
