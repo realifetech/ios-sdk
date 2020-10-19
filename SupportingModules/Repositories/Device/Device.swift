@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Device: Codable {
+public struct Device: Codable, Equatable {
     let token: String? // Device ID
     let type: String?
     let model: String?

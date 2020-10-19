@@ -21,3 +21,9 @@ public struct DeviceToken: Codable {
         return DeviceToken(provider: Providers.apple.rawValue, providerToken: providerToken)
     }
 }
+
+public struct TokenRegistrationResponse: Codable {
+    static let empty = TokenRegistrationResponse(snsEndpoint: nil)
+
+    let snsEndpoint: String?
+}

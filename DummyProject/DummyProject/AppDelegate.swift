@@ -14,12 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let configuration = SDKConfiguration(appCode: "hello",
-                                             clientSecret: "no-one",
-                                             graphApiUrl: "https://graphql-mock.realifetech.com/graphql")
+        let configuration = SDKConfiguration(
+            appCode: "LS_0", // TODO: Append the _0
+            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
+            apiUrl: "http://api-staging.livestyled.com/v3",
+            graphApiUrl: "https://graphql-mock.realifetech.com/graphql")
         RealifeTech.configureSDK(with: configuration)
-        RealifeTech.General.registerDevice { _ in }
-        print(RealifeTech.General.sdkReady)
+        RealifeTech.General.registerDevice {}
         return true
     }
 

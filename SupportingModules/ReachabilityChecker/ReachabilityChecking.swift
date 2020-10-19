@@ -11,4 +11,5 @@ import Foundation
 public protocol ReachabilityChecking {
     var isBluetoothConnected: Bool { get }
     var isConnectedToWifi: Bool { get }
+    var hasNetworkConnection: Bool { get }
 }

@@ -7,40 +7,23 @@
 //
 
 import Foundation
-import RxSwift
 
-public class GeneralImplementing: DeviceRegistering {
+class GeneralImplementing: General {
 
-    public var sdkReady: Bool {
-        print("someone asked if the SDK was ready")
-        return hasRegistered
+    private let deviceRegistrationWorker: DeviceRegistering
+
+    init(deviceRegistrationWorker: DeviceRegistering) {
+        self.deviceRegistrationWorker = deviceRegistrationWorker
     }
-    var hasRegistered: Bool = false
-    private var disposeBag = DisposeBag()
+}
 
-    public let deviceId: String
+// MARK: - Device Registration
+extension GeneralImplementing {
 
-    public init(deviceId: String) {
-        self.deviceId = deviceId
-    }
+    public var sdkReady: Bool { deviceRegistrationWorker.sdkReady }
+    public var deviceId: String { deviceRegistrationWorker.deviceId }
 
-    public func registerDevice(_ completion: @escaping(Result<Void, Error>) -> Void) {
-        print("Someone wanted to register the device")
-        let device = Device(deviceId: deviceId,
-                            model: "OlivierPhone",
-                            sdkVersion: "0.0.1alpha",
-                            osVersion: "4",
-                            bluetoothOn: false,
-                            wifiConnected: true)
-        DeviceRepository
-            .registerDevice(device)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { registered in
-                if registered { self.hasRegistered = true }
-                completion(.success(()))
-            }, onError: { error in
-                completion(.failure(error))
-            }).disposed(by: disposeBag)
+    public func registerDevice(_ completion: @escaping() -> Void) {
+        deviceRegistrationWorker.registerDevice(completion)
     }
 }

@@ -49,7 +49,7 @@ class ReachabilityCheckerTests: XCTestCase {
         }
     }
 
-    private class MockWifiConnectivityChecker: WifiConnectivityChecker {
+    private class MockWifiConnectivityChecker: NetworkConnectivityChecker {
 
         var wifiEnabled: Bool = false
 

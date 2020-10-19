@@ -9,17 +9,22 @@
 import Foundation
 import RxSwift
 
+public protocol DeviceProviding {
+
+    static func registerDevice(_ device: Device) -> Observable<Bool>
+
+    static func registerForPushNotifications(
+        with deviceToken: DeviceToken
+    ) -> Observable<TokenRegistrationResponse>
+}
+
 public struct DeviceRepository: RemoteDiskCacheDataProviding {
 
     public typealias Cdble = StandardV3SenderResponse
     public typealias Rqstr = DeviceRequester
 }
 
-extension DeviceRepository {
-
-    public struct TokenRegistrationResponse: Codable {
-        let snsEndpoint: String?
-    }
+extension DeviceRepository: DeviceProviding {
 
     public static func registerDevice(_ device: Device) -> Observable<Bool> {
         return retrieve(

@@ -43,7 +43,6 @@
 		488958962539D04B00B978A9 /* ReachabilityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */; };
 		488958972539D04B00B978A9 /* GraphNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317B932252769D900863EC6 /* GraphNetwork.swift */; };
 		488958982539D04B00B978A9 /* RequestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDD1251E2FFD00266617 /* RequestLogger.swift */; };
-		488958992539D04B00B978A9 /* WifiConnectivityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */; };
 		4889589A2539D04B00B978A9 /* V3APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A68473252B4CAA001F8CB1 /* V3APITokenManager.swift */; };
 		4889589B2539D04B00B978A9 /* AuthorisationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */; };
 		4889589C2539D04B00B978A9 /* OAuthTokenRefreshWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE2F2522086A00266617 /* OAuthTokenRefreshWatcher.swift */; };
@@ -54,7 +53,6 @@
 		488958A12539D04B00B978A9 /* ReachabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */; };
 		488958A22539D04B00B978A9 /* DiskCacheCodableInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDDB251E300F00266617 /* DiskCacheCodableInterface.swift */; };
 		488958A32539D04B00B978A9 /* UIDeviceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D5838D2521E44F00E516F9 /* UIDeviceWrapper.swift */; };
-		488958A42539D04B00B978A9 /* DeviceRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD8C251E252600266617 /* DeviceRegistering.swift */; };
 		488958A52539D04B00B978A9 /* AudiencesImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */; };
 		488958A62539D04B00B978A9 /* RequestTimeLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDCD251E2FFD00266617 /* RequestTimeLogger.swift */; };
 		488958D92539D09D00B978A9 /* DiskCacheClearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDBF251E2F5E00266617 /* DiskCacheClearTests.swift */; };
@@ -78,7 +76,6 @@
 		488958EC2539D09D00B978A9 /* APIV3RequesterHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */; };
 		488958ED2539D09D00B978A9 /* EmptyTokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */; };
 		488959302539D21500B978A9 /* Dictionary+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889592F2539D21500B978A9 /* Dictionary+ExtensionTests.swift */; };
-		488959352539D43D00B978A9 /* GeneralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E6775B251BA843007E2741 /* GeneralTests.swift */; };
 		48D6F143251E158E006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F13A251E158E006CA623 /* RealifeTech.framework */; };
 		48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F147251E158E006CA623 /* RealifeTechTests.swift */; };
 		48D6F14A251E158E006CA623 /* RealifeTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D6F13C251E158E006CA623 /* RealifeTech.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,6 +88,17 @@
 		48EFE21D2539E1D800CC6E58 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE21A2539E1D800CC6E58 /* DeviceTests.swift */; };
 		48EFE2242539E21100CC6E58 /* CommunicateImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2222539E21100CC6E58 /* CommunicateImplementing.swift */; };
 		48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2232539E21100CC6E58 /* PushNotificationRegistering.swift */; };
+		48EFE24B2539E52D00CC6E58 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2492539E52D00CC6E58 /* General.swift */; };
+		48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE24A2539E52D00CC6E58 /* GeneralFactory.swift */; };
+		48EFE2532539E55400CC6E58 /* DeviceRegistrationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2502539E55400CC6E58 /* DeviceRegistrationWorker.swift */; };
+		48EFE2542539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2512539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift */; };
+		48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2522539E55400CC6E58 /* DeviceRegistering.swift */; };
+		48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2582539E56000CC6E58 /* GeneralFactoryTests.swift */; };
+		48EFE25B2539E56000CC6E58 /* GeneralImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2592539E56000CC6E58 /* GeneralImplementingTests.swift */; };
+		48EFE2602539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE25E2539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift */; };
+		48EFE2612539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */; };
+		48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2622539E5A100CC6E58 /* MockReachabilityChecker.swift */; };
+		48EFE2682539E5C600CC6E58 /* NetworkConnectivityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2662539E5C300CC6E58 /* NetworkConnectivityChecker.swift */; };
 		CC97A359B339D0D9FC49BECC /* Pods_RealifeTech_RealifeTechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */; };
 		D1A307806D5B3AE84B11702B /* Pods_RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */; };
 /* End PBXBuildFile section */
@@ -117,7 +125,6 @@
 		03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityChecking.swift; sourceTree = "<group>"; };
 		03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityChecker.swift; sourceTree = "<group>"; };
 		03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityFactory.swift; sourceTree = "<group>"; };
-		03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiConnectivityChecker.swift; sourceTree = "<group>"; };
 		03E9F6C9252B1CC30076F59B /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesTests.swift; sourceTree = "<group>"; };
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
@@ -127,7 +134,6 @@
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
 		48005DC62530571B00B4E8BD /* OAuthTokenRefreshWatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenRefreshWatcherTests.swift; sourceTree = "<group>"; };
 		48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTokenManagerTests.swift; sourceTree = "<group>"; };
-		480BCD8C251E252600266617 /* DeviceRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistering.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
 		480BCD93251E254D00266617 /* SDKInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKInterface.swift; sourceTree = "<group>"; };
@@ -179,7 +185,6 @@
 		48D6F142251E158E006CA623 /* RealifeTechTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RealifeTechTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F147251E158E006CA623 /* RealifeTechTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealifeTechTests.swift; sourceTree = "<group>"; };
 		48D6F149251E158E006CA623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48E6775B251BA843007E2741 /* GeneralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTests.swift; sourceTree = "<group>"; };
 		48E6777D251BA86D007E2741 /* CommunicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateTests.swift; sourceTree = "<group>"; };
 		48EFE20E2539E1CE00CC6E58 /* DeviceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		48EFE20F2539E1CE00CC6E58 /* DeviceToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
@@ -190,6 +195,17 @@
 		48EFE21A2539E1D800CC6E58 /* DeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
 		48EFE2222539E21100CC6E58 /* CommunicateImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicateImplementing.swift; sourceTree = "<group>"; };
 		48EFE2232539E21100CC6E58 /* PushNotificationRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistering.swift; sourceTree = "<group>"; };
+		48EFE2492539E52D00CC6E58 /* General.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		48EFE24A2539E52D00CC6E58 /* GeneralFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFactory.swift; sourceTree = "<group>"; };
+		48EFE2502539E55400CC6E58 /* DeviceRegistrationWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationWorker.swift; sourceTree = "<group>"; };
+		48EFE2512539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationLoopHandler.swift; sourceTree = "<group>"; };
+		48EFE2522539E55400CC6E58 /* DeviceRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistering.swift; sourceTree = "<group>"; };
+		48EFE2582539E56000CC6E58 /* GeneralFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFactoryTests.swift; sourceTree = "<group>"; };
+		48EFE2592539E56000CC6E58 /* GeneralImplementingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementingTests.swift; sourceTree = "<group>"; };
+		48EFE25E2539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationLoopHandlerTests.swift; sourceTree = "<group>"; };
+		48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationWorkerTests.swift; sourceTree = "<group>"; };
+		48EFE2622539E5A100CC6E58 /* MockReachabilityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockReachabilityChecker.swift; sourceTree = "<group>"; };
+		48EFE2662539E5C300CC6E58 /* NetworkConnectivityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnectivityChecker.swift; sourceTree = "<group>"; };
 		48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterTests.swift; sourceTree = "<group>"; };
 		48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterHelperTests.swift; sourceTree = "<group>"; };
 		48F9BC28252F171000B801D1 /* V3APITokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagerTests.swift; sourceTree = "<group>"; };
@@ -473,7 +489,7 @@
 				03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */,
 				03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */,
 				03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */,
-				03D583942521EB7B00E516F9 /* WifiConnectivityChecker.swift */,
+				48EFE2662539E5C300CC6E58 /* NetworkConnectivityChecker.swift */,
 				48B792FE251CA279007032CD /* ReachabilityCheckerTests */,
 			);
 			path = ReachabilityChecker;
@@ -534,8 +550,10 @@
 		48E6774F251BA843007E2741 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				480BCD8C251E252600266617 /* DeviceRegistering.swift */,
+				48EFE2492539E52D00CC6E58 /* General.swift */,
+				48EFE24A2539E52D00CC6E58 /* GeneralFactory.swift */,
 				480BCD8D251E252600266617 /* GeneralImplementing.swift */,
+				48EFE24F2539E53400CC6E58 /* DeviceRegistration */,
 				48E6775A251BA843007E2741 /* GeneralTests */,
 			);
 			path = General;
@@ -544,7 +562,10 @@
 		48E6775A251BA843007E2741 /* GeneralTests */ = {
 			isa = PBXGroup;
 			children = (
-				48E6775B251BA843007E2741 /* GeneralTests.swift */,
+				48EFE25D2539E57400CC6E58 /* DeviceRegistrationTests */,
+				48EFE25C2539E56400CC6E58 /* TestHelpers */,
+				48EFE2582539E56000CC6E58 /* GeneralFactoryTests.swift */,
+				48EFE2592539E56000CC6E58 /* GeneralImplementingTests.swift */,
 			);
 			path = GeneralTests;
 			sourceTree = "<group>";
@@ -595,6 +616,33 @@
 				48EFE2192539E1D800CC6E58 /* DeviceTokenTests.swift */,
 			);
 			path = DeviceTests;
+			sourceTree = "<group>";
+		};
+		48EFE24F2539E53400CC6E58 /* DeviceRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				48EFE2522539E55400CC6E58 /* DeviceRegistering.swift */,
+				48EFE2512539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift */,
+				48EFE2502539E55400CC6E58 /* DeviceRegistrationWorker.swift */,
+			);
+			path = DeviceRegistration;
+			sourceTree = "<group>";
+		};
+		48EFE25C2539E56400CC6E58 /* TestHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				48EFE2622539E5A100CC6E58 /* MockReachabilityChecker.swift */,
+			);
+			path = TestHelpers;
+			sourceTree = "<group>";
+		};
+		48EFE25D2539E57400CC6E58 /* DeviceRegistrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				48EFE25E2539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift */,
+				48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */,
+			);
+			path = DeviceRegistrationTests;
 			sourceTree = "<group>";
 		};
 		5C396E6F979EB13FBDECCA85 /* Frameworks */ = {
@@ -832,9 +880,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48EFE2682539E5C600CC6E58 /* NetworkConnectivityChecker.swift in Sources */,
 				4889589D2539D04B00B978A9 /* APIV3RequesterHelper.swift in Sources */,
+				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
 				488958952539D04B00B978A9 /* AuthorisationWorker.swift in Sources */,
-				488958A42539D04B00B978A9 /* DeviceRegistering.swift in Sources */,
+				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
 				48EFE2142539E1CE00CC6E58 /* Device.swift in Sources */,
 				4889589B2539D04B00B978A9 /* AuthorisationStore.swift in Sources */,
 				488958A12539D04B00B978A9 /* ReachabilityChecker.swift in Sources */,
@@ -854,6 +904,7 @@
 				488958962539D04B00B978A9 /* ReachabilityFactory.swift in Sources */,
 				4889589E2539D04B00B978A9 /* UIDeviceFactory.swift in Sources */,
 				488958A22539D04B00B978A9 /* DiskCacheCodableInterface.swift in Sources */,
+				48EFE2532539E55400CC6E58 /* DeviceRegistrationWorker.swift in Sources */,
 				4889588A2539D04B00B978A9 /* RemoteDiskCacheDataProviding.swift in Sources */,
 				488958782539D04B00B978A9 /* RequestHeader.swift in Sources */,
 				488958862539D04B00B978A9 /* DiskCache.swift in Sources */,
@@ -861,8 +912,8 @@
 				488958902539D04B00B978A9 /* RequestDispatcher.swift in Sources */,
 				488958972539D04B00B978A9 /* GraphNetwork.swift in Sources */,
 				488958802539D04B00B978A9 /* KeychainSwift.swift in Sources */,
-				488958992539D04B00B978A9 /* WifiConnectivityChecker.swift in Sources */,
 				488958852539D04B00B978A9 /* APIV3Requester.swift in Sources */,
+				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
 				4889587B2539D04B00B978A9 /* OAuthHeaderRequestInserting.swift in Sources */,
 				488958892539D04B00B978A9 /* StandardV3SenderResponse.swift in Sources */,
 				488958812539D04B00B978A9 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */,
@@ -873,6 +924,7 @@
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				4889587E2539D04B00B978A9 /* RequestCreator.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
+				48EFE2542539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift in Sources */,
 				488958A02539D04B00B978A9 /* UIDeviceInterface.swift in Sources */,
 				488958832539D04B00B978A9 /* OAuthRepository.swift in Sources */,
 				4889589A2539D04B00B978A9 /* V3APITokenManager.swift in Sources */,
@@ -906,16 +958,20 @@
 				488958EB2539D09D00B978A9 /* OAuthTokenRefreshWatcherTests.swift in Sources */,
 				488958EC2539D09D00B978A9 /* APIV3RequesterHelperTests.swift in Sources */,
 				488958E32539D09D00B978A9 /* ReachabilityCheckerTests.swift in Sources */,
-				488959352539D43D00B978A9 /* GeneralTests.swift in Sources */,
 				488958E22539D09D00B978A9 /* OAuthRefreshOrWaitActionGeneratorTests.swift in Sources */,
 				488958E72539D09D00B978A9 /* APIV3RequesterTests.swift in Sources */,
 				488958E82539D09D00B978A9 /* CommunicateTests.swift in Sources */,
 				488958E42539D09D00B978A9 /* UIDeviceHelperTests.swift in Sources */,
+				48EFE2602539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift in Sources */,
 				48EFE21C2539E1D800CC6E58 /* DeviceTokenTests.swift in Sources */,
 				488958EA2539D09D00B978A9 /* GraphQLTests.swift in Sources */,
+				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
 				488958D92539D09D00B978A9 /* DiskCacheClearTests.swift in Sources */,
 				488959302539D21500B978A9 /* Dictionary+ExtensionTests.swift in Sources */,
+				48EFE25B2539E56000CC6E58 /* GeneralImplementingTests.swift in Sources */,
+				48EFE2612539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift in Sources */,
 				488958E62539D09D00B978A9 /* AuthorsationStoreTests.swift in Sources */,
+				48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */,
 				488958ED2539D09D00B978A9 /* EmptyTokenManagerTests.swift in Sources */,
 				488958DA2539D09D00B978A9 /* RequestTimeLoggerTests.swift in Sources */,
 				488958E02539D09D00B978A9 /* StandardV3SenderResponseTests.swift in Sources */,
@@ -981,6 +1037,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
