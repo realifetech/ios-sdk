@@ -20,12 +20,14 @@ public class AnalyticsImplementing: AnalyticsLogging {
         }
     }
 
-    public func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
-        dispatcher.logEvent(event) { error in
-            if error != nil {
+    public func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void) {
+        dispatcher.logEvent(event) { result in
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure:
                 self.saveEventOffline(event: event)
             }
-            completion(error)
         }
     }
 

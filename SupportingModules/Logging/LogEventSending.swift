@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol LogEventSending {
-    func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void)
+    func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void)
 }

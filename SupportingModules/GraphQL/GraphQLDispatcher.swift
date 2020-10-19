@@ -58,7 +58,7 @@ public class GraphQLDispatcher: GraphQLDispatching {
 }
 
 extension GraphQLDispatcher: LogEventSending {
-    public func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
+    public func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void) {
         let event = AnalyticEvent(type: event.type,
                                   action: event.action,
                                   new: event.newString,
@@ -67,9 +67,9 @@ extension GraphQLDispatcher: LogEventSending {
         dispatchMutation(mutation: PutAnalyticEventMutation(input: event), completion: { result in
             switch result {
             case .success:
-                return completion(nil)
+                return completion(.success(()))
             case .failure(let error):
-                return completion(error)
+                return completion(.failure(error))
             }
         })
     }
