@@ -38,6 +38,7 @@ playground.xcworkspace
 build
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 
 # Swift Package Manager

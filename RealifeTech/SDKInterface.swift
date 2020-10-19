@@ -12,6 +12,7 @@ public class RealifeTech {
 
     public static var General: GeneralImplementing!
     public static var Audiences: AudienceChecking!
+    public static var Communicate: CommunicateImplementing!
 
     /// Provides information required for the SDK to operate.
     /// This MUST be called before any other SDK functionality is acessed.
@@ -24,10 +25,12 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             clientId: "LS_0",
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
-            baseUrl: "http://api-dev.livestyled.com/v3")
-        General = GeneralImplementing()
+            baseUrl: "http://api-staging.livestyled.com/v3")
+        General = GeneralImplementing(deviceId: deviceHelper.deviceId)
         Audiences = AudiencesImplementing(tokenHelper: helper,
                                           graphQLAPIUrl: configuration.graphApiUrl ?? "",
                                           deviceId: deviceHelper.deviceId)
+        Communicate = CommunicateImplementing()
+        helper.getValidToken {}
     }
 }
