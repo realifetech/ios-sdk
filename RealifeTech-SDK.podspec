@@ -33,6 +33,7 @@ Pod::Spec.new do |spec|
   spec.dependency "RxSwift", "> 4.2"
   spec.dependency "RxCocoa", "> 4.2"
   spec.dependency "Apollo", "0.30.0"
+  spec.dependency "SwiftLint"
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Licensing your code is important. See https://choosealicense.com for more info.
