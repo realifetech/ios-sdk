@@ -15,9 +15,7 @@ public class AnalyticsImplementing: AnalyticsLogging {
 
     public init(dispatcher: LogEventSending) {
         self.dispatcher = dispatcher
-        for savedEvent in getOfflineEvents() {
-            logEvent(savedEvent) { _ in }
-        }
+        syncOfflineEvents()
     }
 
     public func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void) {
@@ -33,17 +31,30 @@ public class AnalyticsImplementing: AnalyticsLogging {
 
     func saveEventOffline(event: LoggingEvent) {
         do {
-            let eventName = "event-\(Int(Date().timeIntervalSince1970))"
-            try storage.save(event, for: eventName)
+            let dateStamp = Int(Date().timeIntervalSince1970)
+            let storageName = event.storedName ?? "\(StorageType.loggingEvent.rawValue)-\(dateStamp)"
+            var tmpEvent = event
+            tmpEvent.storedName = storageName
+            try storage.save(tmpEvent, for: storageName)
         } catch {
+            #if APILOGGING
             print(error)
+            #endif
         }
     }
 
-    func getOfflineEvents() -> [LoggingEvent] {
+    func syncOfflineEvents() {
         var offlineEvents: [LoggingEvent] = []
         do {
-            offlineEvents = try storage.fetchAll(for: "event")
+            offlineEvents = try storage.fetchAll(for: StorageType.loggingEvent.rawValue)
+            let debouncedFunction = debounce(
+                interval: 4000,
+                queue: DispatchQueue.main,
+                action: { (event: LoggingEvent) in
+                    self.storage.delete(key: event.storedName ?? "")
+                    self.logEvent(event) { _ in }
+            })
+            offlineEvents.forEach({ debouncedFunction($0) })
             #if APILOGGING
             print("getOfflineEvents: \(cached)")
             #endif
@@ -52,6 +63,5 @@ public class AnalyticsImplementing: AnalyticsLogging {
             print(error)
             #endif
         }
-        return offlineEvents
     }
 }

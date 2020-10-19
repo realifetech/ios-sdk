@@ -9,6 +9,7 @@
 import Foundation
 
 class CodableStorage {
+
     private let storage: DiskStorage
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
@@ -37,5 +38,9 @@ class CodableStorage {
     func save<T: Encodable>(_ value: T, for key: String) throws {
         let data = try encoder.encode(value)
         try storage.save(value: data, for: key)
+    }
+
+    func delete(key: String) {
+        storage.deleteValue(for: key)
     }
 }

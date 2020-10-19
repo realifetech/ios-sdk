@@ -10,6 +10,7 @@ import Foundation
 
 public struct LoggingEvent: Codable {
 
+    public var storedName: String?
     public let type: String
     public let action: String
     public let new: [String: String]?

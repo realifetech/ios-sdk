@@ -21,6 +21,10 @@ protocol WritableStorage {
     func save(value: Data, for key: String, handler: @escaping Handler<Data>)
 }
 
+enum StorageType: String {
+    case loggingEvent
+}
+
 enum StorageError: Error {
     case notFound
     case cantWrite(Error)
@@ -67,6 +71,7 @@ extension DiskStorage: WritableStorage {
 }
 
 extension DiskStorage {
+
     private func createFolders(in url: URL) throws {
         let folderUrl = url.deletingLastPathComponent()
         if !fileManager.fileExists(atPath: folderUrl.path) {
@@ -84,10 +89,10 @@ extension DiskStorage: ReadableStorage {
     func fetchValues(with prefix: String) throws -> [Data] {
         let fileArray = try fileManager.contentsOfDirectory(at: path,
                                                             includingPropertiesForKeys: nil,
-                                                            options: [.skipsHiddenFiles]) as [NSURL]
+                                                            options: [.skipsHiddenFiles])
         let filteredData: [Data] = fileArray
-            .filter({ ($0.lastPathComponent?.contains(prefix) ?? false) })
-            .compactMap({ fileManager.contents(atPath: $0.path ?? "") })
+            .filter({ ($0.lastPathComponent.contains(prefix)) })
+            .compactMap({ fileManager.contents(atPath: $0.path) })
         if filteredData.isEmpty {
             throw StorageError.notFound
         } else {
@@ -106,6 +111,13 @@ extension DiskStorage: ReadableStorage {
     func fetchValue(for key: String, handler: @escaping Handler<Data>) {
         queue.async {
             handler(Result { try self.fetchValue(for: key) })
+        }
+    }
+
+    func deleteValue(for key: String) {
+        let url = path.appendingPathComponent(key)
+        do {
+            try? fileManager.removeItem(atPath: url.path)
         }
     }
 }
