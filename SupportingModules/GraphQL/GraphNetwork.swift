@@ -77,19 +77,19 @@ extension GraphNetwork: HTTPNetworkTransportTaskCompletedDelegate {
         error: Error?
     ) {
         #if APILOGGING
-//        if let error = error {
-//            print("Error: \(error)")
-//        }
-//        if let response = response {
-//            print("Response: \(response)")
-//        } else {
-//            print("No URL Response received!")
-//        }
-//        if let data = data {
-//            print("Data: \(String(describing: String(bytes: data, encoding: .utf8)))")
-//        } else {
-//            print("No data received!")
-//        }
+        if let error = error {
+            print("Error: \(error)")
+        }
+        if let response = response {
+            print("Response: \(response)")
+        } else {
+            print("No URL Response received!")
+        }
+        if let data = data {
+            print("Data: \(String(describing: String(bytes: data, encoding: .utf8)))")
+        } else {
+            print("No data received!")
+        }
         #endif
     }
 }
@@ -117,7 +117,7 @@ extension GraphNetwork: HTTPNetworkTransportRetryDelegate {
         continueHandler: @escaping (_ action: HTTPNetworkTransport.ContinueAction) -> Void
     ) {
         #if APILOGGING
-//        print("\(error.localizedDescription)")
+        print("\(error.localizedDescription)")
         #endif
         guard let urlResponse = response as? HTTPURLResponse else { return }
         switch urlResponse.statusCode {

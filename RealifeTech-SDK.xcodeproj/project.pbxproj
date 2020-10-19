@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03110C66253D85290099F65F /* CodableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03110C65253D85290099F65F /* CodableStorage.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKInterface.swift */; };
 		488958742539D04B00B978A9 /* LocalDiskCacheDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDDA251E300F00266617 /* LocalDiskCacheDataProviding.swift */; };
@@ -86,7 +87,7 @@
 		488959672539D8E300B978A9 /* LogEventSending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959652539D8E200B978A9 /* LogEventSending.swift */; };
 		488959692539D8EA00B978A9 /* LoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959682539D8EA00B978A9 /* LoggingTests.swift */; };
 		4889596F2539D97A00B978A9 /* putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889596E2539D97A00B978A9 /* putAnalyticEvent.graphql.swift */; };
-		488959972539DC8600B978A9 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959962539DC8600B978A9 /* Storage.swift */; };
+		488959972539DC8600B978A9 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959962539DC8600B978A9 /* DiskStorage.swift */; };
 		48D6F143251E158E006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F13A251E158E006CA623 /* RealifeTech.framework */; };
 		48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F147251E158E006CA623 /* RealifeTechTests.swift */; };
 		48D6F14A251E158E006CA623 /* RealifeTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D6F13C251E158E006CA623 /* RealifeTech.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -105,6 +106,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03110C65253D85290099F65F /* CodableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStorage.swift; sourceTree = "<group>"; };
 		0317B928252768EA00863EC6 /* GraphQLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTests.swift; sourceTree = "<group>"; };
 		0317B932252769D900863EC6 /* GraphNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetwork.swift; sourceTree = "<group>"; };
 		034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDispatcher.swift; sourceTree = "<group>"; };
@@ -172,7 +174,7 @@
 		488959652539D8E200B978A9 /* LogEventSending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventSending.swift; sourceTree = "<group>"; };
 		488959682539D8EA00B978A9 /* LoggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingTests.swift; sourceTree = "<group>"; };
 		4889596E2539D97A00B978A9 /* putAnalyticEvent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = putAnalyticEvent.graphql.swift; sourceTree = "<group>"; };
-		488959962539DC8600B978A9 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		488959962539DC8600B978A9 /* DiskStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
 		48A6845E25277CA2001F8CB1 /* V3APITokenManagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagable.swift; sourceTree = "<group>"; };
 		48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationStore.swift; sourceTree = "<group>"; };
 		48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationWorker.swift; sourceTree = "<group>"; };
@@ -220,6 +222,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03110C64253D84C90099F65F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				03110C65253D85290099F65F /* CodableStorage.swift */,
+				488959962539DC8600B978A9 /* DiskStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		0317B91C252768EA00863EC6 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,9 +427,8 @@
 		4889594E2539D7E200B978A9 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */,
 				4889595A2539D89C00B978A9 /* AnalyticsLogging.swift */,
-				488959962539DC8600B978A9 /* Storage.swift */,
+				4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */,
 				4889594F2539D7FB00B978A9 /* AnalyticsTests */,
 			);
 			path = Analytics;
@@ -474,6 +484,7 @@
 		48B792D0251CA1E0007032CD /* SupportingModules */ = {
 			isa = PBXGroup;
 			children = (
+				03110C64253D84C90099F65F /* Storage */,
 				488959622539D8C100B978A9 /* Logging */,
 				0317B91C252768EA00863EC6 /* GraphQL */,
 				4859F98F252E022400158F5E /* APIV3Utilities */,
@@ -861,6 +872,7 @@
 				488958A22539D04B00B978A9 /* DiskCacheCodableInterface.swift in Sources */,
 				4889588A2539D04B00B978A9 /* RemoteDiskCacheDataProviding.swift in Sources */,
 				488958782539D04B00B978A9 /* RequestHeader.swift in Sources */,
+				03110C66253D85290099F65F /* CodableStorage.swift in Sources */,
 				488958862539D04B00B978A9 /* DiskCache.swift in Sources */,
 				488958902539D04B00B978A9 /* RequestDispatcher.swift in Sources */,
 				488958972539D04B00B978A9 /* GraphNetwork.swift in Sources */,
@@ -878,7 +890,7 @@
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				488958792539D04B00B978A9 /* APIError.swift in Sources */,
 				4889587E2539D04B00B978A9 /* RequestCreator.swift in Sources */,
-				488959972539DC8600B978A9 /* Storage.swift in Sources */,
+				488959972539DC8600B978A9 /* DiskStorage.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
 				488958A02539D04B00B978A9 /* UIDeviceInterface.swift in Sources */,
 				488958832539D04B00B978A9 /* OAuthRepository.swift in Sources */,

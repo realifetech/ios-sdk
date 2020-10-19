@@ -1,5 +1,5 @@
 //
-//  Storage.swift
+//  DiskStorage.swift
 //  Analytics
 //
 //  Created by Jonathon Albert on 15/10/2020.
@@ -80,12 +80,26 @@ extension DiskStorage {
 }
 
 extension DiskStorage: ReadableStorage {
+
+    func fetchValues(with prefix: String) throws -> [Data] {
+        let fileArray = try fileManager.contentsOfDirectory(at: path,
+                                                            includingPropertiesForKeys: nil,
+                                                            options: [.skipsHiddenFiles]) as [NSURL]
+        let filteredData: [Data] = fileArray
+            .filter({ ($0.lastPathComponent?.contains(prefix) ?? false) })
+            .compactMap({ fileManager.contents(atPath: $0.path ?? "") })
+        if filteredData.isEmpty {
+            throw StorageError.notFound
+        } else {
+            return filteredData
+        }
+    }
+
     func fetchValue(for key: String) throws -> Data {
         let url = path.appendingPathComponent(key)
         let fileArray = try fileManager.contentsOfDirectory(at: path,
                                                             includingPropertiesForKeys: nil,
                                                             options: [.skipsHiddenFiles]) as [NSURL]
-        print("fileArrayContents \(fileArray)")
         guard let data = fileManager.contents(atPath: url.path) else {
             throw StorageError.notFound
         }
@@ -96,31 +110,5 @@ extension DiskStorage: ReadableStorage {
         queue.async {
             handler(Result { try self.fetchValue(for: key) })
         }
-    }
-}
-
-class CodableStorage {
-    private let storage: DiskStorage
-    private let decoder: JSONDecoder
-    private let encoder: JSONEncoder
-
-    init(
-        storage: DiskStorage,
-        decoder: JSONDecoder = .init(),
-        encoder: JSONEncoder = .init()
-    ) {
-        self.storage = storage
-        self.decoder = decoder
-        self.encoder = encoder
-    }
-
-    func fetch<T: Decodable>(for key: String) throws -> T {
-        let data = try storage.fetchValue(for: key)
-        return try decoder.decode(T.self, from: data)
-    }
-
-    func save<T: Encodable>(_ value: T, for key: String) throws {
-        let data = try encoder.encode(value)
-        try storage.save(value: data, for: key)
     }
 }

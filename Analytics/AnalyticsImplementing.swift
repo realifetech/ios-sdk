@@ -15,29 +15,41 @@ public class AnalyticsImplementing: AnalyticsLogging {
 
     public init(dispatcher: LogEventSending) {
         self.dispatcher = dispatcher
-        getOfflineEvents()
+        for savedEvent in getOfflineEvents() {
+            logEvent(savedEvent) { _ in }
+        }
     }
 
     public func logEvent(_ event: LoggingEvent, completion: @escaping (Error?) -> Void) {
         dispatcher.logEvent(event) { error in
+            if error != nil {
+                self.saveEventOffline(event: event)
+            }
             completion(error)
-        }
-    }
-
-    func getOfflineEvents() {
-        do {
-            let cached: LoggingEvent = try storage.fetch(for: "event1")
-            print(cached)
-        } catch {
-            print(error)
         }
     }
 
     func saveEventOffline(event: LoggingEvent) {
         do {
-            try storage.save(event, for: "event1")
+            let eventName = "event-\(Int(Date().timeIntervalSince1970))"
+            try storage.save(event, for: eventName)
         } catch {
             print(error)
         }
+    }
+
+    func getOfflineEvents() -> [LoggingEvent] {
+        var offlineEvents: [LoggingEvent] = []
+        do {
+            offlineEvents = try storage.fetchAll(for: "event")
+            #if APILOGGING
+            print("getOfflineEvents: \(cached)")
+            #endif
+        } catch {
+            #if APILOGGING
+            print(error)
+            #endif
+        }
+        return offlineEvents
     }
 }
