@@ -78,7 +78,6 @@
 		488958EC2539D09D00B978A9 /* APIV3RequesterHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */; };
 		488958ED2539D09D00B978A9 /* EmptyTokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */; };
 		488959302539D21500B978A9 /* Dictionary+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889592F2539D21500B978A9 /* Dictionary+ExtensionTests.swift */; };
-		488959352539D43D00B978A9 /* GeneralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E6775B251BA843007E2741 /* GeneralTests.swift */; };
 		4889595C2539D89C00B978A9 /* AnalyticsLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889595A2539D89C00B978A9 /* AnalyticsLogging.swift */; };
 		4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */; };
 		4889595F2539D8A500B978A9 /* AnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889595E2539D8A500B978A9 /* AnalyticsTests.swift */; };
@@ -90,6 +89,7 @@
 		48D6F143251E158E006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F13A251E158E006CA623 /* RealifeTech.framework */; };
 		48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F147251E158E006CA623 /* RealifeTechTests.swift */; };
 		48D6F14A251E158E006CA623 /* RealifeTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D6F13C251E158E006CA623 /* RealifeTech.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48EFB417253ED7CF00BC8664 /* PersistantQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFB416253ED7CF00BC8664 /* PersistantQueue.swift */; };
 		48EFE2122539E1CE00CC6E58 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE20E2539E1CE00CC6E58 /* DeviceRepository.swift */; };
 		48EFE2132539E1CE00CC6E58 /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE20F2539E1CE00CC6E58 /* DeviceToken.swift */; };
 		48EFE2142539E1CE00CC6E58 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2102539E1CE00CC6E58 /* Device.swift */; };
@@ -207,6 +207,7 @@
 		48D6F147251E158E006CA623 /* RealifeTechTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealifeTechTests.swift; sourceTree = "<group>"; };
 		48D6F149251E158E006CA623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E6777D251BA86D007E2741 /* CommunicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateTests.swift; sourceTree = "<group>"; };
+		48EFB416253ED7CF00BC8664 /* PersistantQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantQueue.swift; sourceTree = "<group>"; };
 		48EFE20E2539E1CE00CC6E58 /* DeviceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		48EFE20F2539E1CE00CC6E58 /* DeviceToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		48EFE2102539E1CE00CC6E58 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -262,6 +263,7 @@
 		03110C64253D84C90099F65F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				48EFB416253ED7CF00BC8664 /* PersistantQueue.swift */,
 				03110C65253D85290099F65F /* CodableStorage.swift */,
 				488959962539DC8600B978A9 /* DiskStorage.swift */,
 			);
@@ -1007,13 +1009,13 @@
 				488958972539D04B00B978A9 /* GraphNetwork.swift in Sources */,
 				488958802539D04B00B978A9 /* KeychainSwift.swift in Sources */,
 				488959672539D8E300B978A9 /* LogEventSending.swift in Sources */,
-				488958992539D04B00B978A9 /* WifiConnectivityChecker.swift in Sources */,
 				488958852539D04B00B978A9 /* APIV3Requester.swift in Sources */,
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
 				4889587B2539D04B00B978A9 /* OAuthHeaderRequestInserting.swift in Sources */,
 				488958892539D04B00B978A9 /* StandardV3SenderResponse.swift in Sources */,
 				488958812539D04B00B978A9 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */,
 				488958762539D04B00B978A9 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
+				48EFB417253ED7CF00BC8664 /* PersistantQueue.swift in Sources */,
 				488958822539D04B00B978A9 /* JSONContentTypeHeaderRequestInserting.swift in Sources */,
 				488958982539D04B00B978A9 /* RequestLogger.swift in Sources */,
 				4889596F2539D97A00B978A9 /* putAnalyticEvent.graphql.swift in Sources */,
