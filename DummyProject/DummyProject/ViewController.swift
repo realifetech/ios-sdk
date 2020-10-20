@@ -7,5 +7,16 @@
 //
 
 import UIKit
+import RealifeTech
 
-class ViewController: UIViewController {}
+class ViewController: UIViewController {
+
+    @IBOutlet weak var tokenField: UITextField!
+
+    @IBAction func registerForPush(_ sender: Any) {
+        guard let token = tokenField.text else {
+            return
+        }
+        RealifeTech.Communicate.registerForPushNotifications(token: token) { _ in }
+    }
+}
