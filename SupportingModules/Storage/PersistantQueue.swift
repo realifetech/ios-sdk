@@ -11,7 +11,7 @@ import Foundation
 protocol QueueProviding {
     associatedtype QueueItem: Codable
 
-    var next: Result<NextQueueItem<T>> { get }
+    var next: Result<NextQueueItem<QueueItem>, QueueRetreivalError> { get }
     var count: Int { get }
     var isEmpty: Bool { get }
 
