@@ -8,22 +8,45 @@
 
 import Foundation
 
+
+struct AnalyticsLogEventAndCompletion: Identifiable {
+    let id: UUID = UUID()
+    let event: AnalyticsEvent
+    let completion: AnalyticsImplementing.EventLoggedCompletion?
+}
+
+extension AnalyticsLogEventAndCompletion: Equatable {
+    static func == (lhs: AnalyticsLogEventAndCompletion, rhs: AnalyticsLogEventAndCompletion) -> Bool {
+        return lhs.event == rhs.event
+    }
+}
+
+extension AnalyticsLogEventAndCompletion: Encodable {
+    enum CodingKeys: String, CodingKey {
+        case event
+    }
+}
+
+extension AnalyticsLogEventAndCompletion: Decodable {
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        event = try values.decode(AnalyticsEvent.self, forKey: .event)
+        completion = nil
+    }
+}
+
 public class AnalyticsImplementing: AnalyticsLogging {
 
     public typealias EventLoggedCompletion = (Result<Void, Error>) -> Void
+    typealias PeristentQueueItem = PersistantQueueItem<AnalyticsLogEventAndCompletion>
 
     let dispatcher: LogEventSending
-    let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())))
-    var logEventQueue: [(LoggingEvent, EventLoggedCompletion?)] = [] {
-        didSet {
-            if oldValue.isEmpty && !logEventQueue.isEmpty {
-                startLoop()
-            }
-        }
-    }
+    let persistantQueue: PersistantQueue<AnalyticsLogEventAndCompletion>
     let dispatchQueue: DispatchQueue
     let semaphore = DispatchSemaphore(value: 1)
     let reachabilityHelper: ReachabilityChecking
+
+    var loopIsRunning: Bool = false
 
     public init(dispatcher: LogEventSending, reachabilityHelper: ReachabilityChecking) {
         self.dispatcher = dispatcher
@@ -31,86 +54,54 @@ public class AnalyticsImplementing: AnalyticsLogging {
         self.dispatchQueue = DispatchQueue(
             label: "Revice registration queue",
             qos: .background)
-        syncOfflineEvents()
+        self.persistantQueue = PersistantQueue<AnalyticsLogEventAndCompletion>()
         startLoop()
     }
 
     func startLoop() {
-        dispatchQueue.async { // TODO: Start queue when we go from 0 items to some
-            self.semaphore.wait()
-            guard !self.logEventQueue.isEmpty else {
-                    self.semaphore.signal()
-                    return
-            }
-            let eventAndCompletion = self.logEventQueue.removeFirst()
-            self.loopStep(logEvent: eventAndCompletion.0, completion: eventAndCompletion.1)
+        loopIsRunning = true
+        let nextItemResult = self.persistantQueue.getNextQueueItem()
+        switch nextItemResult {
+        case .success(let frontOfQueue):
+            self.loopStep(queueItem: frontOfQueue)
             self.startLoop()
+        case .failure:
+            break
         }
     }
 
-    func loopStep(logEvent: LoggingEvent, completion: EventLoggedCompletion?) {
-        // guard reachabilityHelper.hasNetworkConnection else {
-        guard true else {
+    func loopStep(queueItem: PeristentQueueItem) {
+        guard reachabilityHelper.hasNetworkConnection else {
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(45000)) {
-                self.loopStep(logEvent: logEvent, completion: completion)
+                queueItem.itemCompletion(.nothing)
+                self.startLoop()
             }
             return
         }
         print("Loggin an event")
-        dispatcher.logEvent(logEvent) { result in
+        dispatcher.logEvent(queueItem.item.event) { result in
             switch result {
             case .success:
                 print("SUCCESS Loggin an event")
-                completion?(result)
+                queueItem.itemCompletion(.removeFirst)
+                self.startLoop()
+                // self.semaphore.signal()
             case .failure:
                 print("FAILURE Loggin an event")
-                self.logEventQueue.append((logEvent, completion))
+                queueItem.itemCompletion(.removeFirst)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(45)) {
+                    // self.semaphore.signal()
+                    self.startLoop()
+                }
             }
-            self.semaphore.signal()
+
         }
     }
 
-    public func logEvent(_ event: LoggingEvent, completion: @escaping EventLoggedCompletion) {
+    public func logEvent(_ event: AnalyticsEvent, completion: @escaping EventLoggedCompletion) {
         print("Added event to the log")
-        logEventQueue.append((event, completion))
-    }
-
-    func saveEventOffline(event: LoggingEvent) {
-        do {
-            let dateStamp = Int(Date().timeIntervalSince1970)
-            let storageName = event.storedName ?? "\(StorageType.loggingEvent.rawValue)-\(dateStamp)"
-            var tmpEvent = event
-            tmpEvent.storedName = storageName
-            try storage.save(tmpEvent, for: storageName)
-        } catch {
-            #if APILOGGING
-            print(error)
-            #endif
-        }
-    }
-
-    func syncOfflineEvents() {
-        do {
-            let newItems: [LoggingEvent] = try storage.fetchAll(for: StorageType.loggingEvent.rawValue)
-            let tuples: [(LoggingEvent, EventLoggedCompletion?)] = newItems.map { logEvent in
-                return (logEvent, nil)
-            }
-            logEventQueue.append(contentsOf: tuples)
-//            let debouncedFunction = debounce(
-//                interval: 45000,
-//                queue: DispatchQueue.main,
-//                action: { (event: LoggingEvent) in
-//                    self.storage.delete(key: event.storedName ?? "")
-//                    self.logEvent(event) { _ in }
-//            })
-//            offlineEvents.forEach({ debouncedFunction($0) })
-            #if APILOGGING
-            print("getOfflineEvents: \(cached)")
-            #endif
-        } catch {
-            #if APILOGGING
-            print(error)
-            #endif
-        }
+        let logEventAndCompletion = AnalyticsLogEventAndCompletion(event: event, completion: completion)
+        persistantQueue.addToQueue(logEventAndCompletion)
+        if !loopIsRunning { startLoop() }
     }
 }

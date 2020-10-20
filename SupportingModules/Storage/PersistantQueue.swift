@@ -11,62 +11,77 @@ import Foundation
 protocol QueueProviding {
     associatedtype QueueItem: Codable
 
-    var next: Result<NextQueueItem<QueueItem>, QueueRetreivalError> { get }
+    var next: Result<PersistantQueueItem<QueueItem>, QueueRetreivalError> { get }
     var count: Int { get }
     var isEmpty: Bool { get }
 
-    func addToQueue(_ items:[QueueItem])
+    func addToQueue(_ items: QueueItem)
 }
 
-enum QueueItemAction {
-    case removeFromQueue, sendToBack, leaveAtFront
+enum QueueAction {
+    case removeFirst, sendFirstToBack, nothing
 }
 
 enum QueueRetreivalError: Error {
-    case empty, itemAlreadyProcessing
+    case empty, queueIsLocked
 }
 
-struct NextQueueItem <T: Codable> {
+struct PersistantQueueItem <T: Codable> {
     let item: T
-    let itemCompletion: (_: QueueItemAction) -> ()
+    let itemCompletion: (_: QueueAction) -> ()
 }
 
-class PersistantQueue<T: Codable>: QueueProviding {
+protocol Identifiable {
+    var id: UUID { get }
+}
 
-    var next: Result<NextQueueItem<T>, QueueRetreivalError> { getNextQueueItem() }
+class PersistantQueue<T: Codable & Identifiable>: QueueProviding {
+
+    var next: Result<PersistantQueueItem<T>, QueueRetreivalError> { getNextQueueItem() }
     var count: Int { queue.count }
     var isEmpty: Bool { queue.isEmpty }
+    var locked: Bool = false
 
     private var queue: [T] = []
-    private var currentItem: T?
     private let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())))
 
-    func addToQueue(_ items:[T]) {
-        queue.append(contentsOf: items)
+    init() {
+        guard let storedQueue: [T] = try? storage.fetchAll(for: <#T##String#>) else { return }
+        queue = storedQueue
     }
 
-    func getNextQueueItem() -> Result<NextQueueItem<T>, QueueRetreivalError> {
-        if currentItem != nil {
-            return .failure(.itemAlreadyProcessing)
+    func addToQueue(_ item: T) {
+        try? storage.save(item, for: item.id.uuidString)
+        queue.append(item)
+    }
+
+    /// Provides an item from the queue. Calling will lock the queue
+    func getNextQueueItem() -> Result<PersistantQueueItem<T>, QueueRetreivalError> {
+        if locked {
+            return .failure(.queueIsLocked)
         } else if let nextItem = queue.first {
-            currentItem = nextItem
-            let nextQueueItem = NextQueueItem(item: nextItem, itemCompletion: finishCurrentItem)
+            locked = true
+            let nextQueueItem = PersistantQueueItem(item: nextItem, itemCompletion: finishCurrentItem)
             return(.success(nextQueueItem))
         } else {
             return .failure(.empty)
         }
     }
 
-    func finishCurrentItem(_ action: QueueItemAction) {
+    func finishCurrentItem(_ action: QueueAction) {
         switch action {
-        case .removeFromQueue:
-            _ = queue.removeFirst()
-        case .sendToBack:
+        case .removeFirst:
+            guard !queue.isEmpty else {
+                return
+            }
+            let currentItem = queue.removeFirst()
+            storage.delete(key: currentItem.id.uuidString)
+        case .sendFirstToBack:
             let frontOfQueue = queue.removeFirst()
             queue.append(frontOfQueue)
-        case .leaveAtFront:
+        case .nothing:
             break
         }
-        currentItem = nil
+        locked = false
     }
 }

@@ -30,6 +30,8 @@ enum StorageError: Error {
     case cantWrite(Error)
 }
 
+
+// TODO: Protocolise DiskStorage as StorageProviding
 class DiskStorage {
     private let queue: DispatchQueue
     private let fileManager: FileManager
@@ -87,9 +89,10 @@ extension DiskStorage {
 extension DiskStorage: ReadableStorage {
 
     func fetchValues(with prefix: String) throws -> [Data] {
-        let fileArray = try fileManager.contentsOfDirectory(at: path,
-                                                            includingPropertiesForKeys: nil,
-                                                            options: [.skipsHiddenFiles])
+        let fileArray = try fileManager.contentsOfDirectory(
+            at: path,
+            includingPropertiesForKeys: nil,
+            options: [.skipsHiddenFiles])
         let filteredData: [Data] = fileArray
             .filter({ ($0.lastPathComponent.contains(prefix)) })
             .compactMap({ fileManager.contents(atPath: $0.path) })

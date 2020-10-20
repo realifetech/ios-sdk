@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             graphApiUrl: "https://graphql-mock.realifetech.com/graphql")
         RealifeTech.configureSDK(with: configuration)
         RealifeTech.General.registerDevice {}
-        let event = LoggingEvent(type: "user",
+        let event = AnalyticsEvent(type: "user",
                                  action: "externalLogin",
                                  new: ["userId": "a3890e983e", "provider": "ticketmaster"],
                                  old: nil, version: "1.0")
