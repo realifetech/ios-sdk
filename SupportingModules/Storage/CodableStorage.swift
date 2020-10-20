@@ -13,34 +13,37 @@ class CodableStorage {
     private let storage: DiskStorage
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
+    private let storagePrefix: String
 
     init(
         storage: DiskStorage,
         decoder: JSONDecoder = .init(),
-        encoder: JSONEncoder = .init()
+        encoder: JSONEncoder = .init(),
+        storagePrefix: String
     ) {
         self.storage = storage
         self.decoder = decoder
         self.encoder = encoder
+        self.storagePrefix = storagePrefix
     }
 
-    func fetchAll<T: Decodable>(for prefix: String) throws -> [T] {
-        let dataArray = try storage.fetchValues(with: prefix)
+    func fetchAll<T: Decodable>() throws -> [T] {
+        let dataArray = try storage.fetchValues(with: storagePrefix)
         let mappedArray = try dataArray.map({ try decoder.decode(T.self, from: $0) })
         return mappedArray
     }
 
     func fetch<T: Decodable>(for key: String) throws -> T {
-        let data = try storage.fetchValue(for: key)
+        let data = try storage.fetchValue(for: storagePrefix + key)
         return try decoder.decode(T.self, from: data)
     }
 
     func save<T: Encodable>(_ value: T, for key: String) throws {
         let data = try encoder.encode(value)
-        try storage.save(value: data, for: key)
+        try storage.save(value: data, for: storagePrefix + key)
     }
 
     func delete(key: String) {
-        storage.deleteValue(for: key)
+        storage.deleteValue(for: storagePrefix + key)
     }
 }

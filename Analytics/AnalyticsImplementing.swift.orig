@@ -10,7 +10,7 @@ import Foundation
 
 
 struct AnalyticsLogEventAndCompletion: Identifiable {
-    let uniqueId: UUID = UUID()
+    let id: UUID = UUID()
     let event: AnalyticsEvent
     let completion: AnalyticsImplementing.EventLoggedCompletion?
 }
@@ -41,15 +41,25 @@ public class AnalyticsImplementing: AnalyticsLogging {
     typealias PeristentQueueItem = PersistantQueueItem<AnalyticsLogEventAndCompletion>
 
     let dispatcher: LogEventSending
+<<<<<<< Updated upstream
     let persistantQueue: PersistantQueue<AnalyticsLogEventAndCompletion>
+    let dispatchQueue: DispatchQueue
+    let semaphore = DispatchSemaphore(value: 1)
     let reachabilityHelper: ReachabilityChecking
 
     var loopIsRunning: Bool = false
+=======
+    let storage: CodableStorage
+>>>>>>> Stashed changes
 
     public init(dispatcher: LogEventSending, reachabilityHelper: ReachabilityChecking) {
         self.dispatcher = dispatcher
+<<<<<<< Updated upstream
         self.reachabilityHelper = reachabilityHelper
-        self.persistantQueue = PersistantQueue<AnalyticsLogEventAndCompletion>(name: "analyticsEvent")
+        self.dispatchQueue = DispatchQueue(
+            label: "Revice registration queue",
+            qos: .background)
+        self.persistantQueue = PersistantQueue<AnalyticsLogEventAndCompletion>()
         startLoop()
     }
 
@@ -63,13 +73,16 @@ public class AnalyticsImplementing: AnalyticsLogging {
         case .failure:
             break
         }
+=======
+        syncOfflineEvents()
+        let diskStorage = DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory()))
+        self.storage = CodableStorage(storage: diskStorage, storagePrefix: "analyticsEvents")
+>>>>>>> Stashed changes
     }
 
     func loopStep(queueItem: PeristentQueueItem) {
-        let startOfStep: DispatchTime = .now()
         guard reachabilityHelper.hasNetworkConnection else {
-            print("Going to setup a pause")
-            DispatchQueue.main.asyncAfter(deadline: startOfStep + .seconds(45)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(45000)) {
                 queueItem.itemCompletion(.nothing)
                 self.startLoop()
             }
@@ -82,13 +95,16 @@ public class AnalyticsImplementing: AnalyticsLogging {
                 print("SUCCESS Loggin an event")
                 queueItem.itemCompletion(.removeFirst)
                 self.startLoop()
+                // self.semaphore.signal()
             case .failure:
                 print("FAILURE Loggin an event")
                 queueItem.itemCompletion(.removeFirst)
-                DispatchQueue.main.asyncAfter(deadline: startOfStep + .seconds(45)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(45)) {
+                    // self.semaphore.signal()
                     self.startLoop()
                 }
             }
+
         }
     }
 

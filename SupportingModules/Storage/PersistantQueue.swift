@@ -28,11 +28,11 @@ enum QueueRetreivalError: Error {
 
 struct PersistantQueueItem <T: Codable> {
     let item: T
-    let itemCompletion: (_: QueueAction) -> ()
+    let itemCompletion: (_: QueueAction) -> Void
 }
 
 protocol Identifiable {
-    var id: UUID { get }
+    var uniqueId: UUID { get }
 }
 
 class PersistantQueue<T: Codable & Identifiable>: QueueProviding {
@@ -43,16 +43,23 @@ class PersistantQueue<T: Codable & Identifiable>: QueueProviding {
     var locked: Bool = false
 
     private var queue: [T] = []
-    private let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())))
+    private let storage: CodableStorage
 
-    init() {
-        guard let storedQueue: [T] = try? storage.fetchAll(for: <#T##String#>) else { return }
+    init(name: String) {
+        self.storage = CodableStorage(
+            storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())),
+            storagePrefix: name)
+        guard let storedQueue: [T] = try? storage.fetchAll() else { return }
         queue = storedQueue
     }
 
     func addToQueue(_ item: T) {
-        try? storage.save(item, for: item.id.uuidString)
-        queue.append(item)
+        do {
+            try storage.save(item, for: item.uniqueId.uuidString)
+            queue.append(item)
+        } catch {
+            print(error)
+        }
     }
 
     /// Provides an item from the queue. Calling will lock the queue
@@ -75,7 +82,7 @@ class PersistantQueue<T: Codable & Identifiable>: QueueProviding {
                 return
             }
             let currentItem = queue.removeFirst()
-            storage.delete(key: currentItem.id.uuidString)
+            storage.delete(key: currentItem.uniqueId.uuidString)
         case .sendFirstToBack:
             let frontOfQueue = queue.removeFirst()
             queue.append(frontOfQueue)
