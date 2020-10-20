@@ -11,7 +11,7 @@ import Foundation
 protocol QueueProviding {
     associatedtype QueueItem: Codable
 
-    var next: NextQueueItem<QueueItem>? { get }
+    var next: Result<NextQueueItem<T>> { get }
     var count: Int { get }
     var isEmpty: Bool { get }
 
@@ -23,7 +23,7 @@ enum QueueItemAction {
 }
 
 enum QueueRetreivalError: Error {
-
+    case empty, itemAlreadyProcessing
 }
 
 struct NextQueueItem <T: Codable> {
@@ -33,14 +33,40 @@ struct NextQueueItem <T: Codable> {
 
 class PersistantQueue<T: Codable>: QueueProviding {
 
-    var next: NextQueueItem<T>? { get }
+    var next: Result<NextQueueItem<T>, QueueRetreivalError> { getNextQueueItem() }
     var count: Int { queue.count }
     var isEmpty: Bool { queue.isEmpty }
 
     private var queue: [T] = []
-    private var nextItem: T?
+    private var currentItem: T?
+    private let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())))
 
     func addToQueue(_ items:[T]) {
         queue.append(contentsOf: items)
+    }
+
+    func getNextQueueItem() -> Result<NextQueueItem<T>, QueueRetreivalError> {
+        if currentItem != nil {
+            return .failure(.itemAlreadyProcessing)
+        } else if let nextItem = queue.first {
+            currentItem = nextItem
+            let nextQueueItem = NextQueueItem(item: nextItem, itemCompletion: finishCurrentItem)
+            return(.success(nextQueueItem))
+        } else {
+            return .failure(.empty)
+        }
+    }
+
+    func finishCurrentItem(_ action: QueueItemAction) {
+        switch action {
+        case .removeFromQueue:
+            _ = queue.removeFirst()
+        case .sendToBack:
+            let frontOfQueue = queue.removeFirst()
+            queue.append(frontOfQueue)
+        case .leaveAtFront:
+            break
+        }
+        currentItem = nil
     }
 }
