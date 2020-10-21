@@ -32,6 +32,7 @@ enum StorageError: Error {
 
 // TODO: Protocolise DiskStorage as StorageProviding
 class DiskStorage {
+    
     private let queue: DispatchQueue
     private let fileManager: FileManager
     private let path: URL

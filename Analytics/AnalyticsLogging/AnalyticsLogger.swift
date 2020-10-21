@@ -12,16 +12,22 @@ class AnalyticsLogger {
 
     typealias PeristentQueueItem = QueueItem<AnalyticsEventAndCompletion>
 
-    let dispatcher: LogEventSending
-    let persistantQueue: PersistentQueue<AnalyticsEventAndCompletion>
-    let reachabilityHelper: ReachabilityChecking
+    private let failureDebounceMilliseconds: Int
+    private let dispatcher: LogEventSending
+    private let persistantQueue: PersistentQueue<AnalyticsEventAndCompletion>
+    private let reachabilityHelper: ReachabilityChecking
 
-    var loopIsRunning: Bool = false
+    private var loopIsRunning: Bool = false
 
-    public init(dispatcher: LogEventSending, reachabilityHelper: ReachabilityChecking) {
+    public init(
+        dispatcher: LogEventSending,
+        reachabilityHelper: ReachabilityChecking,
+        failureDebounceSeconds: Double = 45
+    ) {
         self.dispatcher = dispatcher
         self.reachabilityHelper = reachabilityHelper
         self.persistantQueue = PersistentQueue<AnalyticsEventAndCompletion>(name: "analyticsEvent")
+        self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
         startLoop()
     }
 
@@ -37,9 +43,9 @@ class AnalyticsLogger {
     }
 
     private func loopStep(queueItem: PeristentQueueItem) {
-        let startOfStep: DispatchTime = .now()
+        let delayTimeForFailure: DispatchTime = .now() + .milliseconds(failureDebounceMilliseconds)
         guard reachabilityHelper.hasNetworkConnection else {
-            DispatchQueue.main.asyncAfter(deadline: startOfStep + .seconds(45)) {
+            DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
                 queueItem.releaseQueue(.doNothing)
                 self.startLoop()
             }
@@ -53,7 +59,7 @@ class AnalyticsLogger {
             case .success:
                 self.startLoop()
             case .failure:
-                DispatchQueue.main.asyncAfter(deadline: startOfStep + .seconds(45)) {
+                DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
                     self.startLoop()
                 }
             }
