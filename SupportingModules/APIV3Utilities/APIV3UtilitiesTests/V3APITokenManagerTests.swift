@@ -53,14 +53,13 @@ class V3APITokenManagerTests: XCTestCase {
     }
 
     func test_getValidToken_delayedByObservable() {
-        let observableSource = PublishSubject<Void>()
-        testRefreshGenerator.refreshTokenOrWaitAction = observableSource.asObservable()
         let expectation = XCTestExpectation(description: "Valid token completion called")
+        let observableSource = PublishSubject<Void>.just(())
+        testRefreshGenerator.refreshTokenOrWaitAction = observableSource.asObservable()
         sut.getValidToken {
             expectation.fulfill()
         }
-        observableSource.onNext(())
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.01)
     }
 }
 
