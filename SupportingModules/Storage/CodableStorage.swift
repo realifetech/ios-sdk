@@ -10,13 +10,13 @@ import Foundation
 
 class CodableStorage {
 
-    private let storage: DiskStorage
+    private let storage: Storage
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
     private let storagePrefix: String
 
     init(
-        storage: DiskStorage,
+        storage: Storage,
         decoder: JSONDecoder = .init(),
         encoder: JSONEncoder = .init(),
         storagePrefix: String

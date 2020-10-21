@@ -8,31 +8,8 @@
 
 import Foundation
 
-typealias Handler<T> = (Result<T, Error>) -> Void
-typealias Storage = ReadableStorage & WritableStorage
-
-protocol ReadableStorage {
-    func fetchValue(for key: String) throws -> Data
-    func fetchValue(for key: String, handler: @escaping Handler<Data>)
-}
-
-protocol WritableStorage {
-    func save(value: Data, for key: String) throws
-    func save(value: Data, for key: String, handler: @escaping Handler<Data>)
-}
-
-enum StorageType: String {
-    case loggingEvent
-}
-
-enum StorageError: Error {
-    case notFound
-    case cantWrite(Error)
-}
-
-// TODO: Protocolise DiskStorage as StorageProviding
 class DiskStorage {
-    
+
     private let queue: DispatchQueue
     private let fileManager: FileManager
     private let path: URL
@@ -45,6 +22,17 @@ class DiskStorage {
         self.path = path
         self.queue = queue
         self.fileManager = fileManager
+    }
+
+    private func createFolders(in url: URL) throws {
+        let folderUrl = url.deletingLastPathComponent()
+        if !fileManager.fileExists(atPath: folderUrl.path) {
+            try fileManager.createDirectory(
+                at: folderUrl,
+                withIntermediateDirectories: true,
+                attributes: nil
+            )
+        }
     }
 }
 
@@ -70,18 +58,11 @@ extension DiskStorage: WritableStorage {
             }
         }
     }
-}
 
-extension DiskStorage {
-
-    private func createFolders(in url: URL) throws {
-        let folderUrl = url.deletingLastPathComponent()
-        if !fileManager.fileExists(atPath: folderUrl.path) {
-            try fileManager.createDirectory(
-                at: folderUrl,
-                withIntermediateDirectories: true,
-                attributes: nil
-            )
+    func deleteValue(for key: String) {
+        let url = path.appendingPathComponent(key)
+        do {
+            try? fileManager.removeItem(atPath: url.path)
         }
     }
 }
@@ -114,13 +95,6 @@ extension DiskStorage: ReadableStorage {
     func fetchValue(for key: String, handler: @escaping Handler<Data>) {
         queue.async {
             handler(Result { try self.fetchValue(for: key) })
-        }
-    }
-
-    func deleteValue(for key: String) {
-        let url = path.appendingPathComponent(key)
-        do {
-            try? fileManager.removeItem(atPath: url.path)
         }
     }
 }
