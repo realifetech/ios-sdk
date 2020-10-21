@@ -12,7 +12,7 @@ public class RealifeTech {
 
     public static var General: General!
     public static var Audiences: AudienceChecking!
-    public static var Analytics: AnalyticsImplementing!
+    public static var Analytics: Analytics!
     public static var Communicate: CommunicateImplementing!
 
     private static var moduleVersionString: String? {
@@ -42,10 +42,11 @@ public class RealifeTech {
             let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
                                       tokenHelper: apiHelper,
                                       deviceId: deviceHelper.deviceId,
-                                      reachabilityHelper: ReachabilityFactory.makeReachabilityHelper())
+                                      reachabilityHelper: reachabilityChecker)
             let dispatcher = GraphQLDispatcher(client: client)
             Audiences = AudiencesImplementing(dispatcher: dispatcher)
-            Analytics = AnalyticsImplementing(dispatcher: dispatcher)
+            Analytics = AnalyticsFactory.makeAnalyticsModule(dispatcher: dispatcher,
+                                                             reachabilityHelper: reachabilityChecker)
         }
         Communicate = CommunicateImplementing()
         apiHelper.getValidToken {}

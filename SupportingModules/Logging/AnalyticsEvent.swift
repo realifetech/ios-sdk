@@ -8,8 +8,9 @@
 
 import Foundation
 
-public struct LoggingEvent: Codable {
+public struct AnalyticsEvent: Codable {
 
+    public var storedName: String?
     public let type: String
     public let action: String
     public let new: [String: String]?
@@ -17,7 +18,7 @@ public struct LoggingEvent: Codable {
     public let version: String
 
     public var newString: String? {
-        return escape(new)
+        escape(new)
     }
 
     public var oldString: String? {
@@ -50,3 +51,5 @@ public struct LoggingEvent: Codable {
         return NSRegularExpression.escapedPattern(for: jsonString)
     }
 }
+
+extension AnalyticsEvent: Equatable {}

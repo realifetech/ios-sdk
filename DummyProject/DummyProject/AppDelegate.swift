@@ -21,13 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             graphApiUrl: "https://graphql-mock.realifetech.com/graphql")
         RealifeTech.configureSDK(with: configuration)
         RealifeTech.General.registerDevice {}
-        let event = LoggingEvent(type: "user",
+        let event = AnalyticsEvent(type: "user",
                                  action: "externalLogin",
                                  new: ["userId": "a3890e983e", "provider": "ticketmaster"],
                                  old: nil, version: "1.0")
-        RealifeTech.Analytics.logEvent(event) { error in
-            print(error)
+        print("🌳 Going to add x3 new events to the queue [AppDelegate]")
+        RealifeTech.Analytics.logEvent(event) { result in
+            print("🌳 logging event callback 1 [AppDelegate]", result)
         }
+        RealifeTech.Analytics.logEvent(event) { result in
+            print("🌳 logging event callback 2 [AppDelegate]", result)
+        }
+        RealifeTech.Analytics.logEvent(event) { result in
+            print("🌳 logging event callback 3 [AppDelegate]", result)
+        }
+        print(RealifeTech.General.sdkReady)
         return true
     }
 
