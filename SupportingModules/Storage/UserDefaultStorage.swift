@@ -10,9 +10,14 @@ import Foundation
 
 public struct UserDefaultsStorage {
     let userDefaults: UserDefaults
+    let dispatchQueue: DispatchQueue
 
-    public init(userDefaults: UserDefaults = UserDefaults.standard) {
+    public init(
+        userDefaults: UserDefaults = UserDefaults.standard,
+        dispatchQueue: DispatchQueue = .init(label: "DiskCache.Queue")
+    ) {
         self.userDefaults = userDefaults
+        self.dispatchQueue = dispatchQueue
     }
 }
 
@@ -34,10 +39,12 @@ extension UserDefaultsStorage: ReadableStorage {
     }
 
     func fetchValue(for key: String, handler: @escaping Handler<Data>) {
-        guard let data = userDefaults.data(forKey: key) else {
-            return handler(.failure(StorageError.notFound))
+        dispatchQueue.async {
+            guard let data = userDefaults.data(forKey: key) else {
+                return handler(.failure(StorageError.notFound))
+            }
+            return handler(.success(data))
         }
-        return handler(.success(data))
     }
 
 }
@@ -49,8 +56,10 @@ extension UserDefaultsStorage: WritableStorage {
     }
 
     func save(value: Data, for key: String, handler: @escaping Handler<Data>) {
-        userDefaults.setValue(value, forKey: key)
-        handler(.success(value))
+        dispatchQueue.async {
+            userDefaults.setValue(value, forKey: key)
+            handler(.success(value))
+        }
     }
 
     func deleteValue(for key: String) {
