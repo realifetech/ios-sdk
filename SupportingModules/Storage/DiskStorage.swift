@@ -30,7 +30,6 @@ enum StorageError: Error {
     case cantWrite(Error)
 }
 
-
 // TODO: Protocolise DiskStorage as StorageProviding
 class DiskStorage {
     private let queue: DispatchQueue

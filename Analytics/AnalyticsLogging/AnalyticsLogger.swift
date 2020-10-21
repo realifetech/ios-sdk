@@ -9,7 +9,7 @@
 import Foundation
 
 class AnalyticsLogger: AnalyticsLogging {
-    
+
     typealias PeristentQueueItem = QueueItem<AnalyticsEventAndCompletion>
 
     let dispatcher: LogEventSending
