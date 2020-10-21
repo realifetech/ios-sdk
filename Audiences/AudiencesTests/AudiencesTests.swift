@@ -18,12 +18,6 @@ class AudiencesTests: XCTestCase {
         XCTAssertNotNil(sut.dispatcher)
     }
 
-    func test_init_failed() {
-        let spy = MockGraphQLDispatcher()
-        let sut = AudiencesImplementing(dispatcher: spy)
-        XCTAssertNil(sut.dispatcher)
-    }
-
     func test_deviceIsMemberOfAudience_isCalled() {
         let spy = MockGraphQLDispatcher()
         let sut = AudiencesImplementing(dispatcher: spy)

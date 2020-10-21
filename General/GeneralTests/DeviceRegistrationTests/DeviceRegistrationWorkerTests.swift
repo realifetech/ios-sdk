@@ -46,10 +46,8 @@ class DeviceRegistrationWorkerTests: XCTestCase {
         XCTAssertTrue(sut.sdkReady)
     }
 
-    func test_registerDevice_resultIsCorrect() {
+    func test_registerDevice_completionCalled() {
         let expectation = XCTestExpectation(description: "Device registration completion")
-        let testError: TestError = TestError.registrationError("hello")
-        deviceRegistrationSpy.resultToReturn = .failure(testError)
         sut.registerDevice {
             expectation.fulfill()
         }
@@ -79,10 +77,9 @@ class DeviceRegistrationWorkerTests: XCTestCase {
 private class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
 
     var deviceReceived: Device?
-    var resultToReturn: Result<Void, Error> = .success(())
 
-    func registerDevice(_: Device, _: @escaping () -> Void) {
-//        self.deviceReceived = device
-//        completion(resultToReturn)
+    func registerDevice(_ device: Device, _ completion: @escaping () -> Void) {
+        self.deviceReceived = device
+        completion()
     }
 }
