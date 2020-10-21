@@ -25,17 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                  action: "externalLogin",
                                  new: ["userId": "a3890e983e", "provider": "ticketmaster"],
                                  old: nil, version: "1.0")
-        RealifeTech.Analytics.logEvent(event) { error in
-            print(error)
+        print("🌳 Going to add x3 new events to the queue [AppDelegate]")
+        RealifeTech.Analytics.logEvent(event) { result in
+            print("🌳 logging event callback 1 [AppDelegate]", result)
         }
-        RealifeTech.Analytics.logEvent(event) { error in
-            print(error)
+        RealifeTech.Analytics.logEvent(event) { result in
+            print("🌳 logging event callback 2 [AppDelegate]", result)
         }
-        RealifeTech.Analytics.logEvent(event) { error in
-            print(error)
-        }
-        RealifeTech.Analytics.logEvent(event) { error in
-            print(error)
+        RealifeTech.Analytics.logEvent(event) { result in
+            print("🌳 logging event callback 3 [AppDelegate]", result)
         }
         print(RealifeTech.General.sdkReady)
         return true
