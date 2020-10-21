@@ -8,17 +8,15 @@
 
 import Foundation
 
-public class AnalyticsImplementing: AnalyticsLogging {
+class AnalyticsImplementing: Analytics {
 
-    let dispatcher: LogEventSending
+    let analyticsLogger: AnalyticsLogging
 
-    public init(dispatcher: LogEventSending) {
-        self.dispatcher = dispatcher
+    init(analyticsLogger: AnalyticsLogging) {
+        self.analyticsLogger = analyticsLogger
     }
 
-    public func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void) {
-        dispatcher.logEvent(event) { result in
-            completion(result)
-        }
+    func logEvent(_ event: AnalyticsEvent, completion: @escaping (Result<Void, Error>) -> Void) {
+        analyticsLogger.logEvent(event, completion: completion)
     }
 }

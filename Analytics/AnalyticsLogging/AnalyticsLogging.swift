@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol AnalyticsLogging {
-    func logEvent(_ event: LoggingEvent, completion: @escaping (Result<Void, Error>) -> Void)
+public protocol AnalyticsLogging {
+    func logEvent(_ event: AnalyticsEvent, completion: @escaping (Result<Void, Error>) -> Void)
 }
