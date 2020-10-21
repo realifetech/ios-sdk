@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		03110C66253D85290099F65F /* CodableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03110C65253D85290099F65F /* CodableStorage.swift */; };
-		03110C69253DD6790099F65F /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03110C68253DD6790099F65F /* Debounce.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKInterface.swift */; };
 		487479A425403E250048F03D /* QueueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A325403E250048F03D /* QueueProviding.swift */; };
@@ -135,7 +134,6 @@
 
 /* Begin PBXFileReference section */
 		03110C65253D85290099F65F /* CodableStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStorage.swift; sourceTree = "<group>"; };
-		03110C68253DD6790099F65F /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 		0317B928252768EA00863EC6 /* GraphQLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTests.swift; sourceTree = "<group>"; };
 		0317B932252769D900863EC6 /* GraphNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetwork.swift; sourceTree = "<group>"; };
 		034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDispatcher.swift; sourceTree = "<group>"; };
@@ -511,7 +509,6 @@
 				487479C72540432E0048F03D /* Analytics.swift */,
 				4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */,
 				487479CD254044430048F03D /* AnalyticsFactory.swift */,
-				03110C68253DD6790099F65F /* Debounce.swift */,
 				4889594F2539D7FB00B978A9 /* AnalyticsTests */,
 			);
 			path = Analytics;
@@ -1025,7 +1022,6 @@
 				4889589B2539D04B00B978A9 /* AuthorisationStore.swift in Sources */,
 				488958A12539D04B00B978A9 /* ReachabilityChecker.swift in Sources */,
 				488958752539D04B00B978A9 /* APIRootURL.swift in Sources */,
-				03110C69253DD6790099F65F /* Debounce.swift in Sources */,
 				488958872539D04B00B978A9 /* V3APITokenManagable.swift in Sources */,
 				4889588F2539D04B00B978A9 /* Dictionary+Extensions.swift in Sources */,
 				4889589C2539D04B00B978A9 /* OAuthTokenRefreshWatcher.swift in Sources */,

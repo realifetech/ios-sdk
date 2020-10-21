@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AnalyticsLogger: AnalyticsLogging {
+class AnalyticsLogger {
 
     typealias PeristentQueueItem = QueueItem<AnalyticsEventAndCompletion>
 
@@ -25,7 +25,7 @@ class AnalyticsLogger: AnalyticsLogging {
         startLoop()
     }
 
-    func startLoop() {
+    private func startLoop() {
         loopIsRunning = true
         let nextItemResult = self.persistantQueue.next
         switch nextItemResult {
@@ -36,7 +36,7 @@ class AnalyticsLogger: AnalyticsLogging {
         }
     }
 
-    func loopStep(queueItem: PeristentQueueItem) {
+    private func loopStep(queueItem: PeristentQueueItem) {
         let startOfStep: DispatchTime = .now()
         guard reachabilityHelper.hasNetworkConnection else {
             DispatchQueue.main.asyncAfter(deadline: startOfStep + .seconds(45)) {
@@ -59,6 +59,9 @@ class AnalyticsLogger: AnalyticsLogging {
             }
         }
     }
+}
+
+extension AnalyticsLogger: AnalyticsLogging {
 
     public func logEvent(_ event: AnalyticsEvent, completion: @escaping EventLoggedCompletion) {
         let eventAndCompletion = AnalyticsEventAndCompletion(
