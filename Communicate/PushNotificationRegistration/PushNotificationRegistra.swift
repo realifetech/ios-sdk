@@ -9,35 +9,39 @@
 import Foundation
 import RxSwift
 
-class PushNotificationRegistra: PushNotificationRegistering {
-    
+enum PushNotificationError: Error {
+    case invalidTokenData
+}
+
+class PushNotificationRegistra {
+
     private let disposeBag = DisposeBag()
     private let scheduler: ImmediateSchedulerType
     private let tokenStore: CodableStorage
+    private let tokenKey: String = "APNToken"
 
     public init(scheduler: ImmediateSchedulerType? = nil, tokenStore: CodableStorage) {
         self.scheduler = scheduler ?? ConcurrentDispatchQueueScheduler(qos: .background)
         self.tokenStore = tokenStore
+        self.checkAndSendStoredToken()
     }
 
-    public func registerForPushNotifications(token: String, completion: @escaping(Result<Void, Error>) -> Void) {
+    private func checkAndSendStoredToken() {
+        guard let storedToken: String = try? tokenStore.fetch(for: tokenKey) else { return }
+        registerPushNotification(token: storedToken) { _ in }
+    }
+
+    private func registerPushNotification(token: String, completion: @escaping(Result<Void, Error>) -> Void) {
         DeviceRepository.registerForPushNotifications(with: .defaultDeviceToken(withProviderToken: token))
             .subscribeOn(scheduler)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { _ in
+                self.tokenStore.delete(key: self.tokenKey)
                 completion(.success(()))
             }, onError: { error in
-                // TODO: Store token and repeatedly try to send
                 completion(.failure(error))
             })
             .disposed(by: disposeBag)
-    }
-
-    public func registerForPushNotifications(token: Data, completion: @escaping(Result<Void, Error>) -> Void) {
-        guard let token = string(withDeviceToken: token) else {
-            return completion(.failure(PushNotificationError.invalidTokenData))
-        }
-        registerForPushNotifications(token: token, completion: completion)
     }
 
     private func string(withDeviceToken deviceToken: Data) -> String? {
@@ -45,6 +49,18 @@ class PushNotificationRegistra: PushNotificationRegistering {
     }
 }
 
-enum PushNotificationError: Error {
-    case invalidTokenData
+extension PushNotificationRegistra: PushNotificationRegistering {
+
+    public func registerForPushNotifications(token: String, completion: @escaping(Result<Void, Error>) -> Void) {
+        try? tokenStore.save(token, for: tokenKey)
+        self.registerPushNotification(token: token, completion: completion)
+    }
+
+    public func registerForPushNotifications(token: Data, completion: @escaping(Result<Void, Error>) -> Void) {
+        guard let token = string(withDeviceToken: token) else {
+            return completion(.failure(PushNotificationError.invalidTokenData))
+        }
+        try? tokenStore.save(token, for: tokenKey)
+        registerPushNotification(token: token, completion: completion)
+    }
 }
