@@ -23,6 +23,7 @@
 		487479DD254088B50048F03D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479DC254088B50048F03D /* Storage.swift */; };
 		487479E225408E7D0048F03D /* PushNotificationRegistra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479E125408E7D0048F03D /* PushNotificationRegistra.swift */; };
 		487479E825408E8A0048F03D /* Communicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479E725408E8A0048F03D /* Communicate.swift */; };
+		487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479ED254090E90048F03D /* CommunicateFactory.swift */; };
 		488958742539D04B00B978A9 /* LocalDiskCacheDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDDA251E300F00266617 /* LocalDiskCacheDataProviding.swift */; };
 		488958752539D04B00B978A9 /* APIRootURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE22251E40FB00266617 /* APIRootURL.swift */; };
 		488958762539D04B00B978A9 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE15251E390A00266617 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -208,6 +209,7 @@
 		487479DC254088B50048F03D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		487479E125408E7D0048F03D /* PushNotificationRegistra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistra.swift; sourceTree = "<group>"; };
 		487479E725408E8A0048F03D /* Communicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communicate.swift; sourceTree = "<group>"; };
+		487479ED254090E90048F03D /* CommunicateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateFactory.swift; sourceTree = "<group>"; };
 		4889592F2539D21500B978A9 /* Dictionary+ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+ExtensionTests.swift"; sourceTree = "<group>"; };
 		4889595A2539D89C00B978A9 /* AnalyticsLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsLogging.swift; sourceTree = "<group>"; };
 		4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsImplementing.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 			isa = PBXGroup;
 			children = (
 				487479E725408E8A0048F03D /* Communicate.swift */,
+				487479ED254090E90048F03D /* CommunicateFactory.swift */,
 				48EFE2222539E21100CC6E58 /* CommunicateImplementing.swift */,
 				487479E025408E640048F03D /* PushNotificationRegistration */,
 				48E6777C251BA86D007E2741 /* CommunicateTests */,
@@ -1032,6 +1035,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */,
 				48EFE2682539E5C600CC6E58 /* NetworkConnectivityChecker.swift in Sources */,
 				487479DD254088B50048F03D /* Storage.swift in Sources */,
 				4889589D2539D04B00B978A9 /* APIV3RequesterHelper.swift in Sources */,
