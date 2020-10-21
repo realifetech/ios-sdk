@@ -9,7 +9,10 @@
 import Foundation
 
 public enum AnalyticsFactory {
-    static func makeAnalyticsModule(dispatcher: LogEventSending, reachabilityHelper: ReachabilityChecking) -> Analytics {
+    static func makeAnalyticsModule(
+        dispatcher: LogEventSending,
+        reachabilityHelper: ReachabilityChecking
+    ) -> Analytics {
         let analyticsLogger = AnalyticsLogger(dispatcher: dispatcher, reachabilityHelper: reachabilityHelper)
         return AnalyticsImplementing(analyticsLogger: analyticsLogger)
     }
