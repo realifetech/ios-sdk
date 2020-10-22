@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03110C66253D85290099F65F /* CodableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03110C65253D85290099F65F /* CodableStorage.swift */; };
 		039B77AF254187BA0060DBBA /* CodableStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B77AE254187BA0060DBBA /* CodableStorageTests.swift */; };
+		039B77B12541957A0060DBBA /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B77B02541957A0060DBBA /* DiskStorageTests.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKInterface.swift */; };
 		487479A425403E250048F03D /* QueueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A325403E250048F03D /* QueueProviding.swift */; };
@@ -141,6 +142,7 @@
 		0317B932252769D900863EC6 /* GraphNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetwork.swift; sourceTree = "<group>"; };
 		034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDispatcher.swift; sourceTree = "<group>"; };
 		039B77AE254187BA0060DBBA /* CodableStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStorageTests.swift; sourceTree = "<group>"; };
+		039B77B02541957A0060DBBA /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
 		03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchDeviceBelongsToAudience.graphql.swift; sourceTree = "<group>"; };
 		03B0D108252C83040037D504 /* Types.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.graphql.swift; sourceTree = "<group>"; };
 		03D5838B2521E44F00E516F9 /* UIDeviceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceFactory.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				039B77AE254187BA0060DBBA /* CodableStorageTests.swift */,
+				039B77B02541957A0060DBBA /* DiskStorageTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 			files = (
 				488958DD2539D09D00B978A9 /* RequestHeaderTests.swift in Sources */,
 				48EFE21D2539E1D800CC6E58 /* DeviceTests.swift in Sources */,
+				039B77B12541957A0060DBBA /* DiskStorageTests.swift in Sources */,
 				488958DF2539D09D00B978A9 /* V3APITokenManagerTests.swift in Sources */,
 				488958DB2539D09D00B978A9 /* RequestCreatorTests.swift in Sources */,
 				48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */,
