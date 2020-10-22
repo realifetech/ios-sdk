@@ -11,13 +11,52 @@ import XCTest
 
 class DiskStorageTests: XCTestCase {
 
+    let writeSut: DiskStorage = makeSut()
+    let readSut: DiskStorage = makeSut()
+
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        writeSut.deleteValue(for: "diskStorageData")
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        writeSut.deleteValue(for: "diskStorageData")
     }
 
-    
+    func test_saveValue() {
+        let testData = Data()
+        XCTAssertNoThrow(try writeSut.save(value: testData, for: "diskStorageData"))
+        writeSut.deleteValue(for: "diskStorageData")
+    }
+
+    func test_saveValue_withHandler() {
+        let testData = Data()
+        writeSut.save(value: testData, for: "diskStorageData", handler: { result in
+            switch result {
+            case .success(let data):
+                XCTAssertNotNil(data)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        })
+    }
+
+    func test_deleteValue() {
+        let testData = Data()
+        XCTAssertNoThrow(try writeSut.save(value: testData, for: "diskStorageData"))
+        writeSut.deleteValue(for: "diskStorageData")
+        XCTAssertThrowsError(try readSut.fetchValue(for: "diskStorageData"))
+    }
+
+    func test_fetchValues() {
+
+    }
+
+    func test_fetchValue() {
+
+    }
+
+    private class func makeSut() -> DiskStorage {
+        let path = URL(fileURLWithPath: NSTemporaryDirectory())
+        return DiskStorage(path: path)
+    }
 }
