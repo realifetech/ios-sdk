@@ -6,4 +6,9 @@
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
-import Foundation
+import XCTest
+@testable import RealifeTech
+
+class AnalyticsEventAndCompletionTests: XCTestCase {
+    
+}

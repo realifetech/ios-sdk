@@ -10,5 +10,22 @@ import XCTest
 @testable import RealifeTech
 
 class AnalyticsLoggerTests: XCTestCase {
-    
+
+    func test_init_emptyStorageDoesNothing() {}
+
+    func test_init_getsItemsFromStorage() {}
+
+    func test_logEvent_sendsSingleItem() {}
+
+    func test_logEvent_delaysSingleItemUntilConnected() {}
+
+    func test_logEvent_addsItemsToQueue() {}
+
+    func test_logEvent_removesFromQueueWhenDone() {}
+
+    func test_logEvent_leavesInQueueOnFailure() {}
+
+    func test_logEvent_willContinueWhenGivenMoreItems() {
+
+    }
 }
