@@ -30,10 +30,7 @@ class CodableStorageTests: XCTestCase {
 
     func test_fetchAll() {
         do {
-            try Array(1...5).forEach({ index in
-                let testObject: TestObject = TestObject(name: "testObj\(index)", date: Date())
-                try sut.save(testObject, for: testObject.name)
-            })
+            try saveObjects(5)
             let testObjects: [TestObject] = try sut.fetchAll()
             XCTAssertEqual(testObjects.count, 5)
         } catch let error {
@@ -43,10 +40,7 @@ class CodableStorageTests: XCTestCase {
 
     func test_singleFetch() {
         do {
-            try Array(1...5).forEach({ index in
-                let testObject: TestObject = TestObject(name: "testObj\(index)", date: Date())
-                try sut.save(testObject, for: testObject.name)
-            })
+            try saveObjects(5)
             let testObject: TestObject = try sut.fetch(for: "testObj3")
             XCTAssertNotNil(testObject)
         } catch let error {
@@ -63,6 +57,13 @@ class CodableStorageTests: XCTestCase {
         } catch {
             XCTFail("Failed to save object")
         }
+    }
+
+    private func saveObjects(_ numberToSave: Int) throws {
+        try Array(1...numberToSave).forEach({ index in
+            let testObject: TestObject = TestObject(name: "testObj\(index)", date: Date())
+            try sut.save(testObject, for: testObject.name)
+        })
     }
 
     static func makeSut() -> CodableStorage {
