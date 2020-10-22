@@ -1,5 +1,5 @@
 //
-//  PushNotificationRegistra.swift
+//  PushNotificationRegistrar.swift
 //  RealifeTech
 //
 //  Created by Olivier Butler on 21/10/2020.
@@ -13,7 +13,7 @@ enum PushNotificationError: Error {
     case invalidTokenData
 }
 
-class PushNotificationRegistra {
+class PushNotificationRegistrar {
 
     private let disposeBag = DisposeBag()
     private let scheduler: ImmediateSchedulerType
@@ -23,7 +23,7 @@ class PushNotificationRegistra {
     public init(scheduler: ImmediateSchedulerType? = nil, tokenStore: CodableStorage) {
         self.scheduler = scheduler ?? ConcurrentDispatchQueueScheduler(qos: .background)
         self.tokenStore = tokenStore
-        self.checkAndSendStoredToken()
+        checkAndSendStoredToken()
     }
 
     private func checkAndSendStoredToken() {
@@ -49,11 +49,11 @@ class PushNotificationRegistra {
     }
 }
 
-extension PushNotificationRegistra: PushNotificationRegistering {
+extension PushNotificationRegistrar: PushNotificationRegistering {
 
     public func registerForPushNotifications(token: String, completion: @escaping(Result<Void, Error>) -> Void) {
         try? tokenStore.save(token, for: tokenKey)
-        self.registerPushNotification(token: token, completion: completion)
+        registerPushNotification(token: token, completion: completion)
     }
 
     public func registerForPushNotifications(token: Data, completion: @escaping(Result<Void, Error>) -> Void) {

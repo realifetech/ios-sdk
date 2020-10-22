@@ -11,20 +11,20 @@ import RxSwift
 
 public final class CommunicateImplementing {
 
-    let pushNotificationRegistra: PushNotificationRegistering
+    let pushNotificationRegistrar: PushNotificationRegistering
 
-    init(pushNotificationRegistra: PushNotificationRegistering) {
-        self.pushNotificationRegistra = pushNotificationRegistra
+    init(pushNotificationRegistrar: PushNotificationRegistering) {
+        self.pushNotificationRegistrar = pushNotificationRegistrar
     }
 }
 
 extension CommunicateImplementing: PushNotificationRegistering {
 
     public func registerForPushNotifications(token: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        pushNotificationRegistra.registerForPushNotifications(token: token, completion: completion)
+        pushNotificationRegistrar.registerForPushNotifications(token: token, completion: completion)
     }
 
     public func registerForPushNotifications(token: Data, completion: @escaping (Result<Void, Error>) -> Void) {
-        pushNotificationRegistra.registerForPushNotifications(token: token, completion: completion)
+        pushNotificationRegistrar.registerForPushNotifications(token: token, completion: completion)
     }
 }

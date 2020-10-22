@@ -21,7 +21,7 @@
 		487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479CD254044430048F03D /* AnalyticsFactory.swift */; };
 		487479D9254088AA0048F03D /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479D8254088AA0048F03D /* UserDefaultStorage.swift */; };
 		487479DD254088B50048F03D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479DC254088B50048F03D /* Storage.swift */; };
-		487479E225408E7D0048F03D /* PushNotificationRegistra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479E125408E7D0048F03D /* PushNotificationRegistra.swift */; };
+		487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479E125408E7D0048F03D /* PushNotificationRegistrar.swift */; };
 		487479E825408E8A0048F03D /* Communicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479E725408E8A0048F03D /* Communicate.swift */; };
 		487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479ED254090E90048F03D /* CommunicateFactory.swift */; };
 		488958742539D04B00B978A9 /* LocalDiskCacheDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDDA251E300F00266617 /* LocalDiskCacheDataProviding.swift */; };
@@ -207,7 +207,7 @@
 		487479CD254044430048F03D /* AnalyticsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsFactory.swift; sourceTree = "<group>"; };
 		487479D8254088AA0048F03D /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		487479DC254088B50048F03D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		487479E125408E7D0048F03D /* PushNotificationRegistra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistra.swift; sourceTree = "<group>"; };
+		487479E125408E7D0048F03D /* PushNotificationRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrar.swift; sourceTree = "<group>"; };
 		487479E725408E8A0048F03D /* Communicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communicate.swift; sourceTree = "<group>"; };
 		487479ED254090E90048F03D /* CommunicateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateFactory.swift; sourceTree = "<group>"; };
 		4889592F2539D21500B978A9 /* Dictionary+ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+ExtensionTests.swift"; sourceTree = "<group>"; };
@@ -518,7 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				48EFE2232539E21100CC6E58 /* PushNotificationRegistering.swift */,
-				487479E125408E7D0048F03D /* PushNotificationRegistra.swift */,
+				487479E125408E7D0048F03D /* PushNotificationRegistrar.swift */,
 			);
 			path = PushNotificationRegistration;
 			sourceTree = "<group>";
@@ -1079,7 +1079,7 @@
 				488958802539D04B00B978A9 /* KeychainSwift.swift in Sources */,
 				488959672539D8E300B978A9 /* LogEventSending.swift in Sources */,
 				488958852539D04B00B978A9 /* APIV3Requester.swift in Sources */,
-				487479E225408E7D0048F03D /* PushNotificationRegistra.swift in Sources */,
+				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
 				4889587B2539D04B00B978A9 /* OAuthHeaderRequestInserting.swift in Sources */,
 				488958892539D04B00B978A9 /* StandardV3SenderResponse.swift in Sources */,
