@@ -40,7 +40,7 @@ extension UserDefaultsStorage: ReadableStorage {
 
     func fetchValue(for key: String, handler: @escaping Handler<Data>) {
         dispatchQueue.async {
-            guard let data = userDefaults.data(forKey: key) else {
+            guard let data = self.userDefaults.data(forKey: key) else {
                 return handler(.failure(StorageError.notFound))
             }
             return handler(.success(data))
@@ -57,7 +57,7 @@ extension UserDefaultsStorage: WritableStorage {
 
     func save(value: Data, for key: String, handler: @escaping Handler<Data>) {
         dispatchQueue.async {
-            userDefaults.setValue(value, forKey: key)
+            self.userDefaults.setValue(value, forKey: key)
             handler(.success(value))
         }
     }
