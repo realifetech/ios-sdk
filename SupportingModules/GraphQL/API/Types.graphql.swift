@@ -13,8 +13,9 @@ public struct AnalyticEvent: GraphQLMapConvertible {
   ///   - new
   ///   - old
   ///   - version
-  public init(type: String, action: String, new: Swift.Optional<String?> = nil, old: Swift.Optional<String?> = nil, version: String) {
-    graphQLMap = ["type": type, "action": action, "new": new, "old": old, "version": version]
+  ///   - timestamp
+  public init(type: String, action: String, new: Swift.Optional<String?> = nil, old: Swift.Optional<String?> = nil, version: String, timestamp: String) {
+    graphQLMap = ["type": type, "action": action, "new": new, "old": old, "version": version, "timestamp": timestamp]
   }
 
   public var type: String {
@@ -59,6 +60,15 @@ public struct AnalyticEvent: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "version")
+    }
+  }
+
+  public var timestamp: String {
+    get {
+      return graphQLMap["timestamp"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "timestamp")
     }
   }
 }

@@ -63,7 +63,8 @@ extension GraphQLDispatcher: LogEventSending {
                                   action: event.action,
                                   new: event.newString,
                                   old: event.oldString,
-                                  version: event.version)
+                                  version: event.version,
+                                  timestamp: event.timestampString)
         dispatchMutation(mutation: PutAnalyticEventMutation(input: event), completion: { result in
             switch result {
             case .success:

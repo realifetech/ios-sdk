@@ -820,7 +820,7 @@
 			buildConfigurationList = 48D6F14B251E158E006CA623 /* Build configuration list for PBXNativeTarget "RealifeTech" */;
 			buildPhases = (
 				C727D3220B094BF8B35EE985 /* [CP] Check Pods Manifest.lock */,
-				03110C6B253DE69D0099F65F /* Generate Apollo GraphQL API */,
+				03893EB62542E37E00FEBFCB /* Generate Apollo GraphQL API */,
 				48D6F135251E158E006CA623 /* Headers */,
 				48D6F136251E158E006CA623 /* Sources */,
 				48D6F137251E158E006CA623 /* Frameworks */,
@@ -915,7 +915,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03110C6B253DE69D0099F65F /* Generate Apollo GraphQL API */ = {
+		03893EB62542E37E00FEBFCB /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -931,7 +931,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\n#cd ${SCRIPT_PATH} run-bundled-codegen.sh schema:download --endpoint=\"https://graphql-mock.realifetech.com/graphql\" --header=\"Authorization: Bearer YzllNzg3ZjExZTdiOGRkODUwODA4MjE3MzA2ZTZiYzNhNWE2NTJiMDljYWRjNTAzMWFlMzY1NDI0ZThiMjkyYQ\" \n#cd ${SCRIPT_PATH} run-bundled-codegen.sh codegen:generate --target=swift --includes=\"${SRCROOT}/SupportingModules/GraphQL/GraphQLFiles/*.graphql\" --localSchemaFile=\"${SRCROOT}/SupportingModules/GraphQL/schema.json\" API/\n";
+			shellScript = "#SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\n#cd \"${SRCROOT}/SupportingModules/GraphQL\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://graphql-dev.realifetech.com/graphql\" --header=\"Authorization: Bearer OWYxMzYyNDNmMjIyNTU1MWY0NjRiZDkzZDc1YWUwMmIyYjE4ZGJkNzJjZDA1Y2VjYjU0NGMzZmNkOWY1ZjYwMQ\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=${SRCROOT}/SupportingModules/GraphQL/GraphQLFiles/*.graphql --localSchemaFile=\"${SRCROOT}/SupportingModules/GraphQL/schema.json\" API/\n";
 		};
 		4383C628ACF6BFA6AB24496F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
