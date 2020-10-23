@@ -13,7 +13,7 @@ public class RealifeTech {
     public static var General: General!
     public static var Audiences: AudienceChecking!
     public static var Analytics: Analytics!
-    public static var Communicate: CommunicateImplementing!
+    public static var Communicate: Communicate!
 
     private static var moduleVersionString: String? {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String
@@ -48,7 +48,7 @@ public class RealifeTech {
             Analytics = AnalyticsFactory.makeAnalyticsModule(dispatcher: dispatcher,
                                                              reachabilityHelper: reachabilityChecker)
         }
-        Communicate = CommunicateImplementing()
+        Communicate = CommunicateFactory.makeCommunicateModule()
         apiHelper.getValidToken {}
     }
 }

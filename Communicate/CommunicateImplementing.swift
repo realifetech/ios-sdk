@@ -9,40 +9,22 @@
 import Foundation
 import RxSwift
 
-public final class CommunicateImplementing: PushNotificationRegistering {
+public final class CommunicateImplementing {
 
-    private let disposeBag = DisposeBag()
-    private let scheduler: ImmediateSchedulerType
+    let pushNotificationRegistrar: PushNotificationRegistering
 
-    public init(scheduler: ImmediateSchedulerType? = nil) {
-        self.scheduler = scheduler ?? ConcurrentDispatchQueueScheduler(qos: .background)
-    }
-
-    public func registerForPushNotifications(token: String, completion: @escaping(Result<Void, Error>) -> Void) {
-        DeviceRepository.registerForPushNotifications(with: .defaultDeviceToken(withProviderToken: token))
-            .subscribeOn(scheduler)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { _ in
-                completion(.success(()))
-            }, onError: { error in
-                // TODO: Store token and repeatedly try to send
-                completion(.failure(error))
-            })
-            .disposed(by: disposeBag)
-    }
-
-    public func registerForPushNotifications(token: Data, completion: @escaping(Result<Void, Error>) -> Void) {
-        guard let token = string(withDeviceToken: token) else {
-            return completion(.failure(CommunicateError.invalidTokenData))
-        }
-        registerForPushNotifications(token: token, completion: completion)
-    }
-
-    private func string(withDeviceToken deviceToken: Data) -> String? {
-        return deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+    init(pushNotificationRegistrar: PushNotificationRegistering) {
+        self.pushNotificationRegistrar = pushNotificationRegistrar
     }
 }
 
-enum CommunicateError: Error {
-    case invalidTokenData
+extension CommunicateImplementing: PushNotificationRegistering {
+
+    public func registerForPushNotifications(token: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        pushNotificationRegistrar.registerForPushNotifications(token: token, completion: completion)
+    }
+
+    public func registerForPushNotifications(token: Data, completion: @escaping (Result<Void, Error>) -> Void) {
+        pushNotificationRegistrar.registerForPushNotifications(token: token, completion: completion)
+    }
 }
