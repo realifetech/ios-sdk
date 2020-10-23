@@ -36,7 +36,5 @@ class AnalyticsEventAndCompletionTests: XCTestCase {
         } catch {
             XCTFail("Could not encode & decode sut. Error: \(error.localizedDescription)")
         }
-
     }
-
 }
