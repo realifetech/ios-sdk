@@ -9,6 +9,7 @@
 import XCTest
 @testable import RealifeTech
 
+// TODO: Add test of failure conditions from the API - implentation is not complete ATM
 class AnalyticsLoggerTests: XCTestCase {
 
     private var mockEventSending: MockAnalyticsLogger!
