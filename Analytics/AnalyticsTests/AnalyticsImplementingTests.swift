@@ -21,6 +21,6 @@ class AnalyticsImplementingTests: XCTestCase {
             case .failure: XCTFail("Failure result from analytics implementing")
             }
         }
-        XCTAssertEqual(testEvent, spy.eventLogged)
+        XCTAssertEqual(testEvent, spy.eventsLogged.first)
     }
 }

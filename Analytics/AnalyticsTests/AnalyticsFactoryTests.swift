@@ -17,6 +17,7 @@ class AnalyticsFactoryTests: XCTestCase {
     }
 
     func test_makeModule_usesCorrectDependencies() {
+        let expectation = XCTestExpectation(description: "Event received")
         let testEvent = AnalyticsEvent(type: "one", action: "hundred", version: "dalmations")
         let logEventSpy = MockAnalyticsLogger()
         let mockReachabilityChecker = MockReachabilityChecker()
@@ -24,7 +25,10 @@ class AnalyticsFactoryTests: XCTestCase {
         let module = AnalyticsFactory.makeAnalyticsModule(
             dispatcher: logEventSpy,
             reachabilityHelper: mockReachabilityChecker)
-        module.logEvent(testEvent) { _ in }
-        XCTAssertEqual(logEventSpy.eventLogged, testEvent)
+        module.logEvent(testEvent) { _ in
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+        XCTAssertEqual(logEventSpy.eventsLogged.first, testEvent)
     }
 }

@@ -10,7 +10,7 @@
 		03110C66253D85290099F65F /* CodableStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03110C65253D85290099F65F /* CodableStorage.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKInterface.swift */; };
-		487479A425403E250048F03D /* QueueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A325403E250048F03D /* QueueProviding.swift */; };
+		487479A425403E250048F03D /* QueueProviding+AnyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A325403E250048F03D /* QueueProviding+AnyQueue.swift */; };
 		487479AA25403E790048F03D /* QueueAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A925403E790048F03D /* QueueAction.swift */; };
 		487479AE25403E980048F03D /* QueueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479AD25403E980048F03D /* QueueItem.swift */; };
 		487479B225403EB20048F03D /* QueueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479B125403EB20048F03D /* QueueError.swift */; };
@@ -197,7 +197,7 @@
 		480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultV3DiskCacheStrategyProviding.swift; sourceTree = "<group>"; };
 		4817D84C252E102400A786C0 /* RequestHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeaderTests.swift; sourceTree = "<group>"; };
 		4859F99B252E022400158F5E /* StandardV3SenderResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardV3SenderResponseTests.swift; sourceTree = "<group>"; };
-		487479A325403E250048F03D /* QueueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueProviding.swift; sourceTree = "<group>"; };
+		487479A325403E250048F03D /* QueueProviding+AnyQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueProviding+AnyQueue.swift"; sourceTree = "<group>"; };
 		487479A925403E790048F03D /* QueueAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAction.swift; sourceTree = "<group>"; };
 		487479AD25403E980048F03D /* QueueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueItem.swift; sourceTree = "<group>"; };
 		487479B125403EB20048F03D /* QueueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueError.swift; sourceTree = "<group>"; };
@@ -524,7 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				48EFB416253ED7CF00BC8664 /* PersistentQueue.swift */,
-				487479A325403E250048F03D /* QueueProviding.swift */,
+				487479A325403E250048F03D /* QueueProviding+AnyQueue.swift */,
 				487479A925403E790048F03D /* QueueAction.swift */,
 				487479AD25403E980048F03D /* QueueItem.swift */,
 				487479B125403EB20048F03D /* QueueError.swift */,
@@ -1101,7 +1101,7 @@
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				488958792539D04B00B978A9 /* APIError.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
-				487479A425403E250048F03D /* QueueProviding.swift in Sources */,
+				487479A425403E250048F03D /* QueueProviding+AnyQueue.swift in Sources */,
 				4889587E2539D04B00B978A9 /* RequestCreator.swift in Sources */,
 				488959972539DC8600B978A9 /* DiskStorage.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,

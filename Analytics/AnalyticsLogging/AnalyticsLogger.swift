@@ -14,7 +14,7 @@ class AnalyticsLogger {
 
     private let failureDebounceMilliseconds: Int
     private let dispatcher: LogEventSending
-    private let persistantQueue: PersistentQueue<AnalyticsEventAndCompletion>
+    private let persistentQueue: AnyQueue<AnalyticsEventAndCompletion>
     private let reachabilityHelper: ReachabilityChecking
 
     private var loopIsRunning: Bool = false
@@ -22,23 +22,26 @@ class AnalyticsLogger {
     public init(
         dispatcher: LogEventSending,
         reachabilityHelper: ReachabilityChecking,
+        persistentQueue: AnyQueue<AnalyticsEventAndCompletion>,
         failureDebounceSeconds: Double = 45
     ) {
         self.dispatcher = dispatcher
         self.reachabilityHelper = reachabilityHelper
-        self.persistantQueue = PersistentQueue<AnalyticsEventAndCompletion>(name: "analyticsEvent")
+        self.persistentQueue = persistentQueue
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
         startLoop()
     }
 
     private func startLoop() {
-        loopIsRunning = true
-        let nextItemResult = self.persistantQueue.next
-        switch nextItemResult {
-        case .success(let frontOfQueue):
-            self.loopStep(queueItem: frontOfQueue)
-        case .failure:
-            loopIsRunning = false
+        DispatchQueue.main.async {
+            self.loopIsRunning = true
+            let nextItemResult = self.persistentQueue.next
+            switch nextItemResult {
+            case .success(let frontOfQueue):
+                self.loopStep(queueItem: frontOfQueue)
+            case .failure:
+                self.loopIsRunning = false
+            }
         }
     }
 
@@ -73,7 +76,7 @@ extension AnalyticsLogger: AnalyticsLogging {
         let eventAndCompletion = AnalyticsEventAndCompletion(
             analyticsEvent: event,
             analyticsCompletion: completion)
-        persistantQueue.addToQueue(eventAndCompletion)
+        persistentQueue.addToQueue(eventAndCompletion)
         if !loopIsRunning { startLoop() }
     }
 }
