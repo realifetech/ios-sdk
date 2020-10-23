@@ -16,14 +16,15 @@ class CodableStorageTests: XCTestCase {
         let date: Date
     }
 
-    let sut = CodableStorageTests.makeSut()
+    let readSut = makeSut()
+    let writeSut = makeSut()
 
     override func setUp() {
         super.setUp()
         do {
-            let objects: [TestObject] = try sut.fetchAll()
+            let objects: [TestObject] = try readSut.fetchAll()
             objects.forEach { object in
-                sut.delete(key: object.name)
+                readSut.delete(key: object.name)
             }
         } catch {}
     }
@@ -31,7 +32,7 @@ class CodableStorageTests: XCTestCase {
     func test_fetchAll() {
         do {
             try saveObjects(5)
-            let testObjects: [TestObject] = try sut.fetchAll()
+            let testObjects: [TestObject] = try readSut.fetchAll()
             XCTAssertEqual(testObjects.count, 5)
         } catch let error {
             XCTFail("Failed with error: \(error.localizedDescription)")
@@ -41,7 +42,7 @@ class CodableStorageTests: XCTestCase {
     func test_singleFetch() {
         do {
             try saveObjects(5)
-            let testObject: TestObject = try sut.fetch(for: "testObj3")
+            let testObject: TestObject = try readSut.fetch(for: "testObj3")
             XCTAssertNotNil(testObject)
         } catch let error {
             XCTFail("Failed with error: \(error.localizedDescription)")
@@ -51,8 +52,8 @@ class CodableStorageTests: XCTestCase {
     func test_saveValue() {
         let test = TestObject(name: "testObj", date: Date())
         do {
-            try sut.save(test, for: test.name)
-            let savedObject: TestObject = try sut.fetch(for: test.name)
+            try writeSut.save(test, for: test.name)
+            let savedObject: TestObject = try readSut.fetch(for: test.name)
             XCTAssertNotNil(savedObject)
         } catch {
             XCTFail("Failed to save object")
@@ -62,11 +63,11 @@ class CodableStorageTests: XCTestCase {
     private func saveObjects(_ numberToSave: Int) throws {
         try Array(1...numberToSave).forEach({ index in
             let testObject: TestObject = TestObject(name: "testObj\(index)", date: Date())
-            try sut.save(testObject, for: testObject.name)
+            try writeSut.save(testObject, for: testObject.name)
         })
     }
 
-    static func makeSut() -> CodableStorage {
+    private static func makeSut() -> CodableStorage {
         let path = URL(fileURLWithPath: NSTemporaryDirectory())
         let sut = CodableStorage(storage: DiskStorage(path: path),
                                  storagePrefix: "test")
