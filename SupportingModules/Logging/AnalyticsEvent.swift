@@ -14,7 +14,7 @@ extension Date {
     // TODO: perhaps a better name?
     var rltFormatted: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd’T’HH:mm:ssXXXXX"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
         return formatter.string(from: self)
     }
 }
@@ -66,7 +66,7 @@ public struct AnalyticsEvent: Codable {
             else {
                 return nil
         }
-        return NSRegularExpression.escapedPattern(for: jsonString)
+        return NSRegularExpression.escapedPattern(for: jsonString).replacingOccurrences(of: "\\", with: "")
     }
 }
 

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appCode: "LS",
             clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
             apiUrl: "http://api-staging.livestyled.com/v3",
-            graphApiUrl: "https://graphql-mock.realifetech.com/graphql")
+            graphApiUrl: "https://graphql-dev.realifetech.com/graphql")
         RealifeTech.configureSDK(with: configuration)
         RealifeTech.General.registerDevice {}
         return true
