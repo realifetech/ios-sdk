@@ -8,10 +8,8 @@
 
 import Foundation
 
-// TODO: Move to a better location
 extension Date {
 
-    // TODO: perhaps a better name?
     var rltFormatted: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
@@ -29,17 +27,9 @@ public struct AnalyticsEvent: Codable {
     public let version: String
     public let timestamp: Date
 
-    public var newString: String? {
-        escape(new)
-    }
-
-    public var oldString: String? {
-        escape(old)
-    }
-
-    public var timestampString: String {
-        return timestamp.rltFormatted
-    }
+    public var newString: String? { escape(new) }
+    public var oldString: String? { escape(old) }
+    public var timestampString: String { timestamp.rltFormatted }
 
     public init(
         type: String,
