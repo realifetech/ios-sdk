@@ -1,5 +1,5 @@
 //
-//  AnalyticsEventAndCompletion.swift
+//  AnalyticEventAndCompletion.swift
 //  RealifeTech
 //
 //  Created by Olivier Butler on 21/10/2020.
@@ -10,28 +10,28 @@ import Foundation
 
 public typealias EventLoggedCompletion = (Result<Void, Error>) -> Void
 
-struct AnalyticsEventAndCompletion: Identifiable {
+struct AnalyticEventAndCompletion: Identifiable {
     let uniqueId: UUID = UUID()
-    let analyticsEvent: AnalyticsEvent
+    let analyticEvent: AnalyticEvent
     let analyticsCompletion: EventLoggedCompletion?
 }
 
-extension AnalyticsEventAndCompletion: Equatable {
-    static func == (lhs: AnalyticsEventAndCompletion, rhs: AnalyticsEventAndCompletion) -> Bool {
-        return lhs.analyticsEvent == rhs.analyticsEvent
+extension AnalyticEventAndCompletion: Equatable {
+    static func == (lhs: AnalyticEventAndCompletion, rhs: AnalyticEventAndCompletion) -> Bool {
+        return lhs.analyticEvent == rhs.analyticEvent
     }
 }
 
-extension AnalyticsEventAndCompletion: Encodable {
+extension AnalyticEventAndCompletion: Encodable {
     enum CodingKeys: String, CodingKey {
-        case analyticsEvent
+        case analyticEvent
     }
 }
 
-extension AnalyticsEventAndCompletion: Decodable {
+extension AnalyticEventAndCompletion: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        analyticsEvent = try values.decode(AnalyticsEvent.self, forKey: .analyticsEvent)
+        analyticEvent = try values.decode(AnalyticEvent.self, forKey: .analyticEvent)
         analyticsCompletion = nil
     }
 }

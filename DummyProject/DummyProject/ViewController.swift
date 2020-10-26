@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let event = AnalyticsEvent(type: "user",
+        let event = AnalyticEvent(type: "user",
                                    action: "externalLogin",
                                    new: ["userId": "a3890e983e", "provider": "ticketmaster"],
                                    old: nil,

@@ -1,5 +1,5 @@
 //
-//  AnalyticsEvent.swift
+//  AnalyticEvent.swift
 //  Analytics
 //
 //  Created by Jonathon Albert on 15/10/2020.
@@ -17,7 +17,7 @@ extension Date {
     }
 }
 
-public struct AnalyticsEvent: Codable {
+public struct AnalyticEvent: Codable {
 
     public var storedName: String?
     public let type: String
@@ -60,4 +60,4 @@ public struct AnalyticsEvent: Codable {
     }
 }
 
-extension AnalyticsEvent: Equatable {}
+extension AnalyticEvent: Equatable {}

@@ -94,7 +94,7 @@
 		4889595C2539D89C00B978A9 /* AnalyticsLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889595A2539D89C00B978A9 /* AnalyticsLogging.swift */; };
 		4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */; };
 		4889595F2539D8A500B978A9 /* AnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889595E2539D8A500B978A9 /* AnalyticsTests.swift */; };
-		488959662539D8E300B978A9 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959642539D8E200B978A9 /* AnalyticsEvent.swift */; };
+		488959662539D8E300B978A9 /* AnalyticEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959642539D8E200B978A9 /* AnalyticEvent.swift */; };
 		488959672539D8E300B978A9 /* LogEventSending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959652539D8E200B978A9 /* LogEventSending.swift */; };
 		488959692539D8EA00B978A9 /* LoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488959682539D8EA00B978A9 /* LoggingTests.swift */; };
 		4889596F2539D97A00B978A9 /* putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4889596E2539D97A00B978A9 /* putAnalyticEvent.graphql.swift */; };
@@ -214,7 +214,7 @@
 		4889595A2539D89C00B978A9 /* AnalyticsLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsLogging.swift; sourceTree = "<group>"; };
 		4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsImplementing.swift; sourceTree = "<group>"; };
 		4889595E2539D8A500B978A9 /* AnalyticsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTests.swift; sourceTree = "<group>"; };
-		488959642539D8E200B978A9 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
+		488959642539D8E200B978A9 /* AnalyticEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticEvent.swift; sourceTree = "<group>"; };
 		488959652539D8E200B978A9 /* LogEventSending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventSending.swift; sourceTree = "<group>"; };
 		488959682539D8EA00B978A9 /* LoggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingTests.swift; sourceTree = "<group>"; };
 		4889596E2539D97A00B978A9 /* putAnalyticEvent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = putAnalyticEvent.graphql.swift; sourceTree = "<group>"; };
@@ -547,7 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				488959652539D8E200B978A9 /* LogEventSending.swift */,
-				488959642539D8E200B978A9 /* AnalyticsEvent.swift */,
+				488959642539D8E200B978A9 /* AnalyticEvent.swift */,
 				488959632539D8CA00B978A9 /* LoggingTests */,
 			);
 			path = Logging;
@@ -931,7 +931,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\n#cd \"${SRCROOT}/SupportingModules/GraphQL\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://graphql-dev.realifetech.com/graphql\" --header=\"Authorization: Bearer OWYxMzYyNDNmMjIyNTU1MWY0NjRiZDkzZDc1YWUwMmIyYjE4ZGJkNzJjZDA1Y2VjYjU0NGMzZmNkOWY1ZjYwMQ\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=${SRCROOT}/SupportingModules/GraphQL/GraphQLFiles/*.graphql --localSchemaFile=\"${SRCROOT}/SupportingModules/GraphQL/schema.json\" API/\n";
+			shellScript = "#SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\n#cd \"${SRCROOT}/SupportingModules/GraphQL\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://graphql-dev.realifetech.com/graphql\" --header=\"Authorization: Bearer OWYxMzYyNDNmMjIyNTU1MWY0NjRiZDkzZDc1YWUwMmIyYjE4ZGJkNzJjZDA1Y2VjYjU0NGMzZmNkOWY1ZjYwMQ\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"Apollo\" --includes=${SRCROOT}/SupportingModules/GraphQL/GraphQLFiles/*.graphql --localSchemaFile=\"${SRCROOT}/SupportingModules/GraphQL/schema.json\" API/\n";
 		};
 		4383C628ACF6BFA6AB24496F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1064,7 +1064,7 @@
 				488958912539D04B00B978A9 /* Requester.swift in Sources */,
 				488958A62539D04B00B978A9 /* RequestTimeLogger.swift in Sources */,
 				488958962539D04B00B978A9 /* ReachabilityFactory.swift in Sources */,
-				488959662539D8E300B978A9 /* AnalyticsEvent.swift in Sources */,
+				488959662539D8E300B978A9 /* AnalyticEvent.swift in Sources */,
 				4889589E2539D04B00B978A9 /* UIDeviceFactory.swift in Sources */,
 				488958A22539D04B00B978A9 /* DiskCacheCodableInterface.swift in Sources */,
 				48EFE2532539E55400CC6E58 /* DeviceRegistrationWorker.swift in Sources */,
