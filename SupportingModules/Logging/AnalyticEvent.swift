@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: Move this to a more suitable location
 extension Date {
 
     var rltFormatted: String {
