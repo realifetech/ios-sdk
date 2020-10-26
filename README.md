@@ -1,5 +1,13 @@
-# RealifeTech iOS-SDK
-⚠️ This project is currently under early phase development ⚠️
+# Client Documentation
+
+This repository contains the RealifeTech SDK which can be installed into your Swift project using the CocoaPods dependency manager. Here you'll find a guide on getting started, and examples of how to use the SDK's features.
+
+## Getting Started
+
+1. Add the RealifeTechSDK
+
+
+# Internal Documentation
 
 ## Project Structure
 If you clone the project and switch to the `develop` branch, you should you have an `RealifeTech-SDK.xcodeproj` available in the root.
