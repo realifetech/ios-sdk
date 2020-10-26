@@ -1,5 +1,5 @@
 //
-//  SDKInterface.swift
+//  SDKFactory.swift
 //  RealifeTech-SDK
 //
 //  Created by Realife Tech on 23/09/2020.
@@ -15,8 +15,8 @@ public class RealifeTech {
     public static var Analytics: Analytics!
     public static var Communicate: Communicate!
 
-    private static var moduleVersionString: String? {
-        Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String
+    private static var moduleVersionString: String {
+        Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
     }
 
     /// Provides information required for the SDK to operate.
@@ -31,23 +31,21 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
-            baseUrl: configuration.apiUrl ?? "")
+            baseUrl: configuration.apiUrl)
         General = GeneralFactory.makeGeneralModule(
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
-            sdkVersion: moduleVersionString ?? "123", // TODO: Fix this
+            sdkVersion: moduleVersionString,
             reachabilityChecker: reachabilityChecker)
-        if let apiUrl = configuration.graphApiUrl, let graphQlUrl = URL(string: apiUrl) {
-            let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
-                                      tokenHelper: apiHelper,
-                                      deviceId: deviceHelper.deviceId,
-                                      reachabilityHelper: reachabilityChecker)
-            let dispatcher = GraphQLDispatcher(client: client)
-            Audiences = AudiencesImplementing(dispatcher: dispatcher)
-            Analytics = AnalyticsFactory.makeAnalyticsModule(dispatcher: dispatcher,
-                                                             reachabilityHelper: reachabilityChecker)
-        }
+        let client = GraphNetwork(graphQLAPIUrl: configuration.graphApiUrl,
+                                  tokenHelper: apiHelper,
+                                  deviceId: deviceHelper.deviceId,
+                                  reachabilityHelper: reachabilityChecker)
+        let dispatcher = GraphQLDispatcher(client: client)
+        Audiences = AudiencesImplementing(dispatcher: dispatcher)
+        Analytics = AnalyticsFactory.makeAnalyticsModule(dispatcher: dispatcher,
+                                                         reachabilityHelper: reachabilityChecker)
         Communicate = CommunicateFactory.makeCommunicateModule()
         apiHelper.getValidToken {}
     }
