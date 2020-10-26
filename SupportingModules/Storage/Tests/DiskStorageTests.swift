@@ -33,11 +33,7 @@ class DiskStorageTests: XCTestCase {
         let object = TestObject(name: "diskStorageData", date: currentDate)
         do {
             let encodedObject = try JSONEncoder.init().encode(object)
-            XCTAssertNoThrow(try writeSut.save(value: encodedObject, for: "diskStorageData"))
-            let objectData = try readSut.fetchValue(for: "diskStorageData")
-            let decodedObject = try JSONDecoder.init().decode(TestObject.self, from: objectData)
-            XCTAssertEqual(decodedObject.name, "diskStorageData")
-            XCTAssertEqual(decodedObject.date, currentDate)
+            try writeSut.save(value: encodedObject, for: "diskStorageData")
         } catch let error {
             XCTFail(error.localizedDescription)
         }
@@ -75,12 +71,17 @@ class DiskStorageTests: XCTestCase {
     }
 
     func test_fetchValue() {
-        XCTAssertNoThrow(try writeSut.save(value: testData, for: "diskStorageData"))
+        let currentDate = Date()
+        let object = TestObject(name: "diskStorageData", date: currentDate)
         do {
-            let fetchedData = try readSut.fetchValue(for: "diskStorageData")
-            XCTAssertNotNil(fetchedData)
-        } catch {
-            XCTFail("Failed to fetch data")
+            let encodedObject = try JSONEncoder.init().encode(object)
+            try writeSut.save(value: encodedObject, for: "diskStorageData")
+            let objectData = try readSut.fetchValue(for: "diskStorageData")
+            let decodedObject = try JSONDecoder.init().decode(TestObject.self, from: objectData)
+            XCTAssertEqual(decodedObject.name, "diskStorageData")
+            XCTAssertEqual(decodedObject.date, currentDate)
+        } catch let error {
+            XCTFail(error.localizedDescription)
         }
     }
 
