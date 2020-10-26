@@ -49,7 +49,6 @@ class DiskStorageTests: XCTestCase {
         XCTAssertNoThrow(try writeSut.save(value: testData, for: "diskStorageData"))
         do {
             let dataArray = try readSut.fetchValues(with: "diskStorageData")
-            XCTAssertFalse(dataArray.isEmpty)
             XCTAssertEqual(dataArray.count, 1)
         } catch {
             XCTFail("Failed to fetch data")
