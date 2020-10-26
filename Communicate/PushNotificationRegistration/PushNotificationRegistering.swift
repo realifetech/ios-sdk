@@ -10,5 +10,5 @@ import Foundation
 
 public protocol PushNotificationRegistering {
     func registerForPushNotifications(token: String, completion: @escaping(Result<Void, Error>) -> Void)
-    func registerForPushNotifications(token: Data, completion: @escaping(Result<Void, Error>) -> Void)
+    func registerForPushNotifications(tokenData: Data, completion: @escaping(Result<Void, Error>) -> Void)
 }

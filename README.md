@@ -45,7 +45,7 @@ Documentation on how to use the General Module
 ## Device Registration
 ``` swift
 RealifeTech.General.registerDevice { 
-    ... code to run once call has finished ... 
+    // code to run once call has finished 
 }
 ```
 Registering the device must happen at least once before your App can communicate with our backend. This creates an identiy for your users device. It a separate task to configuring the SDK. 
@@ -54,7 +54,7 @@ You can register a device multiple times, however only one call to register can 
 
 Note: The SDK will handle initial device registration. A call to register will be sent automatically as part of `RealifeTech.configureSDK(_: SDKConfiguration)`
 
-Note: that calls to register may never complete: 
+Note: that calls to register may never complete since it repeats on failure.
 
 ## SDK Ready
 ``` swift
@@ -66,11 +66,62 @@ This property can be used to check if the SDK has been configured and the device
 ``` swift
 RealifeTech.General.deviceIdentifier /// Returns String
 ```
-A convenience method which returns the (device' vendor identifier)[https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor] string (persistant within app installations).
+A convenience method which returns the [device' vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) string (persistant for an app installation).
 
+# Communicate
+## Registering for Push Notifications
+``` swift
+RealifeTech.Communicate.registerForPushNotifications(token: String)
+// or
+RealifeTech.Communicate.registerForPushNotifications(tokenData: Data)
+```
+Use these method calls to enable the RealifeTech platform to send push notifications to the user's device. This can be silent data or notifications.
+
+You'll usually add this code to the AppDelegate method which [receives an APN token](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application) after sucessfully registering with iOS. In this, case pass the Data object direct to the RealifeTech SDK with `registerForPushNotifications(tokenData: Data)`.
+
+Altenatively, you with to register a device token arbitratily, or after passing it through your own logic. In which case use `registerForPushNotifications(token: String)`.
+
+Until the token has successfully been sent to our backend, it will be stored persistantly. When the app launches, we will attempt to send a pending token. Only one token can be stored at a time. 
+
+# Audiences
+``` swift
+guard RealifeTech.General.sdkReady else { return }
+RealifeTech.Audiences.deviceIsMemberOfAudience(audienceId: String) { result in
+    switch result {
+        case success(isMember):
+            self.someMemebershipHandler(isMember, ofAudience: audienceId)
+        case failure(error):
+            self.someErrorHandler(error)
+    }
+}
+```
+Used to determine if the current device is a member of a particular audience group. The method accepts a completion handler which will be passed a result, either an error, or a boolean indicating the membership state.
+
+Note that using this method before the device has been registered will result unpredictable result. You may wish to guard against the SDK state as in the above example.
+
+# Analytics
+``` swift
+RealifeTech.Analytics().logEvent(
+    type: "FoodAndBeverage", 
+    action: "purchase", 
+    new: ["someValue": 123], 
+    old: nil) { result in
+        switch result {
+        case success:
+            // event has been logged
+        case failure(let error):
+            // handle error
+        }        
+}
+```
+Use this method to log an event with our backend. The specific values and structure of log items will vary depending on your use cases, we have no docs at the moment for generic values.
+
+Events will be cached on disk until they have been sucessfully received. We attach a timestamp at the time they are added to preserve the original log time.
+
+---
 
 # Internal Documentation
-The following is intended for RealifeTech developers of the SDK. If you fork or customise the SDK, you may find these notes useful.
+**Warning:** The following is to assist making changes to the SDK itself. This should not be necessary for normal use of the SDK. If you have a bug we'd love you to [submit a report](https://github.com/realifetech/ios-sdk/issues).
 
 ## Project Structure
 If you clone the project and switch to the `develop` branch, you should you have an `RealifeTech-SDK.xcodeproj` available in the root.
@@ -81,39 +132,39 @@ This Xcode project has the following directory/target structure:
 * RealifeTech-SDK -  Publically consumed module
 * General 
 * Communicate
+* Analytics
+* Audiences
 * SupportingModules
-    * ReachabilityChecker
-    * UIDeviceHelper
-    * APILayer
+    * ReachabilityChecker - Tool for checking connectivity options
+    * UIDeviceHelper - Wrapper around the UIDevice module
+    * APILayer - HTTP API toolset with database like persistance options
+    * APIV3Utilities - Extensions to the APILayer for the V3 API
+    * GraphQL - Apollo GraphQL wrapper 
+    * Repositories - Contains V3API repositories
+    * Storage - Contains various generic data stores
 ### Dummy Project
 * Dummy Project - A single view app for testing SDK behaviour
+* Pods - The requirements of the dummy project (the RealifeTech SDK)
 ### Pods
 * Contains dependencies, controlled through `Podfile`
 
-All the modules within the SDK Project have their own build targets with their own test suites/targets. Test suites are nested inside the modules.
+Test suites are nested inside the modules.
 
-## Adding a new Module
+## Module setup
+All our main modules (General, Communicate, Analytics etc.), represent collections of use cases. Each set of use cases should be decoupled from eachother, but we want to expose a single interface for the cases (e.g. `General.someTask()`).
 
-1. Add a new target to the SDK project, choose to add unit tests
-2. Nest the unit tests
-    - Within Xcode, drag the unit test directory inside the module directory.
-    - Open the unit test target's scheme
-    - Filter by `info.plist file` under Packaging
-    - Update the `info.plist` file location
-3. Add CocoaPods to the target
-    - Open the Podfile under the Pods project
-    - Add the new target + test boilerplate (copy an existing one)
-    - Move one of the pods to directly inside the new target, and a copy into the test target*
-    - Run `$ pod install`
-    - Move the pod back to the head of the file
+We use the factory & facade patterns. A single light weight facade exists for each module which fowards calls to the underlying business logic. A factory exists which can build all the business logic and inject it into the facade. This keep the code highly decoupled, makes dependency management super easy, and keeps the configuraion highly flexible.
 
-*A bug in CocoaPods means that unless we add a specific pod for that target at least one, the target never has the right build steps added.
+### Worked Example: Analytics
+
+Each set of use cases has a protocol associated with it, for example `AnalyticsLogging` in the `Analytics` module. This use case will have an entity which implements the business logic (in this case `AnalyticsLogger`) along with various helpers and workers all in a single directory.
+
+We combine these use case protocols into a simple `Analytics` typealias. We define a light weight interface `AnalyticsImplementing` // TODO finish this // the interface confirms to the typealias `Analytics` which combines all the use case protocols in that module. The factory `AnalyticsFactory` only specified that it provides an `Analytics` type, not the specific implementation.
+
 
 ## Dependencies
 
-If a module depends on another, the dependency should be added in the Xcode project navigator. You can see an example of this by selecting the *RealifeTech* target, you can see in the General tab under *Frameworks and Libraries* that it depends on the *General* target.
-
-3rd Party dependencies are managed thorugh CocoaPods. Due to the nature of CocoaPods, they need to be exposed across all the targets in the SDK project/dummy project, so simply add them to the Podfile in the head.
+3rd Party dependencies are managed thorugh CocoaPods. Note that we should actively be moving away from RxSwift and aim to remove the dependencies of the SDK.
 
 ## Known Issues
 
