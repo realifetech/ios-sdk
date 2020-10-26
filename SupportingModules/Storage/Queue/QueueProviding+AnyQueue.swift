@@ -19,8 +19,11 @@ protocol QueueProviding {
     func addToQueue(_ items: ItemType)
 }
 
-// This stuct allows us to use a queue as concrete Type, wheras QueueProviding is only a type constraint
-// See https://robnapier.net/erasure or https://www.natashatherobot.com/swift-type-erasure/
+// This stuct allows us to use a generic queue as concrete Type
+// Reading
+// - https://www.natashatherobot.com/swift-type-erasure/
+// - https://robnapier.net/erasure
+
 struct AnyQueue<ItemType: Codable> {
 
     private var internalAddToQueue: (_ items: ItemType) -> Void

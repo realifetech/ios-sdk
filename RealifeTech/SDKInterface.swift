@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 public class RealifeTech {
 
@@ -27,6 +28,7 @@ public class RealifeTech {
         print("Someone called to configure the SDK")
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
+        let deviceRegisteredSharedValue = CurrentValueSubject<Bool, Never>(false)
         let apiHelper = APIV3RequesterHelper.setupV3API(
             deviceId: deviceHelper.deviceId,
             clientId: configuration.appCode,
@@ -37,7 +39,8 @@ public class RealifeTech {
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
             sdkVersion: moduleVersionString ?? "123", // TODO: Fix this
-            reachabilityChecker: reachabilityChecker)
+            reachabilityChecker: reachabilityChecker,
+            deviceRegisteredValue: deviceRegisteredSharedValue)
         if let apiUrl = configuration.graphApiUrl, let graphQlUrl = URL(string: apiUrl) {
             let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
                                       tokenHelper: apiHelper,

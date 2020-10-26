@@ -292,8 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				487479A225403E0C0048F03D /* Queue */,
-				03110C65253D85290099F65F /* CodableStorage.swift */,
 				487479DC254088B50048F03D /* Storage.swift */,
+				03110C65253D85290099F65F /* CodableStorage.swift */,
 				488959962539DC8600B978A9 /* DiskStorage.swift */,
 				487479D8254088AA0048F03D /* UserDefaultStorage.swift */,
 			);
@@ -1193,7 +1193,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RealifeTech/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1223,7 +1223,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RealifeTech/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

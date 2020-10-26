@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 public enum GeneralFactory {
     public static func makeGeneralModule(
@@ -14,7 +15,8 @@ public enum GeneralFactory {
         deviceModel: String,
         osVersion: String,
         sdkVersion: String,
-        reachabilityChecker: ReachabilityChecking
+        reachabilityChecker: ReachabilityChecking,
+        deviceRegisteredValue: CurrentValueSubject<Bool, Never>
     ) -> General {
         let deviceRegistrationLoopHandler = DeviceRegistrationLoopHandler(
             reachabilityChecker: reachabilityChecker,
@@ -25,7 +27,8 @@ public enum GeneralFactory {
             osVersion: osVersion,
             sdkVersion: sdkVersion,
             reachabilityChecker: reachabilityChecker,
-            loopHandler: deviceRegistrationLoopHandler)
+            loopHandler: deviceRegistrationLoopHandler,
+            deviceRegisteredValue: deviceRegisteredValue)
         return GeneralImplementing(deviceRegistrationWorker: deviceRegistrationWorker)
     }
 }

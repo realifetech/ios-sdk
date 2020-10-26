@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import Combine
 import RxSwift
 import RxCocoa
 
 class DeviceRegistrationWorker: DeviceRegistering {
 
-    var sdkReady: Bool = false
+    var sdkReady: Bool { deviceRegisteredValue.value }
     let deviceId: String
 
     private let deviceModel: String
@@ -20,6 +21,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
     private let sdkVersion: String
     private let reachabilityChecker: ReachabilityChecking
     private let loopHandler: DeviceRegistrationLoopHandling
+    private let deviceRegisteredValue: CurrentValueSubject<Bool, Never>
 
     var device: Device {
         Device(deviceId: deviceId,
@@ -36,7 +38,8 @@ class DeviceRegistrationWorker: DeviceRegistering {
         osVersion: String,
         sdkVersion: String,
         reachabilityChecker: ReachabilityChecking,
-        loopHandler: DeviceRegistrationLoopHandling
+        loopHandler: DeviceRegistrationLoopHandling,
+        deviceRegisteredValue: CurrentValueSubject<Bool, Never>
     ) {
         self.deviceId = deviceId
         self.deviceModel = deviceModel
@@ -44,11 +47,12 @@ class DeviceRegistrationWorker: DeviceRegistering {
         self.sdkVersion = sdkVersion
         self.reachabilityChecker = reachabilityChecker
         self.loopHandler = loopHandler
+        self.deviceRegisteredValue = deviceRegisteredValue
     }
 
     func registerDevice(_ completion: @escaping () -> Void) {
         loopHandler.registerDevice(device) {
-            self.sdkReady = true
+            self.deviceRegisteredValue.send(true)
             completion()
         }
     }
