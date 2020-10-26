@@ -1,13 +1,76 @@
-# Client Documentation
+# Getting Started
 
 This repository contains the RealifeTech SDK which can be installed into your Swift project using the CocoaPods dependency manager. Here you'll find a guide on getting started, and examples of how to use the SDK's features.
 
-## Getting Started
+## 1. Ensure the following requirements are met
+* XCode 11.3+
+* Deployment Target of iOS 13.0+
+* [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) 1.8.4+
+* Swift 5
 
-1. Add the RealifeTechSDK
+Note that our SDK currently depends on RxSwift packages which is automatically managed with CocoaPods. This package should be compatable with any peer requirements on RxSwft and RxCocoa versions greater then 4.2.
+
+## 2. Install the RealifeTechSDK Pod dependency
+
+Add the following line to your `.podfile` under your Apps target:
+``` ruby
+pod 'RealifeTech-SDK'
+```
+Open your terminal, navigate to the directory containing your podfile, and run:
+``` shell
+$ pod install
+```
+
+## 3. Setup the SDK at runtime
+**Important: Using the SDK without calling the configuring method can lead to runtime errors. Do not forget to configure the SDK.**
+
+You will have been provided with an application code and a API secret when you setup your RealifeTech account. These must be passed into the SDK when your app launches using the `RealifeTech.configureSDK(with: SDKConfiguration)` method.
+
+We recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)` method:
+
+``` swift
+let configuration = SDKConfiguration(
+    appCode: "APPLICATION_CODE",
+    clientSecret: "API_SECRET")
+RealifeTech.configureSDK(with: configuration)
+```
+Make sure you also import the RealifeTech module in the head the AppDelegate, or whichever files you call the SDK from:
+``` swift
+import RealifeTech
+```
+
+# General Module
+Documentation on how to use the General Module
+
+## Device Registration
+``` swift
+RealifeTech.General.registerDevice { 
+    ... code to run once call has finished ... 
+}
+```
+Registering the device must happen at least once before your App can communicate with our backend. This creates an identiy for your users device. It a separate task to configuring the SDK. 
+
+You can register a device multiple times, however only one call to register can occur at a time. Sequential calls will be queued in memory and repeat on failure.
+
+Note: The SDK will handle initial device registration. A call to register will be sent automatically as part of `RealifeTech.configureSDK(_: SDKConfiguration)`
+
+Note: that calls to register may never complete: 
+
+## SDK Ready
+``` swift
+RealifeTech.General.sdkReady /// Returns Bool
+```
+This property can be used to check if the SDK has been configured and the device has registered:
+
+## Device Identifier
+``` swift
+RealifeTech.General.deviceIdentifier /// Returns String
+```
+A convenience method which returns the (device' vendor identifier)[https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor] string (persistant within app installations).
 
 
 # Internal Documentation
+The following is intended for RealifeTech developers of the SDK. If you fork or customise the SDK, you may find these notes useful.
 
 ## Project Structure
 If you clone the project and switch to the `develop` branch, you should you have an `RealifeTech-SDK.xcodeproj` available in the root.
