@@ -10,11 +10,11 @@ import Foundation
 
 class AnalyticsLogger {
 
-    typealias PeristentQueueItem = QueueItem<AnalyticsEventAndCompletion>
+    typealias PeristentQueueItem = QueueItem<AnalyticEventAndCompletion>
 
     private let failureDebounceMilliseconds: Int
     private let dispatcher: LogEventSending
-    private let persistantQueue: PersistentQueue<AnalyticsEventAndCompletion>
+    private let persistantQueue: PersistentQueue<AnalyticEventAndCompletion>
     private let reachabilityHelper: ReachabilityChecking
 
     private var loopIsRunning: Bool = false
@@ -26,7 +26,7 @@ class AnalyticsLogger {
     ) {
         self.dispatcher = dispatcher
         self.reachabilityHelper = reachabilityHelper
-        self.persistantQueue = PersistentQueue<AnalyticsEventAndCompletion>(name: "analyticsEvent")
+        self.persistantQueue = PersistentQueue<AnalyticEventAndCompletion>(name: "analyticEvent")
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
         startLoop()
     }
@@ -51,7 +51,7 @@ class AnalyticsLogger {
             }
             return
         }
-        dispatcher.logEvent(queueItem.item.analyticsEvent) { result in
+        dispatcher.logEvent(queueItem.item.analyticEvent) { result in
             // TODO: Add logic so that we only disgard from the queue in the case of non-server error
             queueItem.releaseQueue(.removeFirst)
             queueItem.item.analyticsCompletion?(result)
@@ -69,9 +69,9 @@ class AnalyticsLogger {
 
 extension AnalyticsLogger: AnalyticsLogging {
 
-    public func logEvent(_ event: AnalyticsEvent, completion: @escaping EventLoggedCompletion) {
-        let eventAndCompletion = AnalyticsEventAndCompletion(
-            analyticsEvent: event,
+    public func logEvent(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
+        let eventAndCompletion = AnalyticEventAndCompletion(
+            analyticEvent: event,
             analyticsCompletion: completion)
         persistantQueue.addToQueue(eventAndCompletion)
         if !loopIsRunning { startLoop() }
