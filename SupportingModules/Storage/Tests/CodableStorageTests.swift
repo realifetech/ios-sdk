@@ -11,7 +11,7 @@ import XCTest
 
 class CodableStorageTests: XCTestCase {
 
-    struct TestObject: Codable {
+    private struct TestObject: Codable {
         let name: String
         let date: Date
     }

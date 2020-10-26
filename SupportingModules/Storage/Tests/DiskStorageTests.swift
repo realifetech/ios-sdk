@@ -11,6 +11,11 @@ import XCTest
 
 class DiskStorageTests: XCTestCase {
 
+    private struct TestObject: Codable {
+        let name: String
+        let date: Date
+    }
+
     let testData = Data()
     let writeSut: DiskStorage = makeSut()
     let readSut: DiskStorage = makeSut()
@@ -24,8 +29,18 @@ class DiskStorageTests: XCTestCase {
     }
 
     func test_saveValue() {
-        XCTAssertNoThrow(try writeSut.save(value: testData, for: "diskStorageData"))
-        writeSut.deleteValue(for: "diskStorageData")
+        let currentDate = Date()
+        let object = TestObject(name: "diskStorageData", date: currentDate)
+        do {
+            let encodedObject = try JSONEncoder.init().encode(object)
+            XCTAssertNoThrow(try writeSut.save(value: encodedObject, for: "diskStorageData"))
+            let objectData = try readSut.fetchValue(for: "diskStorageData")
+            let decodedObject = try JSONDecoder.init().decode(TestObject.self, from: objectData)
+            XCTAssertEqual(decodedObject.name, "diskStorageData")
+            XCTAssertEqual(decodedObject.date, currentDate)
+        } catch let error {
+            XCTFail(error.localizedDescription)
+        }
     }
 
     func test_saveValue_withHandler() {
@@ -61,7 +76,12 @@ class DiskStorageTests: XCTestCase {
 
     func test_fetchValue() {
         XCTAssertNoThrow(try writeSut.save(value: testData, for: "diskStorageData"))
-        XCTAssertNoThrow(try readSut.fetchValue(for: "diskStorageData"))
+        do {
+            let fetchedData = try readSut.fetchValue(for: "diskStorageData")
+            XCTAssertNotNil(fetchedData)
+        } catch {
+            XCTFail("Failed to fetch data")
+        }
     }
 
     func test_fetchValue_withHandler() {
