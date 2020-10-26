@@ -18,7 +18,8 @@ class GeneralFactoryTests: XCTestCase {
             deviceModel: "any",
             osVersion: "thing",
             sdkVersion: "version",
-            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper())
+            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper(),
+            deviceRegisteredSubject: .init(false))
         XCTAssertEqual(testId, sut.deviceId)
     }
 }

@@ -16,7 +16,7 @@ public enum GeneralFactory {
         osVersion: String,
         sdkVersion: String,
         reachabilityChecker: ReachabilityChecking,
-        deviceRegisteredValue: CurrentValueSubject<Bool, Never>
+        deviceRegisteredSubject: CurrentValueSubject<Bool, Never>
     ) -> General {
         let deviceRegistrationLoopHandler = DeviceRegistrationLoopHandler(
             reachabilityChecker: reachabilityChecker,
@@ -28,7 +28,7 @@ public enum GeneralFactory {
             sdkVersion: sdkVersion,
             reachabilityChecker: reachabilityChecker,
             loopHandler: deviceRegistrationLoopHandler,
-            deviceRegisteredValue: deviceRegisteredValue)
+            deviceRegisteredSubject: deviceRegisteredSubject)
         return GeneralImplementing(deviceRegistrationWorker: deviceRegistrationWorker)
     }
 }

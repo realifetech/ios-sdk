@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Combine
 @testable import RealifeTech
 
 class DeviceRegistrationWorkerTests: XCTestCase {
@@ -23,17 +24,20 @@ class DeviceRegistrationWorkerTests: XCTestCase {
     private var sut: DeviceRegistrationWorker!
     private var deviceRegistrationSpy: MockDeviceRegistrationLoopHandler!
     private var mockReachabilityChecker: MockReachabilityChecker!
+    private var deviceRegisteredSubject: CurrentValueSubject<Bool, Never>!
 
     override func setUp() {
         deviceRegistrationSpy = MockDeviceRegistrationLoopHandler()
         mockReachabilityChecker = MockReachabilityChecker()
+        deviceRegisteredSubject = .init(false)
         sut = DeviceRegistrationWorker(
             deviceId: testId,
             deviceModel: testModel,
             osVersion: osVersion,
             sdkVersion: sdkVersion,
             reachabilityChecker: mockReachabilityChecker,
-            loopHandler: deviceRegistrationSpy)
+            loopHandler: deviceRegistrationSpy,
+            deviceRegisteredSubject: deviceRegisteredSubject)
     }
 
     func test_initialisation() {
@@ -52,6 +56,18 @@ class DeviceRegistrationWorkerTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_deviceRegistrationState_isUpdated() {
+        XCTAssertFalse(sut.sdkReady)
+        XCTAssertFalse(deviceRegisteredSubject.value)
+        let expectation = XCTestExpectation(description: "Device registration completion")
+        sut.registerDevice {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+        XCTAssertTrue(sut.sdkReady)
+        XCTAssertTrue(deviceRegisteredSubject.value)
     }
 
     func test_registerDevice_deviceIsCorect() {

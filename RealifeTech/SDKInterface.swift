@@ -25,10 +25,10 @@ public class RealifeTech {
     /// Calling this function more than once will have no effect.
     /// - Parameter configuration: Struct containing the desired SDK configuration
     public static func configureSDK(with configuration: SDKConfiguration) {
-        print("Someone called to configure the SDK")
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
-        let deviceRegisteredSharedValue = CurrentValueSubject<Bool, Never>(false)
+        let deviceRegisteredSubject = CurrentValueSubject<Bool, Never>(false)
+        let deviceRegisteredValue = ReadOnlyCurrentValue(from: deviceRegisteredSubject)
         let apiHelper = APIV3RequesterHelper.setupV3API(
             deviceId: deviceHelper.deviceId,
             clientId: configuration.appCode,
@@ -40,7 +40,7 @@ public class RealifeTech {
             osVersion: deviceHelper.osVersion,
             sdkVersion: moduleVersionString ?? "123", // TODO: Fix this
             reachabilityChecker: reachabilityChecker,
-            deviceRegisteredValue: deviceRegisteredSharedValue)
+            deviceRegisteredSubject: deviceRegisteredSubject)
         if let apiUrl = configuration.graphApiUrl, let graphQlUrl = URL(string: apiUrl) {
             let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
                                       tokenHelper: apiHelper,
@@ -48,8 +48,10 @@ public class RealifeTech {
                                       reachabilityHelper: reachabilityChecker)
             let dispatcher = GraphQLDispatcher(client: client)
             Audiences = AudiencesImplementing(dispatcher: dispatcher)
-            Analytics = AnalyticsFactory.makeAnalyticsModule(dispatcher: dispatcher,
-                                                             reachabilityHelper: reachabilityChecker)
+            Analytics = AnalyticsFactory.makeAnalyticsModule(
+                dispatcher: dispatcher,
+                reachabilityHelper: reachabilityChecker,
+                deviceRegisteredValue: deviceRegisteredValue)
         }
         Communicate = CommunicateImplementing()
         apiHelper.getValidToken {}
