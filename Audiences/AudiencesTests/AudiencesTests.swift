@@ -13,25 +13,14 @@ import XCTest
 class AudiencesTests: XCTestCase {
 
     func test_init_successful() {
-        let sut = AudiencesImplementing(tokenHelper: EmptyTokenManager(),
-                                        graphQLAPIUrl: "www.google.com",
-                                        deviceId: "")
+        let spy = MockGraphQLDispatcher()
+        let sut = AudiencesImplementing(dispatcher: spy)
         XCTAssertNotNil(sut.dispatcher)
     }
 
-    func test_init_failed() {
-        let sut = AudiencesImplementing(tokenHelper: EmptyTokenManager(),
-                                        graphQLAPIUrl: "",
-                                        deviceId: "")
-        XCTAssertNil(sut.dispatcher)
-    }
-
     func test_deviceIsMemberOfAudience_isCalled() {
-        let sut = AudiencesImplementing(tokenHelper: EmptyTokenManager(),
-                                        graphQLAPIUrl: "www.google.com",
-                                        deviceId: "")
         let spy = MockGraphQLDispatcher()
-        sut.dispatcher = spy
+        let sut = AudiencesImplementing(dispatcher: spy)
         sut.deviceIsMemberOfAudience(audienceId: "") { _ in }
         XCTAssertNotNil(sut.dispatcher)
         XCTAssertTrue(spy.dispatchQueryIsCalled)

@@ -46,7 +46,7 @@ class APIV3RequesterHelperTests: XCTestCase {
         }
         let resultClientId = bodyDict["client_id"] as? String
         let resultClientSecret = bodyDict["client_secret"] as? String
-        XCTAssertEqual(resultClientId, testClientId)
+        XCTAssertEqual(resultClientId, testClientId + "_0")
         XCTAssertEqual(resultClientSecret, testClientSecret)
         return
     }

@@ -19,7 +19,7 @@ extension OAuthRequester {
     /// Must be called during setup. Provides secrets for getting initial access token.
     static func setDefaultOAuthParameters(clientId: String, clientSecret: String) {
         defaultOAuthParameters = [
-            "client_id": clientId,
+            "client_id": clientId + "_0",
             "client_secret": clientSecret
         ]
     }
