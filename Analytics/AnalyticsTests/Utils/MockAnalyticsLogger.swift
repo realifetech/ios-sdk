@@ -12,10 +12,10 @@ import RealifeTech
 // Note: Current implementaion has matching signatures for LogEventSending & AnalyticsLogging, so we only need one mock
 class MockAnalyticsLogger: AnalyticsLogging, LogEventSending {
 
-    var eventsLogged: [AnalyticsEvent] = []
+    var eventsLogged: [AnalyticEvent] = []
     var completionToSend: Result<Void, Error> = .success(())
 
-    func logEvent(_ event: AnalyticsEvent, completion: @escaping (Result<Void, Error>) -> Void) {
+    func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Void, Error>) -> Void) {
         self.eventsLogged.append(event)
         completion(completionToSend)
     }

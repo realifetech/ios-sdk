@@ -6,8 +6,8 @@
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
-import RealifeTech
 import UIKit
+import RealifeTech
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,26 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = SDKConfiguration(
             appCode: "LS",
-            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
-            apiUrl: "http://api-staging.livestyled.com/v3",
-            graphApiUrl: "https://graphql-mock.realifetech.com/graphql")
+            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C")
         RealifeTech.configureSDK(with: configuration)
         RealifeTech.General.registerDevice {}
-        let event = AnalyticsEvent(type: "user",
-                                 action: "externalLogin",
-                                 new: ["userId": "a3890e983e", "provider": "ticketmaster"],
-                                 old: nil, version: "1.0")
-        print("🌳 Going to add x3 new events to the queue [AppDelegate]")
-        RealifeTech.Analytics.logEvent(event) { result in
-            print("🌳 logging event callback 1 [AppDelegate]", result)
-        }
-        RealifeTech.Analytics.logEvent(event) { result in
-            print("🌳 logging event callback 2 [AppDelegate]", result)
-        }
-        RealifeTech.Analytics.logEvent(event) { result in
-            print("🌳 logging event callback 3 [AppDelegate]", result)
-        }
-        print(RealifeTech.General.sdkReady)
         return true
     }
 

@@ -13,7 +13,7 @@ public enum AnalyticsFactory {
         dispatcher: LogEventSending,
         reachabilityHelper: ReachabilityChecking
     ) -> Analytics {
-        let queue = PersistentQueue<AnalyticsEventAndCompletion>(name: "analyticsEvent")
+        let queue = PersistentQueue<AnalyticEventAndCompletion>(name: "analyticsEvent")
         let analyticsLogger = AnalyticsLogger(
             dispatcher: dispatcher,
             reachabilityHelper: reachabilityHelper,

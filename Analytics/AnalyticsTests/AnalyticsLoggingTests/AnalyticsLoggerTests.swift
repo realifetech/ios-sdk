@@ -13,13 +13,13 @@ import XCTest
 class AnalyticsLoggerTests: XCTestCase {
 
     private var mockEventSending: MockAnalyticsLogger!
-    private var mockQueue: MockQueue<AnalyticsEventAndCompletion>!
+    private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
     private var mockReachabilityChecker: MockReachabilityChecker!
 
     override func setUp() {
         self.mockEventSending = MockAnalyticsLogger()
         self.mockReachabilityChecker = MockReachabilityChecker()
-        self.mockQueue = MockQueue<AnalyticsEventAndCompletion>()
+        self.mockQueue = MockQueue<AnalyticEventAndCompletion>()
     }
 
     private func makeSut() -> AnalyticsLogger {
@@ -30,9 +30,9 @@ class AnalyticsLoggerTests: XCTestCase {
             failureDebounceSeconds: 0.01)
     }
 
-    private func makeEvents(from strings: [String]) -> [AnalyticsEvent] {
+    private func makeEvents(from strings: [String]) -> [AnalyticEvent] {
         return strings
-            .map { AnalyticsEvent(type: $0, action: $0, version: $0) }
+            .map { AnalyticEvent(type: $0, action: $0, version: $0) }
     }
 
     func test_init_emptyStorageDoesNothing() {
@@ -46,7 +46,7 @@ class AnalyticsLoggerTests: XCTestCase {
         let testEvents = makeEvents(from: ["eventOne", "eventTwo"])
         let expectation = XCTestExpectation(description: "Queue was emptied")
         mockQueue.underlyingStorage = testEvents.map {
-            AnalyticsEventAndCompletion(analyticsEvent: $0, analyticsCompletion: nil)
+            AnalyticEventAndCompletion(analyticEvent: $0, analyticCompletion: nil)
         }
         mockQueue.queueWasEmptiedExpectation = expectation
         mockReachabilityChecker.hasNetworkConnection = true
@@ -56,7 +56,7 @@ class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_sendsSingleItem() {
-        let testEvent = AnalyticsEvent(type: "We", action: "Want", version: "Your")
+        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         let sut = makeSut()
@@ -66,7 +66,7 @@ class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_onSuccess_reportsSuccessToCaller() {
-        let testEvent = AnalyticsEvent(type: "We", action: "Want", version: "Your")
+        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         let sut = makeSut()
@@ -80,7 +80,7 @@ class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_delaysSingleItemUntilConnected() {
-        let testEvent = AnalyticsEvent(type: "We", action: "Want", version: "Your")
+        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = false
         let sut = makeSut()
@@ -101,13 +101,13 @@ class AnalyticsLoggerTests: XCTestCase {
 
     func test_logEvent_addsItemsToQueue() {
         let expectation = XCTestExpectation(description: "Item was added to queue")
-        let testEvent = AnalyticsEvent(type: "We", action: "Want", version: "Your")
+        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         mockQueue.addedToQueueExpectation = expectation
         mockReachabilityChecker.hasNetworkConnection = false
         let sut = makeSut()
         sut.logEvent(testEvent) { _ in }
         wait(for: [expectation], timeout: 0.01)
-        XCTAssertEqual(mockQueue.underlyingStorage.first?.analyticsEvent, testEvent)
+        XCTAssertEqual(mockQueue.underlyingStorage.first?.analyticEvent, testEvent)
     }
 
     func test_logEvent_removesFromQueueWhenDone() {

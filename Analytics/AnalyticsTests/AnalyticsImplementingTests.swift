@@ -14,7 +14,10 @@ class AnalyticsImplementingTests: XCTestCase {
     func test_logEvent() {
         let spy = MockAnalyticsLogger()
         let sut = AnalyticsImplementing(analyticsLogger: spy)
-        let testEvent = AnalyticsEvent(type: "One", action: "two", version: "three")
+        let testEvent = AnalyticEvent(
+            type: "One",
+            action: "two",
+            version: "three")
         sut.logEvent(testEvent) { result in
             switch result {
             case .success: break
