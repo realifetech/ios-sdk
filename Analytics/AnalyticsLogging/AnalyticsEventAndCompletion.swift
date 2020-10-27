@@ -11,20 +11,26 @@ import Foundation
 public typealias EventLoggedCompletion = (Result<Void, Error>) -> Void
 
 struct AnalyticEventAndCompletion: Identifiable {
-    let uniqueId: UUID = UUID()
+    let uniqueId: UUID
     let analyticEvent: AnalyticEvent
-    let analyticsCompletion: EventLoggedCompletion?
+    let analyticCompletion: EventLoggedCompletion?
+
+    public init(analyticEvent: AnalyticEvent, analyticCompletion: EventLoggedCompletion?) {
+        self.analyticEvent = analyticEvent
+        self.analyticCompletion = analyticCompletion
+        self.uniqueId = UUID()
+    }
 }
 
 extension AnalyticEventAndCompletion: Equatable {
     static func == (lhs: AnalyticEventAndCompletion, rhs: AnalyticEventAndCompletion) -> Bool {
-        return lhs.analyticEvent == rhs.analyticEvent
+        return lhs.analyticEvent == rhs.analyticEvent && lhs.uniqueId == rhs.uniqueId
     }
 }
 
 extension AnalyticEventAndCompletion: Encodable {
     enum CodingKeys: String, CodingKey {
-        case analyticEvent
+        case analyticEvent, uniqueId
     }
 }
 
@@ -32,6 +38,7 @@ extension AnalyticEventAndCompletion: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         analyticEvent = try values.decode(AnalyticEvent.self, forKey: .analyticEvent)
-        analyticsCompletion = nil
+        uniqueId = try values.decode(UUID.self, forKey: .uniqueId)
+        analyticCompletion = nil
     }
 }

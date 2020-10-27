@@ -38,7 +38,7 @@ public struct AnalyticEvent: Codable {
         new: [String: String]? = nil,
         old: [String: String]? = nil,
         version: String,
-        timestamp: Date
+        timestamp: Date = Date()
     ) {
         self.type = type
         self.action = action

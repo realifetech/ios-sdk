@@ -14,7 +14,7 @@ class AnalyticsLogger {
 
     private let failureDebounceMilliseconds: Int
     private let dispatcher: LogEventSending
-    private let persistantQueue: PersistentQueue<AnalyticEventAndCompletion>
+    private let persistentQueue: AnyQueue<AnalyticEventAndCompletion>
     private let reachabilityHelper: ReachabilityChecking
 
     private var loopIsRunning: Bool = false
@@ -22,23 +22,26 @@ class AnalyticsLogger {
     public init(
         dispatcher: LogEventSending,
         reachabilityHelper: ReachabilityChecking,
+        persistentQueue: AnyQueue<AnalyticEventAndCompletion>,
         failureDebounceSeconds: Double = 45
     ) {
         self.dispatcher = dispatcher
         self.reachabilityHelper = reachabilityHelper
-        self.persistantQueue = PersistentQueue<AnalyticEventAndCompletion>(name: "analyticEvent")
+        self.persistentQueue = persistentQueue
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
         startLoop()
     }
 
     private func startLoop() {
-        loopIsRunning = true
-        let nextItemResult = self.persistantQueue.next
-        switch nextItemResult {
-        case .success(let frontOfQueue):
-            self.loopStep(queueItem: frontOfQueue)
-        case .failure:
-            loopIsRunning = false
+        DispatchQueue.main.async {
+            self.loopIsRunning = true
+            let nextItemResult = self.persistentQueue.next
+            switch nextItemResult {
+            case .success(let frontOfQueue):
+                self.loopStep(queueItem: frontOfQueue)
+            case .failure:
+                self.loopIsRunning = false
+            }
         }
     }
 
@@ -54,7 +57,7 @@ class AnalyticsLogger {
         dispatcher.logEvent(queueItem.item.analyticEvent) { result in
             // TODO: Add logic so that we only disgard from the queue in the case of non-server error
             queueItem.releaseQueue(.removeFirst)
-            queueItem.item.analyticsCompletion?(result)
+            queueItem.item.analyticCompletion?(result)
             switch result {
             case .success:
                 self.startLoop()
@@ -72,8 +75,8 @@ extension AnalyticsLogger: AnalyticsLogging {
     public func logEvent(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
         let eventAndCompletion = AnalyticEventAndCompletion(
             analyticEvent: event,
-            analyticsCompletion: completion)
-        persistantQueue.addToQueue(eventAndCompletion)
+            analyticCompletion: completion)
+        persistentQueue.addToQueue(eventAndCompletion)
         if !loopIsRunning { startLoop() }
     }
 }
