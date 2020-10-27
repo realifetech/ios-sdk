@@ -7,48 +7,59 @@
 //
 
 import Foundation
+import Combine
 import RxSwift
 import RxCocoa
 
 class DeviceRegistrationWorker: DeviceRegistering {
 
-    var sdkReady: Bool = false
-    let deviceId: String
+    var sdkReady: Bool { deviceRegisteredSubject.value }
+    var deviceId: String { staticDeviceInformation.deviceId }
 
-    private let deviceModel: String
-    private let osVersion: String
-    private let sdkVersion: String
+    private let staticDeviceInformation: StaticDeviceInformation
     private let reachabilityChecker: ReachabilityChecking
     private let loopHandler: DeviceRegistrationLoopHandling
+    private let deviceRegisteredSubject: CurrentValueSubject<Bool, Never>
+    private let store: CodableStorageProtocol
+    private let storeKey = "DeviceRegistrationState"
 
     var device: Device {
-        Device(deviceId: deviceId,
-               model: deviceModel,
-               sdkVersion: sdkVersion,
-               osVersion: osVersion,
+        Device(deviceId: staticDeviceInformation.deviceId,
+               model: staticDeviceInformation.deviceModel,
+               sdkVersion: staticDeviceInformation.sdkVersion,
+               osVersion: staticDeviceInformation.osVersion,
                bluetoothOn: reachabilityChecker.isBluetoothConnected,
                wifiConnected: reachabilityChecker.isConnectedToWifi)
     }
 
     init(
-        deviceId: String,
-        deviceModel: String,
-        osVersion: String,
-        sdkVersion: String,
+        staticDeviceInformation: StaticDeviceInformation,
         reachabilityChecker: ReachabilityChecking,
-        loopHandler: DeviceRegistrationLoopHandling
+        loopHandler: DeviceRegistrationLoopHandling,
+        deviceRegisteredSubject: CurrentValueSubject<Bool, Never>,
+        store: CodableStorageProtocol
     ) {
-        self.deviceId = deviceId
-        self.deviceModel = deviceModel
-        self.osVersion = osVersion
-        self.sdkVersion = sdkVersion
+        self.staticDeviceInformation = staticDeviceInformation
         self.reachabilityChecker = reachabilityChecker
         self.loopHandler = loopHandler
+        self.deviceRegisteredSubject = deviceRegisteredSubject
+        self.store = store
+        deviceRegisteredSubject.send(getStoredRegistrationValue())
+    }
+
+    func getStoredRegistrationValue() -> Bool {
+        guard let storedState: Bool = try? store.fetch(for: storeKey) else {
+            return false
+        }
+        return storedState
     }
 
     func registerDevice(_ completion: @escaping () -> Void) {
         loopHandler.registerDevice(device) {
-            self.sdkReady = true
+            if !self.deviceRegisteredSubject.value {
+                try? self.store.save(true, for: self.storeKey)
+                self.deviceRegisteredSubject.send(true)
+            }
             completion()
         }
     }

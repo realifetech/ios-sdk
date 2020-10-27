@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Combine
 @testable import RealifeTech
 
 class DeviceRegistrationWorkerTests: XCTestCase {
@@ -23,27 +24,58 @@ class DeviceRegistrationWorkerTests: XCTestCase {
     private var sut: DeviceRegistrationWorker!
     private var deviceRegistrationSpy: MockDeviceRegistrationLoopHandler!
     private var mockReachabilityChecker: MockReachabilityChecker!
+    private var deviceRegisteredSubject: CurrentValueSubject<Bool, Never>!
+    private var mockStore: MockCodableStore!
 
     override func setUp() {
         deviceRegistrationSpy = MockDeviceRegistrationLoopHandler()
         mockReachabilityChecker = MockReachabilityChecker()
-        sut = DeviceRegistrationWorker(
+        deviceRegisteredSubject = .init(false)
+        mockStore = MockCodableStore()
+        let staticInformation = StaticDeviceInformation(
             deviceId: testId,
             deviceModel: testModel,
             osVersion: osVersion,
-            sdkVersion: sdkVersion,
+            sdkVersion: sdkVersion)
+        sut = DeviceRegistrationWorker(
+            staticDeviceInformation: staticInformation,
             reachabilityChecker: mockReachabilityChecker,
-            loopHandler: deviceRegistrationSpy)
+            loopHandler: deviceRegistrationSpy,
+            deviceRegisteredSubject: deviceRegisteredSubject,
+            store: mockStore)
     }
 
     func test_initialisation() {
         XCTAssertEqual(sut.deviceId, testId)
     }
 
-    func test_sdkReady() {
+    func test_initialisation_readsFromStore() {
+        mockStore.valueToReturn = true
+        let staticInformation = StaticDeviceInformation(
+            deviceId: testId,
+            deviceModel: testModel,
+            osVersion: osVersion,
+            sdkVersion: sdkVersion)
+        let sutWithCustomStore = DeviceRegistrationWorker(
+            staticDeviceInformation: staticInformation,
+            reachabilityChecker: mockReachabilityChecker,
+            loopHandler: deviceRegistrationSpy,
+            deviceRegisteredSubject: deviceRegisteredSubject,
+            store: mockStore)
+        XCTAssertTrue(sutWithCustomStore.sdkReady)
+    }
+
+    func test_registerDevice_deviceRegistrationStateIsUpdated() {
         XCTAssertFalse(sut.sdkReady)
-        sut.registerDevice { }
+        XCTAssertFalse(deviceRegisteredSubject.value)
+        sut.registerDevice {}
         XCTAssertTrue(sut.sdkReady)
+        XCTAssertTrue(deviceRegisteredSubject.value)
+    }
+
+    func test_registerDevice_savesToStore() {
+        sut.registerDevice {}
+        XCTAssertNotNil(mockStore.valueSaved)
     }
 
     func test_registerDevice_completionCalled() {
@@ -82,4 +114,30 @@ private class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling 
         self.deviceReceived = device
         completion()
     }
+}
+
+private class MockCodableStore: CodableStorageProtocol {
+    enum MockCodableStoreError: Error {
+        case unexpectedMethodCall, noValueSaved
+    }
+
+    var valueToReturn: Any?
+    var valueSaved: Any?
+
+    func fetchAll<T>() throws -> [T] where T : Decodable {
+        throw MockCodableStoreError.unexpectedMethodCall
+    }
+
+    func fetch<T>(for key: String) throws -> T where T : Decodable {
+        guard let value = valueToReturn as? T else {
+            throw MockCodableStoreError.noValueSaved
+        }
+        return value
+    }
+
+    func save<T>(_ value: T, for key: String) throws where T : Encodable {
+        self.valueSaved = value
+    }
+
+    func delete(key: String) {}
 }

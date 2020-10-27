@@ -11,13 +11,15 @@ import Foundation
 public enum AnalyticsFactory {
     static func makeAnalyticsModule(
         dispatcher: LogEventSending,
-        reachabilityHelper: ReachabilityChecking
+        reachabilityHelper: ReachabilityChecking,
+        deviceRegisteredValue: ReadOnlyCurrentValue<Bool>
     ) -> Analytics {
         let queue = PersistentQueue<AnalyticEventAndCompletion>(name: "analyticsEvent")
         let analyticsLogger = AnalyticsLogger(
             dispatcher: dispatcher,
             reachabilityHelper: reachabilityHelper,
-            persistentQueue: AnyQueue(queue))
+            persistentQueue: AnyQueue(queue),
+            deviceRegisteredValue: deviceRegisteredValue)
         return AnalyticsImplementing(analyticsLogger: analyticsLogger)
     }
 }

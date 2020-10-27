@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Combine
 @testable import RealifeTech
 
 // TODO: Add test of failure conditions from the API - implentation is not complete ATM
@@ -15,11 +16,13 @@ class AnalyticsLoggerTests: XCTestCase {
     private var mockEventSending: MockAnalyticsLogger!
     private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
     private var mockReachabilityChecker: MockReachabilityChecker!
+    private var deviceRegisteredSubject: CurrentValueSubject<Bool, Never>!
 
     override func setUp() {
         self.mockEventSending = MockAnalyticsLogger()
         self.mockReachabilityChecker = MockReachabilityChecker()
         self.mockQueue = MockQueue<AnalyticEventAndCompletion>()
+        self.deviceRegisteredSubject = .init(true)
     }
 
     private func makeSut() -> AnalyticsLogger {
@@ -27,7 +30,8 @@ class AnalyticsLoggerTests: XCTestCase {
             dispatcher: mockEventSending,
             reachabilityHelper: mockReachabilityChecker,
             persistentQueue: AnyQueue(mockQueue),
-            failureDebounceSeconds: 0.01)
+            failureDebounceSeconds: 0.01,
+            deviceRegisteredValue: .init(from: deviceRegisteredSubject))
     }
 
     private func makeEvents(from strings: [String]) -> [AnalyticEvent] {
@@ -95,6 +99,30 @@ class AnalyticsLoggerTests: XCTestCase {
         })
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.mockReachabilityChecker.hasNetworkConnection = true
+        }
+        wait(for: [expectation], timeout: 0.02)
+    }
+
+    func test_logEvent_delaysSingleItemUntilRegistered() {
+        let testEvent = AnalyticEvent(
+            type: "Circuits",
+            action: "Burn",
+            version: "Golden")
+        let expectation = XCTestExpectation(description: "Event sending completed")
+        mockReachabilityChecker.hasNetworkConnection = true
+        deviceRegisteredSubject.send(false)
+        let sut = makeSut()
+        sut.logEvent(testEvent, completion: { result in
+            switch result {
+            case .success:
+                XCTAssertEqual([testEvent], self.mockEventSending.eventsLogged)
+            case .failure:
+                XCTFail("We should have sucessfully sent this")
+            }
+            expectation.fulfill()
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.deviceRegisteredSubject.send(true)
         }
         wait(for: [expectation], timeout: 0.02)
     }

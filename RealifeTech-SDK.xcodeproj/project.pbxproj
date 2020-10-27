@@ -105,6 +105,9 @@
 		488A67C22541D8AA005C030E /* MockAnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A67C12541D8AA005C030E /* MockAnalyticsLogger.swift */; };
 		488A67C62541DA8B005C030E /* AnalyticsLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A67C52541DA8B005C030E /* AnalyticsLoggerTests.swift */; };
 		488A67CA2541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A67C92541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift */; };
+		488A680D2546D0D0005C030E /* ReadOnlyCurrentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A680C2546D0D0005C030E /* ReadOnlyCurrentValue.swift */; };
+		488A68142546D6E6005C030E /* ReadOnlyCurrentValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A68132546D6E6005C030E /* ReadOnlyCurrentValueTests.swift */; };
+		488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A681C2546ECB6005C030E /* StaticDeviceInformation.swift */; };
 		48D6F143251E158E006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F13A251E158E006CA623 /* RealifeTech.framework */; };
 		48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F147251E158E006CA623 /* RealifeTechTests.swift */; };
 		48D6F14A251E158E006CA623 /* RealifeTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D6F13C251E158E006CA623 /* RealifeTech.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -232,6 +235,9 @@
 		488A67C12541D8AA005C030E /* MockAnalyticsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnalyticsLogger.swift; sourceTree = "<group>"; };
 		488A67C52541DA8B005C030E /* AnalyticsLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsLoggerTests.swift; sourceTree = "<group>"; };
 		488A67C92541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventAndCompletionTests.swift; sourceTree = "<group>"; };
+		488A680C2546D0D0005C030E /* ReadOnlyCurrentValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadOnlyCurrentValue.swift; sourceTree = "<group>"; };
+		488A68132546D6E6005C030E /* ReadOnlyCurrentValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadOnlyCurrentValueTests.swift; sourceTree = "<group>"; };
+		488A681C2546ECB6005C030E /* StaticDeviceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticDeviceInformation.swift; sourceTree = "<group>"; };
 		488A683F2547062E005C030E /* SDKConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKConfigurationTests.swift; sourceTree = "<group>"; };
 		48A6845E25277CA2001F8CB1 /* V3APITokenManagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagable.swift; sourceTree = "<group>"; };
 		48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationStore.swift; sourceTree = "<group>"; };
@@ -305,8 +311,8 @@
 			isa = PBXGroup;
 			children = (
 				487479A225403E0C0048F03D /* Queue */,
-				03110C65253D85290099F65F /* CodableStorage.swift */,
 				487479DC254088B50048F03D /* Storage.swift */,
+				03110C65253D85290099F65F /* CodableStorage.swift */,
 				488959962539DC8600B978A9 /* DiskStorage.swift */,
 				487479D8254088AA0048F03D /* UserDefaultStorage.swift */,
 				039B77AD254187A90060DBBA /* Tests */,
@@ -606,6 +612,23 @@
 			path = LoggingTests;
 			sourceTree = "<group>";
 		};
+		488A680B2546D074005C030E /* CombineHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				488A68122546D6D4005C030E /* Tests */,
+				488A680C2546D0D0005C030E /* ReadOnlyCurrentValue.swift */,
+			);
+			path = CombineHelpers;
+			sourceTree = "<group>";
+		};
+		488A68122546D6D4005C030E /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				488A68132546D6E6005C030E /* ReadOnlyCurrentValueTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		48A684642527C40F001F8CB1 /* OAuthTokenHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,6 +653,7 @@
 		48B792D0251CA1E0007032CD /* SupportingModules */ = {
 			isa = PBXGroup;
 			children = (
+				488A680B2546D074005C030E /* CombineHelpers */,
 				03110C64253D84C90099F65F /* Storage */,
 				488959622539D8C100B978A9 /* Logging */,
 				48EFE1FF2539E17700CC6E58 /* Repositories */,
@@ -806,6 +830,7 @@
 				48EFE2522539E55400CC6E58 /* DeviceRegistering.swift */,
 				48EFE2512539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift */,
 				48EFE2502539E55400CC6E58 /* DeviceRegistrationWorker.swift */,
+				488A681C2546ECB6005C030E /* StaticDeviceInformation.swift */,
 			);
 			path = DeviceRegistration;
 			sourceTree = "<group>";
@@ -1106,6 +1131,7 @@
 				4889587F2539D04B00B978A9 /* ReachabilityChecking.swift in Sources */,
 				4889589F2539D04B00B978A9 /* GraphQLDispatcher.swift in Sources */,
 				488958922539D04B00B978A9 /* Types.graphql.swift in Sources */,
+				488A680D2546D0D0005C030E /* ReadOnlyCurrentValue.swift in Sources */,
 				4889595C2539D89C00B978A9 /* AnalyticsLogging.swift in Sources */,
 				480BCD95251E254D00266617 /* SDKFactory.swift in Sources */,
 				488958912539D04B00B978A9 /* Requester.swift in Sources */,
@@ -1140,6 +1166,7 @@
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				488958792539D04B00B978A9 /* APIError.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
+				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				487479A425403E250048F03D /* QueueProviding+AnyQueue.swift in Sources */,
 				4889587E2539D04B00B978A9 /* RequestCreator.swift in Sources */,
 				488959972539DC8600B978A9 /* DiskStorage.swift in Sources */,
@@ -1175,6 +1202,7 @@
 				039B77B12541957A0060DBBA /* DiskStorageTests.swift in Sources */,
 				488958DF2539D09D00B978A9 /* V3APITokenManagerTests.swift in Sources */,
 				488958DB2539D09D00B978A9 /* RequestCreatorTests.swift in Sources */,
+				488A68142546D6E6005C030E /* ReadOnlyCurrentValueTests.swift in Sources */,
 				48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */,
 				488958DE2539D09D00B978A9 /* APIErrorTests.swift in Sources */,
 				488958E52539D09D00B978A9 /* DiskCacheTests.swift in Sources */,
@@ -1235,7 +1263,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RealifeTech/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1266,7 +1294,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = RealifeTech/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

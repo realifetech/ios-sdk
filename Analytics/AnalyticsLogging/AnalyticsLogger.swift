@@ -16,6 +16,7 @@ class AnalyticsLogger {
     private let dispatcher: LogEventSending
     private let persistentQueue: AnyQueue<AnalyticEventAndCompletion>
     private let reachabilityHelper: ReachabilityChecking
+    private let deviceRegisteredValue: ReadOnlyCurrentValue<Bool>
 
     private var loopIsRunning: Bool = false
 
@@ -23,12 +24,14 @@ class AnalyticsLogger {
         dispatcher: LogEventSending,
         reachabilityHelper: ReachabilityChecking,
         persistentQueue: AnyQueue<AnalyticEventAndCompletion>,
-        failureDebounceSeconds: Double = 45
+        failureDebounceSeconds: Double = 45,
+        deviceRegisteredValue: ReadOnlyCurrentValue<Bool>
     ) {
         self.dispatcher = dispatcher
         self.reachabilityHelper = reachabilityHelper
         self.persistentQueue = persistentQueue
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
+        self.deviceRegisteredValue = deviceRegisteredValue
         startLoop()
     }
 
@@ -47,12 +50,15 @@ class AnalyticsLogger {
 
     private func loopStep(queueItem: PeristentQueueItem) {
         let delayTimeForFailure: DispatchTime = .now() + .milliseconds(failureDebounceMilliseconds)
-        guard reachabilityHelper.hasNetworkConnection else {
-            DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
-                queueItem.releaseQueue(.doNothing)
-                self.startLoop()
-            }
-            return
+        guard
+            reachabilityHelper.hasNetworkConnection,
+            deviceRegisteredValue.value
+            else {
+                DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
+                    queueItem.releaseQueue(.doNothing)
+                    self.startLoop()
+                }
+                return
         }
         dispatcher.logEvent(queueItem.item.analyticEvent) { result in
             // TODO: Add logic so that we only disgard from the queue in the case of non-server error

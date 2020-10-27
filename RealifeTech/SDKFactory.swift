@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 public class RealifeTech {
 
@@ -24,28 +25,34 @@ public class RealifeTech {
     /// Calling this function more than once will have no effect.
     /// - Parameter configuration: Struct containing the desired SDK configuration
     public static func configureSDK(with configuration: SDKConfiguration) {
-        print("Someone called to configure the SDK")
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
+        let deviceRegisteredSubject = CurrentValueSubject<Bool, Never>(false)
+        let deviceRegisteredValue = ReadOnlyCurrentValue(from: deviceRegisteredSubject)
         let apiHelper = APIV3RequesterHelper.setupV3API(
             deviceId: deviceHelper.deviceId,
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl)
-        General = GeneralFactory.makeGeneralModule(
+        let staticDeviceInformation = StaticDeviceInformation(
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
-            sdkVersion: moduleVersionString,
-            reachabilityChecker: reachabilityChecker)
+            sdkVersion: moduleVersionString)
+        General = GeneralFactory.makeGeneralModule(
+            staticDeviceInformation: staticDeviceInformation,
+            reachabilityChecker: reachabilityChecker,
+            deviceRegisteredSubject: deviceRegisteredSubject)
         let client = GraphNetwork(graphQLAPIUrl: configuration.graphApiUrl,
                                   tokenHelper: apiHelper,
                                   deviceId: deviceHelper.deviceId,
                                   reachabilityHelper: reachabilityChecker)
         let dispatcher = GraphQLDispatcher(client: client)
         Audiences = AudiencesImplementing(dispatcher: dispatcher)
-        Analytics = AnalyticsFactory.makeAnalyticsModule(dispatcher: dispatcher,
-                                                         reachabilityHelper: reachabilityChecker)
+        Analytics = AnalyticsFactory.makeAnalyticsModule(
+            dispatcher: dispatcher,
+            reachabilityHelper: reachabilityChecker,
+            deviceRegisteredValue: deviceRegisteredValue)
         Communicate = CommunicateFactory.makeCommunicateModule()
         apiHelper.getValidToken {}
     }

@@ -12,7 +12,10 @@ import XCTest
 class AnalyticsFactoryTests: XCTestCase {
 
     func test_makeModule() {
-        let module = AnalyticsFactory.makeAnalyticsModule(dispatcher: MockAnalyticsLogger(), reachabilityHelper: MockReachabilityChecker())
+        let module = AnalyticsFactory.makeAnalyticsModule(
+            dispatcher: MockAnalyticsLogger(),
+            reachabilityHelper: MockReachabilityChecker(),
+            deviceRegisteredValue: ReadOnlyCurrentValue(from: .init(true)))
         XCTAssertTrue(module is AnalyticsImplementing)
     }
 
@@ -28,7 +31,8 @@ class AnalyticsFactoryTests: XCTestCase {
         mockReachabilityChecker.hasNetworkConnection = true
         let module = AnalyticsFactory.makeAnalyticsModule(
             dispatcher: logEventSpy,
-            reachabilityHelper: mockReachabilityChecker)
+            reachabilityHelper: mockReachabilityChecker,
+            deviceRegisteredValue: ReadOnlyCurrentValue(from: .init(true)))
         module.logEvent(testEvent) { _ in
             expectation.fulfill()
         }
