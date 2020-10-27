@@ -6,8 +6,8 @@
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
-import RealifeTech
 import UIKit
+import RealifeTech
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

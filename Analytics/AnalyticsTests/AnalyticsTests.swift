@@ -27,7 +27,7 @@ class AnalyticsTests: XCTestCase {
 //    func test_deviceIsMemberOfAudience_isCalled() {
 //        let spy = MockGraphQLDispatcher()
 //        let sut = AnalyticsImplementing(dispatcher: spy)
-//        let logEvent = AnalyticsEvent(type: "", action: "", new: nil, old: nil, version: "")
+//        let logEvent = AnalyticEvent(type: "", action: "", new: nil, old: nil, version: "")
 //        sut.logEvent(logEvent, completion: { _ in })
 //        XCTAssertNotNil(sut.dispatcher)
 //        XCTAssertTrue(spy.dispatchMutationIsCalled)
@@ -52,7 +52,7 @@ class AnalyticsTests: XCTestCase {
             dispatchMutationIsCalled = true
         }
 
-        func logEvent(_ event: AnalyticsEvent, completion: @escaping (Result<Void, Error>) -> Void) {
+        func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Void, Error>) -> Void) {
         }
     }
 }
