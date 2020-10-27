@@ -11,7 +11,7 @@
 		039B77AF254187BA0060DBBA /* CodableStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B77AE254187BA0060DBBA /* CodableStorageTests.swift */; };
 		039B77B12541957A0060DBBA /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B77B02541957A0060DBBA /* DiskStorageTests.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
-		480BCD95251E254D00266617 /* SDKInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKInterface.swift */; };
+		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
 		487479A425403E250048F03D /* QueueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A325403E250048F03D /* QueueProviding.swift */; };
 		487479AA25403E790048F03D /* QueueAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A925403E790048F03D /* QueueAction.swift */; };
 		487479AE25403E980048F03D /* QueueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479AD25403E980048F03D /* QueueItem.swift */; };
@@ -104,6 +104,7 @@
 		48D6F143251E158E006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F13A251E158E006CA623 /* RealifeTech.framework */; };
 		48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F147251E158E006CA623 /* RealifeTechTests.swift */; };
 		48D6F14A251E158E006CA623 /* RealifeTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D6F13C251E158E006CA623 /* RealifeTech.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48EEF19F25470C2E00F8E4D9 /* SDKConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A683F2547062E005C030E /* SDKConfigurationTests.swift */; };
 		48EFB417253ED7CF00BC8664 /* PersistentQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFB416253ED7CF00BC8664 /* PersistentQueue.swift */; };
 		48EFE2122539E1CE00CC6E58 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE20E2539E1CE00CC6E58 /* DeviceRepository.swift */; };
 		48EFE2132539E1CE00CC6E58 /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE20F2539E1CE00CC6E58 /* DeviceToken.swift */; };
@@ -165,7 +166,7 @@
 		48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTokenManagerTests.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
-		480BCD93251E254D00266617 /* SDKInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKInterface.swift; sourceTree = "<group>"; };
+		480BCD93251E254D00266617 /* SDKFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKFactory.swift; sourceTree = "<group>"; };
 		480BCDBE251E2F5E00266617 /* RequestTimeLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTimeLoggerTests.swift; sourceTree = "<group>"; };
 		480BCDBF251E2F5E00266617 /* DiskCacheClearTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCacheClearTests.swift; sourceTree = "<group>"; };
 		480BCDC1251E2F5F00266617 /* RequestCreatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCreatorTests.swift; sourceTree = "<group>"; };
@@ -223,6 +224,7 @@
 		488959682539D8EA00B978A9 /* LoggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingTests.swift; sourceTree = "<group>"; };
 		4889596E2539D97A00B978A9 /* putAnalyticEvent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = putAnalyticEvent.graphql.swift; sourceTree = "<group>"; };
 		488959962539DC8600B978A9 /* DiskStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
+		488A683F2547062E005C030E /* SDKConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKConfigurationTests.swift; sourceTree = "<group>"; };
 		48A6845E25277CA2001F8CB1 /* V3APITokenManagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagable.swift; sourceTree = "<group>"; };
 		48A6846225279F6C001F8CB1 /* AuthorisationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationStore.swift; sourceTree = "<group>"; };
 		48A684652527C43C001F8CB1 /* AuthorisationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationWorker.swift; sourceTree = "<group>"; };
@@ -655,7 +657,7 @@
 			isa = PBXGroup;
 			children = (
 				480BCD92251E254D00266617 /* SDKConfiguration.swift */,
-				480BCD93251E254D00266617 /* SDKInterface.swift */,
+				480BCD93251E254D00266617 /* SDKFactory.swift */,
 				48D6F13C251E158E006CA623 /* RealifeTech.h */,
 				48D6F13D251E158E006CA623 /* Info.plist */,
 				48D6F146251E158E006CA623 /* RealifeTechTests */,
@@ -668,6 +670,7 @@
 			children = (
 				48D6F147251E158E006CA623 /* RealifeTechTests.swift */,
 				48D6F149251E158E006CA623 /* Info.plist */,
+				488A683F2547062E005C030E /* SDKConfigurationTests.swift */,
 			);
 			path = RealifeTechTests;
 			sourceTree = "<group>";
@@ -1076,7 +1079,7 @@
 				4889589F2539D04B00B978A9 /* GraphQLDispatcher.swift in Sources */,
 				488958922539D04B00B978A9 /* Types.graphql.swift in Sources */,
 				4889595C2539D89C00B978A9 /* AnalyticsLogging.swift in Sources */,
-				480BCD95251E254D00266617 /* SDKInterface.swift in Sources */,
+				480BCD95251E254D00266617 /* SDKFactory.swift in Sources */,
 				488958912539D04B00B978A9 /* Requester.swift in Sources */,
 				488958A62539D04B00B978A9 /* RequestTimeLogger.swift in Sources */,
 				488958962539D04B00B978A9 /* ReachabilityFactory.swift in Sources */,
@@ -1166,6 +1169,7 @@
 				4889595F2539D8A500B978A9 /* AnalyticsTests.swift in Sources */,
 				488959302539D21500B978A9 /* Dictionary+ExtensionTests.swift in Sources */,
 				48EFE25B2539E56000CC6E58 /* GeneralImplementingTests.swift in Sources */,
+				48EEF19F25470C2E00F8E4D9 /* SDKConfigurationTests.swift in Sources */,
 				48EFE2612539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift in Sources */,
 				488958E62539D09D00B978A9 /* AuthorsationStoreTests.swift in Sources */,
 				48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */,
@@ -1205,6 +1209,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1235,6 +1240,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
