@@ -253,7 +253,6 @@
 		48D6F147251E158E006CA623 /* RealifeTechTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealifeTechTests.swift; sourceTree = "<group>"; };
 		48D6F149251E158E006CA623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E6777D251BA86D007E2741 /* CommunicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateTests.swift; sourceTree = "<group>"; };
-		48EFE3A3253DE82C00CC6E58 /* RealifeTech-SDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RealifeTech-SDK.podspec"; sourceTree = SOURCE_ROOT; };
 		48EFB416253ED7CF00BC8664 /* PersistentQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentQueue.swift; sourceTree = "<group>"; };
 		48EFE20E2539E1CE00CC6E58 /* DeviceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		48EFE20F2539E1CE00CC6E58 /* DeviceToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
@@ -275,6 +274,7 @@
 		48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationWorkerTests.swift; sourceTree = "<group>"; };
 		48EFE2622539E5A100CC6E58 /* MockReachabilityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockReachabilityChecker.swift; sourceTree = "<group>"; };
 		48EFE2662539E5C300CC6E58 /* NetworkConnectivityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnectivityChecker.swift; sourceTree = "<group>"; };
+		48EFE3A3253DE82C00CC6E58 /* RealifeTech-SDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RealifeTech-SDK.podspec"; sourceTree = SOURCE_ROOT; };
 		48F9BC24252E1C4E00B801D1 /* APIV3RequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterTests.swift; sourceTree = "<group>"; };
 		48F9BC26252F101A00B801D1 /* APIV3RequesterHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIV3RequesterHelperTests.swift; sourceTree = "<group>"; };
 		48F9BC28252F171000B801D1 /* V3APITokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3APITokenManagerTests.swift; sourceTree = "<group>"; };
@@ -327,17 +327,17 @@
 				03E9F6C9252B1CC30076F59B /* schema.json */,
 				0317B932252769D900863EC6 /* GraphNetwork.swift */,
 				034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */,
-				0317B927252768EA00863EC6 /* GraphQLTests */,
+				0317B927252768EA00863EC6 /* Tests */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
 		};
-		0317B927252768EA00863EC6 /* GraphQLTests */ = {
+		0317B927252768EA00863EC6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				0317B928252768EA00863EC6 /* GraphQLTests.swift */,
 			);
-			path = GraphQLTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		039B77AD254187A90060DBBA /* Tests */ = {
@@ -364,17 +364,17 @@
 			children = (
 				03EEB8B3252E05E700C868AD /* AudienceChecking.swift */,
 				03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */,
-				03EEB8A8252E04DB00C868AD /* AudiencesTests */,
+				03EEB8A8252E04DB00C868AD /* Tests */,
 			);
 			path = Audiences;
 			sourceTree = "<group>";
 		};
-		03EEB8A8252E04DB00C868AD /* AudiencesTests */ = {
+		03EEB8A8252E04DB00C868AD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */,
 			);
-			path = AudiencesTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		480BCD9E251E2CFD00266617 /* APILayer */ = {
@@ -384,12 +384,12 @@
 				480BCDE4251E303D00266617 /* Resources */,
 				480BCDD7251E300100266617 /* API */,
 				480BCDE0251E301400266617 /* DiskCache */,
-				480BCDA9251E2CFD00266617 /* APILayerTests */,
+				480BCDA9251E2CFD00266617 /* Tests */,
 			);
 			path = APILayer;
 			sourceTree = "<group>";
 		};
-		480BCDA9251E2CFD00266617 /* APILayerTests */ = {
+		480BCDA9251E2CFD00266617 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				480BCDC8251E2F7E00266617 /* Util */,
@@ -399,7 +399,7 @@
 				480BCDBE251E2F5E00266617 /* RequestTimeLoggerTests.swift */,
 				4889592F2539D21500B978A9 /* Dictionary+ExtensionTests.swift */,
 			);
-			path = APILayerTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		480BCDC8251E2F7E00266617 /* Util */ = {
@@ -517,12 +517,12 @@
 				480BCE22251E40FB00266617 /* APIRootURL.swift */,
 				480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */,
 				480BCE20251E3EAD00266617 /* StandardV3SenderResponse.swift */,
-				4859F99A252E022400158F5E /* APIV3UtilitiesTests */,
+				4859F99A252E022400158F5E /* Tests */,
 			);
 			path = APIV3Utilities;
 			sourceTree = "<group>";
 		};
-		4859F99A252E022400158F5E /* APIV3UtilitiesTests */ = {
+		4859F99A252E022400158F5E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				48F9BC2D252F2F9D00B801D1 /* AuthorisationWorkerTests.swift */,
@@ -536,7 +536,15 @@
 				48005DC62530571B00B4E8BD /* OAuthTokenRefreshWatcherTests.swift */,
 				48005DC92530675200B4E8BD /* EmptyTokenManagerTests.swift */,
 			);
-			path = APIV3UtilitiesTests;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		485DF3B925483AA500AB7B31 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				48EFE2012539E19200CC6E58 /* Device */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		4874799F253F54270048F03D /* AnalyticsLogging */ = {
@@ -578,12 +586,12 @@
 				487479C72540432E0048F03D /* Analytics.swift */,
 				4889595B2539D89C00B978A9 /* AnalyticsImplementing.swift */,
 				487479CD254044430048F03D /* AnalyticsFactory.swift */,
-				4889594F2539D7FB00B978A9 /* AnalyticsTests */,
+				4889594F2539D7FB00B978A9 /* Tests */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
 		};
-		4889594F2539D7FB00B978A9 /* AnalyticsTests */ = {
+		4889594F2539D7FB00B978A9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				482BE53F2541D11200110368 /* AnalyticsLoggingTests */,
@@ -591,7 +599,7 @@
 				488A67BD2541D797005C030E /* AnalyticsFactoryTests.swift */,
 				482BE5462541D15B00110368 /* Utils */,
 			);
-			path = AnalyticsTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		488959622539D8C100B978A9 /* Logging */ = {
@@ -599,17 +607,17 @@
 			children = (
 				488959652539D8E200B978A9 /* LogEventSending.swift */,
 				488959642539D8E200B978A9 /* AnalyticEvent.swift */,
-				488959632539D8CA00B978A9 /* LoggingTests */,
+				488959632539D8CA00B978A9 /* Tests */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
 		};
-		488959632539D8CA00B978A9 /* LoggingTests */ = {
+		488959632539D8CA00B978A9 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				488959682539D8EA00B978A9 /* LoggingTests.swift */,
 			);
-			path = LoggingTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		488A680B2546D074005C030E /* CombineHelpers */ = {
@@ -672,17 +680,17 @@
 				03D5838B2521E44F00E516F9 /* UIDeviceFactory.swift */,
 				03D5838C2521E44F00E516F9 /* UIDeviceInterface.swift */,
 				03D5838D2521E44F00E516F9 /* UIDeviceWrapper.swift */,
-				48B792E2251CA256007032CD /* UIDeviceHelperTests */,
+				48B792E2251CA256007032CD /* Tests */,
 			);
 			path = UIDeviceHelper;
 			sourceTree = "<group>";
 		};
-		48B792E2251CA256007032CD /* UIDeviceHelperTests */ = {
+		48B792E2251CA256007032CD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				48B792E3251CA256007032CD /* UIDeviceHelperTests.swift */,
 			);
-			path = UIDeviceHelperTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		48B792F3251CA279007032CD /* ReachabilityChecker */ = {
@@ -692,17 +700,17 @@
 				03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */,
 				03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */,
 				48EFE2662539E5C300CC6E58 /* NetworkConnectivityChecker.swift */,
-				48B792FE251CA279007032CD /* ReachabilityCheckerTests */,
+				48B792FE251CA279007032CD /* Tests */,
 			);
 			path = ReachabilityChecker;
 			sourceTree = "<group>";
 		};
-		48B792FE251CA279007032CD /* ReachabilityCheckerTests */ = {
+		48B792FE251CA279007032CD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				48B792FF251CA279007032CD /* ReachabilityCheckerTests.swift */,
 			);
-			path = ReachabilityCheckerTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		48D6F13B251E158E006CA623 /* RealifeTech */ = {
@@ -712,19 +720,19 @@
 				480BCD93251E254D00266617 /* SDKFactory.swift */,
 				48D6F13C251E158E006CA623 /* RealifeTech.h */,
 				48D6F13D251E158E006CA623 /* Info.plist */,
-				48D6F146251E158E006CA623 /* RealifeTechTests */,
+				48D6F146251E158E006CA623 /* Tests */,
 			);
 			path = RealifeTech;
 			sourceTree = "<group>";
 		};
-		48D6F146251E158E006CA623 /* RealifeTechTests */ = {
+		48D6F146251E158E006CA623 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				48D6F147251E158E006CA623 /* RealifeTechTests.swift */,
 				48D6F149251E158E006CA623 /* Info.plist */,
 				488A683F2547062E005C030E /* SDKConfigurationTests.swift */,
 			);
-			path = RealifeTechTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		48E67725251BA7F0007E2741 = {
@@ -758,12 +766,12 @@
 				48EFE24A2539E52D00CC6E58 /* GeneralFactory.swift */,
 				480BCD8D251E252600266617 /* GeneralImplementing.swift */,
 				48EFE24F2539E53400CC6E58 /* DeviceRegistration */,
-				48E6775A251BA843007E2741 /* GeneralTests */,
+				48E6775A251BA843007E2741 /* Tests */,
 			);
 			path = General;
 			sourceTree = "<group>";
 		};
-		48E6775A251BA843007E2741 /* GeneralTests */ = {
+		48E6775A251BA843007E2741 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				48EFE25D2539E57400CC6E58 /* DeviceRegistrationTests */,
@@ -771,7 +779,7 @@
 				48EFE2582539E56000CC6E58 /* GeneralFactoryTests.swift */,
 				48EFE2592539E56000CC6E58 /* GeneralImplementingTests.swift */,
 			);
-			path = GeneralTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		48E67771251BA86D007E2741 /* Communicate */ = {
@@ -781,22 +789,23 @@
 				487479ED254090E90048F03D /* CommunicateFactory.swift */,
 				48EFE2222539E21100CC6E58 /* CommunicateImplementing.swift */,
 				487479E025408E640048F03D /* PushNotificationRegistration */,
-				48E6777C251BA86D007E2741 /* CommunicateTests */,
+				48E6777C251BA86D007E2741 /* Tests */,
 			);
 			path = Communicate;
 			sourceTree = "<group>";
 		};
-		48E6777C251BA86D007E2741 /* CommunicateTests */ = {
+		48E6777C251BA86D007E2741 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				48E6777D251BA86D007E2741 /* CommunicateTests.swift */,
 			);
-			path = CommunicateTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		48EFE1FF2539E17700CC6E58 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				485DF3B925483AA500AB7B31 /* Tests */,
 				48EFE2002539E18200CC6E58 /* Device */,
 			);
 			path = Repositories;
@@ -809,19 +818,18 @@
 				48EFE20E2539E1CE00CC6E58 /* DeviceRepository.swift */,
 				48EFE2112539E1CE00CC6E58 /* DeviceRequester.swift */,
 				48EFE20F2539E1CE00CC6E58 /* DeviceToken.swift */,
-				48EFE2012539E19200CC6E58 /* DeviceTests */,
 			);
 			path = Device;
 			sourceTree = "<group>";
 		};
-		48EFE2012539E19200CC6E58 /* DeviceTests */ = {
+		48EFE2012539E19200CC6E58 /* Device */ = {
 			isa = PBXGroup;
 			children = (
 				48EFE2182539E1D800CC6E58 /* DeviceRequesterTests.swift */,
 				48EFE21A2539E1D800CC6E58 /* DeviceTests.swift */,
 				48EFE2192539E1D800CC6E58 /* DeviceTokenTests.swift */,
 			);
-			path = DeviceTests;
+			path = Device;
 			sourceTree = "<group>";
 		};
 		48EFE24F2539E53400CC6E58 /* DeviceRegistration */ = {
@@ -1317,7 +1325,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = RealifeTech/RealifeTechTests/Info.plist;
+				INFOPLIST_FILE = RealifeTech/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1337,7 +1345,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
-				INFOPLIST_FILE = RealifeTech/RealifeTechTests/Info.plist;
+				INFOPLIST_FILE = RealifeTech/Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

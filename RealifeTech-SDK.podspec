@@ -28,20 +28,17 @@ Pod::Spec.new do |spec|
 			"Olivier Butler" => "olivier.butler@gmail.com" ,
 			"Mickey Lee" => "mickey.lee@realifetech.com" }
 
-  spec.ios.deployment_target = "12.0"
+  spec.ios.deployment_target = "13.0"
   spec.swift_version = "5.0"
   spec.source        = { :git => 'https://github.com/realifetech/ios-sdk.git', :branch => 'develop', :tag => '0.0.1'}
-  spec.source_files = [ 'General/**/*.swift', 'Communicate/**/*.swift', 'Audiences/**/*.swift', 'SupportingModules/**/*.swift', 'RealifeTech/**/*.swift', 'RealifeTech/RealifeTech.h']
+  spec.source_files = [ 
+    '**/*.swift', 
+    'RealifeTech/RealifeTech.h']
   spec.exclude_files =  [
-      'General/GeneralTests/**/*',
-      'Communicate/CommunicateTests/**/*',
-      'Audiences/AudiencesTests/**/*',
-      'SupportingModules/GraphQL/GraphQLTests/**/*',
-      'SupportingModules/APIV3Utilities/APIV3UtilitiesTests/**/*',
-      'SupportingModules/APILayer/APILayerTests/**/*',
-      'SupportingModules/UIDeviceHelper/UIDeviceHelperTests/**/*',
-      'SupportingModules/ReachabilityChecker/ReachabilityCheckerTests/**/*',
-      'RealifeTech/RealifeTechTests/**/*']
+      'DummyProject/**/*',
+      'Pods/**/*',
+      '**/Tests/**/*'
+  ]
 
   spec.dependency "RxSwift", "> 4.2"
   spec.dependency "RxCocoa", "> 4.2"
