@@ -10,11 +10,11 @@ import Foundation
 
 class AnalyticsLogger {
 
-    typealias PeristentQueueItem = QueueItem<AnalyticsEventAndCompletion>
+    typealias PeristentQueueItem = QueueItem<AnalyticEventAndCompletion>
 
     private let failureDebounceMilliseconds: Int
     private let dispatcher: LogEventSending
-    private let persistentQueue: AnyQueue<AnalyticsEventAndCompletion>
+    private let persistentQueue: AnyQueue<AnalyticEventAndCompletion>
     private let reachabilityHelper: ReachabilityChecking
     private let deviceRegisteredValue: ReadOnlyCurrentValue<Bool>
 
@@ -23,7 +23,7 @@ class AnalyticsLogger {
     public init(
         dispatcher: LogEventSending,
         reachabilityHelper: ReachabilityChecking,
-        persistentQueue: AnyQueue<AnalyticsEventAndCompletion>,
+        persistentQueue: AnyQueue<AnalyticEventAndCompletion>,
         failureDebounceSeconds: Double = 45,
         deviceRegisteredValue: ReadOnlyCurrentValue<Bool>
     ) {
@@ -60,10 +60,10 @@ class AnalyticsLogger {
                 }
                 return
         }
-        dispatcher.logEvent(queueItem.item.analyticsEvent) { result in
+        dispatcher.logEvent(queueItem.item.analyticEvent) { result in
             // TODO: Add logic so that we only disgard from the queue in the case of non-server error
             queueItem.releaseQueue(.removeFirst)
-            queueItem.item.analyticsCompletion?(result)
+            queueItem.item.analyticCompletion?(result)
             switch result {
             case .success:
                 self.startLoop()
@@ -78,10 +78,10 @@ class AnalyticsLogger {
 
 extension AnalyticsLogger: AnalyticsLogging {
 
-    public func logEvent(_ event: AnalyticsEvent, completion: @escaping EventLoggedCompletion) {
-        let eventAndCompletion = AnalyticsEventAndCompletion(
-            analyticsEvent: event,
-            analyticsCompletion: completion)
+    public func logEvent(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
+        let eventAndCompletion = AnalyticEventAndCompletion(
+            analyticEvent: event,
+            analyticCompletion: completion)
         persistentQueue.addToQueue(eventAndCompletion)
         if !loopIsRunning { startLoop() }
     }

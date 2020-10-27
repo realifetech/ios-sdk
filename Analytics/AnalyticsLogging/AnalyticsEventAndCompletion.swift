@@ -1,5 +1,5 @@
 //
-//  AnalyticsEventAndCompletion.swift
+//  AnalyticEventAndCompletion.swift
 //  RealifeTech
 //
 //  Created by Olivier Butler on 21/10/2020.
@@ -10,35 +10,35 @@ import Foundation
 
 public typealias EventLoggedCompletion = (Result<Void, Error>) -> Void
 
-struct AnalyticsEventAndCompletion: Identifiable {
+struct AnalyticEventAndCompletion: Identifiable {
     let uniqueId: UUID
-    let analyticsEvent: AnalyticsEvent
-    let analyticsCompletion: EventLoggedCompletion?
+    let analyticEvent: AnalyticEvent
+    let analyticCompletion: EventLoggedCompletion?
 
-    public init(analyticsEvent: AnalyticsEvent, analyticsCompletion: EventLoggedCompletion?) {
-        self.analyticsEvent = analyticsEvent
-        self.analyticsCompletion = analyticsCompletion
+    public init(analyticEvent: AnalyticEvent, analyticCompletion: EventLoggedCompletion?) {
+        self.analyticEvent = analyticEvent
+        self.analyticCompletion = analyticCompletion
         self.uniqueId = UUID()
     }
 }
 
-extension AnalyticsEventAndCompletion: Equatable {
-    static func == (lhs: AnalyticsEventAndCompletion, rhs: AnalyticsEventAndCompletion) -> Bool {
-        return lhs.analyticsEvent == rhs.analyticsEvent && lhs.uniqueId == rhs.uniqueId
+extension AnalyticEventAndCompletion: Equatable {
+    static func == (lhs: AnalyticEventAndCompletion, rhs: AnalyticEventAndCompletion) -> Bool {
+        return lhs.analyticEvent == rhs.analyticEvent && lhs.uniqueId == rhs.uniqueId
     }
 }
 
-extension AnalyticsEventAndCompletion: Encodable {
+extension AnalyticEventAndCompletion: Encodable {
     enum CodingKeys: String, CodingKey {
-        case analyticsEvent, uniqueId
+        case analyticEvent, uniqueId
     }
 }
 
-extension AnalyticsEventAndCompletion: Decodable {
+extension AnalyticEventAndCompletion: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        analyticsEvent = try values.decode(AnalyticsEvent.self, forKey: .analyticsEvent)
+        analyticEvent = try values.decode(AnalyticEvent.self, forKey: .analyticEvent)
         uniqueId = try values.decode(UUID.self, forKey: .uniqueId)
-        analyticsCompletion = nil
+        analyticCompletion = nil
     }
 }

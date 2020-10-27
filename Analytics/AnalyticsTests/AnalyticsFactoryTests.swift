@@ -21,7 +21,11 @@ class AnalyticsFactoryTests: XCTestCase {
 
     func test_makeModule_usesCorrectDependencies() {
         let expectation = XCTestExpectation(description: "Event received")
-        let testEvent = AnalyticsEvent(type: "one", action: "hundred", version: "dalmations")
+        let testEvent = AnalyticEvent(
+            type: "one",
+            action: "hundred",
+            version: "dalmations",
+            timestamp: Date())
         let logEventSpy = MockAnalyticsLogger()
         let mockReachabilityChecker = MockReachabilityChecker()
         mockReachabilityChecker.hasNetworkConnection = true
