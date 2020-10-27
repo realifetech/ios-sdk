@@ -12,7 +12,7 @@ protocol QueueProviding {
 
     associatedtype ItemType: Codable
 
-    var next: Result<QueueItem<ItemType>, QueueRetreivalError> { get }
+    var next: Result<QueueItem<ItemType>, QueueRetrievalError> { get }
     var count: Int { get }
     var isEmpty: Bool { get }
 
@@ -27,11 +27,11 @@ protocol QueueProviding {
 struct AnyQueue<ItemType: Codable> {
 
     private var internalAddToQueue: (_ items: ItemType) -> Void
-    private var internalNext: () -> Result<QueueItem<ItemType>, QueueRetreivalError>
+    private var internalNext: () -> Result<QueueItem<ItemType>, QueueRetrievalError>
     private var internalCount: () -> Int
     private var internalIsEmpty: () -> Bool
 
-    var next: Result<QueueItem<ItemType>, QueueRetreivalError> { internalNext() }
+    var next: Result<QueueItem<ItemType>, QueueRetrievalError> { internalNext() }
     var count: Int { internalCount() }
     var isEmpty: Bool { internalIsEmpty() }
 

@@ -26,7 +26,7 @@ class PersistentQueue<T: Codable & Identifiable>: QueueProviding {
     }
 
     /// Provides an item from the queue. Calling will lock the queue
-    private func getNextQueueItem() -> Result<QueueItem<T>, QueueRetreivalError> {
+    private func getNextQueueItem() -> Result<QueueItem<T>, QueueRetrievalError> {
         if locked {
             return .failure(.queueIsLocked)
         } else if let nextItem = queue.first {
@@ -55,7 +55,7 @@ class PersistentQueue<T: Codable & Identifiable>: QueueProviding {
 
     // MARK: - Queue Providing
 
-    var next: Result<QueueItem<T>, QueueRetreivalError> { getNextQueueItem() }
+    var next: Result<QueueItem<T>, QueueRetrievalError> { getNextQueueItem() }
     var count: Int { queue.count }
     var isEmpty: Bool { queue.isEmpty }
 
