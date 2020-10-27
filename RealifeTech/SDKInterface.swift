@@ -33,15 +33,18 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
-            baseUrl: configuration.apiUrl ?? "")
-        General = GeneralFactory.makeGeneralModule(
+            baseUrl: configuration.apiUrl ?? "") // TODO: fix this
+        let staticDeviceInformation = StaticDeviceInformation(
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
-            sdkVersion: moduleVersionString ?? "123", // TODO: Fix this
+            sdkVersion: moduleVersionString ?? "123") // TODO: fix this
+        General = GeneralFactory.makeGeneralModule(
+            staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker,
             deviceRegisteredSubject: deviceRegisteredSubject)
         if let apiUrl = configuration.graphApiUrl, let graphQlUrl = URL(string: apiUrl) {
+            // TODO: This should *not* be optional to execute
             let client = GraphNetwork(graphQLAPIUrl: graphQlUrl,
                                       tokenHelper: apiHelper,
                                       deviceId: deviceHelper.deviceId,

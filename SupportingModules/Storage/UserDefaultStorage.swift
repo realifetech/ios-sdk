@@ -14,7 +14,7 @@ public struct UserDefaultsStorage {
 
     public init(
         userDefaults: UserDefaults = UserDefaults.standard,
-        dispatchQueue: DispatchQueue = .init(label: "DiskCache.Queue")
+        dispatchQueue: DispatchQueue = .init(label: "UserDefaults.Queue")
     ) {
         self.userDefaults = userDefaults
         self.dispatchQueue = dispatchQueue
