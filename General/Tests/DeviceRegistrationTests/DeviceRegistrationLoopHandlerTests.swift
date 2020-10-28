@@ -48,7 +48,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
         sut.registerDevice(testDevice, {
             expectation.fulfill()
         })
-        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 0.1)
         XCTAssertEqual(MockDeviceRepository.deviceReceived, testDevice)
     }
 
@@ -59,7 +59,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
             expectation.fulfill()
         })
         XCTAssertNil(MockDeviceRepository.deviceReceived)
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(8)) {
             self.reachabilityChecker.hasNetworkConnection = true
         }
         wait(for: [expectation], timeout: 0.1)
