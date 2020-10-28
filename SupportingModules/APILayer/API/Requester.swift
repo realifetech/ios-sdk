@@ -19,7 +19,7 @@ public enum RequesterDateFormat {
 public protocol Requester {
     static func root() -> RequestRootURL
     static var endpoint: String? { get }
-    static func preDispatchAction() -> AnyPublisher<Any?, Never>?
+    static func preDispatchAction() -> AnyPublisher<Any?, Error>?
     static func interceptors() -> [(URLRequest) -> (URLRequest)]?
     static func dateFormat() -> RequesterDateFormat?
 }
@@ -40,9 +40,9 @@ public extension Requester {
         // If we have a pre-dispatch action (e.g. in ApiV3 OAuthRefreshOrWaitActionGenerator), we wrap the original request in that action. If not, we just return the original action.
         if let preDispatchAction = Self.preDispatchAction() {
             // This means that we'll wait for the pre-dispatch action to complete, then perform the original request (in this case called interceptedAction).
-            return preDispatchAction.flatMap { _ in
-                return interceptedAction
-            }
+            return preDispatchAction
+                .flatMap { _ in return interceptedAction }
+                .eraseToAnyPublisher()
         } else {
             return interceptedAction
         }
