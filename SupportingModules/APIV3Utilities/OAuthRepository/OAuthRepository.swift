@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 protocol OAuthProviding {
-    static func requestInitialAccessToken() -> Observable<OAuthToken>
+    static func requestInitialAccessToken() -> AnyPublisher<OAuthToken, Error>
 }
 
 struct OAuthRepository: RemoteDiskCacheDataProviding {
@@ -19,7 +19,7 @@ struct OAuthRepository: RemoteDiskCacheDataProviding {
 }
 
 extension OAuthRepository: OAuthProviding {
-    static func requestInitialAccessToken() -> Observable<OAuthToken> {
+    static func requestInitialAccessToken() -> AnyPublisher<OAuthToken, Error> {
         return retrieve(type: Cdble.self, forRequest: Rqstr.requestInitialAccessToken(), strategy: .remoteWithoutCachingResponse)
     }
 }

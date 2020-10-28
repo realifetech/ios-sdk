@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
+import Combine
 
 protocol DeviceRegistrationLoopHandling {
     func registerDevice(_: Device, _: @escaping() -> Void)
@@ -23,9 +22,9 @@ class DeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
     private let reachabilityChecker: ReachabilityChecking
     private let queue: DispatchQueue
     private let semaphore = DispatchSemaphore(value: 1)
-    private let disposeBag: DisposeBag
-    private let scheduler: ImmediateSchedulerType
+    //private let scheduler: ImmediateScheduler
     private let deviceProvider: DeviceProviding.Type
+    private var cancellable: Set<AnyCancellable>
 
     /// - Parameter reachabilityChecker: Used to check if we have network connectivity
     /// - Parameter debounceRateSeconds: How long to enforce between retry attempts.
@@ -34,16 +33,15 @@ class DeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
     init(
         reachabilityChecker: ReachabilityChecking,
         debounceRateSeconds: Double,
-        scheduler: ImmediateSchedulerType? = nil,
+        scheduler: ImmediateScheduler? = nil,
         deviceProvider: DeviceProviding.Type = DeviceRepository.self
     ) {
         self.debounceRateMilliseconds = Int(debounceRateSeconds * 1000)
-        self.disposeBag = DisposeBag()
+        self.cancellable = .init()
         self.reachabilityChecker = reachabilityChecker
         self.queue = DispatchQueue(
             label: "Revice registration queue",
             qos: .background)
-        self.scheduler = scheduler ?? ConcurrentDispatchQueueScheduler(qos: .background)
         self.deviceProvider = deviceProvider
     }
 
@@ -70,31 +68,56 @@ class DeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
         let debouncedObservable = makeDebouncedDeviceRegistrationObservable(
             device: device)
         debouncedObservable
-            .subscribeOn(scheduler)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { _ in
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .sink { endResult in
+                switch endResult {
+                case .finished: break
+                case .failure:
+                    self.deviceRegistrationLoop(device, completion)
+                }
+            } receiveValue: { _ in
                 self.semaphore.signal()
                 completion()
-            }, onError: { _ in
-                self.deviceRegistrationLoop(device, completion)
-            })
-            .disposed(by: disposeBag)
+            }
+            .store(in: &cancellable)
     }
 
-    private func makeDebouncedDeviceRegistrationObservable(device: Device) -> Observable<Bool> {
-        let interval = Observable<Int>
-            .interval(.milliseconds(debounceRateMilliseconds), scheduler: MainScheduler.instance)
-            .take(1)
+    private func makeDebouncedDeviceRegistrationObservable(device: Device) -> AnyPublisher<Bool, Error> {
+        let interval = PassthroughSubject<Void, Never>()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(debounceRateMilliseconds)) {
+            interval.send(())
+        }
         let allDeviceRegistrationEvents = deviceProvider
             .registerDevice(device)
-            .materialize()
-            .share(replay: 1)
-        let deviceRegistrationErrors = allDeviceRegistrationEvents
-            .compactMap { $0.error }
-        let successObservable: Observable<Bool> = allDeviceRegistrationEvents
-            .compactMap { $0.element }
-        let retryObservable: Observable<Bool> = Observable.zip(interval, deviceRegistrationErrors)
-            .map { (_, error) in throw error }
-        return Observable.merge(successObservable, retryObservable)
+            .share()
+        let deviceRegistrationErrors: AnyPublisher<Error, Never> = allDeviceRegistrationEvents
+            .compactMap { (success) -> Error? in
+                return nil
+            }
+            .catch { (error) -> AnyPublisher<Error, Never> in
+                Just(error).eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+        let successObservable: AnyPublisher<Bool, Error> = allDeviceRegistrationEvents
+            .catch { _ in Empty<Bool, Never>() }
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+        let retryObservable: AnyPublisher<Bool, Error> = interval
+            .zip(deviceRegistrationErrors)
+            .setFailureType(to: Error.self)
+            .flatMap { (_, errorWrapper) -> AnyPublisher<Bool, Error> in
+                return Fail<Bool, Error>(error: errorWrapper).eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+        return successObservable
+            .merge(with: retryObservable)
+            .eraseToAnyPublisher()
     }
+}
+// TANO (Tanoo / Tanough)
+// ROYDEN
+
+struct ErrorWrapper: Error {
+    let error: Error
 }

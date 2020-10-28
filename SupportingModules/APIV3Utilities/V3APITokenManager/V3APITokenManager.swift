@@ -7,23 +7,21 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 public class V3APITokenManager: V3APITokenManagable {
 
     public var token: String? { authorisationStore.accessToken }
     public var tokenIsValid: Bool { authorisationStore.accessTokenValid }
-    public var getTokenObservable: Observable<Void>? {
+    public var getTokenObservable: AnyPublisher<Void, Never>? {
         oAuthRefreshOrWaitActionGenerator.refreshTokenOrWaitAction
     }
 
+    private var cancellable: Set<AnyCancellable> = .init()
     private let authorisationStore: AuthorisationStoring
     private let oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
-    private let scheduler: SchedulerType
-    private let disposeBag: DisposeBag = DisposeBag()
 
-    init(authorisationStore: AuthorisationStoring, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating, subscibeOnScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)) {
-        self.scheduler = subscibeOnScheduler
+    init(authorisationStore: AuthorisationStoring, oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating) {
         self.authorisationStore = authorisationStore
         self.oAuthRefreshOrWaitActionGenerator = oAuthRefreshOrWaitActionGenerator
     }
@@ -34,12 +32,12 @@ public class V3APITokenManager: V3APITokenManagable {
             return
         }
         getTokenObservable
-            .subscribeOn(scheduler)
-            .observeOn(MainScheduler.instance)
-            .take(1)
-            .subscribe(onNext: { _ in
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .prefix(1)
+            .sink(receiveValue: { _ in
                 completion?()
             })
-            .disposed(by: disposeBag)
+            .store(in: &cancellable)
     }
 }

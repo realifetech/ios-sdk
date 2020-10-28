@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 /// Used to request our OAuth token. When new tokens are received, this worker will save them to its store.
 protocol AuthorisationWorkable {
-    var requestInitialAccessToken: Observable<OAuthToken> { get }
+    var requestInitialAccessToken: AnyPublisher<OAuthToken, Error> { get }
 }
 
 struct AuthorisationWorker: AuthorisationWorkable {
@@ -23,7 +23,7 @@ struct AuthorisationWorker: AuthorisationWorkable {
         self.oAuthRepositoryType = oAuthRepositoryType
     }
 
-    var requestInitialAccessToken: Observable<OAuthToken> {
+    var requestInitialAccessToken: AnyPublisher<OAuthToken, Error> {
         return oAuthRepositoryType.requestInitialAccessToken()
             .map { (token: OAuthToken) -> OAuthToken in
                 if let accessToken = token.accessToken, let expiresIn = token.expiresIn {
@@ -32,6 +32,7 @@ struct AuthorisationWorker: AuthorisationWorkable {
                         secondsExpiresIn: expiresIn)
                 }
                 return token
-        }
+            }
+            .eraseToAnyPublisher()
     }
 }

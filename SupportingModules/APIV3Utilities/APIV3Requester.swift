@@ -7,20 +7,25 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 public protocol APIV3Requester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting {
     static func root() -> RequestRootURL
-    static func preDispatchAction() -> Observable<Any?>?
+    static func preDispatchAction() -> AnyPublisher<Any?, Error>?
     static func interceptors() -> [(URLRequest) -> (URLRequest)]?
     static func dateFormat() -> RequesterDateFormat?
 }
 
 extension APIV3Requester {
-    public static func preDispatchAction() -> Observable<Any?>? {
-        return APIV3RequesterHelper.tokenManager.getTokenObservable?.map {
-            $0 as Any
+    public static func preDispatchAction() -> AnyPublisher<Any?, Error>?  {
+        guard let publisher: AnyPublisher<Void, Never> = APIV3RequesterHelper.tokenManager.getTokenObservable else {
+            return nil
         }
+        return publisher
+            .setFailureType(to: Error.self)
+            .map { $0 as Any }
+            .eraseToAnyPublisher()
+
     }
 
     public static func interceptors() -> [(URLRequest) -> (URLRequest)]? {

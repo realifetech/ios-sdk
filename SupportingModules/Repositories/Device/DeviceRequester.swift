@@ -9,6 +9,7 @@
 import Foundation
 
 public struct DeviceRequester: Requester, APIV3Requester {
+
     public static var endpoint: String? = "/device"
 }
 

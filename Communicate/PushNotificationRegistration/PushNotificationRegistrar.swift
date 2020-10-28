@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 enum PushNotificationError: Error {
     case invalidTokenData
@@ -15,13 +15,11 @@ enum PushNotificationError: Error {
 
 class PushNotificationRegistrar {
 
-    private let disposeBag = DisposeBag()
-    private let scheduler: ImmediateSchedulerType
+    private var cancellable: Set<AnyCancellable> = .init()
     private let tokenStore: CodableStorage
     private let tokenKey: String = "APNToken"
 
-    public init(scheduler: ImmediateSchedulerType? = nil, tokenStore: CodableStorage) {
-        self.scheduler = scheduler ?? ConcurrentDispatchQueueScheduler(qos: .background)
+    public init(tokenStore: CodableStorage) {
         self.tokenStore = tokenStore
         checkAndSendStoredToken()
     }
@@ -33,15 +31,22 @@ class PushNotificationRegistrar {
 
     private func registerPushNotification(token: String, completion: @escaping(Result<Void, Error>) -> Void) {
         DeviceRepository.registerForPushNotifications(with: .defaultDeviceToken(withProviderToken: token))
-            .subscribeOn(scheduler)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { _ in
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .sink { endResult in
+                switch endResult {
+                case .finished: break
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            } receiveValue: { _ in
                 self.tokenStore.delete(key: self.tokenKey)
                 completion(.success(()))
-            }, onError: { error in
-                completion(.failure(error))
-            })
-            .disposed(by: disposeBag)
+            }
+            .store(in: &cancellable)
+// TODO: Why can't I specify the queue I receive on?
+//            .receive(on: DispatchQueue.global)
+
+
     }
 
     private func string(withDeviceToken deviceToken: Data) -> String? {

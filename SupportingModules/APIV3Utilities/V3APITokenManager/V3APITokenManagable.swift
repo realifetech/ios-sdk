@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 public protocol V3APITokenManagable {
     var token: String? { get }
     var tokenIsValid: Bool { get }
     /// Deprecated, please use func getValidToken where possible.
-    var getTokenObservable: Observable<Void>? { get }
+    var getTokenObservable: AnyPublisher<Void, Never>? { get }
 
     func getValidToken(_: (() -> Void)?)
 }
@@ -22,7 +22,7 @@ struct EmptyTokenManager: V3APITokenManagable {
 
     var token: String?
     var tokenIsValid: Bool = false
-    var getTokenObservable: Observable<Void>?
+    var getTokenObservable: AnyPublisher<Void, Never>?
 
     func getValidToken(_ completion: (() -> Void)?) {
         completion?()

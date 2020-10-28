@@ -6,7 +6,7 @@
 //  Copyright © 2017 ConcertLive. All rights reserved.
 //
 import Foundation
-import RxSwift
+import Combine
 
 struct OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, Requester {
     static var endpoint: String? = "/oauth/v2/token"
@@ -34,7 +34,7 @@ extension OAuthRequester {
         return .formatted(format: "yyyy-MM-dd'T'HH:mm:ssZ", localeIdentifier: "en_US_POSIX")
     }
 
-    static func preDispatchAction() -> Observable<Any?>? { return nil }
+    static func preDispatchAction() -> AnyPublisher<Any?, Error>? { return nil }
 
     static func interceptors() -> [(URLRequest) -> (URLRequest)]? {
         return [
