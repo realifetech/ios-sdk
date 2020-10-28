@@ -102,7 +102,7 @@ public struct DiskCache {
         guard let expiryDate = Int64(expiry) else { return false }
         let currentDate = Int64(Date().toMilliseconds())
         if alsoOutdated {
-            return currentDate - expiryDate > fileDuration
+            return (currentDate > expiryDate) && (currentDate - expiryDate > fileDuration)
         } else {
             return currentDate > expiryDate
         }

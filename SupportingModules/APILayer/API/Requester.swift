@@ -3,11 +3,12 @@
 //  RX
 //
 //  Created by Ross Patman on 22/10/2017.
+//  Converted to Combine by Olivier Butler on 27/10/2020
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 public enum RequesterDateFormat {
     case timestampMilliseconds
@@ -18,7 +19,7 @@ public enum RequesterDateFormat {
 public protocol Requester {
     static func root() -> RequestRootURL
     static var endpoint: String? { get }
-    static func preDispatchAction() -> Observable<Any?>?
+    static func preDispatchAction() -> AnyPublisher<Any?, Never>?
     static func interceptors() -> [(URLRequest) -> (URLRequest)]?
     static func dateFormat() -> RequesterDateFormat?
 }
@@ -31,8 +32,8 @@ public extension Requester {
         return RequestCreator.createRequest(withRoot: Self.root(), andEndpoint: theEndpoint, httpMethod: .GET, body: nil, headers: nil)
     }
 
-    static func response(forRequest request: URLRequest) -> Observable<Any> {
-        var interceptedAction: Observable<Any> {
+    static func response(forRequest request: URLRequest) -> AnyPublisher<Any, Error> {
+        var interceptedAction: AnyPublisher<Any, Error> {
             let request = Self.applyInterceptors(request: request)
             return RequestDispatcher.dispatch(request: request)
         }

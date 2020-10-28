@@ -7,32 +7,30 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
+import Combine
 
 public struct RequestDispatcher {
-    static func dispatch(request: URLRequest) -> Observable<Any> {
+    static func dispatch(request: URLRequest) -> AnyPublisher<Any, Error> {
         RequestLogger.log(request: request)
-        return URLSession.shared.rx.response(request: request)
-            .flatMap({ (tuple: (response: URLResponse, data: Data)) -> Observable<Any> in
-                let (response, data) = tuple
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { (data, response) in
                 if let response = response as? HTTPURLResponse {
                     RequestLogger.log(response: response, withData: data)
-                    if 200 ..< 300 ~= response.statusCode, let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) {
-                        return Observable.from(optional: jsonObject)
+                    if 200 ..< 300 ~= response.statusCode {
+                        let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+                        return Just(jsonObject)
                     } else {
-                        return Observable.error(APIError.constructedError(data: data, statusCode: response.statusCode))
+                        return Fail<Any, Error>(error: APIError.constructedError(data: data, statusCode: response.statusCode))
                     }
                 } else {
-                    return Observable.error(APIError.unparseableError())
+                    return Fail<Any, Error>(error: APIError.unparseableError())
                 }
-            })
-            .do(onNext: { (_) in
-                RequestTimeLogger.shared.removeRequest(withIdentifier: request.identifier)
-            }, onError: { (_) in
-                RequestTimeLogger.shared.removeRequest(withIdentifier: request.identifier)
-            }, onSubscribe: {
+            }
+            .handleEvents(receiveSubscription: { _ in
                 RequestTimeLogger.shared.addRequest(withIdentifier: request.identifier)
+            }, receiveOutput: { _ in
+                RequestTimeLogger.shared.removeRequest(withIdentifier: request.identifier)
             })
+            .eraseToAnyPublisher()
     }
 }
