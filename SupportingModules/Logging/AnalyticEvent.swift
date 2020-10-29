@@ -1,5 +1,5 @@
 //
-//  AnalyticsEvent.swift
+//  AnalyticEvent.swift
 //  Analytics
 //
 //  Created by Jonathon Albert on 15/10/2020.
@@ -8,7 +8,17 @@
 
 import Foundation
 
-public struct AnalyticsEvent: Codable {
+// TODO: Move this to a more suitable location
+extension Date {
+
+    var rltFormatted: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
+        return formatter.string(from: self)
+    }
+}
+
+public struct AnalyticEvent: Codable {
 
     public var storedName: String?
     public let type: String
@@ -16,27 +26,26 @@ public struct AnalyticsEvent: Codable {
     public let new: [String: String]?
     public let old: [String: String]?
     public let version: String
+    public let timestamp: Date
 
-    public var newString: String? {
-        escape(new)
-    }
-
-    public var oldString: String? {
-        escape(old)
-    }
+    public var newString: String? { escape(new) }
+    public var oldString: String? { escape(old) }
+    public var timestampString: String { timestamp.rltFormatted }
 
     public init(
         type: String,
         action: String,
         new: [String: String]? = nil,
         old: [String: String]? = nil,
-        version: String
+        version: String,
+        timestamp: Date = Date()
     ) {
         self.type = type
         self.action = action
         self.new = new
         self.old = old
         self.version = version
+        self.timestamp = timestamp
     }
 
     private func escape(_ dictionary: [String: String]?) -> String? {
@@ -48,8 +57,8 @@ public struct AnalyticsEvent: Codable {
             else {
                 return nil
         }
-        return NSRegularExpression.escapedPattern(for: jsonString)
+        return NSRegularExpression.escapedPattern(for: jsonString).replacingOccurrences(of: "\\", with: "")
     }
 }
 
-extension AnalyticsEvent: Equatable {}
+extension AnalyticEvent: Equatable {}

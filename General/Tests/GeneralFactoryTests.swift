@@ -13,12 +13,15 @@ class GeneralFactoryTests: XCTestCase {
 
     func test_setsDeviceId() {
         let testId = "123"
-        let sut = GeneralFactory.makeGeneralModule(
+        let staticDeviceInformation = StaticDeviceInformation(
             deviceId: testId,
             deviceModel: "any",
             osVersion: "thing",
-            sdkVersion: "version",
-            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper())
+            sdkVersion: "goes")
+        let sut = GeneralFactory.makeGeneralModule(
+            staticDeviceInformation: staticDeviceInformation,
+            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper(),
+            deviceRegisteredSubject: .init(false))
         XCTAssertEqual(testId, sut.deviceId)
     }
 }

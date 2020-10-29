@@ -90,7 +90,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
     }
 
     func test_registerDevice_retriesOnFailure() {
-        let expectation1 = XCTestExpectation(description: "Async block completed")
+        let expectation1 = XCTestExpectation(description: "Async test block completed")
         let expectation2 = XCTestExpectation(description: "Device registered")
         let minimumTimeInterval = TimeInterval.init(floatLiteral: Double(self.debounceMilliseconds)/1000)
         reachabilityChecker.hasNetworkConnection = true
@@ -99,11 +99,11 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
         sut.registerDevice(testDevice, {
             let recordedInterval = Date().timeIntervalSince(startTime)
             XCTAssertGreaterThan(recordedInterval, minimumTimeInterval)
-            XCTAssertLessThan(recordedInterval, minimumTimeInterval*1.5)
+            XCTAssertLessThan(recordedInterval, minimumTimeInterval*1.8)
             expectation2.fulfill()
         })
         XCTAssertNil(MockDeviceRepository.deviceReceived)
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) {
             expectation1.fulfill()
             MockDeviceRepository.observableToReturn = .just(true)
         }

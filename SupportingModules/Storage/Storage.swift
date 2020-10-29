@@ -9,6 +9,7 @@
 import Foundation
 
 typealias Handler<T> = (Result<T, Error>) -> Void
+// TODO: Rename to DataStorage
 typealias Storage = ReadableStorage & WritableStorage
 
 protocol ReadableStorage {

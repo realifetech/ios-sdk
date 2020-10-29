@@ -8,18 +8,20 @@
 
 import Foundation
 
-class PersistentQueue<T: Codable & Identifiable> {
+class PersistentQueue<T: Codable & Identifiable>: QueueProviding {
+
+    // MARK: - Private Implementation
 
     private var locked: Bool = false
     private var queue: [T] = []
 
-    private let storage: CodableStorage
+    private let storage: CodableStorageProtocol
 
-    init(name: String) {
-        self.storage = CodableStorage(
+    init(name: String, storage: CodableStorageProtocol? = nil) {
+        self.storage = storage ?? CodableStorage(
             storage: DiskStorage(path: URL(fileURLWithPath: NSTemporaryDirectory())),
             storagePrefix: name)
-        guard let storedQueue: [T] = try? storage.fetchAll() else { return }
+        guard let storedQueue: [T] = try? self.storage.fetchAll() else { return }
         queue = storedQueue
     }
 
@@ -50,9 +52,8 @@ class PersistentQueue<T: Codable & Identifiable> {
         }
         locked = false
     }
-}
 
-extension PersistentQueue: QueueProviding {
+    // MARK: - Queue Providing
 
     var next: Result<QueueItem<T>, QueueRetreivalError> { getNextQueueItem() }
     var count: Int { queue.count }

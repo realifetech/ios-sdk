@@ -1,5 +1,5 @@
 //
-//  AnalyticsEventAndCompletion.swift
+//  AnalyticEventAndCompletion.swift
 //  RealifeTech
 //
 //  Created by Olivier Butler on 21/10/2020.
@@ -10,28 +10,35 @@ import Foundation
 
 public typealias EventLoggedCompletion = (Result<Void, Error>) -> Void
 
-struct AnalyticsEventAndCompletion: Identifiable {
-    let uniqueId: UUID = UUID()
-    let analyticsEvent: AnalyticsEvent
-    let analyticsCompletion: EventLoggedCompletion?
-}
+struct AnalyticEventAndCompletion: Identifiable {
+    let uniqueId: UUID
+    let analyticEvent: AnalyticEvent
+    let analyticCompletion: EventLoggedCompletion?
 
-extension AnalyticsEventAndCompletion: Equatable {
-    static func == (lhs: AnalyticsEventAndCompletion, rhs: AnalyticsEventAndCompletion) -> Bool {
-        return lhs.analyticsEvent == rhs.analyticsEvent
+    public init(analyticEvent: AnalyticEvent, analyticCompletion: EventLoggedCompletion?) {
+        self.analyticEvent = analyticEvent
+        self.analyticCompletion = analyticCompletion
+        self.uniqueId = UUID()
     }
 }
 
-extension AnalyticsEventAndCompletion: Encodable {
+extension AnalyticEventAndCompletion: Equatable {
+    static func == (lhs: AnalyticEventAndCompletion, rhs: AnalyticEventAndCompletion) -> Bool {
+        return lhs.analyticEvent == rhs.analyticEvent && lhs.uniqueId == rhs.uniqueId
+    }
+}
+
+extension AnalyticEventAndCompletion: Encodable {
     enum CodingKeys: String, CodingKey {
-        case analyticsEvent
+        case analyticEvent, uniqueId
     }
 }
 
-extension AnalyticsEventAndCompletion: Decodable {
+extension AnalyticEventAndCompletion: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        analyticsEvent = try values.decode(AnalyticsEvent.self, forKey: .analyticsEvent)
-        analyticsCompletion = nil
+        analyticEvent = try values.decode(AnalyticEvent.self, forKey: .analyticEvent)
+        uniqueId = try values.decode(UUID.self, forKey: .uniqueId)
+        analyticCompletion = nil
     }
 }

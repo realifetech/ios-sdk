@@ -7,25 +7,26 @@
 //
 
 import Foundation
+import Combine
 
 public enum GeneralFactory {
     public static func makeGeneralModule(
-        deviceId: String,
-        deviceModel: String,
-        osVersion: String,
-        sdkVersion: String,
-        reachabilityChecker: ReachabilityChecking
+        staticDeviceInformation: StaticDeviceInformation,
+        reachabilityChecker: ReachabilityChecking,
+        deviceRegisteredSubject: CurrentValueSubject<Bool, Never>
     ) -> General {
         let deviceRegistrationLoopHandler = DeviceRegistrationLoopHandler(
             reachabilityChecker: reachabilityChecker,
             debounceRateSeconds: 10)
+        let deviceRegistrationStore = CodableStorage(
+            storage: UserDefaultsStorage(),
+            storagePrefix: "GeneralDeviceRegistration")
         let deviceRegistrationWorker = DeviceRegistrationWorker(
-            deviceId: deviceId,
-            deviceModel: deviceModel,
-            osVersion: osVersion,
-            sdkVersion: sdkVersion,
+            staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker,
-            loopHandler: deviceRegistrationLoopHandler)
+            loopHandler: deviceRegistrationLoopHandler,
+            deviceRegisteredSubject: deviceRegisteredSubject,
+            store: deviceRegistrationStore)
         return GeneralImplementing(deviceRegistrationWorker: deviceRegistrationWorker)
     }
 }
