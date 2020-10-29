@@ -92,7 +92,7 @@ class DeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
             .registerDevice(device)
             .share()
         let deviceRegistrationErrors: AnyPublisher<Error, Never> = allDeviceRegistrationEvents
-            .compactMap { (success) -> Error? in
+            .compactMap { _ -> Error? in
                 return nil
             }
             .catch { (error) -> AnyPublisher<Error, Never> in
@@ -100,7 +100,9 @@ class DeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
             }
             .eraseToAnyPublisher()
         let successObservable: AnyPublisher<Bool, Error> = allDeviceRegistrationEvents
-            .catch { _ in Empty<Bool, Never>() }
+            .catch { _ in
+                Empty<Bool, Never>()
+            }
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
         let retryObservable: AnyPublisher<Bool, Error> = interval

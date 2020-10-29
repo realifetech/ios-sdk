@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 
 // Converts cached files into Codable objects
 public struct DiskCacheCodableInterface {

@@ -45,8 +45,6 @@ class PushNotificationRegistrar {
             .store(in: &cancellable)
 // TODO: Why can't I specify the queue I receive on?
 //            .receive(on: DispatchQueue.global)
-
-
     }
 
     private func string(withDeviceToken deviceToken: Data) -> String? {

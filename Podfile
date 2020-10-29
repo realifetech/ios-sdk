@@ -5,8 +5,6 @@ workspace 'RealifeTech-SDK'
 project 'RealifeTech-SDK'
 
 pod 'SwiftLint'
-pod 'RxSwift', '~> 5.1.1'
-pod 'RxCocoa', '~> 5.1.1'
 pod 'Apollo', '0.30.0'
 
 target 'RealifeTech' do
@@ -18,7 +16,19 @@ target 'RealifeTech' do
 
   target 'RealifeTechTests' do
     # Pods for testing
+    pod 'RxSwift', '~> 5.1.1'
+    pod 'RxCocoa', '~> 5.1.1'
     pod 'RxTest', '~> 5.1.1'
   end
+
+end
+
+
+project 'DummyProject/PrePodDummy/PrePodDummy'
+
+target 'PrePodDummy' do
+  use_frameworks!
+  pod 'Apollo', '0.30.0'
+  pod 'SwiftLint'
 
 end

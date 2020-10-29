@@ -82,15 +82,21 @@ public extension RemoteDiskCacheDataProviding {
     private static func remote<T: Codable>(ofType type: T.Type, forRequest request: URLRequest, saveToFileWithName fileName: String?, ignoreSystemCache: Bool = false) -> AnyPublisher<T, Error> {
         var request = request
         if ignoreSystemCache { request.cachePolicy = .reloadIgnoringLocalCacheData }
-        return Rqstr.response(forRequest: request).tryMap { json -> T in
+        return Rqstr.response(forRequest: request).flatMap { justT -> AnyPublisher<T, Error> in
+            guard let justT = justT as? Just<Any> else {
+                return Fail<T, Error>(error: DiskCacheDataProvidingError.unparseable).eraseToAnyPublisher()
+            }
             do {
-                let jsonData = try JSONSerialization.data(withJSONObject: json, options: [])
+                let jsonData = try JSONSerialization.data(withJSONObject: justT.output, options: [])
                 if let fileName = fileName, let string = String(data: jsonData, encoding: .utf8) {
                     DiskCache.save(file: string, withFileName: fileName)
                 }
-                return try DiskCacheCodableInterface.decode(data: jsonData, toType: T.self, dateFormat: Rqstr.dateFormat())
+                let result = try DiskCacheCodableInterface.decode(data: jsonData, toType: T.self, dateFormat: Rqstr.dateFormat())
+                return Just(result)
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
             } catch {
-                throw DiskCacheDataProvidingError.unparseable
+                return Fail<T, Error>(error: DiskCacheDataProvidingError.unparseable).eraseToAnyPublisher()
             }
         }.eraseToAnyPublisher()
     }

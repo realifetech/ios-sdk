@@ -6,7 +6,6 @@
 //  Copyright © 2016 ConcertLive. All rights reserved.
 //
 import Foundation
-import RxSwift
 
 /// Used to store authorisation tokens
 protocol AuthorisationStoring {

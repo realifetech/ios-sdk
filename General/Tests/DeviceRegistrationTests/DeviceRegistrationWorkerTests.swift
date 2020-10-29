@@ -124,18 +124,18 @@ private class MockCodableStore: CodableStorageProtocol {
     var valueToReturn: Any?
     var valueSaved: Any?
 
-    func fetchAll<T>() throws -> [T] where T : Decodable {
+    func fetchAll<T>() throws -> [T] where T: Decodable {
         throw MockCodableStoreError.unexpectedMethodCall
     }
 
-    func fetch<T>(for key: String) throws -> T where T : Decodable {
+    func fetch<T>(for key: String) throws -> T where T: Decodable {
         guard let value = valueToReturn as? T else {
             throw MockCodableStoreError.noValueSaved
         }
         return value
     }
 
-    func save<T>(_ value: T, for key: String) throws where T : Encodable {
+    func save<T>(_ value: T, for key: String) throws where T: Encodable {
         self.valueSaved = value
     }
 

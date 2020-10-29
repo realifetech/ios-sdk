@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DummyProject/PrePodDummy/PrePodDummy.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:RealifeTech-SDK.xcodeproj">
    </FileRef>
    <FileRef
