@@ -32,8 +32,9 @@ Pod::Spec.new do |spec|
   spec.swift_version = "5.0"
   spec.source        = { :git => 'https://github.com/realifetech/ios-sdk.git', :branch => 'develop', :tag => '0.0.1'}
   spec.source_files = [ 
-    '**/*.swift', 
-    'RealifeTech/RealifeTech.h']
+      '**/*.swift',
+      'RealifeTech/RealifeTech.h'
+  ]
   spec.exclude_files =  [
       'DummyProject/**/*',
       'Pods/**/*',
