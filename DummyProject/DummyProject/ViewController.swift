@@ -19,13 +19,6 @@ class ViewController: UIViewController {
                                    old: nil,
                                    version: "1.0",
                                    timestamp: Date())
-        RealifeTech.Analytics.logEvent(event) { result in
-            switch result {
-            case .success:
-                print("success")
-            case .failure(let error):
-                print(error)
-            }
-        }
+        RealifeTech.Analytics.logEvent(event) { _ in }
     }
 }

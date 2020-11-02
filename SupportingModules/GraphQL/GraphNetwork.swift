@@ -97,7 +97,10 @@ extension GraphNetwork: HTTPNetworkTransportGraphQLErrorDelegate {
         receivedGraphQLErrors errors: [GraphQLError],
         retryHandler: @escaping (Bool) -> Void
     ) {
-        print(errors)
+        #if APILOGGING
+        print("GraphNetwork receivedGraphQLErrors: \(errors)")
+        #endif
+        retryHandler(false)
     }
 }
 
@@ -112,13 +115,8 @@ extension GraphNetwork: HTTPNetworkTransportRetryDelegate {
         response: URLResponse?,
         continueHandler: @escaping (_ action: HTTPNetworkTransport.ContinueAction) -> Void
     ) {
-        #if APILOGGING
-        print("\(error.localizedDescription)")
-        #endif
         guard let urlResponse = response as? HTTPURLResponse else { return }
         switch urlResponse.statusCode {
-        case -1009:
-            print("offline")
         case 400:
             tokenHelper.getValidToken {
                 continueHandler(.retry)

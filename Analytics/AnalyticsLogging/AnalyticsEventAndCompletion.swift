@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias EventLoggedCompletion = (Result<Void, Error>) -> Void
+public typealias EventLoggedCompletion = (Result<Bool, Error>) -> Void
 
 struct AnalyticEventAndCompletion: Identifiable {
     let uniqueId: UUID

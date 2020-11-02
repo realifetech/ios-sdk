@@ -58,7 +58,7 @@ public class GraphQLDispatcher: GraphQLDispatching {
 }
 
 extension GraphQLDispatcher: LogEventSending {
-    public func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Void, Error>) -> Void) {
+    public func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
         let event = Apollo.AnalyticEvent(type: event.type,
                                          action: event.action,
                                          new: event.newString,
@@ -67,8 +67,8 @@ extension GraphQLDispatcher: LogEventSending {
                                          timestamp: event.timestampString)
         dispatchMutation(mutation: Apollo.PutAnalyticEventMutation(input: event), completion: { result in
             switch result {
-            case .success:
-                return completion(.success(()))
+            case .success(let success):
+                return completion(.success(success.data?.putAnalyticEvent.success ?? false))
             case .failure(let error):
                 return completion(.failure(error))
             }

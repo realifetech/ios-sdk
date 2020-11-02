@@ -158,7 +158,7 @@ class AnalyticsLoggerTests: XCTestCase {
 
 private class MockQueue<T: Codable & Identifiable>: QueueProviding {
 
-    var next: Result<QueueItem<T>, QueueRetreivalError> { getNext() }
+    var next: Result<QueueItem<T>, QueueRetrievalError> { getNext() }
     var count: Int { underlyingStorage.count }
     var isEmpty: Bool { underlyingStorage.isEmpty }
     var queueWasEmptiedExpectation: XCTestExpectation?
@@ -172,7 +172,7 @@ private class MockQueue<T: Codable & Identifiable>: QueueProviding {
     }
     var receivedQueueActions: [QueueAction] = []
 
-    func getNext() -> Result<QueueItem<T>, QueueRetreivalError> {
+    func getNext() -> Result<QueueItem<T>, QueueRetrievalError> {
         guard let next = underlyingStorage.first else {
             return .failure(.empty)
         }

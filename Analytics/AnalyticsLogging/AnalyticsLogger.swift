@@ -61,11 +61,16 @@ class AnalyticsLogger {
                 return
         }
         dispatcher.logEvent(queueItem.item.analyticEvent) { result in
-            // TODO: Add logic so that we only disgard from the queue in the case of non-server error
-            queueItem.releaseQueue(.removeFirst)
             queueItem.item.analyticCompletion?(result)
             switch result {
-            case .success:
+            case .success(let success):
+                queueItem.releaseQueue(.removeFirst)
+                guard success else {
+                    DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
+                        self.startLoop()
+                    }
+                    return
+                }
                 self.startLoop()
             case .failure:
                 DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {

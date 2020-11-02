@@ -13,9 +13,9 @@ import RealifeTech
 class MockAnalyticsLogger: AnalyticsLogging, LogEventSending {
 
     var eventsLogged: [AnalyticEvent] = []
-    var completionToSend: Result<Void, Error> = .success(())
+    var completionToSend: Result<Bool, Error> = .success(true)
 
-    func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Void, Error>) -> Void) {
+    func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
         self.eventsLogged.append(event)
         completion(completionToSend)
     }

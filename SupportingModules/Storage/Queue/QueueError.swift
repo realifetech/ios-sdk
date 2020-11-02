@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum QueueRetreivalError: Error {
+enum QueueRetrievalError: Error {
     case empty, queueIsLocked
 }
