@@ -103,7 +103,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
             expectation2.fulfill()
         })
         XCTAssertNil(MockDeviceRepository.deviceReceived)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3)) {
             expectation1.fulfill()
             MockDeviceRepository.observableToReturn = .just(true)
         }

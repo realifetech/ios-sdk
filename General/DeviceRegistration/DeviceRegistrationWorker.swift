@@ -26,7 +26,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
     var device: Device {
         Device(deviceId: staticDeviceInformation.deviceId,
                model: staticDeviceInformation.deviceModel,
-               sdkVersion: staticDeviceInformation.sdkVersion,
+               sdkVersion: "SDK_" + staticDeviceInformation.sdkVersion,
                osVersion: staticDeviceInformation.osVersion,
                bluetoothOn: reachabilityChecker.isBluetoothConnected,
                wifiConnected: reachabilityChecker.isConnectedToWifi)

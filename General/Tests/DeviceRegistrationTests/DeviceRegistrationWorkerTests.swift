@@ -92,7 +92,7 @@ class DeviceRegistrationWorkerTests: XCTestCase {
         let testDevice = Device(
             deviceId: testId,
             model: testModel,
-            sdkVersion: sdkVersion,
+            sdkVersion: "SDK_" + sdkVersion,
             osVersion: osVersion,
             bluetoothOn: testBluetooth,
             wifiConnected: mockReachabilityChecker.isConnectedToWifi)
