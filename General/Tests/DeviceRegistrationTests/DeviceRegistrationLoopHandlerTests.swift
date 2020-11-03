@@ -107,7 +107,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
             expectation1.fulfill()
             MockDeviceRepository.observableToReturn = .just(true)
         }
-        wait(for: [expectation1, expectation2], timeout: 0.1, enforceOrder: true)
+        wait(for: [expectation1, expectation2], timeout: 0.3, enforceOrder: true)
     }
 }
 

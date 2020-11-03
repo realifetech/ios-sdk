@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import CoreBluetooth
 
 public struct ReachabilityFactory {
 
     public static func makeReachabilityHelper() -> ReachabilityChecking {
-        return ReachabilityChecker()
+        let bluetoothManager = BluetoothManagerWrapper()
+        return ReachabilityChecker(bluetoothManager: bluetoothManager)
     }
 }
