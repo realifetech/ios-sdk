@@ -1,5 +1,5 @@
 //
-//  CBCentralManager+Extension.swift
+//  BluetoothManagerWrapper.swift
 //  RealifeTech
 //
 //  Created by Olivier Butler on 03/11/2020.
