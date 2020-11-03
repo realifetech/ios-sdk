@@ -1011,7 +1011,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\n#cd \"${SRCROOT}/SupportingModules/GraphQL\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://graphql-dev.realifetech.com/graphql\" --header=\"Authorization: Bearer OWYxMzYyNDNmMjIyNTU1MWY0NjRiZDkzZDc1YWUwMmIyYjE4ZGJkNzJjZDA1Y2VjYjU0NGMzZmNkOWY1ZjYwMQ\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"Apollo\" --includes=${SRCROOT}/SupportingModules/GraphQL/GraphQLFiles/*.graphql --localSchemaFile=\"${SRCROOT}/SupportingModules/GraphQL/schema.json\" API/\n";
+			shellScript = "#SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\n#cd \"${SRCROOT}/SupportingModules/GraphQL\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://graphql-dev.realifetech.com/graphql\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"Apollo\" --includes=${SRCROOT}/SupportingModules/GraphQL/GraphQLFiles/*.graphql --localSchemaFile=\"${SRCROOT}/SupportingModules/GraphQL/schema.json\" API/\n";
 		};
 		4383C628ACF6BFA6AB24496F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
