@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		18AB9A0A153B6F33CCB3C828 /* Pods_DummyProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED78014D9AFFAFD9ADE589 /* Pods_DummyProject.framework */; };
+		48058BC025542A2D00F2647A /* PushNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48058BBF25542A2D00F2647A /* PushNotificationViewController.swift */; };
+		48058BCD2554482800F2647A /* AudienceMembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48058BCC2554482800F2647A /* AudienceMembershipViewController.swift */; };
+		48058BD32554483600F2647A /* EventLoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48058BD22554483600F2647A /* EventLoggingViewController.swift */; };
+		48058BD72554491400F2647A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48058BD62554491400F2647A /* UIViewController+Extensions.swift */; };
 		48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16A251E1ECF006CA623 /* AppDelegate.swift */; };
 		48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */; };
 		48D6F16F251E1ECF006CA623 /* SDKConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16E251E1ECF006CA623 /* SDKConfigurationViewController.swift */; };
@@ -30,6 +34,10 @@
 /* Begin PBXFileReference section */
 		16ED78014D9AFFAFD9ADE589 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		48058BBF25542A2D00F2647A /* PushNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationViewController.swift; sourceTree = "<group>"; };
+		48058BCC2554482800F2647A /* AudienceMembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceMembershipViewController.swift; sourceTree = "<group>"; };
+		48058BD22554483600F2647A /* EventLoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLoggingViewController.swift; sourceTree = "<group>"; };
+		48058BD62554491400F2647A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		48D6F167251E1ECF006CA623 /* DummyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F16A251E1ECF006CA623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +82,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		48058BC325542A3400F2647A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				48D6F170251E1ECF006CA623 /* Main.storyboard */,
+				48D6F16E251E1ECF006CA623 /* SDKConfigurationViewController.swift */,
+				48058BBF25542A2D00F2647A /* PushNotificationViewController.swift */,
+				48058BCC2554482800F2647A /* AudienceMembershipViewController.swift */,
+				48058BD22554483600F2647A /* EventLoggingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		48D6F15E251E1ECF006CA623 = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +118,8 @@
 			children = (
 				48D6F16A251E1ECF006CA623 /* AppDelegate.swift */,
 				48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */,
-				48D6F16E251E1ECF006CA623 /* SDKConfigurationViewController.swift */,
-				48D6F170251E1ECF006CA623 /* Main.storyboard */,
+				48058BD62554491400F2647A /* UIViewController+Extensions.swift */,
+				48058BC325542A3400F2647A /* ViewControllers */,
 				48D6F173251E1ED0006CA623 /* Assets.xcassets */,
 				48D6F175251E1ED0006CA623 /* LaunchScreen.storyboard */,
 				48D6F178251E1ED0006CA623 /* Info.plist */,
@@ -273,8 +293,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				48D6F16F251E1ECF006CA623 /* SDKConfigurationViewController.swift in Sources */,
+				48058BC025542A2D00F2647A /* PushNotificationViewController.swift in Sources */,
+				48058BD32554483600F2647A /* EventLoggingViewController.swift in Sources */,
+				48058BD72554491400F2647A /* UIViewController+Extensions.swift in Sources */,
 				48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */,
 				48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */,
+				48058BCD2554482800F2647A /* AudienceMembershipViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +459,7 @@
 			baseConfigurationReference = D44252E7D5EC503A01F83463 /* Pods-DummyProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = DummyProject/Info.plist;
@@ -444,6 +469,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.DummyProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -454,6 +480,7 @@
 			baseConfigurationReference = DF57AA305C3C26555AFAEF3A /* Pods-DummyProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = DummyProject/Info.plist;
@@ -463,6 +490,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.DummyProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

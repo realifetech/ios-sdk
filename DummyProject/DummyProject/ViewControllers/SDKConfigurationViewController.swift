@@ -8,6 +8,7 @@
 
 import UIKit
 import RealifeTech
+import CoreBluetooth
 
 class SDKConfigurationViewController: UIViewController {
 
@@ -36,19 +37,39 @@ class SDKConfigurationViewController: UIViewController {
     }
 
     @IBAction func sdkReadyTapped(_ sender: Any) {
-        let alert = UIAlertController(
+        self.presentDismissableMessageAlert(
             title: "SDK is Ready?",
-            message: "\(RealifeTech.General.sdkReady)",
-            preferredStyle: .alert)
-        alert.addAction(.init(title: "O.K.", style: .default, handler: { _ in self.dismiss(animated: true, completion: nil)}))
-        self.present(alert, animated: true, completion: nil)
+            message: "\(RealifeTech.General.sdkReady)")
     }
 
     @IBAction func resetDevice(_ sender: Any) {
+        clearAllData()
+    }
+
+    @IBAction func triggerBluetoothPermissions(_ sender: Any) {
+        triggerBluetoothPermissionsDialogue()
+    }
+}
+
+// MARK: - Bluetooth permissions
+extension SDKConfigurationViewController: CBCentralManagerDelegate  {
+
+    func triggerBluetoothPermissionsDialogue() {
+        let manager = CBCentralManager()
+        manager.delegate = self
+    }
+
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {}
+}
+
+// MARK: - Reset device
+extension SDKConfigurationViewController {
+    func clearAllData() {
         clearAllFile()
         clearUserDefaults()
         clearKeychain()
     }
+
 
     func clearAllFile() {
         let fileManager = FileManager.default
@@ -80,4 +101,3 @@ class SDKConfigurationViewController: UIViewController {
         }
     }
 }
-
