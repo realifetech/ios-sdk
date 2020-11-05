@@ -26,6 +26,11 @@ $ pod install
 
 You will have been provided with an application code and a API secret when you setup your RealifeTech account. These must be passed into the SDK when your app launches using the `RealifeTech.configureSDK(with: SDKConfiguration)` method. You can also (optionally) pass in URLs for the RealifeTech SDK to use when making external calls- this should not be required in most situations.
 
+Make sure you also import the RealifeTech module in the head the AppDelegate, or whichever files you call the SDK from:
+``` swift
+import RealifeTech
+```
+
 We recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)` method:
 
 ``` swift
@@ -37,25 +42,7 @@ let configuration = SDKConfiguration(
 )
 RealifeTech.configureSDK(with: configuration)
 ```
-Make sure you also import the RealifeTech module in the head the AppDelegate, or whichever files you call the SDK from:
-``` swift
-import RealifeTech
-```
 # General
-
-## Configuration
-
-Use the following function(s) to configure the SDK for use. You will be provided the values necessary as part of your onboarding.
-
-``` swift
-let configuration = SDKConfiguration(
-    appCode: "APPLICATION_CODE",
-    clientSecret: "API_SECRET",
-    apiUrl: "API_URL", // OPTIONAL
-    graphApiUrl: "HRAPH_API_URL" // OPTIONAL
-)
-RealifeTech.configureSDK(with: configuration)
-```
 
 ## Device Registration
 Interfacing with out backend systems requires that your device be registered with them. You can use the below function to register the device.
