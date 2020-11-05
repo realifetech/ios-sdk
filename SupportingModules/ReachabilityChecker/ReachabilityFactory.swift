@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreBluetooth
 
 public struct ReachabilityFactory {
 

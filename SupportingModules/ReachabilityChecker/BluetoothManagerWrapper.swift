@@ -13,9 +13,9 @@ protocol BluetoothManagable {
     var bluetoothEnabled: Bool { get }
 }
 
-class BluetoothManagerWrapper: NSObject, BluetoothManagable {
+class BluetoothManagerWrapper: BluetoothManagable {
 
-    static var bluetoothPermissionGranted: Bool {
+    var bluetoothPermissionGranted: Bool {
         if #available(iOS 13.1, *) {
             return CBCentralManager.authorization == .allowedAlways
         } else {
@@ -23,20 +23,8 @@ class BluetoothManagerWrapper: NSObject, BluetoothManagable {
         }
     }
 
-    var bluetoothEnabled: Bool = false
-
-    private let underlyingManager: CBCentralManager?
-
-    override init() {
-        underlyingManager = BluetoothManagerWrapper.bluetoothPermissionGranted ? CBCentralManager() : nil
-        super.init()
-        underlyingManager?.delegate = self
-    }
-}
-
-extension BluetoothManagerWrapper: CBCentralManagerDelegate {
-
-    public func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        bluetoothEnabled = central.state == .poweredOn
+    var bluetoothEnabled: Bool {
+        guard bluetoothPermissionGranted else { return false }
+        return CBCentralManager().state == .poweredOn
     }
 }
