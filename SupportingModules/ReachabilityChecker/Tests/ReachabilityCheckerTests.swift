@@ -16,37 +16,35 @@ class ReachabilityCheckerTests: XCTestCase {
         let mockBluetoothManager = MockBluetoothManager()
         mockBluetoothManager.bluetoothEnabled = true
         let sut = ReachabilityChecker(bluetoothManager: mockBluetoothManager)
-        sut.centralManagerDidUpdateState(mockBluetoothManager)
         XCTAssertTrue(sut.isBluetoothConnected)
     }
 
     func test_bluetooth_disabled() {
         let mockBluetoothManager = MockBluetoothManager()
         let sut = ReachabilityChecker(bluetoothManager: mockBluetoothManager)
-        sut.centralManagerDidUpdateState(mockBluetoothManager)
         XCTAssertFalse(sut.isBluetoothConnected)
     }
 
     func test_wifi_connected() {
         let mockHelper = MockWifiConnectivityChecker()
         mockHelper.wifiEnabled = true
-        let sut = ReachabilityChecker(networkConnectivityChecker: mockHelper)
+        let sut = ReachabilityChecker(
+            bluetoothManager: MockBluetoothManager(),
+            networkConnectivityChecker: mockHelper)
         XCTAssertTrue(sut.isConnectedToWifi)
     }
 
     func test_wifi_notConnected() {
         let mockHelper = MockWifiConnectivityChecker()
-        let sut = ReachabilityChecker(networkConnectivityChecker: mockHelper)
+        let sut = ReachabilityChecker(
+            bluetoothManager: MockBluetoothManager(),
+            networkConnectivityChecker: mockHelper)
         XCTAssertFalse(sut.isConnectedToWifi)
     }
 
-    private class MockBluetoothManager: CBCentralManager {
+    private class MockBluetoothManager: BluetoothManagable {
 
         var bluetoothEnabled: Bool = false
-
-        override var state: CBManagerState {
-            return bluetoothEnabled ? .poweredOn : .poweredOff
-        }
     }
 
     private class MockWifiConnectivityChecker: NetworkConnectivityChecker {
