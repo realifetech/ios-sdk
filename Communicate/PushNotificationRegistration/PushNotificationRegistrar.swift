@@ -56,8 +56,8 @@ extension PushNotificationRegistrar: PushNotificationRegistering {
         registerPushNotification(token: token, completion: completion)
     }
 
-    public func registerForPushNotifications(token: Data, completion: @escaping(Result<Void, Error>) -> Void) {
-        guard let token = string(withDeviceToken: token) else {
+    public func registerForPushNotifications(tokenData: Data, completion: @escaping(Result<Void, Error>) -> Void) {
+        guard let token = string(withDeviceToken: tokenData) else {
             return completion(.failure(PushNotificationError.invalidTokenData))
         }
         try? tokenStore.save(token, for: tokenKey)
