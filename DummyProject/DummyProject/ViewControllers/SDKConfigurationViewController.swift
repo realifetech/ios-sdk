@@ -17,6 +17,8 @@ class SDKConfigurationViewController: UIViewController {
     @IBOutlet weak var apiUrl: UITextField!
     @IBOutlet weak var graphApiUrl: UITextField!
 
+    var manager: CBCentralManager?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -55,11 +57,12 @@ class SDKConfigurationViewController: UIViewController {
 extension SDKConfigurationViewController: CBCentralManagerDelegate  {
 
     func triggerBluetoothPermissionsDialogue() {
-        let manager = CBCentralManager()
-        manager.delegate = self
+        self.manager = CBCentralManager(delegate: self, queue: nil)
     }
 
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {}
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        print("We got new bluetooth permissions, do we have access?", central.state == .poweredOn)
+    }
 }
 
 // MARK: - Reset device
