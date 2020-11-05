@@ -7,31 +7,26 @@
 //
 
 import Foundation
-import CoreBluetooth
 
 class ReachabilityChecker: NSObject {
 
-    private var bluetoothEnabled: Bool = false
-    private var bluetoothManager: CBCentralManager
+    private var bluetoothManager: BluetoothManagable
     private var networkConnectivityChecker: NetworkConnectivityChecker
 
     init(
-        bluetoothManager: CBCentralManager = CBCentralManager(delegate: nil,
-                                                              queue: nil,
-                                                              options: [CBCentralManagerOptionShowPowerAlertKey: 0]),
+        bluetoothManager: BluetoothManagable,
         networkConnectivityChecker: NetworkConnectivityChecker = NetworkConnectivityChecker()
     ) {
         self.bluetoothManager = bluetoothManager
         self.networkConnectivityChecker = networkConnectivityChecker
         super.init()
-        self.bluetoothManager.delegate = self
     }
 }
 
 extension ReachabilityChecker: ReachabilityChecking {
 
     public var isBluetoothConnected: Bool {
-        return bluetoothEnabled
+        return bluetoothManager.bluetoothEnabled
     }
 
     public var isConnectedToWifi: Bool {
@@ -40,12 +35,5 @@ extension ReachabilityChecker: ReachabilityChecking {
 
     public var hasNetworkConnection: Bool {
         return networkConnectivityChecker.hasNetworkConnection
-    }
-}
-
-extension ReachabilityChecker: CBCentralManagerDelegate {
-
-    public func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        bluetoothEnabled = central.state == .poweredOn
     }
 }

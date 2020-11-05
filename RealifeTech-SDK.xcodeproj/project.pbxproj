@@ -12,6 +12,8 @@
 		039B77B12541957A0060DBBA /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039B77B02541957A0060DBBA /* DiskStorageTests.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
+		4859B9042551644D002D0764 /* BluetoothManagerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859B9032551644D002D0764 /* BluetoothManagerWrapper.swift */; };
+		4859B95B25517861002D0764 /* BluetoothManagerWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4859B95A25517861002D0764 /* BluetoothManagerWrapperTests.swift */; };
 		487479A425403E250048F03D /* QueueProviding+AnyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A325403E250048F03D /* QueueProviding+AnyQueue.swift */; };
 		487479AA25403E790048F03D /* QueueAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479A925403E790048F03D /* QueueAction.swift */; };
 		487479AE25403E980048F03D /* QueueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479AD25403E980048F03D /* QueueItem.swift */; };
@@ -207,6 +209,8 @@
 		480BCE442522126200266617 /* OAuthRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRequester.swift; sourceTree = "<group>"; };
 		480BCE4B252215B300266617 /* DefaultV3DiskCacheStrategyProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultV3DiskCacheStrategyProviding.swift; sourceTree = "<group>"; };
 		4817D84C252E102400A786C0 /* RequestHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeaderTests.swift; sourceTree = "<group>"; };
+		4859B9032551644D002D0764 /* BluetoothManagerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManagerWrapper.swift; sourceTree = "<group>"; };
+		4859B95A25517861002D0764 /* BluetoothManagerWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManagerWrapperTests.swift; sourceTree = "<group>"; };
 		4859F99B252E022400158F5E /* StandardV3SenderResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardV3SenderResponseTests.swift; sourceTree = "<group>"; };
 		487479A325403E250048F03D /* QueueProviding+AnyQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueProviding+AnyQueue.swift"; sourceTree = "<group>"; };
 		487479A925403E790048F03D /* QueueAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAction.swift; sourceTree = "<group>"; };
@@ -696,6 +700,7 @@
 		48B792F3251CA279007032CD /* ReachabilityChecker */ = {
 			isa = PBXGroup;
 			children = (
+				4859B9032551644D002D0764 /* BluetoothManagerWrapper.swift */,
 				03D583922521EB7B00E516F9 /* ReachabilityChecker.swift */,
 				03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */,
 				03D583932521EB7B00E516F9 /* ReachabilityFactory.swift */,
@@ -709,6 +714,7 @@
 			isa = PBXGroup;
 			children = (
 				48B792FF251CA279007032CD /* ReachabilityCheckerTests.swift */,
+				4859B95A25517861002D0764 /* BluetoothManagerWrapperTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1159,6 +1165,7 @@
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
 				488958802539D04B00B978A9 /* KeychainSwift.swift in Sources */,
 				488959672539D8E300B978A9 /* LogEventSending.swift in Sources */,
+				4859B9042551644D002D0764 /* BluetoothManagerWrapper.swift in Sources */,
 				488958852539D04B00B978A9 /* APIV3Requester.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
@@ -1207,6 +1214,7 @@
 				488958DD2539D09D00B978A9 /* RequestHeaderTests.swift in Sources */,
 				48EFE21D2539E1D800CC6E58 /* DeviceTests.swift in Sources */,
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
+				4859B95B25517861002D0764 /* BluetoothManagerWrapperTests.swift in Sources */,
 				039B77B12541957A0060DBBA /* DiskStorageTests.swift in Sources */,
 				488958DF2539D09D00B978A9 /* V3APITokenManagerTests.swift in Sources */,
 				488958DB2539D09D00B978A9 /* RequestCreatorTests.swift in Sources */,
