@@ -17,212 +17,222 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DnB-f1-P2O">
-                                <rect key="frame" x="57" y="136" width="300" height="624"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NU-yl-xm2">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JX1-j9-6zn">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="DnB-f1-P2O">
+                                        <rect key="frame" x="57" y="0.0" width="300" height="624"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JX1-j9-6zn">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20.5" id="cmF-2W-LEZ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="LS" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zf5-Vr-ZkY">
+                                                <rect key="frame" x="0.0" y="20.5" width="300" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="8eh-DF-AFS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client Secret" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAq-Ep-LA5">
+                                                <rect key="frame" x="0.0" y="54.5" width="300" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20.5" id="Jow-Tc-UJy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MSa-ma-uPQ">
+                                                <rect key="frame" x="0.0" y="75" width="300" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="hDs-3w-AOX"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqx-3U-mNR">
+                                                <rect key="frame" x="0.0" y="109" width="300" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20.5" id="PQ5-mB-gsB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Be5-i9-jKG">
+                                                <rect key="frame" x="0.0" y="129.5" width="300" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="t80-N0-66W"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph API URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9N-5q-uas">
+                                                <rect key="frame" x="0.0" y="163.5" width="300" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20.5" id="Y5G-TU-dLF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1sz-EU-TsM">
+                                                <rect key="frame" x="0.0" y="184" width="300" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="g7k-fu-APm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xh6-13-OUE">
+                                                <rect key="frame" x="0.0" y="218" width="300" height="10"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="2B8-Xy-uPu"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0t-pP-ZIf">
+                                                <rect key="frame" x="0.0" y="228" width="300" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="jke-4S-bNF"/>
+                                                </constraints>
+                                                <state key="normal" title="Configure SDK">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="configureSDKTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uKe-Li-goz"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAf-07-h6S">
+                                                <rect key="frame" x="0.0" y="278" width="300" height="10"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="L3b-Ek-ABE"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpQ-cl-IAL" userLabel="Register Device">
+                                                <rect key="frame" x="0.0" y="288" width="300" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="2Wm-GM-9K3"/>
+                                                </constraints>
+                                                <state key="normal" title="Register Device">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="registerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sSK-mH-a6Z"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4E-Mq-tlc">
+                                                <rect key="frame" x="0.0" y="338" width="300" height="10"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="Zcc-La-VUK"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eA9-D1-efU" userLabel="SDK Ready">
+                                                <rect key="frame" x="0.0" y="348" width="300" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="V1S-ql-HXg"/>
+                                                </constraints>
+                                                <state key="normal" title="SDK Ready?">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sdkReadyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="12l-uC-IUd"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TS-ua-9nk">
+                                                <rect key="frame" x="0.0" y="398" width="300" height="10"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="dhc-tN-DdB"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-bj-xy8" userLabel="SDK Ready">
+                                                <rect key="frame" x="0.0" y="408" width="300" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="UHB-qM-0dH"/>
+                                                </constraints>
+                                                <state key="normal" title="Reset Device">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resetDevice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pF0-hK-B8m"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfO-mE-Ath">
+                                                <rect key="frame" x="0.0" y="458" width="300" height="10"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="LBZ-0G-MJf"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSp-CD-tEv" userLabel="SDK Ready">
+                                                <rect key="frame" x="0.0" y="468" width="300" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="g0s-z4-A1j"/>
+                                                </constraints>
+                                                <state key="normal" title="Trigger Bluetooth Permissions">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="triggerBluetoothPermissions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rMi-eC-V5k"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note, you will need to restart the app after resetting the device data." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbs-ec-Bcg">
+                                                <rect key="frame" x="0.0" y="518" width="300" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="tWI-J4-64y"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJi-gs-p9Z">
+                                                <rect key="frame" x="0.0" y="588" width="300" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="tfa-mY-YUY"/>
+                                                </constraints>
+                                                <state key="normal" title="Next"/>
+                                                <connections>
+                                                    <segue destination="kE8-rF-sI3" kind="show" id="sGi-Cl-1ni"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20.5" id="cmF-2W-LEZ"/>
+                                            <constraint firstAttribute="width" priority="900" constant="300" id="OAR-cE-Luf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="LS" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zf5-Vr-ZkY">
-                                        <rect key="frame" x="0.0" y="20.5" width="300" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="8eh-DF-AFS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client Secret" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAq-Ep-LA5">
-                                        <rect key="frame" x="0.0" y="54.5" width="300" height="20.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20.5" id="Jow-Tc-UJy"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MSa-ma-uPQ">
-                                        <rect key="frame" x="0.0" y="75" width="300" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="hDs-3w-AOX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqx-3U-mNR">
-                                        <rect key="frame" x="0.0" y="109" width="300" height="20.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20.5" id="PQ5-mB-gsB"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Be5-i9-jKG">
-                                        <rect key="frame" x="0.0" y="129.5" width="300" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="t80-N0-66W"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph API URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9N-5q-uas">
-                                        <rect key="frame" x="0.0" y="163.5" width="300" height="20.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20.5" id="Y5G-TU-dLF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1sz-EU-TsM">
-                                        <rect key="frame" x="0.0" y="184" width="300" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="g7k-fu-APm"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xh6-13-OUE">
-                                        <rect key="frame" x="0.0" y="218" width="300" height="10"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="2B8-Xy-uPu"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0t-pP-ZIf">
-                                        <rect key="frame" x="0.0" y="228" width="300" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="jke-4S-bNF"/>
-                                        </constraints>
-                                        <state key="normal" title="Configure SDK">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="configureSDKTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uKe-Li-goz"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAf-07-h6S">
-                                        <rect key="frame" x="0.0" y="278" width="300" height="10"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="L3b-Ek-ABE"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpQ-cl-IAL" userLabel="Register Device">
-                                        <rect key="frame" x="0.0" y="288" width="300" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="2Wm-GM-9K3"/>
-                                        </constraints>
-                                        <state key="normal" title="Register Device">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="registerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sSK-mH-a6Z"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4E-Mq-tlc">
-                                        <rect key="frame" x="0.0" y="338" width="300" height="10"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="Zcc-La-VUK"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eA9-D1-efU" userLabel="SDK Ready">
-                                        <rect key="frame" x="0.0" y="348" width="300" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="V1S-ql-HXg"/>
-                                        </constraints>
-                                        <state key="normal" title="SDK Ready?">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sdkReadyTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="12l-uC-IUd"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TS-ua-9nk">
-                                        <rect key="frame" x="0.0" y="398" width="300" height="10"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="dhc-tN-DdB"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3C-bj-xy8" userLabel="SDK Ready">
-                                        <rect key="frame" x="0.0" y="408" width="300" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="UHB-qM-0dH"/>
-                                        </constraints>
-                                        <state key="normal" title="Reset Device">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="resetDevice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pF0-hK-B8m"/>
-                                        </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfO-mE-Ath">
-                                        <rect key="frame" x="0.0" y="458" width="300" height="10"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="LBZ-0G-MJf"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSp-CD-tEv" userLabel="SDK Ready">
-                                        <rect key="frame" x="0.0" y="468" width="300" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="g0s-z4-A1j"/>
-                                        </constraints>
-                                        <state key="normal" title="Trigger Bluetooth Permissions">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="triggerBluetoothPermissions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rMi-eC-V5k"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note, you will need to restart the app after resetting the device data." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbs-ec-Bcg">
-                                        <rect key="frame" x="0.0" y="518" width="300" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="tWI-J4-64y"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJi-gs-p9Z">
-                                        <rect key="frame" x="0.0" y="588" width="300" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="tfa-mY-YUY"/>
-                                        </constraints>
-                                        <state key="normal" title="Next"/>
-                                        <connections>
-                                            <segue destination="kE8-rF-sI3" kind="show" id="sGi-Cl-1ni"/>
-                                        </connections>
-                                    </button>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" priority="900" constant="300" id="OAR-cE-Luf"/>
-                                    <constraint firstAttribute="height" priority="900" constant="550" id="iEk-Zw-2Mf"/>
+                                    <constraint firstItem="DnB-f1-P2O" firstAttribute="centerX" secondItem="3NU-yl-xm2" secondAttribute="centerX" id="Elq-hZ-tHZ"/>
+                                    <constraint firstItem="DnB-f1-P2O" firstAttribute="top" secondItem="3NU-yl-xm2" secondAttribute="top" id="H0t-6x-TbU"/>
+                                    <constraint firstAttribute="trailing" secondItem="DnB-f1-P2O" secondAttribute="trailing" constant="57" id="N0O-mC-yNM"/>
+                                    <constraint firstItem="DnB-f1-P2O" firstAttribute="width" secondItem="3NU-yl-xm2" secondAttribute="width" multiplier="0.724638" id="VTj-wT-V8x"/>
+                                    <constraint firstAttribute="bottom" secondItem="DnB-f1-P2O" secondAttribute="bottom" id="fob-tc-pxz"/>
                                 </constraints>
-                            </stackView>
+                                <viewLayoutGuide key="contentLayoutGuide" id="WcR-fS-0Cp"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="yh9-gi-aLF"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DnB-f1-P2O" secondAttribute="bottom" constant="10" id="9fC-ap-CRT"/>
-                            <constraint firstItem="DnB-f1-P2O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="PhJ-8Q-799"/>
-                            <constraint firstItem="DnB-f1-P2O" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aBx-HD-ZCI"/>
-                            <constraint firstItem="DnB-f1-P2O" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="ecx-l0-T7u"/>
-                            <constraint firstItem="DnB-f1-P2O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nI1-9F-x2K"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DnB-f1-P2O" secondAttribute="trailing" constant="10" id="r9p-Zu-Tkh"/>
+                            <constraint firstItem="3NU-yl-xm2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7hj-pe-l02"/>
+                            <constraint firstItem="3NU-yl-xm2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UUc-ce-9wM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3NU-yl-xm2" secondAttribute="bottom" id="Vqa-Ze-1LE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bBw-wO-42Y"/>
