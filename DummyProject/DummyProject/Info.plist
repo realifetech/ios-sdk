@@ -4,6 +4,8 @@
 <dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>&quot;Hello Joe&quot;</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>&quot;Something else&quot;</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

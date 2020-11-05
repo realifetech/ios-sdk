@@ -8,7 +8,6 @@
 
 import UIKit
 import RealifeTech
-import CoreBluetooth
 
 class ViewController: UIViewController {
 
