@@ -24,7 +24,7 @@ extension CommunicateImplementing: PushNotificationRegistering {
         pushNotificationRegistrar.registerForPushNotifications(token: token, completion: completion)
     }
 
-    public func registerForPushNotifications(token: Data, completion: @escaping (Result<Void, Error>) -> Void) {
-        pushNotificationRegistrar.registerForPushNotifications(token: token, completion: completion)
+    public func registerForPushNotifications(tokenData: Data, completion: @escaping (Result<Void, Error>) -> Void) {
+        pushNotificationRegistrar.registerForPushNotifications(tokenData: tokenData, completion: completion)
     }
 }
