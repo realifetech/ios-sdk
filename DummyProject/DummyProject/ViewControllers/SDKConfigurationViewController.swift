@@ -20,6 +20,9 @@ class SDKConfigurationViewController: UIViewController {
     var manager: CBCentralManager?
 
     override func viewDidLoad() {
+        [appCode, clientSecret, apiUrl, graphApiUrl].forEach {
+            $0?.delegate = self
+        }
         super.viewDidLoad()
     }
 

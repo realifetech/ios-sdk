@@ -18,6 +18,13 @@ class EventLoggingViewController: UIViewController {
     @IBOutlet weak var value1Field: UITextField!
     @IBOutlet weak var value2Field: UITextField!
 
+    override func viewDidLoad() {
+        [typeField, actionField, key1Field, key2Field, value1Field, value2Field].forEach {
+            $0?.delegate = self
+        }
+        super.viewDidLoad()
+    }
+
     @IBAction func logEventTapped(_ sender: Any) {
         RealifeTech.Analytics.logEvent(makeEvent()) { result in
             switch result {

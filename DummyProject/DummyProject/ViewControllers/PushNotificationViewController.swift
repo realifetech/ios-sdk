@@ -13,6 +13,11 @@ class PushNotificationViewController: UIViewController {
 
     @IBOutlet weak var apnTokenField: UITextField!
 
+    override func viewDidLoad() {
+        apnTokenField.delegate = self
+        super.viewDidLoad()
+    }
+
     @IBAction func didTapRegisterForPush(_ sender: Any) {
         RealifeTech.Communicate.registerForPushNotifications(token: apnTokenField.text ?? "") { result in
             switch result {

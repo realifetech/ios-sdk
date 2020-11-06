@@ -13,6 +13,11 @@ class AudienceMembershipViewController: UIViewController {
     
     @IBOutlet weak var audienceIdField: UITextField!
 
+    override func viewDidLoad() {
+        audienceIdField.delegate = self
+        super.viewDidLoad()
+    }
+
     @IBAction func didTapAudienceQuery(_ sender: Any) {
         RealifeTech.Audiences.deviceIsMemberOfAudience(
             audienceId: audienceIdField.text ?? ""
