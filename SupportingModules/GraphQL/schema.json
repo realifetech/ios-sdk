@@ -788,7 +788,7 @@
             "deprecationReason": null
           },
           {
-            "name": "belongsToAudienceByExternalId",
+            "name": "belongsToAudienceWithExternalId",
             "description": null,
             "args": [
               {
