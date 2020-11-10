@@ -1,5 +1,5 @@
 mutation PutAnalyticEvent($input: AnalyticEvent!) {
-  putAnalyticEvent(input: $input) {   
+  putAnalyticEvent(input: $input) {
     success
     message
   }
