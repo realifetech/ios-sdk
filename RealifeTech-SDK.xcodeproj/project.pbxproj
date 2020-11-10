@@ -39,7 +39,6 @@
 		4889587E2539D04B00B978A9 /* RequestCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDD0251E2FFD00266617 /* RequestCreator.swift */; };
 		4889587F2539D04B00B978A9 /* ReachabilityChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D583912521EB7A00E516F9 /* ReachabilityChecking.swift */; };
 		488958802539D04B00B978A9 /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE3825220A6F00266617 /* KeychainSwift.swift */; };
-		488958812539D04B00B978A9 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */; };
 		488958822539D04B00B978A9 /* JSONContentTypeHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE0D251E388C00266617 /* JSONContentTypeHeaderRequestInserting.swift */; };
 		488958832539D04B00B978A9 /* OAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCE402522121B00266617 /* OAuthRepository.swift */; };
 		488958842539D04B00B978A9 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCDE7251E305300266617 /* String+Localization.swift */; };
@@ -113,6 +112,7 @@
 		48D6F143251E158E006CA623 /* RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D6F13A251E158E006CA623 /* RealifeTech.framework */; };
 		48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F147251E158E006CA623 /* RealifeTechTests.swift */; };
 		48D6F14A251E158E006CA623 /* RealifeTech.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D6F13C251E158E006CA623 /* RealifeTech.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48EE2DAD255AB0770029309D /* fetchBelongsToAudienceByExternalId.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE2DAC255AB0770029309D /* fetchBelongsToAudienceByExternalId.graphql.swift */; };
 		48EEF19F25470C2E00F8E4D9 /* SDKConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A683F2547062E005C030E /* SDKConfigurationTests.swift */; };
 		48EFB417253ED7CF00BC8664 /* PersistentQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFB416253ED7CF00BC8664 /* PersistentQueue.swift */; };
 		48EFE2122539E1CE00CC6E58 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE20E2539E1CE00CC6E58 /* DeviceRepository.swift */; };
@@ -156,7 +156,6 @@
 		034CBB382530594B00E607C2 /* GraphQLDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDispatcher.swift; sourceTree = "<group>"; };
 		039B77AE254187BA0060DBBA /* CodableStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStorageTests.swift; sourceTree = "<group>"; };
 		039B77B02541957A0060DBBA /* DiskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorageTests.swift; sourceTree = "<group>"; };
-		03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchDeviceBelongsToAudience.graphql.swift; sourceTree = "<group>"; };
 		03B0D108252C83040037D504 /* Types.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.graphql.swift; sourceTree = "<group>"; };
 		03D5838B2521E44F00E516F9 /* UIDeviceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceFactory.swift; sourceTree = "<group>"; };
 		03D5838C2521E44F00E516F9 /* UIDeviceInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceInterface.swift; sourceTree = "<group>"; };
@@ -257,6 +256,7 @@
 		48D6F147251E158E006CA623 /* RealifeTechTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealifeTechTests.swift; sourceTree = "<group>"; };
 		48D6F149251E158E006CA623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E6777D251BA86D007E2741 /* CommunicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateTests.swift; sourceTree = "<group>"; };
+		48EE2DAC255AB0770029309D /* fetchBelongsToAudienceByExternalId.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fetchBelongsToAudienceByExternalId.graphql.swift; sourceTree = "<group>"; };
 		48EFB416253ED7CF00BC8664 /* PersistentQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentQueue.swift; sourceTree = "<group>"; };
 		48EFE20E2539E1CE00CC6E58 /* DeviceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		48EFE20F2539E1CE00CC6E58 /* DeviceToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 		03B0D106252C83040037D504 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				03B0D107252C83040037D504 /* fetchDeviceBelongsToAudience.graphql.swift */,
+				48EE2DAC255AB0770029309D /* fetchBelongsToAudienceByExternalId.graphql.swift */,
 				4889596E2539D97A00B978A9 /* putAnalyticEvent.graphql.swift */,
 				03B0D108252C83040037D504 /* Types.graphql.swift */,
 			);
@@ -1130,6 +1130,7 @@
 				487479D9254088AA0048F03D /* UserDefaultStorage.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
 				48EFE2142539E1CE00CC6E58 /* Device.swift in Sources */,
+				48EE2DAD255AB0770029309D /* fetchBelongsToAudienceByExternalId.graphql.swift in Sources */,
 				487479C22540425C0048F03D /* AnalyticsEventAndCompletion.swift in Sources */,
 				4889589B2539D04B00B978A9 /* AuthorisationStore.swift in Sources */,
 				488958A12539D04B00B978A9 /* ReachabilityChecker.swift in Sources */,
@@ -1172,7 +1173,6 @@
 				4889587B2539D04B00B978A9 /* OAuthHeaderRequestInserting.swift in Sources */,
 				488958892539D04B00B978A9 /* StandardV3SenderResponse.swift in Sources */,
 				487479E825408E8A0048F03D /* Communicate.swift in Sources */,
-				488958812539D04B00B978A9 /* fetchDeviceBelongsToAudience.graphql.swift in Sources */,
 				488958762539D04B00B978A9 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
 				48EFB417253ED7CF00BC8664 /* PersistentQueue.swift in Sources */,
 				488958822539D04B00B978A9 /* JSONContentTypeHeaderRequestInserting.swift in Sources */,
