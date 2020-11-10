@@ -6,22 +6,22 @@ import Foundation
 
 /// Apollo namespace
 public extension Apollo {
-  final class BelongsToAudienceByExternalIdQuery: GraphQLQuery {
+  final class BelongsToAudienceWithExternalIdQuery: GraphQLQuery {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query belongsToAudienceByExternalId($externalAudienceId: String!) {
+      query belongsToAudienceWithExternalId($externalAudienceId: String!) {
         me {
           __typename
           device {
             __typename
-            belongsToAudienceByExternalId(externalAudienceId: $externalAudienceId)
+            belongsToAudienceWithExternalId(externalAudienceId: $externalAudienceId)
           }
         }
       }
       """
 
-    public let operationName: String = "belongsToAudienceByExternalId"
+    public let operationName: String = "belongsToAudienceWithExternalId"
 
     public var externalAudienceId: String
 
@@ -105,7 +105,7 @@ public extension Apollo {
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("belongsToAudienceByExternalId", arguments: ["externalAudienceId": GraphQLVariable("externalAudienceId")], type: .scalar(Bool.self)),
+              GraphQLField("belongsToAudienceWithExternalId", arguments: ["externalAudienceId": GraphQLVariable("externalAudienceId")], type: .scalar(Bool.self)),
             ]
           }
 
@@ -115,8 +115,8 @@ public extension Apollo {
             self.resultMap = unsafeResultMap
           }
 
-          public init(belongsToAudienceByExternalId: Bool? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Device", "belongsToAudienceByExternalId": belongsToAudienceByExternalId])
+          public init(belongsToAudienceWithExternalId: Bool? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Device", "belongsToAudienceWithExternalId": belongsToAudienceWithExternalId])
           }
 
           public var __typename: String {
@@ -128,12 +128,12 @@ public extension Apollo {
             }
           }
 
-          public var belongsToAudienceByExternalId: Bool? {
+          public var belongsToAudienceWithExternalId: Bool? {
             get {
-              return resultMap["belongsToAudienceByExternalId"] as? Bool
+              return resultMap["belongsToAudienceWithExternalId"] as? Bool
             }
             set {
-              resultMap.updateValue(newValue, forKey: "belongsToAudienceByExternalId")
+              resultMap.updateValue(newValue, forKey: "belongsToAudienceWithExternalId")
             }
           }
         }

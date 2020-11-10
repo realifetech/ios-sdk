@@ -22,16 +22,15 @@ $ pod install
 ```
 
 ## 3. Setup the SDK at runtime
+1. Ensure you configure the SDK before calling any of this methods (see **Configuration** section below). 
+2. You will also need to complete **Device Registration** (see below) before you can use the rest of the SDK methods.
+
+# General
+
+## Configuration
 **Important: Using the SDK without calling configuring can lead to runtime errors. Do not forget to configure the SDK.**
 
-You will have been provided with an application code and a API secret when you setup your RealifeTech account. These must be passed into the SDK when your app launches using the `RealifeTech.configureSDK(with: SDKConfiguration)` method. You can also (optionally) pass in URLs for the RealifeTech SDK to use when making external calls- this should not be required in most situations.
-
-Make sure you also import the RealifeTech module in the head the AppDelegate, or whichever files you call the SDK from:
-``` swift
-import RealifeTech
-```
-
-We recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)` method:
+Use the following function to configure the SDK for use. You will be provided the values necessary as part of your onboarding. Note that the SDK provides default values for its API endpoints, unless you are provided with unique endpoints as part of onboarding leave these fields blank.
 
 ``` swift
 let configuration = SDKConfiguration(
@@ -42,7 +41,7 @@ let configuration = SDKConfiguration(
 )
 RealifeTech.configureSDK(with: configuration)
 ```
-# General
+To ensure the SDK is configured before any other functionality is used, we recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)`.
 
 ## Device Registration
 Interfacing with out backend systems requires that your device be registered with them. You can use the below function to register the device.

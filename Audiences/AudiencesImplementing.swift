@@ -17,10 +17,10 @@ public class AudiencesImplementing: AudienceChecking {
     }
 
     public func deviceIsMemberOfAudience(audienceId: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        dispatcher.dispatch(query: Apollo.BelongsToAudienceQuery(audienceId: audienceId)) { result in
+        dispatcher.dispatch(query: Apollo.BelongsToAudienceWithExternalIdQuery(externalAudienceId: audienceId)) { result in
             switch result {
             case .success(let response):
-                return completion(.success(response.data?.me?.device?.belongsToAudience ?? false))
+                return completion(.success(response.data?.me?.device?.belongsToAudienceWithExternalId ?? false))
             case .failure(let error):
                 return completion(.failure(error))
             }

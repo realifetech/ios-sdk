@@ -1,7 +1,0 @@
-query belongsToAudienceByExternalId($externalAudienceId: String!) {
-  me {
-    device {
-      belongsToAudienceByExternalId(externalAudienceId: $externalAudienceId)
-    }
-  }
-}
