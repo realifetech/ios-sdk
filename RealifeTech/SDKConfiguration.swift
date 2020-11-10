@@ -15,7 +15,7 @@ public struct SDKConfiguration {
     public var graphApiUrlString: String
 
     static var defaultApiUrl: String =  "https://api.livestyled.com/v3"
-    static var defaultGraphApiUrl: String = "https://api.realifetech.com/graphql"
+    static var defaultGraphApiUrl: String = "https://graphql-eu.realifetech.com"
 
     /// - Parameter appCode: String used to identify the application which uses the RealifeTech SDK
     /// - Parameter clientSecret: String which is used to authenticate with the RealifeTech backend

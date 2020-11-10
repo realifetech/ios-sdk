@@ -99,11 +99,11 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
         sut.registerDevice(testDevice, {
             let recordedInterval = Date().timeIntervalSince(startTime)
             XCTAssertGreaterThan(recordedInterval, minimumTimeInterval)
-            XCTAssertLessThan(recordedInterval, minimumTimeInterval*1.8)
+            XCTAssertLessThan(recordedInterval, minimumTimeInterval*2)
             expectation2.fulfill()
         })
         XCTAssertNil(MockDeviceRepository.deviceReceived)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(8)) {
             expectation1.fulfill()
             MockDeviceRepository.observableToReturn = .just(true)
         }
