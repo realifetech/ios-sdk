@@ -1,0 +1,43 @@
+PODS:
+  - Apollo (0.30.0):
+    - Apollo/Core (= 0.30.0)
+  - Apollo/Core (0.30.0)
+  - RealifeTech-SDK (0.0.1):
+    - Apollo (= 0.30.0)
+    - RxCocoa (> 4.2)
+    - RxSwift (> 4.2)
+    - SwiftLint
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SwiftLint (0.40.3)
+
+DEPENDENCIES:
+  - RealifeTech-SDK (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Apollo
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  RealifeTech-SDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Apollo: c10bf1a4c7db5237be1056ace16347cd1cdcb863
+  RealifeTech-SDK: 6951d4178c0fa10a3b619713bc30ccdb2e9550f0
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
+
+PODFILE CHECKSUM: 9a92b4e36ba63527d21c9771dacf8fcc9d6c6992
+
+COCOAPODS: 1.8.4
