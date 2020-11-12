@@ -8,7 +8,7 @@ This repository contains the RealifeTech SDK which can be installed into your Sw
 * [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) 1.8.4+
 * Swift 5
 
-Note that our SDK currently depends on RxSwift packages which are automatically managed with CocoaPods. This package should be compatable with any peer requirements on RxSwft and RxCocoa versions greater then 4.2.
+Note that our SDK currently depends on RxSwift packages which are automatically managed with CocoaPods. This package should be compatible with any peer requirements on RxSwft and RxCocoa versions greater than 4.2.
 
 ## 2. Install the RealifeTechSDK Pod dependency
 
@@ -68,7 +68,7 @@ RealifeTech.Communicate.registerForPushNotifications(token: String)
 ```
 You'll usually add this code to the AppDelegate method which [receives an APN token](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application) after sucessfully registering with iOS. In this, case pass the Data object directly to the RealifeTech SDK with `registerForPushNotifications(tokenData: Data)`.
 
-Altenatively, you with to register a device token arbitratily, or after passing it through your own logic. In which case use `registerForPushNotifications(token: String)`.
+Alternatively, you can register a device token arbitrarily, or after passing it through your own logic. In which case use `registerForPushNotifications(token: String)`.
 
 Until the token has successfully been sent to our backend, it will be stored persistantly. When the app launches, we will attempt to send a pending token. Only one token can be stored at a time. 
 
