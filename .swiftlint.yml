@@ -1,0 +1,7 @@
+excluded:
+   - Pods
+   - DummyProject/Pods
+   - SupportingModules/APILayer
+   - SupportingModules/APIV3Utilities
+   - SupportingModules/GraphQL/API
+
