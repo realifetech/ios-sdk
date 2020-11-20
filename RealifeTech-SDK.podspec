@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "RealifeTech-SDK"
   spec.module_name  = "RealifeTech"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "Providing integration with the RealifeTech Experience Automation Platform."
 
   spec.description  = "This is RealifeTech SDK, it provides integration with RealifeTech backend services, providing functionality such as device notification management, audience membership, and analytics logging. Creating a better experience of the real world for every person."
@@ -30,7 +30,7 @@ Pod::Spec.new do |spec|
 
   spec.ios.deployment_target = "13.0"
   spec.swift_version = "5.0"
-  spec.source        = { :git => 'https://github.com/realifetech/ios-sdk.git', :branch => 'develop', :tag => 'v1.0.0'}
+  spec.source        = { :git => 'https://github.com/realifetech/ios-sdk.git', :branch => 'develop', :tag => 'v1.0.1'}
   spec.source_files = [ 
     '**/*.swift', 
     'RealifeTech/RealifeTech.h']
