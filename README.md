@@ -44,7 +44,7 @@ RealifeTech.configureSDK(with: configuration)
 To ensure the SDK is configured before any other functionality is used, we recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)`.
 
 ## Device Registration
-Interfacing with out backend systems requires that your device be registered with them. You can use the below function to register the device.
+Interfacing with our backend systems requires that your device be registered with them. You can use the below function to register the device.
 
 
 ``` swift
@@ -76,7 +76,7 @@ Until the token has successfully been sent to our backend, it will be stored per
 Use the following function to log an analytic event
 
 ``` swift
-RealifeTech.Analytics().logEvent(
+RealifeTech.Analytics.logEvent(
     type: "type", 
     action: "action", 
     new: ["someValue": "123"], 
