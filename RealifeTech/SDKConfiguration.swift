@@ -7,29 +7,23 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 
 public struct SDKConfiguration {
-    public var appCode: String
-    public var clientSecret: String
-    public var apiUrl: String
-    public var graphApiUrlString: String
 
-    static var defaultApiUrl: String =  "https://api.livestyled.com/v3"
-    static var defaultGraphApiUrl: String = "https://graphql-eu.realifetech.com"
+    public let appCode: String
+    public let clientSecret: String
+    public let apiUrl: String?
+    public let graphQLApiUrlString: String?
 
     /// - Parameter appCode: String used to identify the application which uses the RealifeTech SDK
     /// - Parameter clientSecret: String which is used to authenticate with the RealifeTech backend
     /// - Parameter apiUrl: [Optional] Provide a string value of a URL to override the SDK default
     /// - Parameter graphApiUrl: [Optional] Provide a string value of a URL to override the SDK default
-    public init(appCode: String, clientSecret: String, apiUrl: String? = nil, graphApiUrl: String? = nil) {
+    public init(appCode: String, clientSecret: String, apiUrl: String? = nil, graphQLApiUrlString: String? = nil) {
         self.appCode = appCode
         self.clientSecret = clientSecret
-        self.apiUrl = apiUrl ?? SDKConfiguration.defaultApiUrl
-        self.graphApiUrlString = graphApiUrl ?? SDKConfiguration.defaultGraphApiUrl
+        self.apiUrl = apiUrl
+        self.graphQLApiUrlString = graphQLApiUrlString
     }
-}
-
-extension SDKConfiguration {
-
-    var graphApiUrl: URL { URL(string: graphApiUrlString) ?? URL(fileURLWithPath: "") }
 }

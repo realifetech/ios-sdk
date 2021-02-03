@@ -32,7 +32,7 @@ public class RealifeTech {
             appCode: configuration.appCode,
             clientSecret: configuration.clientSecret,
             apiUrl: configuration.apiUrl,
-            graphQLApiUrl: configuration.graphApiUrlString)
+            graphQLApiUrl: configuration.graphQLApiUrlString)
         let apiHelper = CoreFactory.makeApiHelper(deviceId: deviceHelper.deviceId, configuration: coreSDKConfiguration)
         let staticDeviceInformation = StaticDeviceInformation(
             deviceId: deviceHelper.deviceId,
