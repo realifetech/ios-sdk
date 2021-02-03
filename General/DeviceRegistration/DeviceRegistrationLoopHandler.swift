@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealifeTech_CoreSDK
 
 protocol DeviceRegistrationLoopHandling {
     func registerDevice(_: Device, _: @escaping() -> Void)

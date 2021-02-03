@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 
 public protocol AnalyticsLogging {
     func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void)

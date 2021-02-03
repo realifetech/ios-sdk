@@ -8,6 +8,7 @@
 
 import XCTest
 import Combine
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 class DeviceRegistrationWorkerTests: XCTestCase {
@@ -116,7 +117,7 @@ private class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling 
     }
 }
 
-private class MockCodableStore: CodableStorageProtocol {
+private class MockCodableStore: Storeable {
     enum MockCodableStoreError: Error {
         case unexpectedMethodCall, noValueSaved
     }

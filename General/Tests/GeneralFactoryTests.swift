@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 class GeneralFactoryTests: XCTestCase {

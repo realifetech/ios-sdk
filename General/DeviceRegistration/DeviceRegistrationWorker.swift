@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import RxSwift
 import RxCocoa
+import RealifeTech_CoreSDK
 
 class DeviceRegistrationWorker: DeviceRegistering {
 
@@ -20,7 +21,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
     private let reachabilityChecker: ReachabilityChecking
     private let loopHandler: DeviceRegistrationLoopHandling
     private let deviceRegisteredSubject: CurrentValueSubject<Bool, Never>
-    private let store: CodableStorageProtocol
+    private let store: Storeable
     private let storeKey = "DeviceRegistrationState"
 
     var device: Device {
@@ -37,7 +38,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
         reachabilityChecker: ReachabilityChecking,
         loopHandler: DeviceRegistrationLoopHandling,
         deviceRegisteredSubject: CurrentValueSubject<Bool, Never>,
-        store: CodableStorageProtocol
+        store: Storeable
     ) {
         self.staticDeviceInformation = staticDeviceInformation
         self.reachabilityChecker = reachabilityChecker

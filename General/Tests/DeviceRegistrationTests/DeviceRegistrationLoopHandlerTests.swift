@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSwift
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 class DeviceRegistrationLoopHandlerTests: XCTestCase {

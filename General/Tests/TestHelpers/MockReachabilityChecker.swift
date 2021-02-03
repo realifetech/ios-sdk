@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 class MockReachabilityChecker: ReachabilityChecking {

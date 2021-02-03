@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 @testable import Apollo
 
@@ -35,6 +36,7 @@ class AudiencesTests: XCTestCase {
 
         func dispatch<T>(
             query: T,
+            cachePolicy: GraphNetworkCachePolicy,
             completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
         ) where T: GraphQLQuery {
             dispatchQueryIsCalled = true

@@ -8,8 +8,10 @@
 
 import Foundation
 import Combine
+import RealifeTech_CoreSDK
 
 public enum GeneralFactory {
+
     public static func makeGeneralModule(
         staticDeviceInformation: StaticDeviceInformation,
         reachabilityChecker: ReachabilityChecking,
@@ -18,7 +20,7 @@ public enum GeneralFactory {
         let deviceRegistrationLoopHandler = DeviceRegistrationLoopHandler(
             reachabilityChecker: reachabilityChecker,
             debounceRateSeconds: 10)
-        let deviceRegistrationStore = CodableStorage(
+        let deviceRegistrationStore = CodableStore(
             storage: UserDefaultsStorage(),
             storagePrefix: "GeneralDeviceRegistration")
         let deviceRegistrationWorker = DeviceRegistrationWorker(

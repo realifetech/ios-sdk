@@ -8,6 +8,7 @@
 
 import XCTest
 import Combine
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 // TODO: Add test of failure conditions from the API - implentation is not complete ATM
