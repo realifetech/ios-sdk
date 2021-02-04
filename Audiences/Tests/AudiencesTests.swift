@@ -34,17 +34,17 @@ final class AudiencesTests: XCTestCase {
         var shouldFail: Bool = false
         var dispatchQueryIsCalled: Bool = false
 
-        func dispatch<T>(
-            query: T,
+        func dispatch<Query: GraphQLQuery>(
+            query: Query,
             cachePolicy: GraphNetworkCachePolicy,
-            completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
-        ) where T: GraphQLQuery {
+            completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
+        ) {
             dispatchQueryIsCalled = true
         }
 
-        func dispatchMutation<T>(
-            mutation: T,
-            completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
-        ) where T: GraphQLMutation {}
+        func dispatchMutation<Query: GraphQLMutation>(
+            mutation: Query,
+            completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
+        ) {}
     }
 }

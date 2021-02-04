@@ -125,18 +125,18 @@ private final class MockCodableStore: Storeable {
     var valueToReturn: Any?
     var valueSaved: Any?
 
-    func fetchAll<T>() throws -> [T] where T: Decodable {
+    func fetchAll<Model: Decodable>() throws -> [Model] {
         throw MockCodableStoreError.unexpectedMethodCall
     }
 
-    func fetch<T>(for key: String) throws -> T where T: Decodable {
-        guard let value = valueToReturn as? T else {
+    func fetch<Model: Decodable>(for key: String) throws -> Model {
+        guard let value = valueToReturn as? Model else {
             throw MockCodableStoreError.noValueSaved
         }
         return value
     }
 
-    func save<T>(_ value: T, for key: String) throws where T: Encodable {
+    func save<Model: Encodable>(_ value: Model, for key: String) throws {
         self.valueSaved = value
     }
 
