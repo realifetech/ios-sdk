@@ -40,9 +40,6 @@ Pod::Spec.new do |spec|
       '**/Tests/**/*'
   ]
 
-  spec.dependency "RxSwift", "> 4.2"
-  spec.dependency "RxCocoa", "> 4.2"
-  spec.dependency "Apollo", "0.30.0"
-  spec.dependency "SwiftLint"
+  spec.dependency "RealifeTech-CoreSDK", "~> 1.0.3"
 
 end
