@@ -12,7 +12,7 @@ import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 // TODO: Add test of failure conditions from the API - implentation is not complete ATM
-class AnalyticsLoggerTests: XCTestCase {
+final class AnalyticsLoggerTests: XCTestCase {
 
     private var mockEventSending: MockAnalyticsLogger!
     private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
@@ -157,7 +157,7 @@ class AnalyticsLoggerTests: XCTestCase {
     }
 }
 
-private class MockQueue<T: Codable & Identifiable>: QueueProviding {
+private final class MockQueue<T: Codable & Identifiable>: QueueProviding {
 
     var next: Result<QueueItem<T>, QueueRetrievalError> { getNext() }
     var count: Int { underlyingStorage.count }

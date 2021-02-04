@@ -9,7 +9,7 @@
 import XCTest
 @testable import RealifeTech
 
-class RealifeTechTests: XCTestCase {
+final class RealifeTechTests: XCTestCase {
 
     func test_setup_modulesAreAvailable() {
         let configuration = SDKConfiguration(appCode: "", clientSecret: "")

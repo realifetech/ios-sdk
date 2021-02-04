@@ -11,7 +11,7 @@ import RealifeTech
 import RealifeTech_CoreSDK
 
 // Note: Current implementaion has matching signatures for LogEventSending & AnalyticsLogging, so we only need one mock
-class MockAnalyticsLogger: AnalyticsLogging, LogEventSending {
+final class MockAnalyticsLogger: AnalyticsLogging, LogEventSending {
 
     var eventsLogged: [AnalyticEvent] = []
     var completionToSend: Result<Bool, Error> = .success(true)

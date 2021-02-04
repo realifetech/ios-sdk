@@ -11,7 +11,7 @@ import RxSwift
 import RealifeTech_CoreSDK
 @testable import RealifeTech
 
-class DeviceRegistrationLoopHandlerTests: XCTestCase {
+final class DeviceRegistrationLoopHandlerTests: XCTestCase {
 
     enum TestError: Error {
         case deviceRegistrationFailed
@@ -99,7 +99,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
         let startTime = Date()
         sut.registerDevice(testDevice, {
             let recordedInterval = Date().timeIntervalSince(startTime)
-            XCTAssertGreaterThan(recordedInterval, minimumTimeInterval)
+            XCTAssertGreaterThan(recordedInterval, minimumTimeInterval) // TODO: Fix flaky test
             XCTAssertLessThan(recordedInterval, minimumTimeInterval*2)
             expectation2.fulfill()
         })
@@ -112,7 +112,7 @@ class DeviceRegistrationLoopHandlerTests: XCTestCase {
     }
 }
 
-private class MockDeviceRepository: DeviceProviding {
+private final class MockDeviceRepository: DeviceProviding {
 
     static var observableToReturn: Observable<Bool> = .just(false)
     static var deviceReceived: Device?

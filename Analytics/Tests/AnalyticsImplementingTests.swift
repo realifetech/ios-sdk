@@ -10,7 +10,7 @@ import XCTest
 import RealifeTech_CoreSDK
 @testable import RealifeTech
 
-class AnalyticsImplementingTests: XCTestCase {
+final class AnalyticsImplementingTests: XCTestCase {
 
     func test_logEvent() {
         let spy = MockAnalyticsLogger()

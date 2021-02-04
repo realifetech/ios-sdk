@@ -10,7 +10,7 @@ import Foundation
 import RealifeTech_CoreSDK
 @testable import RealifeTech
 
-class MockReachabilityChecker: ReachabilityChecking {
+final class MockReachabilityChecker: ReachabilityChecking {
 
     var isBluetoothConnected: Bool = false
     var isConnectedToWifi: Bool = false

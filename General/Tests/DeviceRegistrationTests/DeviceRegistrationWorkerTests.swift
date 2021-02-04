@@ -11,7 +11,7 @@ import Combine
 import RealifeTech_CoreSDK
 @testable import RealifeTech
 
-class DeviceRegistrationWorkerTests: XCTestCase {
+final class DeviceRegistrationWorkerTests: XCTestCase {
 
     private enum TestError: Error, Equatable {
         case registrationError(String)
@@ -107,7 +107,7 @@ class DeviceRegistrationWorkerTests: XCTestCase {
     }
 }
 
-private class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
+private final class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
 
     var deviceReceived: Device?
 
@@ -117,7 +117,7 @@ private class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling 
     }
 }
 
-private class MockCodableStore: Storeable {
+private final class MockCodableStore: Storeable {
     enum MockCodableStoreError: Error {
         case unexpectedMethodCall, noValueSaved
     }

@@ -9,7 +9,7 @@
 import XCTest
 @testable import RealifeTech
 
-class SDKConfigurationTests: XCTestCase {
+final class SDKConfigurationTests: XCTestCase {
 
     func test_initialisation() {
         let testAppCode = "CodeForApp"

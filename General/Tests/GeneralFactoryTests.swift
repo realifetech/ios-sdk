@@ -10,7 +10,7 @@ import XCTest
 import RealifeTech_CoreSDK
 @testable import RealifeTech
 
-class GeneralFactoryTests: XCTestCase {
+final class GeneralFactoryTests: XCTestCase {
 
     func test_setsDeviceId() {
         let testId = "123"

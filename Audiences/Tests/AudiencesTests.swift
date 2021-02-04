@@ -11,7 +11,7 @@ import RealifeTech_CoreSDK
 @testable import RealifeTech
 @testable import Apollo
 
-class AudiencesTests: XCTestCase {
+final class AudiencesTests: XCTestCase {
 
     func test_init_successful() {
         let spy = MockGraphQLDispatcher()
@@ -29,7 +29,7 @@ class AudiencesTests: XCTestCase {
 
     // Mocks
 
-    private class MockGraphQLDispatcher: GraphQLDispatching {
+    private final class MockGraphQLDispatcher: GraphQLDispatching {
 
         var shouldFail: Bool = false
         var dispatchQueryIsCalled: Bool = false

@@ -10,7 +10,7 @@ import XCTest
 import RealifeTech_CoreSDK
 @testable import RealifeTech
 
-class AnalyticsFactoryTests: XCTestCase {
+final class AnalyticsFactoryTests: XCTestCase {
 
     func test_makeModule() {
         let module = AnalyticsFactory.makeAnalyticsModule(
