@@ -14,20 +14,16 @@ public enum GeneralFactory {
 
     public static func makeGeneralModule(
         staticDeviceInformation: StaticDeviceInformation,
-        reachabilityChecker: ReachabilityChecking,
-        deviceRegisteredSubject: CurrentValueSubject<Bool, Never>
+        reachabilityChecker: ReachabilityChecking
     ) -> General {
-        let deviceRegistrationLoopHandler = DeviceRegistrationLoopHandler(
-            reachabilityChecker: reachabilityChecker,
-            debounceRateSeconds: 10)
         let deviceRegistrationStore = CodableStore(
             storage: UserDefaultsStorage(),
             storagePrefix: "GeneralDeviceRegistration")
         let deviceRegistrationWorker = DeviceRegistrationWorker(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker,
-            loopHandler: deviceRegistrationLoopHandler,
-            deviceRegisteredSubject: deviceRegisteredSubject,
+            deviceProvider: DeviceRepository.self,
+            deviceRegistrationMaxAttempts: .max,
             store: deviceRegistrationStore)
         return GeneralImplementing(deviceRegistrationWorker: deviceRegistrationWorker)
     }

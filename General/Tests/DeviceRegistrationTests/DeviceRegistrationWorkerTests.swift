@@ -7,7 +7,8 @@
 //
 
 import XCTest
-import Combine
+import RxSwift
+import RxTest
 import RealifeTech_CoreSDK
 @testable import RealifeTech
 
@@ -17,22 +18,29 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
         case registrationError(String)
     }
 
+    private var bag = DisposeBag()
     private let testId = "123abc"
     private let testModel = "whooze"
     private let osVersion = "dunny"
     private let sdkVersion = "mittens"
+    private lazy var staticInformation = StaticDeviceInformation(
+        deviceId: testId,
+        deviceModel: testModel,
+        osVersion: osVersion,
+        sdkVersion: sdkVersion)
 
     private var sut: DeviceRegistrationWorker!
-    private var deviceRegistrationSpy: MockDeviceRegistrationLoopHandler!
-    private var mockReachabilityChecker: MockReachabilityChecker!
-    private var deviceRegisteredSubject: CurrentValueSubject<Bool, Never>!
-    private var mockStore: MockCodableStore!
+    private var reachabilityChecker: MockReachabilityChecker!
+    private var deviceRepository: MockDeviceRepository.Type!
+    private var store: MockCodableStore!
+    private var scheduler: TestScheduler!
 
     override func setUp() {
-        deviceRegistrationSpy = MockDeviceRegistrationLoopHandler()
-        mockReachabilityChecker = MockReachabilityChecker()
-        deviceRegisteredSubject = .init(false)
-        mockStore = MockCodableStore()
+        reachabilityChecker = MockReachabilityChecker()
+        deviceRepository = MockDeviceRepository.self
+        store = MockCodableStore()
+        // Real time [sec]/resolution = virtual time [ticks]
+        scheduler = TestScheduler(initialClock: 0, resolution: 0.001)
         let staticInformation = StaticDeviceInformation(
             deviceId: testId,
             deviceModel: testModel,
@@ -40,10 +48,23 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
             sdkVersion: sdkVersion)
         sut = DeviceRegistrationWorker(
             staticDeviceInformation: staticInformation,
-            reachabilityChecker: mockReachabilityChecker,
-            loopHandler: deviceRegistrationSpy,
-            deviceRegisteredSubject: deviceRegisteredSubject,
-            store: mockStore)
+            reachabilityChecker: reachabilityChecker,
+            deviceProvider: deviceRepository,
+            deviceRegistrationMaxAttempts: 1,
+            retryRegistrationInterval: 0.01, // 0.01 seconds = 10 milliseconds
+            store: store ,
+            subscriptionScheduler: scheduler,
+            observationScheduler: scheduler)
+    }
+
+    override func tearDown() {
+        scheduler = nil
+        store = nil
+        deviceRepository.reset()
+        deviceRepository = nil
+        reachabilityChecker = nil
+        sut = nil
+        super.tearDown()
     }
 
     func test_initialisation() {
@@ -51,73 +72,80 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
     }
 
     func test_initialisation_readsFromStore() {
-        mockStore.valueToReturn = true
-        let staticInformation = StaticDeviceInformation(
-            deviceId: testId,
-            deviceModel: testModel,
-            osVersion: osVersion,
-            sdkVersion: sdkVersion)
+        store.valueToReturn = true
         let sutWithCustomStore = DeviceRegistrationWorker(
             staticDeviceInformation: staticInformation,
-            reachabilityChecker: mockReachabilityChecker,
-            loopHandler: deviceRegistrationSpy,
-            deviceRegisteredSubject: deviceRegisteredSubject,
-            store: mockStore)
+            reachabilityChecker: reachabilityChecker,
+            deviceProvider: deviceRepository,
+            deviceRegistrationMaxAttempts: 1,
+            retryRegistrationInterval: 1,
+            store: store ,
+            subscriptionScheduler: scheduler,
+            observationScheduler: scheduler)
         XCTAssertTrue(sutWithCustomStore.sdkReady)
     }
 
-    func test_registerDevice_deviceRegistrationStateIsUpdated() {
+    func test_registerDevice_successInTheFirstTime_sdkIsReadyAndSaveToStore() {
         XCTAssertFalse(sut.sdkReady)
-        XCTAssertFalse(deviceRegisteredSubject.value)
-        sut.registerDevice {}
-        XCTAssertTrue(sut.sdkReady)
-        XCTAssertTrue(deviceRegisteredSubject.value)
-    }
-
-    func test_registerDevice_savesToStore() {
-        sut.registerDevice {}
-        XCTAssertNotNil(mockStore.valueSaved)
-    }
-
-    func test_registerDevice_completionCalled() {
-        let expectation = XCTestExpectation(description: "Device registration completion")
-        sut.registerDevice {
+        let observable: TestableObservable<Bool> = scheduler
+            .createColdObservable([.next(10, true)])
+        let expectation = XCTestExpectation(description: "Completion handler gets called")
+        sut.registerDevice { [self] in
+            XCTAssertNotNil(store.valueSaved)
+            XCTAssertTrue(sut.sdkReady)
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.01)
+        observable
+            .bind(to: deviceRepository.registerDevice)
+            .disposed(by: bag)
+        scheduler.start()
+        wait(for: [expectation], timeout: 0.02)
     }
 
-    func test_registerDevice_deviceIsCorect() {
-        let expectation = XCTestExpectation(description: "Device registration completion")
-        let testBluetooth = false
-        let testDevice = Device(
-            deviceId: testId,
-            model: testModel,
-            sdkVersion: "SDK_" + sdkVersion,
-            osVersion: osVersion,
-            bluetoothOn: testBluetooth,
-            wifiConnected: mockReachabilityChecker.isConnectedToWifi)
-        mockReachabilityChecker.isBluetoothConnected = testBluetooth
-        sut.registerDevice { expectation.fulfill() }
-        guard let recievedDevice = deviceRegistrationSpy.deviceReceived else {
-            return XCTFail("No device received")
+    func test_registerDevice_failureExceedsRetryTimes_sdkIsNotReadyAndNotSaveToStore() {
+        let observable: TestableObservable<Bool> = scheduler
+            .createHotObservable([.error(10, TestError.registrationError("error"))])
+        let expectation = XCTestExpectation(description: "Completion handler gets called")
+        sut.registerDevice { [self] in
+            XCTAssertNil(store.valueSaved)
+            XCTAssertFalse(sut.sdkReady)
+            expectation.fulfill()
         }
-        XCTAssertEqual(recievedDevice, testDevice)
-        wait(for: [expectation], timeout: 0.1)
+        observable
+            .bind(to: deviceRepository.registerDevice)
+            .disposed(by: bag)
+        let retryFirstTimeExpectation = XCTestExpectation(description: "Retry first time (attempt = 0)")
+        scheduler.scheduleAt(20) {
+            retryFirstTimeExpectation.fulfill()
+        }
+        let retrySecondimeExpectation = XCTestExpectation(description: "Retry second time (attempt = 1)")
+        scheduler.scheduleAt(30) {
+            retrySecondimeExpectation.fulfill()
+        }
+        scheduler.start()
+        wait(for: [retryFirstTimeExpectation, retrySecondimeExpectation, expectation], timeout: 0.05)
     }
 }
 
-private final class MockDeviceRegistrationLoopHandler: DeviceRegistrationLoopHandling {
+private struct MockDeviceRepository: DeviceProviding {
 
-    var deviceReceived: Device?
+    static var registerDevice = PublishSubject<Bool>()
 
-    func registerDevice(_ device: Device, _ completion: @escaping () -> Void) {
-        self.deviceReceived = device
-        completion()
+    static func reset() {
+        registerDevice = PublishSubject<Bool>()
+    }
+
+    static func registerDevice(_ device: Device) -> Observable<Bool> {
+        return registerDevice.asObservable()
+    }
+
+    static func registerForPushNotifications(with deviceToken: DeviceToken) -> Observable<TokenRegistrationResponse> {
+        return .never()
     }
 }
 
 private final class MockCodableStore: Storeable {
+
     enum MockCodableStoreError: Error {
         case unexpectedMethodCall, noValueSaved
     }
@@ -140,5 +168,5 @@ private final class MockCodableStore: Storeable {
         self.valueSaved = value
     }
 
-    func delete(key: String) {}
+    func delete(key: String) { }
 }

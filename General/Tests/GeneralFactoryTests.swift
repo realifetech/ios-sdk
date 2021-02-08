@@ -21,8 +21,7 @@ final class GeneralFactoryTests: XCTestCase {
             sdkVersion: "goes")
         let sut = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
-            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper(),
-            deviceRegisteredSubject: .init(false))
+            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper())
         XCTAssertEqual(testId, sut.deviceId)
     }
 }

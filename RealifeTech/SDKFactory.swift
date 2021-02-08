@@ -43,8 +43,7 @@ public class RealifeTech {
         let deviceRegisteredValue = ReadOnlyCurrentValue(from: deviceRegisteredSubject)
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
-            reachabilityChecker: reachabilityChecker,
-            deviceRegisteredSubject: deviceRegisteredSubject)
+            reachabilityChecker: reachabilityChecker)
         let dispatcher = CoreFactory.makeGraphQLDispatcher(
             configuration: coreSDKConfiguration,
             tokenHelper: apiHelper,
@@ -58,6 +57,6 @@ public class RealifeTech {
                 deviceRegisteredValue: deviceRegisteredValue)
         }
         Communicate = CommunicateFactory.makeCommunicateModule()
-        apiHelper.getValidToken {}
+        CoreFactory.requestValidToken(fromApiHelper: apiHelper) { }
     }
 }

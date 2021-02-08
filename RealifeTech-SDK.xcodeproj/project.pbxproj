@@ -38,11 +38,9 @@
 		48EFE24B2539E52D00CC6E58 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2492539E52D00CC6E58 /* General.swift */; };
 		48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE24A2539E52D00CC6E58 /* GeneralFactory.swift */; };
 		48EFE2532539E55400CC6E58 /* DeviceRegistrationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2502539E55400CC6E58 /* DeviceRegistrationWorker.swift */; };
-		48EFE2542539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2512539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift */; };
 		48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2522539E55400CC6E58 /* DeviceRegistering.swift */; };
 		48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2582539E56000CC6E58 /* GeneralFactoryTests.swift */; };
 		48EFE25B2539E56000CC6E58 /* GeneralImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2592539E56000CC6E58 /* GeneralImplementingTests.swift */; };
-		48EFE2602539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE25E2539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift */; };
 		48EFE2612539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */; };
 		48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2622539E5A100CC6E58 /* MockReachabilityChecker.swift */; };
 		CC97A359B339D0D9FC49BECC /* Pods_RealifeTech_RealifeTechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */; };
@@ -97,11 +95,9 @@
 		48EFE2492539E52D00CC6E58 /* General.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		48EFE24A2539E52D00CC6E58 /* GeneralFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFactory.swift; sourceTree = "<group>"; };
 		48EFE2502539E55400CC6E58 /* DeviceRegistrationWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationWorker.swift; sourceTree = "<group>"; };
-		48EFE2512539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationLoopHandler.swift; sourceTree = "<group>"; };
 		48EFE2522539E55400CC6E58 /* DeviceRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistering.swift; sourceTree = "<group>"; };
 		48EFE2582539E56000CC6E58 /* GeneralFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFactoryTests.swift; sourceTree = "<group>"; };
 		48EFE2592539E56000CC6E58 /* GeneralImplementingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementingTests.swift; sourceTree = "<group>"; };
-		48EFE25E2539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationLoopHandlerTests.swift; sourceTree = "<group>"; };
 		48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationWorkerTests.swift; sourceTree = "<group>"; };
 		48EFE2622539E5A100CC6E58 /* MockReachabilityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockReachabilityChecker.swift; sourceTree = "<group>"; };
 		48EFE3A3253DE82C00CC6E58 /* RealifeTech-SDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RealifeTech-SDK.podspec"; sourceTree = SOURCE_ROOT; };
@@ -300,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				48EFE2522539E55400CC6E58 /* DeviceRegistering.swift */,
-				48EFE2512539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift */,
 				48EFE2502539E55400CC6E58 /* DeviceRegistrationWorker.swift */,
 				488A681C2546ECB6005C030E /* StaticDeviceInformation.swift */,
 			);
@@ -318,7 +313,6 @@
 		48EFE25D2539E57400CC6E58 /* DeviceRegistrationTests */ = {
 			isa = PBXGroup;
 			children = (
-				48EFE25E2539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift */,
 				48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */,
 			);
 			path = DeviceRegistrationTests;
@@ -594,7 +588,6 @@
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
-				48EFE2542539E55400CC6E58 /* DeviceRegistrationLoopHandler.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
 				488958A52539D04B00B978A9 /* AudiencesImplementing.swift in Sources */,
 				4889587D2539D04B00B978A9 /* AudienceChecking.swift in Sources */,
@@ -610,7 +603,6 @@
 				48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */,
 				488958E92539D09D00B978A9 /* AudiencesTests.swift in Sources */,
 				488958E82539D09D00B978A9 /* CommunicateTests.swift in Sources */,
-				48EFE2602539E59A00CC6E58 /* DeviceRegistrationLoopHandlerTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
 				4889595F2539D8A500B978A9 /* AnalyticsImplementingTests.swift in Sources */,
 				48EFE25B2539E56000CC6E58 /* GeneralImplementingTests.swift in Sources */,

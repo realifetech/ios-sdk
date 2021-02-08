@@ -11,6 +11,7 @@ target 'RealifeTech' do
   project 'RealifeTech-SDK'
 
   target 'RealifeTechTests' do
+    pod 'RxTest', '~> 5.1.1'
   end
 
 end
