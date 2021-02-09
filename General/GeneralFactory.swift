@@ -24,6 +24,7 @@ public enum GeneralFactory {
             reachabilityChecker: reachabilityChecker,
             deviceProvider: DeviceRepository.self,
             deviceRegistrationMaxAttempts: .max,
+            retryRegistrationInterval: 10,
             store: deviceRegistrationStore)
         return GeneralImplementing(deviceRegistrationWorker: deviceRegistrationWorker)
     }
