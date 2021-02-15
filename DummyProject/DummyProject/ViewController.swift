@@ -8,17 +8,19 @@
 
 import UIKit
 import RealifeTech
+import RealifeTech_CoreSDK
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let event = AnalyticEvent(type: "user",
-                                   action: "externalLogin",
-                                   new: ["userId": "a3890e983e", "provider": "ticketmaster"],
-                                   old: nil,
-                                   version: "1.0",
-                                   timestamp: Date())
+        let event = AnalyticEvent(
+            type: "user",
+            action: "externalLogin",
+            new: ["userId": "a3890e983e", "provider": "ticketmaster"],
+            old: nil,
+            version: "1.0",
+            timestamp: Date())
         RealifeTech.Analytics.logEvent(event) { _ in }
     }
 }
