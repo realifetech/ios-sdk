@@ -40,13 +40,4 @@ final class AnalyticsFactoryTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
         XCTAssertEqual(logEventSpy.eventsLogged.first, testEvent)
     }
-
-    private final class MockDeviceRegistering: DeviceRegistering {
-
-        var shouldBeReady = true
-        var sdkReady: Bool { shouldBeReady }
-        let deviceId: String = ""
-
-        func registerDevice(_: @escaping () -> Void) { }
-    }
 }

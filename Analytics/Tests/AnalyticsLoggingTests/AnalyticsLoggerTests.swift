@@ -157,7 +157,7 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 }
 
-private final class MockDeviceRegistering: DeviceRegistering {
+final class MockDeviceRegistering: DeviceRegistering {
 
     var shouldBeReady = true
     var sdkReady: Bool { shouldBeReady }
