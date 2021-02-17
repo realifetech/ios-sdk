@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 
 public typealias EventLoggedCompletion = (Result<Bool, Error>) -> Void
 
 struct AnalyticEventAndCompletion: Identifiable {
+
     let uniqueId: UUID
     let analyticEvent: AnalyticEvent
     let analyticCompletion: EventLoggedCompletion?

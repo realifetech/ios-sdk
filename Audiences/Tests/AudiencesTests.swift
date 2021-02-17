@@ -7,10 +7,11 @@
 //
 
 import XCTest
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 @testable import Apollo
 
-class AudiencesTests: XCTestCase {
+final class AudiencesTests: XCTestCase {
 
     func test_init_successful() {
         let spy = MockGraphQLDispatcher()
@@ -28,21 +29,22 @@ class AudiencesTests: XCTestCase {
 
     // Mocks
 
-    private class MockGraphQLDispatcher: GraphQLDispatching {
+    private final class MockGraphQLDispatcher: GraphQLDispatching {
 
         var shouldFail: Bool = false
         var dispatchQueryIsCalled: Bool = false
 
-        func dispatch<T>(
-            query: T,
-            completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
-        ) where T: GraphQLQuery {
+        func dispatch<Query: GraphQLQuery>(
+            query: Query,
+            cachePolicy: GraphNetworkCachePolicy,
+            completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
+        ) {
             dispatchQueryIsCalled = true
         }
 
-        func dispatchMutation<T>(
-            mutation: T,
-            completion: @escaping (Result<GraphQLResult<T.Data>, Error>) -> Void
-        ) where T: GraphQLMutation {}
+        func dispatchMutation<Query: GraphQLMutation>(
+            mutation: Query,
+            completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
+        ) {}
     }
 }

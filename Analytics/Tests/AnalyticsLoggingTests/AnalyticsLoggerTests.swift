@@ -8,10 +8,11 @@
 
 import XCTest
 import Combine
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 // TODO: Add test of failure conditions from the API - implentation is not complete ATM
-class AnalyticsLoggerTests: XCTestCase {
+final class AnalyticsLoggerTests: XCTestCase {
 
     private var mockEventSending: MockAnalyticsLogger!
     private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
@@ -156,15 +157,15 @@ class AnalyticsLoggerTests: XCTestCase {
     }
 }
 
-private class MockQueue<T: Codable & Identifiable>: QueueProviding {
+private final class MockQueue<Queue: Codable & Identifiable>: QueueProviding {
 
-    var next: Result<QueueItem<T>, QueueRetrievalError> { getNext() }
+    var next: Result<QueueItem<Queue>, QueueRetrievalError> { getNext() }
     var count: Int { underlyingStorage.count }
     var isEmpty: Bool { underlyingStorage.isEmpty }
     var queueWasEmptiedExpectation: XCTestExpectation?
     var addedToQueueExpectation: XCTestExpectation?
 
-    var underlyingStorage: [T] = [] {
+    var underlyingStorage: [Queue] = [] {
         didSet {
             guard underlyingStorage.isEmpty else { return }
             queueWasEmptiedExpectation?.fulfill()
@@ -172,7 +173,7 @@ private class MockQueue<T: Codable & Identifiable>: QueueProviding {
     }
     var receivedQueueActions: [QueueAction] = []
 
-    func getNext() -> Result<QueueItem<T>, QueueRetrievalError> {
+    func getNext() -> Result<QueueItem<Queue>, QueueRetrievalError> {
         guard let next = underlyingStorage.first else {
             return .failure(.empty)
         }
@@ -189,7 +190,7 @@ private class MockQueue<T: Codable & Identifiable>: QueueProviding {
         }
     }
 
-    func addToQueue(_ item: T) {
+    func addToQueue(_ item: Queue) {
         underlyingStorage.append(item)
         addedToQueueExpectation?.fulfill()
     }

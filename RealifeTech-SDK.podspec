@@ -31,8 +31,8 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = "13.0"
   spec.swift_version = "5.0"
   spec.source        = { :git => 'https://github.com/realifetech/ios-sdk.git', :branch => 'develop', :tag => '0.0.1'}
-  spec.source_files = [ 
-    '**/*.swift', 
+  spec.source_files = [
+    '**/*.swift',
     'RealifeTech/RealifeTech.h']
   spec.exclude_files =  [
       'DummyProject/**/*',
@@ -40,9 +40,6 @@ Pod::Spec.new do |spec|
       '**/Tests/**/*'
   ]
 
-  spec.dependency "RxSwift", "> 4.2"
-  spec.dependency "RxCocoa", "> 4.2"
-  spec.dependency "Apollo", "0.30.0"
-  spec.dependency "SwiftLint"
+  spec.dependency "RealifeTech-CoreSDK", "~> 1.0.3"
 
 end

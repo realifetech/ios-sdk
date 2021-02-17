@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 
 public enum AnalyticsFactory {
+
     static func makeAnalyticsModule(
         dispatcher: LogEventSending,
         reachabilityHelper: ReachabilityChecking,
