@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Combine
 import RealifeTech_CoreSDK
 @testable import RealifeTech
 
@@ -17,13 +16,14 @@ final class AnalyticsLoggerTests: XCTestCase {
     private var mockEventSending: MockAnalyticsLogger!
     private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
     private var mockReachabilityChecker: MockReachabilityChecker!
-    private var deviceRegisteredSubject: CurrentValueSubject<Bool, Never>!
+    private var mockDeviceRegistering: MockDeviceRegistering!
 
     override func setUp() {
+        super.setUp()
         self.mockEventSending = MockAnalyticsLogger()
         self.mockReachabilityChecker = MockReachabilityChecker()
         self.mockQueue = MockQueue<AnalyticEventAndCompletion>()
-        self.deviceRegisteredSubject = .init(true)
+        self.mockDeviceRegistering = MockDeviceRegistering()
     }
 
     private func makeSut() -> AnalyticsLogger {
@@ -32,7 +32,7 @@ final class AnalyticsLoggerTests: XCTestCase {
             reachabilityHelper: mockReachabilityChecker,
             persistentQueue: AnyQueue(mockQueue),
             failureDebounceSeconds: 0.01,
-            deviceRegisteredValue: .init(from: deviceRegisteredSubject))
+            deviceRegistering: mockDeviceRegistering)
     }
 
     private func makeEvents(from strings: [String]) -> [AnalyticEvent] {
@@ -111,7 +111,7 @@ final class AnalyticsLoggerTests: XCTestCase {
             version: "Golden")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
-        deviceRegisteredSubject.send(false)
+        mockDeviceRegistering.shouldBeReady = false
         let sut = makeSut()
         sut.logEvent(testEvent, completion: { result in
             switch result {
@@ -123,7 +123,7 @@ final class AnalyticsLoggerTests: XCTestCase {
             expectation.fulfill()
         })
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.deviceRegisteredSubject.send(true)
+            self.mockDeviceRegistering.shouldBeReady = true
         }
         wait(for: [expectation], timeout: 0.02)
     }
@@ -155,6 +155,15 @@ final class AnalyticsLoggerTests: XCTestCase {
         mockEventSending.eventsLogged = []
         test_logEvent_sendsSingleItem()
     }
+}
+
+private final class MockDeviceRegistering: DeviceRegistering {
+
+    var shouldBeReady = true
+    var sdkReady: Bool { shouldBeReady }
+    let deviceId: String = ""
+
+    func registerDevice(_: @escaping () -> Void) { }
 }
 
 private final class MockQueue<Queue: Codable & Identifiable>: QueueProviding {

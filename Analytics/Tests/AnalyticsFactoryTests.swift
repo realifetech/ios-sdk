@@ -16,7 +16,7 @@ final class AnalyticsFactoryTests: XCTestCase {
         let module = AnalyticsFactory.makeAnalyticsModule(
             dispatcher: MockAnalyticsLogger(),
             reachabilityHelper: MockReachabilityChecker(),
-            deviceRegisteredValue: ReadOnlyCurrentValue(from: .init(true)))
+            deviceRegistering: MockDeviceRegistering())
         XCTAssertTrue(module is AnalyticsImplementing)
     }
 
@@ -33,11 +33,20 @@ final class AnalyticsFactoryTests: XCTestCase {
         let module = AnalyticsFactory.makeAnalyticsModule(
             dispatcher: logEventSpy,
             reachabilityHelper: mockReachabilityChecker,
-            deviceRegisteredValue: ReadOnlyCurrentValue(from: .init(true)))
+            deviceRegistering: MockDeviceRegistering())
         module.logEvent(testEvent) { _ in
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
         XCTAssertEqual(logEventSpy.eventsLogged.first, testEvent)
+    }
+
+    private final class MockDeviceRegistering: DeviceRegistering {
+
+        var shouldBeReady = true
+        var sdkReady: Bool { shouldBeReady }
+        let deviceId: String = ""
+
+        func registerDevice(_: @escaping () -> Void) { }
     }
 }
