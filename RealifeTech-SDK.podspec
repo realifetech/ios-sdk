@@ -40,6 +40,6 @@ Pod::Spec.new do |spec|
       '**/Tests/**/*'
   ]
 
-  spec.dependency "RealifeTech-CoreSDK", "~> 1.0.3"
+  spec.dependency "RealifeTech-CoreSDK", "~> 1.0.4"
 
 end
