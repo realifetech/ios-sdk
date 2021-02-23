@@ -16,7 +16,7 @@ final class AnalyticsFactoryTests: XCTestCase {
         let module = AnalyticsFactory.makeAnalyticsModule(
             dispatcher: MockAnalyticsLogger(),
             reachabilityHelper: MockReachabilityChecker(),
-            deviceRegisteredValue: ReadOnlyCurrentValue(from: .init(true)))
+            deviceRegistering: MockDeviceRegistering())
         XCTAssertTrue(module is AnalyticsImplementing)
     }
 
@@ -33,7 +33,7 @@ final class AnalyticsFactoryTests: XCTestCase {
         let module = AnalyticsFactory.makeAnalyticsModule(
             dispatcher: logEventSpy,
             reachabilityHelper: mockReachabilityChecker,
-            deviceRegisteredValue: ReadOnlyCurrentValue(from: .init(true)))
+            deviceRegistering: MockDeviceRegistering())
         module.logEvent(testEvent) { _ in
             expectation.fulfill()
         }

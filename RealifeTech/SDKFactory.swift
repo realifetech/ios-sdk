@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 import RealifeTech_CoreSDK
 
 public class RealifeTech {
@@ -39,8 +38,6 @@ public class RealifeTech {
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
             sdkVersion: moduleVersionString)
-        let deviceRegisteredSubject = CurrentValueSubject<Bool, Never>(false)
-        let deviceRegisteredValue = ReadOnlyCurrentValue(from: deviceRegisteredSubject)
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
@@ -54,7 +51,7 @@ public class RealifeTech {
             Analytics = AnalyticsFactory.makeAnalyticsModule(
                 dispatcher: dispatcher,
                 reachabilityHelper: reachabilityChecker,
-                deviceRegisteredValue: deviceRegisteredValue)
+                deviceRegistering: General)
         }
         Communicate = CommunicateFactory.makeCommunicateModule()
         CoreFactory.requestValidToken(fromApiHelper: apiHelper) { }
