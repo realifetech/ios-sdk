@@ -9,6 +9,6 @@
 import Foundation
 import RealifeTech_CoreSDK
 
-public typealias ApolloWebPageType = ApolloType.WebPageType
 public typealias Content = WebPageCreatable
+public typealias ApolloWebPageType = ApolloType.WebPageType
 public typealias WebPageType = WebPage.`Type`

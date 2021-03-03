@@ -17,13 +17,20 @@ public class ContentImplementing: Content {
         self.dispatcher = dispatcher
     }
 
-    public func getWebPage(forType type: WebPage.`Type`, completion: @escaping (Result<WebPage, Error>) -> Void) {
+    public func getWebPage(
+        forType type: WebPage.`Type`,
+        completion: @escaping (Result<WebPage, Error>) -> Void
+    ) {
         makeGetWebPageQuery(by: type, completion: completion)
     }
 
-    public func createWebPageView(forType type: WebPage.`Type`, completion: @escaping (UIViewController) -> Void) {
+    public func createWebPageView(
+        forType type: WebPage.`Type`,
+        webPgaeViewControllerDelegate: WebPageViewControllerDelegate?,
+        completion: @escaping (UIViewController) -> Void
+    ) {
         makeGetWebPageQuery(by: type) { result in
-            let webPageViewController = WebPageViewController(result: result, delegate: nil)
+            let webPageViewController = WebPageViewController(result: result, delegate: webPgaeViewControllerDelegate)
             completion(webPageViewController)
         }
     }

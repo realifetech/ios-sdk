@@ -118,7 +118,9 @@ class ViewController: UIViewController {
             return
         }
         updateLoadingSpinnerVisibility(shouldShow: true)
-        RealifeTech.Content.createWebPageView(forType: pageType) { [weak self] viewController in
+        RealifeTech.Content.createWebPageView(
+            forType: pageType,
+            webPgaeViewControllerDelegate: self) { [weak self] viewController in
             self?.updateLoadingSpinnerVisibility(shouldShow: false)
             self?.present(viewController, animated: true, completion: nil)
         }
@@ -174,5 +176,33 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         contentTextField.text = WebPageType.allCases[row].rawValue
+    }
+}
+
+extension ViewController: WebPageViewControllerDelegate {
+
+    func webViewCanGoBack() {
+        print("webViewCanGoBack")
+    }
+
+    func webViewCanGoForward() {
+        print("webViewCanGoForward")
+    }
+
+    func webViewEstimatedProgressChanged(_ progress: Double) {
+        print("webViewEstimatedProgressChanged: \(progress)")
+    }
+
+    func urlForNavigationAction(_ url: URL?) {
+        guard let url = url else { return }
+        print("urlForNavigationAction: \(url)")
+    }
+
+    func webViewDidStartProvisionalNavigation() {
+        print("webViewDidStartProvisionalNavigation")
+    }
+
+    func webViewDidFinishNavigation() {
+        print("webViewDidFinishNavigation")
     }
 }
