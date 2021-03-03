@@ -152,6 +152,8 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - UITextField delegate
+
 extension ViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -159,6 +161,8 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - UIPickerView dataSource & delegate
 
 extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -178,6 +182,8 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         contentTextField.text = WebPageType.allCases[row].rawValue
     }
 }
+
+// MARK: - WebPageViewController delegate
 
 extension ViewController: WebPageViewControllerDelegate {
 

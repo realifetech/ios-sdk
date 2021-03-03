@@ -20,12 +20,12 @@ public protocol WebPageViewControllerDelegate: AnyObject {
 
 public class WebPageViewController: UIViewController {
 
-    private let result: Result<WebPage, Error>
+    let result: Result<WebPage, Error>
     weak var delegate: WebPageViewControllerDelegate?
 
-    private var canGoBackObserver: NSKeyValueObservation?
-    private var canGoForwardObserver: NSKeyValueObservation?
-    private var estimatedProgressObserver: NSKeyValueObservation?
+    private(set) var canGoBackObserver: NSKeyValueObservation?
+    private(set) var canGoForwardObserver: NSKeyValueObservation?
+    private(set) var estimatedProgressObserver: NSKeyValueObservation?
 
     public lazy var webView: WKWebView = {
         let webView = WKWebView()
