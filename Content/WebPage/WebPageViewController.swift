@@ -23,6 +23,10 @@ public class WebPageViewController: UIViewController {
     private let result: Result<WebPage, Error>
     weak var delegate: WebPageViewControllerDelegate?
 
+    private var canGoBackObserver: NSKeyValueObservation?
+    private var canGoForwardObserver: NSKeyValueObservation?
+    private var estimatedProgressObserver: NSKeyValueObservation?
+
     public lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,10 +42,6 @@ public class WebPageViewController: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    deinit {
-        print("DEINIT")
     }
 
     public override func viewDidLoad() {
@@ -71,9 +71,7 @@ public class WebPageViewController: UIViewController {
         case .success(let webPage):
             let request = URLRequest(url: webPage.url)
             webView.load(request)
-            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
-            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoBack), options: .new, context: nil)
-            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.canGoForward), options: .new, context: nil)
+            observeWebView()
         case .failure(let error):
             showAlertControllerAndCloseScene(title: error.localizedDescription)
         }
@@ -83,23 +81,29 @@ public class WebPageViewController: UIViewController {
         guard webView.isLoading else { return }
         webView.stopLoading()
         guard webView.observationInfo != nil else { return }
-        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress))
-        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.canGoBack))
-        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.canGoForward))
+        canGoBackObserver?.invalidate()
+        canGoForwardObserver?.invalidate()
+        estimatedProgressObserver?.invalidate()
+        canGoBackObserver = nil
+        canGoForwardObserver = nil
+        estimatedProgressObserver = nil
     }
 
-    override public func observeValue(
-        forKeyPath keyPath: String?,
-        of object: Any?,
-        change: [NSKeyValueChangeKey: Any]?,
-        context: UnsafeMutableRawPointer?
-    ) {
-        if keyPath == #keyPath(WKWebView.canGoBack) {
-            delegate?.webViewCanGoBack()
-        } else if keyPath == #keyPath(WKWebView.canGoForward) {
-            delegate?.webViewCanGoForward()
-        } else if keyPath == #keyPath(WKWebView.estimatedProgress) {
-            delegate?.webViewEstimatedProgressChanged(webView.estimatedProgress)
+    private func observeWebView() {
+        canGoBackObserver = webView.observe(
+            \.canGoBack,
+            options: .new) { [weak self] (_, _) in
+            self?.delegate?.webViewCanGoBack()
+        }
+        canGoForwardObserver = webView.observe(
+            \.canGoForward,
+            options: .new) { [weak self] (_, _) in
+            self?.delegate?.webViewCanGoForward()
+        }
+        estimatedProgressObserver = webView.observe(
+            \.estimatedProgress,
+            options: .new) { [weak self] (_, change) in
+            self?.delegate?.webViewEstimatedProgressChanged(change.newValue ?? 0)
         }
     }
 
