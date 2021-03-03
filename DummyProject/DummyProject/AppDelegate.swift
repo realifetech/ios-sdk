@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             apiUrl: "",
             graphQLApiUrlString: "")
         RealifeTech.configureSDK(with: configuration)
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {
                 print("D'oh: \(error.localizedDescription)")
             } else {
