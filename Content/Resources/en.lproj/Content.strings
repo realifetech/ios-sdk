@@ -1,0 +1,12 @@
+/* 
+  Content.strings
+  RealifeTech-SDK
+
+  Created by Mickey Lee on 02/03/2021.
+  Copyright © 2021 Realife Tech. All rights reserved.
+*/
+
+"ERROR" = "Error";
+"EMPTYURL_ERROR_MESSAGE" = "URL is empty";
+"CONSTRUCTURL_ERROR_MESSAGE" = "Unable to construct the URL";
+"CLOSE" = "Close";
