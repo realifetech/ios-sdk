@@ -15,6 +15,7 @@ public class RealifeTech {
     public static var Audiences: AudienceChecking!
     public static var Analytics: Analytics!
     public static var Communicate: Communicate!
+    public static var Content: Content!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -54,6 +55,7 @@ public class RealifeTech {
                 deviceRegistering: General)
         }
         Communicate = CommunicateFactory.makeCommunicateModule()
+        Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
         CoreFactory.requestValidToken(fromApiHelper: apiHelper) { }
     }
 }
