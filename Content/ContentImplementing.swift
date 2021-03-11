@@ -21,21 +21,6 @@ public class ContentImplementing: Content {
         forType type: WebPage.`Type`,
         completion: @escaping (Result<WebPage, Error>) -> Void
     ) {
-        makeGetWebPageQuery(by: type, completion: completion)
-    }
-
-    public func createWebPageView(
-        forType type: WebPage.`Type`,
-        webPgaeViewControllerDelegate: WebPageViewControllerDelegate?,
-        completion: @escaping (UIViewController) -> Void
-    ) {
-        makeGetWebPageQuery(by: type) { result in
-            let webPageViewController = WebPageViewController(result: result, delegate: webPgaeViewControllerDelegate)
-            completion(webPageViewController)
-        }
-    }
-
-    private func makeGetWebPageQuery(by type: WebPage.`Type`, completion: @escaping (Result<WebPage, Error>) -> Void) {
         let pageType = ApolloWebPageType(rawValue: type.rawValue)
         dispatcher.dispatch(
             query: ApolloType.GetWebPageByTypeQuery(type: pageType),
@@ -53,5 +38,15 @@ public class ContentImplementing: Content {
                 completion(.failure(error))
             }
         }
+    }
+
+    public func createWebPageView(
+        forType type: WebPage.`Type`,
+        webPgaeViewControllerDelegate: WebPageViewControllerDelegate?
+    ) -> WebPageViewController {
+        return WebPageViewController(
+            webPageCreator: self,
+            type: type,
+            delegate: webPgaeViewControllerDelegate)
     }
 }

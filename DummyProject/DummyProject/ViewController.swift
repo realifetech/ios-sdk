@@ -117,13 +117,10 @@ class ViewController: UIViewController {
                 message: "Unable to find this page type")
             return
         }
-        updateLoadingSpinnerVisibility(shouldShow: true)
-        RealifeTech.Content.createWebPageView(
+        let webPageViewController = RealifeTech.Content.createWebPageView(
             forType: pageType,
-            webPgaeViewControllerDelegate: self) { [weak self] viewController in
-            self?.updateLoadingSpinnerVisibility(shouldShow: false)
-            self?.present(viewController, animated: true, completion: nil)
-        }
+            webPgaeViewControllerDelegate: self)
+        present(webPageViewController, animated: true, completion: nil)
     }
 
     // MARK: - Helper methods
@@ -187,28 +184,11 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
 extension ViewController: WebPageViewControllerDelegate {
 
-    func webViewCanGoBack() {
-        print("webViewCanGoBack")
-    }
-
-    func webViewCanGoForward() {
-        print("webViewCanGoForward")
-    }
-
-    func webViewEstimatedProgressChanged(_ progress: Double) {
-        print("webViewEstimatedProgressChanged: \(progress)")
-    }
-
-    func urlForNavigationAction(_ url: URL?) {
-        guard let url = url else { return }
-        print("urlForNavigationAction: \(url)")
-    }
-
-    func webViewDidStartProvisionalNavigation() {
-        print("webViewDidStartProvisionalNavigation")
-    }
-
-    func webViewDidFinishNavigation() {
-        print("webViewDidFinishNavigation")
+    func getError(_ error: Error) {
+        presentedViewController?.dismiss(animated: true) {
+            self.showAlertController(
+                title: "Content",
+                message: "Failed to create WebPageViewController due to error: \(error.localizedDescription)")
+        }
     }
 }

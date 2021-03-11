@@ -7,6 +7,6 @@
 */
 
 "ERROR" = "Error";
-"EMPTYURL_ERROR_MESSAGE" = "URL is empty";
-"CONSTRUCTURL_ERROR_MESSAGE" = "Unable to construct the URL";
+"EMPTY_URL_ERROR_MESSAGE" = "URL is empty";
+"CONSTRUCT_URL_ERROR_MESSAGE" = "Unable to construct the URL";
 "CLOSE" = "Close";
