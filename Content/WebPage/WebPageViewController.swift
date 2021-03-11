@@ -19,7 +19,7 @@ open class WebPageViewController: UIViewController {
     private let type: WebPage.`Type`
 
     public weak var delegate: WebPageViewControllerDelegate?
-    open lazy var webView: WKWebView = {
+    public lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
