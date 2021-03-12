@@ -12,131 +12,77 @@ import WebKit
 
 final class WebPageViewControllerTests: XCTestCase {
 
-    private let webPage = WebPage(url: URL(string: "https://www.google.com")!)
+    private var webPageCreator: MockWebPageCreator!
+    // swiftlint:disable:next weak_delegate
+    private var delegate: MockWebPageViewControllerDelegate!
+    private var sut: WebPageViewController!
 
-    func test_initialise_resultAndDelegateDidSet() {
-        let delegate = MockWebPageViewControllerDelegate()
-        let sut = makeSUT(delegate: delegate)
-        guard case let .success(returnedWebPage) = sut.result else {
-            return XCTFail("Fail to get the success result")
-        }
-        XCTAssertEqual(returnedWebPage.url, webPage.url)
+    override func setUp() {
+        super.setUp()
+        webPageCreator = MockWebPageCreator()
+        delegate = MockWebPageViewControllerDelegate()
+        sut = WebPageViewController(
+            webPageCreator: webPageCreator,
+            type: .about,
+            delegate: delegate)
+    }
+
+    override func tearDown() {
+        delegate = nil
+        webPageCreator = nil
+        sut = nil
+        super.tearDown()
+    }
+
+    func test_initialise_delegateDidSet() {
         XCTAssertTrue(sut.delegate is MockWebPageViewControllerDelegate)
     }
 
-    func test_viewDidLoad_resultIsSuccess_webViewIsSetupAndObserversAreSet() {
-        let sut = makeSUT()
-        XCTAssertNotNil(sut.webView.uiDelegate)
-        XCTAssertNotNil(sut.webView.navigationDelegate)
-        XCTAssertNotNil(sut.canGoBackObserver)
-        XCTAssertNotNil(sut.canGoForwardObserver)
-        XCTAssertNotNil(sut.estimatedProgressObserver)
-    }
-
-    func test_viewDidLoad_resultIsFailure_webViewIsSetupButNotSetupObservers() {
-        let sut = makeSUT(with: false)
-        XCTAssertNotNil(sut.webView.uiDelegate)
-        XCTAssertNotNil(sut.webView.navigationDelegate)
-        XCTAssertNil(sut.canGoBackObserver)
-        XCTAssertNil(sut.canGoForwardObserver)
-        XCTAssertNil(sut.estimatedProgressObserver)
-    }
-
-    func test_viewDidDisappear_webViewIsLoading_shouldStopLoadingAndInvalidateObservers() {
-        let sut = makeSUT()
-        XCTAssertTrue(sut.webView.isLoading)
-        sut.viewDidDisappear(false)
-        XCTAssertNil(sut.canGoBackObserver)
-        XCTAssertNil(sut.canGoForwardObserver)
-        XCTAssertNil(sut.estimatedProgressObserver)
-    }
-
-    func test_webViewDecidePolicyForNavigationAction_withUrl_policyDidReceivedAndDelegateMethodGetsCalled() {
-        let delegate = MockWebPageViewControllerDelegate()
-        let sut = makeSUT(delegate: delegate)
-        var receivedPolicy: WKNavigationActionPolicy?
-        let navigation = createFakeNavigationAction(url: webPage.url)
-        sut.webView(sut.webView, decidePolicyFor: navigation) { receivedPolicy = $0 }
-        XCTAssertEqual(receivedPolicy, .allow)
-        XCTAssertEqual(delegate.urlReceived, webPage.url)
-    }
-
-    func test_webViewDidStartProvisionalNavigation_delegateMethodGetsCalled() {
-        let delegate = MockWebPageViewControllerDelegate()
-        let sut = makeSUT(delegate: delegate)
-        let navigation = createNavigation(url: webPage.url, webView: sut.webView)
-        sut.webView(sut.webView, didStartProvisionalNavigation: navigation)
-        XCTAssertTrue(delegate.startedProvisionalNavigation)
-    }
-
-    func test_webViewDidFinish_delegateMethodGetsCalled() {
-        let delegate = MockWebPageViewControllerDelegate()
-        let sut = makeSUT(delegate: delegate)
-        let navigation = createNavigation(url: webPage.url, webView: sut.webView)
-        sut.webView(sut.webView, didFinish: navigation)
-        XCTAssertTrue(delegate.finishedNavigation)
-    }
-
-    private func makeSUT(
-        with successResult: Bool = true,
-        delegate: WebPageViewControllerDelegate? = nil
-    ) -> WebPageViewController {
-        let sut = WebPageViewController(
-            result: successResult ? .success(webPage) : .failure(DummyError.failure),
-            delegate: delegate)
+    func test_viewDidLoad_fetchSucceed_webViewIsLoading() {
         _ = sut.view
-        return sut
+        XCTAssertTrue(sut.webView.isLoading)
+    }
+
+    func test_viewDidLoad_fetchFailure_delegateGetsError() {
+        webPageCreator.shouldReturnError = true
+        _ = sut.view
+        XCTAssertFalse(sut.webView.isLoading)
+        XCTAssertTrue(delegate.errorReceived is DummyError)
     }
 }
 
 // MARK: - Mocks
 
+private let webPage = WebPage(url: URL(string: "https://www.google.com")!)
+
+private final class MockWebPageCreator: WebPageCreatable {
+
+    var shouldReturnError = false
+
+    func getWebPage(forType type: WebPage.`Type`, completion: @escaping (Result<WebPage, Error>) -> Void) {
+        if shouldReturnError {
+            completion(.failure(DummyError.failure))
+        } else {
+            completion(.success(webPage))
+        }
+    }
+
+    func createWebPageView(
+        forType type: WebPage.`Type`,
+        webPageViewControllerDelegate: WebPageViewControllerDelegate?
+    ) -> WebPageViewController {
+        return WebPageViewController(
+            webPageCreator: MockWebPageCreator(),
+            type: .about,
+            delegate: nil)
+    }
+}
+
 private final class MockWebPageViewControllerDelegate: WebPageViewControllerDelegate {
 
-    var urlReceived: URL?
-    var startedProvisionalNavigation = false
-    var finishedNavigation = false
+    var errorReceived: Error?
 
-    func webViewCanGoBack() { }
-
-    func webViewCanGoForward() { }
-
-    func webViewEstimatedProgressChanged(_ progress: Double) { }
-
-    func urlForNavigationAction(_ url: URL?) {
-        urlReceived = url
+    func getError(_ error: Error) {
+        errorReceived = error
     }
-
-    func webViewDidStartProvisionalNavigation() {
-        startedProvisionalNavigation = true
-    }
-
-    func webViewDidFinishNavigation() {
-        finishedNavigation = true
-    }
-}
-
-private final class FakeNavigationAction: WKNavigationAction {
-
-    let testRequest: URLRequest
-
-    override var request: URLRequest {
-        return testRequest
-    }
-
-    init(testRequest: URLRequest) {
-        self.testRequest = testRequest
-        super.init()
-    }
-}
-
-// MARK: - Helper
-
-private func createFakeNavigationAction(url: URL) -> FakeNavigationAction {
-    return FakeNavigationAction(testRequest: URLRequest(url: url))
-}
-
-private func createNavigation(url: URL, webView: WKWebView) -> WKNavigation? {
-    let urlRequest = URLRequest(url: url)
-    return webView.load(urlRequest)
 }

@@ -79,19 +79,12 @@ final class ContentImplementingTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_createWebPageView_completeWithViewControllerAndPassedResult() {
-        let expectation = XCTestExpectation(description: "Completion gets fulfilled")
-        sut.createWebPageView(forType: .about, webPgaeViewControllerDelegate: nil) { viewController in
-            guard
-                let webPageViewController = viewController as? WebPageViewController,
-                case let .success(webPage) = webPageViewController.result
-            else {
-                return XCTFail("This test should return success case")
-            }
-            XCTAssertEqual(webPage.url.absoluteString, dummyUrl)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
+    func test_createWebPageView_returnWebPageViewController() {
+        let delegate = MockWebPageViewControllerDelegate()
+        let result = sut.createWebPageView(
+            forType: .about,
+            webPageViewControllerDelegate: delegate)
+        XCTAssertTrue(result.delegate is MockWebPageViewControllerDelegate)
     }
 }
 
@@ -135,4 +128,9 @@ private final class MockGraphQLDispatcher: GraphQLDispatching {
         mutation: Query,
         completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     ) { }
+}
+
+private final class MockWebPageViewControllerDelegate: WebPageViewControllerDelegate {
+
+    func getError(_ error: Error) { }
 }
