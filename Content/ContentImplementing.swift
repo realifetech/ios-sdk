@@ -42,11 +42,11 @@ public class ContentImplementing: Content {
 
     public func createWebPageView(
         forType type: WebPage.`Type`,
-        webPgaeViewControllerDelegate: WebPageViewControllerDelegate?
+        webPageViewControllerDelegate: WebPageViewControllerDelegate?
     ) -> WebPageViewController {
         return WebPageViewController(
             webPageCreator: self,
             type: type,
-            delegate: webPgaeViewControllerDelegate)
+            delegate: webPageViewControllerDelegate)
     }
 }

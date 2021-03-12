@@ -69,7 +69,7 @@ private final class MockWebPageCreator: WebPageCreatable {
 
     func createWebPageView(
         forType type: WebPage.`Type`,
-        webPgaeViewControllerDelegate: WebPageViewControllerDelegate?
+        webPageViewControllerDelegate: WebPageViewControllerDelegate?
     ) -> WebPageViewController {
         return WebPageViewController(
             webPageCreator: MockWebPageCreator(),

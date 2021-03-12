@@ -83,7 +83,7 @@ final class ContentImplementingTests: XCTestCase {
         let delegate = MockWebPageViewControllerDelegate()
         let result = sut.createWebPageView(
             forType: .about,
-            webPgaeViewControllerDelegate: delegate)
+            webPageViewControllerDelegate: delegate)
         XCTAssertTrue(result.delegate is MockWebPageViewControllerDelegate)
     }
 }
