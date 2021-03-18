@@ -110,19 +110,6 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func modalWebPageViewButtonTapped(_ sender: Any) {
-        guard let pageType = WebPageType(value: contentTextField.text ?? "") else {
-            showAlertController(
-                title: "Content - Invalid Page Type",
-                message: "Unable to find this page type")
-            return
-        }
-        let webPageViewController = RealifeTech.Content.createWebPageView(
-            forType: pageType,
-            webPgaeViewControllerDelegate: self)
-        present(webPageViewController, animated: true, completion: nil)
-    }
-
     // MARK: - Helper methods
 
     private func checkIfSDKIsReady() {
@@ -177,18 +164,5 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         contentTextField.text = WebPageType.allCases[row].rawValue
-    }
-}
-
-// MARK: - WebPageViewController delegate
-
-extension ViewController: WebPageViewControllerDelegate {
-
-    func getError(_ error: Error) {
-        presentedViewController?.dismiss(animated: true) {
-            self.showAlertController(
-                title: "Content",
-                message: "Failed to create WebPageViewController due to error: \(error.localizedDescription)")
-        }
     }
 }
