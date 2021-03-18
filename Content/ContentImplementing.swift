@@ -39,14 +39,4 @@ public class ContentImplementing: Content {
             }
         }
     }
-
-    public func createWebPageView(
-        forType type: WebPage.`Type`,
-        webPageViewControllerDelegate: WebPageViewControllerDelegate?
-    ) -> WebPageViewController {
-        return WebPageViewController(
-            webPageCreator: self,
-            type: type,
-            delegate: webPageViewControllerDelegate)
-    }
 }

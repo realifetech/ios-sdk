@@ -12,8 +12,4 @@ public protocol WebPageCreatable {
     func getWebPage(
         forType type: WebPage.`Type`,
         completion: @escaping (Result<WebPage, Error>) -> Void)
-    func createWebPageView(
-        forType type: WebPage.`Type`,
-        webPageViewControllerDelegate: WebPageViewControllerDelegate?
-    ) -> WebPageViewController
 }

@@ -161,7 +161,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Iag-08-xmV" userLabel="Content Stack View">
-                                <rect key="frame" x="16" y="525" width="382" height="162.5"/>
+                                <rect key="frame" x="16" y="525" width="382" height="115.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content - Web Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu1-vs-ANR">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -194,14 +194,6 @@
                                         <state key="normal" title="Get WebPage"/>
                                         <connections>
                                             <action selector="getWebPageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZCp-h5-ctX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5n-6U-1Lf">
-                                        <rect key="frame" x="0.0" y="129.5" width="382" height="33"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Modal WebPage View"/>
-                                        <connections>
-                                            <action selector="modalWebPageViewButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EHh-1k-khk"/>
                                         </connections>
                                     </button>
                                 </subviews>

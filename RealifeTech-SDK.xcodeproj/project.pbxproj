@@ -49,13 +49,11 @@
 		968CA5CD25EE7B4C0000C2E2 /* String+Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5CC25EE7B4C0000C2E2 /* String+Localisation.swift */; };
 		968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5D425EE7BEC0000C2E2 /* WebPageCreatable.swift */; };
 		968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5DA25EE7C410000C2E2 /* ContentImplementing.swift */; };
-		968CA5E225EE80050000C2E2 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5E125EE80050000C2E2 /* WebPageViewController.swift */; };
 		968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA62225EF69370000C2E2 /* ContentFactory.swift */; };
 		968CA62925EF6DC90000C2E2 /* Content.strings in Resources */ = {isa = PBXBuildFile; fileRef = 968CA62B25EF6DC90000C2E2 /* Content.strings */; };
 		968CA69B25EF95050000C2E2 /* ContentFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA69A25EF95040000C2E2 /* ContentFactoryTests.swift */; };
 		968CA69F25EF96600000C2E2 /* ContentImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA69E25EF96600000C2E2 /* ContentImplementingTests.swift */; };
 		968CA6A525EF9B8A0000C2E2 /* WebPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA6A425EF9B8A0000C2E2 /* WebPageTests.swift */; };
-		968CA6AB25EF9C810000C2E2 /* WebPageViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA6AA25EF9C810000C2E2 /* WebPageViewControllerTests.swift */; };
 		CC97A359B339D0D9FC49BECC /* Pods_RealifeTech_RealifeTechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */; };
 		D1A307806D5B3AE84B11702B /* Pods_RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */; };
 /* End PBXBuildFile section */
@@ -121,13 +119,11 @@
 		968CA5CC25EE7B4C0000C2E2 /* String+Localisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localisation.swift"; sourceTree = "<group>"; };
 		968CA5D425EE7BEC0000C2E2 /* WebPageCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageCreatable.swift; sourceTree = "<group>"; };
 		968CA5DA25EE7C410000C2E2 /* ContentImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImplementing.swift; sourceTree = "<group>"; };
-		968CA5E125EE80050000C2E2 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
 		968CA62225EF69370000C2E2 /* ContentFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentFactory.swift; sourceTree = "<group>"; };
 		968CA62A25EF6DC90000C2E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Content.strings; sourceTree = "<group>"; };
 		968CA69A25EF95040000C2E2 /* ContentFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFactoryTests.swift; sourceTree = "<group>"; };
 		968CA69E25EF96600000C2E2 /* ContentImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImplementingTests.swift; sourceTree = "<group>"; };
 		968CA6A425EF9B8A0000C2E2 /* WebPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageTests.swift; sourceTree = "<group>"; };
-		968CA6AA25EF9C810000C2E2 /* WebPageViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewControllerTests.swift; sourceTree = "<group>"; };
 		B15A23E46832D3D390247B2D /* Pods-RealifeTech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.release.xcconfig"; sourceTree = "<group>"; };
 		D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -382,7 +378,6 @@
 			children = (
 				968CA5BF25EE7A610000C2E2 /* WebPage.swift */,
 				968CA5D425EE7BEC0000C2E2 /* WebPageCreatable.swift */,
-				968CA5E125EE80050000C2E2 /* WebPageViewController.swift */,
 			);
 			path = WebPage;
 			sourceTree = "<group>";
@@ -401,7 +396,6 @@
 			isa = PBXGroup;
 			children = (
 				968CA6A425EF9B8A0000C2E2 /* WebPageTests.swift */,
-				968CA6AA25EF9C810000C2E2 /* WebPageViewControllerTests.swift */,
 			);
 			path = WebPageTests;
 			sourceTree = "<group>";
@@ -652,7 +646,6 @@
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
-				968CA5E225EE80050000C2E2 /* WebPageViewController.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
 				968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */,
@@ -683,7 +676,6 @@
 				488A67C22541D8AA005C030E /* MockAnalyticsLogger.swift in Sources */,
 				48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */,
 				488A67C62541DA8B005C030E /* AnalyticsLoggerTests.swift in Sources */,
-				968CA6AB25EF9C810000C2E2 /* WebPageViewControllerTests.swift in Sources */,
 				488A67CA2541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
