@@ -31,16 +31,39 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = "13.0"
   spec.swift_version = "5.0"
   spec.source        = { :git => 'https://github.com/realifetech/ios-sdk.git', :branch => 'develop', :tag => '0.0.1'}
-  spec.source_files = [
-    '**/*.swift',
-    'RealifeTech/RealifeTech.h']
-  spec.exclude_files =  [
-      'DummyProject/**/*',
-      'Pods/**/*',
-      '**/Tests/**/*'
-  ]
-  spec.resource_bundle = { "RealifeTech" => ["**/*.lproj/*.strings"] }
 
-  spec.dependency "RealifeTech-CoreSDK", "~> 1.0.5"
+  spec.default_subspecs = 'RealifeTech'
+
+  spec.subspec 'Core' do |s|
+    s.source_files = [
+      'Core/**/*.swift',
+      'RealifeTech/RealifeTech.h'
+    ]
+    s.exclude_files = [
+      'Tests/*',
+      '**/Tests/**/*'
+    ]
+    s.resource_bundle = { "RealifeTech" => ["Core/Resources/*.lproj/*.strings"] }
+    s.dependency 'RxSwift', '~> 6.1.0'
+    s.dependency 'RxCocoa', '~> 6.1.0'
+    s.dependency 'Apollo', '~> 0.40.0'
+    s.dependency 'Apollo/SQLite'
+  end
+
+  spec.subspec 'RealifeTech' do |s|
+    s.source_files = [
+      '**/*.swift',
+      'RealifeTech/RealifeTech.h'
+    ]
+    s.exclude_files = [
+      '**/Tests/**/*',
+      'DummyProject/**/*',
+      'Pods/**/*'
+    ]
+    s.resource_bundle = { "RealifeTech" => ["Content/Resources/*.lproj/*.strings"] }
+    s.dependency 'RealifeTech-SDK/Core'
+  end
+
+  spec.dependency 'SwiftLint', '~> 0.43.1'
 
 end
