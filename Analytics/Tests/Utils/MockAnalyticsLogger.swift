@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import RealifeTech
-import RealifeTech_CoreSDK
+@testable import RealifeTech
 
 // Note: Current implementaion has matching signatures for LogEventSending & AnalyticsLogging, so we only need one mock
 final class MockAnalyticsLogger: AnalyticsLogging, LogEventSending {

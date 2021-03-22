@@ -9,7 +9,6 @@
 import XCTest
 import RxSwift
 import RxTest
-import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 final class DeviceRegistrationWorkerTests: XCTestCase {

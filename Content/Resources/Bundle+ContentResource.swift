@@ -8,17 +8,6 @@
 
 import Foundation
 
-extension String {
-
-    var localizedString: String {
-        return NSLocalizedString(
-            self,
-            tableName: "Content",
-            bundle: Bundle.contentResourceBundle,
-            comment: "")
-    }
-}
-
 extension Bundle {
 
     static var contentResourceBundle: Bundle {

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealifeTech_CoreSDK
 
 public enum ContentFactory {
 

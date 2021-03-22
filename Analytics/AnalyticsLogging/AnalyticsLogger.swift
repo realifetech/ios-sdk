@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealifeTech_CoreSDK
 
 class AnalyticsLogger {
 
@@ -90,5 +89,32 @@ extension AnalyticsLogger: AnalyticsLogging {
             analyticCompletion: completion)
         persistentQueue.addToQueue(eventAndCompletion)
         if !loopIsRunning { startLoop() }
+    }
+}
+
+protocol AnalyticsEventProtocol {
+    var name: String { get }
+    var metadata: [String: Any] { get }
+}
+
+protocol AnalyticsEngine {
+    func setProperties(with properties: [String: String])
+    func log(event: AnalyticsEventProtocol)
+}
+
+extension AnalyticEvent: AnalyticsEventProtocol {
+    var name: String { self.action }
+    var metadata: [String: Any] { self.new ?? [:] }
+}
+
+struct RealifeTechAnalyticsEngine: AnalyticsEngine {
+
+    let analytics: AnalyticsLogger
+
+    func setProperties(with properties: [String: String]) { }
+
+    func log(event: AnalyticsEventProtocol) {
+        guard let event = event as? AnalyticEvent else { return }
+        analytics.logEvent(event) { _ in }
     }
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 import RealifeTech
-import RealifeTech_CoreSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

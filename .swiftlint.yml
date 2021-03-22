@@ -1,7 +1,10 @@
 excluded:
    - Pods
    - DummyProject/Pods
-   - SupportingModules/APILayer
-   - SupportingModules/APIV3Utilities
-   - SupportingModules/GraphQL/API
+   - Core/APILayer/Tests
+   - Core/APIUtilities
+   - Core/GraphQL/API
 
+identifier_name:
+  excluded:
+    - id

@@ -1,0 +1,10 @@
+#import "./canvas_fragment_widget.graphql"
+
+query getWidgetsByScreenId($screenId: ID!, $pageSize: Int!, $page: Int = 1) {
+  getWidgetsByScreenId(screenId: $screenId, pageSize: $pageSize, page: $page) {
+    edges {
+      ... widget
+    }
+    nextPage
+  }
+}

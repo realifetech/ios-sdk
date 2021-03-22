@@ -5,24 +5,28 @@ PODS:
   - Apollo/SQLite (0.40.0):
     - Apollo/Core
     - SQLite.swift (~> 0.12.2)
-  - RealifeTech-CoreSDK (1.0.5):
+  - RealifeTech-SDK (0.0.1):
+    - RealifeTech-SDK/RealifeTech (= 0.0.1)
+    - SwiftLint (~> 0.43.1)
+  - RealifeTech-SDK/Core (0.0.1):
     - Apollo (~> 0.40.0)
     - Apollo/SQLite
-    - RxCocoa (~> 5.1.1)
-    - RxSwift (~> 5.1.1)
-    - SwiftLint
-  - RealifeTech-SDK (0.0.1):
-    - RealifeTech-CoreSDK (~> 1.0.5)
-  - RxCocoa (5.1.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.1.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.1.2)
+    - RxCocoa (~> 6.1.0)
+    - RxSwift (~> 6.1.0)
+    - SwiftLint (~> 0.43.1)
+  - RealifeTech-SDK/RealifeTech (0.0.1):
+    - RealifeTech-SDK/Core
+    - SwiftLint (~> 0.43.1)
+  - RxCocoa (6.1.0):
+    - RxRelay (= 6.1.0)
+    - RxSwift (= 6.1.0)
+  - RxRelay (6.1.0):
+    - RxSwift (= 6.1.0)
+  - RxSwift (6.1.0)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
-  - SwiftLint (0.42.0)
+  - SwiftLint (0.43.1)
 
 DEPENDENCIES:
   - RealifeTech-SDK (from `../`)
@@ -30,7 +34,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Apollo
-    - RealifeTech-CoreSDK
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -43,14 +46,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Apollo: 9fb70b598511a6212a81a34c00fa9bf8bac19a23
-  RealifeTech-CoreSDK: e5019577ac830153df8d878292dcf415111c3a5e
-  RealifeTech-SDK: dc0665e4e2c5296c42609440074c200ee2663339
-  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
-  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
-  RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
+  RealifeTech-SDK: 679631c193f4d23e5a7286634780b6a7910a6f8c
+  RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
+  RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
+  RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
-  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
 PODFILE CHECKSUM: c72ca01018f6498435b6d29c67f4bbc7d08daa04
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

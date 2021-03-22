@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealifeTech_CoreSDK
 
 class AnalyticsImplementing: Analytics {
 
