@@ -43,10 +43,14 @@ final class ContentImplementingTests: XCTestCase {
         dispatcher.shouldReturnNilUrl = true
         let expectation = XCTestExpectation(description: "Completion gets fulfilled")
         sut.getWebPage(forType: .about) { result in
-            guard case let .failure(error) = result else {
+            guard
+                case let .failure(error) = result,
+                let contentError = error as? ContentError
+            else {
                 return XCTFail("This test should return failure case")
             }
-            XCTAssertEqual((error as? ContentError), ContentError.urlIsEmpty)
+            XCTAssertEqual(contentError, ContentError.urlIsEmpty)
+            XCTAssertEqual(contentError.localizedDescription, ContentError.urlIsEmpty.localizedDescription)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -56,10 +60,14 @@ final class ContentImplementingTests: XCTestCase {
         dispatcher.shouldReturnConstructionError = true
         let expectation = XCTestExpectation(description: "Completion gets fulfilled")
         sut.getWebPage(forType: .about) { result in
-            guard case let .failure(error) = result else {
+            guard
+                case let .failure(error) = result,
+                let contentError = error as? ContentError
+            else {
                 return XCTFail("This test should return failure case")
             }
-            XCTAssertEqual((error as? ContentError), ContentError.constructUrlFailure)
+            XCTAssertEqual(contentError, ContentError.constructUrlFailure)
+            XCTAssertEqual(contentError.localizedDescription, ContentError.constructUrlFailure.localizedDescription)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)

@@ -1,5 +1,5 @@
 //
-//  String+Localization.swift
+//  String+CoreLocalization.swift
 //  APILayer
 //
 //  Copyright © 2020 Realife Tech. All rights reserved.
@@ -7,30 +7,13 @@
 
 import Foundation
 
-enum LocalisedGroup: String {
-    case core = "Core"
-    case content = "Content"
-}
-
-extension LocalisedGroup {
-
-    var resourceBundle: Bundle {
-        switch self {
-        case .core:
-            return .coreResourceBundle
-        case .content:
-            return .contentResourceBundle
-        }
-    }
-}
-
 extension String {
 
-    func getLocalizedString(for group: LocalisedGroup) -> String {
+    var coreLocalizedString: String {
         return NSLocalizedString(
             self,
-            tableName: group.rawValue,
-            bundle: group.resourceBundle,
+            tableName: "Core",
+            bundle: .coreResourceBundle,
             comment: "")
     }
 }

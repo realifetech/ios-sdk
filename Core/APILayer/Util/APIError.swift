@@ -30,7 +30,7 @@ extension MockAPIError: LocalizedError {
     public var errorDescription: String? {
         switch type {
         case .genericError:
-            return NSLocalizedString("UNPARSEABLE_ERROR", comment: "A Generic error")
+            return "UNPARSEABLE_ERROR".coreLocalizedString
         }
     }
 }
@@ -66,8 +66,8 @@ public final class APIError: Error {
             error.title = nil
             error.message = message
         } catch _ {
-            error.title = "ERROR".getLocalizedString(for: .core)
-            error.message = "UNPARSEABLE_ERROR".getLocalizedString(for: .core)
+            error.title = "ERROR".coreLocalizedString
+            error.message = "UNPARSEABLE_ERROR".coreLocalizedString
         }
         return error
     }
@@ -90,8 +90,8 @@ public final class APIError: Error {
 
 	static func unparseableError() -> APIError {
 		let error = APIError()
-        error.title = "ERROR".getLocalizedString(for: .core)
-		error.message = "UNPARSEABLE_ERROR".getLocalizedString(for: .core)
+        error.title = "ERROR".coreLocalizedString
+		error.message = "UNPARSEABLE_ERROR".coreLocalizedString
 		return error
 	}
 }

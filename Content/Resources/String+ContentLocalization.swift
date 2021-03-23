@@ -1,5 +1,5 @@
 //
-//  String+Localisation.swift
+//  String+ContentLocalization.swift
 //  RealifeTech
 //
 //  Created by Mickey Lee on 02/03/2021.
@@ -7,6 +7,17 @@
 //
 
 import Foundation
+
+extension String {
+
+    var contentocalizedString: String {
+        return NSLocalizedString(
+            self,
+            tableName: "Content",
+            bundle: .contentResourceBundle,
+            comment: "")
+    }
+}
 
 extension Bundle {
 

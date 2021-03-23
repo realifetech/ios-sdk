@@ -97,7 +97,7 @@ final class APIErrorTests: XCTestCase {
 
     func test_UnparsableError() {
         let unparseableError = APIError.unparseableError()
-        XCTAssertEqual(unparseableError.title, "ERROR".getLocalizedString(for: .core))
-        XCTAssertEqual(unparseableError.message, "UNPARSEABLE_ERROR".getLocalizedString(for: .core))
+        XCTAssertEqual(unparseableError.title, "ERROR".coreLocalizedString)
+        XCTAssertEqual(unparseableError.message, "UNPARSEABLE_ERROR".coreLocalizedString)
     }
 }
