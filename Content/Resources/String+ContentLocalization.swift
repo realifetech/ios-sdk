@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
 
-    var contentocalizedString: String {
+    var contentLocalizedString: String {
         return NSLocalizedString(
             self,
             tableName: "Content",

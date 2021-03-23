@@ -15,9 +15,9 @@ enum ContentError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .urlIsEmpty:
-            return "EMPTY_URL_ERROR_MESSAGE".contentocalizedString
+            return "EMPTY_URL_ERROR_MESSAGE".contentLocalizedString
         case .constructUrlFailure:
-            return "CONSTRUCT_URL_ERROR_MESSAGE".contentocalizedString
+            return "CONSTRUCT_URL_ERROR_MESSAGE".contentLocalizedString
         }
     }
 }
