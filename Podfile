@@ -4,7 +4,7 @@ inhibit_all_warnings!
 workspace 'RealifeTech-SDK'
 project 'RealifeTech-SDK'
 
-pod 'RealifeTech-CoreSDK', '~> 1.0.5'
+pod 'RealifeTech-CoreSDK', '~> 1.0.7'
 
 target 'RealifeTech' do
   use_frameworks!
