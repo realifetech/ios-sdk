@@ -23,7 +23,7 @@ public class ContentImplementing: Content {
         let pageType = ApolloWebPageType(rawValue: type.rawValue)
         dispatcher.dispatch(
             query: ApolloType.GetWebPageByTypeQuery(type: pageType),
-            cachePolicy: .returnCacheDataElseFetch) { result in
+            cachePolicy: .returnCacheDataAndFetch) { result in
             switch result {
             case .success(let response):
                 guard let urlString = response.data?.getWebPageByType?.url else {

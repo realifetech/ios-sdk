@@ -18,7 +18,22 @@ public struct WebPage {
         case privacy
         case about
         case aboutCompany
-        case purchasesHelp
+        case important
+        case info
+        case times
+        case event
+        case welcome
+        case travel
+        case faq
+        case food
+        case program
+        case social
+        case menu
+        case legal
+        case quizHelp
+        case quizTerms
+        case quizWinner
+        case ntpTerms
 
         /// Initialise the `Type` with the plain text which may be camel case, lowercase or uppercase.
         /// Returns nil when there's no corresponding type in WebPage.`Type`
