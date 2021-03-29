@@ -1,5 +1,5 @@
 //
-//  CoreSDKConfiguration.swift
+//  CoreConfiguration.swift
 //  RealifeTech-CoreSDK
 //
 //  Created by Mickey Lee on 10/12/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CoreSDKConfiguration {
+public struct CoreConfiguration {
 
     public let appCode: String
     public let clientSecret: String
@@ -25,12 +25,12 @@ public struct CoreSDKConfiguration {
     public init(appCode: String, clientSecret: String, apiUrl: String? = nil, graphQLApiUrl: String? = nil) {
         self.appCode = appCode
         self.clientSecret = clientSecret
-        self.apiUrl = apiUrl ?? CoreSDKConfiguration.defaultApiUrl
-        self.graphQLApiUrlString = graphQLApiUrl ?? CoreSDKConfiguration.defaultGraphQLApiUrl
+        self.apiUrl = apiUrl ?? CoreConfiguration.defaultApiUrl
+        self.graphQLApiUrlString = graphQLApiUrl ?? CoreConfiguration.defaultGraphQLApiUrl
     }
 }
 
-extension CoreSDKConfiguration {
+extension CoreConfiguration {
 
     var graphQLApiUrl: URL { URL(string: graphQLApiUrlString) ?? URL(fileURLWithPath: "") }
 }
