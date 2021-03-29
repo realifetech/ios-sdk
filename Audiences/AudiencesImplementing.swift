@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 
 public class AudiencesImplementing: AudienceChecking {
 
@@ -17,7 +18,9 @@ public class AudiencesImplementing: AudienceChecking {
     }
 
     public func deviceIsMemberOfAudience(audienceId: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        dispatcher.dispatch(query: Apollo.BelongsToAudienceWithExternalIdQuery(externalAudienceId: audienceId)) { result in
+        dispatcher.dispatch(
+            query: ApolloType.BelongsToAudienceWithExternalIdQuery(externalAudienceId: audienceId),
+            cachePolicy: .returnCacheDataElseFetch) { result in
             switch result {
             case .success(let response):
                 return completion(.success(response.data?.me?.device?.belongsToAudienceWithExternalId ?? false))

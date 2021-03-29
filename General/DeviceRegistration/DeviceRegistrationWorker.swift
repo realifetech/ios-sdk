@@ -9,58 +9,86 @@
 import Foundation
 import Combine
 import RxSwift
-import RxCocoa
+import RealifeTech_CoreSDK
 
 class DeviceRegistrationWorker: DeviceRegistering {
 
-    var sdkReady: Bool { deviceRegisteredSubject.value }
+    var sdkReady: Bool {
+        deviceRegisteredSubject.value
+    }
     var deviceId: String { staticDeviceInformation.deviceId }
 
     private let staticDeviceInformation: StaticDeviceInformation
     private let reachabilityChecker: ReachabilityChecking
-    private let loopHandler: DeviceRegistrationLoopHandling
-    private let deviceRegisteredSubject: CurrentValueSubject<Bool, Never>
-    private let store: CodableStorageProtocol
+    private let deviceProvider: DeviceProviding.Type
+    private let deviceRegistrationMaxAttempts: Int
+    private let retryRegistrationInterval: RxTimeInterval
+    private let store: Storeable
+    private let subscriptionScheduler: SchedulerType
+    private let observationScheduler: SchedulerType
+    private let deviceRegisteredSubject = CurrentValueSubject<Bool, Never>(false)
     private let storeKey = "DeviceRegistrationState"
+    private let bag = DisposeBag()
 
     var device: Device {
-        Device(deviceId: staticDeviceInformation.deviceId,
-               model: staticDeviceInformation.deviceModel,
-               sdkVersion: "SDK_" + staticDeviceInformation.sdkVersion,
-               osVersion: staticDeviceInformation.osVersion,
-               bluetoothOn: reachabilityChecker.isBluetoothConnected,
-               wifiConnected: reachabilityChecker.isConnectedToWifi)
+        Device(
+            deviceId: staticDeviceInformation.deviceId,
+            model: staticDeviceInformation.deviceModel,
+            sdkVersion: "SDK_" + staticDeviceInformation.sdkVersion,
+            osVersion: staticDeviceInformation.osVersion,
+            bluetoothOn: reachabilityChecker.isBluetoothConnected,
+            wifiConnected: reachabilityChecker.isConnectedToWifi)
     }
 
     init(
         staticDeviceInformation: StaticDeviceInformation,
         reachabilityChecker: ReachabilityChecking,
-        loopHandler: DeviceRegistrationLoopHandling,
-        deviceRegisteredSubject: CurrentValueSubject<Bool, Never>,
-        store: CodableStorageProtocol
+        deviceProvider: DeviceProviding.Type = DeviceRepository.self,
+        deviceRegistrationMaxAttempts: Int = .max,
+        retryRegistrationInterval: Double = 10,
+        store: Storeable,
+        subscriptionScheduler: SchedulerType = SerialDispatchQueueScheduler(
+            internalSerialQueueName: "Device registration queue"),
+        observationScheduler: SchedulerType = MainScheduler.instance
     ) {
         self.staticDeviceInformation = staticDeviceInformation
         self.reachabilityChecker = reachabilityChecker
-        self.loopHandler = loopHandler
-        self.deviceRegisteredSubject = deviceRegisteredSubject
+        self.deviceProvider = deviceProvider
+        self.deviceRegistrationMaxAttempts = deviceRegistrationMaxAttempts
+        self.retryRegistrationInterval = retryRegistrationInterval > 1 ?
+            .seconds(Int(retryRegistrationInterval)) :
+            .milliseconds(Int(retryRegistrationInterval * 1000))
         self.store = store
+        self.subscriptionScheduler = subscriptionScheduler
+        self.observationScheduler = observationScheduler
         deviceRegisteredSubject.send(getStoredRegistrationValue())
     }
 
     func getStoredRegistrationValue() -> Bool {
-        guard let storedState: Bool = try? store.fetch(for: storeKey) else {
-            return false
-        }
-        return storedState
+        return (try? store.fetch(for: storeKey)) ?? false
     }
 
     func registerDevice(_ completion: @escaping () -> Void) {
-        loopHandler.registerDevice(device) {
-            if !self.deviceRegisteredSubject.value {
-                try? self.store.save(true, for: self.storeKey)
-                self.deviceRegisteredSubject.send(true)
+        deviceProvider.registerDevice(device)
+            .subscribeOn(subscriptionScheduler)
+            .observeOn(observationScheduler)
+            .retryWhen { [self] errors in
+                return errors.enumerated().flatMap { (attempt, error) -> Observable<Int> in
+                    return attempt < deviceRegistrationMaxAttempts ?
+                        Observable<Int>
+                        .timer(retryRegistrationInterval, scheduler: observationScheduler)
+                        .take(1) :
+                        .error(error)
+                }
             }
-            completion()
-        }
+            .subscribe(onNext: { [self] value in
+                try? store.save(value, for: storeKey)
+                deviceRegisteredSubject.send(value)
+                completion()
+            }, onError: { [self] _ in
+                deviceRegisteredSubject.send(false)
+                completion()
+            })
+            .disposed(by: bag)
     }
 }

@@ -7,15 +7,16 @@
 //
 
 import XCTest
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
-class AnalyticsFactoryTests: XCTestCase {
+final class AnalyticsFactoryTests: XCTestCase {
 
     func test_makeModule() {
         let module = AnalyticsFactory.makeAnalyticsModule(
             dispatcher: MockAnalyticsLogger(),
             reachabilityHelper: MockReachabilityChecker(),
-            deviceRegisteredValue: ReadOnlyCurrentValue(from: .init(true)))
+            deviceRegistering: MockDeviceRegistering())
         XCTAssertTrue(module is AnalyticsImplementing)
     }
 
@@ -32,7 +33,7 @@ class AnalyticsFactoryTests: XCTestCase {
         let module = AnalyticsFactory.makeAnalyticsModule(
             dispatcher: logEventSpy,
             reachabilityHelper: mockReachabilityChecker,
-            deviceRegisteredValue: ReadOnlyCurrentValue(from: .init(true)))
+            deviceRegistering: MockDeviceRegistering())
         module.logEvent(testEvent) { _ in
             expectation.fulfill()
         }

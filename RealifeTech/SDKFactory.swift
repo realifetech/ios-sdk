@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Combine
+import RealifeTech_CoreSDK
 
 public class RealifeTech {
 
@@ -15,6 +15,7 @@ public class RealifeTech {
     public static var Audiences: AudienceChecking!
     public static var Analytics: Analytics!
     public static var Communicate: Communicate!
+    public static var Content: Content!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -25,15 +26,14 @@ public class RealifeTech {
     /// Calling this function more than once will have no effect.
     /// - Parameter configuration: Struct containing the desired SDK configuration
     public static func configureSDK(with configuration: SDKConfiguration) {
-        let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
-        let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
-        let deviceRegisteredSubject = CurrentValueSubject<Bool, Never>(false)
-        let deviceRegisteredValue = ReadOnlyCurrentValue(from: deviceRegisteredSubject)
-        let apiHelper = APIV3RequesterHelper.setupV3API(
-            deviceId: deviceHelper.deviceId,
-            clientId: configuration.appCode,
+        let deviceHelper = CoreFactory.makeDeviceHelper()
+        let reachabilityChecker = CoreFactory.makeReachablitiyChecker()
+        let coreSDKConfiguration = CoreSDKConfiguration(
+            appCode: configuration.appCode,
             clientSecret: configuration.clientSecret,
-            baseUrl: configuration.apiUrl)
+            apiUrl: configuration.apiUrl,
+            graphQLApiUrl: configuration.graphQLApiUrlString)
+        let apiHelper = CoreFactory.makeApiHelper(deviceId: deviceHelper.deviceId, configuration: coreSDKConfiguration)
         let staticDeviceInformation = StaticDeviceInformation(
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
@@ -41,19 +41,21 @@ public class RealifeTech {
             sdkVersion: moduleVersionString)
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
-            reachabilityChecker: reachabilityChecker,
-            deviceRegisteredSubject: deviceRegisteredSubject)
-        let client = GraphNetwork(graphQLAPIUrl: configuration.graphApiUrl,
-                                  tokenHelper: apiHelper,
-                                  deviceId: deviceHelper.deviceId,
-                                  reachabilityHelper: reachabilityChecker)
-        let dispatcher = GraphQLDispatcher(client: client)
+            reachabilityChecker: reachabilityChecker)
+        let dispatcher = CoreFactory.makeGraphQLDispatcher(
+            configuration: coreSDKConfiguration,
+            tokenHelper: apiHelper,
+            deviceId: deviceHelper.deviceId,
+            reachabilityHelper: reachabilityChecker)
         Audiences = AudiencesImplementing(dispatcher: dispatcher)
-        Analytics = AnalyticsFactory.makeAnalyticsModule(
-            dispatcher: dispatcher,
-            reachabilityHelper: reachabilityChecker,
-            deviceRegisteredValue: deviceRegisteredValue)
+        if let dispatcher = dispatcher as? GraphQLDispatcher {
+            Analytics = AnalyticsFactory.makeAnalyticsModule(
+                dispatcher: dispatcher,
+                reachabilityHelper: reachabilityChecker,
+                deviceRegistering: General)
+        }
         Communicate = CommunicateFactory.makeCommunicateModule()
-        apiHelper.getValidToken {}
+        Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
+        CoreFactory.requestValidToken(fromApiHelper: apiHelper) { }
     }
 }

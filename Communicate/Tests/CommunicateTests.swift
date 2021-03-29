@@ -9,4 +9,4 @@
 import XCTest
 @testable import RealifeTech
 
-class CommunicateTests: XCTestCase {}
+final class CommunicateTests: XCTestCase {}

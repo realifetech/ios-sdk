@@ -8,6 +8,7 @@
 
 import UIKit
 import RealifeTech
+import RealifeTech_CoreSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,11 +16,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = SDKConfiguration(
-            appCode: "LS",
-            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C")
+            appCode: "",
+            clientSecret: "",
+            apiUrl: "",
+            graphQLApiUrlString: "")
         RealifeTech.configureSDK(with: configuration)
-        RealifeTech.General.registerDevice {}
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
+            if let error = error {
+                print("D'oh: \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
+            }
+        }
         return true
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        RealifeTech.Communicate.registerForPushNotifications(tokenData: deviceToken) { result in
+            guard let rootViewController = UIApplication.shared.windows.first(
+                    where: { $0.isKeyWindow })?.rootViewController as? ViewController
+            else { return }
+            switch result {
+            case .success:
+                rootViewController.showAlertController(
+                    title: "Communicate",
+                    message: "Register for push notification successfully")
+            case .failure(let error):
+                rootViewController.showAlertController(
+                    title: "Communicate",
+                    message: "Register for push notification with error: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        guard let rootViewController = UIApplication.shared.windows.first(
+                where: { $0.isKeyWindow })?.rootViewController as? ViewController
+        else { return }
+        rootViewController.showAlertController(
+            title: "Communicate",
+            message: "Failed to register for remote notifications: \(error.localizedDescription)")
     }
 
     // MARK: UISceneSession Lifecycle

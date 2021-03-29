@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 
 enum CommunicateFactory {
 
     static func makeCommunicateModule() -> Communicate {
-        let storage = CodableStorage(storage: UserDefaultsStorage(), storagePrefix: "apnToken")
+        let storage = CodableStore(storage: UserDefaultsStorage(), storagePrefix: "apnToken")
         let pushNotificationRegistrar = PushNotificationRegistrar(
             scheduler: nil,
             tokenStore: storage)

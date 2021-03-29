@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 
 class AnalyticsLogger {
 
@@ -16,7 +17,7 @@ class AnalyticsLogger {
     private let dispatcher: LogEventSending
     private let persistentQueue: AnyQueue<AnalyticEventAndCompletion>
     private let reachabilityHelper: ReachabilityChecking
-    private let deviceRegisteredValue: ReadOnlyCurrentValue<Bool>
+    private let deviceRegistering: DeviceRegistering
 
     private var loopIsRunning: Bool = false
 
@@ -25,13 +26,13 @@ class AnalyticsLogger {
         reachabilityHelper: ReachabilityChecking,
         persistentQueue: AnyQueue<AnalyticEventAndCompletion>,
         failureDebounceSeconds: Double = 45,
-        deviceRegisteredValue: ReadOnlyCurrentValue<Bool>
+        deviceRegistering: DeviceRegistering
     ) {
         self.dispatcher = dispatcher
         self.reachabilityHelper = reachabilityHelper
         self.persistentQueue = persistentQueue
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
-        self.deviceRegisteredValue = deviceRegisteredValue
+        self.deviceRegistering = deviceRegistering
         startLoop()
     }
 
@@ -52,13 +53,13 @@ class AnalyticsLogger {
         let delayTimeForFailure: DispatchTime = .now() + .milliseconds(failureDebounceMilliseconds)
         guard
             reachabilityHelper.hasNetworkConnection,
-            deviceRegisteredValue.value
-            else {
-                DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
-                    queueItem.releaseQueue(.doNothing)
-                    self.startLoop()
-                }
-                return
+            deviceRegistering.sdkReady
+        else {
+            DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
+                queueItem.releaseQueue(.doNothing)
+                self.startLoop()
+            }
+            return
         }
         dispatcher.logEvent(queueItem.item.analyticEvent) { result in
             queueItem.item.analyticCompletion?(result)

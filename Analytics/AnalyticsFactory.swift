@@ -7,19 +7,21 @@
 //
 
 import Foundation
+import RealifeTech_CoreSDK
 
 public enum AnalyticsFactory {
+
     static func makeAnalyticsModule(
         dispatcher: LogEventSending,
         reachabilityHelper: ReachabilityChecking,
-        deviceRegisteredValue: ReadOnlyCurrentValue<Bool>
+        deviceRegistering: DeviceRegistering
     ) -> Analytics {
         let queue = PersistentQueue<AnalyticEventAndCompletion>(name: "analyticsEvent")
         let analyticsLogger = AnalyticsLogger(
             dispatcher: dispatcher,
             reachabilityHelper: reachabilityHelper,
             persistentQueue: AnyQueue(queue),
-            deviceRegisteredValue: deviceRegisteredValue)
+            deviceRegistering: deviceRegistering)
         return AnalyticsImplementing(analyticsLogger: analyticsLogger)
     }
 }

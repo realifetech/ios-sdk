@@ -9,7 +9,7 @@
 import XCTest
 @testable import RealifeTech
 
-class GeneralImplementingTests: XCTestCase {
+final class GeneralImplementingTests: XCTestCase {
 
     private var sut: GeneralImplementing!
     private var mockDeviceRegistering: DeviceRegisteringMock!
@@ -29,7 +29,7 @@ class GeneralImplementingTests: XCTestCase {
     }
 }
 
-private class DeviceRegisteringMock: DeviceRegistering {
+private final class DeviceRegisteringMock: DeviceRegistering {
 
     var sdkReady: Bool = false
     var deviceId: String = ""

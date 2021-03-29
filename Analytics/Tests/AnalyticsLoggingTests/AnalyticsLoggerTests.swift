@@ -7,22 +7,23 @@
 //
 
 import XCTest
-import Combine
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 // TODO: Add test of failure conditions from the API - implentation is not complete ATM
-class AnalyticsLoggerTests: XCTestCase {
+final class AnalyticsLoggerTests: XCTestCase {
 
     private var mockEventSending: MockAnalyticsLogger!
     private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
     private var mockReachabilityChecker: MockReachabilityChecker!
-    private var deviceRegisteredSubject: CurrentValueSubject<Bool, Never>!
+    private var mockDeviceRegistering: MockDeviceRegistering!
 
     override func setUp() {
+        super.setUp()
         self.mockEventSending = MockAnalyticsLogger()
         self.mockReachabilityChecker = MockReachabilityChecker()
         self.mockQueue = MockQueue<AnalyticEventAndCompletion>()
-        self.deviceRegisteredSubject = .init(true)
+        self.mockDeviceRegistering = MockDeviceRegistering()
     }
 
     private func makeSut() -> AnalyticsLogger {
@@ -31,7 +32,7 @@ class AnalyticsLoggerTests: XCTestCase {
             reachabilityHelper: mockReachabilityChecker,
             persistentQueue: AnyQueue(mockQueue),
             failureDebounceSeconds: 0.01,
-            deviceRegisteredValue: .init(from: deviceRegisteredSubject))
+            deviceRegistering: mockDeviceRegistering)
     }
 
     private func makeEvents(from strings: [String]) -> [AnalyticEvent] {
@@ -110,7 +111,7 @@ class AnalyticsLoggerTests: XCTestCase {
             version: "Golden")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
-        deviceRegisteredSubject.send(false)
+        mockDeviceRegistering.shouldBeReady = false
         let sut = makeSut()
         sut.logEvent(testEvent, completion: { result in
             switch result {
@@ -122,7 +123,7 @@ class AnalyticsLoggerTests: XCTestCase {
             expectation.fulfill()
         })
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.deviceRegisteredSubject.send(true)
+            self.mockDeviceRegistering.shouldBeReady = true
         }
         wait(for: [expectation], timeout: 0.02)
     }
@@ -156,15 +157,24 @@ class AnalyticsLoggerTests: XCTestCase {
     }
 }
 
-private class MockQueue<T: Codable & Identifiable>: QueueProviding {
+final class MockDeviceRegistering: DeviceRegistering {
 
-    var next: Result<QueueItem<T>, QueueRetrievalError> { getNext() }
+    var shouldBeReady = true
+    var sdkReady: Bool { shouldBeReady }
+    let deviceId: String = ""
+
+    func registerDevice(_: @escaping () -> Void) { }
+}
+
+private final class MockQueue<Queue: Codable & Identifiable>: QueueProviding {
+
+    var next: Result<QueueItem<Queue>, QueueRetrievalError> { getNext() }
     var count: Int { underlyingStorage.count }
     var isEmpty: Bool { underlyingStorage.isEmpty }
     var queueWasEmptiedExpectation: XCTestExpectation?
     var addedToQueueExpectation: XCTestExpectation?
 
-    var underlyingStorage: [T] = [] {
+    var underlyingStorage: [Queue] = [] {
         didSet {
             guard underlyingStorage.isEmpty else { return }
             queueWasEmptiedExpectation?.fulfill()
@@ -172,7 +182,7 @@ private class MockQueue<T: Codable & Identifiable>: QueueProviding {
     }
     var receivedQueueActions: [QueueAction] = []
 
-    func getNext() -> Result<QueueItem<T>, QueueRetrievalError> {
+    func getNext() -> Result<QueueItem<Queue>, QueueRetrievalError> {
         guard let next = underlyingStorage.first else {
             return .failure(.empty)
         }
@@ -189,7 +199,7 @@ private class MockQueue<T: Codable & Identifiable>: QueueProviding {
         }
     }
 
-    func addToQueue(_ item: T) {
+    func addToQueue(_ item: Queue) {
         underlyingStorage.append(item)
         addedToQueueExpectation?.fulfill()
     }

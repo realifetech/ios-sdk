@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RealifeTech_CoreSDK
 
 enum PushNotificationError: Error {
     case invalidTokenData
@@ -17,10 +18,10 @@ class PushNotificationRegistrar {
 
     private let disposeBag = DisposeBag()
     private let scheduler: ImmediateSchedulerType
-    private let tokenStore: CodableStorage
+    private let tokenStore: CodableStore
     private let tokenKey: String = "APNToken"
 
-    public init(scheduler: ImmediateSchedulerType? = nil, tokenStore: CodableStorage) {
+    public init(scheduler: ImmediateSchedulerType? = nil, tokenStore: CodableStore) {
         self.scheduler = scheduler ?? ConcurrentDispatchQueueScheduler(qos: .background)
         self.tokenStore = tokenStore
         checkAndSendStoredToken()

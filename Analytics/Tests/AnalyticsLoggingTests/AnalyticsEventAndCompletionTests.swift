@@ -7,9 +7,10 @@
 //
 
 import XCTest
+import RealifeTech_CoreSDK
 @testable import RealifeTech
 
-class AnalyticEventAndCompletionTests: XCTestCase {
+final class AnalyticEventAndCompletionTests: XCTestCase {
 
     let event = AnalyticEvent(
         type: "Chumps",
