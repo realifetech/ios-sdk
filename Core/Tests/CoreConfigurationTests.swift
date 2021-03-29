@@ -1,5 +1,5 @@
 //
-//  CoreSDKConfigurationTests.swift
+//  CoreConfigurationTests.swift
 //  RealifeTech-CoreSDKTests
 //
 //  Created by Mickey Lee on 10/12/2020.
@@ -9,14 +9,14 @@
 import XCTest
 @testable import RealifeTech
 
-final class CoreSDKConfigurationTests: XCTestCase {
+final class CoreConfigurationTests: XCTestCase {
 
     func test_initialisation() {
         let testAppCode = "CodeForApp"
         let testClientSecret = "Shuuu"
         let testApiUrl = "1234Marched"
         let testGraphQLApiUrl = "Lemons"
-        let sut = CoreSDKConfiguration(
+        let sut = CoreConfiguration(
             appCode: testAppCode,
             clientSecret: testClientSecret,
             apiUrl: testApiUrl,
@@ -28,19 +28,19 @@ final class CoreSDKConfigurationTests: XCTestCase {
     }
 
     func test_defaults_areUrls() {
-        XCTAssertNotNil(URL(string: CoreSDKConfiguration.defaultApiUrl))
-        XCTAssertNotNil(URL(string: CoreSDKConfiguration.defaultGraphQLApiUrl))
+        XCTAssertNotNil(URL(string: CoreConfiguration.defaultApiUrl))
+        XCTAssertNotNil(URL(string: CoreConfiguration.defaultGraphQLApiUrl))
     }
 
     func test_defaults_areUsed() {
-        let sut = CoreSDKConfiguration(appCode: "", clientSecret: "")
-        XCTAssertEqual(sut.apiUrl, CoreSDKConfiguration.defaultApiUrl)
-        XCTAssertEqual(sut.graphQLApiUrlString, CoreSDKConfiguration.defaultGraphQLApiUrl)
+        let sut = CoreConfiguration(appCode: "", clientSecret: "")
+        XCTAssertEqual(sut.apiUrl, CoreConfiguration.defaultApiUrl)
+        XCTAssertEqual(sut.graphQLApiUrlString, CoreConfiguration.defaultGraphQLApiUrl)
     }
 
     func test_graphApiUrl() {
         let testUrlString = "http://realifetech.com"
-        let sut = CoreSDKConfiguration(appCode: "", clientSecret: "", graphQLApiUrl: testUrlString)
+        let sut = CoreConfiguration(appCode: "", clientSecret: "", graphQLApiUrl: testUrlString)
         XCTAssertEqual(sut.graphQLApiUrl.absoluteString, testUrlString)
     }
 }

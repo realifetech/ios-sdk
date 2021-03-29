@@ -42,7 +42,7 @@ let configuration = CoreConfiguration(
     appCode: "APPLICATION_CODE",
     clientSecret: "API_SECRET",
     apiUrl: "http://API_URL", // OPTIONAL
-    graphApiUrl: "http://GRAPH_API_URL" // OPTIONAL
+    graphQLApiUrl: "http://GRAPH_API_URL" // OPTIONAL
 )
 RealifeTech.configureSDK(with: configuration)
 ```
@@ -97,6 +97,7 @@ If the registration fails (for instance due to connectivity issues) we will retr
 ``` swift
 RealifeTech.General.sdkReady // Returns Bool
 ```
+
 # Push Notifications
 Use the following function to register the device for push notifications.
 
@@ -139,7 +140,6 @@ As an example, if you want to log the login to an external system such as Ticket
 If the logging fails (for instance due to connectivity issues) we will retry until it is successful.
 
 # Audiences
-
 To determine if the device is a member of an audience, you would use the following function, passing the audienceId:
 
 ``` swift

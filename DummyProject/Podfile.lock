@@ -5,16 +5,16 @@ PODS:
   - Apollo/SQLite (0.40.0):
     - Apollo/Core
     - SQLite.swift (~> 0.12.2)
-  - RealifeTech-SDK (0.0.1):
-    - RealifeTech-SDK/RealifeTech (= 0.0.1)
+  - RealifeTech-SDK (1.2.0):
+    - RealifeTech-SDK/RealifeTech (= 1.2.0)
     - SwiftLint (~> 0.43.1)
-  - RealifeTech-SDK/Core (0.0.1):
+  - RealifeTech-SDK/Core (1.2.0):
     - Apollo (~> 0.40.0)
     - Apollo/SQLite
     - RxCocoa (~> 6.1.0)
     - RxSwift (~> 6.1.0)
     - SwiftLint (~> 0.43.1)
-  - RealifeTech-SDK/RealifeTech (0.0.1):
+  - RealifeTech-SDK/RealifeTech (1.2.0):
     - RealifeTech-SDK/Core
     - SwiftLint (~> 0.43.1)
   - RxCocoa (6.1.0):
@@ -46,7 +46,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Apollo: 9fb70b598511a6212a81a34c00fa9bf8bac19a23
-  RealifeTech-SDK: 679631c193f4d23e5a7286634780b6a7910a6f8c
+  RealifeTech-SDK: f3bf1a977aaa02a642bca72b736d4ddface6c568
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
