@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import RealifeTech_CoreSDK
 
 enum PushNotificationError: Error {
     case invalidTokenData
@@ -34,8 +33,8 @@ class PushNotificationRegistrar {
 
     private func registerPushNotification(token: String, completion: @escaping(Result<Void, Error>) -> Void) {
         DeviceRepository.registerForPushNotifications(with: .defaultDeviceToken(withProviderToken: token))
-            .subscribeOn(scheduler)
-            .observeOn(MainScheduler.instance)
+            .subscribe(on: scheduler)
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 self.tokenStore.delete(key: self.tokenKey)
                 completion(.success(()))

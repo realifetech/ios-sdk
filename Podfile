@@ -4,14 +4,18 @@ inhibit_all_warnings!
 workspace 'RealifeTech-SDK'
 project 'RealifeTech-SDK'
 
-pod 'RealifeTech-CoreSDK', '~> 1.0.7'
+pod 'SwiftLint', '~> 0.43.1'
+pod 'RxSwift', '~> 6.1.0'
+pod 'RxCocoa', '~> 6.1.0'
+pod 'Apollo', '~> 0.40.0'
+pod 'Apollo/SQLite'
 
 target 'RealifeTech' do
   use_frameworks!
   project 'RealifeTech-SDK'
 
   target 'RealifeTechTests' do
-    pod 'RxTest', '~> 5.1.1'
+    pod 'RxTest', '~> 6.1.0'
   end
 
 end

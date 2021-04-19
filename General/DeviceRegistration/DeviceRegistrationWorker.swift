@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 import RxSwift
-import RealifeTech_CoreSDK
 
 class DeviceRegistrationWorker: DeviceRegistering {
 
@@ -70,9 +69,9 @@ class DeviceRegistrationWorker: DeviceRegistering {
 
     func registerDevice(_ completion: @escaping () -> Void) {
         deviceProvider.registerDevice(device)
-            .subscribeOn(subscriptionScheduler)
-            .observeOn(observationScheduler)
-            .retryWhen { [self] errors in
+            .subscribe(on: subscriptionScheduler)
+            .observe(on: observationScheduler)
+            .retry { [self] errors in
                 return errors.enumerated().flatMap { (attempt, error) -> Observable<Int> in
                     return attempt < deviceRegistrationMaxAttempts ?
                         Observable<Int>

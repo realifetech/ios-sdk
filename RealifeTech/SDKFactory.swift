@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealifeTech_CoreSDK
 
 public class RealifeTech {
 
@@ -25,15 +24,10 @@ public class RealifeTech {
     /// This MUST be called before any other SDK functionality is acessed.
     /// Calling this function more than once will have no effect.
     /// - Parameter configuration: Struct containing the desired SDK configuration
-    public static func configureSDK(with configuration: SDKConfiguration) {
+    public static func configureSDK(with configuration: CoreConfiguration) {
         let deviceHelper = CoreFactory.makeDeviceHelper()
         let reachabilityChecker = CoreFactory.makeReachablitiyChecker()
-        let coreSDKConfiguration = CoreSDKConfiguration(
-            appCode: configuration.appCode,
-            clientSecret: configuration.clientSecret,
-            apiUrl: configuration.apiUrl,
-            graphQLApiUrl: configuration.graphQLApiUrlString)
-        let apiHelper = CoreFactory.makeApiHelper(deviceId: deviceHelper.deviceId, configuration: coreSDKConfiguration)
+        let apiHelper = CoreFactory.makeApiHelper(deviceId: deviceHelper.deviceId, configuration: configuration)
         let staticDeviceInformation = StaticDeviceInformation(
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
@@ -43,7 +37,7 @@ public class RealifeTech {
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
         let dispatcher = CoreFactory.makeGraphQLDispatcher(
-            configuration: coreSDKConfiguration,
+            configuration: configuration,
             tokenHelper: apiHelper,
             deviceId: deviceHelper.deviceId,
             reachabilityHelper: reachabilityChecker)

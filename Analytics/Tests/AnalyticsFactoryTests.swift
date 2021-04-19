@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import RealifeTech_CoreSDK
 @testable import RealifeTech
 
 final class AnalyticsFactoryTests: XCTestCase {

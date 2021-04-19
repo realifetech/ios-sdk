@@ -8,18 +8,17 @@
 
 import UIKit
 import RealifeTech
-import RealifeTech_CoreSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let configuration = SDKConfiguration(
+        let configuration = CoreConfiguration(
             appCode: "",
             clientSecret: "",
             apiUrl: "",
-            graphQLApiUrlString: "")
+            graphQLApiUrl: "")
         RealifeTech.configureSDK(with: configuration)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {
