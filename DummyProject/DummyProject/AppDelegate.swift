@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = CoreConfiguration(
-            appCode: "",
-            clientSecret: "",
-            apiUrl: "",
-            graphQLApiUrl: "")
+            appCode: "LS",
+            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
+            apiUrl: "http://api-staging.livestyled.com/v3",
+            graphQLApiUrl: "https://staging-graphql-eu.realifetech.com/")
         RealifeTech.configureSDK(with: configuration)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {
