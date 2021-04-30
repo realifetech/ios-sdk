@@ -11,16 +11,24 @@ import XCTest
 
 final class AuthorisationStoreTests: XCTestCase {
 
-    var sut: AuthorisationStoring!
+    private var sut: AuthorisationStoring!
     private var keychain: KeychainSubclassSpy!
-    private let tokenKey = AuthorisationStore.KeychainKey.token.rawValue
-    private let expiryKey = AuthorisationStore.KeychainKey.expiryDate.rawValue
-    private let refreshTokenKey = AuthorisationStore.KeychainKey.refreshToken.rawValue
-    private let refreshTokenExpiryKey = AuthorisationStore.KeychainKey.refreshTokenExpiryDate.rawValue
+    private let clientId = "id"
+    private lazy var tokenKey = clientId + "-" + AuthorisationStore.KeychainKey.token.rawValue
+    private lazy var expiryKey = clientId + "-" + AuthorisationStore.KeychainKey.expiryDate.rawValue
+    private lazy var refreshTokenKey = clientId + "-" + AuthorisationStore.KeychainKey.refreshToken.rawValue
+    private lazy var refreshTokenExpiryKey = clientId + "-" + AuthorisationStore.KeychainKey.refreshTokenExpiryDate.rawValue
 
     override func setUp() {
-        self.keychain = KeychainSubclassSpy()
-        self.sut = AuthorisationStore(keychain: keychain)
+        super.setUp()
+        keychain = KeychainSubclassSpy()
+        sut = AuthorisationStore(clientId: clientId, keychain: keychain)
+    }
+
+    override func tearDown() {
+        keychain = nil
+        sut = nil
+        super.tearDown()
     }
 
     func test_emptyStorage() {
@@ -68,7 +76,7 @@ final class AuthorisationStoreTests: XCTestCase {
         XCTAssertFalse(sut.refreshTokenValid)
     }
 
-    func test_saveCredentials_withNilRefreshToken() {
+    func test_saveCredentials_withNilRefreshToken() throws {
         let testToken = "THE_BEST_TOKEN"
         let testExpirySeconds = 1234
         let expectedExpiryInt = Date()
@@ -78,17 +86,13 @@ final class AuthorisationStoreTests: XCTestCase {
         XCTAssertEqual(keychain.mutatedKeyValues[tokenKey], testToken)
         // Note: The store will calculate its expiry value later than we make our expected result
         //       This means the expiry times can differ by 1ms, so we check for a range
-        guard
-            let resultString = keychain.mutatedKeyValues[expiryKey],
-            let resultExpiryInt = Int(resultString)
-            else {
-                return XCTFail("Token expiry was not an Int")
-        }
+        let resultString = try XCTUnwrap(keychain.mutatedKeyValues[expiryKey])
+        let resultExpiryInt = try XCTUnwrap(Int(resultString))
         XCTAssertGreaterThan(Int(expectedExpiryInt + 2), resultExpiryInt)
         XCTAssertGreaterThan(resultExpiryInt, Int(expectedExpiryInt - 1))
     }
 
-    func test_saveCredentials_withRefreshToken() {
+    func test_saveCredentials_withRefreshToken() throws {
         let testToken = "THE_BEST_TOKEN"
         let testExpirySeconds = 1234
         let expectedExpiryInt = Date()
@@ -99,12 +103,8 @@ final class AuthorisationStoreTests: XCTestCase {
         XCTAssertEqual(keychain.mutatedKeyValues[refreshTokenKey], testToken)
         // Note: The store will calculate its expiry value later than we make our expected result
         //       This means the expiry times can differ by 1ms, so we check for a range
-        guard
-            let resultString = keychain.mutatedKeyValues[expiryKey],
-            let resultExpiryInt = Int(resultString)
-            else {
-                return XCTFail("Token expiry was not an Int")
-        }
+        let resultString = try XCTUnwrap(keychain.mutatedKeyValues[expiryKey])
+        let resultExpiryInt = try XCTUnwrap(Int(resultString))
         XCTAssertGreaterThan(Int(expectedExpiryInt + 2), resultExpiryInt)
         XCTAssertGreaterThan(resultExpiryInt, Int(expectedExpiryInt - 1))
     }

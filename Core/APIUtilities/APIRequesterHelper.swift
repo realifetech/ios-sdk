@@ -29,13 +29,13 @@ public struct APIRequesterHelper {
         OAuthRequester.setDefaultOAuthParameters(clientId: clientId, clientSecret: clientSecret)
         self.baseUrl = baseUrl
         self.deviceId = deviceId
-        let apiTokenManager = constructTokenManager()
+        let apiTokenManager = constructTokenManager(clientId: clientId)
         self.tokenManager = apiTokenManager
         return apiTokenManager
     }
 
-    private static func constructTokenManager() -> APITokenManagable {
-        let authorisationStore = AuthorisationStore()
+    private static func constructTokenManager(clientId: String) -> APITokenManagable {
+        let authorisationStore = AuthorisationStore(clientId: clientId)
         let authorisationWorker = AuthorisationWorker(authorisationStore: authorisationStore)
         let oAuthTokenRefreshWatcher = OAuthTokenRefreshWatcher()
         let oAuthRefreshOrWaitActionGenerator = OAuthRefreshOrWaitActionGenerator(

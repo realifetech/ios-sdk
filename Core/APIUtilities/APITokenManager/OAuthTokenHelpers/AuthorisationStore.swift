@@ -23,33 +23,35 @@ protocol AuthorisationStoring {
 /// Implements a secure (keychain based) storage for token storage
 struct AuthorisationStore: AuthorisationStoring {
 
-    enum KeychainKey: String {
-        case token = "livestyled-token"
-        case expiryDate = "livestyled-tokenExpiryDate"
-        case refreshToken = "livestyled-refreshToken"
-        case refreshTokenExpiryDate = "livestyled-refreshTokenExpiryDate"
+    enum KeychainKey: String, CaseIterable {
+        case token = "realifetech-token"
+        case expiryDate = "realifetech-tokenExpiryDate"
+        case refreshToken = "realifetech-refreshToken"
+        case refreshTokenExpiryDate = "realifetech-refreshTokenExpiryDate"
     }
 
+    private let clientId: String
     private let keychain: KeychainSwift
 
-    init(keychain: KeychainSwift = KeychainSwift()) {
+    init(clientId: String, keychain: KeychainSwift = KeychainSwift()) {
+        self.clientId = clientId
         self.keychain = keychain
     }
 
     var accessToken: String? {
-        return keychain.get(KeychainKey.token.rawValue)
+        return keychain.get(getKeychainKey(.token))
     }
 
     var accessTokenValid: Bool {
-        return expiryDateValid(expiryDateString: keychain.get(KeychainKey.expiryDate.rawValue))
+        return expiryDateValid(expiryDateString: keychain.get(getKeychainKey(.expiryDate)))
     }
 
     var refreshToken: String? {
-        return keychain.get(KeychainKey.refreshToken.rawValue)
+        return keychain.get(getKeychainKey(.refreshToken))
     }
 
     var refreshTokenValid: Bool {
-        return expiryDateValid(expiryDateString: keychain.get(KeychainKey.refreshTokenExpiryDate.rawValue))
+        return expiryDateValid(expiryDateString: keychain.get(getKeychainKey(.refreshTokenExpiryDate)))
     }
 
     func saveCredentials(token: String, secondsExpiresIn: Int, refreshToken: String?) {
@@ -58,24 +60,27 @@ struct AuthorisationStore: AuthorisationStoring {
     }
 
     func removeCredentials() {
-        keychain.delete(KeychainKey.token.rawValue)
-        keychain.delete(KeychainKey.expiryDate.rawValue)
-        keychain.delete(KeychainKey.refreshToken.rawValue)
-        keychain.delete(KeychainKey.refreshTokenExpiryDate.rawValue)
+        KeychainKey.allCases.forEach {
+            keychain.delete(getKeychainKey($0))
+        }
+    }
+
+    private func getKeychainKey(_ type: KeychainKey) -> String {
+        return clientId + "-" + type.rawValue
     }
 
     private func update(accessToken: String, withSecondsExpiresIn seconds: Int) {
         let expiryDate = "\(Date().addingTimeInterval(Double(seconds)).toMilliseconds())"
-        keychain.set(accessToken, forKey: KeychainKey.token.rawValue)
-        keychain.set(expiryDate, forKey: KeychainKey.expiryDate.rawValue)
+        keychain.set(accessToken, forKey: getKeychainKey(.token))
+        keychain.set(expiryDate, forKey: getKeychainKey(.expiryDate))
     }
 
     private func update(refreshToken: String?, withSecondsExpiresIn seconds: Int?) {
         guard let refreshToken = refreshToken else { return }
-        keychain.set(refreshToken, forKey: KeychainKey.refreshToken.rawValue)
+        keychain.set(refreshToken, forKey: getKeychainKey(.refreshToken))
         let nearlyFourteenDaysInSeconds = seconds ?? 1166400
         let expiryDate = "\(Date().addingTimeInterval(Double(nearlyFourteenDaysInSeconds)).toMilliseconds())"
-        keychain.set(expiryDate, forKey: KeychainKey.refreshTokenExpiryDate.rawValue)
+        keychain.set(expiryDate, forKey: getKeychainKey(.refreshTokenExpiryDate))
     }
 
     private func expiryDateValid(expiryDateString: String?) -> Bool {
