@@ -51,16 +51,6 @@ final class APIRequesterTests: XCTestCase {
         }
     }
 
-    func test_format() {
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = expectedFormat
-        formatter.locale = Locale(identifier: expectedLocale)
-        let expectedResult = formatter.string(from: date)
-        let result = MockRequester.format(date: date)
-        XCTAssertEqual(result, expectedResult)
-    }
-
     func test_interceptors() {
         guard let url = URL(string: "http://test.com") else {
             return XCTFail("Test setup failed")

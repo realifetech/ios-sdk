@@ -48,14 +48,3 @@ extension APIRequester {
         return .formatted(format: dateFormatString(), localeIdentifier: "en_US_POSIX")
     }
 }
-
-extension APIRequester {
-
-    static func format(date: Date, format: String? = nil) -> String {
-        let dateFormat = format ?? dateFormatString()
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = dateFormat
-        return formatter.string(from: date)
-    }
-}
