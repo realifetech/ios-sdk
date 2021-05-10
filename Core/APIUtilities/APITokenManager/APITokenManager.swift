@@ -19,7 +19,7 @@ public class APITokenManager: APITokenManagable {
     private let authorisationStore: AuthorisationStoring
     private let oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
     private let scheduler: SchedulerType
-    private let disposeBag: DisposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     init(
         authorisationStore: AuthorisationStoring,
@@ -31,17 +31,20 @@ public class APITokenManager: APITokenManagable {
         self.oAuthRefreshOrWaitActionGenerator = oAuthRefreshOrWaitActionGenerator
     }
 
-    public func getValidToken(_ completion: (() -> Void)?) {
+    public func getValidToken(_ completion: ((Result<Void, Error>) -> Void)?) {
         guard let getTokenObservable = oAuthRefreshOrWaitActionGenerator.refreshTokenOrWaitAction else {
-            completion?()
+            completion?(.success(()))
             return
         }
         getTokenObservable
             .subscribe(on: scheduler)
             .observe(on: MainScheduler.instance)
             .take(1)
-            .subscribe(onNext: { _ in
-                completion?()
+            .subscribe(onNext: {
+                completion?(.success(()))
+            }, onError: { [weak self] error in
+                self?.removeCredentials()
+                completion?(.failure(error))
             })
             .disposed(by: disposeBag)
     }
