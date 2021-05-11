@@ -8,7 +8,6 @@
 
 import Foundation
 import Combine
-import RealifeTech_CoreSDK
 
 public enum GeneralFactory {
 

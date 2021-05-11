@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import RealifeTech_CoreSDK
 import Apollo
 @testable import RealifeTech
 
