@@ -15,15 +15,31 @@ public struct SDKConfiguration {
     public let clientSecret: String
     public let apiUrl: String?
     public let graphQLApiUrlString: String?
+    public let uiConfiguration: SDKUIConfiguration
 
     /// - Parameter appCode: String used to identify the application which uses the RealifeTech SDK
     /// - Parameter clientSecret: String which is used to authenticate with the RealifeTech backend
     /// - Parameter apiUrl: [Optional] Provide a string value of a URL to override the SDK default
     /// - Parameter graphApiUrl: [Optional] Provide a string value of a URL to override the SDK default
-    public init(appCode: String, clientSecret: String, apiUrl: String? = nil, graphQLApiUrlString: String? = nil) {
+    public init(
+        appCode: String,
+        clientSecret: String,
+        apiUrl: String? = nil,
+        graphQLApiUrlString: String? = nil,
+        uiConfiguration: SDKUIConfiguration
+    ) {
         self.appCode = appCode
         self.clientSecret = clientSecret
         self.apiUrl = apiUrl
         self.graphQLApiUrlString = graphQLApiUrlString
+        self.uiConfiguration = uiConfiguration
     }
+}
+
+public struct SDKUIConfiguration {
+    let backgroundColour: UIColor
+    let stringValue: String
+    let fontName: String
+    let imageToUse: UIImage
+    let remoteConfigValue: Bool
 }

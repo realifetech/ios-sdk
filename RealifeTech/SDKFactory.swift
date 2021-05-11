@@ -16,6 +16,7 @@ public class RealifeTech {
     public static var Analytics: Analytics!
     public static var Communicate: Communicate!
     public static var Content: Content!
+    public static var CustomisationPOC: ViewProviding!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -54,6 +55,7 @@ public class RealifeTech {
                 reachabilityHelper: reachabilityChecker,
                 deviceRegistering: General)
         }
+        CustomisationPOC = ViewProvidingFactory.makeViewProvider(with: configuration.uiConfiguration)
         Communicate = CommunicateFactory.makeCommunicateModule()
         Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
         CoreFactory.requestValidToken(fromApiHelper: apiHelper) { }

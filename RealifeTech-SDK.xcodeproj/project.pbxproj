@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09DC8710264ACE5A007E2877 /* ViewProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC870F264ACE5A007E2877 /* ViewProviding.swift */; };
+		09DC8716264ACE61007E2877 /* ViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8715264ACE61007E2877 /* ViewProvider.swift */; };
+		09DC871A264ACE6E007E2877 /* ViewProvidingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8719264ACE6E007E2877 /* ViewProvidingFactory.swift */; };
+		09DC871E264ACEFF007E2877 /* SomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09DC871D264ACEFF007E2877 /* SomeView.xib */; };
+		09DC8722264ACF0E007E2877 /* SomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8721264ACF0E007E2877 /* SomeView.swift */; };
+		09DC8726264AD2F6007E2877 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8725264AD2F6007E2877 /* UIView+Extensions.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -72,6 +78,12 @@
 		03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesTests.swift; sourceTree = "<group>"; };
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
+		09DC870F264ACE5A007E2877 /* ViewProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProviding.swift; sourceTree = "<group>"; };
+		09DC8715264ACE61007E2877 /* ViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProvider.swift; sourceTree = "<group>"; };
+		09DC8719264ACE6E007E2877 /* ViewProvidingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProvidingFactory.swift; sourceTree = "<group>"; };
+		09DC871D264ACEFF007E2877 /* SomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SomeView.xib; sourceTree = "<group>"; };
+		09DC8721264ACF0E007E2877 /* SomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeView.swift; sourceTree = "<group>"; };
+		09DC8725264AD2F6007E2877 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +179,19 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		09DC870E264ACCB2007E2877 /* CustomisationPOC */ = {
+			isa = PBXGroup;
+			children = (
+				09DC870F264ACE5A007E2877 /* ViewProviding.swift */,
+				09DC8715264ACE61007E2877 /* ViewProvider.swift */,
+				09DC8719264ACE6E007E2877 /* ViewProvidingFactory.swift */,
+				09DC871D264ACEFF007E2877 /* SomeView.xib */,
+				09DC8721264ACF0E007E2877 /* SomeView.swift */,
+				09DC8725264AD2F6007E2877 /* UIView+Extensions.swift */,
+			);
+			path = CustomisationPOC;
+			sourceTree = "<group>";
+		};
 		482BE53F2541D11200110368 /* AnalyticsLoggingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +280,7 @@
 				48E67771251BA86D007E2741 /* Communicate */,
 				03EEB89D252E04DB00C868AD /* Audiences */,
 				4889594E2539D7E200B978A9 /* Analytics */,
+				09DC870E264ACCB2007E2877 /* CustomisationPOC */,
 				968CA5B625EE79960000C2E2 /* Content */,
 				48D6F13B251E158E006CA623 /* RealifeTech */,
 				48E67730251BA7F0007E2741 /* Products */,
@@ -510,6 +536,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09DC871E264ACEFF007E2877 /* SomeView.xib in Resources */,
 				968CA62925EF6DC90000C2E2 /* Content.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +655,7 @@
 			files = (
 				487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */,
 				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
+				09DC871A264ACE6E007E2877 /* ViewProvidingFactory.swift in Sources */,
 				968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
 				968CA5BC25EE79DD0000C2E2 /* Content.swift in Sources */,
@@ -639,14 +667,18 @@
 				480BCD95251E254D00266617 /* SDKFactory.swift in Sources */,
 				48EFE2532539E55400CC6E58 /* DeviceRegistrationWorker.swift in Sources */,
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
+				09DC8716264ACE61007E2877 /* ViewProvider.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
 				487479E825408E8A0048F03D /* Communicate.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
+				09DC8726264AD2F6007E2877 /* UIView+Extensions.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
+				09DC8710264ACE5A007E2877 /* ViewProviding.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
+				09DC8722264ACF0E007E2877 /* SomeView.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
 				968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */,
 				488958A52539D04B00B978A9 /* AudiencesImplementing.swift in Sources */,
