@@ -15,11 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let uiConfiguration = SDKUIConfiguration(
+            backgroundColour: UIColor(displayP3Red: 1, green: 0.6, blue: 0, alpha: 1),
+            stringValue: "Queen of the Tundra, Regent of Ice",
+            fontName: "custom-bold", // FIXME: Implicitly assumes the font is in the main bundle
+            imageToUse: UIImage(named: "CartoonOlivier")!,
+            remoteConfigValue: true)
         let configuration = SDKConfiguration(
             appCode: "",
             clientSecret: "",
             apiUrl: "",
-            graphQLApiUrlString: "")
+            graphQLApiUrlString: "",
+            uiConfiguration: uiConfiguration)
         RealifeTech.configureSDK(with: configuration)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {

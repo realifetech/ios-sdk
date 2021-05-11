@@ -25,7 +25,7 @@ extension Bundle {
         guard
             let path = Bundle(for: ContentImplementing.self)
                 .path(forResource: "RealifeTech", ofType: "bundle"),
-            let bundle = Bundle(path: path) // This seems unecessarily convoluted
+            let bundle = Bundle(path: path)
         else {
             return .main
         }

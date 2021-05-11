@@ -123,7 +123,7 @@
 		48EFE2592539E56000CC6E58 /* GeneralImplementingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementingTests.swift; sourceTree = "<group>"; };
 		48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRegistrationWorkerTests.swift; sourceTree = "<group>"; };
 		48EFE2622539E5A100CC6E58 /* MockReachabilityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockReachabilityChecker.swift; sourceTree = "<group>"; };
-		48EFE3A3253DE82C00CC6E58 /* RealifeTech-SDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RealifeTech-SDK.podspec"; sourceTree = SOURCE_ROOT; };
+		48EFE3A3253DE82C00CC6E58 /* RealifeTech-SDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RealifeTech-SDK.podspec"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech_RealifeTechTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		968CA5BB25EE79DD0000C2E2 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		968CA5BF25EE7A610000C2E2 /* WebPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPage.swift; sourceTree = "<group>"; };

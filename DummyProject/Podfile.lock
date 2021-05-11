@@ -11,7 +11,7 @@ PODS:
     - RxCocoa (~> 5.1.1)
     - RxSwift (~> 5.1.1)
     - SwiftLint
-  - RealifeTech-SDK (0.0.1):
+  - RealifeTech-SDK (1.1.0):
     - RealifeTech-CoreSDK (~> 1.0.7)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
@@ -44,7 +44,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Apollo: 9fb70b598511a6212a81a34c00fa9bf8bac19a23
   RealifeTech-CoreSDK: 846cddaf70a068c70a57b911d45c40a0adf54744
-  RealifeTech-SDK: bcf9bdbb4789f90aa37e573b737682655ae1d56b
+  RealifeTech-SDK: 137e238788504e8f7674c58650e50cf29b67fd5c
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e

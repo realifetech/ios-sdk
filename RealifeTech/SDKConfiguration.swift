@@ -42,4 +42,12 @@ public struct SDKUIConfiguration {
     let fontName: String
     let imageToUse: UIImage
     let remoteConfigValue: Bool
+
+    public init(backgroundColour: UIColor, stringValue: String, fontName: String, imageToUse: UIImage, remoteConfigValue: Bool) {
+        self.backgroundColour = backgroundColour
+        self.stringValue = stringValue
+        self.fontName = fontName
+        self.imageToUse = imageToUse
+        self.remoteConfigValue = remoteConfigValue
+    }
 }

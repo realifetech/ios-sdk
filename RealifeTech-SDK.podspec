@@ -39,7 +39,7 @@ Pod::Spec.new do |spec|
       'Pods/**/*',
       '**/Tests/**/*'
   ]
-  spec.resource_bundle = { "RealifeTech" => ["**/*.lproj/*.strings"] }
+  spec.resource_bundle = { "RealifeTech" => ["**/*.lproj/*.strings", "**/*.xib"] }
 
   spec.dependency "RealifeTech-CoreSDK", "~> 1.0.7"
 

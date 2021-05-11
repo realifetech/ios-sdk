@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09DC8736264AD7C1007E2877 /* custom-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09DC8735264AD7C1007E2877 /* custom-bold.ttf */; };
+		09DC8746264AD9EB007E2877 /* CustomisationPOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8745264AD9EB007E2877 /* CustomisationPOCViewController.swift */; };
 		18AB9A0A153B6F33CCB3C828 /* Pods_DummyProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED78014D9AFFAFD9ADE589 /* Pods_DummyProject.framework */; };
 		48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16A251E1ECF006CA623 /* AppDelegate.swift */; };
 		48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09DC8735264AD7C1007E2877 /* custom-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "custom-bold.ttf"; sourceTree = "<group>"; };
+		09DC8745264AD9EB007E2877 /* CustomisationPOCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisationPOCViewController.swift; sourceTree = "<group>"; };
 		16ED78014D9AFFAFD9ADE589 /* Pods_DummyProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DummyProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		48D6F167251E1ECF006CA623 /* DummyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DummyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,9 +103,11 @@
 				48D6F16A251E1ECF006CA623 /* AppDelegate.swift */,
 				48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */,
 				48D6F16E251E1ECF006CA623 /* ViewController.swift */,
+				09DC8745264AD9EB007E2877 /* CustomisationPOCViewController.swift */,
 				48D6F170251E1ECF006CA623 /* Main.storyboard */,
 				48D6F173251E1ED0006CA623 /* Assets.xcassets */,
 				48D6F175251E1ED0006CA623 /* LaunchScreen.storyboard */,
+				09DC8735264AD7C1007E2877 /* custom-bold.ttf */,
 				48D6F178251E1ED0006CA623 /* Info.plist */,
 				48D6F180251E1ED0006CA623 /* DummyProjectTests */,
 			);
@@ -213,6 +219,7 @@
 				48D6F177251E1ED0006CA623 /* LaunchScreen.storyboard in Resources */,
 				48D6F174251E1ED0006CA623 /* Assets.xcassets in Resources */,
 				48D6F172251E1ECF006CA623 /* Main.storyboard in Resources */,
+				09DC8736264AD7C1007E2877 /* custom-bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +281,7 @@
 			files = (
 				48D6F16F251E1ECF006CA623 /* ViewController.swift in Sources */,
 				48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */,
+				09DC8746264AD9EB007E2877 /* CustomisationPOCViewController.swift in Sources */,
 				48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
