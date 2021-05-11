@@ -50,6 +50,5 @@ public class RealifeTech {
         }
         Communicate = CommunicateFactory.makeCommunicateModule()
         Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
-        CoreFactory.requestValidToken(fromApiHelper: apiHelper) { }
     }
 }

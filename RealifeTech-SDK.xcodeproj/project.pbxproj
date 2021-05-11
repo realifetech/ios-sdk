@@ -610,9 +610,9 @@
 		961C4164260882B9001D8467 /* OAuthTokenHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */,
 				961C4166260882BA001D8467 /* AuthorisationStore.swift */,
 				961C4167260882BA001D8467 /* AuthorisationWorker.swift */,
+				961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */,
 				961C4168260882BA001D8467 /* OAuthTokenRefreshWatcher.swift */,
 			);
 			path = OAuthTokenHelpers;
@@ -631,16 +631,16 @@
 		961C416E260882BA001D8467 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				961C416F260882BA001D8467 /* APIRequesterTests.swift */,
-				961C4170260882BA001D8467 /* EmptyTokenManagerTests.swift */,
-				961C4171260882BA001D8467 /* RequestHeaderTests.swift */,
-				961C4172260882BA001D8467 /* AuthorisationWorkerTests.swift */,
-				961C4173260882BA001D8467 /* APITokenManagerTests.swift */,
-				961C4174260882BA001D8467 /* AuthorsationStoreTests.swift */,
-				961C4175260882BA001D8467 /* StandardSenderResponseTests.swift */,
-				961C4176260882BA001D8467 /* OAuthTokenRefreshWatcherTests.swift */,
-				961C4177260882BA001D8467 /* OAuthRefreshOrWaitActionGeneratorTests.swift */,
 				961C4178260882BA001D8467 /* APIRequesterHelperTests.swift */,
+				961C416F260882BA001D8467 /* APIRequesterTests.swift */,
+				961C4173260882BA001D8467 /* APITokenManagerTests.swift */,
+				961C4172260882BA001D8467 /* AuthorisationWorkerTests.swift */,
+				961C4174260882BA001D8467 /* AuthorsationStoreTests.swift */,
+				961C4170260882BA001D8467 /* EmptyTokenManagerTests.swift */,
+				961C4177260882BA001D8467 /* OAuthRefreshOrWaitActionGeneratorTests.swift */,
+				961C4176260882BA001D8467 /* OAuthTokenRefreshWatcherTests.swift */,
+				961C4171260882BA001D8467 /* RequestHeaderTests.swift */,
+				961C4175260882BA001D8467 /* StandardSenderResponseTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
