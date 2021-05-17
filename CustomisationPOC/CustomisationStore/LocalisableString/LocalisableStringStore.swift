@@ -11,7 +11,7 @@ import Foundation
 protocol LocalisableStringStorable {
     var languageCode: String { get set }
     func setLocalisableString(_ key: RealifeTechLocalisableStringKey, value: [(languageCode: String, translation: String)])
-    func getLocalisableString(_ key: RealifeTechLocalisableStringKey) -> String?
+    func get(_ key: RealifeTechLocalisableStringKey) -> String?
 }
 
 class LocalisableStringStore: LocalisableStringStorable {
@@ -22,7 +22,7 @@ class LocalisableStringStore: LocalisableStringStorable {
         storedStrings.update(with: .init(key: key, value: value))
     }
 
-    func getLocalisableString(_ key: RealifeTechLocalisableStringKey) -> String? {
+    func get(_ key: RealifeTechLocalisableStringKey) -> String? {
         guard let possibleValues = storedStrings.first(where: { $0.key == key })?.value else {
             return nil
         }

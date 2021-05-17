@@ -19,10 +19,11 @@ public final class ViewProvider: ViewProviding {
     public func makeSomeView(frame: CGRect) -> UIView? {
         let someView = SomeView.init(frame: frame)
         guard
-            let backgroundColour = customisationStore.colourStore.getColour(key: .backgorund),
-            let headlineFont = customisationStore.fontStore.getValue(key: .headline),
-            let headlineString = customisationStore.localisableStringStore.getLocalisableString(.proofOfConceptHeadline),
-            let happyAppBool = customisationStore.configurationStore.get(.isThisAHappyApp)
+            let backgroundColour = customisationStore.colourStore.get(key: .backgorund),
+            let headlineFont = customisationStore.fontStore.get(key: .headline),
+            let headlineString = customisationStore.localisableStringStore.get(.proofOfConceptHeadline),
+            let happyAppBool = customisationStore.configurationStore.get(.isThisAHappyApp),
+            let image = customisationStore.imageStore.get(.olivierFace)
         else {
             return nil
         }
@@ -30,15 +31,7 @@ public final class ViewProvider: ViewProviding {
         someView.customFontLabel.font = headlineFont
         someView.customFontLabel.text = headlineString
         someView.arbitraryValueLabel.text = "The happiness feature is \(happyAppBool ? "turned on" : "disabled")"
-//        someView.imageView.image = uiConfiguration.imageToUse
-//        someView.arbitraryValueLabel.text = uiConfiguration.remoteConfigValue.description
-//        do {
-//            let fontName = try registerFont(fontName: uiConfiguration.fontName)
-//            someView.customFontLabel.text = uiConfiguration.stringValue
-//            someView.customFontLabel.font = UIFont(name: fontName, size: 30)
-//        } catch {
-//            print(error)
-//        }
+        someView.imageView.image = image
         return someView
     }
 

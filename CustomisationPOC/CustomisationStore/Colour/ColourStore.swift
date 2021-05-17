@@ -10,7 +10,7 @@ import UIKit
 
 protocol ColourStorable {
     func setColour(key: RealifeTechColourKey, value: UIColor)
-    func getColour(key: RealifeTechColourKey) -> UIColor?
+    func get(key: RealifeTechColourKey) -> UIColor?
 }
 
 class ColourStore: ColourStorable {
@@ -20,7 +20,7 @@ class ColourStore: ColourStorable {
         storedColours.update(with: .init(key: key, colour: value))
     }
 
-    func getColour(key: RealifeTechColourKey) -> UIColor? {
+    func get(key: RealifeTechColourKey) -> UIColor? {
         return storedColours.first { $0.key == key }?.colour
     }
 }

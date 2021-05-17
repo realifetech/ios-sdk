@@ -45,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let headlineFont = UIFont(name: "JosefinSans-SemiBold", size: 25) {
             RealifeTech.setFont(.headline, value: headlineFont)
         }
+        if let image = UIImage(named: "CartoonOlivier") {
+            RealifeTech.setImage(.olivierFace, value: image)
+        }
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

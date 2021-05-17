@@ -10,7 +10,7 @@ import UIKit
 
 protocol FontStorable {
     func setValue(key: RealifeTechFontKey, value: UIFont)
-    func getValue(key: RealifeTechFontKey) -> UIFont?
+    func get(key: RealifeTechFontKey) -> UIFont?
 }
 
 class FontStore: FontStorable {
@@ -20,7 +20,7 @@ class FontStore: FontStorable {
         storedFonts.update(with: .init(key: key, value: value))
     }
 
-    func getValue(key: RealifeTechFontKey) -> UIFont? {
+    func get(key: RealifeTechFontKey) -> UIFont? {
         return storedFonts.first(where: { $0.key == key})?.value
     }
 }
