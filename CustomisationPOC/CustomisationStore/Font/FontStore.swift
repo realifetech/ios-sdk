@@ -9,18 +9,18 @@
 import UIKit
 
 protocol FontStorable {
-    func setValue(key: RealifeTechFont, value: UIFont)
-    func getValue(key: RealifeTechFont) -> UIFont?
+    func setValue(key: RealifeTechFontKey, value: UIFont)
+    func getValue(key: RealifeTechFontKey) -> UIFont?
 }
 
 class FontStore: FontStorable {
-    private var storedFonts = Set<FrontKeyPairValue>()
+    private var storedFonts = Set<RealifeTechFont>()
 
-    func setValue(key: RealifeTechFont, value: UIFont) {
+    func setValue(key: RealifeTechFontKey, value: UIFont) {
         storedFonts.update(with: .init(key: key, value: value))
     }
 
-    func getValue(key: RealifeTechFont) -> UIFont? {
+    func getValue(key: RealifeTechFontKey) -> UIFont? {
         return storedFonts.first(where: { $0.key == key})?.value
     }
 }

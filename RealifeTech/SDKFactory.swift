@@ -64,24 +64,29 @@ public class RealifeTech {
     }
 
     private static func setupCustomisationDependencies() {
-        let colourStore = ColourStore()
-        let fontStore = FontStore()
         let store = CustomisationStore(
-            colourStore: colourStore,
-            fontStore: fontStore)
+            colourStore: ColourStore(),
+            fontStore: FontStore(),
+            localisableStringStore: LocalisableStringStore())
         CustomisationPOC = ViewProvidingFactory.makeViewProvider(with: store)
         customisationStore = store
-        
     }
 }
 
 extension RealifeTech: CustomisationSettable {
 
-    public static func setColour(_ key: RealifeTechColour, value: UIColor) {
+    public static func setLocalisableString(
+        _ key: RealifeTechLocalisableStringKey,
+        value: [(languageCode: String, translation: String)]
+    ) {
+        customisationStore.localisableStringStore.setLocalisableString(key, value: value)
+    }
+
+    public static func setColour(_ key: RealifeTechColourKey, value: UIColor) {
         customisationStore.colourStore.setColour(key: key, value: value)
     }
 
-    public static func setFont(_ key: RealifeTechFont, value: UIFont) {
+    public static func setFont(_ key: RealifeTechFontKey, value: UIFont) {
         customisationStore.fontStore.setValue(key: key, value: value)
     }
 }

@@ -9,18 +9,18 @@
 import UIKit
 
 protocol ColourStorable {
-    func setColour(key: RealifeTechColour, value: UIColor)
-    func getColour(key: RealifeTechColour) -> UIColor?
+    func setColour(key: RealifeTechColourKey, value: UIColor)
+    func getColour(key: RealifeTechColourKey) -> UIColor?
 }
 
 class ColourStore: ColourStorable {
-    private var storedColours = Set<ColourKeyPairValue>()
+    private var storedColours = Set<RealifeTechColour>()
 
-    func setColour(key: RealifeTechColour, value: UIColor) {
+    func setColour(key: RealifeTechColourKey, value: UIColor) {
         storedColours.update(with: .init(key: key, colour: value))
     }
 
-    func getColour(key: RealifeTechColour) -> UIColor? {
+    func getColour(key: RealifeTechColourKey) -> UIColor? {
         return storedColours.first { $0.key == key }?.colour
     }
 }

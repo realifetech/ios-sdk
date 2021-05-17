@@ -20,12 +20,14 @@ public final class ViewProvider: ViewProviding {
         let someView = SomeView.init(frame: frame)
         guard
             let backgroundColour = customisationStore.colourStore.getColour(key: .backgorund),
-            let headlineFont = customisationStore.fontStore.getValue(key: .headline)
+            let headlineFont = customisationStore.fontStore.getValue(key: .headline),
+            let headlineString = customisationStore.localisableStringStore.getLocalisableString(.proofOfConceptHeadline)
         else {
             return nil
         }
         someView.contentView.backgroundColor = backgroundColour
         someView.customFontLabel.font = headlineFont
+        someView.customFontLabel.text = headlineString
 //        someView.imageView.image = uiConfiguration.imageToUse
 //        someView.arbitraryValueLabel.text = uiConfiguration.remoteConfigValue.description
 //        do {

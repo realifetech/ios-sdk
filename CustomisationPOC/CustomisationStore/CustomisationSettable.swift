@@ -11,7 +11,7 @@ import UIKit
 // Public interface we extend the Factory with to allow users to update the customisation stores
 public protocol CustomisationSettable {
 
-    static func setColour(_: RealifeTechColour, value: UIColor)
-    static func setFont(_: RealifeTechFont, value: UIFont)
-    // other setters here
+    static func setColour(_: RealifeTechColourKey, value: UIColor)
+    static func setFont(_: RealifeTechFontKey, value: UIFont)
+    static func setLocalisableString(_: RealifeTechLocalisableStringKey, value: [(languageCode: String, translation: String)])
 }

@@ -21,11 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             apiUrl: "",
             graphQLApiUrlString: "")
         RealifeTech.configureSDK(with: configuration)
-        RealifeTech.setColour(.backgorund, value: UIColor(displayP3Red: 1, green: 0.6, blue: 0, alpha: 1))
-        if let headlineFont = UIFont(name: "JosefinSans-SemiBold", size: 25) {
-            RealifeTech.setFont(.headline, value: headlineFont)
-        }
-        
+        setupCustomisationPOC()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {
                 print("D'oh: \(error.localizedDescription)")
@@ -36,6 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         return true
+    }
+
+    private func setupCustomisationPOC() {
+        RealifeTech.setColour(.backgorund, value: UIColor(displayP3Red: 1, green: 0.6, blue: 0, alpha: 1))
+        RealifeTech.setLocalisableString(.proofOfConceptHeadline, value: [
+            (languageCode: "en_GB", translation: "This is a British English translation"),
+            (languageCode: "pt", translation: "This is a Portugese translation")
+
+        ])
+        if let headlineFont = UIFont(name: "JosefinSans-SemiBold", size: 25) {
+            RealifeTech.setFont(.headline, value: headlineFont)
+        }
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
