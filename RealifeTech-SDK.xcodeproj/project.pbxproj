@@ -10,6 +10,9 @@
 		096338042652840500DBC592 /* ColourStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096338032652840500DBC592 /* ColourStore.swift */; };
 		096338082652871F00DBC592 /* CustomisationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096338072652871F00DBC592 /* CustomisationStore.swift */; };
 		0963380C2652884700DBC592 /* CustomisationSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0963380B2652884700DBC592 /* CustomisationSettable.swift */; };
+		0963384D26528DC400DBC592 /* FontStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0963384C26528DC400DBC592 /* FontStore.swift */; };
+		0963385326528DF700DBC592 /* RealifeTechColour+KeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0963385226528DF700DBC592 /* RealifeTechColour+KeyPair.swift */; };
+		09633875265290DF00DBC592 /* RealifeTechFont+KeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0963385626528E0600DBC592 /* RealifeTechFont+KeyPair.swift */; };
 		09DC8710264ACE5A007E2877 /* ViewProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC870F264ACE5A007E2877 /* ViewProviding.swift */; };
 		09DC8716264ACE61007E2877 /* ViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8715264ACE61007E2877 /* ViewProvider.swift */; };
 		09DC871A264ACE6E007E2877 /* ViewProvidingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8719264ACE6E007E2877 /* ViewProvidingFactory.swift */; };
@@ -84,6 +87,9 @@
 		096338032652840500DBC592 /* ColourStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourStore.swift; sourceTree = "<group>"; };
 		096338072652871F00DBC592 /* CustomisationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisationStore.swift; sourceTree = "<group>"; };
 		0963380B2652884700DBC592 /* CustomisationSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisationSettable.swift; sourceTree = "<group>"; };
+		0963384C26528DC400DBC592 /* FontStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStore.swift; sourceTree = "<group>"; };
+		0963385226528DF700DBC592 /* RealifeTechColour+KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealifeTechColour+KeyPair.swift"; sourceTree = "<group>"; };
+		0963385626528E0600DBC592 /* RealifeTechFont+KeyPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealifeTechFont+KeyPair.swift"; sourceTree = "<group>"; };
 		09DC870F264ACE5A007E2877 /* ViewProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProviding.swift; sourceTree = "<group>"; };
 		09DC8715264ACE61007E2877 /* ViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProvider.swift; sourceTree = "<group>"; };
 		09DC8719264ACE6E007E2877 /* ViewProvidingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProvidingFactory.swift; sourceTree = "<group>"; };
@@ -185,6 +191,19 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		0963384B26528D7700DBC592 /* CustomisationStore */ = {
+			isa = PBXGroup;
+			children = (
+				096338072652871F00DBC592 /* CustomisationStore.swift */,
+				0963380B2652884700DBC592 /* CustomisationSettable.swift */,
+				096338032652840500DBC592 /* ColourStore.swift */,
+				0963385226528DF700DBC592 /* RealifeTechColour+KeyPair.swift */,
+				0963384C26528DC400DBC592 /* FontStore.swift */,
+				0963385626528E0600DBC592 /* RealifeTechFont+KeyPair.swift */,
+			);
+			path = CustomisationStore;
+			sourceTree = "<group>";
+		};
 		09DC870E264ACCB2007E2877 /* CustomisationPOC */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,9 +213,7 @@
 				09DC871D264ACEFF007E2877 /* SomeView.xib */,
 				09DC8721264ACF0E007E2877 /* SomeView.swift */,
 				09DC8725264AD2F6007E2877 /* UIView+Extensions.swift */,
-				096338032652840500DBC592 /* ColourStore.swift */,
-				096338072652871F00DBC592 /* CustomisationStore.swift */,
-				0963380B2652884700DBC592 /* CustomisationSettable.swift */,
+				0963384B26528D7700DBC592 /* CustomisationStore */,
 			);
 			path = CustomisationPOC;
 			sourceTree = "<group>";
@@ -679,17 +696,20 @@
 				096338082652871F00DBC592 /* CustomisationStore.swift in Sources */,
 				096338042652840500DBC592 /* ColourStore.swift in Sources */,
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
+				09633875265290DF00DBC592 /* RealifeTechFont+KeyPair.swift in Sources */,
 				09DC8716264ACE61007E2877 /* ViewProvider.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
 				487479E825408E8A0048F03D /* Communicate.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
+				0963385326528DF700DBC592 /* RealifeTechColour+KeyPair.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				09DC8726264AD2F6007E2877 /* UIView+Extensions.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
 				09DC8710264ACE5A007E2877 /* ViewProviding.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
+				0963384D26528DC400DBC592 /* FontStore.swift in Sources */,
 				09DC8722264ACF0E007E2877 /* SomeView.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
 				968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */,

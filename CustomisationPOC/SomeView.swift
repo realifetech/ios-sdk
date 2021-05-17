@@ -28,8 +28,9 @@ class SomeView: UIView {
     func commonInit() {
         let bundle = Bundle.contentResourceBundle
         let nib = UINib(nibName: SomeView.xibName, bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil).first
-        self.addSubview(view as! UIView)
-        contentView.constrainToFill(self)
+        if let view = nib.instantiate(withOwner: self, options: nil).first as? UIView {
+            self.addSubview(view)
+            contentView.constrainToFill(self)
+        }
     }
 }

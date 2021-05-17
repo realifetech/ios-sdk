@@ -10,12 +10,15 @@ import Foundation
 
 protocol CustomisationStorable {
     var colourStore: ColourStorable { get }
+    var fontStore: FontStorable { get }
 }
 
 class CustomisationStore: CustomisationStorable {
     var colourStore: ColourStorable
+    var fontStore: FontStorable
 
-    init(colourStore: ColourStorable) {
+    init(colourStore: ColourStorable, fontStore: FontStorable) {
         self.colourStore = colourStore
+        self.fontStore = fontStore
     }
 }

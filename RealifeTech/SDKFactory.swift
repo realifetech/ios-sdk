@@ -65,7 +65,10 @@ public class RealifeTech {
 
     private static func setupCustomisationDependencies() {
         let colourStore = ColourStore()
-        let store = CustomisationStore(colourStore: colourStore)
+        let fontStore = FontStore()
+        let store = CustomisationStore(
+            colourStore: colourStore,
+            fontStore: fontStore)
         CustomisationPOC = ViewProvidingFactory.makeViewProvider(with: store)
         customisationStore = store
         
@@ -74,7 +77,11 @@ public class RealifeTech {
 
 extension RealifeTech: CustomisationSettable {
 
-    public static func setColour(key: RealifeTechColour, value: UIColor) {
+    public static func setColour(_ key: RealifeTechColour, value: UIColor) {
         customisationStore.colourStore.setColour(key: key, value: value)
+    }
+
+    public static func setFont(_ key: RealifeTechFont, value: UIFont) {
+        customisationStore.fontStore.setValue(key: key, value: value)
     }
 }

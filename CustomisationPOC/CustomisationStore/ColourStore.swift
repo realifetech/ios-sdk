@@ -24,18 +24,3 @@ class ColourStore: ColourStorable {
         return storedColours.first { $0.key == key }?.colour
     }
 }
-
-public enum RealifeTechColour {
-    case Backgorund, Text, TextSecondary
-}
-
-struct ColourKeyPairValue {
-    let key: RealifeTechColour
-    let colour: UIColor
-}
-
-extension ColourKeyPairValue: Equatable, Hashable {
-    static func == (lhs: ColourKeyPairValue, rhs: ColourKeyPairValue) -> Bool {
-        return lhs.key == rhs.key
-    }
-}
