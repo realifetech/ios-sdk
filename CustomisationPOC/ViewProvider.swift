@@ -21,13 +21,15 @@ public final class ViewProvider: ViewProviding {
         guard
             let backgroundColour = customisationStore.colourStore.getColour(key: .backgorund),
             let headlineFont = customisationStore.fontStore.getValue(key: .headline),
-            let headlineString = customisationStore.localisableStringStore.getLocalisableString(.proofOfConceptHeadline)
+            let headlineString = customisationStore.localisableStringStore.getLocalisableString(.proofOfConceptHeadline),
+            let happyAppBool = customisationStore.configurationStore.get(.isThisAHappyApp)
         else {
             return nil
         }
         someView.contentView.backgroundColor = backgroundColour
         someView.customFontLabel.font = headlineFont
         someView.customFontLabel.text = headlineString
+        someView.arbitraryValueLabel.text = "The happiness feature is \(happyAppBool ? "turned on" : "disabled")"
 //        someView.imageView.image = uiConfiguration.imageToUse
 //        someView.arbitraryValueLabel.text = uiConfiguration.remoteConfigValue.description
 //        do {

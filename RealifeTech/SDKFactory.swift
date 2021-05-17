@@ -67,7 +67,9 @@ public class RealifeTech {
         let store = CustomisationStore(
             colourStore: ColourStore(),
             fontStore: FontStore(),
-            localisableStringStore: LocalisableStringStore())
+            localisableStringStore: LocalisableStringStore(),
+            imageStore: ImageStore(),
+            configurationStore: ConfigurationStore())
         CustomisationPOC = ViewProvidingFactory.makeViewProvider(with: store)
         customisationStore = store
     }
@@ -88,5 +90,17 @@ extension RealifeTech: CustomisationSettable {
 
     public static func setFont(_ key: RealifeTechFontKey, value: UIFont) {
         customisationStore.fontStore.setValue(key: key, value: value)
+    }
+
+    public static func setConfigurationBool(_ key: RLTConfigurationBoolKey, value: Bool) {
+        customisationStore.configurationStore.set(key, value: value)
+    }
+
+    public static func setConfigurationFloat(_ key: RLTConfigurationFloatKey, value: Float) {
+        customisationStore.configurationStore.set(key, value: value)
+    }
+
+    public static func setImage(_ key: RealifeTechImageKey, value: UIImage) {
+        customisationStore.imageStore.set(key, image: value)
     }
 }

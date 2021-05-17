@@ -17,6 +17,7 @@
 		096338E02652AD9C00DBC592 /* RealifeTechLocalisableString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096338AC2652A4D900DBC592 /* RealifeTechLocalisableString.swift */; };
 		096339082652B05600DBC592 /* RealifeTechConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096339072652B05600DBC592 /* RealifeTechConfig.swift */; };
 		0963390C2652B41800DBC592 /* ConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0963390B2652B41800DBC592 /* ConfigurationStore.swift */; };
+		096339382652BF1300DBC592 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096339372652BF1300DBC592 /* ImageStore.swift */; };
 		09DC8710264ACE5A007E2877 /* ViewProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC870F264ACE5A007E2877 /* ViewProviding.swift */; };
 		09DC8716264ACE61007E2877 /* ViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8715264ACE61007E2877 /* ViewProvider.swift */; };
 		09DC871A264ACE6E007E2877 /* ViewProvidingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC8719264ACE6E007E2877 /* ViewProvidingFactory.swift */; };
@@ -98,6 +99,7 @@
 		096338AC2652A4D900DBC592 /* RealifeTechLocalisableString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealifeTechLocalisableString.swift; sourceTree = "<group>"; };
 		096339072652B05600DBC592 /* RealifeTechConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealifeTechConfig.swift; sourceTree = "<group>"; };
 		0963390B2652B41800DBC592 /* ConfigurationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationStore.swift; sourceTree = "<group>"; };
+		096339372652BF1300DBC592 /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		09DC870F264ACE5A007E2877 /* ViewProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProviding.swift; sourceTree = "<group>"; };
 		09DC8715264ACE61007E2877 /* ViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProvider.swift; sourceTree = "<group>"; };
 		09DC8719264ACE6E007E2877 /* ViewProvidingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProvidingFactory.swift; sourceTree = "<group>"; };
@@ -204,11 +206,11 @@
 			children = (
 				096338072652871F00DBC592 /* CustomisationStore.swift */,
 				0963380B2652884700DBC592 /* CustomisationSettable.swift */,
-				096339072652B05600DBC592 /* RealifeTechConfig.swift */,
-				0963390B2652B41800DBC592 /* ConfigurationStore.swift */,
+				096339102652BCB300DBC592 /* Configuration */,
 				096338D62652AD6400DBC592 /* Colour */,
 				096338D92652AD6C00DBC592 /* Font */,
 				096338DB2652AD7700DBC592 /* LocalisableString */,
+				096339372652BF1300DBC592 /* ImageStore.swift */,
 			);
 			path = CustomisationStore;
 			sourceTree = "<group>";
@@ -238,6 +240,15 @@
 				096338AC2652A4D900DBC592 /* RealifeTechLocalisableString.swift */,
 			);
 			path = LocalisableString;
+			sourceTree = "<group>";
+		};
+		096339102652BCB300DBC592 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				096339072652B05600DBC592 /* RealifeTechConfig.swift */,
+				0963390B2652B41800DBC592 /* ConfigurationStore.swift */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		09DC870E264ACCB2007E2877 /* CustomisationPOC */ = {
@@ -735,6 +746,7 @@
 				096338042652840500DBC592 /* ColourStore.swift in Sources */,
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
 				09633875265290DF00DBC592 /* RealifeTechFont.swift in Sources */,
+				096339382652BF1300DBC592 /* ImageStore.swift in Sources */,
 				09DC8716264ACE61007E2877 /* ViewProvider.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,

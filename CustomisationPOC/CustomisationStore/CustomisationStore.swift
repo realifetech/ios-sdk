@@ -11,21 +11,30 @@ import Foundation
 protocol CustomisationStorable {
     var colourStore: ColourStorable { get }
     var fontStore: FontStorable { get }
-    var localisableStringStore: LocalisableStringStore { get }
+    var localisableStringStore: LocalisableStringStorable { get }
+    var configurationStore: ConfigurationStorable { get }
+    var imageStore: ImageStorable { get }
 }
 
 class CustomisationStore: CustomisationStorable {
+    
     let colourStore: ColourStorable
     let fontStore: FontStorable
-    let localisableStringStore: LocalisableStringStore
+    let localisableStringStore: LocalisableStringStorable
+    let imageStore: ImageStorable
+    let configurationStore: ConfigurationStorable
 
     init(
         colourStore: ColourStorable,
         fontStore: FontStorable,
-        localisableStringStore: LocalisableStringStore
+        localisableStringStore: LocalisableStringStorable,
+        imageStore: ImageStorable,
+        configurationStore: ConfigurationStorable
     ) {
         self.colourStore = colourStore
         self.fontStore = fontStore
         self.localisableStringStore = localisableStringStore
+        self.imageStore = imageStore
+        self.configurationStore = configurationStore
     }
 }

@@ -13,5 +13,10 @@ public protocol CustomisationSettable {
 
     static func setColour(_: RealifeTechColourKey, value: UIColor)
     static func setFont(_: RealifeTechFontKey, value: UIFont)
-    static func setLocalisableString(_: RealifeTechLocalisableStringKey, value: [(languageCode: String, translation: String)])
+    static func setLocalisableString(
+        _: RealifeTechLocalisableStringKey,
+        value: [(languageCode: String, translation: String)])
+    static func setConfigurationBool(_: RLTConfigurationBoolKey, value: Bool)
+    static func setConfigurationFloat(_: RLTConfigurationFloatKey, value: Float)
+    static func setImage(_: RealifeTechImageKey, value: UIImage)
 }

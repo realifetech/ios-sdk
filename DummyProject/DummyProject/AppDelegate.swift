@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             (languageCode: "pt", translation: "This is a Portugese translation")
 
         ])
+        RealifeTech.setConfigurationBool(.isThisAHappyApp, value: true)
         if let headlineFont = UIFont(name: "JosefinSans-SemiBold", size: 25) {
             RealifeTech.setFont(.headline, value: headlineFont)
         }
