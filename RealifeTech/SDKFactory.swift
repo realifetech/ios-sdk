@@ -18,6 +18,8 @@ public class RealifeTech {
     public static var Content: Content!
     public static var CustomisationPOC: ViewProviding!
 
+    private static var customisationStore: CustomisationStorable!
+
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
     }
@@ -55,9 +57,24 @@ public class RealifeTech {
                 reachabilityHelper: reachabilityChecker,
                 deviceRegistering: General)
         }
-        CustomisationPOC = ViewProvidingFactory.makeViewProvider(with: configuration.uiConfiguration)
         Communicate = CommunicateFactory.makeCommunicateModule()
         Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
         CoreFactory.requestValidToken(fromApiHelper: apiHelper) { }
+        setupCustomisationDependencies()
+    }
+
+    private static func setupCustomisationDependencies() {
+        let colourStore = ColourStore()
+        let store = CustomisationStore(colourStore: colourStore)
+        CustomisationPOC = ViewProvidingFactory.makeViewProvider(with: store)
+        customisationStore = store
+        
+    }
+}
+
+extension RealifeTech: CustomisationSettable {
+
+    public static func setColour(key: RealifeTechColour, value: UIColor) {
+        customisationStore.colourStore.setColour(key: key, value: value)
     }
 }

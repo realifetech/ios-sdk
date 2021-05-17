@@ -10,24 +10,29 @@ import UIKit
 
 public final class ViewProvider: ViewProviding {
 
-    private let uiConfiguration: SDKUIConfiguration
+    private let customisationStore: CustomisationStorable
 
-    init(uiConfiguration: SDKUIConfiguration) {
-        self.uiConfiguration = uiConfiguration
+    init(customisationStore: CustomisationStorable) {
+        self.customisationStore = customisationStore
     }
 
-    public func makeSomeView(frame: CGRect) -> UIView {
+    public func makeSomeView(frame: CGRect) -> UIView? {
         let someView = SomeView.init(frame: frame)
-        someView.contentView.backgroundColor = uiConfiguration.backgroundColour
-        someView.imageView.image = uiConfiguration.imageToUse
-        someView.arbitraryValueLabel.text = uiConfiguration.remoteConfigValue.description
-        do {
-            let fontName = try registerFont(fontName: uiConfiguration.fontName)
-            someView.customFontLabel.text = uiConfiguration.stringValue
-            someView.customFontLabel.font = UIFont(name: fontName, size: 30)
-        } catch {
-            print(error)
+        guard
+            let backgroundColour = customisationStore.colourStore.getColour(key: .Backgorund)
+        else {
+            return nil
         }
+        someView.contentView.backgroundColor = backgroundColour
+//        someView.imageView.image = uiConfiguration.imageToUse
+//        someView.arbitraryValueLabel.text = uiConfiguration.remoteConfigValue.description
+//        do {
+//            let fontName = try registerFont(fontName: uiConfiguration.fontName)
+//            someView.customFontLabel.text = uiConfiguration.stringValue
+//            someView.customFontLabel.font = UIFont(name: fontName, size: 30)
+//        } catch {
+//            print(error)
+//        }
         return someView
     }
 

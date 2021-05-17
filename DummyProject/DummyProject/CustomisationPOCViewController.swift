@@ -17,7 +17,11 @@ class CustomisationPOCViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        let view = RealifeTech.CustomisationPOC.makeSomeView(frame: self.view.frame)
+        guard let view = RealifeTech.CustomisationPOC.makeSomeView(frame: self.view.frame) else {
+            // perform error handling
+            print("Missing requirements")
+            return
+        }
         self.view.addSubview(view)
     }
 }

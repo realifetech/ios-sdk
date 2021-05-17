@@ -10,7 +10,7 @@ import Foundation
 
 enum ViewProvidingFactory {
 
-    static func makeViewProvider(with uiConfig: SDKUIConfiguration) -> ViewProviding {
-        return ViewProvider(uiConfiguration: uiConfig)
+    static func makeViewProvider(with customisationStore: CustomisationStorable) -> ViewProviding {
+        return ViewProvider(customisationStore: customisationStore)
     }
 }

@@ -9,5 +9,5 @@
 import UIKit
 
 public protocol ViewProviding {
-    func makeSomeView(frame: CGRect) -> UIView
+    func makeSomeView(frame: CGRect) -> UIView?
 }
