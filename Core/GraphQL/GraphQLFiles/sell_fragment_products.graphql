@@ -1,0 +1,8 @@
+fragment FragmentProducts on ProductEdge {
+  edges {
+    ...FragmentProduct
+  }
+  lastPage
+  firstPage
+  nextPage
+}
