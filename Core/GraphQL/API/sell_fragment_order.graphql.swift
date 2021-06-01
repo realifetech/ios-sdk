@@ -52,21 +52,7 @@ public extension ApolloType {
           }
           productModifierItems {
             __typename
-            quantity
-            productModifierItem {
-              __typename
-              id
-              externalId
-              additionalPrice
-              status
-              additionalPrice
-              translations {
-                __typename
-                title
-                language
-              }
-            }
-            totalPrice
+            ...FragmentProductModifierItemSelection
           }
           price
           modifierItemsPrice
@@ -744,9 +730,7 @@ public extension ApolloType {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("quantity", type: .scalar(Int.self)),
-            GraphQLField("productModifierItem", type: .object(ProductModifierItem.selections)),
-            GraphQLField("totalPrice", type: .scalar(Int.self)),
+            GraphQLFragmentSpread(FragmentProductModifierItemSelection.self),
           ]
         }
 
@@ -754,10 +738,6 @@ public extension ApolloType {
 
         public init(unsafeResultMap: ResultMap) {
           self.resultMap = unsafeResultMap
-        }
-
-        public init(quantity: Int? = nil, productModifierItem: ProductModifierItem? = nil, totalPrice: Int? = nil) {
-          self.init(unsafeResultMap: ["__typename": "ProductModifierItemSelection", "quantity": quantity, "productModifierItem": productModifierItem.flatMap { (value: ProductModifierItem) -> ResultMap in value.resultMap }, "totalPrice": totalPrice])
         }
 
         public var __typename: String {
@@ -769,158 +749,28 @@ public extension ApolloType {
           }
         }
 
-        public var quantity: Int? {
+        public var fragments: Fragments {
           get {
-            return resultMap["quantity"] as? Int
+            return Fragments(unsafeResultMap: resultMap)
           }
           set {
-            resultMap.updateValue(newValue, forKey: "quantity")
+            resultMap += newValue.resultMap
           }
         }
 
-        public var productModifierItem: ProductModifierItem? {
-          get {
-            return (resultMap["productModifierItem"] as? ResultMap).flatMap { ProductModifierItem(unsafeResultMap: $0) }
-          }
-          set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "productModifierItem")
-          }
-        }
-
-        public var totalPrice: Int? {
-          get {
-            return resultMap["totalPrice"] as? Int
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "totalPrice")
-          }
-        }
-
-        public struct ProductModifierItem: GraphQLSelectionSet {
-          public static let possibleTypes: [String] = ["ProductModifierItem"]
-
-          public static var selections: [GraphQLSelection] {
-            return [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-              GraphQLField("externalId", type: .scalar(String.self)),
-              GraphQLField("additionalPrice", type: .scalar(Int.self)),
-              GraphQLField("status", type: .scalar(ProductModifierItemStatus.self)),
-              GraphQLField("additionalPrice", type: .scalar(Int.self)),
-              GraphQLField("translations", type: .list(.object(Translation.selections))),
-            ]
-          }
-
+        public struct Fragments {
           public private(set) var resultMap: ResultMap
 
           public init(unsafeResultMap: ResultMap) {
             self.resultMap = unsafeResultMap
           }
 
-          public init(id: GraphQLID, externalId: String? = nil, additionalPrice: Int? = nil, status: ProductModifierItemStatus? = nil, translations: [Translation?]? = nil) {
-            self.init(unsafeResultMap: ["__typename": "ProductModifierItem", "id": id, "externalId": externalId, "additionalPrice": additionalPrice, "status": status, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
-          }
-
-          public var __typename: String {
+          public var fragmentProductModifierItemSelection: FragmentProductModifierItemSelection {
             get {
-              return resultMap["__typename"]! as! String
+              return FragmentProductModifierItemSelection(unsafeResultMap: resultMap)
             }
             set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var id: GraphQLID {
-            get {
-              return resultMap["id"]! as! GraphQLID
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "id")
-            }
-          }
-
-          public var externalId: String? {
-            get {
-              return resultMap["externalId"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "externalId")
-            }
-          }
-
-          public var additionalPrice: Int? {
-            get {
-              return resultMap["additionalPrice"] as? Int
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "additionalPrice")
-            }
-          }
-
-          public var status: ProductModifierItemStatus? {
-            get {
-              return resultMap["status"] as? ProductModifierItemStatus
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "status")
-            }
-          }
-
-          public var translations: [Translation?]? {
-            get {
-              return (resultMap["translations"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Translation?] in value.map { (value: ResultMap?) -> Translation? in value.flatMap { (value: ResultMap) -> Translation in Translation(unsafeResultMap: value) } } }
-            }
-            set {
-              resultMap.updateValue(newValue.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }, forKey: "translations")
-            }
-          }
-
-          public struct Translation: GraphQLSelectionSet {
-            public static let possibleTypes: [String] = ["ProductModifierItemTranslation"]
-
-            public static var selections: [GraphQLSelection] {
-              return [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLField("title", type: .scalar(String.self)),
-                GraphQLField("language", type: .scalar(Language.self)),
-              ]
-            }
-
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public init(title: String? = nil, language: Language? = nil) {
-              self.init(unsafeResultMap: ["__typename": "ProductModifierItemTranslation", "title": title, "language": language])
-            }
-
-            public var __typename: String {
-              get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var title: String? {
-              get {
-                return resultMap["title"] as? String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "title")
-              }
-            }
-
-            public var language: Language? {
-              get {
-                return resultMap["language"] as? Language
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "language")
-              }
+              resultMap += newValue.resultMap
             }
           }
         }

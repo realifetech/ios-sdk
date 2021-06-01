@@ -1378,46 +1378,6 @@ public enum ApolloType {
     }
   }
 
-  public enum ProductModifierItemStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-    public typealias RawValue = String
-    case active
-    case disabled
-    /// Auto generated constant for unknown enum values
-    case __unknown(RawValue)
-
-    public init?(rawValue: RawValue) {
-      switch rawValue {
-        case "ACTIVE": self = .active
-        case "DISABLED": self = .disabled
-        default: self = .__unknown(rawValue)
-      }
-    }
-
-    public var rawValue: RawValue {
-      switch self {
-        case .active: return "ACTIVE"
-        case .disabled: return "DISABLED"
-        case .__unknown(let value): return value
-      }
-    }
-
-    public static func == (lhs: ProductModifierItemStatus, rhs: ProductModifierItemStatus) -> Bool {
-      switch (lhs, rhs) {
-        case (.active, .active): return true
-        case (.disabled, .disabled): return true
-        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-        default: return false
-      }
-    }
-
-    public static var allCases: [ProductModifierItemStatus] {
-      return [
-        .active,
-        .disabled,
-      ]
-    }
-  }
-
   public enum FulfilmentPointType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
     case homeDelivery
@@ -1504,6 +1464,46 @@ public enum ApolloType {
     public static var allCases: [PaymentSourceType] {
       return [
         .card,
+      ]
+    }
+  }
+
+  public enum ProductModifierItemStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case active
+    case disabled
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "ACTIVE": self = .active
+        case "DISABLED": self = .disabled
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .active: return "ACTIVE"
+        case .disabled: return "DISABLED"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: ProductModifierItemStatus, rhs: ProductModifierItemStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.active, .active): return true
+        case (.disabled, .disabled): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [ProductModifierItemStatus] {
+      return [
+        .active,
+        .disabled,
       ]
     }
   }

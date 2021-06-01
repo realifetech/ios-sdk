@@ -26,19 +26,7 @@ fragment FragmentOrder on Order {
     productVariant { ...FragmentProductVariant }
     fulfilmentPoint { ...FragmentFulfilmentPoint }
     productModifierItems {
-      quantity
-      productModifierItem {
-        id
-        externalId
-        additionalPrice
-        status
-        additionalPrice
-        translations {
-          title
-          language
-        }
-      }
-      totalPrice
+      ...FragmentProductModifierItemSelection
     }
     price
     modifierItemsPrice

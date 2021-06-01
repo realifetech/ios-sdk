@@ -32,19 +32,7 @@ fragment FragmentBasket on Basket {
     productVariant { ...FragmentProductVariant }
     product { ...FragmentProduct }
     productModifierItems {
-      productModifierItem {
-        id
-        status
-        externalId
-        additionalPrice
-        position
-        translations {
-          language
-          title
-        }
-      }
-      quantity
-      totalPrice
+      ...FragmentProductModifierItemSelection
     }
   }
 }
