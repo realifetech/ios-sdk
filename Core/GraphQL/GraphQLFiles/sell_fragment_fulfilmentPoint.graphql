@@ -65,7 +65,7 @@ fragment FragmentFulfilmentPoint on FulfilmentPoint {
   }
   categories{ ...FragmentFulfilmentPointCategory }
   venue {
-		id
+    id
     label
     name
     status
