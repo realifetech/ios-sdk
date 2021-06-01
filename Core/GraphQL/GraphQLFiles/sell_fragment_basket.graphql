@@ -29,17 +29,7 @@ fragment FragmentBasket on Basket {
     quantity
     totalPrice
     fulfilmentPoint { ...FragmentFulfilmentPoint }
-    productVariant {
-      id
-      externalId
-      price
-      createdAt
-      updatedAt
-      translations {
-        language
-        title
-      }
-    }
+    productVariant { ...FragmentProductVariant }
     product { ...FragmentProduct }
     productModifierItems {
       productModifierItem {

@@ -51,16 +51,7 @@ public extension ApolloType {
           }
           productVariant {
             __typename
-            id
-            externalId
-            price
-            createdAt
-            updatedAt
-            translations {
-              __typename
-              language
-              title
-            }
+            ...FragmentProductVariant
           }
           product {
             __typename
@@ -588,12 +579,7 @@ public extension ApolloType {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-            GraphQLField("externalId", type: .scalar(String.self)),
-            GraphQLField("price", type: .scalar(Int.self)),
-            GraphQLField("createdAt", type: .scalar(String.self)),
-            GraphQLField("updatedAt", type: .scalar(String.self)),
-            GraphQLField("translations", type: .list(.object(Translation.selections))),
+            GraphQLFragmentSpread(FragmentProductVariant.self),
           ]
         }
 
@@ -601,10 +587,6 @@ public extension ApolloType {
 
         public init(unsafeResultMap: ResultMap) {
           self.resultMap = unsafeResultMap
-        }
-
-        public init(id: GraphQLID, externalId: String? = nil, price: Int? = nil, createdAt: String? = nil, updatedAt: String? = nil, translations: [Translation?]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "ProductVariant", "id": id, "externalId": externalId, "price": price, "createdAt": createdAt, "updatedAt": updatedAt, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
         }
 
         public var __typename: String {
@@ -616,105 +598,28 @@ public extension ApolloType {
           }
         }
 
-        public var id: GraphQLID {
+        public var fragments: Fragments {
           get {
-            return resultMap["id"]! as! GraphQLID
+            return Fragments(unsafeResultMap: resultMap)
           }
           set {
-            resultMap.updateValue(newValue, forKey: "id")
+            resultMap += newValue.resultMap
           }
         }
 
-        public var externalId: String? {
-          get {
-            return resultMap["externalId"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "externalId")
-          }
-        }
-
-        public var price: Int? {
-          get {
-            return resultMap["price"] as? Int
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "price")
-          }
-        }
-
-        public var createdAt: String? {
-          get {
-            return resultMap["createdAt"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "createdAt")
-          }
-        }
-
-        public var updatedAt: String? {
-          get {
-            return resultMap["updatedAt"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "updatedAt")
-          }
-        }
-
-        public var translations: [Translation?]? {
-          get {
-            return (resultMap["translations"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Translation?] in value.map { (value: ResultMap?) -> Translation? in value.flatMap { (value: ResultMap) -> Translation in Translation(unsafeResultMap: value) } } }
-          }
-          set {
-            resultMap.updateValue(newValue.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }, forKey: "translations")
-          }
-        }
-
-        public struct Translation: GraphQLSelectionSet {
-          public static let possibleTypes: [String] = ["ProductVariantTranslation"]
-
-          public static var selections: [GraphQLSelection] {
-            return [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("language", type: .scalar(Language.self)),
-              GraphQLField("title", type: .scalar(String.self)),
-            ]
-          }
-
+        public struct Fragments {
           public private(set) var resultMap: ResultMap
 
           public init(unsafeResultMap: ResultMap) {
             self.resultMap = unsafeResultMap
           }
 
-          public init(language: Language? = nil, title: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "ProductVariantTranslation", "language": language, "title": title])
-          }
-
-          public var __typename: String {
+          public var fragmentProductVariant: FragmentProductVariant {
             get {
-              return resultMap["__typename"]! as! String
+              return FragmentProductVariant(unsafeResultMap: resultMap)
             }
             set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var language: Language? {
-            get {
-              return resultMap["language"] as? Language
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "language")
-            }
-          }
-
-          public var title: String? {
-            get {
-              return resultMap["title"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "title")
+              resultMap += newValue.resultMap
             }
           }
         }
