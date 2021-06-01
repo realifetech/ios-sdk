@@ -36,6 +36,7 @@
 		031A944826613B2E00F12604 /* canvas_fragment_screen.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031A942C26613B2E00F12604 /* canvas_fragment_screen.graphql.swift */; };
 		031A944926613B2E00F12604 /* canvas_getWidgetsByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031A942D26613B2E00F12604 /* canvas_getWidgetsByScreenType.graphql.swift */; };
 		039D291E2666874200A6A788 /* sell_fragment_timeslot.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039D291D2666874100A6A788 /* sell_fragment_timeslot.graphql.swift */; };
+		039D292026668A3D00A6A788 /* sell_fragment_productVariant.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039D291F26668A3D00A6A788 /* sell_fragment_productVariant.graphql.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -221,6 +222,7 @@
 		031A942C26613B2E00F12604 /* canvas_fragment_screen.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_fragment_screen.graphql.swift; sourceTree = "<group>"; };
 		031A942D26613B2E00F12604 /* canvas_getWidgetsByScreenType.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_getWidgetsByScreenType.graphql.swift; sourceTree = "<group>"; };
 		039D291D2666874100A6A788 /* sell_fragment_timeslot.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_timeslot.graphql.swift; sourceTree = "<group>"; };
+		039D291F26668A3D00A6A788 /* sell_fragment_productVariant.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_productVariant.graphql.swift; sourceTree = "<group>"; };
 		03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesTests.swift; sourceTree = "<group>"; };
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 				031A942026613B2E00F12604 /* sell_fragment_paymentSourceDetails.graphql.swift */,
 				031A941226613B2D00F12604 /* sell_fragment_product.graphql.swift */,
 				031A941D26613B2E00F12604 /* sell_fragment_products.graphql.swift */,
+				039D291F26668A3D00A6A788 /* sell_fragment_productVariant.graphql.swift */,
 				039D291D2666874100A6A788 /* sell_fragment_timeslot.graphql.swift */,
 				031A942826613B2E00F12604 /* sell_getFulfilmentPointById.graphql.swift */,
 				031A942B26613B2E00F12604 /* sell_getFulfilmentPointCategories.graphql.swift */,
@@ -1358,6 +1361,7 @@
 				961C4274260882C8001D8467 /* NetworkConnectivityChecker.swift in Sources */,
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
+				039D292026668A3D00A6A788 /* sell_fragment_productVariant.graphql.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
 				031A943026613B2E00F12604 /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */,
 				961C425C260882C8001D8467 /* AnalyticEvent.swift in Sources */,

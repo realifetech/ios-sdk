@@ -23,16 +23,7 @@ fragment FragmentOrder on Order {
   items {
     id
     product { ...FragmentProduct }
-    productVariant {
-      id
-      externalId
-      price
-      externalId
-      translations {
-        title
-        language
-      }
-    }
+    productVariant { ...FragmentProductVariant }
     fulfilmentPoint { ...FragmentFulfilmentPoint }
     productModifierItems {
       quantity

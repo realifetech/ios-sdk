@@ -1,0 +1,10 @@
+fragment FragmentProductVariant on ProductVariant {
+  id
+  externalId
+  price
+  externalId
+  translations {
+    title
+    language
+  }
+}
