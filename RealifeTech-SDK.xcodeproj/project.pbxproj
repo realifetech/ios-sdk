@@ -35,6 +35,7 @@
 		031A944726613B2E00F12604 /* sell_getFulfilmentPointCategories.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031A942B26613B2E00F12604 /* sell_getFulfilmentPointCategories.graphql.swift */; };
 		031A944826613B2E00F12604 /* canvas_fragment_screen.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031A942C26613B2E00F12604 /* canvas_fragment_screen.graphql.swift */; };
 		031A944926613B2E00F12604 /* canvas_getWidgetsByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031A942D26613B2E00F12604 /* canvas_getWidgetsByScreenType.graphql.swift */; };
+		039D291E2666874200A6A788 /* sell_fragment_timeslot.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039D291D2666874100A6A788 /* sell_fragment_timeslot.graphql.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -219,6 +220,7 @@
 		031A942B26613B2E00F12604 /* sell_getFulfilmentPointCategories.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getFulfilmentPointCategories.graphql.swift; sourceTree = "<group>"; };
 		031A942C26613B2E00F12604 /* canvas_fragment_screen.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_fragment_screen.graphql.swift; sourceTree = "<group>"; };
 		031A942D26613B2E00F12604 /* canvas_getWidgetsByScreenType.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_getWidgetsByScreenType.graphql.swift; sourceTree = "<group>"; };
+		039D291D2666874100A6A788 /* sell_fragment_timeslot.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_timeslot.graphql.swift; sourceTree = "<group>"; };
 		03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesTests.swift; sourceTree = "<group>"; };
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 				031A942026613B2E00F12604 /* sell_fragment_paymentSourceDetails.graphql.swift */,
 				031A941226613B2D00F12604 /* sell_fragment_product.graphql.swift */,
 				031A941D26613B2E00F12604 /* sell_fragment_products.graphql.swift */,
+				039D291D2666874100A6A788 /* sell_fragment_timeslot.graphql.swift */,
 				031A942826613B2E00F12604 /* sell_getFulfilmentPointById.graphql.swift */,
 				031A942B26613B2E00F12604 /* sell_getFulfilmentPointCategories.graphql.swift */,
 				031A942526613B2E00F12604 /* sell_getFulfilmentPointCategoryById.graphql.swift */,
@@ -1208,7 +1211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/Core/GraphQL\"\ncd $GRAPHQL_PATH\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" API/\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/Core/GraphQL\"\ncd $GRAPHQL_PATH\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" API/\n";
 		};
 		C727D3220B094BF8B35EE985 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1302,6 +1305,7 @@
 				961C41D7260882BA001D8467 /* OAuthHeaderRequestInserting.swift in Sources */,
 				961C41E8260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift in Sources */,
 				031A943926613B2E00F12604 /* sell_fragment_products.graphql.swift in Sources */,
+				039D291E2666874200A6A788 /* sell_fragment_timeslot.graphql.swift in Sources */,
 				4889595C2539D89C00B978A9 /* AnalyticsLogging.swift in Sources */,
 				961C41E9260882BA001D8467 /* StandardSenderResponse.swift in Sources */,
 				961C41FF260882BB001D8467 /* APITokenInterceptor.swift in Sources */,

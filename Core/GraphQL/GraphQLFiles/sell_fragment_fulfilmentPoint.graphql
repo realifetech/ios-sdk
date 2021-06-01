@@ -85,19 +85,5 @@ fragment FragmentFulfilmentPoint on FulfilmentPoint {
     updatedAt
     venueIconUrl
   }
-  timeslots {
-    id
-    externalId
-    reference
-    startTime
-    endTime
-    createdAt
-    updatedAt
-    translations {
-      language
-      title
-      description
-      collectionNote
-    }
-  }
+  timeslots { ...FragmentTimeslot }
 }

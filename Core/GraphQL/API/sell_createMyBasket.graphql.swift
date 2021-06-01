@@ -25,6 +25,7 @@ public extension ApolloType {
       document.append("\n" + FragmentBasket.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPoint.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPointCategory.fragmentDefinition)
+      document.append("\n" + FragmentTimeslot.fragmentDefinition)
       document.append("\n" + FragmentProduct.fragmentDefinition)
       return document
     }

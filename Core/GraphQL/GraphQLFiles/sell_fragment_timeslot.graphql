@@ -1,0 +1,13 @@
+fragment FragmentTimeslot on Timeslot {
+  id
+  externalId
+  reference
+  startTime
+  endTime
+  translations {
+    language
+    title
+    description
+    collectionNote
+  }
+}

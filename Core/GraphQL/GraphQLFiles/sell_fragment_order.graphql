@@ -62,19 +62,7 @@ fragment FragmentOrder on Order {
     note
     author
   }
-  timeslot {
-    id
-    externalId
-    reference
-    startTime
-    endTime
-    translations {
-      language
-      title
-      description
-      collectionNote
-    }
-  }
+  timeslot { ...FragmentTimeslot }
   fulfilmentPoint { ...FragmentFulfilmentPoint }
   user {
     id
