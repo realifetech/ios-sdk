@@ -63,7 +63,7 @@ fragment FragmentFulfilmentPoint on FulfilmentPoint {
       }
     }
   }
-  categories{...FragmentFulfilmentPointCategory}
+  categories{ ...FragmentFulfilmentPointCategory }
   venue {
 		id
     label
