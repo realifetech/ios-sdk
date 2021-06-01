@@ -1,6 +1,6 @@
-query getOrders($pageSize: Int!, $page: Int = 1){
+query getOrders($pageSize: Int!, $page: Int = 1) {
   me {
-    orders(pageSize:$pageSize page:$page){
+    orders(pageSize: $pageSize page: $page) {
       ...FragmentOrders
     }
   }

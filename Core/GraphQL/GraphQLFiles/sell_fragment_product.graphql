@@ -29,7 +29,8 @@ fragment FragmentProduct on Product {
       translations {
       language
         title
-      }}
+      }
+    }
     variants {
       id
       externalId
@@ -50,7 +51,7 @@ fragment FragmentProduct on Product {
         title
       }
     }
-  	fulfilmentPoints { ...FragmentFulfilmentPoint }
+    fulfilmentPoints { ...FragmentFulfilmentPoint }
     translations {
       language
       title

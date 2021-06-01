@@ -20,7 +20,7 @@ fragment FragmentFulfilmentPoint on FulfilmentPoint {
     reference
     imageUrl
     completionButtonUrl
-  completionButtonTitle
+    completionButtonTitle
     showCompletionDate
     allowUpdate
     refreshOnSuccess
@@ -63,7 +63,7 @@ fragment FragmentFulfilmentPoint on FulfilmentPoint {
       }
     }
   }
-  categories{ ...FragmentFulfilmentPointCategory }
+  categories { ...FragmentFulfilmentPointCategory }
   venue {
     id
     label
