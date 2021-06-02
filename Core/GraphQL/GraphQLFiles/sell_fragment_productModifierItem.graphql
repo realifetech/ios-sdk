@@ -1,0 +1,11 @@
+fragment FragmentProductModifierItem on ProductModifierItem {
+  id
+  status
+  externalId
+  additionalPrice
+  position
+  translations {
+    language
+    title
+  }
+}
