@@ -43,19 +43,5 @@ fragment FragmentOrder on Order {
   }
   timeslot { ...FragmentTimeslot }
   fulfilmentPoint { ...FragmentFulfilmentPoint }
-  user {
-    id
-    email
-    token
-    authType
-    status
-    lastLogin
-    ticketsFetchedAt
-    firstName
-    lastName
-    gender
-    phone
-    dob
-    userConsent
-  }
+  user { ...FragmentUser }
 }

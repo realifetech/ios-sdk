@@ -6,21 +6,7 @@ fragment FragmentBasket on Basket {
     key
     value
   }
-  timeslot {
-    id
-    externalId
-    reference
-    startTime
-    endTime
-    createdAt
-    updatedAt
-    translations {
-      language
-      title
-      description
-      collectionNote
-    }
-  }
+  timeslot { ...FragmentTimeslot }
   collectionDate
   items {
     id

@@ -6,11 +6,11 @@ import Foundation
 
 /// ApolloType namespace
 public extension ApolloType {
-  final class GetProductQuery: GraphQLQuery {
+  final class GetProductByIdQuery: GraphQLQuery {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query GetProduct($id: ID!) {
+      query getProductById($id: ID!) {
         getProduct(id: $id) {
           __typename
           ...FragmentProduct
@@ -18,13 +18,15 @@ public extension ApolloType {
       }
       """
 
-    public let operationName: String = "GetProduct"
+    public let operationName: String = "getProductById"
 
     public var queryDocument: String {
       var document: String = operationDefinition
       document.append("\n" + FragmentProduct.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPoint.fragmentDefinition)
+      document.append("\n" + FragmentForm.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPointCategory.fragmentDefinition)
+      document.append("\n" + FragmentVenue.fragmentDefinition)
       document.append("\n" + FragmentTimeslot.fragmentDefinition)
       return document
     }

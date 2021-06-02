@@ -10,7 +10,7 @@ public extension ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query GetProducts($pageSize: Int!, $page: Int, $filters: ProductFilter) {
+      query getProducts($pageSize: Int!, $page: Int, $filters: ProductFilter) {
         getProducts(pageSize: $pageSize, page: $page, filters: $filters) {
           __typename
           ...FragmentProducts
@@ -18,14 +18,16 @@ public extension ApolloType {
       }
       """
 
-    public let operationName: String = "GetProducts"
+    public let operationName: String = "getProducts"
 
     public var queryDocument: String {
       var document: String = operationDefinition
       document.append("\n" + FragmentProducts.fragmentDefinition)
       document.append("\n" + FragmentProduct.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPoint.fragmentDefinition)
+      document.append("\n" + FragmentForm.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPointCategory.fragmentDefinition)
+      document.append("\n" + FragmentVenue.fragmentDefinition)
       document.append("\n" + FragmentTimeslot.fragmentDefinition)
       return document
     }

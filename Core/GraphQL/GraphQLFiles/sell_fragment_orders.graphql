@@ -3,6 +3,4 @@ fragment FragmentOrders on OrderEdge {
     ...FragmentOrder
   }
   nextPage
-  lastPage
-  firstPage
 }

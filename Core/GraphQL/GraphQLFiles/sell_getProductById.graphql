@@ -1,4 +1,4 @@
-query GetProduct($id: ID!) {
+query getProductById($id: ID!) {
   getProduct(id: $id) {
     ...FragmentProduct
   }

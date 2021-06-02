@@ -78,19 +78,7 @@ public extension ApolloType {
         }
         user {
           __typename
-          id
-          email
-          token
-          authType
-          status
-          lastLogin
-          ticketsFetchedAt
-          firstName
-          lastName
-          gender
-          phone
-          dob
-          userConsent
+          ...FragmentUser
         }
       }
       """
@@ -946,19 +934,7 @@ public extension ApolloType {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-          GraphQLField("email", type: .scalar(String.self)),
-          GraphQLField("token", type: .scalar(String.self)),
-          GraphQLField("authType", type: .scalar(String.self)),
-          GraphQLField("status", type: .scalar(String.self)),
-          GraphQLField("lastLogin", type: .scalar(String.self)),
-          GraphQLField("ticketsFetchedAt", type: .scalar(String.self)),
-          GraphQLField("firstName", type: .scalar(String.self)),
-          GraphQLField("lastName", type: .scalar(String.self)),
-          GraphQLField("gender", type: .scalar(String.self)),
-          GraphQLField("phone", type: .scalar(String.self)),
-          GraphQLField("dob", type: .scalar(String.self)),
-          GraphQLField("userConsent", type: .scalar(String.self)),
+          GraphQLFragmentSpread(FragmentUser.self),
         ]
       }
 
@@ -981,120 +957,29 @@ public extension ApolloType {
         }
       }
 
-      public var id: GraphQLID {
+      public var fragments: Fragments {
         get {
-          return resultMap["id"]! as! GraphQLID
+          return Fragments(unsafeResultMap: resultMap)
         }
         set {
-          resultMap.updateValue(newValue, forKey: "id")
+          resultMap += newValue.resultMap
         }
       }
 
-      public var email: String? {
-        get {
-          return resultMap["email"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "email")
-        }
-      }
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
 
-      public var token: String? {
-        get {
-          return resultMap["token"] as? String
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
         }
-        set {
-          resultMap.updateValue(newValue, forKey: "token")
-        }
-      }
 
-      public var authType: String? {
-        get {
-          return resultMap["authType"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "authType")
-        }
-      }
-
-      public var status: String? {
-        get {
-          return resultMap["status"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "status")
-        }
-      }
-
-      public var lastLogin: String? {
-        get {
-          return resultMap["lastLogin"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "lastLogin")
-        }
-      }
-
-      public var ticketsFetchedAt: String? {
-        get {
-          return resultMap["ticketsFetchedAt"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "ticketsFetchedAt")
-        }
-      }
-
-      public var firstName: String? {
-        get {
-          return resultMap["firstName"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "firstName")
-        }
-      }
-
-      public var lastName: String? {
-        get {
-          return resultMap["lastName"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "lastName")
-        }
-      }
-
-      public var gender: String? {
-        get {
-          return resultMap["gender"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "gender")
-        }
-      }
-
-      public var phone: String? {
-        get {
-          return resultMap["phone"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "phone")
-        }
-      }
-
-      public var dob: String? {
-        get {
-          return resultMap["dob"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "dob")
-        }
-      }
-
-      public var userConsent: String? {
-        get {
-          return resultMap["userConsent"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "userConsent")
+        public var fragmentUser: FragmentUser {
+          get {
+            return FragmentUser(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
         }
       }
     }
