@@ -17,8 +17,6 @@ fragment FragmentBasket on Basket {
     fulfilmentPoint { ...FragmentFulfilmentPoint }
     productVariant { ...FragmentProductVariant }
     product { ...FragmentProduct }
-    productModifierItems {
-      ...FragmentProductModifierItemSelection
-    }
+    productModifierItems { ...FragmentProductModifierItemSelection }
   }
 }
