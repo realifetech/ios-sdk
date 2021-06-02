@@ -25,9 +25,7 @@ fragment FragmentOrder on Order {
     product { ...FragmentProduct }
     productVariant { ...FragmentProductVariant }
     fulfilmentPoint { ...FragmentFulfilmentPoint }
-    productModifierItems {
-      ...FragmentProductModifierItemSelection
-    }
+    productModifierItems { ...FragmentProductModifierItemSelection }
     price
     modifierItemsPrice
     quantity
