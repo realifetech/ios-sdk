@@ -1,0 +1,5 @@
+query getProducts($pageSize: Int!, $page: Int, $filters: ProductFilter) {
+  getProducts(pageSize: $pageSize, page: $page, filters: $filters) {
+    ...FragmentProducts
+  }
+}

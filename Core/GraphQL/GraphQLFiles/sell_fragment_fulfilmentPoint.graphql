@@ -1,0 +1,22 @@
+fragment FragmentFulfilmentPoint on FulfilmentPoint {
+  id
+  externalId
+  reference
+  type
+  status
+  imageUrl
+  mapImageUrl
+  lat
+  long
+  waitTime
+  prepTime
+  position
+  translations {
+    language
+    title
+  }
+  seatForm { ...FragmentForm }
+  categories { ...FragmentFulfilmentPointCategory }
+  venue { ...FragmentVenue }
+  timeslots { ...FragmentTimeslot }
+}
