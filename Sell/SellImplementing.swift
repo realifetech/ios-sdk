@@ -68,7 +68,7 @@ public class SellImplementing: Sell {
 
     public func createPaymentIntent(
         _ input: ApolloType.PaymentIntentInput,
-        completion: @escaping (Result<PaymentIntent, Error>) -> Void
+        completion: @escaping (Result<ApolloType.FragmentPaymentIntent, Error>) -> Void
     ) {
         print("Create payment intent called")
         completion(.failure(SellError.none))
@@ -77,7 +77,7 @@ public class SellImplementing: Sell {
     public func updatePaymentIntent(
         id: String,
         input: ApolloType.PaymentIntentInput,
-        completion: @escaping (Result<PaymentIntent, Error>) -> Void
+        completion: @escaping (Result<ApolloType.FragmentPaymentIntent, Error>) -> Void
     ) {
         print("Update payment intent called")
         completion(.failure(SellError.none))

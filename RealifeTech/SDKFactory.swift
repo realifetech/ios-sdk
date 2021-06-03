@@ -10,6 +10,7 @@ import Foundation
 
 public class RealifeTech {
 
+    public static var Sell: Sell!
     public static var General: General!
     public static var Audiences: AudienceChecking!
     public static var Analytics: Analytics!
@@ -50,5 +51,6 @@ public class RealifeTech {
         }
         Communicate = CommunicateFactory.makeCommunicateModule()
         Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
+        Sell = SellFactory.makeSellModule(graphQLDispatcher: dispatcher)
     }
 }
