@@ -9,5 +9,5 @@
 import Foundation
 
 enum SellError: Error {
-    case none
+    case none, itemNotFound
 }

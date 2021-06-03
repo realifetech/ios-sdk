@@ -22,18 +22,36 @@ public class SellImplementing: Sell {
         _ id: String,
         completion: @escaping (Result<ApolloType.FragmentProduct, Error>) -> Void
     ) {
-        print("Got an ID of \(id)")
-        completion(.failure(SellError.none))
+        dispatcher.dispatch(query: ApolloType.GetProductByIdQuery(id: id), cachePolicy: .returnCacheDataAndFetch) { result in
+            switch result {
+            case .success(let response):
+                guard let productFragment = response.data?.getProduct?.fragments.fragmentProduct else {
+                    return completion(.failure(SellError.itemNotFound))
+                }
+                completion(.success(productFragment))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     public func getProducts(
         pageSize: Int,
-        page: Int,
-        filters: ApolloType.ProductFilter,
-        completion: @escaping (Result<[ApolloType.FragmentProduct], Error>) -> Void
+        page: Int?,
+        filters: ApolloType.ProductFilter?,
+        completion: @escaping (Result<ApolloType.FragmentProducts, Error>) -> Void
     ) {
-        print("We were asked for products with the following filters: \(filters). Page size: \(pageSize)")
-        completion(.failure(SellError.none))
+        dispatcher.dispatch(query: ApolloType.GetProductsQuery(pageSize: pageSize, page: page, filters: filters), cachePolicy: .returnCacheDataAndFetch) { result in
+            switch result {
+            case .success(let response):
+                guard let products = response.data?.getProducts?.fragments.fragmentProducts else {
+                    return completion(.failure(SellError.itemNotFound))
+                }
+                completion(.success(products))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     // MARK: - OrdersGettable

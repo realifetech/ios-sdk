@@ -14,7 +14,7 @@ public protocol ProductGettable {
         completion: @escaping (Result<Product, Error>) -> Void)
     func getProducts(
         pageSize: Int,
-        page: Int,
-        filters: ApolloType.ProductFilter,
-        completion: @escaping (Result<[Product], Error>) -> Void)
+        page: Int?,
+        filters: ApolloType.ProductFilter?,
+        completion: @escaping (Result<ApolloType.FragmentProducts, Error>) -> Void)
 }

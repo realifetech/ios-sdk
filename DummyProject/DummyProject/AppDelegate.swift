@@ -15,17 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = CoreConfiguration(
-            appCode: "",
-            clientSecret: "",
-            apiUrl: "",
-            graphQLApiUrl: "")
+            appCode: "LS",
+            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
+            apiUrl: "https://api-staging.livestyled.com/v3",
+            graphQLApiUrl: "https://staging-graphql-eu.realifetech.com/graphql")
         RealifeTech.configureSDK(with: configuration)
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
-            if let error = error {
-                print("D'oh: \(error.localizedDescription)")
-            } else {
-                DispatchQueue.main.async {
-                    application.registerForRemoteNotifications()
+        RealifeTech.General.registerDevice {
+            RealifeTech.Sell.getProducts(pageSize: 10, page: 1, filters: .init(fulfilmentPoints: ["1"], categories: [])) { result in
+                switch result {
+                case .success(let products):
+                    print(products)
+                case .failure(let error):
+                    print(error)
                 }
             }
         }
