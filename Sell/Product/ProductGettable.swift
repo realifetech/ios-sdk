@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ProductGettable {
+public protocol ProductGettable {
     func getProductById(
         _ id: String,
         completion: @escaping (Result<Product, Error>) -> Void)

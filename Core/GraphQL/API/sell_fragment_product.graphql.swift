@@ -32,16 +32,7 @@ public extension ApolloType {
           maxAllowed
           items {
             __typename
-            id
-            status
-            externalId
-            additionalPrice
-            position
-            translations {
-              __typename
-              language
-              title
-            }
+            ...FragmentProductModifierItem
           }
           translations {
             __typename
@@ -51,14 +42,7 @@ public extension ApolloType {
         }
         variants {
           __typename
-          id
-          externalId
-          price
-          translations {
-            __typename
-            language
-            title
-          }
+          ...FragmentProductVariant
         }
         categories {
           __typename
@@ -385,12 +369,7 @@ public extension ApolloType {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-            GraphQLField("status", type: .scalar(ProductModifierItemStatus.self)),
-            GraphQLField("externalId", type: .scalar(String.self)),
-            GraphQLField("additionalPrice", type: .scalar(Int.self)),
-            GraphQLField("position", type: .scalar(Int.self)),
-            GraphQLField("translations", type: .list(.object(Translation.selections))),
+            GraphQLFragmentSpread(FragmentProductModifierItem.self),
           ]
         }
 
@@ -398,10 +377,6 @@ public extension ApolloType {
 
         public init(unsafeResultMap: ResultMap) {
           self.resultMap = unsafeResultMap
-        }
-
-        public init(id: GraphQLID, status: ProductModifierItemStatus? = nil, externalId: String? = nil, additionalPrice: Int? = nil, position: Int? = nil, translations: [Translation?]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "ProductModifierItem", "id": id, "status": status, "externalId": externalId, "additionalPrice": additionalPrice, "position": position, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
         }
 
         public var __typename: String {
@@ -413,105 +388,28 @@ public extension ApolloType {
           }
         }
 
-        public var id: GraphQLID {
+        public var fragments: Fragments {
           get {
-            return resultMap["id"]! as! GraphQLID
+            return Fragments(unsafeResultMap: resultMap)
           }
           set {
-            resultMap.updateValue(newValue, forKey: "id")
+            resultMap += newValue.resultMap
           }
         }
 
-        public var status: ProductModifierItemStatus? {
-          get {
-            return resultMap["status"] as? ProductModifierItemStatus
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "status")
-          }
-        }
-
-        public var externalId: String? {
-          get {
-            return resultMap["externalId"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "externalId")
-          }
-        }
-
-        public var additionalPrice: Int? {
-          get {
-            return resultMap["additionalPrice"] as? Int
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "additionalPrice")
-          }
-        }
-
-        public var position: Int? {
-          get {
-            return resultMap["position"] as? Int
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "position")
-          }
-        }
-
-        public var translations: [Translation?]? {
-          get {
-            return (resultMap["translations"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Translation?] in value.map { (value: ResultMap?) -> Translation? in value.flatMap { (value: ResultMap) -> Translation in Translation(unsafeResultMap: value) } } }
-          }
-          set {
-            resultMap.updateValue(newValue.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }, forKey: "translations")
-          }
-        }
-
-        public struct Translation: GraphQLSelectionSet {
-          public static let possibleTypes: [String] = ["ProductModifierItemTranslation"]
-
-          public static var selections: [GraphQLSelection] {
-            return [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("language", type: .scalar(Language.self)),
-              GraphQLField("title", type: .scalar(String.self)),
-            ]
-          }
-
+        public struct Fragments {
           public private(set) var resultMap: ResultMap
 
           public init(unsafeResultMap: ResultMap) {
             self.resultMap = unsafeResultMap
           }
 
-          public init(language: Language? = nil, title: String? = nil) {
-            self.init(unsafeResultMap: ["__typename": "ProductModifierItemTranslation", "language": language, "title": title])
-          }
-
-          public var __typename: String {
+          public var fragmentProductModifierItem: FragmentProductModifierItem {
             get {
-              return resultMap["__typename"]! as! String
+              return FragmentProductModifierItem(unsafeResultMap: resultMap)
             }
             set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var language: Language? {
-            get {
-              return resultMap["language"] as? Language
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "language")
-            }
-          }
-
-          public var title: String? {
-            get {
-              return resultMap["title"] as? String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "title")
+              resultMap += newValue.resultMap
             }
           }
         }
@@ -573,10 +471,7 @@ public extension ApolloType {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-          GraphQLField("externalId", type: .scalar(String.self)),
-          GraphQLField("price", type: .scalar(Int.self)),
-          GraphQLField("translations", type: .list(.object(Translation.selections))),
+          GraphQLFragmentSpread(FragmentProductVariant.self),
         ]
       }
 
@@ -584,10 +479,6 @@ public extension ApolloType {
 
       public init(unsafeResultMap: ResultMap) {
         self.resultMap = unsafeResultMap
-      }
-
-      public init(id: GraphQLID, externalId: String? = nil, price: Int? = nil, translations: [Translation?]? = nil) {
-        self.init(unsafeResultMap: ["__typename": "ProductVariant", "id": id, "externalId": externalId, "price": price, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -599,87 +490,28 @@ public extension ApolloType {
         }
       }
 
-      public var id: GraphQLID {
+      public var fragments: Fragments {
         get {
-          return resultMap["id"]! as! GraphQLID
+          return Fragments(unsafeResultMap: resultMap)
         }
         set {
-          resultMap.updateValue(newValue, forKey: "id")
+          resultMap += newValue.resultMap
         }
       }
 
-      public var externalId: String? {
-        get {
-          return resultMap["externalId"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "externalId")
-        }
-      }
-
-      public var price: Int? {
-        get {
-          return resultMap["price"] as? Int
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "price")
-        }
-      }
-
-      public var translations: [Translation?]? {
-        get {
-          return (resultMap["translations"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Translation?] in value.map { (value: ResultMap?) -> Translation? in value.flatMap { (value: ResultMap) -> Translation in Translation(unsafeResultMap: value) } } }
-        }
-        set {
-          resultMap.updateValue(newValue.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }, forKey: "translations")
-        }
-      }
-
-      public struct Translation: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["ProductVariantTranslation"]
-
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("language", type: .scalar(Language.self)),
-            GraphQLField("title", type: .scalar(String.self)),
-          ]
-        }
-
+      public struct Fragments {
         public private(set) var resultMap: ResultMap
 
         public init(unsafeResultMap: ResultMap) {
           self.resultMap = unsafeResultMap
         }
 
-        public init(language: Language? = nil, title: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "ProductVariantTranslation", "language": language, "title": title])
-        }
-
-        public var __typename: String {
+        public var fragmentProductVariant: FragmentProductVariant {
           get {
-            return resultMap["__typename"]! as! String
+            return FragmentProductVariant(unsafeResultMap: resultMap)
           }
           set {
-            resultMap.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        public var language: Language? {
-          get {
-            return resultMap["language"] as? Language
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "language")
-          }
-        }
-
-        public var title: String? {
-          get {
-            return resultMap["title"] as? String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "title")
+            resultMap += newValue.resultMap
           }
         }
       }

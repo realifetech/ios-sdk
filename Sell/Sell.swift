@@ -8,5 +8,5 @@
 
 import Foundation
 
-public typealias Sell = ProductGettable
+public typealias Sell = ProductGettable & OrdersGettable & PaymentsAccessible
 public typealias Product = ApolloType.FragmentProduct

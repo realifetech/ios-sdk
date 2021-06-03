@@ -16,7 +16,9 @@ public class SellImplementing: Sell {
         self.dispatcher = dispatcher
     }
 
-    func getProductById(
+    // MARK: - ProductsGettable
+
+    public func getProductById(
         _ id: String,
         completion: @escaping (Result<ApolloType.FragmentProduct, Error>) -> Void
     ) {
@@ -24,13 +26,60 @@ public class SellImplementing: Sell {
         completion(.failure(SellError.none))
     }
 
-    func getProducts(
+    public func getProducts(
         pageSize: Int,
         page: Int,
         filters: ApolloType.ProductFilter,
         completion: @escaping (Result<[ApolloType.FragmentProduct], Error>) -> Void
     ) {
         print("We were asked for products with the following filters: \(filters). Page size: \(pageSize)")
+        completion(.failure(SellError.none))
+    }
+
+    // MARK: - OrdersGettable
+
+    public func getOrders(
+        pageSize: Int,
+        page: Int,
+        completion: @escaping (Result<[ApolloType.FragmentOrder], Error>) -> Void
+    ) {
+        print("Get orders called")
+        completion(.failure(SellError.none))
+    }
+
+    // MARK: - PaymentsAccessible
+
+    public func addPaymentSource(
+        _ input: ApolloType.PaymentSourceInput,
+        completion: @escaping (Result<ApolloType.PaymentSourceDetails, Error>) -> Void
+    ) {
+        print("Add payment source called")
+        completion(.failure(SellError.none))
+    }
+
+    public func getPaymentSources(
+        pageSize: Int,
+        page: Int?,
+        completion: @escaping (Result<[ApolloType.PaymentSourceDetails], Error>) -> Void
+    ) {
+        print("Get payment sources called")
+        completion(.failure(SellError.none))
+    }
+
+    public func createPaymentIntent(
+        _ input: ApolloType.PaymentIntentInput,
+        completion: @escaping (Result<PaymentIntent, Error>) -> Void
+    ) {
+        print("Create payment intent called")
+        completion(.failure(SellError.none))
+    }
+
+    public func updatePaymentIntent(
+        id: String,
+        input: ApolloType.PaymentIntentInput,
+        completion: @escaping (Result<PaymentIntent, Error>) -> Void
+    ) {
+        print("Update payment intent called")
         completion(.failure(SellError.none))
     }
 }

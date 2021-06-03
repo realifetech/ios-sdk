@@ -16,8 +16,6 @@ public extension ApolloType {
           __typename
           ...FragmentProduct
         }
-        lastPage
-        firstPage
         nextPage
       }
       """
@@ -28,8 +26,6 @@ public extension ApolloType {
       return [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("edges", type: .list(.object(Edge.selections))),
-        GraphQLField("lastPage", type: .scalar(Int.self)),
-        GraphQLField("firstPage", type: .scalar(Int.self)),
         GraphQLField("nextPage", type: .scalar(Int.self)),
       ]
     }
@@ -40,8 +36,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(edges: [Edge?]? = nil, lastPage: Int? = nil, firstPage: Int? = nil, nextPage: Int? = nil) {
-      self.init(unsafeResultMap: ["__typename": "ProductEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, "lastPage": lastPage, "firstPage": firstPage, "nextPage": nextPage])
+    public init(edges: [Edge?]? = nil, nextPage: Int? = nil) {
+      self.init(unsafeResultMap: ["__typename": "ProductEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, "nextPage": nextPage])
     }
 
     public var __typename: String {
@@ -59,24 +55,6 @@ public extension ApolloType {
       }
       set {
         resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
-      }
-    }
-
-    public var lastPage: Int? {
-      get {
-        return resultMap["lastPage"] as? Int
-      }
-      set {
-        resultMap.updateValue(newValue, forKey: "lastPage")
-      }
-    }
-
-    public var firstPage: Int? {
-      get {
-        return resultMap["firstPage"] as? Int
-      }
-      set {
-        resultMap.updateValue(newValue, forKey: "firstPage")
       }
     }
 
