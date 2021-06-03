@@ -20,27 +20,10 @@ public protocol PaymentsAccessible {
 
     func createPaymentIntent(
         _ input: ApolloType.PaymentIntentInput,
-        completion: @escaping (Result<PaymentIntent, Error>) -> Void)
+        completion: @escaping (Result<ApolloType.FragmentPaymentIntent, Error>) -> Void)
 
     func updatePaymentIntent(
         id: String,
         input: ApolloType.PaymentIntentInput,
-        completion: @escaping (Result<PaymentIntent, Error>) -> Void)
-}
-
-// TODO: Should this type already exist in ApolloTypes?
-public struct PaymentIntent {
-    var id: Int
-    var orderType: ApolloType.OrderType
-    var orderId: Int
-    var status: ApolloType.PaymentStatus
-    var paymentSource: ApolloType.PaymentSourceDetails
-    var amount: Int
-    var currency: String
-    var liveMode: Bool
-    var cancellationReason: ApolloType.CancellationReason
-    var savePaymentSource: Bool
-    var receiptEmail: String
-    var nextAction: ApolloType.PaymentActionType
-    var lastPaymentError: String
+        completion: @escaping (Result<ApolloType.FragmentPaymentIntent, Error>) -> Void)
 }
