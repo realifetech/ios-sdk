@@ -47,6 +47,11 @@
 		0319F3382667995B00C01E1F /* content_getWebPageByType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3102667995B00C01E1F /* content_getWebPageByType.graphql.swift */; };
 		0319F3392667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3112667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift */; };
 		0319F33A2667995B00C01E1F /* sell_fragment_product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */; };
+		09A0592E2668F5450042E9B5 /* SellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0592D2668F5450042E9B5 /* SellFactory.swift */; };
+		09A059322668F54E0042E9B5 /* SellImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A059312668F54D0042E9B5 /* SellImplementing.swift */; };
+		09A059362668F5600042E9B5 /* Sell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A059352668F5600042E9B5 /* Sell.swift */; };
+		09A0593B2668F5AF0042E9B5 /* ProductGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0593A2668F5AF0042E9B5 /* ProductGettable.swift */; };
+		09A0593F2668F8340042E9B5 /* SellError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0593E2668F8340042E9B5 /* SellError.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -246,6 +251,11 @@
 		03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesTests.swift; sourceTree = "<group>"; };
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
+		09A0592D2668F5450042E9B5 /* SellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellFactory.swift; sourceTree = "<group>"; };
+		09A059312668F54D0042E9B5 /* SellImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellImplementing.swift; sourceTree = "<group>"; };
+		09A059352668F5600042E9B5 /* Sell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sell.swift; sourceTree = "<group>"; };
+		09A0593A2668F5AF0042E9B5 /* ProductGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGettable.swift; sourceTree = "<group>"; };
+		09A0593E2668F8340042E9B5 /* SellError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellError.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -435,6 +445,26 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		09A0592C2668F4940042E9B5 /* Sell */ = {
+			isa = PBXGroup;
+			children = (
+				09A059352668F5600042E9B5 /* Sell.swift */,
+				09A0593E2668F8340042E9B5 /* SellError.swift */,
+				09A0592D2668F5450042E9B5 /* SellFactory.swift */,
+				09A059312668F54D0042E9B5 /* SellImplementing.swift */,
+				09A059392668F5940042E9B5 /* Product */,
+			);
+			path = Sell;
+			sourceTree = "<group>";
+		};
+		09A059392668F5940042E9B5 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				09A0593A2668F5AF0042E9B5 /* ProductGettable.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
 		482BE53F2541D11200110368 /* AnalyticsLoggingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +554,7 @@
 				48E67771251BA86D007E2741 /* Communicate */,
 				03EEB89D252E04DB00C868AD /* Audiences */,
 				4889594E2539D7E200B978A9 /* Analytics */,
+				09A0592C2668F4940042E9B5 /* Sell */,
 				968CA5B625EE79960000C2E2 /* Content */,
 				48D6F13B251E158E006CA623 /* RealifeTech */,
 				48E67730251BA7F0007E2741 /* Products */,
@@ -1334,6 +1365,7 @@
 				0319F3232667995B00C01E1F /* Types.graphql.swift in Sources */,
 				0319F33A2667995B00C01E1F /* sell_fragment_product.graphql.swift in Sources */,
 				961C41D3260882BA001D8467 /* OAuthTokenRefreshWatcher.swift in Sources */,
+				09A059362668F5600042E9B5 /* Sell.swift in Sources */,
 				961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */,
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
 				0319F3202667995B00C01E1F /* sell_fragment_productVariant.graphql.swift in Sources */,
@@ -1342,6 +1374,7 @@
 				961C41E8260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift in Sources */,
 				4889595C2539D89C00B978A9 /* AnalyticsLogging.swift in Sources */,
 				0319F3302667995B00C01E1F /* sell_getFulfilmentPointCategoryById.graphql.swift in Sources */,
+				09A059322668F54E0042E9B5 /* SellImplementing.swift in Sources */,
 				961C41E9260882BA001D8467 /* StandardSenderResponse.swift in Sources */,
 				0319F3162667995B00C01E1F /* sell_getMyPaymentSources.graphql.swift in Sources */,
 				961C41FF260882BB001D8467 /* APITokenInterceptor.swift in Sources */,
@@ -1369,6 +1402,7 @@
 				0319F3142667995B00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift in Sources */,
 				0319F31F2667995B00C01E1F /* sell_fragment_paymentSourceDetails.graphql.swift in Sources */,
 				0319F3292667995B00C01E1F /* sell_fragment_order.graphql.swift in Sources */,
+				09A0592E2668F5450042E9B5 /* SellFactory.swift in Sources */,
 				961C4275260882C8001D8467 /* ReachabilityChecker.swift in Sources */,
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
 				0319F3322667995B00C01E1F /* sell_getOrders.graphql.swift in Sources */,
@@ -1398,9 +1432,11 @@
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
 				961C425C260882C8001D8467 /* AnalyticEvent.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
+				09A0593F2668F8340042E9B5 /* SellError.swift in Sources */,
 				961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */,
 				0319F32C2667995B00C01E1F /* canvas_fragment_screen.graphql.swift in Sources */,
 				961C425D260882C8001D8467 /* Date+Formatted.swift in Sources */,
+				09A0593B2668F5AF0042E9B5 /* ProductGettable.swift in Sources */,
 				0319F3342667995B00C01E1F /* sell_createMyBasket.graphql.swift in Sources */,
 				961C4216260882BB001D8467 /* RemoteDiskCacheDataProviding.swift in Sources */,
 				961C4213260882BB001D8467 /* DiskCacheDataProvidingStrategy.swift in Sources */,
