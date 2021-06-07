@@ -1,5 +1,5 @@
 # Getting Started
- 
+
 This repository contains the RealifeTech SDK which can be installed into your Swift project using the CocoaPods dependency manager. Here you'll find a guide on getting started, and examples of how to use the SDK's features.
 
 ## 1. Ensure the following requirements are met
@@ -21,18 +21,12 @@ Open your terminal, navigate to the directory containing your podfile, and run:
 $ pod install
 ```
 
-If you would like to use the Core service of the SDK only, add the following line to your `Podfile` under your Apps target:
-``` ruby
-pod 'RealifeTech-SDK/Core'
-```
-
 ## 3. Setup the SDK at runtime
-1. Ensure you configure the SDK before calling any of this methods (see **Configuration** section below). 
+1. Ensure you configure the SDK before calling any of this methods (see **Configuration** section below).
 2. You will also need to complete **Device Registration** (see below) before you can use the rest of the SDK methods.
 
-# Core
+# Configuration
 
-## Configuration
 **Important: Using the SDK without calling configuring can lead to runtime errors. Do not forget to configure the SDK.**
 
 Use the following function to configure the SDK for use. You will be provided the values necessary as part of your onboarding. Note that the SDK provides default values for its API endpoints, unless you are provided with unique endpoints as part of onboarding leave these fields blank.
@@ -48,7 +42,7 @@ RealifeTech.configureSDK(with: configuration)
 ```
 To ensure the SDK is configured before any other functionality is used, we recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)`.
 
-## Setup core services
+# Setup core services
 RealifeTech-SDK/Core provides factory methods in `CoreFactory` to allow you to initialise the services.
 
 1. ***UIDeviceInterface***: A helper to get the UUID, model and system version of the current device.
@@ -88,8 +82,8 @@ Interfacing with our backend systems requires that your device be registered wit
 
 
 ``` swift
-RealifeTech.General.registerDevice { 
-    // code to run once call has finished 
+RealifeTech.General.registerDevice {
+    // code to run once call has finished
 }
 ```
 If the registration fails (for instance due to connectivity issues) we will retry until it is successful. You will not be able to use the majority of the SDK until the device has been registered, and can check the status of it using:
@@ -111,16 +105,16 @@ You'll usually add this code to the AppDelegate method which [receives an APN to
 
 Alternatively, you can register a device token arbitrarily, or after passing it through your own logic. In which case use `registerForPushNotifications(token: String)`.
 
-Until the token has successfully been sent to our backend, it will be stored persistantly. When the app launches, we will attempt to send a pending token. Only one token can be stored at a time. 
+Until the token has successfully been sent to our backend, it will be stored persistantly. When the app launches, we will attempt to send a pending token. Only one token can be stored at a time.
 
 # Analytics
 Use the following function to log an analytic event
 
 ``` swift
 RealifeTech.Analytics.logEvent(
-    type: "type", 
-    action: "action", 
-    new: ["someValue": "123"], 
+    type: "type",
+    action: "action",
+    new: ["someValue": "123"],
     old: nil) { result in
         switch result {
         case success:
@@ -156,7 +150,7 @@ RealifeTech.Audiences.deviceIsMemberOfAudience(audienceId: String) { result in
 
 Note: You may wish to check whether the SDK is ready before calling:
 ``` swift
-guard RealifeTech.General.sdkReady else { 
-    // Handle SDK not yet ready // 
+guard RealifeTech.General.sdkReady else {
+    // Handle SDK not yet ready //
 }
 ```
