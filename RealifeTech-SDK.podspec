@@ -8,9 +8,11 @@ Pod::Spec.new do |spec|
   spec.description  = "This is RealifeTech SDK, it provides integration with RealifeTech backend services, providing functionality such as device notification management, audience membership, and analytics logging. Creating a better experience of the real world for every person."
 
   spec.homepage     = "https://realifetech.com"
-  spec.authors      = { "Jonathon Albert" => "jonathon.albert@live.com",
-			            "Olivier Butler" => "olivier.butler@gmail.com",
-                        "Mickey Lee" => "mickey.lee@realifetech.com" }
+  spec.authors      = [
+    "Jonathon Albert" => "jonathon.albert@live.com",
+    "Olivier Butler" => "olivier.butler@gmail.com",
+    "Mickey Lee" => "mickey.lee@realifetech.com"
+  ]
 
   spec.ios.deployment_target = "13.0"
   spec.swift_version         = "5.0"
