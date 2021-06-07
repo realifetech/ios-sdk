@@ -9,16 +9,16 @@ This Xcode project has the following directory/target structure:
 
 ### SDK Project
 * RealifeTech-SDK -  Publically consumed module
-* General 
+* General
 * Communicate
 * Analytics
 * Audiences
-* SupportingModules
+* Core
     * ReachabilityChecker - Tool for checking connectivity options
     * UIDeviceHelper - Wrapper around the UIDevice module
     * APILayer - HTTP API toolset with database like persistance options
-    * APIV3Utilities - Extensions to the APILayer for the V3 API
-    * GraphQL - Apollo GraphQL wrapper 
+    * APIUtilities - Extensions to the APILayer for the V3 API
+    * GraphQL - Apollo GraphQL wrapper
     * Repositories - Contains V3API repositories
     * Storage - Contains various generic data stores
 ### Dummy Project
@@ -30,9 +30,9 @@ This Xcode project has the following directory/target structure:
 Test suites are nested inside the modules.
 
 ## Module setup
-All our main modules (General, Communicate, Analytics etc.), represent collections of use cases. Each set of use cases should be decoupled from eachother, but we want to expose a single interface for the cases (e.g. `General.someTask()`).
+All our main modules (General, Communicate, Analytics etc.), represent collections of use cases. Each set of use cases should be decoupled from each other, but we want to expose a single interface for the cases (e.g. `General.someTask()`).
 
-We use the factory & facade patterns. A single light weight facade exists for each module which fowards calls to the underlying business logic. A factory exists which can build all the business logic and inject it into the facade. This keep the code highly decoupled, makes dependency management super easy, and keeps the configuraion highly flexible.
+We use the factory & facade patterns. A single light weight facade exists for each module which forwards calls to the underlying business logic. A factory exists which can build all the business logic and inject it into the facade. This keep the code highly decoupled, makes dependency management super easy, and keeps the configuration highly flexible.
 
 ### Worked Example: Analytics
 
@@ -43,7 +43,7 @@ We combine these use case protocols into a simple `Analytics` typealias. We defi
 
 ## Dependencies
 
-3rd Party dependencies are managed thorugh CocoaPods. Note that we should actively be moving away from RxSwift and aim to remove the dependencies of the SDK.
+3rd Party dependencies are managed through CocoaPods. Note that we should actively be moving away from RxSwift and aim to remove the dependencies of the SDK.
 
 ## Known Issues
 
@@ -56,7 +56,7 @@ Sometimes after changing between branches which have different projects within t
 ```
 This is caused by problems in the `xcconfig` files, and should stop coming up once the project stucture is stable.
 
-To resolve the issue: 
+To resolve the issue:
 - Go to the relevant target in Xcode
 - Open the Build Setting tab. 
 - Filter for `Always embed swift standard libraries` (you should see it is bold, indicating a custom setting has been saved).

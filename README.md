@@ -8,7 +8,7 @@ This repository contains the RealifeTech SDK which can be installed into your Sw
 * [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) 1.8.4+
 * Swift 5
 
-Note that our SDK currently depends on RxSwift packages which are automatically managed with CocoaPods. This package should be compatible with any peer requirements on RxSwft and RxCocoa versions greater than 4.2.
+Note that our SDK currently depends on RxSwift packages which are automatically managed with CocoaPods. This package should be compatible with any peer requirements on RxSwift and RxCocoa versions greater than 6.1.
 
 ## 2. Install the RealifeTech-SDK Pod dependency
 
@@ -43,7 +43,7 @@ RealifeTech.configureSDK(with: configuration)
 To ensure the SDK is configured before any other functionality is used, we recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)`.
 
 # Setup core services
-RealifeTech-SDK/Core provides factory methods in `CoreFactory` to allow you to initialise the services.
+RealifeTech-SDK provides factory methods in `CoreFactory` to allow you to initialise the services.
 
 1. ***UIDeviceInterface***: A helper to get the UUID, model and system version of the current device.
 ```
