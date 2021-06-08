@@ -17,6 +17,7 @@ public extension ApolloType {
             __typename
             ...paymentSourceDetails
           }
+          nextPage
         }
       }
       """
@@ -77,6 +78,7 @@ public extension ApolloType {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("edges", type: .list(.object(Edge.selections))),
+            GraphQLField("nextPage", type: .scalar(Int.self)),
           ]
         }
 
@@ -86,8 +88,8 @@ public extension ApolloType {
           self.resultMap = unsafeResultMap
         }
 
-        public init(edges: [Edge?]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "PaymentSourceEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }])
+        public init(edges: [Edge?]? = nil, nextPage: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "PaymentSourceEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, "nextPage": nextPage])
         }
 
         public var __typename: String {
@@ -105,6 +107,15 @@ public extension ApolloType {
           }
           set {
             resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
+          }
+        }
+
+        public var nextPage: Int? {
+          get {
+            return resultMap["nextPage"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "nextPage")
           }
         }
 

@@ -3,5 +3,6 @@ query getMyPaymentSources($pageSize: Int!, $page: Int! = 1) {
     edges {
       ...paymentSourceDetails
     }
+    nextPage
   }
 }
