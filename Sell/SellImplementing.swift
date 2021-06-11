@@ -22,17 +22,7 @@ public class SellImplementing: Sell {
         _ id: String,
         completion: @escaping (Result<ApolloType.FragmentProduct, Error>) -> Void
     ) {
-        dispatcher.dispatch(query: ApolloType.GetProductByIdQuery(id: id), cachePolicy: .returnCacheDataAndFetch) { result in
-            switch result {
-            case .success(let response):
-                guard let productFragment = response.data?.getProduct?.fragments.fragmentProduct else {
-                    return completion(.failure(SellError.itemNotFound))
-                }
-                completion(.success(productFragment))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+
     }
 
     public func getProducts(
@@ -41,17 +31,7 @@ public class SellImplementing: Sell {
         filters: ApolloType.ProductFilter?,
         completion: @escaping (Result<ApolloType.FragmentProducts, Error>) -> Void
     ) {
-        dispatcher.dispatch(query: ApolloType.GetProductsQuery(pageSize: pageSize, page: page, filters: filters), cachePolicy: .returnCacheDataAndFetch) { result in
-            switch result {
-            case .success(let response):
-                guard let products = response.data?.getProducts?.fragments.fragmentProducts else {
-                    return completion(.failure(SellError.itemNotFound))
-                }
-                completion(.success(products))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+        
     }
 
     // MARK: - OrdersGettable

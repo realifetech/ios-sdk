@@ -48,13 +48,16 @@
 		03E9F28B26691BD7008777F0 /* sell_getFulfilmentPointById.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9F26226691BD7008777F0 /* sell_getFulfilmentPointById.graphql.swift */; };
 		03E9F28C26691BD7008777F0 /* sell_fragment_productModifierItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9F26326691BD7008777F0 /* sell_fragment_productModifierItem.graphql.swift */; };
 		03E9F28D26691BD7008777F0 /* sell_fragment_timeslot.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9F26426691BD7008777F0 /* sell_fragment_timeslot.graphql.swift */; };
+		097632A926738F1300E12523 /* PaginatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097632A826738F1300E12523 /* PaginatedObject.swift */; };
+		097632B52673A6E800E12523 /* BasketQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097632B42673A6E800E12523 /* BasketQueryable.swift */; };
+		097632B92673A8BC00E12523 /* FulfilmentPointQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097632B82673A8BC00E12523 /* FulfilmentPointQueryable.swift */; };
 		09A0592E2668F5450042E9B5 /* SellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0592D2668F5450042E9B5 /* SellFactory.swift */; };
 		09A059322668F54E0042E9B5 /* SellImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A059312668F54D0042E9B5 /* SellImplementing.swift */; };
 		09A059362668F5600042E9B5 /* Sell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A059352668F5600042E9B5 /* Sell.swift */; };
-		09A0593B2668F5AF0042E9B5 /* ProductGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0593A2668F5AF0042E9B5 /* ProductGettable.swift */; };
+		09A0593B2668F5AF0042E9B5 /* ProductQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0593A2668F5AF0042E9B5 /* ProductQueryable.swift */; };
 		09A0593F2668F8340042E9B5 /* SellError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0593E2668F8340042E9B5 /* SellError.swift */; };
-		09A05943266909090042E9B5 /* PaymentsAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A05942266909090042E9B5 /* PaymentsAccessible.swift */; };
-		09A0594726690D1C0042E9B5 /* OrdersGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0594626690D1C0042E9B5 /* OrdersGettable.swift */; };
+		09A05943266909090042E9B5 /* PaymentsQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A05942266909090042E9B5 /* PaymentsQueryable.swift */; };
+		09A0594726690D1C0042E9B5 /* OrdersQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0594626690D1C0042E9B5 /* OrdersQueryable.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -255,13 +258,16 @@
 		03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesTests.swift; sourceTree = "<group>"; };
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
+		097632A826738F1300E12523 /* PaginatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedObject.swift; sourceTree = "<group>"; };
+		097632B42673A6E800E12523 /* BasketQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketQueryable.swift; sourceTree = "<group>"; };
+		097632B82673A8BC00E12523 /* FulfilmentPointQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointQueryable.swift; sourceTree = "<group>"; };
 		09A0592D2668F5450042E9B5 /* SellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellFactory.swift; sourceTree = "<group>"; };
 		09A059312668F54D0042E9B5 /* SellImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellImplementing.swift; sourceTree = "<group>"; };
 		09A059352668F5600042E9B5 /* Sell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sell.swift; sourceTree = "<group>"; };
-		09A0593A2668F5AF0042E9B5 /* ProductGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGettable.swift; sourceTree = "<group>"; };
+		09A0593A2668F5AF0042E9B5 /* ProductQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductQueryable.swift; sourceTree = "<group>"; };
 		09A0593E2668F8340042E9B5 /* SellError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellError.swift; sourceTree = "<group>"; };
-		09A05942266909090042E9B5 /* PaymentsAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsAccessible.swift; sourceTree = "<group>"; };
-		09A0594626690D1C0042E9B5 /* OrdersGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersGettable.swift; sourceTree = "<group>"; };
+		09A05942266909090042E9B5 /* PaymentsQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsQueryable.swift; sourceTree = "<group>"; };
+		09A0594626690D1C0042E9B5 /* OrdersQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersQueryable.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -451,6 +457,22 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		097632AC26738F7900E12523 /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				097632B42673A6E800E12523 /* BasketQueryable.swift */,
+			);
+			path = Basket;
+			sourceTree = "<group>";
+		};
+		097632AD26738FA100E12523 /* FulfilmentPoint */ = {
+			isa = PBXGroup;
+			children = (
+				097632B82673A8BC00E12523 /* FulfilmentPointQueryable.swift */,
+			);
+			path = FulfilmentPoint;
+			sourceTree = "<group>";
+		};
 		09A0592C2668F4940042E9B5 /* Sell */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,8 +480,10 @@
 				09A0593E2668F8340042E9B5 /* SellError.swift */,
 				09A0592D2668F5450042E9B5 /* SellFactory.swift */,
 				09A059312668F54D0042E9B5 /* SellImplementing.swift */,
-				09A0594B26690E290042E9B5 /* Payment */,
+				097632AC26738F7900E12523 /* Basket */,
+				097632AD26738FA100E12523 /* FulfilmentPoint */,
 				09A0594A26690E1A0042E9B5 /* Order */,
+				09A0594B26690E290042E9B5 /* Payment */,
 				09A059392668F5940042E9B5 /* Product */,
 			);
 			path = Sell;
@@ -468,7 +492,7 @@
 		09A059392668F5940042E9B5 /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				09A0593A2668F5AF0042E9B5 /* ProductGettable.swift */,
+				09A0593A2668F5AF0042E9B5 /* ProductQueryable.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -476,7 +500,7 @@
 		09A0594A26690E1A0042E9B5 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				09A0594626690D1C0042E9B5 /* OrdersGettable.swift */,
+				09A0594626690D1C0042E9B5 /* OrdersQueryable.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -484,7 +508,7 @@
 		09A0594B26690E290042E9B5 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				09A05942266909090042E9B5 /* PaymentsAccessible.swift */,
+				09A05942266909090042E9B5 /* PaymentsQueryable.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -974,6 +998,7 @@
 			children = (
 				961C4243260882C8001D8467 /* Device */,
 				961C423E260882C8001D8467 /* Tests */,
+				097632A826738F1300E12523 /* PaginatedObject.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1371,6 +1396,7 @@
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
 				03E9F27A26691BD7008777F0 /* canvas_fragment_widget.graphql.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
+				097632A926738F1300E12523 /* PaginatedObject.swift in Sources */,
 				961C425B260882C8001D8467 /* LogEventSending.swift in Sources */,
 				968CA5BC25EE79DD0000C2E2 /* Content.swift in Sources */,
 				487479C22540425C0048F03D /* AnalyticsEventAndCompletion.swift in Sources */,
@@ -1407,7 +1433,7 @@
 				03E9F26B26691BD7008777F0 /* sell_createMyBasket.graphql.swift in Sources */,
 				03E9F27E26691BD7008777F0 /* sell_fragment_form.graphql.swift in Sources */,
 				03E9F28B26691BD7008777F0 /* sell_getFulfilmentPointById.graphql.swift in Sources */,
-				09A05943266909090042E9B5 /* PaymentsAccessible.swift in Sources */,
+				09A05943266909090042E9B5 /* PaymentsQueryable.swift in Sources */,
 				961C4269260882C8001D8467 /* QueueItem.swift in Sources */,
 				961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
 				48EFE2532539E55400CC6E58 /* DeviceRegistrationWorker.swift in Sources */,
@@ -1451,6 +1477,7 @@
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
+				097632B92673A8BC00E12523 /* FulfilmentPointQueryable.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				961C4274260882C8001D8467 /* NetworkConnectivityChecker.swift in Sources */,
 				03E9F28526691BD7008777F0 /* sell_updatePaymentIntent.graphql.swift in Sources */,
@@ -1459,6 +1486,7 @@
 				03E9F28626691BD7008777F0 /* sell_deleteMyBasket.graphql.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
 				03E9F26C26691BD7008777F0 /* sell_getFulfilmentPointCategoryById.graphql.swift in Sources */,
+				097632B52673A6E800E12523 /* BasketQueryable.swift in Sources */,
 				961C425C260882C8001D8467 /* AnalyticEvent.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
 				09A0593F2668F8340042E9B5 /* SellError.swift in Sources */,
@@ -1466,7 +1494,7 @@
 				961C425D260882C8001D8467 /* Date+Formatted.swift in Sources */,
 				03E9F27726691BD7008777F0 /* sell_updateMyBasket.graphql.swift in Sources */,
 				03E9F26D26691BD7008777F0 /* sell_getOrders.graphql.swift in Sources */,
-				09A0593B2668F5AF0042E9B5 /* ProductGettable.swift in Sources */,
+				09A0593B2668F5AF0042E9B5 /* ProductQueryable.swift in Sources */,
 				961C4216260882BB001D8467 /* RemoteDiskCacheDataProviding.swift in Sources */,
 				961C4213260882BB001D8467 /* DiskCacheDataProvidingStrategy.swift in Sources */,
 				03E9F27526691BD7008777F0 /* sell_fragment_products.graphql.swift in Sources */,
@@ -1480,7 +1508,7 @@
 				03E9F27026691BD7008777F0 /* canvas_getScreenByScreenId.graphql.swift in Sources */,
 				03E9F26526691BD7008777F0 /* analytics_putAnalyticEvent.graphql.swift in Sources */,
 				03E9F27926691BD7008777F0 /* Types.graphql.swift in Sources */,
-				09A0594726690D1C0042E9B5 /* OrdersGettable.swift in Sources */,
+				09A0594726690D1C0042E9B5 /* OrdersQueryable.swift in Sources */,
 				03E9F26926691BD7008777F0 /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
 				961C4217260882BB001D8467 /* APIError.swift in Sources */,
