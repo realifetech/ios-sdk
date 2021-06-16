@@ -18,3 +18,16 @@ public protocol ProductGettable {
         filters: ApolloType.ProductFilter,
         completion: @escaping (Result<[Product], Error>) -> Void)
 }
+
+public struct ProductRetriever: ProductGettable {
+
+    public func getProductById(
+        _ id: String,
+        completion: @escaping (Result<Product, Error>) -> Void) { }
+
+    public func getProducts(
+        pageSize: Int,
+        page: Int,
+        filters: ApolloType.ProductFilter,
+        completion: @escaping (Result<[Product], Error>) -> Void) { }
+}

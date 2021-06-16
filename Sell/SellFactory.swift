@@ -10,7 +10,9 @@ import Foundation
 
 public enum SellFactory {
 
-    public static func makeSellModule(graphQLDispatcher: GraphQLDispatching) -> Sell {
-        return SellImplementing(dispatcher: graphQLDispatcher)
+    public static func configureSellModule(graphQLDispatcher: GraphQLDispatching) {
+        Sell.product = ProductRetriever()
+        Sell.order = OrderRetriever(dispatcher: graphQLDispatcher)
+        Sell.payment = PaymentRetriever()
     }
 }

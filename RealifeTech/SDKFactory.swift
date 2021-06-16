@@ -51,6 +51,7 @@ public class RealifeTech {
         }
         Communicate = CommunicateFactory.makeCommunicateModule()
         Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
-        Sell = SellFactory.makeSellModule(graphQLDispatcher: dispatcher)
+        SellFactory.configureSellModule(graphQLDispatcher: dispatcher)
+//        Sell = SellFactory.makeSellModule(graphQLDispatcher: dispatcher)
     }
 }
