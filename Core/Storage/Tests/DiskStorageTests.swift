@@ -17,26 +17,27 @@ final class DiskStorageTests: XCTestCase {
     }
 
     private let testData = Data()
-    private let writeSut: DiskStorage = makeSut()
-    private let readSut: DiskStorage = makeSut()
+    private var writeSut: DiskStorage!
+    private var readSut: DiskStorage!
 
     override func setUp() {
-        writeSut.deleteValue(for: "diskStorageData")
+        super.setUp()
+        writeSut = makeSut()
+        readSut = makeSut()
     }
 
     override func tearDown() {
         writeSut.deleteValue(for: "diskStorageData")
+        writeSut = nil
+        readSut = nil
+        super.tearDown()
     }
 
-    func test_saveValue() {
+    func test_saveValue() throws {
         let currentDate = Date()
         let object = TestObject(name: "diskStorageData", date: currentDate)
-        do {
-            let encodedObject = try JSONEncoder.init().encode(object)
-            try writeSut.save(value: encodedObject, for: "diskStorageData")
-        } catch let error {
-            XCTFail(error.localizedDescription)
-        }
+        let encodedObject = try JSONEncoder.init().encode(object)
+        try writeSut.save(value: encodedObject, for: "diskStorageData")
     }
 
     func test_saveValue_withHandler() {
@@ -56,48 +57,40 @@ final class DiskStorageTests: XCTestCase {
         XCTAssertThrowsError(try readSut.fetchValue(for: "diskStorageData"))
     }
 
-    func test_fetchValues() {
+    func test_fetchValues() throws {
         XCTAssertNoThrow(try writeSut.save(value: testData, for: "diskStorageData"))
-        do {
-            let dataArray = try readSut.fetchValues(with: "diskStorageData")
-            XCTAssertEqual(dataArray.count, 1)
-        } catch {
-            XCTFail("Failed to fetch data")
-        }
+        let dataArray = try readSut.fetchValues(with: "diskStorageData")
+        XCTAssertEqual(dataArray.count, 1)
     }
 
     func test_fetchValues_isEmpty() {
         XCTAssertThrowsError(try readSut.fetchValues(with: "falseStorageData"))
     }
 
-    func test_fetchValue() {
+    func test_fetchValue() throws {
         let currentDate = Date()
         let object = TestObject(name: "diskStorageData", date: currentDate)
-        do {
-            let encodedObject = try JSONEncoder.init().encode(object)
-            try writeSut.save(value: encodedObject, for: "diskStorageData")
-            let objectData = try readSut.fetchValue(for: "diskStorageData")
-            let decodedObject = try JSONDecoder.init().decode(TestObject.self, from: objectData)
-            XCTAssertEqual(decodedObject.name, "diskStorageData")
-            XCTAssertEqual(decodedObject.date, currentDate)
-        } catch let error {
-            XCTFail(error.localizedDescription)
-        }
+        let encodedObject = try JSONEncoder.init().encode(object)
+        try writeSut.save(value: encodedObject, for: "diskStorageData")
+        let objectData = try readSut.fetchValue(for: "diskStorageData")
+        let decodedObject = try JSONDecoder.init().decode(TestObject.self, from: objectData)
+        XCTAssertEqual(decodedObject.name, "diskStorageData")
+        XCTAssertEqual(decodedObject.date, currentDate)
     }
 
     func test_fetchValue_withHandler() {
         XCTAssertNoThrow(try writeSut.save(value: testData, for: "diskStorageData"))
-        readSut.fetchValue(for: "diskStorageData", handler: { result in
+        readSut.fetchValue(for: "diskStorageData") { result in
             switch result {
             case .success(let data):
                 XCTAssertNotNil(data)
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
-        })
+        }
     }
 
-    private final class func makeSut() -> DiskStorage {
+    private func makeSut() -> DiskStorage {
         let path = URL(fileURLWithPath: NSTemporaryDirectory())
         return DiskStorage(path: path)
     }
