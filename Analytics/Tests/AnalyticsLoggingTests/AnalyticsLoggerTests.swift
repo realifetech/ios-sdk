@@ -16,6 +16,11 @@ final class AnalyticsLoggerTests: XCTestCase {
     private var mockReachabilityChecker: MockReachabilityChecker!
     private var mockDeviceRegistering: MockDeviceRegistering!
 
+    private let testEvent = AnalyticEvent(
+        type: "We",
+        action: "Want",
+        version: "Your")
+
     override func setUp() {
         super.setUp()
         mockGraphQLManager = MockAnalyticsGraphQLManager()
@@ -67,7 +72,6 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_loopIsNotRunning_sendItem() {
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         let sut = makeSut()
@@ -77,10 +81,8 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_onSuccess_reportsSuccessToCaller() {
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
-        mockGraphQLManager.successReturns = true
         let sut = makeSut()
         sut.logEvent(testEvent) { result in
             switch result {
@@ -94,7 +96,6 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_onNotSuccess_delaySingleItem() {
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         mockGraphQLManager.successReturns = false
@@ -111,7 +112,6 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_onFailure_delaySingleItem() {
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         mockGraphQLManager.shouldReturnFailure = true
@@ -127,8 +127,7 @@ final class AnalyticsLoggerTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_logEvent_delaysSingleItemUntilConnected() {
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
+    func test_logEvent_hasNoNetworkConnection_delaysSingleItemUntilConnected() {
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = false
         let sut = makeSut()
@@ -141,17 +140,13 @@ final class AnalyticsLoggerTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) {
             self.mockReachabilityChecker.hasNetworkConnection = true
         }
         wait(for: [expectation], timeout: 0.02)
     }
 
-    func test_logEvent_delaysSingleItemUntilRegistered() {
-        let testEvent = AnalyticEvent(
-            type: "Circuits",
-            action: "Burn",
-            version: "Golden")
+    func test_logEvent_deviceHasntBeenRegistered_delaysSingleItemUntilRegistered() {
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         mockDeviceRegistering.shouldBeReady = false
@@ -165,7 +160,7 @@ final class AnalyticsLoggerTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) {
             self.mockDeviceRegistering.shouldBeReady = true
         }
         wait(for: [expectation], timeout: 0.02)
@@ -173,7 +168,6 @@ final class AnalyticsLoggerTests: XCTestCase {
 
     func test_logEvent_addsItemsToQueue() {
         let expectation = XCTestExpectation(description: "Item was added to queue")
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         mockQueue.addedToQueueExpectation = expectation
         mockReachabilityChecker.hasNetworkConnection = false
         let sut = makeSut()
@@ -188,7 +182,7 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_leavesInQueueOnFailure() {
-        test_logEvent_delaysSingleItemUntilConnected()
+        test_logEvent_hasNoNetworkConnection_delaysSingleItemUntilConnected()
         XCTAssertEqual(mockQueue.receivedQueueActions.first, .doNothing)
         XCTAssertEqual(mockQueue.receivedQueueActions.last, .removeFirst)
     }
