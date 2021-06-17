@@ -15,6 +15,7 @@ public class RealifeTech {
     public static var Analytics: Analytics!
     public static var Communicate: Communicate!
     public static var Content: Content!
+    public static var Sell: Sell!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -50,5 +51,6 @@ public class RealifeTech {
         }
         Communicate = CommunicateFactory.makeCommunicateModule()
         Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
+        Sell = SellFactory.makeSellModule(graphQLDispatcher: dispatcher)
     }
 }
