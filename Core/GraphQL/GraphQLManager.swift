@@ -1,15 +1,15 @@
 //
-//  GraphQLDispatcher.swift
-//  General
+//  GraphQLManager.swift
+//  RealifeTech
 //
-//  Created by Jonathon Albert on 09/10/2020.
-//  Copyright © 2020 Olivier Butler. All rights reserved.
+//  Created by Mickey Lee on 17/06/2021.
+//  Copyright © 2021 Realife Tech. All rights reserved.
 //
 
 import Foundation
 import Apollo
 
-public protocol GraphQLDispatching: AnyObject {
+public protocol GraphQLManageable {
     func dispatch<Query: GraphQLQuery>(
         query: Query,
         cachePolicy: GraphNetworkCachePolicy,
@@ -19,22 +19,26 @@ public protocol GraphQLDispatching: AnyObject {
         mutation: Query,
         completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     )
+    func clearAllCache()
 }
 
-public class GraphQLDispatcher: GraphQLDispatching {
+public class GraphQLManager {
 
-    let client: GraphNetwork
+    private let client: ApolloClient
 
-    public init(client: GraphNetwork) {
+    public init(client: ApolloClient) {
         self.client = client
     }
+}
+
+extension GraphQLManager: GraphQLManageable {
 
     public func dispatch<Query: GraphQLQuery>(
         query: Query,
         cachePolicy: GraphNetworkCachePolicy,
         completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     ) {
-        client.apollo.fetch(query: query, cachePolicy: cachePolicy.apolloCachePolicyType) { result in
+        client.fetch(query: query, cachePolicy: cachePolicy.apolloCachePolicyType) { result in
             switch result {
             case .success(let graphQLResult):
                 return completion(.success(graphQLResult))
@@ -48,7 +52,7 @@ public class GraphQLDispatcher: GraphQLDispatching {
         mutation: Query,
         completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     ) {
-        client.apollo.perform(mutation: mutation) { result in
+        client.perform(mutation: mutation) { result in
             switch result {
             case .success(let graphQLResult):
                 return completion(.success(graphQLResult))
@@ -57,24 +61,8 @@ public class GraphQLDispatcher: GraphQLDispatching {
             }
         }
     }
-}
 
-extension GraphQLDispatcher: LogEventSending {
-    public func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
-        let event = ApolloType.AnalyticEvent(
-            type: event.type,
-            action: event.action,
-            new: event.newString,
-            old: event.oldString,
-            version: event.version,
-            timestamp: event.timestampString)
-        dispatchMutation(mutation: ApolloType.PutAnalyticEventMutation(input: event), completion: { result in
-            switch result {
-            case .success(let success):
-                return completion(.success(success.data?.putAnalyticEvent.success ?? false))
-            case .failure(let error):
-                return completion(.failure(error))
-            }
-        })
+    public func clearAllCache() {
+        client.clearCache()
     }
 }

@@ -11,13 +11,13 @@ import Foundation
 public enum AnalyticsFactory {
 
     static func makeAnalyticsModule(
-        dispatcher: LogEventSending,
+        graphQLManager: GraphQLManageable,
         reachabilityHelper: ReachabilityChecking,
         deviceRegistering: DeviceRegistering
     ) -> Analytics {
         let queue = PersistentQueue<AnalyticEventAndCompletion>(name: "analyticsEvent")
         let analyticsLogger = AnalyticsLogger(
-            dispatcher: dispatcher,
+            graphQLManager: graphQLManager,
             reachabilityHelper: reachabilityHelper,
             persistentQueue: AnyQueue(queue),
             deviceRegistering: deviceRegistering)

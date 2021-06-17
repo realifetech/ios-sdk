@@ -93,6 +93,11 @@
 		9606EDA0267B660200ED24D0 /* ProductImplementable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED9F267B660200ED24D0 /* ProductImplementable.swift */; };
 		9606EDA2267B675800ED24D0 /* ProductImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA1267B675800ED24D0 /* ProductImplementing.swift */; };
 		9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */; };
+		9606EDA9267B7CE800ED24D0 /* GraphQLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */; };
+		9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */; };
+		9606EDB0267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDAF267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift */; };
+		9606EDB3267B8AAB00ED24D0 /* MockContentGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDB2267B8AAA00ED24D0 /* MockContentGraphQLManager.swift */; };
+		9606EDB5267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDB4267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -114,10 +119,8 @@
 		961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4183260882BA001D8467 /* CoreConfiguration.swift */; };
 		961C41EB260882BA001D8467 /* CoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4184260882BA001D8467 /* CoreFactory.swift */; };
 		961C41EC260882BA001D8467 /* RequestLoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */; };
-		961C41ED260882BB001D8467 /* GraphNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4187260882BA001D8467 /* GraphNetwork.swift */; };
-		961C41EE260882BB001D8467 /* GraphNetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4188260882BA001D8467 /* GraphNetworkInterceptorProvider.swift */; };
+		961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4188260882BA001D8467 /* GraphQLInterceptorProvider.swift */; };
 		961C41EF260882BB001D8467 /* GraphNetworkCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */; };
-		961C41FE260882BB001D8467 /* GraphQLDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4199260882BA001D8467 /* GraphQLDispatcher.swift */; };
 		961C41FF260882BB001D8467 /* APITokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C419A260882BA001D8467 /* APITokenInterceptor.swift */; };
 		961C420F260882BB001D8467 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 961C41AB260882BA001D8467 /* schema.json */; };
 		961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C41AF260882BA001D8467 /* ReadOnlyCurrentValue.swift */; };
@@ -308,6 +311,11 @@
 		9606ED9F267B660200ED24D0 /* ProductImplementable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImplementable.swift; sourceTree = "<group>"; };
 		9606EDA1267B675800ED24D0 /* ProductImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImplementing.swift; sourceTree = "<group>"; };
 		9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellFactoryTests.swift; sourceTree = "<group>"; };
+		9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLFactory.swift; sourceTree = "<group>"; };
+		9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManager.swift; sourceTree = "<group>"; };
+		9606EDAF267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnalyticsGraphQLManager.swift; sourceTree = "<group>"; };
+		9606EDB2267B8AAA00ED24D0 /* MockContentGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContentGraphQLManager.swift; sourceTree = "<group>"; };
+		9606EDB4267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAudienceGraphQLManager.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -339,10 +347,8 @@
 		961C4183260882BA001D8467 /* CoreConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreConfiguration.swift; sourceTree = "<group>"; };
 		961C4184260882BA001D8467 /* CoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFactory.swift; sourceTree = "<group>"; };
 		961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestLoggingInterceptor.swift; sourceTree = "<group>"; };
-		961C4187260882BA001D8467 /* GraphNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetwork.swift; sourceTree = "<group>"; };
-		961C4188260882BA001D8467 /* GraphNetworkInterceptorProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetworkInterceptorProvider.swift; sourceTree = "<group>"; };
+		961C4188260882BA001D8467 /* GraphQLInterceptorProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInterceptorProvider.swift; sourceTree = "<group>"; };
 		961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetworkCachePolicy.swift; sourceTree = "<group>"; };
-		961C4199260882BA001D8467 /* GraphQLDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLDispatcher.swift; sourceTree = "<group>"; };
 		961C419A260882BA001D8467 /* APITokenInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenInterceptor.swift; sourceTree = "<group>"; };
 		961C41AB260882BA001D8467 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		961C41AE260882BA001D8467 /* ReadOnlyCurrentValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyCurrentValueTests.swift; sourceTree = "<group>"; };
@@ -453,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */,
+				9606EDB4267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -470,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				488A67C12541D8AA005C030E /* MockAnalyticsLogger.swift */,
+				9606EDAF267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -683,6 +691,24 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		9606EDAC267B7EA200ED24D0 /* Interceptors */ = {
+			isa = PBXGroup;
+			children = (
+				961C4188260882BA001D8467 /* GraphQLInterceptorProvider.swift */,
+				961C419A260882BA001D8467 /* APITokenInterceptor.swift */,
+				961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */,
+			);
+			path = Interceptors;
+			sourceTree = "<group>";
+		};
+		9606EDB1267B8A9500ED24D0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9606EDB2267B8AAA00ED24D0 /* MockContentGraphQLManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		961C415F26088298001D8467 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,13 +816,11 @@
 			isa = PBXGroup;
 			children = (
 				961C41AB260882BA001D8467 /* schema.json */,
-				961C419A260882BA001D8467 /* APITokenInterceptor.swift */,
-				961C4187260882BA001D8467 /* GraphNetwork.swift */,
+				9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */,
+				9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */,
 				961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */,
-				961C4188260882BA001D8467 /* GraphNetworkInterceptorProvider.swift */,
-				961C4199260882BA001D8467 /* GraphQLDispatcher.swift */,
-				961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */,
 				961C419B260882BA001D8467 /* API */,
+				9606EDAC267B7EA200ED24D0 /* Interceptors */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -1111,6 +1135,7 @@
 				968CA69A25EF95040000C2E2 /* ContentFactoryTests.swift */,
 				968CA69E25EF96600000C2E2 /* ContentImplementingTests.swift */,
 				968CA6A325EF9B640000C2E2 /* WebPageTests */,
+				9606EDB1267B8A9500ED24D0 /* Utils */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1376,7 +1401,6 @@
 				9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */,
 				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
 				968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */,
-				961C41ED260882BB001D8467 /* GraphNetwork.swift in Sources */,
 				0319F3392667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift in Sources */,
 				961C427E260882C8001D8467 /* UIDeviceInterface.swift in Sources */,
 				0319F3312667995B00C01E1F /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */,
@@ -1384,7 +1408,7 @@
 				961C41EB260882BA001D8467 /* CoreFactory.swift in Sources */,
 				961C41E5260882BA001D8467 /* OAuthRepository.swift in Sources */,
 				961C41EF260882BB001D8467 /* GraphNetworkCachePolicy.swift in Sources */,
-				961C41EE260882BB001D8467 /* GraphNetworkInterceptorProvider.swift in Sources */,
+				961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */,
 				961C4263260882C8001D8467 /* CodableStore.swift in Sources */,
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
@@ -1461,7 +1485,6 @@
 				0319F3222667995B00C01E1F /* sell_deleteMyBasket.graphql.swift in Sources */,
 				961C4265260882C8001D8467 /* QueueError.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
-				961C41FE260882BB001D8467 /* GraphQLDispatcher.swift in Sources */,
 				0319F3352667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift in Sources */,
 				961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */,
 				0319F31D2667995B00C01E1F /* sell_fragment_basket.graphql.swift in Sources */,
@@ -1488,6 +1511,7 @@
 				961C4213260882BB001D8467 /* DiskCacheDataProvidingStrategy.swift in Sources */,
 				0319F3132667995B00C01E1F /* sell_createPaymentIntent.graphql.swift in Sources */,
 				0319F31E2667995B00C01E1F /* sell_getProductById.graphql.swift in Sources */,
+				9606EDA9267B7CE800ED24D0 /* GraphQLFactory.swift in Sources */,
 				968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */,
 				0319F3152667995B00C01E1F /* sell_fragment_user.graphql.swift in Sources */,
 				0319F3212667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift in Sources */,
@@ -1509,6 +1533,7 @@
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
 				0319F3272667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */,
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
+				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
 				0319F3182667995B00C01E1F /* sell_checkoutMyBasket.graphql.swift in Sources */,
 				961C4224260882BB001D8467 /* RequestLogger.swift in Sources */,
@@ -1527,6 +1552,7 @@
 				9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */,
 				961C42C726088371001D8467 /* DiskCacheCodableInterfaceTests.swift in Sources */,
 				961C4295260882FE001D8467 /* DiskStorageTests.swift in Sources */,
+				9606EDB5267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift in Sources */,
 				961C429F26088312001D8467 /* DeviceRequesterTests.swift in Sources */,
 				961C437026089377001D8467 /* APIRequesterTests.swift in Sources */,
 				961C438026089385001D8467 /* StandardSenderResponseTests.swift in Sources */,
@@ -1553,6 +1579,8 @@
 				488A67C22541D8AA005C030E /* MockAnalyticsLogger.swift in Sources */,
 				961C437326089379001D8467 /* EmptyTokenManagerTests.swift in Sources */,
 				48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */,
+				9606EDB3267B8AAB00ED24D0 /* MockContentGraphQLManager.swift in Sources */,
+				9606EDB0267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift in Sources */,
 				961C42A926088327001D8467 /* ReachabilityCheckerTests.swift in Sources */,
 				488A67C62541DA8B005C030E /* AnalyticsLoggerTests.swift in Sources */,
 				961C42982608830E001D8467 /* DeviceTokenTests.swift in Sources */,

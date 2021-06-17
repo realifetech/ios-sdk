@@ -37,20 +37,18 @@ public class RealifeTech {
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
-        let dispatcher = CoreFactory.makeGraphQLDispatcher(
+        let graphQLManager = CoreFactory.makeGraphQLManager(
             configuration: configuration,
             tokenHelper: apiHelper,
             deviceId: deviceHelper.deviceId,
             reachabilityHelper: reachabilityChecker)
-        Audiences = AudiencesImplementing(dispatcher: dispatcher)
-        if let dispatcher = dispatcher as? GraphQLDispatcher {
-            Analytics = AnalyticsFactory.makeAnalyticsModule(
-                dispatcher: dispatcher,
-                reachabilityHelper: reachabilityChecker,
-                deviceRegistering: General)
-        }
+        Audiences = AudiencesImplementing(graphQLManager: graphQLManager)
+        Analytics = AnalyticsFactory.makeAnalyticsModule(
+            graphQLManager: graphQLManager,
+            reachabilityHelper: reachabilityChecker,
+            deviceRegistering: General)
         Communicate = CommunicateFactory.makeCommunicateModule()
-        Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
-        Sell = SellFactory.makeSellModule(graphQLDispatcher: dispatcher)
+        Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
+        Sell = SellFactory.makeSellModule(graphQLManager: graphQLManager)
     }
 }

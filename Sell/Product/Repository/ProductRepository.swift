@@ -10,10 +10,10 @@ import Foundation
 
 final class ProductRepository {
 
-    private let dispatcher: GraphQLDispatching
+    private let graphQLManager: GraphQLManageable
 
-    init(dispatcher: GraphQLDispatching) {
-        self.dispatcher = dispatcher
+    init(graphQLManager: GraphQLManageable) {
+        self.graphQLManager = graphQLManager
     }
 }
 
