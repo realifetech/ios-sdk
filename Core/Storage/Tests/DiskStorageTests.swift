@@ -33,23 +33,14 @@ final class DiskStorageTests: XCTestCase {
     }
 
     override func tearDown() {
+        sut.deleteValue(for: key)
         sut = nil
         fileManager = nil
         super.tearDown()
     }
 
-    private func makeSut() -> DiskStorage {
-        let path = URL(fileURLWithPath: NSTemporaryDirectory())
-        return DiskStorage(
-            path: path,
-            queue: DispatchQueue.global())
-    }
-
     func test_saveValue_noExistingFolder_fileManagerCreateNewFolder() throws {
-        let currentDate = Date()
-        let object = TestObject(name: key, date: currentDate)
-        let encodedObject = try JSONEncoder.init().encode(object)
-        try sut.save(value: encodedObject, for: key)
+        try sut.save(value: Data(), for: key)
         XCTAssertTrue(fileManager.didCreateDirectory)
     }
 
@@ -82,7 +73,8 @@ final class DiskStorageTests: XCTestCase {
     }
 
     func test_fetchValuesWithPrefix_hasData_returnNonEmptyArray() throws {
-        fileManager.contentsOfDirectoryReturns = ["test"]
+        try test_saveValue_noExistingFolder_fileManagerCreateNewFolder()
+        fileManager.contentsOfDirectoryReturns = ["\(key)"]
         fileManager.contentsAtPathReturns = Data()
         let result = try sut.fetchValues(with: key)
         XCTAssertEqual(result.count, 1)
@@ -154,13 +146,14 @@ private final class FileManagerSpy: FileManager {
 
     override func removeItem(atPath path: String) throws {
         removedPath = path
+        try super.removeItem(atPath: path)
     }
 
     override func contentsOfDirectory(atPath path: String) throws -> [String] {
-        return contentsOfDirectoryReturns
+        contentsOfDirectoryReturns
     }
 
     override func contents(atPath path: String) -> Data? {
-        return contentsAtPathReturns
+        contentsAtPathReturns
     }
 }
