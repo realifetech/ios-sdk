@@ -17,6 +17,8 @@ public class RealifeTech {
     public static var Content: Content!
     public static var Sell: Sell!
 
+    private static var graphQLManager: GraphQLManageable!
+
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
     }
@@ -37,7 +39,7 @@ public class RealifeTech {
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
-        let graphQLManager = CoreFactory.makeGraphQLManager(
+        graphQLManager = CoreFactory.makeGraphQLManager(
             configuration: configuration,
             tokenHelper: apiHelper,
             deviceId: deviceHelper.deviceId,
@@ -50,5 +52,10 @@ public class RealifeTech {
         Communicate = CommunicateFactory.makeCommunicateModule()
         Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
         Sell = SellFactory.makeSellModule(graphQLManager: graphQLManager)
+    }
+
+    /// Clear the persistent response for all GraphQL queries and mutations
+    public static func clearAllCachedData() {
+        graphQLManager.clearAllCachedData()
     }
 }

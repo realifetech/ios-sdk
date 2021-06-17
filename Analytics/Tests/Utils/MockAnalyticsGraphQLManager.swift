@@ -42,5 +42,5 @@ final class MockAnalyticsGraphQLManager: GraphQLManageable {
         }
     }
 
-    func clearAllCache() { }
+    func clearAllCachedData() { }
 }

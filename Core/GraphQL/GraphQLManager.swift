@@ -19,7 +19,7 @@ public protocol GraphQLManageable {
         mutation: Query,
         completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     )
-    func clearAllCache()
+    func clearAllCachedData()
 }
 
 public class GraphQLManager {
@@ -62,7 +62,7 @@ extension GraphQLManager: GraphQLManageable {
         }
     }
 
-    public func clearAllCache() {
+    public func clearAllCachedData() {
         client.clearCache()
     }
 }

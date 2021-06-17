@@ -27,5 +27,5 @@ final class MockAudienceGraphQLManager: GraphQLManageable {
         completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     ) { }
 
-    func clearAllCache() { }
+    func clearAllCachedData() { }
 }
