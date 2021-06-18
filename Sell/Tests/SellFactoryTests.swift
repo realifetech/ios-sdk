@@ -13,7 +13,8 @@ import Apollo
 final class SellFactoryTests: XCTestCase {
 
     func test_makeSellModule_returnsSellImplementing() {
-        let result = SellFactory.makeSellModule(graphQLManager: MockContentGraphQLManager())
+        let graphQLManager = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
+        let result = SellFactory.makeSellModule(graphQLManager: graphQLManager)
         XCTAssertTrue(result is SellImplementing)
         XCTAssertTrue(result.product is ProductImplementing)
     }

@@ -13,7 +13,7 @@ final class AnalyticsFactoryTests: XCTestCase {
 
     func test_makeModule() {
         let module = AnalyticsFactory.makeAnalyticsModule(
-            graphQLManager: MockAnalyticsGraphQLManager(),
+            graphQLManager: MockGraphQLManager<PutAnalyticEventMutationDataType>(),
             reachabilityHelper: MockReachabilityChecker(),
             deviceRegistering: MockDeviceRegistering())
         XCTAssertTrue(module is AnalyticsImplementing)
@@ -26,9 +26,10 @@ final class AnalyticsFactoryTests: XCTestCase {
             action: "hundred",
             version: "dalmations",
             timestamp: Date())
-        let graphQLManager = MockAnalyticsGraphQLManager()
+        let graphQLManager = MockGraphQLManager<PutAnalyticEventMutationDataType>()
         let mockReachabilityChecker = MockReachabilityChecker()
         mockReachabilityChecker.hasNetworkConnection = true
+        graphQLManager.resultReturns = .success(AnalyticsLoggerTests().makeStubAnalyticsEventMutation())
         let module = AnalyticsFactory.makeAnalyticsModule(
             graphQLManager: graphQLManager,
             reachabilityHelper: mockReachabilityChecker,
