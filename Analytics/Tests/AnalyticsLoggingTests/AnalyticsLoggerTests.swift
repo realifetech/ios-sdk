@@ -205,11 +205,11 @@ final class AnalyticsLoggerTests: XCTestCase {
         XCTAssertTrue(mockQueue.isEmpty)
     }
 
-//    func test_logEvent_leavesInQueueOnFailure() {
-//        test_logEvent_hasNoNetworkConnection_delaysSingleItemUntilConnected()
-//        XCTAssertEqual(mockQueue.receivedQueueActions.first, .doNothing)
-//        XCTAssertEqual(mockQueue.receivedQueueActions.last, .removeFirst)
-//    }
+    func test_logEvent_leavesInQueueOnFailure() {
+        test_logEvent_hasNoNetworkConnection_delaysSingleItemUntilConnected()
+        XCTAssertEqual(mockQueue.receivedQueueActions.first, .doNothing)
+        XCTAssertEqual(mockQueue.receivedQueueActions.last, .removeFirst)
+    }
 
     func test_logEvent_willContinueWhenGivenMoreItems() {
         test_init_hasItemInPersistentQueue_sendItem()
