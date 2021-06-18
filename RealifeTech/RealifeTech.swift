@@ -1,5 +1,5 @@
 //
-//  SDKFactory.swift
+//  RealifeTech.swift
 //  RealifeTech-SDK
 //
 //  Created by Realife Tech on 23/09/2020.
