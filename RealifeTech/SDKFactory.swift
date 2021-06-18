@@ -42,8 +42,7 @@ public class RealifeTech {
         graphQLManager = CoreFactory.makeGraphQLManager(
             configuration: configuration,
             tokenHelper: apiHelper,
-            deviceId: deviceHelper.deviceId,
-            reachabilityHelper: reachabilityChecker)
+            deviceId: deviceHelper.deviceId)
         Audiences = AudiencesImplementing(graphQLManager: graphQLManager)
         Analytics = AnalyticsFactory.makeAnalyticsModule(
             graphQLManager: graphQLManager,

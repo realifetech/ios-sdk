@@ -12,14 +12,16 @@ import XCTest
 
 final class AudiencesTests: XCTestCase {
 
+    private typealias AudienceQueryDataType = ApolloType.BelongsToAudienceWithExternalIdQuery.Data
+
     func test_init_successful() {
-        let spy = MockAudienceGraphQLManager()
+        let spy = MockGraphQLManager<AudienceQueryDataType>()
         let sut = AudiencesImplementing(graphQLManager: spy)
         XCTAssertNotNil(sut.graphQLManager)
     }
 
     func test_deviceIsMemberOfAudience_isCalled() {
-        let spy = MockAudienceGraphQLManager()
+        let spy = MockGraphQLManager<AudienceQueryDataType>()
         let sut = AudiencesImplementing(graphQLManager: spy)
         sut.deviceIsMemberOfAudience(audienceId: "") { _ in }
         XCTAssertNotNil(sut.graphQLManager)

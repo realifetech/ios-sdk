@@ -95,9 +95,8 @@
 		9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */; };
 		9606EDA9267B7CE800ED24D0 /* GraphQLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */; };
 		9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */; };
-		9606EDB0267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDAF267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift */; };
-		9606EDB3267B8AAB00ED24D0 /* MockContentGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDB2267B8AAA00ED24D0 /* MockContentGraphQLManager.swift */; };
-		9606EDB5267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDB4267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift */; };
+		9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */; };
+		9606EDC0267CBF4E00ED24D0 /* DummyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDBF267CBF4E00ED24D0 /* DummyError.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -313,9 +312,8 @@
 		9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellFactoryTests.swift; sourceTree = "<group>"; };
 		9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLFactory.swift; sourceTree = "<group>"; };
 		9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManager.swift; sourceTree = "<group>"; };
-		9606EDAF267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnalyticsGraphQLManager.swift; sourceTree = "<group>"; };
-		9606EDB2267B8AAA00ED24D0 /* MockContentGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContentGraphQLManager.swift; sourceTree = "<group>"; };
-		9606EDB4267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAudienceGraphQLManager.swift; sourceTree = "<group>"; };
+		9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphQLManager.swift; sourceTree = "<group>"; };
+		9606EDBF267CBF4E00ED24D0 /* DummyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyError.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -459,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */,
-				9606EDB4267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -477,7 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				488A67C12541D8AA005C030E /* MockAnalyticsLogger.swift */,
-				9606EDAF267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -701,10 +697,11 @@
 			path = Interceptors;
 			sourceTree = "<group>";
 		};
-		9606EDB1267B8A9500ED24D0 /* Utils */ = {
+		9606EDBC267CA69300ED24D0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9606EDB2267B8AAA00ED24D0 /* MockContentGraphQLManager.swift */,
+				9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */,
+				9606EDBF267CBF4E00ED24D0 /* DummyError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1051,6 +1048,7 @@
 		961C4248260882C8001D8467 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9606EDBC267CA69300ED24D0 /* Utils */,
 				961C4249260882C8001D8467 /* CoreConfigurationTests.swift */,
 			);
 			path = Tests;
@@ -1135,7 +1133,6 @@
 				968CA69A25EF95040000C2E2 /* ContentFactoryTests.swift */,
 				968CA69E25EF96600000C2E2 /* ContentImplementingTests.swift */,
 				968CA6A325EF9B640000C2E2 /* WebPageTests */,
-				9606EDB1267B8A9500ED24D0 /* Utils */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1552,7 +1549,6 @@
 				9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */,
 				961C42C726088371001D8467 /* DiskCacheCodableInterfaceTests.swift in Sources */,
 				961C4295260882FE001D8467 /* DiskStorageTests.swift in Sources */,
-				9606EDB5267B8B4C00ED24D0 /* MockAudienceGraphQLManager.swift in Sources */,
 				961C429F26088312001D8467 /* DeviceRequesterTests.swift in Sources */,
 				961C437026089377001D8467 /* APIRequesterTests.swift in Sources */,
 				961C438026089385001D8467 /* StandardSenderResponseTests.swift in Sources */,
@@ -1579,11 +1575,11 @@
 				488A67C22541D8AA005C030E /* MockAnalyticsLogger.swift in Sources */,
 				961C437326089379001D8467 /* EmptyTokenManagerTests.swift in Sources */,
 				48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */,
-				9606EDB3267B8AAB00ED24D0 /* MockContentGraphQLManager.swift in Sources */,
-				9606EDB0267B897700ED24D0 /* MockAnalyticsGraphQLManager.swift in Sources */,
 				961C42A926088327001D8467 /* ReachabilityCheckerTests.swift in Sources */,
 				488A67C62541DA8B005C030E /* AnalyticsLoggerTests.swift in Sources */,
 				961C42982608830E001D8467 /* DeviceTokenTests.swift in Sources */,
+				9606EDC0267CBF4E00ED24D0 /* DummyError.swift in Sources */,
+				9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */,
 				961C42C42608836E001D8467 /* RemoteDiskCacheDataProvidingTests.swift in Sources */,
 				961C436326089346001D8467 /* AuthorisationWorkerTests.swift in Sources */,
 				961C4290260882FB001D8467 /* CodableStorageTests.swift in Sources */,

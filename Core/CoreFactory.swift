@@ -46,8 +46,7 @@ public enum CoreFactory {
     public static func makeGraphQLManager(
         configuration: CoreConfiguration,
         tokenHelper: APITokenManagable,
-        deviceId: String,
-        reachabilityHelper: ReachabilityChecking
+        deviceId: String
     ) -> GraphQLManageable {
         return GraphQLFactory.makeGraphQLManager(
             deviceId: deviceId,

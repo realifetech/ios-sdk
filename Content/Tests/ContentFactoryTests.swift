@@ -13,7 +13,8 @@ import Apollo
 final class ContentFactoryTests: XCTestCase {
 
     func test_makeContentModule_setGraphQLDispatcher() {
-        let sut = ContentFactory.makeContentModule(graphQLManager: MockContentGraphQLManager())
-        XCTAssertTrue((sut as? ContentImplementing)?.graphQLManager is MockContentGraphQLManager)
+        let graphQLManager = MockGraphQLManager<ContentQueryDataType>()
+        let sut = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
+        XCTAssertTrue((sut as? ContentImplementing)?.graphQLManager is MockGraphQLManager<ContentQueryDataType>)
     }
 }
