@@ -81,12 +81,13 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_onSuccess_reportsSuccessToCaller() {
-        let expectation = XCTestExpectation(description: "Event sending completed")
+        let expectation = XCTestExpectation(description: "Event sending fulfilled")
         mockReachabilityChecker.hasNetworkConnection = true
         let sut = makeSut()
         sut.logEvent(testEvent) { result in
             switch result {
-            case .success:
+            case .success(let isSuccess):
+                XCTAssertTrue(isSuccess)
                 expectation.fulfill()
             case .failure:
                 XCTFail("We should have sucessfully sent this")
@@ -96,13 +97,14 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_onNotSuccess_delaySingleItem() {
-        let expectation = XCTestExpectation(description: "Event sending completed")
+        let expectation = XCTestExpectation(description: "Event sending fulfilled")
         mockReachabilityChecker.hasNetworkConnection = true
         mockGraphQLManager.successReturns = false
         let sut = makeSut()
         sut.logEvent(testEvent) { result in
             switch result {
-            case .success:
+            case .success(let isSuccess):
+                XCTAssertFalse(isSuccess)
                 expectation.fulfill()
             case .failure:
                 XCTFail("We should have sucessfully sent this")
