@@ -22,9 +22,9 @@ final class MockAnalyticsGraphQLManager: GraphQLManageable {
         completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     ) { }
 
-    func dispatchMutation<Query: GraphQLMutation>(
-        mutation: Query,
-        completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
+    func dispatchMutation<Mutation: GraphQLMutation>(
+        mutation: Mutation,
+        completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     ) {
         dispatchMutationIsCalled = true
         if shouldReturnFailure {
@@ -32,8 +32,8 @@ final class MockAnalyticsGraphQLManager: GraphQLManageable {
         } else {
             let putAnalyticEvent = ApolloType.PutAnalyticEventMutation.Data.PutAnalyticEvent(success: successReturns)
             let data = ApolloType.PutAnalyticEventMutation.Data(putAnalyticEvent: putAnalyticEvent)
-            let result = GraphQLResult<Query.Data>(
-                data: data as? Query.Data,
+            let result = GraphQLResult<Mutation.Data>(
+                data: data as? Mutation.Data,
                 extensions: nil,
                 errors: nil,
                 source: .server,

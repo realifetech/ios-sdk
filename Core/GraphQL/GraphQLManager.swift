@@ -15,9 +15,9 @@ public protocol GraphQLManageable {
         cachePolicy: GraphNetworkCachePolicy,
         completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     )
-    func dispatchMutation<Query: GraphQLMutation>(
-        mutation: Query,
-        completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
+    func dispatchMutation<Mutation: GraphQLMutation>(
+        mutation: Mutation,
+        completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     )
     func clearAllCache()
 }
@@ -48,9 +48,9 @@ extension GraphQLManager: GraphQLManageable {
         }
     }
 
-    public func dispatchMutation<Query: GraphQLMutation>(
-        mutation: Query,
-        completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
+    public func dispatchMutation<Mutation: GraphQLMutation>(
+        mutation: Mutation,
+        completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     ) {
         client.perform(mutation: mutation) { result in
             switch result {

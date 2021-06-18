@@ -22,9 +22,9 @@ final class MockAudienceGraphQLManager: GraphQLManageable {
         dispatchQueryIsCalled = true
     }
 
-    func dispatchMutation<Query: GraphQLMutation>(
-        mutation: Query,
-        completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
+    func dispatchMutation<Mutation: GraphQLMutation>(
+        mutation: Mutation,
+        completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     ) { }
 
     func clearAllCache() { }
