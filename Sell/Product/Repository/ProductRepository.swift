@@ -12,7 +12,7 @@ public final class ProductRepository {
 
     private let graphQLManager: GraphQLManageable
 
-    public init(graphQLManager: GraphQLManageable) {
+    init(graphQLManager: GraphQLManageable) {
         self.graphQLManager = graphQLManager
     }
 }
