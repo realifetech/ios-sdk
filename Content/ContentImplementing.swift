@@ -10,10 +10,10 @@ import Foundation
 
 public class ContentImplementing: Content {
 
-    let dispatcher: GraphQLDispatching
+    let graphQLManager: GraphQLManageable
 
-    public init(dispatcher: GraphQLDispatching) {
-        self.dispatcher = dispatcher
+    public init(graphQLManager: GraphQLManageable) {
+        self.graphQLManager = graphQLManager
     }
 
     public func getWebPage(
@@ -21,7 +21,7 @@ public class ContentImplementing: Content {
         completion: @escaping (Result<WebPage, Error>) -> Void
     ) {
         let pageType = ApolloWebPageType(rawValue: type.rawValue)
-        dispatcher.dispatch(
+        graphQLManager.dispatch(
             query: ApolloType.GetWebPageByTypeQuery(type: pageType),
             cachePolicy: .returnCacheDataAndFetch) { result in
             switch result {

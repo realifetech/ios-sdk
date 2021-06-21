@@ -7,27 +7,42 @@
 //
 
 import XCTest
+import Apollo
 @testable import RealifeTech
 
-// TODO: Add test of failure conditions from the API - implentation is not complete ATM
+typealias PutAnalyticEventMutationDataType = ApolloType.PutAnalyticEventMutation.Data
+
 final class AnalyticsLoggerTests: XCTestCase {
 
-    private var mockEventSending: MockAnalyticsLogger!
+    private var mockGraphQLManager: MockGraphQLManager<PutAnalyticEventMutationDataType>!
     private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
     private var mockReachabilityChecker: MockReachabilityChecker!
     private var mockDeviceRegistering: MockDeviceRegistering!
 
+    private let testEvent = AnalyticEvent(
+        type: "We",
+        action: "Want",
+        version: "Your")
+
     override func setUp() {
         super.setUp()
-        self.mockEventSending = MockAnalyticsLogger()
-        self.mockReachabilityChecker = MockReachabilityChecker()
-        self.mockQueue = MockQueue<AnalyticEventAndCompletion>()
-        self.mockDeviceRegistering = MockDeviceRegistering()
+        mockGraphQLManager = MockGraphQLManager<PutAnalyticEventMutationDataType>()
+        mockReachabilityChecker = MockReachabilityChecker()
+        mockQueue = MockQueue<AnalyticEventAndCompletion>()
+        mockDeviceRegistering = MockDeviceRegistering()
+    }
+
+    override func tearDown() {
+        mockDeviceRegistering = nil
+        mockQueue = nil
+        mockReachabilityChecker = nil
+        mockGraphQLManager = nil
+        super.tearDown()
     }
 
     private func makeSut() -> AnalyticsLogger {
         return AnalyticsLogger(
-            dispatcher: mockEventSending,
+            graphQLManager: mockGraphQLManager,
             reachabilityHelper: mockReachabilityChecker,
             persistentQueue: AnyQueue(mockQueue),
             failureDebounceSeconds: 0.01,
@@ -39,14 +54,27 @@ final class AnalyticsLoggerTests: XCTestCase {
             .map { AnalyticEvent(type: $0, action: $0, version: $0) }
     }
 
-    func test_init_emptyStorageDoesNothing() {
+    func makeStubAnalyticsEventMutation(
+        shouldReturnSuccess: Bool = true
+    ) -> GraphQLResult<PutAnalyticEventMutationDataType> {
+        let putAnalyticEvent = ApolloType.PutAnalyticEventMutation.Data.PutAnalyticEvent(success: shouldReturnSuccess)
+        let data = PutAnalyticEventMutationDataType(putAnalyticEvent: putAnalyticEvent)
+        return GraphQLResult<PutAnalyticEventMutationDataType>(
+            data: data,
+            extensions: nil,
+            errors: nil,
+            source: .server,
+            dependentKeys: nil)
+    }
+
+    func test_init_emptyStorage_doNothing() {
         mockQueue.underlyingStorage = []
         mockReachabilityChecker.hasNetworkConnection = true
         _ = makeSut()
-        XCTAssertTrue(mockEventSending.eventsLogged.isEmpty)
+        XCTAssertFalse(mockGraphQLManager.dispatchMutationIsCalled)
     }
 
-    func test_init_sendsItemsFromStorage() {
+    func test_init_hasItemInPersistentQueue_sendItem() {
         let testEvents = makeEvents(from: ["eventOne", "eventTwo"])
         let expectation = XCTestExpectation(description: "Queue was emptied")
         mockQueue.underlyingStorage = testEvents.map {
@@ -54,74 +82,108 @@ final class AnalyticsLoggerTests: XCTestCase {
         }
         mockQueue.queueWasEmptiedExpectation = expectation
         mockReachabilityChecker.hasNetworkConnection = true
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         _ = makeSut()
         wait(for: [expectation], timeout: 0.01)
-        XCTAssertEqual(testEvents, mockEventSending.eventsLogged)
+        XCTAssertTrue(mockGraphQLManager.dispatchMutationIsCalled)
     }
 
-    func test_logEvent_sendsSingleItem() {
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
+    func test_logEvent_loopIsNotRunning_sendItem() {
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
         sut.logEvent(testEvent) { _ in expectation.fulfill() }
         wait(for: [expectation], timeout: 0.01)
-        XCTAssertEqual([testEvent], self.mockEventSending.eventsLogged)
+        XCTAssertTrue(mockGraphQLManager.dispatchMutationIsCalled)
     }
 
     func test_logEvent_onSuccess_reportsSuccessToCaller() {
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
-        let expectation = XCTestExpectation(description: "Event sending completed")
+        let expectation = XCTestExpectation(description: "Event sending fulfilled")
         mockReachabilityChecker.hasNetworkConnection = true
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent, completion: { result in
+        sut.logEvent(testEvent) { result in
             switch result {
-            case .success: expectation.fulfill()
-            case .failure: XCTFail("We should have sucessfully sent this")
+            case .success(let isSuccess):
+                XCTAssertTrue(isSuccess)
+                expectation.fulfill()
+            case .failure:
+                XCTFail("We should have sucessfully sent this")
             }
-        })
+        }
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_logEvent_delaysSingleItemUntilConnected() {
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
-        let expectation = XCTestExpectation(description: "Event sending completed")
-        mockReachabilityChecker.hasNetworkConnection = false
+    func test_logEvent_onNotSuccess_delaySingleItem() {
+        let expectation = XCTestExpectation(description: "Event sending fulfilled")
+        mockReachabilityChecker.hasNetworkConnection = true
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation(shouldReturnSuccess: false))
         let sut = makeSut()
-        sut.logEvent(testEvent, completion: { result in
+        sut.logEvent(testEvent) { result in
+            switch result {
+            case .success(let isSuccess):
+                XCTAssertFalse(isSuccess)
+                expectation.fulfill()
+            case .failure:
+                XCTFail("We should have sucessfully sent this")
+            }
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_logEvent_onFailure_delaySingleItem() {
+        let expectation = XCTestExpectation(description: "Event sending completed")
+        mockReachabilityChecker.hasNetworkConnection = true
+        mockGraphQLManager.resultReturns = .failure(DummyError.failure)
+        let sut = makeSut()
+        sut.logEvent(testEvent) { result in
             switch result {
             case .success:
-                XCTAssertEqual([testEvent], self.mockEventSending.eventsLogged)
+                XCTFail("We should have faliure sent this")
+            case .failure:
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_logEvent_hasNoNetworkConnection_delaysSingleItemUntilConnected() {
+        let expectation = XCTestExpectation(description: "Event sending completed")
+        mockReachabilityChecker.hasNetworkConnection = false
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
+        let sut = makeSut()
+        sut.logEvent(testEvent) { result in
+            switch result {
+            case .success:
+                XCTAssertTrue(self.mockGraphQLManager.dispatchMutationIsCalled)
             case .failure:
                 XCTFail("We should have sucessfully sent this")
             }
             expectation.fulfill()
-        })
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) {
             self.mockReachabilityChecker.hasNetworkConnection = true
         }
         wait(for: [expectation], timeout: 0.02)
     }
 
-    func test_logEvent_delaysSingleItemUntilRegistered() {
-        let testEvent = AnalyticEvent(
-            type: "Circuits",
-            action: "Burn",
-            version: "Golden")
+    func test_logEvent_deviceHasntBeenRegistered_delaysSingleItemUntilRegistered() {
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         mockDeviceRegistering.shouldBeReady = false
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent, completion: { result in
+        sut.logEvent(testEvent) { result in
             switch result {
             case .success:
-                XCTAssertEqual([testEvent], self.mockEventSending.eventsLogged)
+                XCTAssertTrue(self.mockGraphQLManager.dispatchMutationIsCalled)
             case .failure:
                 XCTFail("We should have sucessfully sent this")
             }
             expectation.fulfill()
-        })
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.005) {
             self.mockDeviceRegistering.shouldBeReady = true
         }
         wait(for: [expectation], timeout: 0.02)
@@ -129,9 +191,9 @@ final class AnalyticsLoggerTests: XCTestCase {
 
     func test_logEvent_addsItemsToQueue() {
         let expectation = XCTestExpectation(description: "Item was added to queue")
-        let testEvent = AnalyticEvent(type: "We", action: "Want", version: "Your")
         mockQueue.addedToQueueExpectation = expectation
         mockReachabilityChecker.hasNetworkConnection = false
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
         sut.logEvent(testEvent) { _ in }
         wait(for: [expectation], timeout: 0.01)
@@ -144,15 +206,14 @@ final class AnalyticsLoggerTests: XCTestCase {
     }
 
     func test_logEvent_leavesInQueueOnFailure() {
-        test_logEvent_delaysSingleItemUntilConnected()
+        test_logEvent_hasNoNetworkConnection_delaysSingleItemUntilConnected()
         XCTAssertEqual(mockQueue.receivedQueueActions.first, .doNothing)
         XCTAssertEqual(mockQueue.receivedQueueActions.last, .removeFirst)
     }
 
     func test_logEvent_willContinueWhenGivenMoreItems() {
-        test_init_sendsItemsFromStorage()
-        mockEventSending.eventsLogged = []
-        test_logEvent_sendsSingleItem()
+        test_init_hasItemInPersistentQueue_sendItem()
+        test_logEvent_loopIsNotRunning_sendItem()
     }
 }
 

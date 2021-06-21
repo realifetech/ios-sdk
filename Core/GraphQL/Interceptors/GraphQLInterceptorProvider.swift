@@ -1,5 +1,5 @@
 //
-//  GraphNetworkInterceptorProvider.swift
+//  GraphQLInterceptorProvider.swift
 //  RealifeTech-CoreSDK
 //
 //  Created by Mickey Lee on 02/02/2021.
@@ -8,7 +8,7 @@
 import Foundation
 import Apollo
 
-struct GraphNetworkInterceptorProvider: InterceptorProvider {
+struct GraphQLInterceptorProvider: InterceptorProvider {
 
     let store: ApolloStore
     let client: URLSessionClient
