@@ -6,26 +6,26 @@ import Foundation
 
 /// ApolloType namespace
 public extension ApolloType {
-  final class GetOrdersQuery: GraphQLQuery {
+  final class GetMyOrdersQuery: GraphQLQuery {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query getOrders($pageSize: Int!, $page: Int = 1) {
-        me {
+      query getMyOrders($pageSize: Int!, $page: Int = 1) {
+        getMyOrders(pageSize: $pageSize, page: $page) {
           __typename
-          orders(pageSize: $pageSize, page: $page) {
+          edges {
             __typename
-            ...FragmentOrders
+            ...FragmentOrder
           }
+          nextPage
         }
       }
       """
 
-    public let operationName: String = "getOrders"
+    public let operationName: String = "getMyOrders"
 
     public var queryDocument: String {
       var document: String = operationDefinition
-      document.append("\n" + FragmentOrders.fragmentDefinition)
       document.append("\n" + FragmentOrder.fragmentDefinition)
       document.append("\n" + FragmentProduct.fragmentDefinition)
       document.append("\n" + FragmentProductModifierItem.fragmentDefinition)
@@ -57,7 +57,7 @@ public extension ApolloType {
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("me", type: .object(Me.selections)),
+          GraphQLField("getMyOrders", arguments: ["pageSize": GraphQLVariable("pageSize"), "page": GraphQLVariable("page")], type: .object(GetMyOrder.selections)),
         ]
       }
 
@@ -67,26 +67,27 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(me: Me? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Query", "me": me.flatMap { (value: Me) -> ResultMap in value.resultMap }])
+      public init(getMyOrders: GetMyOrder? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getMyOrders": getMyOrders.flatMap { (value: GetMyOrder) -> ResultMap in value.resultMap }])
       }
 
-      public var me: Me? {
+      public var getMyOrders: GetMyOrder? {
         get {
-          return (resultMap["me"] as? ResultMap).flatMap { Me(unsafeResultMap: $0) }
+          return (resultMap["getMyOrders"] as? ResultMap).flatMap { GetMyOrder(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "me")
+          resultMap.updateValue(newValue?.resultMap, forKey: "getMyOrders")
         }
       }
 
-      public struct Me: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["Context"]
+      public struct GetMyOrder: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["OrderEdge"]
 
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("orders", arguments: ["pageSize": GraphQLVariable("pageSize"), "page": GraphQLVariable("page")], type: .object(Order.selections)),
+            GraphQLField("edges", type: .list(.object(Edge.selections))),
+            GraphQLField("nextPage", type: .scalar(Int.self)),
           ]
         }
 
@@ -96,8 +97,8 @@ public extension ApolloType {
           self.resultMap = unsafeResultMap
         }
 
-        public init(orders: Order? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Context", "orders": orders.flatMap { (value: Order) -> ResultMap in value.resultMap }])
+        public init(edges: [Edge?]? = nil, nextPage: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "OrderEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, "nextPage": nextPage])
         }
 
         public var __typename: String {
@@ -109,22 +110,31 @@ public extension ApolloType {
           }
         }
 
-        public var orders: Order? {
+        public var edges: [Edge?]? {
           get {
-            return (resultMap["orders"] as? ResultMap).flatMap { Order(unsafeResultMap: $0) }
+            return (resultMap["edges"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Edge?] in value.map { (value: ResultMap?) -> Edge? in value.flatMap { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) } } }
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "orders")
+            resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
           }
         }
 
-        public struct Order: GraphQLSelectionSet {
-          public static let possibleTypes: [String] = ["OrderEdge"]
+        public var nextPage: Int? {
+          get {
+            return resultMap["nextPage"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "nextPage")
+          }
+        }
+
+        public struct Edge: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Order"]
 
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLFragmentSpread(FragmentOrders.self),
+              GraphQLFragmentSpread(FragmentOrder.self),
             ]
           }
 
@@ -159,9 +169,9 @@ public extension ApolloType {
               self.resultMap = unsafeResultMap
             }
 
-            public var fragmentOrders: FragmentOrders {
+            public var fragmentOrder: FragmentOrder {
               get {
-                return FragmentOrders(unsafeResultMap: resultMap)
+                return FragmentOrder(unsafeResultMap: resultMap)
               }
               set {
                 resultMap += newValue.resultMap

@@ -17,5 +17,6 @@ final class SellFactoryTests: XCTestCase {
         let result = SellFactory.makeSellModule(graphQLManager: graphQLManager)
         XCTAssertTrue(result is SellImplementing)
         XCTAssertTrue(result.product is ProductRepository)
+        XCTAssertTrue(result.fulfilmentPoint is FulfilmentPointRepository)
     }
 }
