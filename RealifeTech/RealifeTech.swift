@@ -1,5 +1,5 @@
 //
-//  SDKFactory.swift
+//  RealifeTech.swift
 //  RealifeTech-SDK
 //
 //  Created by Realife Tech on 23/09/2020.
@@ -16,6 +16,8 @@ public class RealifeTech {
     public static var Communicate: Communicate!
     public static var Content: Content!
     public static var Sell: Sell!
+
+    private static var graphQLManager: GraphQLManageable!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -37,20 +39,22 @@ public class RealifeTech {
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
-        let dispatcher = CoreFactory.makeGraphQLDispatcher(
+        graphQLManager = CoreFactory.makeGraphQLManager(
             configuration: configuration,
             tokenHelper: apiHelper,
-            deviceId: deviceHelper.deviceId,
-            reachabilityHelper: reachabilityChecker)
-        Audiences = AudiencesImplementing(dispatcher: dispatcher)
-        if let dispatcher = dispatcher as? GraphQLDispatcher {
-            Analytics = AnalyticsFactory.makeAnalyticsModule(
-                dispatcher: dispatcher,
-                reachabilityHelper: reachabilityChecker,
-                deviceRegistering: General)
-        }
+            deviceId: deviceHelper.deviceId)
+        Audiences = AudiencesImplementing(graphQLManager: graphQLManager)
+        Analytics = AnalyticsFactory.makeAnalyticsModule(
+            graphQLManager: graphQLManager,
+            reachabilityHelper: reachabilityChecker,
+            deviceRegistering: General)
         Communicate = CommunicateFactory.makeCommunicateModule()
-        Content = ContentFactory.makeContentModule(graphQLDispatcher: dispatcher)
-        Sell = SellFactory.makeSellModule(graphQLDispatcher: dispatcher)
+        Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
+        Sell = SellFactory.makeSellModule(graphQLManager: graphQLManager)
+    }
+
+    /// Clear the persistent response for all GraphQL queries and mutations
+    public static func clearAllCachedData() {
+        graphQLManager.clearAllCachedData()
     }
 }

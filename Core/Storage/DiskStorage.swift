@@ -75,8 +75,8 @@ extension DiskStorage: ReadableStorage {
             includingPropertiesForKeys: nil,
             options: [.skipsHiddenFiles])
         let filteredData: [Data] = fileArray
-            .filter({ ($0.lastPathComponent.contains(prefix)) })
-            .compactMap({ fileManager.contents(atPath: $0.path) })
+            .filter { ($0.lastPathComponent.contains(prefix)) }
+            .compactMap { fileManager.contents(atPath: $0.path) }
         if filteredData.isEmpty {
             throw StorageError.notFound
         } else {

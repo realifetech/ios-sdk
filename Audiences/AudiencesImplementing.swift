@@ -10,14 +10,14 @@ import Foundation
 
 public class AudiencesImplementing: AudienceChecking {
 
-    let dispatcher: GraphQLDispatching
+    let graphQLManager: GraphQLManageable
 
-    public init(dispatcher: GraphQLDispatching) {
-        self.dispatcher = dispatcher
+    public init(graphQLManager: GraphQLManageable) {
+        self.graphQLManager = graphQLManager
     }
 
     public func deviceIsMemberOfAudience(audienceId: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        dispatcher.dispatch(
+        graphQLManager.dispatch(
             query: ApolloType.BelongsToAudienceWithExternalIdQuery(externalAudienceId: audienceId),
             cachePolicy: .returnCacheDataElseFetch) { result in
             switch result {

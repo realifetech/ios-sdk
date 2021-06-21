@@ -10,37 +10,57 @@ import XCTest
 import Apollo
 @testable import RealifeTech
 
+typealias ContentQueryDataType = ApolloType.GetWebPageByTypeQuery.Data
+
 final class ContentImplementingTests: XCTestCase {
 
-    private var dispatcher: MockGraphQLDispatcher!
+    private let dummyUrl = "https://www.google.com"
+    private var graphQLManager: MockGraphQLManager<ContentQueryDataType>!
     private var sut: ContentImplementing!
 
     override func setUp() {
         super.setUp()
-        dispatcher = MockGraphQLDispatcher()
-        sut = ContentImplementing(dispatcher: dispatcher)
+        graphQLManager = MockGraphQLManager<ContentQueryDataType>()
+        sut = ContentImplementing(graphQLManager: graphQLManager)
     }
 
     override func tearDown() {
         sut = nil
-        dispatcher = nil
+        graphQLManager = nil
         super.tearDown()
+    }
+
+    private func makeQueryResultData(
+        shouldReturnConstructionError: Bool = false,
+        shouldReturnNilUrl: Bool = false
+    ) -> GraphQLResult<ContentQueryDataType> {
+        let url = shouldReturnConstructionError ? "" : dummyUrl
+        let getWebPageType = ContentQueryDataType.GetWebPageByType(url: url)
+        let data = ContentQueryDataType(
+            getWebPageByType: shouldReturnNilUrl ? nil : getWebPageType)
+        return GraphQLResult<ContentQueryDataType>(
+            data: data,
+            extensions: nil,
+            errors: nil,
+            source: .server,
+            dependentKeys: nil)
     }
 
     func test_getWebPage_queryReturnsValidUrl_completeWithWebPage() {
         let expectation = XCTestExpectation(description: "Completion gets fulfilled")
+        graphQLManager.resultReturns = .success(makeQueryResultData())
         sut.getWebPage(forType: .about) { result in
             guard case let .success(webPage) = result else {
                 return XCTFail("This test should return success case")
             }
-            XCTAssertEqual(webPage.url.absoluteString, dummyUrl)
+            XCTAssertEqual(webPage.url.absoluteString, self.dummyUrl)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
     }
 
     func test_getWebPage_queryReturnsNilUrl_completeWithEmptyError() {
-        dispatcher.shouldReturnNilUrl = true
+        graphQLManager.resultReturns = .success(makeQueryResultData(shouldReturnNilUrl: true))
         let expectation = XCTestExpectation(description: "Completion gets fulfilled")
         sut.getWebPage(forType: .about) { result in
             guard
@@ -57,7 +77,7 @@ final class ContentImplementingTests: XCTestCase {
     }
 
     func test_getWebPage_queryReturnsInvalidUrl_completeWithConstructionUrlFailureError() {
-        dispatcher.shouldReturnConstructionError = true
+        graphQLManager.resultReturns = .success(makeQueryResultData(shouldReturnConstructionError: true))
         let expectation = XCTestExpectation(description: "Completion gets fulfilled")
         sut.getWebPage(forType: .about) { result in
             guard
@@ -74,7 +94,7 @@ final class ContentImplementingTests: XCTestCase {
     }
 
     func test_getWebPage_queryReturnsNormalError_completeWithNormalError() {
-        dispatcher.shouldReturnNormalError = true
+        graphQLManager.resultReturns = .failure(DummyError.failure)
         let expectation = XCTestExpectation(description: "Completion gets fulfilled")
         sut.getWebPage(forType: .about) { result in
             guard case let .failure(error) = result else {
@@ -85,46 +105,4 @@ final class ContentImplementingTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
-}
-
-// MARK: - Mocks
-
-private let dummyUrl = "https://www.google.com"
-
-enum DummyError: Error {
-    case failure
-}
-
-private final class MockGraphQLDispatcher: GraphQLDispatching {
-
-    var shouldReturnNormalError = false
-    var shouldReturnNilUrl = false
-    var shouldReturnConstructionError = false
-
-    func dispatch<Query: GraphQLQuery>(
-        query: Query,
-        cachePolicy: GraphNetworkCachePolicy,
-        completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
-    ) {
-        if shouldReturnNormalError {
-            completion(.failure(DummyError.failure))
-        } else {
-            let url = shouldReturnConstructionError ? "" : dummyUrl
-            let getWebPageType = ApolloType.GetWebPageByTypeQuery.Data.GetWebPageByType(url: url)
-            let data = ApolloType.GetWebPageByTypeQuery.Data(
-                getWebPageByType: shouldReturnNilUrl ? nil : getWebPageType)
-            let result = GraphQLResult<Query.Data>(
-                data: data as? Query.Data,
-                extensions: nil,
-                errors: nil,
-                source: .cache,
-                dependentKeys: nil)
-            completion(.success(result))
-        }
-    }
-
-    func dispatchMutation<Query: GraphQLMutation>(
-        mutation: Query,
-        completion:  @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
-    ) { }
 }

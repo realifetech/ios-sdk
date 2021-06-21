@@ -13,22 +13,9 @@ import Apollo
 final class SellFactoryTests: XCTestCase {
 
     func test_makeSellModule_returnsSellImplementing() {
-        let result = SellFactory.makeSellModule(graphQLDispatcher: MockGraphQLDispatcher())
+        let graphQLManager = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
+        let result = SellFactory.makeSellModule(graphQLManager: graphQLManager)
         XCTAssertTrue(result is SellImplementing)
         XCTAssertTrue(result.product is ProductRepository)
     }
-}
-
-private final class MockGraphQLDispatcher: GraphQLDispatching {
-
-    func dispatch<Query: GraphQLQuery>(
-        query: Query,
-        cachePolicy: GraphNetworkCachePolicy,
-        completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
-    ) { }
-
-    func dispatchMutation<Query: GraphQLMutation>(
-        mutation: Query,
-        completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
-    ) { }
 }

@@ -10,8 +10,8 @@ import Foundation
 
 public enum SellFactory {
 
-    static func makeSellModule(graphQLDispatcher: GraphQLDispatching) -> Sell {
+    static func makeSellModule(graphQLManager: GraphQLManageable) -> Sell {
         return SellImplementing(
-            product: ProductRepository(dispatcher: graphQLDispatcher))
+            product: ProductRepository(graphQLManager: graphQLManager))
     }
 }

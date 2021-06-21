@@ -48,7 +48,7 @@
 		0319F3392667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3112667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift */; };
 		0319F33A2667995B00C01E1F /* sell_fragment_product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
-		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
+		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
 		487479C22540425C0048F03D /* AnalyticsEventAndCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479C12540425C0048F03D /* AnalyticsEventAndCompletion.swift */; };
 		487479C82540432E0048F03D /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479C72540432E0048F03D /* Analytics.swift */; };
@@ -91,6 +91,10 @@
 		9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED98267B64B600ED24D0 /* SellFactory.swift */; };
 		9606ED9B267B651800ED24D0 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED9A267B651800ED24D0 /* ProductRepository.swift */; };
 		9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */; };
+		9606EDA9267B7CE800ED24D0 /* GraphQLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */; };
+		9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */; };
+		9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */; };
+		9606EDC0267CBF4E00ED24D0 /* DummyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDBF267CBF4E00ED24D0 /* DummyError.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -112,10 +116,8 @@
 		961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4183260882BA001D8467 /* CoreConfiguration.swift */; };
 		961C41EB260882BA001D8467 /* CoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4184260882BA001D8467 /* CoreFactory.swift */; };
 		961C41EC260882BA001D8467 /* RequestLoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */; };
-		961C41ED260882BB001D8467 /* GraphNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4187260882BA001D8467 /* GraphNetwork.swift */; };
-		961C41EE260882BB001D8467 /* GraphNetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4188260882BA001D8467 /* GraphNetworkInterceptorProvider.swift */; };
+		961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4188260882BA001D8467 /* GraphQLInterceptorProvider.swift */; };
 		961C41EF260882BB001D8467 /* GraphNetworkCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */; };
-		961C41FE260882BB001D8467 /* GraphQLDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4199260882BA001D8467 /* GraphQLDispatcher.swift */; };
 		961C41FF260882BB001D8467 /* APITokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C419A260882BA001D8467 /* APITokenInterceptor.swift */; };
 		961C420F260882BB001D8467 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 961C41AB260882BA001D8467 /* schema.json */; };
 		961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C41AF260882BA001D8467 /* ReadOnlyCurrentValue.swift */; };
@@ -260,7 +262,7 @@
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
-		480BCD93251E254D00266617 /* SDKFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKFactory.swift; sourceTree = "<group>"; };
+		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
 		487479BD2540423D0048F03D /* AnalyticsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
 		487479C12540425C0048F03D /* AnalyticsEventAndCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventAndCompletion.swift; sourceTree = "<group>"; };
 		487479C72540432E0048F03D /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -304,6 +306,10 @@
 		9606ED98267B64B600ED24D0 /* SellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellFactory.swift; sourceTree = "<group>"; };
 		9606ED9A267B651800ED24D0 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
 		9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellFactoryTests.swift; sourceTree = "<group>"; };
+		9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLFactory.swift; sourceTree = "<group>"; };
+		9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManager.swift; sourceTree = "<group>"; };
+		9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphQLManager.swift; sourceTree = "<group>"; };
+		9606EDBF267CBF4E00ED24D0 /* DummyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyError.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -335,10 +341,8 @@
 		961C4183260882BA001D8467 /* CoreConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreConfiguration.swift; sourceTree = "<group>"; };
 		961C4184260882BA001D8467 /* CoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFactory.swift; sourceTree = "<group>"; };
 		961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestLoggingInterceptor.swift; sourceTree = "<group>"; };
-		961C4187260882BA001D8467 /* GraphNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetwork.swift; sourceTree = "<group>"; };
-		961C4188260882BA001D8467 /* GraphNetworkInterceptorProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetworkInterceptorProvider.swift; sourceTree = "<group>"; };
+		961C4188260882BA001D8467 /* GraphQLInterceptorProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInterceptorProvider.swift; sourceTree = "<group>"; };
 		961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetworkCachePolicy.swift; sourceTree = "<group>"; };
-		961C4199260882BA001D8467 /* GraphQLDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLDispatcher.swift; sourceTree = "<group>"; };
 		961C419A260882BA001D8467 /* APITokenInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenInterceptor.swift; sourceTree = "<group>"; };
 		961C41AB260882BA001D8467 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		961C41AE260882BA001D8467 /* ReadOnlyCurrentValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyCurrentValueTests.swift; sourceTree = "<group>"; };
@@ -516,7 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				480BCD92251E254D00266617 /* SDKConfiguration.swift */,
-				480BCD93251E254D00266617 /* SDKFactory.swift */,
+				480BCD93251E254D00266617 /* RealifeTech.swift */,
 				48D6F13C251E158E006CA623 /* RealifeTech.h */,
 				48D6F13D251E158E006CA623 /* Info.plist */,
 				48D6F146251E158E006CA623 /* Tests */,
@@ -677,6 +681,25 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		9606EDAC267B7EA200ED24D0 /* Interceptors */ = {
+			isa = PBXGroup;
+			children = (
+				961C4188260882BA001D8467 /* GraphQLInterceptorProvider.swift */,
+				961C419A260882BA001D8467 /* APITokenInterceptor.swift */,
+				961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */,
+			);
+			path = Interceptors;
+			sourceTree = "<group>";
+		};
+		9606EDBC267CA69300ED24D0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */,
+				9606EDBF267CBF4E00ED24D0 /* DummyError.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		961C415F26088298001D8467 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,13 +807,11 @@
 			isa = PBXGroup;
 			children = (
 				961C41AB260882BA001D8467 /* schema.json */,
-				961C419A260882BA001D8467 /* APITokenInterceptor.swift */,
-				961C4187260882BA001D8467 /* GraphNetwork.swift */,
+				9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */,
+				9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */,
 				961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */,
-				961C4188260882BA001D8467 /* GraphNetworkInterceptorProvider.swift */,
-				961C4199260882BA001D8467 /* GraphQLDispatcher.swift */,
-				961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */,
 				961C419B260882BA001D8467 /* API */,
+				9606EDAC267B7EA200ED24D0 /* Interceptors */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -1021,6 +1042,7 @@
 		961C4248260882C8001D8467 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9606EDBC267CA69300ED24D0 /* Utils */,
 				961C4249260882C8001D8467 /* CoreConfigurationTests.swift */,
 			);
 			path = Tests;
@@ -1370,7 +1392,6 @@
 				9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */,
 				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
 				968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */,
-				961C41ED260882BB001D8467 /* GraphNetwork.swift in Sources */,
 				0319F3392667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift in Sources */,
 				961C427E260882C8001D8467 /* UIDeviceInterface.swift in Sources */,
 				0319F3312667995B00C01E1F /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */,
@@ -1378,7 +1399,7 @@
 				961C41EB260882BA001D8467 /* CoreFactory.swift in Sources */,
 				961C41E5260882BA001D8467 /* OAuthRepository.swift in Sources */,
 				961C41EF260882BB001D8467 /* GraphNetworkCachePolicy.swift in Sources */,
-				961C41EE260882BB001D8467 /* GraphNetworkInterceptorProvider.swift in Sources */,
+				961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */,
 				961C4263260882C8001D8467 /* CodableStore.swift in Sources */,
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
@@ -1418,7 +1439,7 @@
 				961C4215260882BB001D8467 /* DiskCache.swift in Sources */,
 				961C4268260882C8001D8467 /* PersistentQueue.swift in Sources */,
 				9606ED9B267B651800ED24D0 /* ProductRepository.swift in Sources */,
-				480BCD95251E254D00266617 /* SDKFactory.swift in Sources */,
+				480BCD95251E254D00266617 /* RealifeTech.swift in Sources */,
 				0319F3362667995B00C01E1F /* canvas_fragment_widget.graphql.swift in Sources */,
 				0319F3332667995B00C01E1F /* sell_fragment_form.graphql.swift in Sources */,
 				961C4269260882C8001D8467 /* QueueItem.swift in Sources */,
@@ -1455,7 +1476,6 @@
 				0319F3222667995B00C01E1F /* sell_deleteMyBasket.graphql.swift in Sources */,
 				961C4265260882C8001D8467 /* QueueError.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
-				961C41FE260882BB001D8467 /* GraphQLDispatcher.swift in Sources */,
 				0319F3352667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift in Sources */,
 				961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */,
 				0319F31D2667995B00C01E1F /* sell_fragment_basket.graphql.swift in Sources */,
@@ -1481,6 +1501,7 @@
 				961C4213260882BB001D8467 /* DiskCacheDataProvidingStrategy.swift in Sources */,
 				0319F3132667995B00C01E1F /* sell_createPaymentIntent.graphql.swift in Sources */,
 				0319F31E2667995B00C01E1F /* sell_getProductById.graphql.swift in Sources */,
+				9606EDA9267B7CE800ED24D0 /* GraphQLFactory.swift in Sources */,
 				968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */,
 				0319F3152667995B00C01E1F /* sell_fragment_user.graphql.swift in Sources */,
 				0319F3212667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift in Sources */,
@@ -1501,6 +1522,7 @@
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
 				0319F3272667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */,
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
+				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
 				0319F3182667995B00C01E1F /* sell_checkoutMyBasket.graphql.swift in Sources */,
 				961C4224260882BB001D8467 /* RequestLogger.swift in Sources */,
@@ -1548,6 +1570,8 @@
 				961C42A926088327001D8467 /* ReachabilityCheckerTests.swift in Sources */,
 				488A67C62541DA8B005C030E /* AnalyticsLoggerTests.swift in Sources */,
 				961C42982608830E001D8467 /* DeviceTokenTests.swift in Sources */,
+				9606EDC0267CBF4E00ED24D0 /* DummyError.swift in Sources */,
+				9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */,
 				961C42C42608836E001D8467 /* RemoteDiskCacheDataProvidingTests.swift in Sources */,
 				961C436326089346001D8467 /* AuthorisationWorkerTests.swift in Sources */,
 				961C4290260882FB001D8467 /* CodableStorageTests.swift in Sources */,
