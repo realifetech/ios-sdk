@@ -1,5 +1,5 @@
 //
-//  SellError.swift
+//  GraphQLError.swift
 //  RealifeTech
 //
 //  Created by Mickey Lee on 21/06/2021.

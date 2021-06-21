@@ -10,8 +10,8 @@ import Foundation
 
 public struct FulfilmentPointCategoryTranslation: Codable, Equatable {
 
-    let language: String?
-    let title: String?
+    public let language: String?
+    public let title: String?
 
     init(response: ApolloType.FragmentFulfilmentPointCategory.Translation?) {
         language = response?.language?.rawValue
