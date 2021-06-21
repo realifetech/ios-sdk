@@ -8,18 +8,18 @@
 
 import Foundation
 
-final class ProductRepository {
+public final class ProductRepository {
 
     private let graphQLManager: GraphQLManageable
 
-    init(graphQLManager: GraphQLManageable) {
+    public init(graphQLManager: GraphQLManageable) {
         self.graphQLManager = graphQLManager
     }
 }
 
 extension ProductRepository: ProductProvidable {
 
-    func getProducts(
+    public func getProducts(
         pageSize: Int,
         page: Int,
         filters: ProductFilterWrapper,

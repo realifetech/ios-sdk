@@ -16,6 +16,6 @@ final class SellFactoryTests: XCTestCase {
         let graphQLManager = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
         let result = SellFactory.makeSellModule(graphQLManager: graphQLManager)
         XCTAssertTrue(result is SellImplementing)
-        XCTAssertTrue(result.product is ProductImplementing)
+        XCTAssertTrue(result.product is ProductRepository)
     }
 }

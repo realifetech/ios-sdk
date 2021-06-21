@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ProductProvidable {
+public protocol ProductProvidable {
     func getProducts(
         pageSize: Int,
         page: Int,

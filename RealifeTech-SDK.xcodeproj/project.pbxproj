@@ -90,8 +90,6 @@
 		9606ED97267B646F00ED24D0 /* SellImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED96267B646F00ED24D0 /* SellImplementing.swift */; };
 		9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED98267B64B600ED24D0 /* SellFactory.swift */; };
 		9606ED9B267B651800ED24D0 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED9A267B651800ED24D0 /* ProductRepository.swift */; };
-		9606EDA0267B660200ED24D0 /* ProductImplementable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED9F267B660200ED24D0 /* ProductImplementable.swift */; };
-		9606EDA2267B675800ED24D0 /* ProductImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA1267B675800ED24D0 /* ProductImplementing.swift */; };
 		9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */; };
 		9606EDA9267B7CE800ED24D0 /* GraphQLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */; };
 		9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */; };
@@ -307,8 +305,6 @@
 		9606ED96267B646F00ED24D0 /* SellImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellImplementing.swift; sourceTree = "<group>"; };
 		9606ED98267B64B600ED24D0 /* SellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellFactory.swift; sourceTree = "<group>"; };
 		9606ED9A267B651800ED24D0 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
-		9606ED9F267B660200ED24D0 /* ProductImplementable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImplementable.swift; sourceTree = "<group>"; };
-		9606EDA1267B675800ED24D0 /* ProductImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImplementing.swift; sourceTree = "<group>"; };
 		9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellFactoryTests.swift; sourceTree = "<group>"; };
 		9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLFactory.swift; sourceTree = "<group>"; };
 		9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManager.swift; sourceTree = "<group>"; };
@@ -653,8 +649,6 @@
 		9606ED82267B4FEC00ED24D0 /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				9606ED9F267B660200ED24D0 /* ProductImplementable.swift */,
-				9606EDA1267B675800ED24D0 /* ProductImplementing.swift */,
 				9606ED9E267B65C100ED24D0 /* Repository */,
 				9606ED87267B50A000ED24D0 /* Models */,
 			);
@@ -1499,7 +1493,6 @@
 				9606ED89267B50B000ED24D0 /* ProductFilterWrapper.swift in Sources */,
 				961C425C260882C8001D8467 /* AnalyticEvent.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
-				9606EDA2267B675800ED24D0 /* ProductImplementing.swift in Sources */,
 				961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */,
 				0319F32C2667995B00C01E1F /* canvas_fragment_screen.graphql.swift in Sources */,
 				961C425D260882C8001D8467 /* Date+Formatted.swift in Sources */,
@@ -1523,7 +1516,6 @@
 				0319F31A2667995B00C01E1F /* analytics_putAnalyticEvent.graphql.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
 				961C4217260882BB001D8467 /* APIError.swift in Sources */,
-				9606EDA0267B660200ED24D0 /* ProductImplementable.swift in Sources */,
 				0319F3242667995B00C01E1F /* sell_fragment_venue.graphql.swift in Sources */,
 				487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */,
 				961C4260260882C8001D8467 /* DiskStorage.swift in Sources */,

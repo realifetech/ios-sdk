@@ -10,9 +10,9 @@ import Foundation
 
 public class SellImplementing: Sell {
 
-    public let product: ProductImplementable
+    public let product: ProductProvidable
 
-    public init(product: ProductImplementable) {
+    public init(product: ProductProvidable) {
         self.product = product
     }
 }
