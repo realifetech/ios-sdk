@@ -10,10 +10,10 @@ import Foundation
 
 public struct FulfilmentPointCategory: Codable, Equatable {
 
-    let id: String
-    let iconImageUrl: String?
-    let position: Int?
-    let translations: [FulfilmentPointCategoryTranslation]?
+    public let id: String
+    public let iconImageUrl: String?
+    public let position: Int?
+    public let translations: [FulfilmentPointCategoryTranslation]?
 
     init?(response: ApolloType.FragmentFulfilmentPointCategory?) {
         guard let response = response else { return nil }
