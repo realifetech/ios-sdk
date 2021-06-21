@@ -8,18 +8,18 @@
 
 import Foundation
 
-final class ProductRepository {
+public final class ProductRepository {
 
     private let dispatcher: GraphQLDispatching
 
-    init(dispatcher: GraphQLDispatching) {
+    public init(dispatcher: GraphQLDispatching) {
         self.dispatcher = dispatcher
     }
 }
 
 extension ProductRepository: ProductProvidable {
 
-    func getProducts(
+    public func getProducts(
         pageSize: Int,
         page: Int,
         filters: ProductFilterWrapper,

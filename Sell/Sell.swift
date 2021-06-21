@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol Sell {
-    var product: ProductImplementable { get }
+    var product: ProductProvidable { get }
 }

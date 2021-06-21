@@ -15,7 +15,7 @@ final class SellFactoryTests: XCTestCase {
     func test_makeSellModule_returnsSellImplementing() {
         let result = SellFactory.makeSellModule(graphQLDispatcher: MockGraphQLDispatcher())
         XCTAssertTrue(result is SellImplementing)
-        XCTAssertTrue(result.product is ProductImplementing)
+        XCTAssertTrue(result.product is ProductRepository)
     }
 }
 
