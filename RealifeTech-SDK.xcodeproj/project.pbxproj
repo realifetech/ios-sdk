@@ -48,7 +48,7 @@
 		0319F3392667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3112667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift */; };
 		0319F33A2667995B00C01E1F /* sell_fragment_product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
-		480BCD95251E254D00266617 /* SDKFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* SDKFactory.swift */; };
+		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
 		487479C22540425C0048F03D /* AnalyticsEventAndCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479C12540425C0048F03D /* AnalyticsEventAndCompletion.swift */; };
 		487479C82540432E0048F03D /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479C72540432E0048F03D /* Analytics.swift */; };
@@ -264,7 +264,7 @@
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
-		480BCD93251E254D00266617 /* SDKFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKFactory.swift; sourceTree = "<group>"; };
+		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
 		487479BD2540423D0048F03D /* AnalyticsLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsLogger.swift; sourceTree = "<group>"; };
 		487479C12540425C0048F03D /* AnalyticsEventAndCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventAndCompletion.swift; sourceTree = "<group>"; };
 		487479C72540432E0048F03D /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
@@ -524,7 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				480BCD92251E254D00266617 /* SDKConfiguration.swift */,
-				480BCD93251E254D00266617 /* SDKFactory.swift */,
+				480BCD93251E254D00266617 /* RealifeTech.swift */,
 				48D6F13C251E158E006CA623 /* RealifeTech.h */,
 				48D6F13D251E158E006CA623 /* Info.plist */,
 				48D6F146251E158E006CA623 /* Tests */,
@@ -1445,7 +1445,7 @@
 				961C4215260882BB001D8467 /* DiskCache.swift in Sources */,
 				961C4268260882C8001D8467 /* PersistentQueue.swift in Sources */,
 				9606ED9B267B651800ED24D0 /* ProductRepository.swift in Sources */,
-				480BCD95251E254D00266617 /* SDKFactory.swift in Sources */,
+				480BCD95251E254D00266617 /* RealifeTech.swift in Sources */,
 				0319F3362667995B00C01E1F /* canvas_fragment_widget.graphql.swift in Sources */,
 				0319F3332667995B00C01E1F /* sell_fragment_form.graphql.swift in Sources */,
 				961C4269260882C8001D8467 /* QueueItem.swift in Sources */,
