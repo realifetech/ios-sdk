@@ -99,6 +99,8 @@
 		961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8D2682070100BE6F3B /* Timeslot.swift */; };
 		961C1C902682071400BE6F3B /* FulfilmentPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8F2682071400BE6F3B /* FulfilmentPointType.swift */; };
 		961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C912682082D00BE6F3B /* FulfilmentPointFilter.swift */; };
+		961C1C962682323700BE6F3B /* GraphQLManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C952682323700BE6F3B /* GraphQLManagerTests.swift */; };
+		961C1C98268240CF00BE6F3B /* GraphQLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C97268240CF00BE6F3B /* GraphQLFactoryTests.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -323,6 +325,8 @@
 		961C1C8D2682070100BE6F3B /* Timeslot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeslot.swift; sourceTree = "<group>"; };
 		961C1C8F2682071400BE6F3B /* FulfilmentPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointType.swift; sourceTree = "<group>"; };
 		961C1C912682082D00BE6F3B /* FulfilmentPointFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointFilter.swift; sourceTree = "<group>"; };
+		961C1C952682323700BE6F3B /* GraphQLManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManagerTests.swift; sourceTree = "<group>"; };
+		961C1C97268240CF00BE6F3B /* GraphQLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLFactoryTests.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -722,6 +726,8 @@
 		961C1C86268202A600BE6F3B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				961C1C97268240CF00BE6F3B /* GraphQLFactoryTests.swift */,
+				961C1C952682323700BE6F3B /* GraphQLManagerTests.swift */,
 				9606EDBC267CA69300ED24D0 /* Utils */,
 			);
 			path = Tests;
@@ -1640,10 +1646,12 @@
 				48EFE2612539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift in Sources */,
 				968CA6A525EF9B8A0000C2E2 /* WebPageTests.swift in Sources */,
 				961C42BD2608836B001D8467 /* MockDiskCache.swift in Sources */,
+				961C1C98268240CF00BE6F3B /* GraphQLFactoryTests.swift in Sources */,
 				488A67C22541D8AA005C030E /* MockAnalyticsLogger.swift in Sources */,
 				961C437326089379001D8467 /* EmptyTokenManagerTests.swift in Sources */,
 				48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */,
 				961C42A926088327001D8467 /* ReachabilityCheckerTests.swift in Sources */,
+				961C1C962682323700BE6F3B /* GraphQLManagerTests.swift in Sources */,
 				488A67C62541DA8B005C030E /* AnalyticsLoggerTests.swift in Sources */,
 				961C42982608830E001D8467 /* DeviceTokenTests.swift in Sources */,
 				9606EDC0267CBF4E00ED24D0 /* DummyError.swift in Sources */,
