@@ -19,6 +19,57 @@ public final class FulfilmentPointRepository {
 
 extension FulfilmentPointRepository: FulfilmentPointProvidable {
 
+    public func getFulfilmentPoints(
+        pageSize: Int,
+        page: Int,
+        filters: FulfilmentPointFilter?,
+        callback: @escaping (Result<PaginatedObject<FulfilmentPoint>, Error>) -> Void
+    ) {
+        graphQLManager.dispatch(
+            query: ApolloType.GetFulfilmentPointsQuery(
+                pageSize: pageSize,
+                page: page,
+                filters: nil), // TODO: BE will change categories: ID to categories: [ID]
+            cachePolicy: .returnCacheDataAndFetch
+        ) { result in
+            switch result {
+            case .success(let response):
+                let items = response.data?.getFulfilmentPoints?.edges?.compactMap {
+                    FulfilmentPoint(response: $0?.fragments.fragmentFulfilmentPoint)
+                }
+                let paginatedObject = PaginatedObject<FulfilmentPoint>(
+                    items: items ?? [],
+                    nextPage: response.data?.getFulfilmentPoints?.nextPage)
+                callback(.success(paginatedObject))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
+
+    public func getFulfilmentPointById(
+        id: String,
+        callback: @escaping (Result<FulfilmentPoint, Error>) -> Void
+    ) {
+        graphQLManager.dispatch(
+            query: ApolloType.GetFulfilmentPointByIdQuery(id: id),
+            cachePolicy: .returnCacheDataAndFetch
+        ) { result in
+            switch result {
+            case .success(let response):
+                guard
+                    let returnedFulfilmentPoint = response.data?.getFulfilmentPoint?.fragments.fragmentFulfilmentPoint,
+                    let fulfilmentPoint = FulfilmentPoint(response: returnedFulfilmentPoint)
+                else {
+                    return callback(.failure(GraphQLError.noDataError))
+                }
+                callback(.success(fulfilmentPoint))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
+
     public func getFulfilmentPointCategories(
         pageSize: Int,
         page: Int,

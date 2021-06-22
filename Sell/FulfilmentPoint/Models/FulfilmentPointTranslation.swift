@@ -15,15 +15,25 @@ public struct FulfilmentPointTranslation: Codable, Equatable {
     public let description: String?
     public let collectionNote: String?
     public let collectionNotes: [CollectionNotes]?
+
+    init(response: ApolloType.FragmentFulfilmentPoint.Translation?) {
+        language = response?.language?.rawValue
+        title = response?.title
+        description = response?.description
+        collectionNote = response?.collectionNote
+        collectionNotes = response?.collectionNotes?.compactMap {
+            CollectionNotes(response: $0)
+        }
+    }
 }
 
 public struct CollectionNotes: Codable, Equatable {
 
-    public let preorder: String
-    public let checkin: String
+    public let preorder: String?
+    public let checkin: String?
 
-    enum CodingKeys: String, CodingKey {
-        case preorder = "VIRTUAL_QUEUE_PREORDER"
-        case checkin = "VIRTUAL_QUEUE_CHECKIN"
+    init(response: ApolloType.FragmentFulfilmentPoint.Translation.CollectionNote?) {
+        preorder = response?.virtualQueuePreorder
+        checkin = response?.virtualQueueCheckin
     }
 }

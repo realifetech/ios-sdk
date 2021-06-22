@@ -9,10 +9,22 @@
 import Foundation
 
 public protocol FulfilmentPointProvidable {
+
+    func getFulfilmentPoints(
+        pageSize: Int,
+        page: Int,
+        filters: FulfilmentPointFilter?,
+        callback: @escaping (Result<PaginatedObject<FulfilmentPoint>, Error>) -> Void)
+
+    func getFulfilmentPointById(
+        id: String,
+        callback: @escaping (Result<FulfilmentPoint, Error>) -> Void)
+
     func getFulfilmentPointCategories(
         pageSize: Int,
         page: Int,
         callback: @escaping (Result<PaginatedObject<FulfilmentPointCategory>, Error>) -> Void)
+
     func getFulfilmentPointCategoryById(
         id: String,
         callback: @escaping (Result<FulfilmentPointCategory, Error>) -> Void)
