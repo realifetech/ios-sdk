@@ -11,8 +11,13 @@ import Foundation
 public class SellImplementing: Sell {
 
     public let product: ProductProvidable
+    public let fulfilmentPoint: FulfilmentPointProvidable
 
-    public init(product: ProductProvidable) {
+    public init(
+        product: ProductProvidable,
+        fulfilmentPoint: FulfilmentPointProvidable
+    ) {
         self.product = product
+        self.fulfilmentPoint = fulfilmentPoint
     }
 }

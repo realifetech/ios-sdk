@@ -1,7 +1,5 @@
 query getFulfilmentPointCategoryById($id: ID!) {
-  me {
-    fulfilmentPointCategory(id: $id) {
-      ...FragmentFulfilmentPointCategory
-    }
+  getFulfilmentPointCategory(id: $id) {
+    ...FragmentFulfilmentPointCategory
   }
 }

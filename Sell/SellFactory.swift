@@ -12,6 +12,7 @@ public enum SellFactory {
 
     static func makeSellModule(graphQLManager: GraphQLManageable) -> Sell {
         return SellImplementing(
-            product: ProductRepository(graphQLManager: graphQLManager))
+            product: ProductRepository(graphQLManager: graphQLManager),
+            fulfilmentPoint: FulfilmentPointRepository(graphQLManager: graphQLManager))
     }
 }
