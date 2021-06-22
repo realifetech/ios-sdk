@@ -98,6 +98,7 @@
 		961C1C8C268206EC00BE6F3B /* FulfilmentPointTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */; };
 		961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8D2682070100BE6F3B /* Timeslot.swift */; };
 		961C1C902682071400BE6F3B /* FulfilmentPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8F2682071400BE6F3B /* FulfilmentPointType.swift */; };
+		961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C912682082D00BE6F3B /* FulfilmentPointFilter.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -321,6 +322,7 @@
 		961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointTranslation.swift; sourceTree = "<group>"; };
 		961C1C8D2682070100BE6F3B /* Timeslot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeslot.swift; sourceTree = "<group>"; };
 		961C1C8F2682071400BE6F3B /* FulfilmentPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointType.swift; sourceTree = "<group>"; };
+		961C1C912682082D00BE6F3B /* FulfilmentPointFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointFilter.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -1139,6 +1141,7 @@
 				961C1C8F2682071400BE6F3B /* FulfilmentPointType.swift */,
 				961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */,
 				961C1C8D2682070100BE6F3B /* Timeslot.swift */,
+				961C1C912682082D00BE6F3B /* FulfilmentPointFilter.swift */,
 				964A3BE52680AA6F00C42C35 /* FulfilmentPointCategory.swift */,
 				964A3BE72680AB1D00C42C35 /* FulfilmentPointCategoryTranslation.swift */,
 			);
@@ -1546,6 +1549,7 @@
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				0319F3352667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift in Sources */,
 				961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */,
+				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
 				0319F31D2667995B00C01E1F /* sell_fragment_basket.graphql.swift in Sources */,
 				0319F31C2667995B00C01E1F /* canvas_getScreenByScreenId.graphql.swift in Sources */,
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
