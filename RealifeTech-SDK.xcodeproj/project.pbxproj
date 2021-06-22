@@ -709,6 +709,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		961C1C86268202A600BE6F3B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9606EDBC267CA69300ED24D0 /* Utils */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		961C415F26088298001D8467 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +830,7 @@
 				964A3BF02680B94E00C42C35 /* GraphQLError.swift */,
 				961C419B260882BA001D8467 /* API */,
 				9606EDAC267B7EA200ED24D0 /* Interceptors */,
+				961C1C86268202A600BE6F3B /* Tests */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -1051,7 +1060,6 @@
 		961C4248260882C8001D8467 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9606EDBC267CA69300ED24D0 /* Utils */,
 				961C4249260882C8001D8467 /* CoreConfigurationTests.swift */,
 			);
 			path = Tests;
