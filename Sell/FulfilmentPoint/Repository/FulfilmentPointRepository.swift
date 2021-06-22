@@ -61,7 +61,7 @@ extension FulfilmentPointRepository: FulfilmentPointProvidable {
                     let returnedFulfilmentPoint = response.data?.getFulfilmentPoint?.fragments.fragmentFulfilmentPoint,
                     let fulfilmentPoint = FulfilmentPoint(response: returnedFulfilmentPoint)
                 else {
-                    return callback(.failure(GraphQLError.noDataError))
+                    return callback(.failure(GraphQLManagerError.noDataError))
                 }
                 callback(.success(fulfilmentPoint))
             case .failure(let error):
@@ -108,7 +108,7 @@ extension FulfilmentPointRepository: FulfilmentPointProvidable {
                     let fulfilmentPointCategory = FulfilmentPointCategory(
                         response: response.data?.getFulfilmentPointCategory?.fragments.fragmentFulfilmentPointCategory)
                 else {
-                    return callback(.failure(GraphQLError.noDataError))
+                    return callback(.failure(GraphQLManagerError.noDataError))
                 }
                 callback(.success(fulfilmentPointCategory))
             case .failure(let error):
