@@ -22,7 +22,7 @@ extension ProductRepository: ProductProvidable {
     public func getProducts(
         pageSize: Int,
         page: Int,
-        filters: ProductFilterWrapper,
+        filters: ProductFilter,
         callback: (Result<PaginatedObject<Product>, Error>) -> Void
     ) {
         // TODO: ID-1025

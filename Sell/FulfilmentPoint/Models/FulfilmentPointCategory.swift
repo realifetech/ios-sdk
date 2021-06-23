@@ -13,7 +13,7 @@ public struct FulfilmentPointCategory: Codable, Equatable {
     public let id: String
     public let iconImageUrl: String?
     public let position: Int?
-    public let translations: [FulfilmentPointCategoryTranslation]?
+    public let translations: [StandardTitleTranslation]?
 
     init?(response: ApolloType.FragmentFulfilmentPointCategory?) {
         guard let response = response else { return nil }
@@ -21,7 +21,7 @@ public struct FulfilmentPointCategory: Codable, Equatable {
         iconImageUrl = response.iconImageUrl
         position = response.position
         translations = response.translations?.compactMap {
-            FulfilmentPointCategoryTranslation(response: $0)
+            StandardTitleTranslation(response: $0)
         }
     }
 }

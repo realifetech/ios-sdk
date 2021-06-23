@@ -1,5 +1,5 @@
 //
-//  ProductFilterWrapper.swift
+//  ProductFilter.swift
 //  RealifeTech
 //
 //  Created by Mickey Lee on 17/06/2021.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ProductFilterWrapper {
+public struct ProductFilter {
     let fulfilmentPointIds: [String]?
     let categoriesIds: [String]?
 }

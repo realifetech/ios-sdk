@@ -9,9 +9,10 @@
 import Foundation
 
 public protocol ProductProvidable {
+
     func getProducts(
         pageSize: Int,
         page: Int,
-        filters: ProductFilterWrapper,
+        filters: ProductFilter,
         callback: (Result<PaginatedObject<Product>, Error>) -> Void)
 }
