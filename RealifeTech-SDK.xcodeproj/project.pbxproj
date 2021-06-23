@@ -108,6 +108,7 @@
 		961C1CA72683405400BE6F3B /* ProductVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CA62683405400BE6F3B /* ProductVariant.swift */; };
 		961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CA82683407B00BE6F3B /* ProductCategory.swift */; };
 		961C1CAB2683409C00BE6F3B /* StandardDescriptionTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */; };
+		961C1CB0268396F100BE6F3B /* sell_getMyBasket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -340,6 +341,7 @@
 		961C1CA62683405400BE6F3B /* ProductVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVariant.swift; sourceTree = "<group>"; };
 		961C1CA82683407B00BE6F3B /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDescriptionTranslation.swift; sourceTree = "<group>"; };
+		961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyBasket.graphql.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -910,6 +912,7 @@
 				0319F3072667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift */,
 				0319F3082667995B00C01E1F /* sell_getFulfilmentPointCategoryById.graphql.swift */,
 				0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */,
+				961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */,
 				0319F2EE2667995A00C01E1F /* sell_getMyPaymentSources.graphql.swift */,
 				0319F30A2667995B00C01E1F /* sell_getOrders.graphql.swift */,
 				0319F2F62667995A00C01E1F /* sell_getProductById.graphql.swift */,
@@ -1566,6 +1569,7 @@
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
 				0319F3142667995B00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift in Sources */,
 				0319F31F2667995B00C01E1F /* sell_fragment_paymentSourceDetails.graphql.swift in Sources */,
+				961C1CB0268396F100BE6F3B /* sell_getMyBasket.graphql.swift in Sources */,
 				0319F3292667995B00C01E1F /* sell_fragment_order.graphql.swift in Sources */,
 				961C4275260882C8001D8467 /* ReachabilityChecker.swift in Sources */,
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
