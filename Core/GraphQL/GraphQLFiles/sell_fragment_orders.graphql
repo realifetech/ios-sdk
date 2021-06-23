@@ -1,6 +1,0 @@
-fragment FragmentOrders on OrderEdge {
-  edges {
-    ...FragmentOrder
-  }
-  nextPage
-}
