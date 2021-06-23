@@ -25,7 +25,6 @@
 		0319F3232667995B00C01E1F /* Types.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FB2667995B00C01E1F /* Types.graphql.swift */; };
 		0319F3242667995B00C01E1F /* sell_fragment_venue.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FC2667995B00C01E1F /* sell_fragment_venue.graphql.swift */; };
 		0319F3252667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FD2667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift */; };
-		0319F3262667995B00C01E1F /* sell_fragment_products.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FE2667995B00C01E1F /* sell_fragment_products.graphql.swift */; };
 		0319F3272667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FF2667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift */; };
 		0319F3282667995B00C01E1F /* sell_getProducts.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3002667995B00C01E1F /* sell_getProducts.graphql.swift */; };
 		0319F3292667995B00C01E1F /* sell_fragment_order.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3012667995B00C01E1F /* sell_fragment_order.graphql.swift */; };
@@ -244,7 +243,6 @@
 		0319F2FB2667995B00C01E1F /* Types.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.graphql.swift; sourceTree = "<group>"; };
 		0319F2FC2667995B00C01E1F /* sell_fragment_venue.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_venue.graphql.swift; sourceTree = "<group>"; };
 		0319F2FD2667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_productModifierItem.graphql.swift; sourceTree = "<group>"; };
-		0319F2FE2667995B00C01E1F /* sell_fragment_products.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_products.graphql.swift; sourceTree = "<group>"; };
 		0319F2FF2667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = audience_fetchBelongsToAudienceWithExternalId.graphql.swift; sourceTree = "<group>"; };
 		0319F3002667995B00C01E1F /* sell_getProducts.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getProducts.graphql.swift; sourceTree = "<group>"; };
 		0319F3012667995B00C01E1F /* sell_fragment_order.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_order.graphql.swift; sourceTree = "<group>"; };
@@ -674,8 +672,8 @@
 		9606ED82267B4FEC00ED24D0 /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				9606ED9E267B65C100ED24D0 /* Repository */,
 				9606ED87267B50A000ED24D0 /* Models */,
+				9606ED9E267B65C100ED24D0 /* Repository */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -887,7 +885,6 @@
 				0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */,
 				0319F2FD2667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift */,
 				0319F2F12667995A00C01E1F /* sell_fragment_productModifierItemSelection.graphql.swift */,
-				0319F2FE2667995B00C01E1F /* sell_fragment_products.graphql.swift */,
 				0319F2F82667995B00C01E1F /* sell_fragment_productVariant.graphql.swift */,
 				0319F3052667995B00C01E1F /* sell_fragment_timeslot.graphql.swift */,
 				0319F2ED2667995A00C01E1F /* sell_fragment_user.graphql.swift */,
@@ -1604,7 +1601,6 @@
 				964A3BE62680AA6F00C42C35 /* FulfilmentPointCategory.swift in Sources */,
 				4889587D2539D04B00B978A9 /* AudienceChecking.swift in Sources */,
 				0319F3372667995B00C01E1F /* sell_fragment_fulfilmentPoint.graphql.swift in Sources */,
-				0319F3262667995B00C01E1F /* sell_fragment_products.graphql.swift in Sources */,
 				0319F31A2667995B00C01E1F /* analytics_putAnalyticEvent.graphql.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
 				961C4217260882BB001D8467 /* APIError.swift in Sources */,

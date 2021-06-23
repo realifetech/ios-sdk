@@ -15,7 +15,8 @@ public extension ApolloType {
         id
         externalId
         price
-        externalId
+        createdAt
+        updatedAt
         translations {
           __typename
           title
@@ -32,7 +33,8 @@ public extension ApolloType {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("externalId", type: .scalar(String.self)),
         GraphQLField("price", type: .scalar(Int.self)),
-        GraphQLField("externalId", type: .scalar(String.self)),
+        GraphQLField("createdAt", type: .scalar(String.self)),
+        GraphQLField("updatedAt", type: .scalar(String.self)),
         GraphQLField("translations", type: .list(.object(Translation.selections))),
       ]
     }
@@ -43,8 +45,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, externalId: String? = nil, price: Int? = nil, translations: [Translation?]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "ProductVariant", "id": id, "externalId": externalId, "price": price, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
+    public init(id: GraphQLID, externalId: String? = nil, price: Int? = nil, createdAt: String? = nil, updatedAt: String? = nil, translations: [Translation?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "ProductVariant", "id": id, "externalId": externalId, "price": price, "createdAt": createdAt, "updatedAt": updatedAt, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
     }
 
     public var __typename: String {
@@ -80,6 +82,24 @@ public extension ApolloType {
       }
       set {
         resultMap.updateValue(newValue, forKey: "price")
+      }
+    }
+
+    public var createdAt: String? {
+      get {
+        return resultMap["createdAt"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "createdAt")
+      }
+    }
+
+    public var updatedAt: String? {
+      get {
+        return resultMap["updatedAt"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "updatedAt")
       }
     }
 
