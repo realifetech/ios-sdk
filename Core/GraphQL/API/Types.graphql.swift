@@ -1123,6 +1123,80 @@ public enum ApolloType {
     }
   }
 
+  public struct PaymentIntentUpdateInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - status
+    ///   - paymentSource
+    ///   - savePaymentSource
+    public init(status: Swift.Optional<UpdatePaymentStatus?> = nil, paymentSource: Swift.Optional<PaymentSourceInput?> = nil, savePaymentSource: Swift.Optional<Bool?> = nil) {
+      graphQLMap = ["status": status, "paymentSource": paymentSource, "savePaymentSource": savePaymentSource]
+    }
+
+    public var status: Swift.Optional<UpdatePaymentStatus?> {
+      get {
+        return graphQLMap["status"] as? Swift.Optional<UpdatePaymentStatus?> ?? Swift.Optional<UpdatePaymentStatus?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "status")
+      }
+    }
+
+    public var paymentSource: Swift.Optional<PaymentSourceInput?> {
+      get {
+        return graphQLMap["paymentSource"] as? Swift.Optional<PaymentSourceInput?> ?? Swift.Optional<PaymentSourceInput?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "paymentSource")
+      }
+    }
+
+    public var savePaymentSource: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["savePaymentSource"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "savePaymentSource")
+      }
+    }
+  }
+
+  public enum UpdatePaymentStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case canceled
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "canceled": self = .canceled
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .canceled: return "canceled"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: UpdatePaymentStatus, rhs: UpdatePaymentStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.canceled, .canceled): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [UpdatePaymentStatus] {
+      return [
+        .canceled,
+      ]
+    }
+  }
+
   public enum StyleType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
     case pager
