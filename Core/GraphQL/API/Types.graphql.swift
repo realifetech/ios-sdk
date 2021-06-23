@@ -798,15 +798,14 @@ public enum ApolloType {
     ///   - orderType
     ///   - orderId
     ///   - paymentSource
-    ///   - paymentCustomer
     ///   - amount
     ///   - currency
     ///   - savePaymentSource
     ///   - livemode
     ///   - cancellationReason
     ///   - receiptEmail
-    public init(orderType: OrderType, orderId: GraphQLID, paymentSource: Swift.Optional<PaymentSourceInput?> = nil, paymentCustomer: PaymentCustomerInput, amount: Int, currency: String, savePaymentSource: Bool, livemode: Bool, cancellationReason: Swift.Optional<CancellationReason?> = nil, receiptEmail: Swift.Optional<String?> = nil) {
-      graphQLMap = ["orderType": orderType, "orderId": orderId, "paymentSource": paymentSource, "paymentCustomer": paymentCustomer, "amount": amount, "currency": currency, "savePaymentSource": savePaymentSource, "livemode": livemode, "cancellationReason": cancellationReason, "receiptEmail": receiptEmail]
+    public init(orderType: OrderType, orderId: GraphQLID, paymentSource: Swift.Optional<PaymentSourceInput?> = nil, amount: Int, currency: String, savePaymentSource: Bool, livemode: Bool, cancellationReason: Swift.Optional<CancellationReason?> = nil, receiptEmail: Swift.Optional<String?> = nil) {
+      graphQLMap = ["orderType": orderType, "orderId": orderId, "paymentSource": paymentSource, "amount": amount, "currency": currency, "savePaymentSource": savePaymentSource, "livemode": livemode, "cancellationReason": cancellationReason, "receiptEmail": receiptEmail]
     }
 
     public var orderType: OrderType {
@@ -833,15 +832,6 @@ public enum ApolloType {
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "paymentSource")
-      }
-    }
-
-    public var paymentCustomer: PaymentCustomerInput {
-      get {
-        return graphQLMap["paymentCustomer"] as! PaymentCustomerInput
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "paymentCustomer")
       }
     }
 
@@ -937,55 +927,6 @@ public enum ApolloType {
         .foodAndBeverage,
         .ticket,
       ]
-    }
-  }
-
-  public struct PaymentCustomerInput: GraphQLMapConvertible {
-    public var graphQLMap: GraphQLMap
-
-    /// - Parameters:
-    ///   - id
-    ///   - user
-    ///   - externalId
-    ///   - paymentSources
-    public init(id: Swift.Optional<GraphQLID?> = nil, user: Swift.Optional<GraphQLID?> = nil, externalId: Swift.Optional<String?> = nil, paymentSources: Swift.Optional<[PaymentSourceInput]?> = nil) {
-      graphQLMap = ["id": id, "user": user, "externalId": externalId, "paymentSources": paymentSources]
-    }
-
-    public var id: Swift.Optional<GraphQLID?> {
-      get {
-        return graphQLMap["id"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "id")
-      }
-    }
-
-    public var user: Swift.Optional<GraphQLID?> {
-      get {
-        return graphQLMap["user"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "user")
-      }
-    }
-
-    public var externalId: Swift.Optional<String?> {
-      get {
-        return graphQLMap["externalId"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "externalId")
-      }
-    }
-
-    public var paymentSources: Swift.Optional<[PaymentSourceInput]?> {
-      get {
-        return graphQLMap["paymentSources"] as? Swift.Optional<[PaymentSourceInput]?> ?? Swift.Optional<[PaymentSourceInput]?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "paymentSources")
-      }
     }
   }
 
@@ -1179,6 +1120,80 @@ public enum ApolloType {
       set {
         graphQLMap.updateValue(newValue, forKey: "categories")
       }
+    }
+  }
+
+  public struct PaymentIntentUpdateInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - status
+    ///   - paymentSource
+    ///   - savePaymentSource
+    public init(status: Swift.Optional<UpdatePaymentStatus?> = nil, paymentSource: Swift.Optional<PaymentSourceInput?> = nil, savePaymentSource: Swift.Optional<Bool?> = nil) {
+      graphQLMap = ["status": status, "paymentSource": paymentSource, "savePaymentSource": savePaymentSource]
+    }
+
+    public var status: Swift.Optional<UpdatePaymentStatus?> {
+      get {
+        return graphQLMap["status"] as? Swift.Optional<UpdatePaymentStatus?> ?? Swift.Optional<UpdatePaymentStatus?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "status")
+      }
+    }
+
+    public var paymentSource: Swift.Optional<PaymentSourceInput?> {
+      get {
+        return graphQLMap["paymentSource"] as? Swift.Optional<PaymentSourceInput?> ?? Swift.Optional<PaymentSourceInput?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "paymentSource")
+      }
+    }
+
+    public var savePaymentSource: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["savePaymentSource"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "savePaymentSource")
+      }
+    }
+  }
+
+  public enum UpdatePaymentStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case canceled
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "canceled": self = .canceled
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .canceled: return "canceled"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: UpdatePaymentStatus, rhs: UpdatePaymentStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.canceled, .canceled): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [UpdatePaymentStatus] {
+      return [
+        .canceled,
+      ]
     }
   }
 
