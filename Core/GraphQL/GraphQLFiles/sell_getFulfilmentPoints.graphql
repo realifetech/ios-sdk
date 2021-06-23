@@ -2,7 +2,7 @@ query getFulfilmentPoints($pageSize: Int!, $page: Int = 1, $filters: FulfilmentP
   getFulfilmentPoints(page: $page, pageSize: $pageSize, filters: $filters) {
     edges { 
       ...FragmentFulfilmentPoint 
-      }
+    }
     nextPage
   }
 }
