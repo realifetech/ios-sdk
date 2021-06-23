@@ -610,12 +610,13 @@ public enum ApolloType {
 
     /// - Parameters:
     ///   - collectionDate
+    ///   - collectionPreferenceType
     ///   - timeslot
     ///   - fulfilmentPoint
     ///   - seatInfo
     ///   - items
-    public init(collectionDate: Swift.Optional<String?> = nil, timeslot: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: Swift.Optional<GraphQLID?> = nil, seatInfo: Swift.Optional<[SeatInfoInput?]?> = nil, items: Swift.Optional<[BasketItemInput?]?> = nil) {
-      graphQLMap = ["collectionDate": collectionDate, "timeslot": timeslot, "fulfilmentPoint": fulfilmentPoint, "seatInfo": seatInfo, "items": items]
+    public init(collectionDate: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<String?> = nil, timeslot: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: Swift.Optional<GraphQLID?> = nil, seatInfo: Swift.Optional<[SeatInfoInput?]?> = nil, items: Swift.Optional<[BasketItemInput?]?> = nil) {
+      graphQLMap = ["collectionDate": collectionDate, "collectionPreferenceType": collectionPreferenceType, "timeslot": timeslot, "fulfilmentPoint": fulfilmentPoint, "seatInfo": seatInfo, "items": items]
     }
 
     public var collectionDate: Swift.Optional<String?> {
@@ -624,6 +625,15 @@ public enum ApolloType {
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "collectionDate")
+      }
+    }
+
+    public var collectionPreferenceType: Swift.Optional<String?> {
+      get {
+        return graphQLMap["collectionPreferenceType"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "collectionPreferenceType")
       }
     }
 
@@ -699,10 +709,11 @@ public enum ApolloType {
     /// - Parameters:
     ///   - product
     ///   - productVariant
+    ///   - fulfilmentPoint
     ///   - quantity
     ///   - productModifierItems
-    public init(product: Swift.Optional<GraphQLID?> = nil, productVariant: Swift.Optional<GraphQLID?> = nil, quantity: Swift.Optional<Int?> = nil, productModifierItems: Swift.Optional<[ProductModifierItemSelectionInput?]?> = nil) {
-      graphQLMap = ["product": product, "productVariant": productVariant, "quantity": quantity, "productModifierItems": productModifierItems]
+    public init(product: Swift.Optional<GraphQLID?> = nil, productVariant: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: Swift.Optional<GraphQLID?> = nil, quantity: Swift.Optional<Int?> = nil, productModifierItems: Swift.Optional<[ProductModifierItemSelectionInput?]?> = nil) {
+      graphQLMap = ["product": product, "productVariant": productVariant, "fulfilmentPoint": fulfilmentPoint, "quantity": quantity, "productModifierItems": productModifierItems]
     }
 
     public var product: Swift.Optional<GraphQLID?> {
@@ -720,6 +731,15 @@ public enum ApolloType {
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "productVariant")
+      }
+    }
+
+    public var fulfilmentPoint: Swift.Optional<GraphQLID?> {
+      get {
+        return graphQLMap["fulfilmentPoint"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "fulfilmentPoint")
       }
     }
 
@@ -778,16 +798,14 @@ public enum ApolloType {
     ///   - orderType
     ///   - orderId
     ///   - paymentSource
-    ///   - paymentCustomer
     ///   - amount
     ///   - currency
     ///   - savePaymentSource
     ///   - livemode
     ///   - cancellationReason
     ///   - receiptEmail
-    ///   - status
-    public init(orderType: OrderType, orderId: GraphQLID, paymentSource: Swift.Optional<PaymentSourceInput?> = nil, paymentCustomer: PaymentCustomerInput, amount: Int, currency: String, savePaymentSource: Bool, livemode: Bool, cancellationReason: Swift.Optional<CancellationReason?> = nil, receiptEmail: Swift.Optional<String?> = nil, status: PaymentStatus) {
-      graphQLMap = ["orderType": orderType, "orderId": orderId, "paymentSource": paymentSource, "paymentCustomer": paymentCustomer, "amount": amount, "currency": currency, "savePaymentSource": savePaymentSource, "livemode": livemode, "cancellationReason": cancellationReason, "receiptEmail": receiptEmail, "status": status]
+    public init(orderType: OrderType, orderId: GraphQLID, paymentSource: Swift.Optional<PaymentSourceInput?> = nil, amount: Int, currency: String, savePaymentSource: Bool, livemode: Bool, cancellationReason: Swift.Optional<CancellationReason?> = nil, receiptEmail: Swift.Optional<String?> = nil) {
+      graphQLMap = ["orderType": orderType, "orderId": orderId, "paymentSource": paymentSource, "amount": amount, "currency": currency, "savePaymentSource": savePaymentSource, "livemode": livemode, "cancellationReason": cancellationReason, "receiptEmail": receiptEmail]
     }
 
     public var orderType: OrderType {
@@ -814,15 +832,6 @@ public enum ApolloType {
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "paymentSource")
-      }
-    }
-
-    public var paymentCustomer: PaymentCustomerInput {
-      get {
-        return graphQLMap["paymentCustomer"] as! PaymentCustomerInput
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "paymentCustomer")
       }
     }
 
@@ -879,15 +888,6 @@ public enum ApolloType {
         graphQLMap.updateValue(newValue, forKey: "receiptEmail")
       }
     }
-
-    public var status: PaymentStatus {
-      get {
-        return graphQLMap["status"] as! PaymentStatus
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "status")
-      }
-    }
   }
 
   public enum OrderType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
@@ -927,55 +927,6 @@ public enum ApolloType {
         .foodAndBeverage,
         .ticket,
       ]
-    }
-  }
-
-  public struct PaymentCustomerInput: GraphQLMapConvertible {
-    public var graphQLMap: GraphQLMap
-
-    /// - Parameters:
-    ///   - id
-    ///   - user
-    ///   - externalId
-    ///   - paymentSources
-    public init(id: Swift.Optional<GraphQLID?> = nil, user: Swift.Optional<GraphQLID?> = nil, externalId: Swift.Optional<String?> = nil, paymentSources: Swift.Optional<[PaymentSourceInput]?> = nil) {
-      graphQLMap = ["id": id, "user": user, "externalId": externalId, "paymentSources": paymentSources]
-    }
-
-    public var id: Swift.Optional<GraphQLID?> {
-      get {
-        return graphQLMap["id"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "id")
-      }
-    }
-
-    public var user: Swift.Optional<GraphQLID?> {
-      get {
-        return graphQLMap["user"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "user")
-      }
-    }
-
-    public var externalId: Swift.Optional<String?> {
-      get {
-        return graphQLMap["externalId"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "externalId")
-      }
-    }
-
-    public var paymentSources: Swift.Optional<[PaymentSourceInput]?> {
-      get {
-        return graphQLMap["paymentSources"] as? Swift.Optional<[PaymentSourceInput]?> ?? Swift.Optional<[PaymentSourceInput]?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "paymentSources")
-      }
     }
   }
 
@@ -1169,6 +1120,80 @@ public enum ApolloType {
       set {
         graphQLMap.updateValue(newValue, forKey: "categories")
       }
+    }
+  }
+
+  public struct PaymentIntentUpdateInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - status
+    ///   - paymentSource
+    ///   - savePaymentSource
+    public init(status: Swift.Optional<UpdatePaymentStatus?> = nil, paymentSource: Swift.Optional<PaymentSourceInput?> = nil, savePaymentSource: Swift.Optional<Bool?> = nil) {
+      graphQLMap = ["status": status, "paymentSource": paymentSource, "savePaymentSource": savePaymentSource]
+    }
+
+    public var status: Swift.Optional<UpdatePaymentStatus?> {
+      get {
+        return graphQLMap["status"] as? Swift.Optional<UpdatePaymentStatus?> ?? Swift.Optional<UpdatePaymentStatus?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "status")
+      }
+    }
+
+    public var paymentSource: Swift.Optional<PaymentSourceInput?> {
+      get {
+        return graphQLMap["paymentSource"] as? Swift.Optional<PaymentSourceInput?> ?? Swift.Optional<PaymentSourceInput?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "paymentSource")
+      }
+    }
+
+    public var savePaymentSource: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["savePaymentSource"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "savePaymentSource")
+      }
+    }
+  }
+
+  public enum UpdatePaymentStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case canceled
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "canceled": self = .canceled
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .canceled: return "canceled"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: UpdatePaymentStatus, rhs: UpdatePaymentStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.canceled, .canceled): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [UpdatePaymentStatus] {
+      return [
+        .canceled,
+      ]
     }
   }
 
@@ -1414,6 +1439,7 @@ public enum ApolloType {
     case seatDelivery
     case digitalRedemption
     case virtualQueue
+    case collectWhenReady
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -1424,6 +1450,7 @@ public enum ApolloType {
         case "SEAT_DELIVERY": self = .seatDelivery
         case "DIGITAL_REDEMPTION": self = .digitalRedemption
         case "VIRTUAL_QUEUE": self = .virtualQueue
+        case "COLLECT_WHEN_READY": self = .collectWhenReady
         default: self = .__unknown(rawValue)
       }
     }
@@ -1435,6 +1462,7 @@ public enum ApolloType {
         case .seatDelivery: return "SEAT_DELIVERY"
         case .digitalRedemption: return "DIGITAL_REDEMPTION"
         case .virtualQueue: return "VIRTUAL_QUEUE"
+        case .collectWhenReady: return "COLLECT_WHEN_READY"
         case .__unknown(let value): return value
       }
     }
@@ -1446,6 +1474,7 @@ public enum ApolloType {
         case (.seatDelivery, .seatDelivery): return true
         case (.digitalRedemption, .digitalRedemption): return true
         case (.virtualQueue, .virtualQueue): return true
+        case (.collectWhenReady, .collectWhenReady): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -1458,6 +1487,97 @@ public enum ApolloType {
         .seatDelivery,
         .digitalRedemption,
         .virtualQueue,
+        .collectWhenReady,
+      ]
+    }
+  }
+
+  public enum OrderStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case confirmed
+    case onHold
+    case inProgress
+    case prepComplete
+    case readyToCollect
+    case cancelled
+    case complete
+    case onTheWay
+    case paymentPending
+    case payInProgress
+    case refunded
+    case refundRequested
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "CONFIRMED": self = .confirmed
+        case "ON_HOLD": self = .onHold
+        case "IN_PROGRESS": self = .inProgress
+        case "PREP_COMPLETE": self = .prepComplete
+        case "READY_TO_COLLECT": self = .readyToCollect
+        case "CANCELLED": self = .cancelled
+        case "COMPLETE": self = .complete
+        case "ON_THE_WAY": self = .onTheWay
+        case "PAYMENT_PENDING": self = .paymentPending
+        case "PAY_IN_PROGRESS": self = .payInProgress
+        case "REFUNDED": self = .refunded
+        case "REFUND_REQUESTED": self = .refundRequested
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .confirmed: return "CONFIRMED"
+        case .onHold: return "ON_HOLD"
+        case .inProgress: return "IN_PROGRESS"
+        case .prepComplete: return "PREP_COMPLETE"
+        case .readyToCollect: return "READY_TO_COLLECT"
+        case .cancelled: return "CANCELLED"
+        case .complete: return "COMPLETE"
+        case .onTheWay: return "ON_THE_WAY"
+        case .paymentPending: return "PAYMENT_PENDING"
+        case .payInProgress: return "PAY_IN_PROGRESS"
+        case .refunded: return "REFUNDED"
+        case .refundRequested: return "REFUND_REQUESTED"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: OrderStatus, rhs: OrderStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.confirmed, .confirmed): return true
+        case (.onHold, .onHold): return true
+        case (.inProgress, .inProgress): return true
+        case (.prepComplete, .prepComplete): return true
+        case (.readyToCollect, .readyToCollect): return true
+        case (.cancelled, .cancelled): return true
+        case (.complete, .complete): return true
+        case (.onTheWay, .onTheWay): return true
+        case (.paymentPending, .paymentPending): return true
+        case (.payInProgress, .payInProgress): return true
+        case (.refunded, .refunded): return true
+        case (.refundRequested, .refundRequested): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [OrderStatus] {
+      return [
+        .confirmed,
+        .onHold,
+        .inProgress,
+        .prepComplete,
+        .readyToCollect,
+        .cancelled,
+        .complete,
+        .onTheWay,
+        .paymentPending,
+        .payInProgress,
+        .refunded,
+        .refundRequested,
       ]
     }
   }
