@@ -11,16 +11,13 @@ public extension ApolloType {
     public let operationDefinition: String =
       """
       query getFulfilmentPointCategories($pageSize: Int!, $page: Int = 1) {
-        me {
+        getFulfilmentPointCategories(pageSize: $pageSize, page: $page) {
           __typename
-          fulfilmentPointCategories(pageSize: $pageSize, page: $page) {
+          edges {
             __typename
-            edges {
-              __typename
-              ...FragmentFulfilmentPointCategory
-            }
-            nextPage
+            ...FragmentFulfilmentPointCategory
           }
+          nextPage
         }
       }
       """
@@ -50,7 +47,7 @@ public extension ApolloType {
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("me", type: .object(Me.selections)),
+          GraphQLField("getFulfilmentPointCategories", arguments: ["pageSize": GraphQLVariable("pageSize"), "page": GraphQLVariable("page")], type: .object(GetFulfilmentPointCategory.selections)),
         ]
       }
 
@@ -60,26 +57,27 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(me: Me? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Query", "me": me.flatMap { (value: Me) -> ResultMap in value.resultMap }])
+      public init(getFulfilmentPointCategories: GetFulfilmentPointCategory? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getFulfilmentPointCategories": getFulfilmentPointCategories.flatMap { (value: GetFulfilmentPointCategory) -> ResultMap in value.resultMap }])
       }
 
-      public var me: Me? {
+      public var getFulfilmentPointCategories: GetFulfilmentPointCategory? {
         get {
-          return (resultMap["me"] as? ResultMap).flatMap { Me(unsafeResultMap: $0) }
+          return (resultMap["getFulfilmentPointCategories"] as? ResultMap).flatMap { GetFulfilmentPointCategory(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "me")
+          resultMap.updateValue(newValue?.resultMap, forKey: "getFulfilmentPointCategories")
         }
       }
 
-      public struct Me: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["Context"]
+      public struct GetFulfilmentPointCategory: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["FulfilmentPointCategoryEdge"]
 
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("fulfilmentPointCategories", arguments: ["pageSize": GraphQLVariable("pageSize"), "page": GraphQLVariable("page")], type: .object(FulfilmentPointCategory.selections)),
+            GraphQLField("edges", type: .list(.object(Edge.selections))),
+            GraphQLField("nextPage", type: .scalar(Int.self)),
           ]
         }
 
@@ -89,8 +87,8 @@ public extension ApolloType {
           self.resultMap = unsafeResultMap
         }
 
-        public init(fulfilmentPointCategories: FulfilmentPointCategory? = nil) {
-          self.init(unsafeResultMap: ["__typename": "Context", "fulfilmentPointCategories": fulfilmentPointCategories.flatMap { (value: FulfilmentPointCategory) -> ResultMap in value.resultMap }])
+        public init(edges: [Edge?]? = nil, nextPage: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "FulfilmentPointCategoryEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, "nextPage": nextPage])
         }
 
         public var __typename: String {
@@ -102,23 +100,31 @@ public extension ApolloType {
           }
         }
 
-        public var fulfilmentPointCategories: FulfilmentPointCategory? {
+        public var edges: [Edge?]? {
           get {
-            return (resultMap["fulfilmentPointCategories"] as? ResultMap).flatMap { FulfilmentPointCategory(unsafeResultMap: $0) }
+            return (resultMap["edges"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Edge?] in value.map { (value: ResultMap?) -> Edge? in value.flatMap { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) } } }
           }
           set {
-            resultMap.updateValue(newValue?.resultMap, forKey: "fulfilmentPointCategories")
+            resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
           }
         }
 
-        public struct FulfilmentPointCategory: GraphQLSelectionSet {
-          public static let possibleTypes: [String] = ["FulfilmentPointCategoryEdge"]
+        public var nextPage: Int? {
+          get {
+            return resultMap["nextPage"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "nextPage")
+          }
+        }
+
+        public struct Edge: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["FulfilmentPointCategory"]
 
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("edges", type: .list(.object(Edge.selections))),
-              GraphQLField("nextPage", type: .scalar(Int.self)),
+              GraphQLFragmentSpread(FragmentFulfilmentPointCategory.self),
             ]
           }
 
@@ -126,10 +132,6 @@ public extension ApolloType {
 
           public init(unsafeResultMap: ResultMap) {
             self.resultMap = unsafeResultMap
-          }
-
-          public init(edges: [Edge?]? = nil, nextPage: Int? = nil) {
-            self.init(unsafeResultMap: ["__typename": "FulfilmentPointCategoryEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, "nextPage": nextPage])
           }
 
           public var __typename: String {
@@ -141,72 +143,28 @@ public extension ApolloType {
             }
           }
 
-          public var edges: [Edge?]? {
+          public var fragments: Fragments {
             get {
-              return (resultMap["edges"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Edge?] in value.map { (value: ResultMap?) -> Edge? in value.flatMap { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) } } }
+              return Fragments(unsafeResultMap: resultMap)
             }
             set {
-              resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
+              resultMap += newValue.resultMap
             }
           }
 
-          public var nextPage: Int? {
-            get {
-              return resultMap["nextPage"] as? Int
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "nextPage")
-            }
-          }
-
-          public struct Edge: GraphQLSelectionSet {
-            public static let possibleTypes: [String] = ["FulfilmentPointCategory"]
-
-            public static var selections: [GraphQLSelection] {
-              return [
-                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-                GraphQLFragmentSpread(FragmentFulfilmentPointCategory.self),
-              ]
-            }
-
+          public struct Fragments {
             public private(set) var resultMap: ResultMap
 
             public init(unsafeResultMap: ResultMap) {
               self.resultMap = unsafeResultMap
             }
 
-            public var __typename: String {
+            public var fragmentFulfilmentPointCategory: FragmentFulfilmentPointCategory {
               get {
-                return resultMap["__typename"]! as! String
-              }
-              set {
-                resultMap.updateValue(newValue, forKey: "__typename")
-              }
-            }
-
-            public var fragments: Fragments {
-              get {
-                return Fragments(unsafeResultMap: resultMap)
+                return FragmentFulfilmentPointCategory(unsafeResultMap: resultMap)
               }
               set {
                 resultMap += newValue.resultMap
-              }
-            }
-
-            public struct Fragments {
-              public private(set) var resultMap: ResultMap
-
-              public init(unsafeResultMap: ResultMap) {
-                self.resultMap = unsafeResultMap
-              }
-
-              public var fragmentFulfilmentPointCategory: FragmentFulfilmentPointCategory {
-                get {
-                  return FragmentFulfilmentPointCategory(unsafeResultMap: resultMap)
-                }
-                set {
-                  resultMap += newValue.resultMap
-                }
               }
             }
           }

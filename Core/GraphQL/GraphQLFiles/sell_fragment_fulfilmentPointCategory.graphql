@@ -4,6 +4,8 @@ fragment FragmentFulfilmentPointCategory on FulfilmentPointCategory {
   status
   iconImageUrl
   position
+  createdAt
+  updatedAt
   translations {
     language
     title

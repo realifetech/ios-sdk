@@ -25,7 +25,7 @@ public extension ApolloType {
             __typename
             language
             title
-            desciption
+            description
           }
         }
         paymentStatus
@@ -92,7 +92,7 @@ public extension ApolloType {
         GraphQLField("orderNumber", type: .nonNull(.scalar(String.self))),
         GraphQLField("qrCodeUrl", type: .scalar(String.self)),
         GraphQLField("collectionDate", type: .scalar(String.self)),
-        GraphQLField("status", type: .scalar(String.self)),
+        GraphQLField("status", type: .scalar(OrderStatus.self)),
         GraphQLField("state", type: .object(State.selections)),
         GraphQLField("paymentStatus", type: .scalar(String.self)),
         GraphQLField("grossAmount", type: .scalar(Int.self)),
@@ -115,7 +115,7 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, orderNumber: String, qrCodeUrl: String? = nil, collectionDate: String? = nil, status: String? = nil, state: State? = nil, paymentStatus: String? = nil, grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, estimatedAt: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, items: [Item?]? = nil, orderNotes: [OrderNote?]? = nil, timeslot: Timeslot? = nil, fulfilmentPoint: FulfilmentPoint? = nil, user: User? = nil) {
+    public init(id: GraphQLID, orderNumber: String, qrCodeUrl: String? = nil, collectionDate: String? = nil, status: OrderStatus? = nil, state: State? = nil, paymentStatus: String? = nil, grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, estimatedAt: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, items: [Item?]? = nil, orderNotes: [OrderNote?]? = nil, timeslot: Timeslot? = nil, fulfilmentPoint: FulfilmentPoint? = nil, user: User? = nil) {
       self.init(unsafeResultMap: ["__typename": "Order", "id": id, "orderNumber": orderNumber, "qrCodeUrl": qrCodeUrl, "collectionDate": collectionDate, "status": status, "state": state.flatMap { (value: State) -> ResultMap in value.resultMap }, "paymentStatus": paymentStatus, "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "estimatedAt": estimatedAt, "createdAt": createdAt, "updatedAt": updatedAt, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }, "orderNotes": orderNotes.flatMap { (value: [OrderNote?]) -> [ResultMap?] in value.map { (value: OrderNote?) -> ResultMap? in value.flatMap { (value: OrderNote) -> ResultMap in value.resultMap } } }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "fulfilmentPoint": fulfilmentPoint.flatMap { (value: FulfilmentPoint) -> ResultMap in value.resultMap }, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }])
     }
 
@@ -164,9 +164,9 @@ public extension ApolloType {
       }
     }
 
-    public var status: String? {
+    public var status: OrderStatus? {
       get {
-        return resultMap["status"] as? String
+        return resultMap["status"] as? OrderStatus
       }
       set {
         resultMap.updateValue(newValue, forKey: "status")
@@ -356,7 +356,7 @@ public extension ApolloType {
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("language", type: .scalar(String.self)),
             GraphQLField("title", type: .scalar(String.self)),
-            GraphQLField("desciption", type: .scalar(String.self)),
+            GraphQLField("description", type: .scalar(String.self)),
           ]
         }
 
@@ -366,8 +366,8 @@ public extension ApolloType {
           self.resultMap = unsafeResultMap
         }
 
-        public init(language: String? = nil, title: String? = nil, desciption: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "OrderStateTranslation", "language": language, "title": title, "desciption": desciption])
+        public init(language: String? = nil, title: String? = nil, description: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "OrderStateTranslation", "language": language, "title": title, "description": description])
         }
 
         public var __typename: String {
@@ -397,12 +397,12 @@ public extension ApolloType {
           }
         }
 
-        public var desciption: String? {
+        public var description: String? {
           get {
-            return resultMap["desciption"] as? String
+            return resultMap["description"] as? String
           }
           set {
-            resultMap.updateValue(newValue, forKey: "desciption")
+            resultMap.updateValue(newValue, forKey: "description")
           }
         }
       }

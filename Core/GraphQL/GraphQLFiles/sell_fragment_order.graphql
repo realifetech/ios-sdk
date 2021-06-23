@@ -10,7 +10,7 @@ fragment FragmentOrder on Order {
     translations {
       language
       title
-      desciption
+      description
     }
   }
   paymentStatus
