@@ -186,9 +186,10 @@ extension FulfilmentPointRepositoryTests {
 extension FulfilmentPointRepositoryTests {
 
     func test_getFulfilmentPointCategories_graphQLManagerHasData_completeWithSuccessCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoriesQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoriesQuery
+                                                                .Data
+                                                                .self)
 
         let getFulfilmentPointCategories = ApolloType
             .GetFulfilmentPointCategoriesQuery
@@ -228,9 +229,11 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointCategories_graphQLManagerReturnsError_completeWithFailureCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoriesQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoriesQuery
+                                                                .Data
+                                                                .self)
+
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
@@ -248,9 +251,10 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointCategoryById_graphQLManagerHasData_completeWithSuccessCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoryByIdQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoryByIdQuery
+                                                                .Data
+                                                                .self)
         let fulfilmentPointCategoryFragment = makeFulfilmentPointCategoryFragment()
 
         let getFulfilmentPointCategory = ApolloType
@@ -284,9 +288,10 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointCategoryById_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoryByIdQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoryByIdQuery
+                                                                .Data
+                                                                .self)
 
         let data = ApolloType
             .GetFulfilmentPointCategoryByIdQuery
@@ -314,9 +319,11 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointCategoryById_graphQLManagerReturnsError_completeWithFailureCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoryByIdQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoryByIdQuery
+                                                                .Data
+                                                                .self)
+
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
