@@ -28,6 +28,13 @@ public extension ApolloType {
           __typename
           language
           title
+          description
+          collectionNote
+          collectionNotes {
+            __typename
+            VIRTUAL_QUEUE_PREORDER
+            VIRTUAL_QUEUE_CHECKIN
+          }
         }
         seatForm {
           __typename
@@ -253,6 +260,9 @@ public extension ApolloType {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("language", type: .scalar(Language.self)),
           GraphQLField("title", type: .scalar(String.self)),
+          GraphQLField("description", type: .scalar(String.self)),
+          GraphQLField("collectionNote", type: .scalar(String.self)),
+          GraphQLField("collectionNotes", type: .list(.object(CollectionNote.selections))),
         ]
       }
 
@@ -262,8 +272,8 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(language: Language? = nil, title: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "FulfilmentPointTranslation", "language": language, "title": title])
+      public init(language: Language? = nil, title: String? = nil, description: String? = nil, collectionNote: String? = nil, collectionNotes: [CollectionNote?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "FulfilmentPointTranslation", "language": language, "title": title, "description": description, "collectionNote": collectionNote, "collectionNotes": collectionNotes.flatMap { (value: [CollectionNote?]) -> [ResultMap?] in value.map { (value: CollectionNote?) -> ResultMap? in value.flatMap { (value: CollectionNote) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -290,6 +300,82 @@ public extension ApolloType {
         }
         set {
           resultMap.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var description: String? {
+        get {
+          return resultMap["description"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "description")
+        }
+      }
+
+      public var collectionNote: String? {
+        get {
+          return resultMap["collectionNote"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "collectionNote")
+        }
+      }
+
+      public var collectionNotes: [CollectionNote?]? {
+        get {
+          return (resultMap["collectionNotes"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [CollectionNote?] in value.map { (value: ResultMap?) -> CollectionNote? in value.flatMap { (value: ResultMap) -> CollectionNote in CollectionNote(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [CollectionNote?]) -> [ResultMap?] in value.map { (value: CollectionNote?) -> ResultMap? in value.flatMap { (value: CollectionNote) -> ResultMap in value.resultMap } } }, forKey: "collectionNotes")
+        }
+      }
+
+      public struct CollectionNote: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["CollectionNotes"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("VIRTUAL_QUEUE_PREORDER", type: .scalar(String.self)),
+            GraphQLField("VIRTUAL_QUEUE_CHECKIN", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(virtualQueuePreorder: String? = nil, virtualQueueCheckin: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "CollectionNotes", "VIRTUAL_QUEUE_PREORDER": virtualQueuePreorder, "VIRTUAL_QUEUE_CHECKIN": virtualQueueCheckin])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var virtualQueuePreorder: String? {
+          get {
+            return resultMap["VIRTUAL_QUEUE_PREORDER"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "VIRTUAL_QUEUE_PREORDER")
+          }
+        }
+
+        public var virtualQueueCheckin: String? {
+          get {
+            return resultMap["VIRTUAL_QUEUE_CHECKIN"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "VIRTUAL_QUEUE_CHECKIN")
+          }
         }
       }
     }
