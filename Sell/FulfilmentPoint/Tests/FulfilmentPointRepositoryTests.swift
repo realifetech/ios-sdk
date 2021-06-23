@@ -35,9 +35,7 @@ final class FulfilmentPointRepositoryTests: XCTestCase {
 extension FulfilmentPointRepositoryTests {
 
     func test_getFulfilmentPoints_graphQLManagerHasData_completeWithSuccessCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointsQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointsQuery.Data.self)
 
         let getFulfilmentPoint = ApolloType
             .GetFulfilmentPointsQuery
@@ -78,9 +76,7 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPoints_graphQLManagerReturnsError_completeWithFailureCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointsQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointsQuery.Data.self)
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
@@ -99,9 +95,7 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointById_graphQLManagerHasData_completeWithSuccessCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointByIdQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointByIdQuery.Data.self)
         let fulfilmentPointFragment = makeFulfilmentPointFragment()
 
         let getFulfilmentPoint = ApolloType
@@ -135,9 +129,7 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointById_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointByIdQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointByIdQuery.Data.self)
 
         let data = ApolloType
             .GetFulfilmentPointByIdQuery
@@ -165,9 +157,8 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointById_graphQLManagerReturnsError_completeWithFailureCase() {
-        let tuple = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointByIdQuery.Data.self)
-        let graphQLManager = tuple.graphQLManager
-        let sut = tuple.sut
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointByIdQuery.Data.self)
+
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
