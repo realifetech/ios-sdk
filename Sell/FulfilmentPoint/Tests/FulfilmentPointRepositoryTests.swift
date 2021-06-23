@@ -77,6 +77,7 @@ extension FulfilmentPointRepositoryTests {
 
     func test_getFulfilmentPoints_graphQLManagerReturnsError_completeWithFailureCase() {
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointsQuery.Data.self)
+
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")

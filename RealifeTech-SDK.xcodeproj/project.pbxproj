@@ -108,6 +108,7 @@
 		961C1CA72683405400BE6F3B /* ProductVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CA62683405400BE6F3B /* ProductVariant.swift */; };
 		961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CA82683407B00BE6F3B /* ProductCategory.swift */; };
 		961C1CAB2683409C00BE6F3B /* StandardDescriptionTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */; };
+		961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CAD26834AC000BE6F3B /* ProductRepositoryTests.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -340,6 +341,7 @@
 		961C1CA62683405400BE6F3B /* ProductVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVariant.swift; sourceTree = "<group>"; };
 		961C1CA82683407B00BE6F3B /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDescriptionTranslation.swift; sourceTree = "<group>"; };
+		961C1CAD26834AC000BE6F3B /* ProductRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryTests.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 			children = (
 				9606ED87267B50A000ED24D0 /* Models */,
 				9606ED9E267B65C100ED24D0 /* Repository */,
+				961C1CAC26834AA500BE6F3B /* Tests */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -754,6 +757,14 @@
 			isa = PBXGroup;
 			children = (
 				961C1C9C2682436B00BE6F3B /* FulfilmentPointRepositoryTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		961C1CAC26834AA500BE6F3B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				961C1CAD26834AC000BE6F3B /* ProductRepositoryTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1666,6 +1677,7 @@
 				961C436D2608936E001D8467 /* OAuthTokenRefreshWatcherTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
 				961C438F2608939C001D8467 /* UIDeviceHelperTests.swift in Sources */,
+				961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */,
 				961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */,
 				961C428B260882F5001D8467 /* CoreConfigurationTests.swift in Sources */,
 				961C42B526088357001D8467 /* ReadOnlyCurrentValueTests.swift in Sources */,
