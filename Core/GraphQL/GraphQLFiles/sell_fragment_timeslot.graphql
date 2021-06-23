@@ -4,6 +4,8 @@ fragment FragmentTimeslot on Timeslot {
   reference
   startTime
   endTime
+  createdAt
+  updatedAt
   translations {
     language
     title

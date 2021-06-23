@@ -9,7 +9,7 @@ import Foundation
 
 public enum ContentFactory {
 
-    public static func makeContentModule(graphQLDispatcher: GraphQLDispatching) -> Content {
-        return ContentImplementing(dispatcher: graphQLDispatcher)
+    public static func makeContentModule(graphQLManager: GraphQLManageable) -> Content {
+        return ContentImplementing(graphQLManager: graphQLManager)
     }
 }

@@ -14,9 +14,23 @@ fragment FragmentFulfilmentPoint on FulfilmentPoint {
   translations {
     language
     title
+    description
+    collectionNote
+    collectionNotes {
+      VIRTUAL_QUEUE_PREORDER
+      VIRTUAL_QUEUE_CHECKIN
+    }
   }
-  seatForm { ...FragmentForm }
-  categories { ...FragmentFulfilmentPointCategory }
-  venue { ...FragmentVenue }
-  timeslots { ...FragmentTimeslot }
+  seatForm { 
+    ...FragmentForm 
+  }
+  categories {
+    ...FragmentFulfilmentPointCategory 
+    }
+  venue {
+    ...FragmentVenue 
+  }
+  timeslots { 
+    ...FragmentTimeslot 
+  }
 }

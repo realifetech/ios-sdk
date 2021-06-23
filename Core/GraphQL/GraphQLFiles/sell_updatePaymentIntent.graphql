@@ -1,4 +1,4 @@
-mutation updateMyPaymentIntent($id: ID!, $input: PaymentIntentInput!) {
+mutation updateMyPaymentIntent($id: ID!, $input: PaymentIntentUpdateInput!) {
   updateMyPaymentIntent(id: $id, input: $input) {
     id
     orderType

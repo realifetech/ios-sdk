@@ -13,21 +13,21 @@ class AnalyticsLogger {
     typealias PeristentQueueItem = QueueItem<AnalyticEventAndCompletion>
 
     private let failureDebounceMilliseconds: Int
-    private let dispatcher: LogEventSending
+    private let graphQLManager: GraphQLManageable
     private let persistentQueue: AnyQueue<AnalyticEventAndCompletion>
     private let reachabilityHelper: ReachabilityChecking
     private let deviceRegistering: DeviceRegistering
 
-    private var loopIsRunning: Bool = false
+    private var loopIsRunning = false
 
     public init(
-        dispatcher: LogEventSending,
+        graphQLManager: GraphQLManageable,
         reachabilityHelper: ReachabilityChecking,
         persistentQueue: AnyQueue<AnalyticEventAndCompletion>,
         failureDebounceSeconds: Double = 45,
         deviceRegistering: DeviceRegistering
     ) {
-        self.dispatcher = dispatcher
+        self.graphQLManager = graphQLManager
         self.reachabilityHelper = reachabilityHelper
         self.persistentQueue = persistentQueue
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
@@ -36,14 +36,14 @@ class AnalyticsLogger {
     }
 
     private func startLoop() {
-        DispatchQueue.main.async {
-            self.loopIsRunning = true
-            let nextItemResult = self.persistentQueue.next
+        DispatchQueue.main.async { [self] in
+            loopIsRunning = true
+            let nextItemResult = persistentQueue.next
             switch nextItemResult {
             case .success(let frontOfQueue):
-                self.loopStep(queueItem: frontOfQueue)
+                loopStep(queueItem: frontOfQueue)
             case .failure:
-                self.loopIsRunning = false
+                loopIsRunning = false
             }
         }
     }
@@ -60,7 +60,7 @@ class AnalyticsLogger {
             }
             return
         }
-        dispatcher.logEvent(queueItem.item.analyticEvent) { result in
+        performPutAnalyticEventMutation(event: queueItem.item.analyticEvent) { result in
             queueItem.item.analyticCompletion?(result)
             switch result {
             case .success(let success):
@@ -76,6 +76,27 @@ class AnalyticsLogger {
                 DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
                     self.startLoop()
                 }
+            }
+        }
+    }
+
+    private func performPutAnalyticEventMutation(
+        event: AnalyticEvent,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        let input = ApolloType.AnalyticEvent(
+            type: event.type,
+            action: event.action,
+            new: event.newString,
+            old: event.oldString,
+            version: event.version,
+            timestamp: event.timestampString)
+        graphQLManager.dispatchMutation(mutation: ApolloType.PutAnalyticEventMutation(input: input)) { result in
+            switch result {
+            case .success(let success):
+                completion(.success(success.data?.putAnalyticEvent.success ?? false))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

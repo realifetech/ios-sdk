@@ -10,7 +10,7 @@ public extension ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      mutation updateMyPaymentIntent($id: ID!, $input: PaymentIntentInput!) {
+      mutation updateMyPaymentIntent($id: ID!, $input: PaymentIntentUpdateInput!) {
         updateMyPaymentIntent(id: $id, input: $input) {
           __typename
           id
@@ -46,9 +46,9 @@ public extension ApolloType {
     }
 
     public var id: GraphQLID
-    public var input: PaymentIntentInput
+    public var input: PaymentIntentUpdateInput
 
-    public init(id: GraphQLID, input: PaymentIntentInput) {
+    public init(id: GraphQLID, input: PaymentIntentUpdateInput) {
       self.id = id
       self.input = input
     }

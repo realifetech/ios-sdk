@@ -17,6 +17,8 @@ public extension ApolloType {
         status
         iconImageUrl
         position
+        createdAt
+        updatedAt
         translations {
           __typename
           language
@@ -35,6 +37,8 @@ public extension ApolloType {
         GraphQLField("status", type: .scalar(String.self)),
         GraphQLField("iconImageUrl", type: .scalar(String.self)),
         GraphQLField("position", type: .scalar(Int.self)),
+        GraphQLField("createdAt", type: .scalar(String.self)),
+        GraphQLField("updatedAt", type: .scalar(String.self)),
         GraphQLField("translations", type: .list(.object(Translation.selections))),
       ]
     }
@@ -45,8 +49,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, reference: String? = nil, status: String? = nil, iconImageUrl: String? = nil, position: Int? = nil, translations: [Translation?]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "FulfilmentPointCategory", "id": id, "reference": reference, "status": status, "iconImageUrl": iconImageUrl, "position": position, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
+    public init(id: GraphQLID, reference: String? = nil, status: String? = nil, iconImageUrl: String? = nil, position: Int? = nil, createdAt: String? = nil, updatedAt: String? = nil, translations: [Translation?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "FulfilmentPointCategory", "id": id, "reference": reference, "status": status, "iconImageUrl": iconImageUrl, "position": position, "createdAt": createdAt, "updatedAt": updatedAt, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
     }
 
     public var __typename: String {
@@ -100,6 +104,24 @@ public extension ApolloType {
       }
       set {
         resultMap.updateValue(newValue, forKey: "position")
+      }
+    }
+
+    public var createdAt: String? {
+      get {
+        return resultMap["createdAt"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "createdAt")
+      }
+    }
+
+    public var updatedAt: String? {
+      get {
+        return resultMap["updatedAt"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "updatedAt")
       }
     }
 
