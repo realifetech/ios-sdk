@@ -8,9 +8,20 @@
 
 import Foundation
 
-public struct ProductModifierItem: Codable, Equatable{
+public struct ProductModifierItem: Codable, Equatable {
 
     public let id: String
     public let additionalPrice: Int?
     public let translations: [StandardTitleTranslation]?
+
+    init?(response: ApolloType.FragmentProductModifierItem?) {
+        guard let response = response else { return nil }
+        id = response.id
+        additionalPrice = response.additionalPrice
+        translations = response.translations?.compactMap {
+            StandardTitleTranslation(
+                language: $0?.language?.rawValue,
+                title: $0?.title)
+        }
+    }
 }

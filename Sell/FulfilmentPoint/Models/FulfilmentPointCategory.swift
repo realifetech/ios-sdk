@@ -21,7 +21,9 @@ public struct FulfilmentPointCategory: Codable, Equatable {
         iconImageUrl = response.iconImageUrl
         position = response.position
         translations = response.translations?.compactMap {
-            StandardTitleTranslation(response: $0)
+            StandardTitleTranslation(
+                language: $0?.language?.rawValue,
+                title: $0?.title)
         }
     }
 }

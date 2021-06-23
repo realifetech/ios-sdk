@@ -13,8 +13,8 @@ public struct StandardTitleTranslation: Codable, Equatable {
     public let language: String?
     public let title: String?
 
-    init(response: ApolloType.FragmentFulfilmentPointCategory.Translation?) {
-        language = response?.language?.rawValue
-        title = response?.title
+    init(language: String?, title: String?) {
+        self.language = language
+        self.title = title
     }
 }

@@ -16,4 +16,20 @@ public struct ProductModifierList: Codable, Equatable {
     public let maxAllowed: Int?
     public let items: [ProductModifierItem]?
     public let translations: [StandardTitleTranslation]?
+
+    init?(response: ApolloType.FragmentProduct.ModifierList?) {
+        guard let response = response else { return nil }
+        id = response.id
+        multipleSelect = response.multipleSelect
+        mandatorySelect = response.mandatorySelect
+        maxAllowed = response.maxAllowed
+        items = response.items?.compactMap {
+            ProductModifierItem(response: $0?.fragments.fragmentProductModifierItem)
+        }
+        translations = response.translations?.compactMap {
+            StandardTitleTranslation(
+                language: $0?.language?.rawValue,
+                title: $0?.title)
+        }
+    }
 }

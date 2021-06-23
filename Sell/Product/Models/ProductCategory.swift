@@ -13,4 +13,15 @@ public struct ProductCategory: Codable, Equatable {
     public let id: String
     public let position: Int?
     public let translations: [StandardTitleTranslation]?
+
+    init?(response: ApolloType.FragmentProduct.Category?) {
+        guard let response = response else { return nil }
+        id = response.id
+        position = response.position
+        translations = response.translations?.compactMap {
+            StandardTitleTranslation(
+                language: $0?.language?.rawValue,
+                title: $0?.title)
+        }
+    }
 }

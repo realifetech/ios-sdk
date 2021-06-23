@@ -12,7 +12,11 @@ public protocol ProductProvidable {
 
     func getProducts(
         pageSize: Int,
-        page: Int,
-        filters: ProductFilter,
-        callback: (Result<PaginatedObject<Product>, Error>) -> Void)
+        page: Int?,
+        filters: ProductFilter?,
+        callback: @escaping (Result<PaginatedObject<Product>, Error>) -> Void)
+
+    func getProductById(
+        id: String,
+        callback: @escaping (Result<Product, Error>) -> Void)
 }
