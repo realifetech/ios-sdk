@@ -186,7 +186,10 @@ extension FulfilmentPointRepositoryTests {
 extension FulfilmentPointRepositoryTests {
 
     func test_getFulfilmentPointCategories_graphQLManagerHasData_completeWithSuccessCase() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoriesQuery.Data.self)
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoriesQuery
+                                                                .Data
+                                                                .self)
 
         let getFulfilmentPointCategories = ApolloType
             .GetFulfilmentPointCategoriesQuery
@@ -226,7 +229,10 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointCategories_graphQLManagerReturnsError_completeWithFailureCase() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoriesQuery.Data.self)
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoriesQuery
+                                                                .Data
+                                                                .self)
 
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
@@ -245,7 +251,10 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointCategoryById_graphQLManagerHasData_completeWithSuccessCase() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoryByIdQuery.Data.self)
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoryByIdQuery
+                                                                .Data
+                                                                .self)
         let fulfilmentPointCategoryFragment = makeFulfilmentPointCategoryFragment()
 
         let getFulfilmentPointCategory = ApolloType
@@ -279,7 +288,10 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointCategoryById_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoryByIdQuery.Data.self)
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoryByIdQuery
+                                                                .Data
+                                                                .self)
 
         let data = ApolloType
             .GetFulfilmentPointCategoryByIdQuery
@@ -307,7 +319,10 @@ extension FulfilmentPointRepositoryTests {
     }
 
     func test_getFulfilmentPointCategoryById_graphQLManagerReturnsError_completeWithFailureCase() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointCategoryByIdQuery.Data.self)
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType
+                                                                .GetFulfilmentPointCategoryByIdQuery
+                                                                .Data
+                                                                .self)
 
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
