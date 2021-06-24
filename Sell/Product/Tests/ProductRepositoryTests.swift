@@ -12,16 +12,14 @@ import Apollo
 
 final class ProductRepositoryTests: XCTestCase {
 
+    private let productFragment = ApolloType.FragmentProduct(id: "1")
+
     private func makeGraphQLManagerAndSUT<DataType>(
         ofType type: DataType.Type
     ) -> (graphQLManager: MockGraphQLManager<DataType>, sut: ProductRepository) {
         let graphQLManager = MockGraphQLManager<DataType>()
         let sut = ProductRepository(graphQLManager: graphQLManager)
         return (graphQLManager: graphQLManager, sut: sut)
-    }
-
-    private func makeProductFragment(id: String = "1") -> ApolloType.FragmentProduct {
-        ApolloType.FragmentProduct(id: id)
     }
 }
 
@@ -89,7 +87,6 @@ extension ProductRepositoryTests {
 
     func test_getProductById_graphQLManagerHasData_completeWithSuccessCase() {
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetProductByIdQuery.Data.self)
-        let productFragment = makeProductFragment()
 
         let getProduct = ApolloType
             .GetProductByIdQuery
@@ -115,7 +112,7 @@ extension ProductRepositoryTests {
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
-            XCTAssertEqual(returnedResponse.id, productFragment.id)
+            XCTAssertEqual(returnedResponse.id, self.productFragment.id)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
