@@ -9,5 +9,5 @@
 import Foundation
 
 public struct FulfilmentPointFilter {
-    public let categories: [String]
+    public let categories: [String]?
 }

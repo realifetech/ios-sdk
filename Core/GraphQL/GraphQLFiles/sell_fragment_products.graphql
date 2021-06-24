@@ -1,6 +1,0 @@
-fragment FragmentProducts on ProductEdge {
-  edges {
-    ...FragmentProduct
-  }
-  nextPage
-}

@@ -1,5 +1,5 @@
 //
-//  GraphQLError.swift
+//  GraphQLManagerError.swift
 //  RealifeTech
 //
 //  Created by Mickey Lee on 21/06/2021.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum GraphQLError: Error, LocalizedError {
+public enum GraphQLManagerError: Error, LocalizedError {
     case noDataError
 
     public var errorDescription: String? {
