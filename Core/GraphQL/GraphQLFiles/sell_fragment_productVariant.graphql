@@ -2,7 +2,8 @@ fragment FragmentProductVariant on ProductVariant {
   id
   externalId
   price
-  externalId
+  createdAt
+  updatedAt
   translations {
     title
     language

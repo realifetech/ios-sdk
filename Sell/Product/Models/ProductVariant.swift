@@ -1,25 +1,23 @@
 //
-//  FulfilmentPointCategory.swift
+//  ProductVariant.swift
 //  RealifeTech
 //
-//  Created by Mickey Lee on 21/06/2021.
+//  Created by Mickey Lee on 23/06/2021.
 //  Copyright © 2021 Realife Tech. All rights reserved.
 //
 
 import Foundation
 
-public struct FulfilmentPointCategory: Codable, Equatable {
+public struct ProductVariant: Codable, Equatable {
 
     public let id: String
-    public let iconImageUrl: String?
-    public let position: Int?
+    public let price: Int?
     public let translations: [StandardTitleTranslation]?
 
-    init?(response: ApolloType.FragmentFulfilmentPointCategory?) {
+    init?(response: ApolloType.FragmentProductVariant?) {
         guard let response = response else { return nil }
         id = response.id
-        iconImageUrl = response.iconImageUrl
-        position = response.position
+        price = response.price
         translations = response.translations?.compactMap {
             StandardTitleTranslation(
                 language: $0?.language?.rawValue,

@@ -15,13 +15,17 @@ fragment FragmentProduct on Product {
       multipleSelect
       mandatorySelect
       maxAllowed
-      items { ...FragmentProductModifierItem }
+      items {
+        ...FragmentProductModifierItem
+      }
       translations {
       language
         title
       }
     }
-    variants { ...FragmentProductVariant }
+    variants {
+      ...FragmentProductVariant
+    }
     categories {
       id
       externalId
@@ -33,9 +37,13 @@ fragment FragmentProduct on Product {
         title
       }
     }
-    fulfilmentPoints { ...FragmentFulfilmentPoint }
+    fulfilmentPoints {
+      ...FragmentFulfilmentPoint
+    }
     translations {
+      id
       language
       title
+      description
     }
 }
