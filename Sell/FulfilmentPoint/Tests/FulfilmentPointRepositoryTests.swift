@@ -42,7 +42,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointsQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -104,7 +105,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -132,7 +134,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -187,7 +190,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointCategoriesQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -253,7 +257,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointCategoryByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -284,7 +289,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointCategoryByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,

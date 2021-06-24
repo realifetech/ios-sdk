@@ -38,7 +38,8 @@ extension ProductRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetProductsQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -99,7 +100,8 @@ extension ProductRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetProductByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -127,7 +129,8 @@ extension ProductRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetProductByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
