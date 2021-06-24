@@ -113,6 +113,14 @@
 		961C1CB726839AE100BE6F3B /* CollectionPreferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CB626839AE100BE6F3B /* CollectionPreferenceType.swift */; };
 		961C1CBB26839C2500BE6F3B /* BasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CBA26839C2500BE6F3B /* BasketItem.swift */; };
 		961C1CBD26839C3700BE6F3B /* SeatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CBC26839C3700BE6F3B /* SeatInfo.swift */; };
+		961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CBE26839CBA00BE6F3B /* BasketProvidable.swift */; };
+		961C1CC126839CC500BE6F3B /* BasketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CC026839CC500BE6F3B /* BasketRepository.swift */; };
+		961C1CC326839D7300BE6F3B /* BasketInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CC226839D7300BE6F3B /* BasketInput.swift */; };
+		961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CC62684D3F200BE6F3B /* BasketError.swift */; };
+		961C1CCB2684E3B200BE6F3B /* ProductModifierItemSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CCA2684E3B200BE6F3B /* ProductModifierItemSelection.swift */; };
+		961C1CCD2684EF8600BE6F3B /* BasketItemInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CCC2684EF8600BE6F3B /* BasketItemInput.swift */; };
+		961C1CCF2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CCE2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift */; };
+		961C1CD12684EFB400BE6F3B /* CheckoutInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CD02684EFB400BE6F3B /* CheckoutInput.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -350,6 +358,14 @@
 		961C1CB626839AE100BE6F3B /* CollectionPreferenceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreferenceType.swift; sourceTree = "<group>"; };
 		961C1CBA26839C2500BE6F3B /* BasketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItem.swift; sourceTree = "<group>"; };
 		961C1CBC26839C3700BE6F3B /* SeatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatInfo.swift; sourceTree = "<group>"; };
+		961C1CBE26839CBA00BE6F3B /* BasketProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketProvidable.swift; sourceTree = "<group>"; };
+		961C1CC026839CC500BE6F3B /* BasketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepository.swift; sourceTree = "<group>"; };
+		961C1CC226839D7300BE6F3B /* BasketInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketInput.swift; sourceTree = "<group>"; };
+		961C1CC62684D3F200BE6F3B /* BasketError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketError.swift; sourceTree = "<group>"; };
+		961C1CCA2684E3B200BE6F3B /* ProductModifierItemSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemSelection.swift; sourceTree = "<group>"; };
+		961C1CCC2684EF8600BE6F3B /* BasketItemInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItemInput.swift; sourceTree = "<group>"; };
+		961C1CCE2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemSelectionInput.swift; sourceTree = "<group>"; };
+		961C1CD02684EFB400BE6F3B /* CheckoutInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutInput.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -709,6 +725,7 @@
 				9606ED88267B50B000ED24D0 /* ProductFilter.swift */,
 				961C1CA02683400500BE6F3B /* ProductImage.swift */,
 				961C1CA42683404300BE6F3B /* ProductModifierItem.swift */,
+				961C1CCE2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift */,
 				961C1CA22683402C00BE6F3B /* ProductModifierList.swift */,
 				961C1CA62683405400BE6F3B /* ProductVariant.swift */,
 			);
@@ -782,8 +799,12 @@
 			isa = PBXGroup;
 			children = (
 				961C1CB426839A5100BE6F3B /* Basket.swift */,
+				961C1CC226839D7300BE6F3B /* BasketInput.swift */,
 				961C1CBA26839C2500BE6F3B /* BasketItem.swift */,
+				961C1CCC2684EF8600BE6F3B /* BasketItemInput.swift */,
+				961C1CD02684EFB400BE6F3B /* CheckoutInput.swift */,
 				961C1CB626839AE100BE6F3B /* CollectionPreferenceType.swift */,
+				961C1CCA2684E3B200BE6F3B /* ProductModifierItemSelection.swift */,
 				961C1CBC26839C3700BE6F3B /* SeatInfo.swift */,
 			);
 			path = Models;
@@ -792,6 +813,9 @@
 		961C1CB326839A4200BE6F3B /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				961C1CBE26839CBA00BE6F3B /* BasketProvidable.swift */,
+				961C1CC026839CC500BE6F3B /* BasketRepository.swift */,
+				961C1CC62684D3F200BE6F3B /* BasketError.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1558,10 +1582,12 @@
 				48EFE2242539E21100CC6E58 /* CommunicateImplementing.swift in Sources */,
 				961C4227260882BB001D8467 /* RequestDispatcher.swift in Sources */,
 				0319F3382667995B00C01E1F /* content_getWebPageByType.graphql.swift in Sources */,
+				961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */,
 				0319F32F2667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift in Sources */,
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
 				961C1C9F26833C8800BE6F3B /* StandardTitleTranslation.swift in Sources */,
 				9606ED8B267B512900ED24D0 /* Product.swift in Sources */,
+				961C1CCF2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift in Sources */,
 				0319F3232667995B00C01E1F /* Types.graphql.swift in Sources */,
 				0319F33A2667995B00C01E1F /* sell_fragment_product.graphql.swift in Sources */,
 				961C41D3260882BA001D8467 /* OAuthTokenRefreshWatcher.swift in Sources */,
@@ -1595,15 +1621,18 @@
 				0319F32E2667995B00C01E1F /* sell_getFulfilmentPointById.graphql.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				0319F32B2667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift in Sources */,
+				961C1CC126839CC500BE6F3B /* BasketRepository.swift in Sources */,
 				961C4225260882BB001D8467 /* Requester.swift in Sources */,
 				961C4270260882C8001D8467 /* DeviceRequester.swift in Sources */,
 				961C426F260882C8001D8467 /* Device.swift in Sources */,
 				0319F3252667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift in Sources */,
+				961C1CCD2684EF8600BE6F3B /* BasketItemInput.swift in Sources */,
 				9606ED81267B4FE400ED24D0 /* Sell.swift in Sources */,
 				961C41EC260882BA001D8467 /* RequestLoggingInterceptor.swift in Sources */,
 				961C1CA52683404300BE6F3B /* ProductModifierItem.swift in Sources */,
 				964A3BED2680B49300C42C35 /* FulfilmentPointProvidable.swift in Sources */,
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
+				961C1CD12684EFB400BE6F3B /* CheckoutInput.swift in Sources */,
 				0319F3142667995B00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift in Sources */,
 				0319F31F2667995B00C01E1F /* sell_fragment_paymentSourceDetails.graphql.swift in Sources */,
 				961C1CB0268396F100BE6F3B /* sell_getMyBasket.graphql.swift in Sources */,
@@ -1637,7 +1666,9 @@
 				961C1CA32683402C00BE6F3B /* ProductModifierList.swift in Sources */,
 				961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */,
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
+				961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
+				961C1CCB2684E3B200BE6F3B /* ProductModifierItemSelection.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
 				961C1CA72683405400BE6F3B /* ProductVariant.swift in Sources */,
 				9606ED97267B646F00ED24D0 /* SellImplementing.swift in Sources */,
@@ -1668,6 +1699,7 @@
 				0319F3372667995B00C01E1F /* sell_fragment_fulfilmentPoint.graphql.swift in Sources */,
 				0319F31A2667995B00C01E1F /* analytics_putAnalyticEvent.graphql.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
+				961C1CC326839D7300BE6F3B /* BasketInput.swift in Sources */,
 				961C4217260882BB001D8467 /* APIError.swift in Sources */,
 				0319F3242667995B00C01E1F /* sell_fragment_venue.graphql.swift in Sources */,
 				487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */,

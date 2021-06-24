@@ -18,5 +18,20 @@ public struct BasketItem {
     public let fulfilmentPoint: FulfilmentPoint?
     public let productVariant: ProductVariant?
     public let product: Product?
-    public let productModifierItems: [ProductModifierItem]?
+    public let productModifierItems: [ProductModifierItemSelection]?
+
+    init?(response: ApolloType.FragmentBasket.Item?) {
+        guard let response = response else { return nil }
+        id = response.id
+        price = response.price
+        modifierItemsPrice = response.modifierItemsPrice
+        quantity = response.quantity
+        totalPrice = response.totalPrice
+        fulfilmentPoint = FulfilmentPoint(response: response.fulfilmentPoint?.fragments.fragmentFulfilmentPoint)
+        productVariant = ProductVariant(response: response.productVariant?.fragments.fragmentProductVariant)
+        product = Product(response: response.product?.fragments.fragmentProduct)
+        productModifierItems = response.productModifierItems?.compactMap {
+            ProductModifierItemSelection(response: $0?.fragments.fragmentProductModifierItemSelection)
+        }
+    }
 }

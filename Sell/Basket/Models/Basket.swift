@@ -15,7 +15,22 @@ public struct Basket {
     public let netAmount: Int?
     public let seatInfo: [SeatInfo]?
     public let timeslot: Timeslot?
-    public let collectionDate: Date?
+    public let collectionDate: String?
     public let collectionPreferenceType: CollectionPreferenceType?
     public let items: [BasketItem]?
+
+    init(response: ApolloType.FragmentBasket) {
+        grossAmount = response.grossAmount
+        discountAmount = response.discountAmount
+        netAmount = response.netAmount
+        seatInfo = response.seatInfo?.compactMap {
+            SeatInfo(key: $0?.key, value: $0?.value)
+        }
+        timeslot = Timeslot(response: response.timeslot?.fragments.fragmentTimeslot)
+        collectionDate = response.collectionDate
+        collectionPreferenceType = CollectionPreferenceType(rawValue: response.collectionPreferenceType ?? "")
+        items = response.items?.compactMap {
+            BasketItem(response: $0)
+        }
+    }
 }

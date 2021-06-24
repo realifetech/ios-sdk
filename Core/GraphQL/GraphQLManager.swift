@@ -17,6 +17,7 @@ public protocol GraphQLManageable {
     )
     func dispatchMutation<Mutation: GraphQLMutation>(
         mutation: Mutation,
+        cacheResultToPersistence: Bool,
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     )
     func clearAllCachedData()
@@ -50,9 +51,13 @@ extension GraphQLManager: GraphQLManageable {
 
     public func dispatchMutation<Mutation: GraphQLMutation>(
         mutation: Mutation,
+        cacheResultToPersistence: Bool,
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     ) {
-        client.perform(mutation: mutation) { result in
+        client.perform(
+            mutation: mutation,
+            publishResultToStore: cacheResultToPersistence
+        ) { result in
             switch result {
             case .success(let graphQLResult):
                 return completion(.success(graphQLResult))

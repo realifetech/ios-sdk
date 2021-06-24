@@ -31,6 +31,7 @@ final class MockGraphQLManager<ResultDataType>: GraphQLManageable {
 
     func dispatchMutation<Mutation: GraphQLMutation>(
         mutation: Mutation,
+        cacheResultToPersistence: Bool,
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     ) {
         dispatchMutationIsCalled = true
