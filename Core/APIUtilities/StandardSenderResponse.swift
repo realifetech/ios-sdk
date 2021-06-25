@@ -9,9 +9,9 @@
 import Foundation
 
 public struct StandardSenderResponse: Codable {
-    let code: Int?
-    let type: String?
-    let message: String?
+    public let code: Int?
+    public let type: String?
+    public let message: String?
 }
 
 extension StandardSenderResponse {
