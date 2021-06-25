@@ -10,7 +10,7 @@ import Foundation
 
 public struct BasketInput {
 
-    public let collectionDate: String?
+    public let collectionDate: Date?
     public let collectionPreferenceType: CollectionPreferenceType?
     public let timeslotId: String?
     public let fulfilmentPointId: String?

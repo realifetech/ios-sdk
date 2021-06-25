@@ -39,7 +39,10 @@ extension GraphQLManager: GraphQLManageable {
         cachePolicy: GraphNetworkCachePolicy,
         completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     ) {
-        client.fetch(query: query, cachePolicy: cachePolicy.apolloCachePolicyType) { result in
+        client.fetch(
+            query: query,
+            cachePolicy: cachePolicy.apolloCachePolicyType
+        ) { result in
             switch result {
             case .success(let graphQLResult):
                 return completion(.success(graphQLResult))

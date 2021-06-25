@@ -15,7 +15,7 @@ public struct Basket {
     public let netAmount: Int?
     public let seatInfo: [SeatInfo]?
     public let timeslot: Timeslot?
-    public let collectionDate: String?
+    public let collectionDate: Date?
     public let collectionPreferenceType: CollectionPreferenceType?
     public let items: [BasketItem]?
 
@@ -27,7 +27,7 @@ public struct Basket {
             SeatInfo(key: $0?.key, value: $0?.value)
         }
         timeslot = Timeslot(response: response.timeslot?.fragments.fragmentTimeslot)
-        collectionDate = response.collectionDate
+        collectionDate = response.collectionDate?.iso8601Date
         collectionPreferenceType = CollectionPreferenceType(rawValue: response.collectionPreferenceType ?? "")
         items = response.items?.compactMap {
             BasketItem(response: $0)

@@ -121,6 +121,7 @@
 		961C1CCD2684EF8600BE6F3B /* BasketItemInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CCC2684EF8600BE6F3B /* BasketItemInput.swift */; };
 		961C1CCF2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CCE2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift */; };
 		961C1CD12684EFB400BE6F3B /* CheckoutInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CD02684EFB400BE6F3B /* CheckoutInput.swift */; };
+		961C1CDD2685F86200BE6F3B /* String+ISO8601Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CDC2685F86200BE6F3B /* String+ISO8601Date.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -366,6 +367,7 @@
 		961C1CCC2684EF8600BE6F3B /* BasketItemInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItemInput.swift; sourceTree = "<group>"; };
 		961C1CCE2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemSelectionInput.swift; sourceTree = "<group>"; };
 		961C1CD02684EFB400BE6F3B /* CheckoutInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutInput.swift; sourceTree = "<group>"; };
+		961C1CDC2685F86200BE6F3B /* String+ISO8601Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ISO8601Date.swift"; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -820,6 +822,14 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		961C1CDB2685F84B00BE6F3B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				961C1CDC2685F86200BE6F3B /* String+ISO8601Date.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		961C415F26088298001D8467 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -927,13 +937,14 @@
 			isa = PBXGroup;
 			children = (
 				961C41AB260882BA001D8467 /* schema.json */,
+				961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */,
 				9606EDA8267B7CE800ED24D0 /* GraphQLFactory.swift */,
 				9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */,
-				961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */,
 				964A3BF02680B94E00C42C35 /* GraphQLManagerError.swift */,
 				961C419B260882BA001D8467 /* API */,
 				9606EDAC267B7EA200ED24D0 /* Interceptors */,
 				961C1C86268202A600BE6F3B /* Tests */,
+				961C1CDB2685F84B00BE6F3B /* Utils */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -1495,7 +1506,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/Core/GraphQL\"\ncd $GRAPHQL_PATH\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" API/\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/Core/GraphQL\"\ncd $GRAPHQL_PATH\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" API/\n";
 		};
 		C727D3220B094BF8B35EE985 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1608,6 +1619,7 @@
 				9606ED9B267B651800ED24D0 /* ProductRepository.swift in Sources */,
 				961C1CBB26839C2500BE6F3B /* BasketItem.swift in Sources */,
 				480BCD95251E254D00266617 /* RealifeTech.swift in Sources */,
+				961C1CDD2685F86200BE6F3B /* String+ISO8601Date.swift in Sources */,
 				0319F3362667995B00C01E1F /* canvas_fragment_widget.graphql.swift in Sources */,
 				0319F3332667995B00C01E1F /* sell_fragment_form.graphql.swift in Sources */,
 				961C4269260882C8001D8467 /* QueueItem.swift in Sources */,
