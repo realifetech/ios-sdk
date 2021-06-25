@@ -25,6 +25,7 @@ public extension ApolloType {
           ...FragmentTimeslot
         }
         collectionDate
+        collectionPreferenceType
         items {
           __typename
           id
@@ -63,6 +64,7 @@ public extension ApolloType {
         GraphQLField("seatInfo", type: .list(.object(SeatInfo.selections))),
         GraphQLField("timeslot", type: .object(Timeslot.selections)),
         GraphQLField("collectionDate", type: .scalar(String.self)),
+        GraphQLField("collectionPreferenceType", type: .scalar(String.self)),
         GraphQLField("items", type: .list(.object(Item.selections))),
       ]
     }
@@ -73,8 +75,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, seatInfo: [SeatInfo?]? = nil, timeslot: Timeslot? = nil, collectionDate: String? = nil, items: [Item?]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Basket", "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "seatInfo": seatInfo.flatMap { (value: [SeatInfo?]) -> [ResultMap?] in value.map { (value: SeatInfo?) -> ResultMap? in value.flatMap { (value: SeatInfo) -> ResultMap in value.resultMap } } }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "collectionDate": collectionDate, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }])
+    public init(grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, seatInfo: [SeatInfo?]? = nil, timeslot: Timeslot? = nil, collectionDate: String? = nil, collectionPreferenceType: String? = nil, items: [Item?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Basket", "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "seatInfo": seatInfo.flatMap { (value: [SeatInfo?]) -> [ResultMap?] in value.map { (value: SeatInfo?) -> ResultMap? in value.flatMap { (value: SeatInfo) -> ResultMap in value.resultMap } } }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "collectionDate": collectionDate, "collectionPreferenceType": collectionPreferenceType, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }])
     }
 
     public var __typename: String {
@@ -137,6 +139,15 @@ public extension ApolloType {
       }
       set {
         resultMap.updateValue(newValue, forKey: "collectionDate")
+      }
+    }
+
+    public var collectionPreferenceType: String? {
+      get {
+        return resultMap["collectionPreferenceType"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "collectionPreferenceType")
       }
     }
 

@@ -109,6 +109,11 @@
 		961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CA82683407B00BE6F3B /* ProductCategory.swift */; };
 		961C1CAB2683409C00BE6F3B /* StandardDescriptionTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */; };
 		961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CAD26834AC000BE6F3B /* ProductRepositoryTests.swift */; };
+		961C1CB0268396F100BE6F3B /* sell_getMyBasket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */; };
+		961C1CB526839A5100BE6F3B /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CB426839A5100BE6F3B /* Basket.swift */; };
+		961C1CB726839AE100BE6F3B /* CollectionPreferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CB626839AE100BE6F3B /* CollectionPreferenceType.swift */; };
+		961C1CBB26839C2500BE6F3B /* BasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CBA26839C2500BE6F3B /* BasketItem.swift */; };
+		961C1CBD26839C3700BE6F3B /* SeatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CBC26839C3700BE6F3B /* SeatInfo.swift */; };
 		961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4162260882B9001D8467 /* APITokenManager.swift */; };
 		961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4163260882B9001D8467 /* APITokenManagable.swift */; };
 		961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */; };
@@ -342,6 +347,11 @@
 		961C1CA82683407B00BE6F3B /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDescriptionTranslation.swift; sourceTree = "<group>"; };
 		961C1CAD26834AC000BE6F3B /* ProductRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryTests.swift; sourceTree = "<group>"; };
+		961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyBasket.graphql.swift; sourceTree = "<group>"; };
+		961C1CB426839A5100BE6F3B /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
+		961C1CB626839AE100BE6F3B /* CollectionPreferenceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreferenceType.swift; sourceTree = "<group>"; };
+		961C1CBA26839C2500BE6F3B /* BasketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItem.swift; sourceTree = "<group>"; };
+		961C1CBC26839C3700BE6F3B /* SeatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatInfo.swift; sourceTree = "<group>"; };
 		961C4162260882B9001D8467 /* APITokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManager.swift; sourceTree = "<group>"; };
 		961C4163260882B9001D8467 /* APITokenManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITokenManagable.swift; sourceTree = "<group>"; };
 		961C4165260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthRefreshOrWaitActionGenerator.swift; sourceTree = "<group>"; };
@@ -675,6 +685,7 @@
 				9606ED80267B4FE400ED24D0 /* Sell.swift */,
 				9606ED98267B64B600ED24D0 /* SellFactory.swift */,
 				9606ED96267B646F00ED24D0 /* SellImplementing.swift */,
+				961C1CB12683982C00BE6F3B /* Basket */,
 				964A3BE22680AA4A00C42C35 /* FulfilmentPoint */,
 				9606ED82267B4FEC00ED24D0 /* Product */,
 				964A3BE92680AC3F00C42C35 /* Utils */,
@@ -767,6 +778,33 @@
 				961C1CAD26834AC000BE6F3B /* ProductRepositoryTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		961C1CB12683982C00BE6F3B /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				961C1CB226839A3A00BE6F3B /* Models */,
+				961C1CB326839A4200BE6F3B /* Repository */,
+			);
+			path = Basket;
+			sourceTree = "<group>";
+		};
+		961C1CB226839A3A00BE6F3B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				961C1CB426839A5100BE6F3B /* Basket.swift */,
+				961C1CBA26839C2500BE6F3B /* BasketItem.swift */,
+				961C1CB626839AE100BE6F3B /* CollectionPreferenceType.swift */,
+				961C1CBC26839C3700BE6F3B /* SeatInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		961C1CB326839A4200BE6F3B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		961C415F26088298001D8467 /* Core */ = {
@@ -921,6 +959,7 @@
 				0319F3072667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift */,
 				0319F3082667995B00C01E1F /* sell_getFulfilmentPointCategoryById.graphql.swift */,
 				0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */,
+				961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */,
 				0319F2EE2667995A00C01E1F /* sell_getMyPaymentSources.graphql.swift */,
 				0319F30A2667995B00C01E1F /* sell_getOrders.graphql.swift */,
 				0319F2F62667995A00C01E1F /* sell_getProductById.graphql.swift */,
@@ -1443,7 +1482,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/Core/GraphQL\"\ncd $GRAPHQL_PATH\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" API/\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/Core/GraphQL\"\ncd $GRAPHQL_PATH\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" API/\n";
 		};
 		C727D3220B094BF8B35EE985 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1552,6 +1591,7 @@
 				961C4215260882BB001D8467 /* DiskCache.swift in Sources */,
 				961C4268260882C8001D8467 /* PersistentQueue.swift in Sources */,
 				9606ED9B267B651800ED24D0 /* ProductRepository.swift in Sources */,
+				961C1CBB26839C2500BE6F3B /* BasketItem.swift in Sources */,
 				480BCD95251E254D00266617 /* RealifeTech.swift in Sources */,
 				0319F3362667995B00C01E1F /* canvas_fragment_widget.graphql.swift in Sources */,
 				0319F3332667995B00C01E1F /* sell_fragment_form.graphql.swift in Sources */,
@@ -1577,6 +1617,7 @@
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
 				0319F3142667995B00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift in Sources */,
 				0319F31F2667995B00C01E1F /* sell_fragment_paymentSourceDetails.graphql.swift in Sources */,
+				961C1CB0268396F100BE6F3B /* sell_getMyBasket.graphql.swift in Sources */,
 				0319F3292667995B00C01E1F /* sell_fragment_order.graphql.swift in Sources */,
 				961C4275260882C8001D8467 /* ReachabilityChecker.swift in Sources */,
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
@@ -1624,6 +1665,7 @@
 				0319F3132667995B00C01E1F /* sell_createPaymentIntent.graphql.swift in Sources */,
 				0319F31E2667995B00C01E1F /* sell_getProductById.graphql.swift in Sources */,
 				9606EDA9267B7CE800ED24D0 /* GraphQLFactory.swift in Sources */,
+				961C1CBD26839C3700BE6F3B /* SeatInfo.swift in Sources */,
 				968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */,
 				0319F3152667995B00C01E1F /* sell_fragment_user.graphql.swift in Sources */,
 				0319F3212667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift in Sources */,
@@ -1640,6 +1682,7 @@
 				961C4217260882BB001D8467 /* APIError.swift in Sources */,
 				0319F3242667995B00C01E1F /* sell_fragment_venue.graphql.swift in Sources */,
 				487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */,
+				961C1CB526839A5100BE6F3B /* Basket.swift in Sources */,
 				961C4260260882C8001D8467 /* DiskStorage.swift in Sources */,
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
 				0319F3272667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */,
@@ -1650,6 +1693,7 @@
 				0319F3182667995B00C01E1F /* sell_checkoutMyBasket.graphql.swift in Sources */,
 				961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */,
 				961C4224260882BB001D8467 /* RequestLogger.swift in Sources */,
+				961C1CB726839AE100BE6F3B /* CollectionPreferenceType.swift in Sources */,
 				0319F32D2667995B00C01E1F /* sell_fragment_timeslot.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
