@@ -14,20 +14,15 @@ final class FulfilmentPointRepositoryTests: XCTestCase {
 
     // MARK: - Helper
 
+    private let fulfilmentPointFragment = ApolloType.FragmentFulfilmentPoint(id: "1")
+    private let fulfilmentPointCategoryFragment = ApolloType.FragmentFulfilmentPointCategory(id: "1")
+
     private func makeGraphQLManagerAndSUT<DataType>(
         ofType type: DataType.Type
     ) -> (graphQLManager: MockGraphQLManager<DataType>, sut: FulfilmentPointRepository) {
         let graphQLManager = MockGraphQLManager<DataType>()
         let sut = FulfilmentPointRepository(graphQLManager: graphQLManager)
         return (graphQLManager: graphQLManager, sut: sut)
-    }
-
-    private func makeFulfilmentPointFragment(id: String = "1") ->  ApolloType.FragmentFulfilmentPoint {
-        ApolloType.FragmentFulfilmentPoint(id: id)
-    }
-
-    private func makeFulfilmentPointCategoryFragment(id: String = "1") -> ApolloType.FragmentFulfilmentPointCategory {
-        ApolloType.FragmentFulfilmentPointCategory(id: id)
     }
 }
 
@@ -47,7 +42,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointsQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -77,6 +73,7 @@ extension FulfilmentPointRepositoryTests {
 
     func test_getFulfilmentPoints_graphQLManagerReturnsError_completeWithFailureCase() {
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointsQuery.Data.self)
+
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
@@ -96,7 +93,6 @@ extension FulfilmentPointRepositoryTests {
 
     func test_getFulfilmentPointById_graphQLManagerHasData_completeWithSuccessCase() {
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetFulfilmentPointByIdQuery.Data.self)
-        let fulfilmentPointFragment = makeFulfilmentPointFragment()
 
         let getFulfilmentPoint = ApolloType
             .GetFulfilmentPointByIdQuery
@@ -109,7 +105,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -122,7 +119,7 @@ extension FulfilmentPointRepositoryTests {
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
-            XCTAssertEqual(returnedResponse.id, fulfilmentPointFragment.id)
+            XCTAssertEqual(returnedResponse.id, self.fulfilmentPointFragment.id)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -137,7 +134,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -192,7 +190,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointCategoriesQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -246,7 +245,6 @@ extension FulfilmentPointRepositoryTests {
                                                                 .GetFulfilmentPointCategoryByIdQuery
                                                                 .Data
                                                                 .self)
-        let fulfilmentPointCategoryFragment = makeFulfilmentPointCategoryFragment()
 
         let getFulfilmentPointCategory = ApolloType
             .GetFulfilmentPointCategoryByIdQuery
@@ -259,7 +257,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointCategoryByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
@@ -272,7 +271,7 @@ extension FulfilmentPointRepositoryTests {
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
-            XCTAssertEqual(returnedResponse.id, fulfilmentPointCategoryFragment.id)
+            XCTAssertEqual(returnedResponse.id, self.fulfilmentPointCategoryFragment.id)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -290,7 +289,8 @@ extension FulfilmentPointRepositoryTests {
         let expectedResult = GraphQLResult<
             ApolloType
             .GetFulfilmentPointCategoryByIdQuery
-            .Data>(
+            .Data
+        >(
             data: data,
             extensions: nil,
             errors: nil,
