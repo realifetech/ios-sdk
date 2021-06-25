@@ -1,5 +1,5 @@
 //
-//  BasketRepositoryTests.swift
+//  BasketRepositoryQueryTests.swift
 //  RealifeTechTests
 //
 //  Created by Mickey Lee on 25/06/2021.
@@ -10,52 +10,11 @@ import XCTest
 import Apollo
 @testable import RealifeTech
 
-final class BasketRepositoryTests: XCTestCase {
-
-    private let fragmentBasket = ApolloType.FragmentBasket(netAmount: 100)
-
-    // MARK: - Helpers
-
-    private func makeGraphQLManagerAndSUT<DataType>(
-        ofType type: DataType.Type
-    ) -> (graphQLManager: MockGraphQLManager<DataType>, sut: BasketRepository) {
-        let graphQLManager = MockGraphQLManager<DataType>()
-        let sut = BasketRepository(graphQLManager: graphQLManager)
-        return (graphQLManager: graphQLManager, sut: sut)
-    }
-}
-
-private extension ApolloType.FragmentBasket {
-
-    init(netAmount: Int) {
-        self = ApolloType.FragmentBasket()
-        self.netAmount = netAmount
-    }
-}
-
-private extension BasketError {
-
-    var errorCode: String {
-        switch self {
-        case .outOfStock:
-            return "SELL_BASKET_OUT_OF_STOCK"
-        case .priceChange:
-            return "SELL_BASKET_PRICE_CHANGE"
-        case .mixedBasket:
-            return "SELL_BASKET_MIXED"
-        case .emptyBasket:
-            return "SELL_BASKET_EMPTY"
-        default:
-            return "default"
-        }
-    }
-}
-
-// MARK: - Get my basket tests
-extension BasketRepositoryTests {
+final class BasketRepositoryQueryTests: XCTestCase {
 
     func test_getMyBasket_graphQLManagerHasData_completeWithSuccessCase() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyBasketQuery.Data.self)
+        let (graphQLManager, sut) = BasketRepositoryTestHelper
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyBasketQuery.Data.self)
 
         let expectedResult = makeGetMyBasketGraphQLResult()
         graphQLManager.resultReturns = .success(expectedResult)
@@ -73,21 +32,9 @@ extension BasketRepositoryTests {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_getMyBasket_returnsCustomError_completeWithTransformedError() {
-        let errors: [BasketError] = [
-            .outOfStock,
-            .priceChange,
-            .mixedBasket,
-            .emptyBasket,
-            .regularErrors([DummyError.failure])
-        ]
-        errors.forEach {
-            self.helper_testGetMyBasket_failureCase($0)
-        }
-    }
-
     func test_getMyBasket_returnsApolloClientError_completeWithFailureCase() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyBasketQuery.Data.self)
+        let (graphQLManager, sut) = BasketRepositoryTestHelper
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyBasketQuery.Data.self)
 
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
@@ -95,18 +42,32 @@ extension BasketRepositoryTests {
         sut.getMyBasket { result in
             guard
                 case let .failure(returnedError) = result,
-                case let .regularErrors(errors) = returnedError
+                case let .regularError(error) = returnedError
             else {
                 return XCTFail("This test should return failure")
             }
-            XCTAssertEqual(errors.first as? DummyError, DummyError.failure)
+            XCTAssertEqual(error as? DummyError, DummyError.failure)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
     }
 
-    private func helper_testGetMyBasket_failureCase(_ error: BasketError) {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyBasketQuery.Data.self)
+    func test_transformErrorForEveryQueryAndMutation_returnsCustomError_completeWithTransformedError() {
+        let errors: [BasketError] = [
+            .outOfStock,
+            .priceChange,
+            .mixedBasket,
+            .emptyBasket,
+            .regularError(GraphQLManagerError.noDataError)
+        ]
+        errors.forEach {
+            self.helper_testGetMyBasket_customeError_failureCase($0)
+        }
+    }
+
+    private func helper_testGetMyBasket_customeError_failureCase(_ error: BasketError) {
+        let (graphQLManager, sut) = BasketRepositoryTestHelper
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyBasketQuery.Data.self)
 
         let expectedResult = makeGetMyBasketGraphQLResult(error: error)
         graphQLManager.resultReturns = .success(expectedResult)
@@ -135,12 +96,12 @@ extension BasketRepositoryTests {
         var data = ApolloType
             .GetMyBasketQuery
             .Data(getMyBasket: getMyBasket)
-        data.getMyBasket?.fragments.fragmentBasket = fragmentBasket
+        data.getMyBasket?.fragments.fragmentBasket = BasketRepositoryTestHelper.fragmentBasket
         return GraphQLResult<
             ApolloType
             .GetMyBasketQuery
             .Data>(
-            data: data,
+            data: error == nil ? data : nil,
             extensions: nil,
             errors: error == nil ? nil : [graphQLError],
             source: .cache,
