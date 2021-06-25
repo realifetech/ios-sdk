@@ -14,12 +14,12 @@ public enum BasketError: Error, LocalizedError {
     case priceChange
     case mixedBasket
     case emptyBasket
-    case regularErrors([Error])
+    case regularError(Error)
 
     public var errorDescription: String? {
         switch self {
-        case .regularErrors(let errors):
-            return errors.compactMap { $0.localizedDescription }.joined(separator: "\n")
+        case .regularError(let error):
+            return error.localizedDescription
         default:
             return localizedDescription
         }

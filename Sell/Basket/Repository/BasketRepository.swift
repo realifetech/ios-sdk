@@ -33,12 +33,12 @@ public final class BasketRepository {
                 continue
             }
         }
-        return .regularErrors(errors)
+        return nil
     }
 
     private func makeApolloBasketInput(_ input: BasketInput) -> ApolloType.BasketInput {
         ApolloType.BasketInput(
-            collectionDate: input.collectionDate,
+            collectionDate: input.collectionDate?.iso8601String,
             collectionPreferenceType: input.collectionPreferenceType?.rawValue,
             timeslot: input.timeslotId,
             fulfilmentPoint: input.fulfilmentPointId,
@@ -83,10 +83,10 @@ extension BasketRepository: BasketProvidable {
                 } else if let returnedBasket = response.data?.getMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
-                    callback(.failure(.emptyBasket))
+                    callback(.failure(.regularError(GraphQLManagerError.noDataError)))
                 }
             case .failure(let error):
-                callback(.failure(.regularErrors([error])))
+                callback(.failure(.regularError(error)))
             }
         }
     }
@@ -106,10 +106,10 @@ extension BasketRepository: BasketProvidable {
                 } else if let returnedBasket = response.data?.createMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
-                    callback(.failure(.emptyBasket))
+                    callback(.failure(.regularError(GraphQLManagerError.noDataError)))
                 }
             case .failure(let error):
-                callback(.failure(.regularErrors([error])))
+                callback(.failure(.regularError(error)))
             }
         }
     }
@@ -129,10 +129,10 @@ extension BasketRepository: BasketProvidable {
                 } else if let returnedBasket = response.data?.updateMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
-                    callback(.failure(.emptyBasket))
+                    callback(.failure(.regularError(GraphQLManagerError.noDataError)))
                 }
             case .failure(let error):
-                callback(.failure(.regularErrors([error])))
+                callback(.failure(.regularError(error)))
             }
         }
     }
@@ -152,7 +152,7 @@ extension BasketRepository: BasketProvidable {
                     callback(.success(response.data?.deleteMyBasket?.success ?? false))
                 }
             case .failure(let error):
-                callback(.failure(.regularErrors([error])))
+                callback(.failure(.regularError(error)))
             }
         }
     }
@@ -173,10 +173,10 @@ extension BasketRepository: BasketProvidable {
                     // TODO: ID-1027
                     callback(.success(Order()))
                 } else {
-                    callback(.failure(.emptyBasket))
+                    callback(.failure(.regularError(GraphQLManagerError.noDataError)))
                 }
             case .failure(let error):
-                callback(.failure(.regularErrors([error])))
+                callback(.failure(.regularError(error)))
             }
         }
     }
