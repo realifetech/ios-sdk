@@ -37,7 +37,7 @@ extension MockAPIError: LocalizedError {
 
 public final class APIError: Error {
 
-    var data: Data?
+    public var data: Data?
     public var title: String?
     public var message: String?
     public var statusCode: Int?
@@ -62,6 +62,8 @@ public final class APIError: Error {
     public var logicError: Bool { // errors which the UI won't show but may need to handle
         return statusCode == 422
     }
+
+    public init() { }
 
     static func constructedError(data: Data, statusCode: Int? = nil) -> APIError {
         let error = APIError()
