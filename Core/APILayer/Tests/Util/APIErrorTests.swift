@@ -14,13 +14,20 @@ final class APIErrorTests: XCTestCase {
     let errorData = ["error": "invalid_grant", "error_description": "The access token provided has expired."]
     let mockError = MockAPIError.genericError()
 
-    func test_constructedError_from_ValidData() throws {
+    func test_constructedError_fromValidData() throws {
         let basicErrorData = try JSONEncoder().encode(errorData)
         let constructedError = APIError.constructedError(data: basicErrorData)
         XCTAssertEqual(constructedError.message, "The access token provided has expired.")
     }
 
-    func test_constructedError_from_InvalidData() throws {
+    func test_constructedError_fromStandardSenderResponseData() throws {
+        let response = StandardSenderResponse(code: 400, type: "", message: "Not found")
+        let data = try JSONEncoder().encode(response)
+        let constructedError = APIError.constructedError(data: data)
+        XCTAssertEqual(constructedError.message, response.message)
+    }
+
+    func test_constructedError_fromInvalidData() throws {
         let errorData = "{\"error\":\"invalid_grant\",\"error_description\":\"The access token provided has expired.\"}"
         let basicErrorData = try JSONEncoder().encode(errorData)
         let constructedError = APIError.constructedError(data: basicErrorData)

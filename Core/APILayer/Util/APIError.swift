@@ -69,11 +69,14 @@ public final class APIError: Error {
         let error = APIError()
         error.data = data
         error.statusCode = statusCode
-        do {
-            let response = try JSONDecoder().decode(StandardSenderResponse.self, from: data)
+        if let decodedError = try? JSONDecoder().decode([String: String].self, from: data) {
+            let message = decodedError["message"] ?? decodedError["error_description"]
+            error.title = nil
+            error.message = message
+        } else if let response = try? JSONDecoder().decode(StandardSenderResponse.self, from: data) {
             error.title = nil
             error.message = response.message
-        } catch _ {
+        } else {
             error.title = "ERROR".coreLocalizedString
             error.message = "UNPARSEABLE_ERROR".coreLocalizedString
         }
