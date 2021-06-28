@@ -100,6 +100,9 @@
 		961B019A2689EF7500D8C481 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01992689EF7500D8C481 /* OrderStatus.swift */; };
 		961B019C2689EFD400D8C481 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B019B2689EFD400D8C481 /* OrderItem.swift */; };
 		961B019E2689EFE700D8C481 /* OrderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B019D2689EFE700D8C481 /* OrderState.swift */; };
+		961B01A12689F35C00D8C481 /* OrderProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01A02689F35C00D8C481 /* OrderProvidable.swift */; };
+		961B01A32689F3D300D8C481 /* OrderUpdateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01A22689F3D300D8C481 /* OrderUpdateInput.swift */; };
+		961B01A52689F42A00D8C481 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01A42689F42A00D8C481 /* OrderRepository.swift */; };
 		961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C87268204EF00BE6F3B /* FulfilmentPoint.swift */; };
 		961C1C8C268206EC00BE6F3B /* FulfilmentPointTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */; };
 		961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8D2682070100BE6F3B /* Timeslot.swift */; };
@@ -358,6 +361,9 @@
 		961B01992689EF7500D8C481 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		961B019B2689EFD400D8C481 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		961B019D2689EFE700D8C481 /* OrderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderState.swift; sourceTree = "<group>"; };
+		961B01A02689F35C00D8C481 /* OrderProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProvidable.swift; sourceTree = "<group>"; };
+		961B01A22689F3D300D8C481 /* OrderUpdateInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderUpdateInput.swift; sourceTree = "<group>"; };
+		961B01A42689F42A00D8C481 /* OrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
 		961C1C87268204EF00BE6F3B /* FulfilmentPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPoint.swift; sourceTree = "<group>"; };
 		961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointTranslation.swift; sourceTree = "<group>"; };
 		961C1C8D2682070100BE6F3B /* Timeslot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeslot.swift; sourceTree = "<group>"; };
@@ -800,6 +806,7 @@
 			isa = PBXGroup;
 			children = (
 				961B018C2689D26600D8C481 /* Models */,
+				961B019F2689F34B00D8C481 /* Repository */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -811,8 +818,18 @@
 				961B019B2689EFD400D8C481 /* OrderItem.swift */,
 				961B019D2689EFE700D8C481 /* OrderState.swift */,
 				961B01992689EF7500D8C481 /* OrderStatus.swift */,
+				961B01A22689F3D300D8C481 /* OrderUpdateInput.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		961B019F2689F34B00D8C481 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				961B01A02689F35C00D8C481 /* OrderProvidable.swift */,
+				961B01A42689F42A00D8C481 /* OrderRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		961C1C86268202A600BE6F3B /* Tests */ = {
@@ -1705,6 +1722,7 @@
 				961C1CC126839CC500BE6F3B /* BasketRepository.swift in Sources */,
 				961C4225260882BB001D8467 /* Requester.swift in Sources */,
 				961C4270260882C8001D8467 /* DeviceRequester.swift in Sources */,
+				961B01A12689F35C00D8C481 /* OrderProvidable.swift in Sources */,
 				961C426F260882C8001D8467 /* Device.swift in Sources */,
 				0319F3252667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift in Sources */,
 				961C1CCD2684EF8600BE6F3B /* BasketItemInput.swift in Sources */,
@@ -1732,6 +1750,7 @@
 				961C4212260882BB001D8467 /* DiskCacheCodableInterface.swift in Sources */,
 				961C4266260882C8001D8467 /* QueueAction.swift in Sources */,
 				0319F3222667995B00C01E1F /* sell_deleteMyBasket.graphql.swift in Sources */,
+				961B01A52689F42A00D8C481 /* OrderRepository.swift in Sources */,
 				961C4265260882C8001D8467 /* QueueError.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				0319F3352667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift in Sources */,
@@ -1752,6 +1771,7 @@
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
 				961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */,
 				961B01902689E33B00D8C481 /* sell_getMyOrder.graphql.swift in Sources */,
+				961B01A32689F3D300D8C481 /* OrderUpdateInput.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
 				961C1CCB2684E3B200BE6F3B /* ProductModifierItemSelection.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
