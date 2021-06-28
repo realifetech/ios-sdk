@@ -171,9 +171,8 @@ extension BasketRepository: BasketProvidable {
             case .success(let response):
                 if let transformedError = self.transformErrorIfNeccessary(response.errors) {
                     callback(.failure(transformedError))
-                } else if let _ = response.data?.checkoutMyBasket?.fragments.fragmentOrder {
-                    // TODO: ID-1027
-                    callback(.success(Order()))
+                } else if let order = Order(response: response.data?.checkoutMyBasket?.fragments.fragmentOrder) {
+                    callback(.success(order))
                 } else {
                     callback(.failure(.regularError(GraphQLManagerError.noDataError)))
                 }
