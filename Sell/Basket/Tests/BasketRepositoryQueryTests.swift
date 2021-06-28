@@ -53,14 +53,7 @@ final class BasketRepositoryQueryTests: XCTestCase {
     }
 
     func test_transformErrorForEveryQueryAndMutation_returnsCustomError_completeWithTransformedError() {
-        let errors: [BasketError] = [
-            .outOfStock,
-            .priceChange,
-            .mixedBasket,
-            .emptyBasket,
-            .regularError(GraphQLManagerError.noDataError)
-        ]
-        errors.forEach {
+        BasketRepositoryTestHelper.underTestBasketErrors.forEach {
             self.helper_testGetMyBasket_customeError_failureCase($0)
         }
     }

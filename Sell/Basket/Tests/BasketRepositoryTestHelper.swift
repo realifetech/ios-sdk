@@ -13,6 +13,14 @@ enum BasketRepositoryTestHelper {
 
     static let fragmentBasket = ApolloType.FragmentBasket(netAmount: 100)
 
+    static let underTestBasketErrors: [BasketError] = [
+        .outOfStock,
+        .priceChange,
+        .mixedBasket,
+        .emptyBasket,
+        .regularError(GraphQLManagerError.noDataError)
+    ]
+
     static func makeGraphQLManagerAndSUT<DataType>(
         ofType type: DataType.Type
     ) -> (graphQLManager: MockGraphQLManager<DataType>, sut: BasketRepository) {

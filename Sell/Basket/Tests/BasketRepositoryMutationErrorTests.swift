@@ -13,14 +13,7 @@ import Apollo
 extension BasketRepositoryMutationTests {
 
     func test_transformErrorForEveryQueryAndMutation_returnsCustomError_completeWithTransformedError() {
-        let errors: [BasketError] = [
-            .outOfStock,
-            .priceChange,
-            .mixedBasket,
-            .emptyBasket,
-            .regularError(GraphQLManagerError.noDataError)
-        ]
-        errors.forEach { [self] in
+        BasketRepositoryTestHelper.underTestBasketErrors.forEach { [self] in
             helper_testCreateMyBasket_customError_failureCase($0)
             helper_testUpdateMyBasket_customError_failureCase($0)
             helper_testDeleteMyBasket_customError_failureCase($0)
