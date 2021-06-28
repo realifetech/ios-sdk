@@ -37,11 +37,18 @@ extension MockAPIError: LocalizedError {
 
 public final class APIError: Error {
 
-    var data: Data?
-    var title: String? // probably to be used as an AlertController title
-    var message: String? // probably to be used as an AlertController message
-    var statusCode: Int?
-    var badRequest: Bool { return statusCode == 400 }
+    public var data: Data?
+    public var title: String?
+    public var message: String?
+    public var statusCode: Int?
+
+    public var badRequest: Bool {
+        return statusCode == 400
+    }
+
+    public var notFound: Bool {
+        return statusCode == 404
+    }
 
     public var clientError: Bool {
         guard let code = statusCode else { return false }
@@ -52,9 +59,11 @@ public final class APIError: Error {
         return statusCode == 401 || statusCode == 403
     }
 
-    var logicError: Bool { // errors which the UI won't show but may need to handle
+    public var logicError: Bool { // errors which the UI won't show but may need to handle
         return statusCode == 422
     }
+
+    public init() { }
 
     static func constructedError(data: Data, statusCode: Int? = nil) -> APIError {
         let error = APIError()
