@@ -93,6 +93,9 @@
 		9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */; };
 		9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */; };
 		9606EDC0267CBF4E00ED24D0 /* DummyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDBF267CBF4E00ED24D0 /* DummyError.swift */; };
+		961B01902689E33B00D8C481 /* sell_getMyOrder.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B018D2689E33B00D8C481 /* sell_getMyOrder.graphql.swift */; };
+		961B01912689E33B00D8C481 /* sell_updateMyOrder.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B018E2689E33B00D8C481 /* sell_updateMyOrder.graphql.swift */; };
+		961B01922689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B018F2689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift */; };
 		961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C87268204EF00BE6F3B /* FulfilmentPoint.swift */; };
 		961C1C8C268206EC00BE6F3B /* FulfilmentPointTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */; };
 		961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8D2682070100BE6F3B /* Timeslot.swift */; };
@@ -344,6 +347,9 @@
 		9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManager.swift; sourceTree = "<group>"; };
 		9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphQLManager.swift; sourceTree = "<group>"; };
 		9606EDBF267CBF4E00ED24D0 /* DummyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyError.swift; sourceTree = "<group>"; };
+		961B018D2689E33B00D8C481 /* sell_getMyOrder.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyOrder.graphql.swift; sourceTree = "<group>"; };
+		961B018E2689E33B00D8C481 /* sell_updateMyOrder.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_updateMyOrder.graphql.swift; sourceTree = "<group>"; };
+		961B018F2689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_seatInfo.graphql.swift; sourceTree = "<group>"; };
 		961C1C87268204EF00BE6F3B /* FulfilmentPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPoint.swift; sourceTree = "<group>"; };
 		961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointTranslation.swift; sourceTree = "<group>"; };
 		961C1C8D2682070100BE6F3B /* Timeslot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeslot.swift; sourceTree = "<group>"; };
@@ -713,9 +719,10 @@
 				9606ED96267B646F00ED24D0 /* SellImplementing.swift */,
 				961C1CB12683982C00BE6F3B /* Basket */,
 				964A3BE22680AA4A00C42C35 /* FulfilmentPoint */,
+				961B018B2689D25600D8C481 /* Order */,
 				9606ED82267B4FEC00ED24D0 /* Product */,
-				964A3BE92680AC3F00C42C35 /* Utils */,
 				9606EDA3267B67BE00ED24D0 /* Tests */,
+				964A3BE92680AC3F00C42C35 /* Utils */,
 			);
 			path = Sell;
 			sourceTree = "<group>";
@@ -779,6 +786,21 @@
 				9606EDBF267CBF4E00ED24D0 /* DummyError.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		961B018B2689D25600D8C481 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				961B018C2689D26600D8C481 /* Models */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		961B018C2689D26600D8C481 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		961C1C86268202A600BE6F3B /* Tests */ = {
@@ -1007,6 +1029,7 @@
 				0319F2FD2667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift */,
 				0319F2F12667995A00C01E1F /* sell_fragment_productModifierItemSelection.graphql.swift */,
 				0319F2F82667995B00C01E1F /* sell_fragment_productVariant.graphql.swift */,
+				961B018F2689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift */,
 				0319F3052667995B00C01E1F /* sell_fragment_timeslot.graphql.swift */,
 				0319F2ED2667995A00C01E1F /* sell_fragment_user.graphql.swift */,
 				0319F2FC2667995B00C01E1F /* sell_fragment_venue.graphql.swift */,
@@ -1015,11 +1038,13 @@
 				0319F3082667995B00C01E1F /* sell_getFulfilmentPointCategoryById.graphql.swift */,
 				0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */,
 				961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */,
+				961B018D2689E33B00D8C481 /* sell_getMyOrder.graphql.swift */,
 				0319F2EE2667995A00C01E1F /* sell_getMyPaymentSources.graphql.swift */,
 				0319F30A2667995B00C01E1F /* sell_getOrders.graphql.swift */,
 				0319F2F62667995A00C01E1F /* sell_getProductById.graphql.swift */,
 				0319F3002667995B00C01E1F /* sell_getProducts.graphql.swift */,
 				0319F2EF2667995A00C01E1F /* sell_updateMyBasket.graphql.swift */,
+				961B018E2689E33B00D8C481 /* sell_updateMyOrder.graphql.swift */,
 				0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */,
 				0319F2FB2667995B00C01E1F /* Types.graphql.swift */,
 			);
@@ -1698,8 +1723,10 @@
 				0319F3352667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift in Sources */,
 				961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */,
 				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
+				961B01912689E33B00D8C481 /* sell_updateMyOrder.graphql.swift in Sources */,
 				0319F31D2667995B00C01E1F /* sell_fragment_basket.graphql.swift in Sources */,
 				0319F31C2667995B00C01E1F /* canvas_getScreenByScreenId.graphql.swift in Sources */,
+				961B01922689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift in Sources */,
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
@@ -1710,6 +1737,7 @@
 				961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */,
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
 				961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */,
+				961B01902689E33B00D8C481 /* sell_getMyOrder.graphql.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
 				961C1CCB2684E3B200BE6F3B /* ProductModifierItemSelection.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,

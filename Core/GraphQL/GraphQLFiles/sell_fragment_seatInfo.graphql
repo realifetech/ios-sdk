@@ -1,0 +1,6 @@
+fragment FragmentSeatInfo on SeatInfo {
+  row
+  seat
+  block
+  table
+}

@@ -10,11 +10,15 @@ import Foundation
 
 public struct SeatInfo {
 
-    public let key: String?
-    public let value: String?
+    public let row: String?
+    public let seat: String?
+    public let block: String?
+    public let table: String?
 
-    init(key: String?, value: String?) {
-        self.key = key
-        self.value = value
+    init(response: ApolloType.FragmentSeatInfo?) {
+        row = response?.row
+        seat = response?.seat
+        block = response?.block
+        table = response?.table
     }
 }
