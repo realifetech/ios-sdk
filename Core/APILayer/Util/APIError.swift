@@ -70,10 +70,9 @@ public final class APIError: Error {
         error.data = data
         error.statusCode = statusCode
         do {
-            let errorDictionary = try JSONDecoder().decode([String: String].self, from: data)
-            let message = errorDictionary["message"] ?? errorDictionary["error_description"]
+            let response = try JSONDecoder().decode(StandardSenderResponse.self, from: data)
             error.title = nil
-            error.message = message
+            error.message = response.message
         } catch _ {
             error.title = "ERROR".coreLocalizedString
             error.message = "UNPARSEABLE_ERROR".coreLocalizedString
