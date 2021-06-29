@@ -20,7 +20,7 @@ public protocol OrderProvidable {
         callback: @escaping (Result<Order, Error>) -> Void)
 
     func updateMyOrder(
-      id: String,
-      input: OrderUpdateInput,
-      callback: @escaping (Result<Order, Error>) -> Void)
+        id: String,
+        input: OrderUpdateInput,
+        callback: @escaping (Result<Order, Error>) -> Void)
 }
