@@ -26,7 +26,7 @@ public enum CollectionPreferenceType: String, Codable {
         case .checkin:
             self = .checkin
         case .__unknown:
-            self = .asap // never enter this case
+            return nil // never enter this case
         }
     }
 
