@@ -28,6 +28,3 @@ public protocol BasketProvidable {
         input: CheckoutInput,
         callback: @escaping (Result<Order, BasketError>) -> Void)
 }
-
-// TODO: ID-1027
-public struct Order { }

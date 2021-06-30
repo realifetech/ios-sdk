@@ -12,15 +12,18 @@ public class SellImplementing: Sell {
 
     public let product: ProductProvidable
     public let basket: BasketProvidable
+    public let order: OrderProvidable
     public let fulfilmentPoint: FulfilmentPointProvidable
 
     public init(
         product: ProductProvidable,
         basket: BasketProvidable,
+        order: OrderProvidable,
         fulfilmentPoint: FulfilmentPointProvidable
     ) {
         self.product = product
         self.basket = basket
+        self.order = order
         self.fulfilmentPoint = fulfilmentPoint
     }
 }
