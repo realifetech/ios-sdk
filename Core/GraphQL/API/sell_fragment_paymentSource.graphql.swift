@@ -15,6 +15,21 @@ public extension ApolloType {
         id
         type
         default
+        billingDetails {
+          __typename
+          address {
+            __typename
+            city
+            country
+            line1
+            line2
+            postalCode
+            state
+          }
+          email
+          name
+          phone
+        }
         card {
           __typename
           ...FragmentCard
@@ -30,6 +45,7 @@ public extension ApolloType {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("type", type: .nonNull(.scalar(PaymentSourceType.self))),
         GraphQLField("default", type: .nonNull(.scalar(Bool.self))),
+        GraphQLField("billingDetails", type: .object(BillingDetail.selections)),
         GraphQLField("card", type: .object(Card.selections)),
       ]
     }
@@ -40,8 +56,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, type: PaymentSourceType, `default`: Bool, card: Card? = nil) {
-      self.init(unsafeResultMap: ["__typename": "PaymentSource", "id": id, "type": type, "default": `default`, "card": card.flatMap { (value: Card) -> ResultMap in value.resultMap }])
+    public init(id: GraphQLID, type: PaymentSourceType, `default`: Bool, billingDetails: BillingDetail? = nil, card: Card? = nil) {
+      self.init(unsafeResultMap: ["__typename": "PaymentSource", "id": id, "type": type, "default": `default`, "billingDetails": billingDetails.flatMap { (value: BillingDetail) -> ResultMap in value.resultMap }, "card": card.flatMap { (value: Card) -> ResultMap in value.resultMap }])
     }
 
     public var __typename: String {
@@ -80,12 +96,179 @@ public extension ApolloType {
       }
     }
 
+    public var billingDetails: BillingDetail? {
+      get {
+        return (resultMap["billingDetails"] as? ResultMap).flatMap { BillingDetail(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "billingDetails")
+      }
+    }
+
     public var card: Card? {
       get {
         return (resultMap["card"] as? ResultMap).flatMap { Card(unsafeResultMap: $0) }
       }
       set {
         resultMap.updateValue(newValue?.resultMap, forKey: "card")
+      }
+    }
+
+    public struct BillingDetail: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["PaymentSourceBillingDetails"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("address", type: .object(Address.selections)),
+          GraphQLField("email", type: .scalar(String.self)),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("phone", type: .scalar(String.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(address: Address? = nil, email: String? = nil, name: String, phone: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "PaymentSourceBillingDetails", "address": address.flatMap { (value: Address) -> ResultMap in value.resultMap }, "email": email, "name": name, "phone": phone])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var address: Address? {
+        get {
+          return (resultMap["address"] as? ResultMap).flatMap { Address(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "address")
+        }
+      }
+
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var name: String {
+        get {
+          return resultMap["name"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var phone: String? {
+        get {
+          return resultMap["phone"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "phone")
+        }
+      }
+
+      public struct Address: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["PaymentSourceAddress"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("city", type: .scalar(String.self)),
+            GraphQLField("country", type: .scalar(String.self)),
+            GraphQLField("line1", type: .scalar(String.self)),
+            GraphQLField("line2", type: .scalar(String.self)),
+            GraphQLField("postalCode", type: .scalar(String.self)),
+            GraphQLField("state", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(city: String? = nil, country: String? = nil, line1: String? = nil, line2: String? = nil, postalCode: String? = nil, state: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "PaymentSourceAddress", "city": city, "country": country, "line1": line1, "line2": line2, "postalCode": postalCode, "state": state])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var city: String? {
+          get {
+            return resultMap["city"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "city")
+          }
+        }
+
+        public var country: String? {
+          get {
+            return resultMap["country"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "country")
+          }
+        }
+
+        public var line1: String? {
+          get {
+            return resultMap["line1"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "line1")
+          }
+        }
+
+        public var line2: String? {
+          get {
+            return resultMap["line2"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "line2")
+          }
+        }
+
+        public var postalCode: String? {
+          get {
+            return resultMap["postalCode"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "postalCode")
+          }
+        }
+
+        public var state: String? {
+          get {
+            return resultMap["state"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "state")
+          }
+        }
       }
     }
 

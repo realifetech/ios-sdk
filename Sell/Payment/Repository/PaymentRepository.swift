@@ -21,19 +21,95 @@ extension PaymentRepository: PaymentProvidable {
 
     public func addPaymentSource(
         input: PaymentSourceInput,
-        callback: @escaping (Result<PaymentSource, Error>) -> Void) { }
+        callback: @escaping (Result<PaymentSource, Error>) -> Void
+    ) {
+        graphQLManager.dispatchMutation(
+            mutation: ApolloType.AddPaymentSourceToMyWalletMutation(input: input.apolloInput),
+            cacheResultToPersistence: false
+        ) { result in
+            switch result {
+            case .success(let response):
+                guard
+                    let fragment = response.data?.addPaymentSourceToMyWallet?.fragments.fragmentPaymentSource,
+                    let paymentSource = PaymentSource(response: fragment)
+                else {
+                    return callback(.failure(GraphQLManagerError.noDataError))
+                }
+                callback(.success(paymentSource))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
 
     public func getMyPaymentSources(
         pageSize: Int,
-        page: Int,
-        callback: @escaping (Result<PaginatedObject<PaymentSource>, Error>) -> Void) { }
+        page: Int?,
+        callback: @escaping (Result<PaginatedObject<PaymentSource>, Error>) -> Void
+    ) {
+        graphQLManager.dispatch(
+            query: ApolloType.GetMyPaymentSourcesQuery(pageSize: pageSize, page: page),
+            cachePolicy: .fetchIgnoringCacheCompletely
+        ) { result in
+            switch result {
+            case .success(let response):
+                let items = response.data?.getMyPaymentSources?.edges?.compactMap {
+                    PaymentSource(response: $0?.fragments.fragmentPaymentSource)
+                }
+                let paginatedObject = PaginatedObject<PaymentSource>(
+                    items: items ?? [],
+                    nextPage: response.data?.getMyPaymentSources?.nextPage)
+                callback(.success(paginatedObject))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
 
     public func createPaymentIntent(
         input: PaymentIntentInput,
-        callback: @escaping (Result<PaymentIntent, Error>) -> Void) { }
+        callback: @escaping (Result<PaymentIntent, Error>) -> Void
+    ) {
+        graphQLManager.dispatchMutation(
+            mutation: ApolloType.CreatePaymentIntentMutation(input: input.apolloInput),
+            cacheResultToPersistence: false
+        ) { result in
+            switch result {
+            case .success(let response):
+                guard
+                    let returnedPaymentIntent = response.data?.createPaymentIntent?.fragments.fragmentPaymentIntent,
+                    let paymentIntent = PaymentIntent(response: returnedPaymentIntent)
+                else {
+                    return callback(.failure(GraphQLManagerError.noDataError))
+                }
+                callback(.success(paymentIntent))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
 
     public func updatePaymentIntent(
         id: String,
-        input: PaymentIntentInput,
-        callback: @escaping (Result<PaymentIntent, Error>) -> Void) { }
+        input: PaymentIntentUpdateInput,
+        callback: @escaping (Result<PaymentIntent, Error>) -> Void
+    ) {
+        graphQLManager.dispatchMutation(
+            mutation: ApolloType.UpdateMyPaymentIntentMutation(id: id, input: input.apolloInput),
+            cacheResultToPersistence: false
+        ) { result in
+            switch result {
+            case .success(let response):
+                guard
+                    let returnedPaymentIntent = response.data?.updateMyPaymentIntent?.fragments.fragmentPaymentIntent,
+                    let paymentIntent = PaymentIntent(response: returnedPaymentIntent)
+                else {
+                    return callback(.failure(GraphQLManagerError.noDataError))
+                }
+                callback(.success(paymentIntent))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
 }

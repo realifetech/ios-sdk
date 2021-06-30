@@ -241,6 +241,18 @@
 		96874865268CBDF100DDC5DD /* PaymentProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874864268CBDF100DDC5DD /* PaymentProvidable.swift */; };
 		96874867268CBE1400DDC5DD /* PaymentSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874866268CBE1400DDC5DD /* PaymentSource.swift */; };
 		96874869268CBEC900DDC5DD /* PaymentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874868268CBEC900DDC5DD /* PaymentRepository.swift */; };
+		9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687486A268CC15E00DDC5DD /* PaymentSourceInput.swift */; };
+		9687486D268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687486C268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift */; };
+		9687486F268CC25E00DDC5DD /* PaymentSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687486E268CC25E00DDC5DD /* PaymentSourceType.swift */; };
+		96874871268CC29700DDC5DD /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874870268CC29700DDC5DD /* Card.swift */; };
+		96874873268CC2A800DDC5DD /* PaymentIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874872268CC2A800DDC5DD /* PaymentIntent.swift */; };
+		96874875268CC3CC00DDC5DD /* PaymentIntentInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874874268CC3CC00DDC5DD /* PaymentIntentInput.swift */; };
+		96874877268CC3F000DDC5DD /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874876268CC3F000DDC5DD /* OrderType.swift */; };
+		96874879268CC42800DDC5DD /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874878268CC42800DDC5DD /* PaymentStatus.swift */; };
+		9687487D268CC4BB00DDC5DD /* CancellationReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687487C268CC4BB00DDC5DD /* CancellationReason.swift */; };
+		9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687487E268CC4F500DDC5DD /* PaymentActionType.swift */; };
+		96874881268CC71300DDC5DD /* CardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874880268CC71300DDC5DD /* CardInput.swift */; };
+		96874887268CD3C800DDC5DD /* PaymentIntentUpdateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874886268CD3C800DDC5DD /* PaymentIntentUpdateInput.swift */; };
 		968CA5BC25EE79DD0000C2E2 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5BB25EE79DD0000C2E2 /* Content.swift */; };
 		968CA5C025EE7A610000C2E2 /* WebPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5BF25EE7A610000C2E2 /* WebPage.swift */; };
 		968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5C325EE7AEB0000C2E2 /* ContentError.swift */; };
@@ -509,6 +521,18 @@
 		96874864268CBDF100DDC5DD /* PaymentProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProvidable.swift; sourceTree = "<group>"; };
 		96874866268CBE1400DDC5DD /* PaymentSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSource.swift; sourceTree = "<group>"; };
 		96874868268CBEC900DDC5DD /* PaymentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRepository.swift; sourceTree = "<group>"; };
+		9687486A268CC15E00DDC5DD /* PaymentSourceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSourceInput.swift; sourceTree = "<group>"; };
+		9687486C268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSourceBillingDetails.swift; sourceTree = "<group>"; };
+		9687486E268CC25E00DDC5DD /* PaymentSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSourceType.swift; sourceTree = "<group>"; };
+		96874870268CC29700DDC5DD /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		96874872268CC2A800DDC5DD /* PaymentIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIntent.swift; sourceTree = "<group>"; };
+		96874874268CC3CC00DDC5DD /* PaymentIntentInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIntentInput.swift; sourceTree = "<group>"; };
+		96874876268CC3F000DDC5DD /* OrderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
+		96874878268CC42800DDC5DD /* PaymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
+		9687487C268CC4BB00DDC5DD /* CancellationReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationReason.swift; sourceTree = "<group>"; };
+		9687487E268CC4F500DDC5DD /* PaymentActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentActionType.swift; sourceTree = "<group>"; };
+		96874880268CC71300DDC5DD /* CardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInput.swift; sourceTree = "<group>"; };
+		96874886268CD3C800DDC5DD /* PaymentIntentUpdateInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIntentUpdateInput.swift; sourceTree = "<group>"; };
 		968CA5BB25EE79DD0000C2E2 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		968CA5BF25EE7A610000C2E2 /* WebPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPage.swift; sourceTree = "<group>"; };
 		968CA5C325EE7AEB0000C2E2 /* ContentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentError.swift; sourceTree = "<group>"; };
@@ -1386,7 +1410,8 @@
 		96874862268CBDCD00DDC5DD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				96874866268CBE1400DDC5DD /* PaymentSource.swift */,
+				9687487B268CC49600DDC5DD /* PaymentIntent */,
+				9687487A268CC46D00DDC5DD /* PaymentSource */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1398,6 +1423,33 @@
 				96874868268CBEC900DDC5DD /* PaymentRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		9687487A268CC46D00DDC5DD /* PaymentSource */ = {
+			isa = PBXGroup;
+			children = (
+				96874870268CC29700DDC5DD /* Card.swift */,
+				96874880268CC71300DDC5DD /* CardInput.swift */,
+				96874866268CBE1400DDC5DD /* PaymentSource.swift */,
+				9687486C268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift */,
+				9687486A268CC15E00DDC5DD /* PaymentSourceInput.swift */,
+				9687486E268CC25E00DDC5DD /* PaymentSourceType.swift */,
+			);
+			path = PaymentSource;
+			sourceTree = "<group>";
+		};
+		9687487B268CC49600DDC5DD /* PaymentIntent */ = {
+			isa = PBXGroup;
+			children = (
+				9687487C268CC4BB00DDC5DD /* CancellationReason.swift */,
+				96874876268CC3F000DDC5DD /* OrderType.swift */,
+				9687487E268CC4F500DDC5DD /* PaymentActionType.swift */,
+				96874872268CC2A800DDC5DD /* PaymentIntent.swift */,
+				96874874268CC3CC00DDC5DD /* PaymentIntentInput.swift */,
+				96874886268CD3C800DDC5DD /* PaymentIntentUpdateInput.swift */,
+				96874878268CC42800DDC5DD /* PaymentStatus.swift */,
+			);
+			path = PaymentIntent;
 			sourceTree = "<group>";
 		};
 		968CA5B625EE79960000C2E2 /* Content */ = {
@@ -1728,15 +1780,18 @@
 				961C41E2260882BA001D8467 /* KeychainSwift.swift in Sources */,
 				961C4218260882BB001D8467 /* String+RequestIdentifier.swift in Sources */,
 				968CA5C025EE7A610000C2E2 /* WebPage.swift in Sources */,
+				9687486F268CC25E00DDC5DD /* PaymentSourceType.swift in Sources */,
 				961C4219260882BB001D8467 /* String+CoreLocalization.swift in Sources */,
 				4889588D2539D04B00B978A9 /* GeneralImplementing.swift in Sources */,
 				961C4226260882BB001D8467 /* RequestTimeLogger.swift in Sources */,
 				48EFE2242539E21100CC6E58 /* CommunicateImplementing.swift in Sources */,
 				961C4227260882BB001D8467 /* RequestDispatcher.swift in Sources */,
+				96874871268CC29700DDC5DD /* Card.swift in Sources */,
 				0319F3382667995B00C01E1F /* content_getWebPageByType.graphql.swift in Sources */,
 				961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */,
 				0319F32F2667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift in Sources */,
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
+				9687487D268CC4BB00DDC5DD /* CancellationReason.swift in Sources */,
 				961C1C9F26833C8800BE6F3B /* StandardTitleTranslation.swift in Sources */,
 				9606ED8B267B512900ED24D0 /* Product.swift in Sources */,
 				96874869268CBEC900DDC5DD /* PaymentRepository.swift in Sources */,
@@ -1767,8 +1822,10 @@
 				0319F3332667995B00C01E1F /* sell_fragment_form.graphql.swift in Sources */,
 				961C4269260882C8001D8467 /* QueueItem.swift in Sources */,
 				961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
+				96874877268CC3F000DDC5DD /* OrderType.swift in Sources */,
 				48EFE2532539E55400CC6E58 /* DeviceRegistrationWorker.swift in Sources */,
 				961C41E4260882BA001D8467 /* OAuthToken.swift in Sources */,
+				96874881268CC71300DDC5DD /* CardInput.swift in Sources */,
 				961C41E6260882BA001D8467 /* RequestHeader.swift in Sources */,
 				961C41D6260882BA001D8467 /* JSONContentTypeHeaderRequestInserting.swift in Sources */,
 				961C1CAB2683409C00BE6F3B /* StandardDescriptionTranslation.swift in Sources */,
@@ -1816,6 +1873,7 @@
 				961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */,
 				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
 				961B01912689E33B00D8C481 /* sell_updateMyOrder.graphql.swift in Sources */,
+				9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */,
 				0319F31D2667995B00C01E1F /* sell_fragment_basket.graphql.swift in Sources */,
 				0319F31C2667995B00C01E1F /* canvas_getScreenByScreenId.graphql.swift in Sources */,
 				961B01922689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift in Sources */,
@@ -1824,12 +1882,14 @@
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				961C4274260882C8001D8467 /* NetworkConnectivityChecker.swift in Sources */,
+				96874887268CD3C800DDC5DD /* PaymentIntentUpdateInput.swift in Sources */,
 				0319F3282667995B00C01E1F /* sell_getProducts.graphql.swift in Sources */,
 				961C1CA32683402C00BE6F3B /* ProductModifierList.swift in Sources */,
 				961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */,
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
 				961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */,
 				961B01902689E33B00D8C481 /* sell_getMyOrder.graphql.swift in Sources */,
+				9687486D268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift in Sources */,
 				961B01A32689F3D300D8C481 /* OrderUpdateInput.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
 				961C1CCB2684E3B200BE6F3B /* ProductModifierItemSelection.swift in Sources */,
@@ -1849,6 +1909,7 @@
 				0319F3132667995B00C01E1F /* sell_createPaymentIntent.graphql.swift in Sources */,
 				0319F31E2667995B00C01E1F /* sell_getProductById.graphql.swift in Sources */,
 				961B019C2689EFD400D8C481 /* OrderItem.swift in Sources */,
+				96874879268CC42800DDC5DD /* PaymentStatus.swift in Sources */,
 				9606EDA9267B7CE800ED24D0 /* GraphQLFactory.swift in Sources */,
 				961C1CBD26839C3700BE6F3B /* SeatInfo.swift in Sources */,
 				968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */,
@@ -1864,6 +1925,7 @@
 				4889587D2539D04B00B978A9 /* AudienceChecking.swift in Sources */,
 				0319F3372667995B00C01E1F /* sell_fragment_fulfilmentPoint.graphql.swift in Sources */,
 				0319F31A2667995B00C01E1F /* analytics_putAnalyticEvent.graphql.swift in Sources */,
+				96874873268CC2A800DDC5DD /* PaymentIntent.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
 				961C1CC326839D7300BE6F3B /* BasketInput.swift in Sources */,
 				961C4217260882BB001D8467 /* APIError.swift in Sources */,
@@ -1872,11 +1934,13 @@
 				961C1CB526839A5100BE6F3B /* Basket.swift in Sources */,
 				961C4260260882C8001D8467 /* DiskStorage.swift in Sources */,
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
+				96874875268CC3CC00DDC5DD /* PaymentIntentInput.swift in Sources */,
 				0319F3272667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */,
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
+				9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */,
 				0319F3182667995B00C01E1F /* sell_checkoutMyBasket.graphql.swift in Sources */,
 				961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */,
 				961C4224260882BB001D8467 /* RequestLogger.swift in Sources */,
