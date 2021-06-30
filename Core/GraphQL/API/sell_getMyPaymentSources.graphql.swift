@@ -15,7 +15,7 @@ public extension ApolloType {
           __typename
           edges {
             __typename
-            ...paymentSourceDetails
+            ...FragmentPaymentSource
           }
           nextPage
         }
@@ -26,8 +26,8 @@ public extension ApolloType {
 
     public var queryDocument: String {
       var document: String = operationDefinition
-      document.append("\n" + PaymentSourceDetails.fragmentDefinition)
-      document.append("\n" + CardDetails.fragmentDefinition)
+      document.append("\n" + FragmentPaymentSource.fragmentDefinition)
+      document.append("\n" + FragmentCard.fragmentDefinition)
       return document
     }
 
@@ -125,7 +125,7 @@ public extension ApolloType {
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLFragmentSpread(PaymentSourceDetails.self),
+              GraphQLFragmentSpread(FragmentPaymentSource.self),
             ]
           }
 
@@ -160,9 +160,9 @@ public extension ApolloType {
               self.resultMap = unsafeResultMap
             }
 
-            public var paymentSourceDetails: PaymentSourceDetails {
+            public var fragmentPaymentSource: FragmentPaymentSource {
               get {
-                return PaymentSourceDetails(unsafeResultMap: resultMap)
+                return FragmentPaymentSource(unsafeResultMap: resultMap)
               }
               set {
                 resultMap += newValue.resultMap

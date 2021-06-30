@@ -1,0 +1,19 @@
+fragment FragmentPaymentIntent on PaymentIntent {
+  id
+  orderType
+  orderId
+  status
+  paymentSource {
+    ...FragmentPaymentSource
+  }
+  amount
+  currency
+  livemode
+  cancellationReason
+  savePaymentSource
+  nextAction {
+    type
+    url
+  }
+  lastPaymentError
+}

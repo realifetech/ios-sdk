@@ -1,0 +1,17 @@
+fragment FragmentPaymentSource on PaymentSource {
+  id
+  type
+  default
+  card {
+    ...FragmentCard
+  }
+}
+
+fragment FragmentCard on Card {
+  brand
+  numberToken
+  expMonth
+  expYear
+  last4
+  fingerprint
+}
