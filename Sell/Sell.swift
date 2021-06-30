@@ -10,5 +10,6 @@ import Foundation
 
 public protocol Sell {
     var product: ProductProvidable { get }
+    var basket: BasketProvidable { get }
     var fulfilmentPoint: FulfilmentPointProvidable { get }
 }

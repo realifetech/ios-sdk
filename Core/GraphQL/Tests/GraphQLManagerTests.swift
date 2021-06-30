@@ -82,7 +82,8 @@ final class GraphQLManagerTests: XCTestCase {
         networkTransport.mutationResultReturns = .success(graphQLResult)
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.dispatchMutation(
-            mutation: UnderTestMutation(input: .dummy)
+            mutation: UnderTestMutation(input: .dummy),
+            cacheResultToPersistence: false
         ) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("The test should return failure case")
@@ -98,7 +99,8 @@ final class GraphQLManagerTests: XCTestCase {
         networkTransport.mutationResultReturns = .failure(DummyError.failure)
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.dispatchMutation(
-            mutation: UnderTestMutation(input: .dummy)
+            mutation: UnderTestMutation(input: .dummy),
+            cacheResultToPersistence: false
         ) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("The test should return failure case")
