@@ -103,6 +103,7 @@
 		961B01A12689F35C00D8C481 /* OrderProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01A02689F35C00D8C481 /* OrderProvidable.swift */; };
 		961B01A32689F3D300D8C481 /* OrderUpdateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01A22689F3D300D8C481 /* OrderUpdateInput.swift */; };
 		961B01A52689F42A00D8C481 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01A42689F42A00D8C481 /* OrderRepository.swift */; };
+		961B01AA2689F84D00D8C481 /* OrderRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01A92689F84D00D8C481 /* OrderRepositoryTests.swift */; };
 		961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C87268204EF00BE6F3B /* FulfilmentPoint.swift */; };
 		961C1C8C268206EC00BE6F3B /* FulfilmentPointTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */; };
 		961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1C8D2682070100BE6F3B /* Timeslot.swift */; };
@@ -364,6 +365,7 @@
 		961B01A02689F35C00D8C481 /* OrderProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProvidable.swift; sourceTree = "<group>"; };
 		961B01A22689F3D300D8C481 /* OrderUpdateInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderUpdateInput.swift; sourceTree = "<group>"; };
 		961B01A42689F42A00D8C481 /* OrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
+		961B01A92689F84D00D8C481 /* OrderRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepositoryTests.swift; sourceTree = "<group>"; };
 		961C1C87268204EF00BE6F3B /* FulfilmentPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPoint.swift; sourceTree = "<group>"; };
 		961C1C8B268206EC00BE6F3B /* FulfilmentPointTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointTranslation.swift; sourceTree = "<group>"; };
 		961C1C8D2682070100BE6F3B /* Timeslot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeslot.swift; sourceTree = "<group>"; };
@@ -807,6 +809,7 @@
 			children = (
 				961B018C2689D26600D8C481 /* Models */,
 				961B019F2689F34B00D8C481 /* Repository */,
+				961B01A82689F83800D8C481 /* Tests */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -830,6 +833,14 @@
 				961B01A42689F42A00D8C481 /* OrderRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		961B01A82689F83800D8C481 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				961B01A92689F84D00D8C481 /* OrderRepositoryTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		961C1C86268202A600BE6F3B /* Tests */ = {
@@ -1834,6 +1845,7 @@
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,
 				961C42CC26088374001D8467 /* RequestTimeLoggerTests.swift in Sources */,
+				961B01AA2689F84D00D8C481 /* OrderRepositoryTests.swift in Sources */,
 				961C42BA26088368001D8467 /* LocalDiskCacheDataProvidingTests.swift in Sources */,
 				9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */,
 				961C42C726088371001D8467 /* DiskCacheCodableInterfaceTests.swift in Sources */,

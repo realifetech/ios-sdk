@@ -28,6 +28,6 @@ public enum OrderStatus: String {
             let apolloType = apolloType,
             let type = OrderStatus(rawValue: apolloType.rawValue)
         else { return nil }
-        self =  type
+        self = type
     }
 }

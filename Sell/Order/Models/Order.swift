@@ -11,7 +11,7 @@ import Foundation
 public struct Order {
 
     public let id: String
-    public let orderNumber: String?
+    public let orderNumber: String
     public let qrCodeUrl: String?
     public let collectionDate: Date?
     public let status: OrderStatus?
