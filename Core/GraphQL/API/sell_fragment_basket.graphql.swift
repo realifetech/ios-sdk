@@ -17,8 +17,7 @@ public extension ApolloType {
         netAmount
         seatInfo {
           __typename
-          key
-          value
+          ...FragmentSeatInfo
         }
         timeslot {
           __typename
@@ -61,10 +60,10 @@ public extension ApolloType {
         GraphQLField("grossAmount", type: .scalar(Int.self)),
         GraphQLField("discountAmount", type: .scalar(Int.self)),
         GraphQLField("netAmount", type: .scalar(Int.self)),
-        GraphQLField("seatInfo", type: .list(.object(SeatInfo.selections))),
+        GraphQLField("seatInfo", type: .object(SeatInfo.selections)),
         GraphQLField("timeslot", type: .object(Timeslot.selections)),
         GraphQLField("collectionDate", type: .scalar(String.self)),
-        GraphQLField("collectionPreferenceType", type: .scalar(String.self)),
+        GraphQLField("collectionPreferenceType", type: .scalar(CollectionPreferenceType.self)),
         GraphQLField("items", type: .list(.object(Item.selections))),
       ]
     }
@@ -75,8 +74,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, seatInfo: [SeatInfo?]? = nil, timeslot: Timeslot? = nil, collectionDate: String? = nil, collectionPreferenceType: String? = nil, items: [Item?]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Basket", "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "seatInfo": seatInfo.flatMap { (value: [SeatInfo?]) -> [ResultMap?] in value.map { (value: SeatInfo?) -> ResultMap? in value.flatMap { (value: SeatInfo) -> ResultMap in value.resultMap } } }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "collectionDate": collectionDate, "collectionPreferenceType": collectionPreferenceType, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }])
+    public init(grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, seatInfo: SeatInfo? = nil, timeslot: Timeslot? = nil, collectionDate: String? = nil, collectionPreferenceType: CollectionPreferenceType? = nil, items: [Item?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Basket", "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "seatInfo": seatInfo.flatMap { (value: SeatInfo) -> ResultMap in value.resultMap }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "collectionDate": collectionDate, "collectionPreferenceType": collectionPreferenceType, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }])
     }
 
     public var __typename: String {
@@ -115,12 +114,12 @@ public extension ApolloType {
       }
     }
 
-    public var seatInfo: [SeatInfo?]? {
+    public var seatInfo: SeatInfo? {
       get {
-        return (resultMap["seatInfo"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SeatInfo?] in value.map { (value: ResultMap?) -> SeatInfo? in value.flatMap { (value: ResultMap) -> SeatInfo in SeatInfo(unsafeResultMap: value) } } }
+        return (resultMap["seatInfo"] as? ResultMap).flatMap { SeatInfo(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue.flatMap { (value: [SeatInfo?]) -> [ResultMap?] in value.map { (value: SeatInfo?) -> ResultMap? in value.flatMap { (value: SeatInfo) -> ResultMap in value.resultMap } } }, forKey: "seatInfo")
+        resultMap.updateValue(newValue?.resultMap, forKey: "seatInfo")
       }
     }
 
@@ -142,9 +141,9 @@ public extension ApolloType {
       }
     }
 
-    public var collectionPreferenceType: String? {
+    public var collectionPreferenceType: CollectionPreferenceType? {
       get {
-        return resultMap["collectionPreferenceType"] as? String
+        return resultMap["collectionPreferenceType"] as? CollectionPreferenceType
       }
       set {
         resultMap.updateValue(newValue, forKey: "collectionPreferenceType")
@@ -166,8 +165,7 @@ public extension ApolloType {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("key", type: .scalar(String.self)),
-          GraphQLField("value", type: .scalar(String.self)),
+          GraphQLFragmentSpread(FragmentSeatInfo.self),
         ]
       }
 
@@ -177,8 +175,8 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(key: String? = nil, value: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "SeatInfo", "key": key, "value": value])
+      public init(row: String? = nil, seat: String? = nil, block: String? = nil, table: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "SeatInfo", "row": row, "seat": seat, "block": block, "table": table])
       }
 
       public var __typename: String {
@@ -190,21 +188,29 @@ public extension ApolloType {
         }
       }
 
-      public var key: String? {
+      public var fragments: Fragments {
         get {
-          return resultMap["key"] as? String
+          return Fragments(unsafeResultMap: resultMap)
         }
         set {
-          resultMap.updateValue(newValue, forKey: "key")
+          resultMap += newValue.resultMap
         }
       }
 
-      public var value: String? {
-        get {
-          return resultMap["value"] as? String
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
         }
-        set {
-          resultMap.updateValue(newValue, forKey: "value")
+
+        public var fragmentSeatInfo: FragmentSeatInfo {
+          get {
+            return FragmentSeatInfo(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
         }
       }
     }

@@ -13,7 +13,7 @@ public struct BasketInput {
     public let collectionDate: Date?
     public let collectionPreferenceType: CollectionPreferenceType?
     public let timeslotId: String?
-    public let fulfilmentPointId: String?
-    public let seatInfo: [SeatInfo]?
-    public let items: [BasketItemInput]?
+    public let fulfilmentPointId: String
+    public let seatInfo: SeatInfo?
+    public let items: [BasketItemInput]
 }

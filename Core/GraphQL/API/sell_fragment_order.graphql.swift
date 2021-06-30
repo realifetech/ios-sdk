@@ -67,6 +67,8 @@ public extension ApolloType {
           id
           note
           author
+          createdAt
+          updatedAt
         }
         timeslot {
           __typename
@@ -79,6 +81,11 @@ public extension ApolloType {
         user {
           __typename
           ...FragmentUser
+        }
+        collectionPreferenceType
+        seatInfo {
+          __typename
+          ...FragmentSeatInfo
         }
       }
       """
@@ -106,6 +113,8 @@ public extension ApolloType {
         GraphQLField("timeslot", type: .object(Timeslot.selections)),
         GraphQLField("fulfilmentPoint", type: .object(FulfilmentPoint.selections)),
         GraphQLField("user", type: .object(User.selections)),
+        GraphQLField("collectionPreferenceType", type: .scalar(CollectionPreferenceType.self)),
+        GraphQLField("seatInfo", type: .object(SeatInfo.selections)),
       ]
     }
 
@@ -115,8 +124,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, orderNumber: String, qrCodeUrl: String? = nil, collectionDate: String? = nil, status: OrderStatus? = nil, state: State? = nil, paymentStatus: String? = nil, grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, estimatedAt: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, items: [Item?]? = nil, orderNotes: [OrderNote?]? = nil, timeslot: Timeslot? = nil, fulfilmentPoint: FulfilmentPoint? = nil, user: User? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Order", "id": id, "orderNumber": orderNumber, "qrCodeUrl": qrCodeUrl, "collectionDate": collectionDate, "status": status, "state": state.flatMap { (value: State) -> ResultMap in value.resultMap }, "paymentStatus": paymentStatus, "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "estimatedAt": estimatedAt, "createdAt": createdAt, "updatedAt": updatedAt, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }, "orderNotes": orderNotes.flatMap { (value: [OrderNote?]) -> [ResultMap?] in value.map { (value: OrderNote?) -> ResultMap? in value.flatMap { (value: OrderNote) -> ResultMap in value.resultMap } } }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "fulfilmentPoint": fulfilmentPoint.flatMap { (value: FulfilmentPoint) -> ResultMap in value.resultMap }, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }])
+    public init(id: GraphQLID, orderNumber: String, qrCodeUrl: String? = nil, collectionDate: String? = nil, status: OrderStatus? = nil, state: State? = nil, paymentStatus: String? = nil, grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, estimatedAt: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, items: [Item?]? = nil, orderNotes: [OrderNote?]? = nil, timeslot: Timeslot? = nil, fulfilmentPoint: FulfilmentPoint? = nil, user: User? = nil, collectionPreferenceType: CollectionPreferenceType? = nil, seatInfo: SeatInfo? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Order", "id": id, "orderNumber": orderNumber, "qrCodeUrl": qrCodeUrl, "collectionDate": collectionDate, "status": status, "state": state.flatMap { (value: State) -> ResultMap in value.resultMap }, "paymentStatus": paymentStatus, "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "estimatedAt": estimatedAt, "createdAt": createdAt, "updatedAt": updatedAt, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }, "orderNotes": orderNotes.flatMap { (value: [OrderNote?]) -> [ResultMap?] in value.map { (value: OrderNote?) -> ResultMap? in value.flatMap { (value: OrderNote) -> ResultMap in value.resultMap } } }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "fulfilmentPoint": fulfilmentPoint.flatMap { (value: FulfilmentPoint) -> ResultMap in value.resultMap }, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }, "collectionPreferenceType": collectionPreferenceType, "seatInfo": seatInfo.flatMap { (value: SeatInfo) -> ResultMap in value.resultMap }])
     }
 
     public var __typename: String {
@@ -287,6 +296,24 @@ public extension ApolloType {
       }
       set {
         resultMap.updateValue(newValue?.resultMap, forKey: "user")
+      }
+    }
+
+    public var collectionPreferenceType: CollectionPreferenceType? {
+      get {
+        return resultMap["collectionPreferenceType"] as? CollectionPreferenceType
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "collectionPreferenceType")
+      }
+    }
+
+    public var seatInfo: SeatInfo? {
+      get {
+        return (resultMap["seatInfo"] as? ResultMap).flatMap { SeatInfo(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "seatInfo")
       }
     }
 
@@ -774,6 +801,8 @@ public extension ApolloType {
           GraphQLField("id", type: .scalar(Int.self)),
           GraphQLField("note", type: .scalar(String.self)),
           GraphQLField("author", type: .scalar(String.self)),
+          GraphQLField("createdAt", type: .scalar(String.self)),
+          GraphQLField("updatedAt", type: .scalar(String.self)),
         ]
       }
 
@@ -783,8 +812,8 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: Int? = nil, note: String? = nil, author: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "OrderNote", "id": id, "note": note, "author": author])
+      public init(id: Int? = nil, note: String? = nil, author: String? = nil, createdAt: String? = nil, updatedAt: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "OrderNote", "id": id, "note": note, "author": author, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -820,6 +849,24 @@ public extension ApolloType {
         }
         set {
           resultMap.updateValue(newValue, forKey: "author")
+        }
+      }
+
+      public var createdAt: String? {
+        get {
+          return resultMap["createdAt"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String? {
+        get {
+          return resultMap["updatedAt"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "updatedAt")
         }
       }
     }
@@ -976,6 +1023,62 @@ public extension ApolloType {
         public var fragmentUser: FragmentUser {
           get {
             return FragmentUser(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+      }
+    }
+
+    public struct SeatInfo: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["SeatInfo"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(FragmentSeatInfo.self),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(row: String? = nil, seat: String? = nil, block: String? = nil, table: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "SeatInfo", "row": row, "seat": seat, "block": block, "table": table])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var fragmentSeatInfo: FragmentSeatInfo {
+          get {
+            return FragmentSeatInfo(unsafeResultMap: resultMap)
           }
           set {
             resultMap += newValue.resultMap

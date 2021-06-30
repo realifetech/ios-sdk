@@ -6,52 +6,53 @@ import Foundation
 
 /// ApolloType namespace
 public extension ApolloType {
-  final class UpdateMyBasketMutation: GraphQLMutation {
+  final class GetMyOrderByIdQuery: GraphQLQuery {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      mutation updateMyBasket($input: BasketInput) {
-        updateMyBasket(input: $input) {
+      query getMyOrderById($id: ID!) {
+        getMyOrder(id: $id) {
           __typename
-          ...FragmentBasket
+          ...FragmentOrder
         }
       }
       """
 
-    public let operationName: String = "updateMyBasket"
+    public let operationName: String = "getMyOrderById"
 
     public var queryDocument: String {
       var document: String = operationDefinition
-      document.append("\n" + FragmentBasket.fragmentDefinition)
-      document.append("\n" + FragmentSeatInfo.fragmentDefinition)
-      document.append("\n" + FragmentTimeslot.fragmentDefinition)
+      document.append("\n" + FragmentOrder.fragmentDefinition)
+      document.append("\n" + FragmentProduct.fragmentDefinition)
+      document.append("\n" + FragmentProductModifierItem.fragmentDefinition)
+      document.append("\n" + FragmentProductVariant.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPoint.fragmentDefinition)
       document.append("\n" + FragmentForm.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPointCategory.fragmentDefinition)
       document.append("\n" + FragmentVenue.fragmentDefinition)
-      document.append("\n" + FragmentProductVariant.fragmentDefinition)
-      document.append("\n" + FragmentProduct.fragmentDefinition)
-      document.append("\n" + FragmentProductModifierItem.fragmentDefinition)
+      document.append("\n" + FragmentTimeslot.fragmentDefinition)
       document.append("\n" + FragmentProductModifierItemSelection.fragmentDefinition)
+      document.append("\n" + FragmentUser.fragmentDefinition)
+      document.append("\n" + FragmentSeatInfo.fragmentDefinition)
       return document
     }
 
-    public var input: BasketInput?
+    public var id: GraphQLID
 
-    public init(input: BasketInput? = nil) {
-      self.input = input
+    public init(id: GraphQLID) {
+      self.id = id
     }
 
     public var variables: GraphQLMap? {
-      return ["input": input]
+      return ["id": id]
     }
 
     public struct Data: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["Mutation"]
+      public static let possibleTypes: [String] = ["Query"]
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("updateMyBasket", arguments: ["input": GraphQLVariable("input")], type: .object(UpdateMyBasket.selections)),
+          GraphQLField("getMyOrder", arguments: ["id": GraphQLVariable("id")], type: .object(GetMyOrder.selections)),
         ]
       }
 
@@ -61,26 +62,26 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(updateMyBasket: UpdateMyBasket? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Mutation", "updateMyBasket": updateMyBasket.flatMap { (value: UpdateMyBasket) -> ResultMap in value.resultMap }])
+      public init(getMyOrder: GetMyOrder? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getMyOrder": getMyOrder.flatMap { (value: GetMyOrder) -> ResultMap in value.resultMap }])
       }
 
-      public var updateMyBasket: UpdateMyBasket? {
+      public var getMyOrder: GetMyOrder? {
         get {
-          return (resultMap["updateMyBasket"] as? ResultMap).flatMap { UpdateMyBasket(unsafeResultMap: $0) }
+          return (resultMap["getMyOrder"] as? ResultMap).flatMap { GetMyOrder(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "updateMyBasket")
+          resultMap.updateValue(newValue?.resultMap, forKey: "getMyOrder")
         }
       }
 
-      public struct UpdateMyBasket: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["Basket"]
+      public struct GetMyOrder: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["Order"]
 
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLFragmentSpread(FragmentBasket.self),
+            GraphQLFragmentSpread(FragmentOrder.self),
           ]
         }
 
@@ -115,9 +116,9 @@ public extension ApolloType {
             self.resultMap = unsafeResultMap
           }
 
-          public var fragmentBasket: FragmentBasket {
+          public var fragmentOrder: FragmentOrder {
             get {
-              return FragmentBasket(unsafeResultMap: resultMap)
+              return FragmentOrder(unsafeResultMap: resultMap)
             }
             set {
               resultMap += newValue.resultMap

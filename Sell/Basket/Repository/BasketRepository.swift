@@ -39,13 +39,15 @@ public final class BasketRepository {
     private func makeApolloBasketInput(_ input: BasketInput) -> ApolloType.BasketInput {
         ApolloType.BasketInput(
             collectionDate: input.collectionDate?.iso8601String,
-            collectionPreferenceType: input.collectionPreferenceType?.rawValue,
+            collectionPreferenceType: input.collectionPreferenceType?.apolloType,
             timeslot: input.timeslotId,
             fulfilmentPoint: input.fulfilmentPointId,
-            seatInfo: input.seatInfo?.compactMap {
-                ApolloType.SeatInfoInput(key: $0.key, value: $0.value)
-            },
-            items: input.items?.compactMap {
+            seatInfo: ApolloType.SeatInfoInput(
+                row: input.seatInfo?.row,
+                seat: input.seatInfo?.seat,
+                block: input.seatInfo?.block,
+                table: input.seatInfo?.table),
+            items: input.items.compactMap {
                 ApolloType.BasketItemInput(
                     product: $0.productId,
                     productVariant: $0.productVariantId,
@@ -169,9 +171,8 @@ extension BasketRepository: BasketProvidable {
             case .success(let response):
                 if let transformedError = self.transformErrorIfNeccessary(response.errors) {
                     callback(.failure(transformedError))
-                } else if let _ = response.data?.checkoutMyBasket?.fragments.fragmentOrder {
-                    // TODO: ID-1027
-                    callback(.success(Order()))
+                } else if let order = Order(response: response.data?.checkoutMyBasket?.fragments.fragmentOrder) {
+                    callback(.success(order))
                 } else {
                     callback(.failure(.regularError(GraphQLManagerError.noDataError)))
                 }
