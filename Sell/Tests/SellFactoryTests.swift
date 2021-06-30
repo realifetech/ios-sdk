@@ -20,5 +20,6 @@ final class SellFactoryTests: XCTestCase {
         XCTAssertTrue(result.basket is BasketRepository)
         XCTAssertTrue(result.order is OrderRepository)
         XCTAssertTrue(result.fulfilmentPoint is FulfilmentPointRepository)
+        XCTAssertTrue(result.payment is PaymentRepository)
     }
 }

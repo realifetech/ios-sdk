@@ -15,6 +15,7 @@ public enum SellFactory {
             product: ProductRepository(graphQLManager: graphQLManager),
             basket: BasketRepository(graphQLManager: graphQLManager),
             order: OrderRepository(graphQLManager: graphQLManager),
-            fulfilmentPoint: FulfilmentPointRepository(graphQLManager: graphQLManager))
+            fulfilmentPoint: FulfilmentPointRepository(graphQLManager: graphQLManager),
+            payment: PaymentRepository(graphQLManager: graphQLManager))
     }
 }

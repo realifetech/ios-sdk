@@ -238,6 +238,9 @@
 		9687485D268CBC7C00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */; };
 		9687485E268CBC7C00DDC5DD /* sell_fragment_paymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */; };
 		9687485F268CBC7C00DDC5DD /* sell_fragment_paymentSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */; };
+		96874865268CBDF100DDC5DD /* PaymentProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874864268CBDF100DDC5DD /* PaymentProvidable.swift */; };
+		96874867268CBE1400DDC5DD /* PaymentSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874866268CBE1400DDC5DD /* PaymentSource.swift */; };
+		96874869268CBEC900DDC5DD /* PaymentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874868268CBEC900DDC5DD /* PaymentRepository.swift */; };
 		968CA5BC25EE79DD0000C2E2 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5BB25EE79DD0000C2E2 /* Content.swift */; };
 		968CA5C025EE7A610000C2E2 /* WebPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5BF25EE7A610000C2E2 /* WebPage.swift */; };
 		968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA5C325EE7AEB0000C2E2 /* ContentError.swift */; };
@@ -503,6 +506,9 @@
 		9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_deleteMyPaymentSource.graphql.swift; sourceTree = "<group>"; };
 		9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentIntent.graphql.swift; sourceTree = "<group>"; };
 		9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentSource.graphql.swift; sourceTree = "<group>"; };
+		96874864268CBDF100DDC5DD /* PaymentProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProvidable.swift; sourceTree = "<group>"; };
+		96874866268CBE1400DDC5DD /* PaymentSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSource.swift; sourceTree = "<group>"; };
+		96874868268CBEC900DDC5DD /* PaymentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRepository.swift; sourceTree = "<group>"; };
 		968CA5BB25EE79DD0000C2E2 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		968CA5BF25EE7A610000C2E2 /* WebPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPage.swift; sourceTree = "<group>"; };
 		968CA5C325EE7AEB0000C2E2 /* ContentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentError.swift; sourceTree = "<group>"; };
@@ -742,6 +748,7 @@
 				961C1CB12683982C00BE6F3B /* Basket */,
 				964A3BE22680AA4A00C42C35 /* FulfilmentPoint */,
 				961B018B2689D25600D8C481 /* Order */,
+				96874861268CBDC100DDC5DD /* Payment */,
 				9606ED82267B4FEC00ED24D0 /* Product */,
 				9606EDA3267B67BE00ED24D0 /* Tests */,
 				964A3BE92680AC3F00C42C35 /* Utils */,
@@ -1367,6 +1374,32 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		96874861268CBDC100DDC5DD /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				96874862268CBDCD00DDC5DD /* Models */,
+				96874863268CBDDF00DDC5DD /* Repository */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		96874862268CBDCD00DDC5DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96874866268CBE1400DDC5DD /* PaymentSource.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		96874863268CBDDF00DDC5DD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				96874864268CBDF100DDC5DD /* PaymentProvidable.swift */,
+				96874868268CBEC900DDC5DD /* PaymentRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		968CA5B625EE79960000C2E2 /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -1669,10 +1702,12 @@
 				487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */,
 				9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */,
 				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
+				96874867268CBE1400DDC5DD /* PaymentSource.swift in Sources */,
 				961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */,
 				968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */,
 				0319F3392667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift in Sources */,
 				961C427E260882C8001D8467 /* UIDeviceInterface.swift in Sources */,
+				96874865268CBDF100DDC5DD /* PaymentProvidable.swift in Sources */,
 				0319F3312667995B00C01E1F /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */,
 				0319F3192667995B00C01E1F /* sell_fragment_productModifierItemSelection.graphql.swift in Sources */,
 				961C41EB260882BA001D8467 /* CoreFactory.swift in Sources */,
@@ -1704,6 +1739,7 @@
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
 				961C1C9F26833C8800BE6F3B /* StandardTitleTranslation.swift in Sources */,
 				9606ED8B267B512900ED24D0 /* Product.swift in Sources */,
+				96874869268CBEC900DDC5DD /* PaymentRepository.swift in Sources */,
 				961C1CCF2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift in Sources */,
 				0319F3232667995B00C01E1F /* Types.graphql.swift in Sources */,
 				0319F33A2667995B00C01E1F /* sell_fragment_product.graphql.swift in Sources */,
