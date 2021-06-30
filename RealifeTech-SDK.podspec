@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "RealifeTech-SDK"
   spec.module_name  = "RealifeTech"
-  spec.version      = "1.2.5"
+  spec.version      = "1.2.6"
   spec.summary      = "Providing integration with the RealifeTech Experience Automation Platform."
 
   spec.description  = "This is RealifeTech SDK, it provides integration with RealifeTech backend services, providing functionality such as device notification management, audience membership, and analytics logging. Creating a better experience of the real world for every person."
