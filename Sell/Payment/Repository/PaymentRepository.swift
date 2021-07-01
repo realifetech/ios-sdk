@@ -44,7 +44,26 @@ extension PaymentRepository: PaymentProvidable {
 
     public func deletePaymentSource(
         id: String,
-        callback: @escaping (Result<PaymentSource, Error>) -> Void) { }
+        callback: @escaping (Result<PaymentSource, Error>) -> Void
+    ) {
+        graphQLManager.dispatchMutation(
+            mutation: ApolloType.DeleteMyPaymentSourceMutation(id: id),
+            cacheResultToPersistence: false
+        ) { result in
+            switch result {
+            case .success(let response):
+                guard
+                    let fragment = response.data?.deleteMyPaymentSource?.fragments.fragmentPaymentSource,
+                    let paymentSource = PaymentSource(response: fragment)
+                else {
+                    return callback(.failure(GraphQLManagerError.noDataError))
+                }
+                callback(.success(paymentSource))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
 
     public func getMyPaymentSources(
         pageSize: Int,
