@@ -14,6 +14,10 @@ public protocol PaymentProvidable {
         input: PaymentSourceInput,
         callback: @escaping (Result<PaymentSource, Error>) -> Void)
 
+    func deletePaymentSource(
+        id: String,
+        callback: @escaping (Result<PaymentSource, Error>) -> Void)
+
     func getMyPaymentSources(
         pageSize: Int,
         page: Int?,

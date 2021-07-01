@@ -42,6 +42,10 @@ extension PaymentRepository: PaymentProvidable {
         }
     }
 
+    public func deletePaymentSource(
+        id: String,
+        callback: @escaping (Result<PaymentSource, Error>) -> Void) { }
+
     public func getMyPaymentSources(
         pageSize: Int,
         page: Int?,
