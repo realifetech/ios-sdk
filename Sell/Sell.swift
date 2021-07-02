@@ -13,4 +13,5 @@ public protocol Sell {
     var basket: BasketProvidable { get }
     var order: OrderProvidable { get }
     var fulfilmentPoint: FulfilmentPointProvidable { get }
+    var payment: PaymentProvidable { get }
 }

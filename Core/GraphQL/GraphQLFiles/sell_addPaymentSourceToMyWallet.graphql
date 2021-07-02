@@ -1,5 +1,5 @@
 mutation addPaymentSourceToMyWallet($input: PaymentSourceInput!) {
   addPaymentSourceToMyWallet(input: $input) {
-    ...paymentSourceDetails
+    ...FragmentPaymentSource
   }
 }

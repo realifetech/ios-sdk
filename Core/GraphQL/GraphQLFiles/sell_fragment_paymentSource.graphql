@@ -1,0 +1,30 @@
+fragment FragmentPaymentSource on PaymentSource {
+  id
+  type
+  default
+  billingDetails {
+    address {
+      city
+      country
+      line1
+      line2
+      postalCode
+      state
+    }
+    email
+    name
+    phone
+  }
+  card {
+    ...FragmentCard
+  }
+}
+
+fragment FragmentCard on Card {
+  brand
+  numberToken
+  expMonth
+  expYear
+  last4
+  fingerprint
+}

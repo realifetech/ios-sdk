@@ -10,12 +10,12 @@ public extension ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query getMyPaymentSources($pageSize: Int!, $page: Int! = 1) {
+      query getMyPaymentSources($pageSize: Int!, $page: Int = 1) {
         getMyPaymentSources(page: $page, pageSize: $pageSize) {
           __typename
           edges {
             __typename
-            ...paymentSourceDetails
+            ...FragmentPaymentSource
           }
           nextPage
         }
@@ -26,15 +26,15 @@ public extension ApolloType {
 
     public var queryDocument: String {
       var document: String = operationDefinition
-      document.append("\n" + PaymentSourceDetails.fragmentDefinition)
-      document.append("\n" + CardDetails.fragmentDefinition)
+      document.append("\n" + FragmentPaymentSource.fragmentDefinition)
+      document.append("\n" + FragmentCard.fragmentDefinition)
       return document
     }
 
     public var pageSize: Int
-    public var page: Int
+    public var page: Int?
 
-    public init(pageSize: Int, page: Int) {
+    public init(pageSize: Int, page: Int? = nil) {
       self.pageSize = pageSize
       self.page = page
     }
@@ -125,7 +125,7 @@ public extension ApolloType {
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLFragmentSpread(PaymentSourceDetails.self),
+              GraphQLFragmentSpread(FragmentPaymentSource.self),
             ]
           }
 
@@ -160,9 +160,9 @@ public extension ApolloType {
               self.resultMap = unsafeResultMap
             }
 
-            public var paymentSourceDetails: PaymentSourceDetails {
+            public var fragmentPaymentSource: FragmentPaymentSource {
               get {
-                return PaymentSourceDetails(unsafeResultMap: resultMap)
+                return FragmentPaymentSource(unsafeResultMap: resultMap)
               }
               set {
                 resultMap += newValue.resultMap
