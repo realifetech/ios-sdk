@@ -10,7 +10,7 @@ public extension ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query getMyPaymentSources($pageSize: Int!, $page: Int! = 1) {
+      query getMyPaymentSources($pageSize: Int!, $page: Int = 1) {
         getMyPaymentSources(page: $page, pageSize: $pageSize) {
           __typename
           edges {
@@ -32,9 +32,9 @@ public extension ApolloType {
     }
 
     public var pageSize: Int
-    public var page: Int
+    public var page: Int?
 
-    public init(pageSize: Int, page: Int) {
+    public init(pageSize: Int, page: Int? = nil) {
       self.pageSize = pageSize
       self.page = page
     }

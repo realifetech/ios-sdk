@@ -20,7 +20,7 @@ public protocol PaymentProvidable {
 
     func getMyPaymentSources(
         pageSize: Int,
-        page: Int,
+        page: Int?,
         callback: @escaping (Result<PaginatedObject<PaymentSource>, Error>) -> Void)
 
     func createPaymentIntent(
@@ -29,6 +29,6 @@ public protocol PaymentProvidable {
 
     func updatePaymentIntent(
         id: String,
-        input: PaymentIntentInput,
+        input: PaymentIntentUpdateInput,
         callback: @escaping (Result<PaymentIntent, Error>) -> Void)
 }
