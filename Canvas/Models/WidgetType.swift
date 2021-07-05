@@ -29,11 +29,9 @@ public enum WidgetType: String, Codable {
 extension WidgetType {
 
     init?(apolloType: ApolloType.WidgetType?) {
-        print("init widget type: \(apolloType?.rawValue )")
         guard let type = WidgetType(rawValue: apolloType?.rawValue ?? "") else {
             return nil
         }
-        print("init widget type GET: \(type )")
         self = type
     }
 }
