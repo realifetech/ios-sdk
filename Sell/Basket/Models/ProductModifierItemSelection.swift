@@ -8,11 +8,24 @@
 
 import Foundation
 
-public struct ProductModifierItemSelection {
+public struct ProductModifierItemSelection: Codable, Equatable {
 
     public let productModifierItem: ProductModifierItem?
     public let quantity: Int?
     public let totalPrice: Int?
+
+    public init(
+        productModifierItem: ProductModifierItem?,
+        quantity: Int?,
+        totalPrice: Int?
+    ) {
+        self.productModifierItem = productModifierItem
+        self.quantity = quantity
+        self.totalPrice = totalPrice
+    }
+}
+
+extension ProductModifierItemSelection {
 
     init(response: ApolloType.FragmentProductModifierItemSelection?) {
         productModifierItem = ProductModifierItem(

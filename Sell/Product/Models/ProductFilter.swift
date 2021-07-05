@@ -9,6 +9,12 @@
 import Foundation
 
 public struct ProductFilter {
-    let fulfilmentPointIds: [String]?
-    let categoriesIds: [String]?
+
+    public let fulfilmentPointIds: [String]?
+    public let categoriesIds: [String]?
+
+    public init(fulfilmentPointIds: [String]?, categoriesIds: [String]?) {
+        self.fulfilmentPointIds = fulfilmentPointIds
+        self.categoriesIds = categoriesIds
+    }
 }

@@ -15,6 +15,21 @@ public struct FulfilmentPointCategory: Codable, Equatable {
     public let position: Int?
     public let translations: [StandardTitleTranslation]?
 
+    public init(
+        id: String,
+        iconImageUrl: String?,
+        position: Int?,
+        translations: [StandardTitleTranslation]?
+    ) {
+        self.id = id
+        self.iconImageUrl = iconImageUrl
+        self.position = position
+        self.translations = translations
+    }
+}
+
+extension FulfilmentPointCategory {
+
     init?(response: ApolloType.FragmentFulfilmentPointCategory?) {
         guard let response = response else { return nil }
         id = response.id

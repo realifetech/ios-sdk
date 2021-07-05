@@ -14,7 +14,7 @@ public struct StandardDescriptionTranslation: Codable, Equatable {
     public let title: String?
     public let description: String?
 
-    init(
+    public init(
         language: String?,
         title: String?,
         description: String?

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Basket {
+public struct Basket: Codable, Equatable {
 
     public let grossAmount: Int?
     public let discountAmount: Int?
@@ -18,6 +18,29 @@ public struct Basket {
     public let collectionDate: Date?
     public let collectionPreferenceType: CollectionPreferenceType?
     public let items: [BasketItem]?
+
+    public init(
+        grossAmount: Int?,
+        discountAmount: Int?,
+        netAmount: Int?,
+        seatInfo: SeatInfo?,
+        timeslot: Timeslot?,
+        collectionDate: Date?,
+        collectionPreferenceType: CollectionPreferenceType?,
+        items: [BasketItem]?
+    ) {
+        self.grossAmount = grossAmount
+        self.discountAmount = discountAmount
+        self.netAmount = netAmount
+        self.seatInfo = seatInfo
+        self.timeslot = timeslot
+        self.collectionDate = collectionDate
+        self.collectionPreferenceType = collectionPreferenceType
+        self.items = items
+    }
+}
+
+extension Basket {
 
     init(response: ApolloType.FragmentBasket) {
         grossAmount = response.grossAmount

@@ -12,4 +12,9 @@ public struct CheckoutInput {
 
     public let netAmount: Int?
     public let language: String?
+
+    public init(netAmount: Int?, language: String?) {
+        self.netAmount = netAmount
+        self.language = language
+    }
 }

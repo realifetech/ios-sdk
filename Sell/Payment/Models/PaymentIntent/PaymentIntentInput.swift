@@ -19,6 +19,28 @@ public struct PaymentIntentInput {
     public let livemode: Bool
     public let cancellationReason: CancellationReason?
     public let receiptEmail: String?
+
+    public init(
+        orderType: OrderType,
+        orderId: String,
+        paymentSource: PaymentSourceInput?,
+        amount: Int,
+        currency: String,
+        savePaymentSource: Bool,
+        livemode: Bool,
+        cancellationReason: CancellationReason?,
+        receiptEmail: String?
+    ) {
+        self.orderType = orderType
+        self.orderId = orderId
+        self.paymentSource = paymentSource
+        self.amount = amount
+        self.currency = currency
+        self.savePaymentSource = savePaymentSource
+        self.livemode = livemode
+        self.cancellationReason = cancellationReason
+        self.receiptEmail = receiptEmail
+    }
 }
 
 extension PaymentIntentInput {

@@ -15,6 +15,21 @@ public struct Timeslot: Codable, Equatable {
     public let endTime: String?
     public let translations: [TimeslotTranslation]?
 
+    public init(
+        id: String,
+        startTime: String?,
+        endTime: String?,
+        translations: [TimeslotTranslation]?
+    ) {
+        self.id = id
+        self.startTime = startTime
+        self.endTime = endTime
+        self.translations = translations
+    }
+}
+
+extension Timeslot {
+
     init?(response: ApolloType.FragmentTimeslot?) {
         guard let response = response else { return nil }
         id = response.id
@@ -32,6 +47,21 @@ public struct TimeslotTranslation: Codable, Equatable {
     public let title: String?
     public let description: String?
     public let collectionNote: String?
+
+    public init(
+        language: String?,
+        title: String?,
+        description: String?,
+        collectionNote: String?
+    ) {
+        self.language = language
+        self.title = title
+        self.description = description
+        self.collectionNote = collectionNote
+    }
+}
+
+extension TimeslotTranslation {
 
     init(response: ApolloType.FragmentTimeslot.Translation?) {
         language = response?.language?.rawValue

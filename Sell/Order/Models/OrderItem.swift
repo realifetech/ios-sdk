@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct OrderItem {
+public struct OrderItem: Codable, Equatable {
 
     public let id: String
     public let product: Product?
@@ -22,6 +22,37 @@ public struct OrderItem {
     public let title: String?
     public let subtitle: String?
     public let imageUrl: String?
+
+    public init(
+        id: String,
+        product: Product?,
+        productVariant: ProductVariant?,
+        fulfilmentPoint: FulfilmentPoint?,
+        productModifierItems: [ProductModifierItemSelection]?,
+        price: Int?,
+        modifierItemsPrice: Int?,
+        quantity: Int?,
+        totalPrice: Int?,
+        title: String?,
+        subtitle: String?,
+        imageUrl: String?
+    ) {
+        self.id = id
+        self.product = product
+        self.productVariant = productVariant
+        self.fulfilmentPoint = fulfilmentPoint
+        self.productModifierItems = productModifierItems
+        self.price = price
+        self.modifierItemsPrice = modifierItemsPrice
+        self.quantity = quantity
+        self.totalPrice = totalPrice
+        self.title = title
+        self.subtitle = subtitle
+        self.imageUrl = imageUrl
+    }
+}
+
+extension OrderItem {
 
     init?(response: ApolloType.FragmentOrder.Item?) {
         guard let response = response else { return nil }

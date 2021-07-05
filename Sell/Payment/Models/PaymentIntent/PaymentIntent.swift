@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PaymentIntent {
+public struct PaymentIntent: Codable, Equatable {
 
     public let id: String
     public let orderType: OrderType
@@ -22,6 +22,37 @@ public struct PaymentIntent {
     public let savePaymentSource: Bool?
     public let nextAction: PaymentIntentNextAction?
     public let lastPaymentError: String?
+
+    public init(
+        id: String,
+        orderType: OrderType,
+        orderId: String,
+        status: PaymentStatus,
+        paymentSource: PaymentSource?,
+        amount: Int,
+        currency: String,
+        livemode: Bool,
+        cancellationReason: CancellationReason?,
+        savePaymentSource: Bool?,
+        nextAction: PaymentIntentNextAction?,
+        lastPaymentError: String?
+    ) {
+        self.id = id
+        self.orderType = orderType
+        self.orderId = orderId
+        self.status = status
+        self.paymentSource = paymentSource
+        self.amount = amount
+        self.currency = currency
+        self.livemode = livemode
+        self.cancellationReason = cancellationReason
+        self.savePaymentSource = savePaymentSource
+        self.nextAction = nextAction
+        self.lastPaymentError = lastPaymentError
+    }
+}
+
+extension PaymentIntent {
 
     init?(response: ApolloType.FragmentPaymentIntent?) {
         guard let response = response else { return nil }
@@ -40,10 +71,18 @@ public struct PaymentIntent {
     }
 }
 
-public struct PaymentIntentNextAction {
+public struct PaymentIntentNextAction: Codable, Equatable {
 
     public let type: PaymentActionType
     public let url: String?
+
+    public init(type: PaymentActionType, url: String?) {
+        self.type = type
+        self.url = url
+    }
+}
+
+extension PaymentIntentNextAction {
 
     init?(response: ApolloType.FragmentPaymentIntent.NextAction?) {
         guard

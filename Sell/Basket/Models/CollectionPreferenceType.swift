@@ -9,6 +9,7 @@
 import Foundation
 
 public enum CollectionPreferenceType: String, Codable {
+
     case asap = "ASAP"
     case preorder = "PREORDER"
     case checkin = "CHECKIN"

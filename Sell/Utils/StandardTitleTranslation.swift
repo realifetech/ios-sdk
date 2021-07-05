@@ -13,7 +13,7 @@ public struct StandardTitleTranslation: Codable, Equatable {
     public let language: String?
     public let title: String?
 
-    init(language: String?, title: String?) {
+    public init(language: String?, title: String?) {
         self.language = language
         self.title = title
     }

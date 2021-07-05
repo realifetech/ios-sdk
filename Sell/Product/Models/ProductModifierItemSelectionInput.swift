@@ -12,4 +12,9 @@ public struct ProductModifierItemSelectionInput {
 
     public let productModifierItemId: String?
     public let quantity: Int?
+
+    public init(productModifierItemId: String?, quantity: Int?) {
+        self.productModifierItemId = productModifierItemId
+        self.quantity = quantity
+    }
 }

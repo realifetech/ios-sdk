@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum PaymentStatus: String {
+public enum PaymentStatus: String, Codable {
 
     case requiresPaymentMethod
     case requiresAction

@@ -8,12 +8,27 @@
 
 import Foundation
 
-public struct SeatInfo {
+public struct SeatInfo: Codable, Equatable {
 
     public let row: String?
     public let seat: String?
     public let block: String?
     public let table: String?
+
+    public init(
+        row: String?,
+        seat: String?,
+        block: String?,
+        table: String?
+    ) {
+        self.row = row
+        self.seat = seat
+        self.block = block
+        self.table = table
+    }
+}
+
+extension SeatInfo {
 
     init(response: ApolloType.FragmentSeatInfo?) {
         row = response?.row

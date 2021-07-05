@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum OrderStatus: String {
+public enum OrderStatus: String, Codable {
 
     case confirmed = "CONFIRMED"
     case onHold = "ON_HOLD"

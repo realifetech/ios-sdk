@@ -8,6 +8,6 @@
 
 import Foundation
 
-public enum PaymentSourceType: String {
+public enum PaymentSourceType: String, Codable {
     case card
 }

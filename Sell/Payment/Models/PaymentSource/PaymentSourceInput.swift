@@ -13,6 +13,16 @@ public struct PaymentSourceInput {
     public let id: String?
     public let billingDetails: PaymentSourceBillingDetails?
     public let card: CardInput?
+
+    public init(
+        id: String?,
+        billingDetails: PaymentSourceBillingDetails?,
+        card: CardInput?
+    ) {
+        self.id = id
+        self.billingDetails = billingDetails
+        self.card = card
+    }
 }
 
 extension PaymentSourceInput {

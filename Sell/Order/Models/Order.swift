@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Order {
+public struct Order: Codable, Equatable {
 
     public let id: String
     public let orderNumber: String
@@ -26,6 +26,45 @@ public struct Order {
     public let items: [OrderItem]?
     public let timeslot: Timeslot?
     public let fulfilmentPoint: FulfilmentPoint?
+
+    public init(
+        id: String,
+        orderNumber: String,
+        qrCodeUrl: String?,
+        collectionDate: Date?,
+        status: OrderStatus?,
+        state: OrderState?,
+        paymentStatus: String?,
+        grossAmount: Int?,
+        discountAmount: Int?,
+        netAmount: Int?,
+        estimatedAt: Date?,
+        collectionPreferenceType: CollectionPreferenceType?,
+        seatInfo: SeatInfo?,
+        items: [OrderItem]?,
+        timeslot: Timeslot?,
+        fulfilmentPoint: FulfilmentPoint?
+    ) {
+        self.id = id
+        self.orderNumber = orderNumber
+        self.qrCodeUrl = qrCodeUrl
+        self.collectionDate = collectionDate
+        self.status = status
+        self.state = state
+        self.paymentStatus = paymentStatus
+        self.grossAmount = grossAmount
+        self.discountAmount = discountAmount
+        self.netAmount = netAmount
+        self.estimatedAt = estimatedAt
+        self.collectionPreferenceType = collectionPreferenceType
+        self.seatInfo = seatInfo
+        self.items = items
+        self.timeslot = timeslot
+        self.fulfilmentPoint = fulfilmentPoint
+    }
+}
+
+extension Order {
 
     init?(response: ApolloType.FragmentOrder?) {
         guard let response = response else { return nil }

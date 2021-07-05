@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum OrderType: String {
+public enum OrderType: String, Codable {
 
     case foodAndBeverage
     case ticket

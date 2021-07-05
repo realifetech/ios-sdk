@@ -13,6 +13,16 @@ public struct PaymentIntentUpdateInput {
     public let status: UpdatePaymentStatus?
     public let paymentSource: PaymentSourceInput?
     public let savePaymentSource: Bool?
+
+    public init(
+        status: UpdatePaymentStatus?,
+        paymentSource: PaymentSourceInput?,
+        savePaymentSource: Bool?
+    ) {
+        self.status = status
+        self.paymentSource = paymentSource
+        self.savePaymentSource = savePaymentSource
+    }
 }
 
 extension PaymentIntentUpdateInput {

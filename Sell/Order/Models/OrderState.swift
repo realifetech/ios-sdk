@@ -8,11 +8,24 @@
 
 import Foundation
 
-public struct OrderState {
+public struct OrderState: Codable, Equatable {
 
     public let status: String?
     public let workingState: String?
     public let translations: [StandardDescriptionTranslation]?
+
+    public init(
+        status: String?,
+        workingState: String?,
+        translations: [StandardDescriptionTranslation]?
+    ) {
+        self.status = status
+        self.workingState = workingState
+        self.translations = translations
+    }
+}
+
+extension OrderState {
 
     init(response: ApolloType.FragmentOrder.State?) {
         status = response?.status

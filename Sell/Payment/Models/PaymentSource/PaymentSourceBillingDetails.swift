@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct PaymentSourceBillingDetails {
+public struct PaymentSourceBillingDetails: Codable, Equatable {
 
-    public struct Address {
+    public struct Address: Codable, Equatable {
 
         public let city: String?
         public let country: String?
@@ -18,12 +18,43 @@ public struct PaymentSourceBillingDetails {
         public let line2: String?
         public let postalCode: String?
         public let state: String?
+
+        public init(
+            city: String?,
+            country: String?,
+            line1: String?,
+            line2: String?,
+            postalCode: String?,
+            state: String?
+        ) {
+            self.city = city
+            self.country = country
+            self.line1 = line1
+            self.line2 = line2
+            self.postalCode = postalCode
+            self.state = state
+        }
     }
 
     public let address: Address?
     public let email: String?
     public let name: String
     public let phone: String?
+
+    public init(
+        address: Address?,
+        email: String?,
+        name: String,
+        phone: String?
+    ) {
+        self.address = address
+        self.email = email
+        self.name = name
+        self.phone = phone
+    }
+}
+
+extension PaymentSourceBillingDetails {
 
     init?(response: ApolloType.FragmentPaymentSource.BillingDetail?) {
         guard let response = response else { return nil }

@@ -15,4 +15,18 @@ public struct BasketItemInput {
     public let fulfilmentPointId: String?
     public let quantity: Int?
     public let productModifierItems: [ProductModifierItemSelectionInput]?
+
+    public init(
+        productId: String?,
+        productVariantId: String?,
+        fulfilmentPointId: String?,
+        quantity: Int?,
+        productModifierItems: [ProductModifierItemSelectionInput]?
+    ) {
+        self.productId = productId
+        self.productVariantId = productVariantId
+        self.fulfilmentPointId = fulfilmentPointId
+        self.quantity = quantity
+        self.productModifierItems = productModifierItems
+    }
 }

@@ -8,13 +8,30 @@
 
 import Foundation
 
-public struct PaymentSource {
+public struct PaymentSource: Codable, Equatable {
 
     public let id: String
     public let type: PaymentSourceType
     public let isDefault: Bool
     public let billingDetails: PaymentSourceBillingDetails?
     public let card: Card?
+
+    public init(
+        id: String,
+        type: PaymentSourceType,
+        isDefault: Bool,
+        billingDetails: PaymentSourceBillingDetails?,
+        card: Card?
+    ) {
+        self.id = id
+        self.type = type
+        self.isDefault = isDefault
+        self.billingDetails = billingDetails
+        self.card = card
+    }
+}
+
+extension PaymentSource {
 
     init?(response: ApolloType.FragmentPaymentSource?) {
         guard let response = response else { return nil }

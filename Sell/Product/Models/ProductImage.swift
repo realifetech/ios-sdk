@@ -13,6 +13,14 @@ public struct ProductImage: Codable, Equatable {
     public let imageUrl: String?
     public let position: Int?
 
+    public init(imageUrl: String?, position: Int?) {
+        self.imageUrl = imageUrl
+        self.position = position
+    }
+}
+
+extension ProductImage {
+
     init(response: ApolloType.FragmentProduct.Image?) {
         imageUrl = response?.imageUrl
         position = response?.position

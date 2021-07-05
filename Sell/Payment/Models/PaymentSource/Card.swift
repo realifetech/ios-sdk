@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Card {
+public struct Card: Codable, Equatable {
 
     public let brand: String
     public let numberToken: String
@@ -16,6 +16,25 @@ public struct Card {
     public let expYear: String
     public let last4: String
     public let fingerprint: String?
+
+    public init(
+        brand: String,
+        numberToken: String,
+        expMonth: String,
+        expYear: String,
+        last4: String,
+        fingerprint: String?
+    ) {
+        self.brand = brand
+        self.numberToken = numberToken
+        self.expMonth = expMonth
+        self.expYear = expYear
+        self.last4 = last4
+        self.fingerprint = fingerprint
+    }
+}
+
+extension Card {
 
     init?(response: ApolloType.FragmentCard?) {
         guard let response = response else { return nil }

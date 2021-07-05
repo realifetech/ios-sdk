@@ -18,6 +18,27 @@ public struct Product: Codable, Equatable {
     public let fulfilmentPoints: [FulfilmentPoint]?
     public let translations: [StandardDescriptionTranslation]?
 
+    public init(
+        id: String,
+        images: [ProductImage]?,
+        modifierLists: [ProductModifierList]?,
+        variants: [ProductVariant]?,
+        categories: [ProductCategory]?,
+        fulfilmentPoints: [FulfilmentPoint]?,
+        translations: [StandardDescriptionTranslation]?
+    ) {
+        self.id = id
+        self.images = images
+        self.modifierLists = modifierLists
+        self.variants = variants
+        self.categories = categories
+        self.fulfilmentPoints = fulfilmentPoints
+        self.translations = translations
+    }
+}
+
+extension Product {
+
     init?(response: ApolloType.FragmentProduct?) {
         guard let response = response else { return nil }
         id = response.id

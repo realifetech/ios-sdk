@@ -16,6 +16,22 @@ public struct CardInput {
     public let expYear: String
     public let securityCodeToken: String
     public let last4: String
+
+    public init(
+        brand: String,
+        numberToken: String,
+        expMonth: String,
+        expYear: String,
+        securityCodeToken: String,
+        last4: String
+    ) {
+        self.brand = brand
+        self.numberToken = numberToken
+        self.expMonth = expMonth
+        self.expYear = expYear
+        self.securityCodeToken = securityCodeToken
+        self.last4 = last4
+    }
 }
 
 extension CardInput {

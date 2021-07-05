@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum PaymentActionType: String {
+public enum PaymentActionType: String, Codable {
 
     case redirectToUrl
     case collectCvc

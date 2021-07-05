@@ -16,6 +16,23 @@ public struct FulfilmentPointTranslation: Codable, Equatable {
     public let collectionNote: String?
     public let collectionNotes: [CollectionNotes]?
 
+    public init(
+        language: String?,
+        title: String?,
+        description: String?,
+        collectionNote: String?,
+        collectionNotes: [CollectionNotes]?
+    ) {
+        self.language = language
+        self.title = title
+        self.description = description
+        self.collectionNote = collectionNote
+        self.collectionNotes = collectionNotes
+    }
+}
+
+extension FulfilmentPointTranslation {
+
     init(response: ApolloType.FragmentFulfilmentPoint.Translation?) {
         language = response?.language?.rawValue
         title = response?.title
@@ -31,6 +48,14 @@ public struct CollectionNotes: Codable, Equatable {
 
     public let preorder: String?
     public let checkin: String?
+
+    public init(preorder: String?, checkin: String?) {
+        self.preorder = preorder
+        self.checkin = checkin
+    }
+}
+
+extension CollectionNotes {
 
     init(response: ApolloType.FragmentFulfilmentPoint.Translation.CollectionNote?) {
         preorder = response?.virtualQueuePreorder

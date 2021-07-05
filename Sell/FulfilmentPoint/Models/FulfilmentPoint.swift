@@ -24,6 +24,39 @@ public struct FulfilmentPoint: Codable, Equatable {
     public let categories: [FulfilmentPointCategory]?
     public let timeslots: [Timeslot]?
 
+    public init(
+        id: String,
+        type: FulfilmentPointType?,
+        imageUrl: String?,
+        mapImageUrl: String?,
+        lat: Double?,
+        long: Double?,
+        waitTime: Int?,
+        prepTime: Int?,
+        position: Int?,
+        translations: [FulfilmentPointTranslation]?,
+        seatFormId: String?,
+        categories: [FulfilmentPointCategory]?,
+        timeslots: [Timeslot]?
+    ) {
+        self.id = id
+        self.type = type
+        self.imageUrl = imageUrl
+        self.mapImageUrl = mapImageUrl
+        self.lat = lat
+        self.long = long
+        self.waitTime = waitTime
+        self.prepTime = prepTime
+        self.position = position
+        self.translations = translations
+        self.seatFormId = seatFormId
+        self.categories = categories
+        self.timeslots = timeslots
+    }
+}
+
+extension FulfilmentPoint {
+
     init?(response: ApolloType.FragmentFulfilmentPoint?) {
         guard let response = response else { return nil }
         id = response.id

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum CancellationReason: String {
+public enum CancellationReason: String, Codable {
 
     case duplicate
     case fraudulent

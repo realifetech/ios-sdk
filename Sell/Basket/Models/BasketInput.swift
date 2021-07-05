@@ -16,4 +16,20 @@ public struct BasketInput {
     public let fulfilmentPointId: String
     public let seatInfo: SeatInfo?
     public let items: [BasketItemInput]
+
+    public init(
+        collectionDate: Date?,
+        collectionPreferenceType: CollectionPreferenceType?,
+        timeslotId: String?,
+        fulfilmentPointId: String,
+        seatInfo: SeatInfo?,
+        items: [BasketItemInput]
+    ) {
+        self.collectionDate = collectionDate
+        self.collectionPreferenceType = collectionPreferenceType
+        self.timeslotId = timeslotId
+        self.fulfilmentPointId = fulfilmentPointId
+        self.seatInfo = seatInfo
+        self.items = items
+    }
 }

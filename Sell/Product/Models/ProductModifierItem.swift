@@ -14,6 +14,19 @@ public struct ProductModifierItem: Codable, Equatable {
     public let additionalPrice: Int?
     public let translations: [StandardTitleTranslation]?
 
+    public init(
+        id: String,
+        additionalPrice: Int?,
+        translations: [StandardTitleTranslation]?
+    ) {
+        self.id = id
+        self.additionalPrice = additionalPrice
+        self.translations = translations
+    }
+}
+
+extension ProductModifierItem {
+
     init?(response: ApolloType.FragmentProductModifierItem?) {
         guard let response = response else { return nil }
         id = response.id
