@@ -9,6 +9,7 @@
 import Foundation
 
 public enum WidgetType: String, Codable {
+    case unknown
     case product
     case button
     case banner
