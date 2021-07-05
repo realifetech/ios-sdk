@@ -10,28 +10,30 @@ import Foundation
 
 public enum WidgetType: String, Codable {
     case unknown
-    case product
-    case button
-    case banner
-    case event
-    case fixture
-    case countdownClock
-    case galleryCoverImage
-    case news
-    case ticket
-    case ticketProduct
-    case fulfilmentPoint
-    case socialPost
-    case fulfilmentPointCategorySelector
-    case selectedEvent
+    case product = "Product"
+    case button = "Button"
+    case banner = "Banner"
+    case event = "Event"
+    case fixture = "Fixture"
+    case countdownClock = "CountdownClock"
+    case galleryCoverImage = "GalleryCoverImage"
+    case news = "News"
+    case ticket = "Ticket"
+    case ticketProduct = "TicketProduct"
+    case fulfilmentPoint = "FulfilmentPoint"
+    case socialPost = "SocialPost"
+    case fulfilmentPointCategorySelector = "FulfilmentPointCategorySelector"
+    case selectedEvent = "SelectedEvent"
 }
 
 extension WidgetType {
 
     init?(apolloType: ApolloType.WidgetType?) {
+        print("init widget type: \(apolloType?.rawValue )")
         guard let type = WidgetType(rawValue: apolloType?.rawValue ?? "") else {
             return nil
         }
+        print("init widget type GET: \(type )")
         self = type
     }
 }
