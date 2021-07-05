@@ -6,70 +6,11 @@ import Foundation
 
 /// ApolloType namespace
 public extension ApolloType {
-  struct WidgetTranslation: GraphQLFragment {
+  struct FragmentWidget: GraphQLFragment {
     /// The raw GraphQL definition of this fragment.
     public static let fragmentDefinition: String =
       """
-      fragment widgetTranslation on WidgetVariationTranslation {
-        __typename
-        language
-        title
-      }
-      """
-
-    public static let possibleTypes: [String] = ["WidgetVariationTranslation"]
-
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("language", type: .nonNull(.scalar(Language.self))),
-        GraphQLField("title", type: .nonNull(.scalar(String.self))),
-      ]
-    }
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(language: Language, title: String) {
-      self.init(unsafeResultMap: ["__typename": "WidgetVariationTranslation", "language": language, "title": title])
-    }
-
-    public var __typename: String {
-      get {
-        return resultMap["__typename"]! as! String
-      }
-      set {
-        resultMap.updateValue(newValue, forKey: "__typename")
-      }
-    }
-
-    public var language: Language {
-      get {
-        return resultMap["language"]! as! Language
-      }
-      set {
-        resultMap.updateValue(newValue, forKey: "language")
-      }
-    }
-
-    public var title: String {
-      get {
-        return resultMap["title"]! as! String
-      }
-      set {
-        resultMap.updateValue(newValue, forKey: "title")
-      }
-    }
-  }
-
-  struct Widget: GraphQLFragment {
-    /// The raw GraphQL definition of this fragment.
-    public static let fragmentDefinition: String =
-      """
-      fragment widget on Widget {
+      fragment FragmentWidget on Widget {
         __typename
         id
         style {
@@ -96,7 +37,8 @@ public extension ApolloType {
           }
           translations {
             __typename
-            ...widgetTranslation
+            language
+            title
           }
         }
       }
@@ -420,7 +362,8 @@ public extension ApolloType {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLFragmentSpread(WidgetTranslation.self),
+            GraphQLField("language", type: .nonNull(.scalar(Language.self))),
+            GraphQLField("title", type: .nonNull(.scalar(String.self))),
           ]
         }
 
@@ -443,29 +386,21 @@ public extension ApolloType {
           }
         }
 
-        public var fragments: Fragments {
+        public var language: Language {
           get {
-            return Fragments(unsafeResultMap: resultMap)
+            return resultMap["language"]! as! Language
           }
           set {
-            resultMap += newValue.resultMap
+            resultMap.updateValue(newValue, forKey: "language")
           }
         }
 
-        public struct Fragments {
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
+        public var title: String {
+          get {
+            return resultMap["title"]! as! String
           }
-
-          public var widgetTranslation: WidgetTranslation {
-            get {
-              return WidgetTranslation(unsafeResultMap: resultMap)
-            }
-            set {
-              resultMap += newValue.resultMap
-            }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
           }
         }
       }

@@ -1,4 +1,0 @@
-fragment screenTranslation on ScreenTranslation {
-  language
-  title
-}

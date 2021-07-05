@@ -14,14 +14,14 @@ public struct FulfilmentPointTranslation: Codable, Equatable {
     public let title: String?
     public let description: String?
     public let collectionNote: String?
-    public let collectionNotes: [CollectionNotes]?
+    public let collectionNotes: CollectionNotes?
 
     public init(
         language: String?,
         title: String?,
         description: String?,
         collectionNote: String?,
-        collectionNotes: [CollectionNotes]?
+        collectionNotes: CollectionNotes?
     ) {
         self.language = language
         self.title = title
@@ -38,9 +38,7 @@ extension FulfilmentPointTranslation {
         title = response?.title
         description = response?.description
         collectionNote = response?.collectionNote
-        collectionNotes = response?.collectionNotes?.compactMap {
-            CollectionNotes(response: $0)
-        }
+        collectionNotes = CollectionNotes(response: response?.collectionNotes)
     }
 }
 

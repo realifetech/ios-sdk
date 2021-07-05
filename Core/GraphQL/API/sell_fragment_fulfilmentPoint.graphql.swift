@@ -262,7 +262,7 @@ public extension ApolloType {
           GraphQLField("title", type: .scalar(String.self)),
           GraphQLField("description", type: .scalar(String.self)),
           GraphQLField("collectionNote", type: .scalar(String.self)),
-          GraphQLField("collectionNotes", type: .list(.object(CollectionNote.selections))),
+          GraphQLField("collectionNotes", type: .object(CollectionNote.selections)),
         ]
       }
 
@@ -272,8 +272,8 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(language: Language? = nil, title: String? = nil, description: String? = nil, collectionNote: String? = nil, collectionNotes: [CollectionNote?]? = nil) {
-        self.init(unsafeResultMap: ["__typename": "FulfilmentPointTranslation", "language": language, "title": title, "description": description, "collectionNote": collectionNote, "collectionNotes": collectionNotes.flatMap { (value: [CollectionNote?]) -> [ResultMap?] in value.map { (value: CollectionNote?) -> ResultMap? in value.flatMap { (value: CollectionNote) -> ResultMap in value.resultMap } } }])
+      public init(language: Language? = nil, title: String? = nil, description: String? = nil, collectionNote: String? = nil, collectionNotes: CollectionNote? = nil) {
+        self.init(unsafeResultMap: ["__typename": "FulfilmentPointTranslation", "language": language, "title": title, "description": description, "collectionNote": collectionNote, "collectionNotes": collectionNotes.flatMap { (value: CollectionNote) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -321,12 +321,12 @@ public extension ApolloType {
         }
       }
 
-      public var collectionNotes: [CollectionNote?]? {
+      public var collectionNotes: CollectionNote? {
         get {
-          return (resultMap["collectionNotes"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [CollectionNote?] in value.map { (value: ResultMap?) -> CollectionNote? in value.flatMap { (value: ResultMap) -> CollectionNote in CollectionNote(unsafeResultMap: value) } } }
+          return (resultMap["collectionNotes"] as? ResultMap).flatMap { CollectionNote(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue.flatMap { (value: [CollectionNote?]) -> [ResultMap?] in value.map { (value: CollectionNote?) -> ResultMap? in value.flatMap { (value: CollectionNote) -> ResultMap in value.resultMap } } }, forKey: "collectionNotes")
+          resultMap.updateValue(newValue?.resultMap, forKey: "collectionNotes")
         }
       }
 

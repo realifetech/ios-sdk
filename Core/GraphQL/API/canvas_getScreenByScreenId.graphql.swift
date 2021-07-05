@@ -15,19 +15,14 @@ public extension ApolloType {
           __typename
           translations {
             __typename
-            ...screenTranslation
+            language
+            title
           }
         }
       }
       """
 
     public let operationName: String = "getScreenById"
-
-    public var queryDocument: String {
-      var document: String = operationDefinition
-      document.append("\n" + ScreenTranslation.fragmentDefinition)
-      return document
-    }
 
     public var id: GraphQLID
 
@@ -111,7 +106,8 @@ public extension ApolloType {
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLFragmentSpread(ScreenTranslation.self),
+              GraphQLField("language", type: .nonNull(.scalar(Language.self))),
+              GraphQLField("title", type: .nonNull(.scalar(String.self))),
             ]
           }
 
@@ -134,29 +130,21 @@ public extension ApolloType {
             }
           }
 
-          public var fragments: Fragments {
+          public var language: Language {
             get {
-              return Fragments(unsafeResultMap: resultMap)
+              return resultMap["language"]! as! Language
             }
             set {
-              resultMap += newValue.resultMap
+              resultMap.updateValue(newValue, forKey: "language")
             }
           }
 
-          public struct Fragments {
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
+          public var title: String {
+            get {
+              return resultMap["title"]! as! String
             }
-
-            public var screenTranslation: ScreenTranslation {
-              get {
-                return ScreenTranslation(unsafeResultMap: resultMap)
-              }
-              set {
-                resultMap += newValue.resultMap
-              }
+            set {
+              resultMap.updateValue(newValue, forKey: "title")
             }
           }
         }

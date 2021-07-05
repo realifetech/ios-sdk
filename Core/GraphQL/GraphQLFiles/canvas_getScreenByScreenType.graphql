@@ -1,9 +1,8 @@
-#import "./canvas_fragment_screen.graphql"
-
 query getScreenByScreenType($type: ScreenType!) {
   getScreenByScreenType(type: $type) {
     translations {
-      ... screenTranslation
+      language
+      title
     }
   }
 }

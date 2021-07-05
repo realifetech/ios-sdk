@@ -30,7 +30,6 @@
 		0319F3292667995B00C01E1F /* sell_fragment_order.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3012667995B00C01E1F /* sell_fragment_order.graphql.swift */; };
 		0319F32A2667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */; };
 		0319F32B2667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3032667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift */; };
-		0319F32C2667995B00C01E1F /* canvas_fragment_screen.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3042667995B00C01E1F /* canvas_fragment_screen.graphql.swift */; };
 		0319F32D2667995B00C01E1F /* sell_fragment_timeslot.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3052667995B00C01E1F /* sell_fragment_timeslot.graphql.swift */; };
 		0319F32E2667995B00C01E1F /* sell_getFulfilmentPointById.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3062667995B00C01E1F /* sell_getFulfilmentPointById.graphql.swift */; };
 		0319F32F2667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3072667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift */; };
@@ -153,8 +152,7 @@
 		961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4180260882BA001D8467 /* APIRequesterHelper.swift */; };
 		961C41E8260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4181260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift */; };
 		961C41E9260882BA001D8467 /* StandardSenderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4182260882BA001D8467 /* StandardSenderResponse.swift */; };
-		961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4183260882BA001D8467 /* CoreConfiguration.swift */; };
-		961C41EB260882BA001D8467 /* CoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4184260882BA001D8467 /* CoreFactory.swift */; };
+		961C41EB260882BA001D8467 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4184260882BA001D8467 /* Core.swift */; };
 		961C41EC260882BA001D8467 /* RequestLoggingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */; };
 		961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4188260882BA001D8467 /* GraphQLInterceptorProvider.swift */; };
 		961C41EF260882BB001D8467 /* GraphNetworkCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */; };
@@ -202,7 +200,6 @@
 		961C427E260882C8001D8467 /* UIDeviceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C425A260882C8001D8467 /* UIDeviceInterface.swift */; };
 		961C4285260882E4001D8467 /* RequestCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C41BF260882BA001D8467 /* RequestCreatorTests.swift */; };
 		961C4288260882E8001D8467 /* APIErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C41C1260882BA001D8467 /* APIErrorTests.swift */; };
-		961C428B260882F5001D8467 /* CoreConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4249260882C8001D8467 /* CoreConfigurationTests.swift */; };
 		961C4290260882FB001D8467 /* CodableStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4233260882C8001D8467 /* CodableStorageTests.swift */; };
 		961C4295260882FE001D8467 /* DiskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4234260882C8001D8467 /* DiskStorageTests.swift */; };
 		961C42982608830E001D8467 /* DeviceTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4240260882C8001D8467 /* DeviceTokenTests.swift */; };
@@ -235,6 +232,20 @@
 		964A3BED2680B49300C42C35 /* FulfilmentPointProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964A3BEC2680B49300C42C35 /* FulfilmentPointProvidable.swift */; };
 		964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964A3BEE2680B54900C42C35 /* FulfilmentPointRepository.swift */; };
 		964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964A3BF02680B94E00C42C35 /* GraphQLManagerError.swift */; };
+		964D290326932CDC00A69FBC /* CoreImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D290226932CDC00A69FBC /* CoreImplementing.swift */; };
+		964D290D2693317400A69FBC /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D290C2693317400A69FBC /* Widget.swift */; };
+		964D290F2693351F00A69FBC /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D290E2693351F00A69FBC /* WidgetType.swift */; };
+		964D29112693353000A69FBC /* WidgetStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D29102693353000A69FBC /* WidgetStyle.swift */; };
+		964D29132693354300A69FBC /* WidgetVariation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D29122693354300A69FBC /* WidgetVariation.swift */; };
+		964D2915269335A200A69FBC /* WidgetFetchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D2914269335A200A69FBC /* WidgetFetchType.swift */; };
+		964D2917269335B400A69FBC /* WidgetParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D2916269335B400A69FBC /* WidgetParam.swift */; };
+		964D291A269335E000A69FBC /* WidgetProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D2919269335E000A69FBC /* WidgetProvidable.swift */; };
+		964D291C269335F300A69FBC /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D291B269335F300A69FBC /* ScreenType.swift */; };
+		964D291E269336B100A69FBC /* CanvasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D291D269336B100A69FBC /* CanvasRepository.swift */; };
+		964D292026933D0A00A69FBC /* ScreenProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D291F26933D0A00A69FBC /* ScreenProvidable.swift */; };
+		964D292526933EDB00A69FBC /* CanvasRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292426933EDB00A69FBC /* CanvasRepositoryTests.swift */; };
+		964D292726933F0D00A69FBC /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292626933F0D00A69FBC /* Canvas.swift */; };
+		964D292926933F3700A69FBC /* CanvasFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292826933F3700A69FBC /* CanvasFactory.swift */; };
 		9687485D268CBC7C00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */; };
 		9687485E268CBC7C00DDC5DD /* sell_fragment_paymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */; };
 		9687485F268CBC7C00DDC5DD /* sell_fragment_paymentSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */; };
@@ -305,7 +316,6 @@
 		0319F3012667995B00C01E1F /* sell_fragment_order.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_order.graphql.swift; sourceTree = "<group>"; };
 		0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getFulfilmentPoints.graphql.swift; sourceTree = "<group>"; };
 		0319F3032667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_getWidgetsByScreenId.graphql.swift; sourceTree = "<group>"; };
-		0319F3042667995B00C01E1F /* canvas_fragment_screen.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_fragment_screen.graphql.swift; sourceTree = "<group>"; };
 		0319F3052667995B00C01E1F /* sell_fragment_timeslot.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_timeslot.graphql.swift; sourceTree = "<group>"; };
 		0319F3062667995B00C01E1F /* sell_getFulfilmentPointById.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getFulfilmentPointById.graphql.swift; sourceTree = "<group>"; };
 		0319F3072667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getFulfilmentPointCategories.graphql.swift; sourceTree = "<group>"; };
@@ -446,8 +456,7 @@
 		961C4180260882BA001D8467 /* APIRequesterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequesterHelper.swift; sourceTree = "<group>"; };
 		961C4181260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultDiskCacheStrategyProviding.swift; sourceTree = "<group>"; };
 		961C4182260882BA001D8467 /* StandardSenderResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardSenderResponse.swift; sourceTree = "<group>"; };
-		961C4183260882BA001D8467 /* CoreConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreConfiguration.swift; sourceTree = "<group>"; };
-		961C4184260882BA001D8467 /* CoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFactory.swift; sourceTree = "<group>"; };
+		961C4184260882BA001D8467 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		961C4186260882BA001D8467 /* RequestLoggingInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestLoggingInterceptor.swift; sourceTree = "<group>"; };
 		961C4188260882BA001D8467 /* GraphQLInterceptorProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInterceptorProvider.swift; sourceTree = "<group>"; };
 		961C4189260882BA001D8467 /* GraphNetworkCachePolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphNetworkCachePolicy.swift; sourceTree = "<group>"; };
@@ -499,7 +508,6 @@
 		961C4245260882C8001D8467 /* DeviceToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		961C4246260882C8001D8467 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		961C4247260882C8001D8467 /* DeviceRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceRequester.swift; sourceTree = "<group>"; };
-		961C4249260882C8001D8467 /* CoreConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreConfigurationTests.swift; sourceTree = "<group>"; };
 		961C424D260882C8001D8467 /* NetworkConnectivityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnectivityChecker.swift; sourceTree = "<group>"; };
 		961C424E260882C8001D8467 /* ReachabilityChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityChecker.swift; sourceTree = "<group>"; };
 		961C4250260882C8001D8467 /* ReachabilityCheckerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityCheckerTests.swift; sourceTree = "<group>"; };
@@ -518,6 +526,20 @@
 		964A3BEC2680B49300C42C35 /* FulfilmentPointProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointProvidable.swift; sourceTree = "<group>"; };
 		964A3BEE2680B54900C42C35 /* FulfilmentPointRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointRepository.swift; sourceTree = "<group>"; };
 		964A3BF02680B94E00C42C35 /* GraphQLManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManagerError.swift; sourceTree = "<group>"; };
+		964D290226932CDC00A69FBC /* CoreImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImplementing.swift; sourceTree = "<group>"; };
+		964D290C2693317400A69FBC /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		964D290E2693351F00A69FBC /* WidgetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetType.swift; sourceTree = "<group>"; };
+		964D29102693353000A69FBC /* WidgetStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetStyle.swift; sourceTree = "<group>"; };
+		964D29122693354300A69FBC /* WidgetVariation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetVariation.swift; sourceTree = "<group>"; };
+		964D2914269335A200A69FBC /* WidgetFetchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFetchType.swift; sourceTree = "<group>"; };
+		964D2916269335B400A69FBC /* WidgetParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetParam.swift; sourceTree = "<group>"; };
+		964D2919269335E000A69FBC /* WidgetProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvidable.swift; sourceTree = "<group>"; };
+		964D291B269335F300A69FBC /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
+		964D291D269336B100A69FBC /* CanvasRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRepository.swift; sourceTree = "<group>"; };
+		964D291F26933D0A00A69FBC /* ScreenProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenProvidable.swift; sourceTree = "<group>"; };
+		964D292426933EDB00A69FBC /* CanvasRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRepositoryTests.swift; sourceTree = "<group>"; };
+		964D292626933F0D00A69FBC /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		964D292826933F3700A69FBC /* CanvasFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFactory.swift; sourceTree = "<group>"; };
 		9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_deleteMyPaymentSource.graphql.swift; sourceTree = "<group>"; };
 		9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentIntent.graphql.swift; sourceTree = "<group>"; };
 		9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentSource.graphql.swift; sourceTree = "<group>"; };
@@ -667,8 +689,8 @@
 		48D6F146251E158E006CA623 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				48D6F147251E158E006CA623 /* RealifeTechTests.swift */,
 				48D6F149251E158E006CA623 /* Info.plist */,
+				48D6F147251E158E006CA623 /* RealifeTechTests.swift */,
 				488A683F2547062E005C030E /* SDKConfigurationTests.swift */,
 			);
 			path = Tests;
@@ -682,6 +704,7 @@
 				48E67771251BA86D007E2741 /* Communicate */,
 				03EEB89D252E04DB00C868AD /* Audiences */,
 				4889594E2539D7E200B978A9 /* Analytics */,
+				964D290A2693316300A69FBC /* Canvas */,
 				968CA5B625EE79960000C2E2 /* Content */,
 				9606ED7F267B4FD300ED24D0 /* Sell */,
 				48D6F13B251E158E006CA623 /* RealifeTech */,
@@ -961,6 +984,7 @@
 		961C1CDB2685F84B00BE6F3B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9606ED85267B504900ED24D0 /* PaginatedObject.swift */,
 				961C1CDC2685F86200BE6F3B /* String+ISO8601Date.swift */,
 			);
 			path = Utils;
@@ -969,8 +993,8 @@
 		961C415F26088298001D8467 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				961C4184260882BA001D8467 /* CoreFactory.swift */,
-				961C4183260882BA001D8467 /* CoreConfiguration.swift */,
+				961C4184260882BA001D8467 /* Core.swift */,
+				964D290226932CDC00A69FBC /* CoreImplementing.swift */,
 				961C41B0260882BA001D8467 /* APILayer */,
 				961C4160260882B9001D8467 /* APIUtilities */,
 				961C41AC260882BA001D8467 /* CombineHelpers */,
@@ -1090,7 +1114,6 @@
 			children = (
 				0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */,
 				0319F2FF2667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift */,
-				0319F3042667995B00C01E1F /* canvas_fragment_screen.graphql.swift */,
 				0319F30E2667995B00C01E1F /* canvas_fragment_widget.graphql.swift */,
 				0319F2F42667995A00C01E1F /* canvas_getScreenByScreenId.graphql.swift */,
 				0319F3112667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift */,
@@ -1316,7 +1339,6 @@
 		961C4248260882C8001D8467 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				961C4249260882C8001D8467 /* CoreConfigurationTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1397,11 +1419,54 @@
 		964A3BE92680AC3F00C42C35 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9606ED85267B504900ED24D0 /* PaginatedObject.swift */,
 				961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */,
 				961C1C9E26833C8800BE6F3B /* StandardTitleTranslation.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		964D290A2693316300A69FBC /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				964D292626933F0D00A69FBC /* Canvas.swift */,
+				964D292826933F3700A69FBC /* CanvasFactory.swift */,
+				964D290B2693316A00A69FBC /* Models */,
+				964D2918269335CA00A69FBC /* Repositories */,
+				964D292326933EC400A69FBC /* Tests */,
+			);
+			path = Canvas;
+			sourceTree = "<group>";
+		};
+		964D290B2693316A00A69FBC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				964D291B269335F300A69FBC /* ScreenType.swift */,
+				964D290C2693317400A69FBC /* Widget.swift */,
+				964D2914269335A200A69FBC /* WidgetFetchType.swift */,
+				964D2916269335B400A69FBC /* WidgetParam.swift */,
+				964D29102693353000A69FBC /* WidgetStyle.swift */,
+				964D290E2693351F00A69FBC /* WidgetType.swift */,
+				964D29122693354300A69FBC /* WidgetVariation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		964D2918269335CA00A69FBC /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				964D291D269336B100A69FBC /* CanvasRepository.swift */,
+				964D291F26933D0A00A69FBC /* ScreenProvidable.swift */,
+				964D2919269335E000A69FBC /* WidgetProvidable.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		964D292326933EC400A69FBC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				964D292426933EDB00A69FBC /* CanvasRepositoryTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		96874861268CBDC100DDC5DD /* Payment */ = {
@@ -1779,7 +1844,7 @@
 				96874865268CBDF100DDC5DD /* PaymentProvidable.swift in Sources */,
 				0319F3312667995B00C01E1F /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */,
 				0319F3192667995B00C01E1F /* sell_fragment_productModifierItemSelection.graphql.swift in Sources */,
-				961C41EB260882BA001D8467 /* CoreFactory.swift in Sources */,
+				961C41EB260882BA001D8467 /* Core.swift in Sources */,
 				961C41E5260882BA001D8467 /* OAuthRepository.swift in Sources */,
 				961C41EF260882BB001D8467 /* GraphNetworkCachePolicy.swift in Sources */,
 				961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */,
@@ -1787,6 +1852,7 @@
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
+				964D2917269335B400A69FBC /* WidgetParam.swift in Sources */,
 				9687485E268CBC7C00DDC5DD /* sell_fragment_paymentIntent.graphql.swift in Sources */,
 				961C425B260882C8001D8467 /* LogEventSending.swift in Sources */,
 				968CA5BC25EE79DD0000C2E2 /* Content.swift in Sources */,
@@ -1794,6 +1860,7 @@
 				487479C22540425C0048F03D /* AnalyticsEventAndCompletion.swift in Sources */,
 				961C425F260882C8001D8467 /* UserDefaultStorage.swift in Sources */,
 				961C41E3260882BA001D8467 /* OAuthRequester.swift in Sources */,
+				964D292926933F3700A69FBC /* CanvasFactory.swift in Sources */,
 				961C41E2260882BA001D8467 /* KeychainSwift.swift in Sources */,
 				961C4218260882BB001D8467 /* String+RequestIdentifier.swift in Sources */,
 				968CA5C025EE7A610000C2E2 /* WebPage.swift in Sources */,
@@ -1815,6 +1882,7 @@
 				961C1CCF2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift in Sources */,
 				0319F3232667995B00C01E1F /* Types.graphql.swift in Sources */,
 				0319F33A2667995B00C01E1F /* sell_fragment_product.graphql.swift in Sources */,
+				964D290326932CDC00A69FBC /* CoreImplementing.swift in Sources */,
 				961C41D3260882BA001D8467 /* OAuthTokenRefreshWatcher.swift in Sources */,
 				961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */,
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
@@ -1845,6 +1913,7 @@
 				96874881268CC71300DDC5DD /* CardInput.swift in Sources */,
 				961C41E6260882BA001D8467 /* RequestHeader.swift in Sources */,
 				961C41D6260882BA001D8467 /* JSONContentTypeHeaderRequestInserting.swift in Sources */,
+				964D2915269335A200A69FBC /* WidgetFetchType.swift in Sources */,
 				961C1CAB2683409C00BE6F3B /* StandardDescriptionTranslation.swift in Sources */,
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
 				9687485D268CBC7C00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift in Sources */,
@@ -1854,6 +1923,7 @@
 				0319F32B2667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift in Sources */,
 				961C1CC126839CC500BE6F3B /* BasketRepository.swift in Sources */,
 				961C4225260882BB001D8467 /* Requester.swift in Sources */,
+				964D29112693353000A69FBC /* WidgetStyle.swift in Sources */,
 				961C4270260882C8001D8467 /* DeviceRequester.swift in Sources */,
 				961B01A12689F35C00D8C481 /* OrderProvidable.swift in Sources */,
 				961C426F260882C8001D8467 /* Device.swift in Sources */,
@@ -1867,11 +1937,13 @@
 				961C1CD12684EFB400BE6F3B /* CheckoutInput.swift in Sources */,
 				0319F3142667995B00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift in Sources */,
 				0319F31F2667995B00C01E1F /* sell_fragment_paymentSourceDetails.graphql.swift in Sources */,
+				964D290F2693351F00A69FBC /* WidgetType.swift in Sources */,
 				961C1CB0268396F100BE6F3B /* sell_getMyBasket.graphql.swift in Sources */,
 				961B019A2689EF7500D8C481 /* OrderStatus.swift in Sources */,
 				0319F3292667995B00C01E1F /* sell_fragment_order.graphql.swift in Sources */,
 				961C4275260882C8001D8467 /* ReachabilityChecker.swift in Sources */,
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
+				964D291C269335F300A69FBC /* ScreenType.swift in Sources */,
 				9606ED84267B501800ED24D0 /* ProductProvidable.swift in Sources */,
 				0319F3322667995B00C01E1F /* sell_getOrders.graphql.swift in Sources */,
 				961C4278260882C8001D8467 /* ReachabilityChecking.swift in Sources */,
@@ -1887,11 +1959,11 @@
 				961C4265260882C8001D8467 /* QueueError.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				0319F3352667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift in Sources */,
-				961C41EA260882BA001D8467 /* CoreConfiguration.swift in Sources */,
 				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
 				961B01912689E33B00D8C481 /* sell_updateMyOrder.graphql.swift in Sources */,
 				9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */,
 				0319F31D2667995B00C01E1F /* sell_fragment_basket.graphql.swift in Sources */,
+				964D292726933F0D00A69FBC /* Canvas.swift in Sources */,
 				0319F31C2667995B00C01E1F /* canvas_getScreenByScreenId.graphql.swift in Sources */,
 				961B01922689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift in Sources */,
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
@@ -1899,8 +1971,10 @@
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				961C4274260882C8001D8467 /* NetworkConnectivityChecker.swift in Sources */,
+				964D29132693354300A69FBC /* WidgetVariation.swift in Sources */,
 				96874887268CD3C800DDC5DD /* PaymentIntentUpdateInput.swift in Sources */,
 				0319F3282667995B00C01E1F /* sell_getProducts.graphql.swift in Sources */,
+				964D292026933D0A00A69FBC /* ScreenProvidable.swift in Sources */,
 				961C1CA32683402C00BE6F3B /* ProductModifierList.swift in Sources */,
 				961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */,
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
@@ -1918,9 +1992,9 @@
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
 				961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */,
 				961C1C8C268206EC00BE6F3B /* FulfilmentPointTranslation.swift in Sources */,
-				0319F32C2667995B00C01E1F /* canvas_fragment_screen.graphql.swift in Sources */,
 				961C425D260882C8001D8467 /* Date+Formatted.swift in Sources */,
 				0319F3342667995B00C01E1F /* sell_createMyBasket.graphql.swift in Sources */,
+				964D290D2693317400A69FBC /* Widget.swift in Sources */,
 				961C4216260882BB001D8467 /* RemoteDiskCacheDataProviding.swift in Sources */,
 				961C4213260882BB001D8467 /* DiskCacheDataProvidingStrategy.swift in Sources */,
 				0319F3132667995B00C01E1F /* sell_createPaymentIntent.graphql.swift in Sources */,
@@ -1936,11 +2010,13 @@
 				961C427A260882C8001D8467 /* BluetoothManagerWrapper.swift in Sources */,
 				961C41D2260882BA001D8467 /* AuthorisationWorker.swift in Sources */,
 				488958A52539D04B00B978A9 /* AudiencesImplementing.swift in Sources */,
+				964D291E269336B100A69FBC /* CanvasRepository.swift in Sources */,
 				961B019E2689EFE700D8C481 /* OrderState.swift in Sources */,
 				961C427D260882C8001D8467 /* UIDeviceWrapper.swift in Sources */,
 				964A3BE62680AA6F00C42C35 /* FulfilmentPointCategory.swift in Sources */,
 				4889587D2539D04B00B978A9 /* AudienceChecking.swift in Sources */,
 				0319F3372667995B00C01E1F /* sell_fragment_fulfilmentPoint.graphql.swift in Sources */,
+				964D291A269335E000A69FBC /* WidgetProvidable.swift in Sources */,
 				0319F31A2667995B00C01E1F /* analytics_putAnalyticEvent.graphql.swift in Sources */,
 				96874873268CC2A800DDC5DD /* PaymentIntent.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
@@ -1991,12 +2067,12 @@
 				961C4285260882E4001D8467 /* RequestCreatorTests.swift in Sources */,
 				961C436626089360001D8467 /* APITokenManagerTests.swift in Sources */,
 				961C436D2608936E001D8467 /* OAuthTokenRefreshWatcherTests.swift in Sources */,
+				964D292526933EDB00A69FBC /* CanvasRepositoryTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
 				961C438F2608939C001D8467 /* UIDeviceHelperTests.swift in Sources */,
 				961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */,
 				961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */,
 				9687488A268CD64E00DDC5DD /* PaymentRepositoryPaymentSourceTests.swift in Sources */,
-				961C428B260882F5001D8467 /* CoreConfigurationTests.swift in Sources */,
 				961C42B526088357001D8467 /* ReadOnlyCurrentValueTests.swift in Sources */,
 				961C437B26089382001D8467 /* AuthorsationStoreTests.swift in Sources */,
 				4889595F2539D8A500B978A9 /* AnalyticsImplementingTests.swift in Sources */,

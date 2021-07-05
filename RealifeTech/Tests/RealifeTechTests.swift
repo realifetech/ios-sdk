@@ -12,7 +12,7 @@ import XCTest
 final class RealifeTechTests: XCTestCase {
 
     func test_setup_modulesAreAvailable() {
-        let configuration = CoreConfiguration(appCode: "", clientSecret: "")
+        let configuration = SDKConfiguration(appCode: "", clientSecret: "")
         RealifeTech.configureSDK(with: configuration)
         XCTAssertNotNil(RealifeTech.General)
     }
