@@ -8,7 +8,13 @@
 
 import Foundation
 
-public struct PaginatedObject<Model>: Equatable {
-    let items: [Model]
-    let nextPage: Int?
+public struct PaginatedObject<Model: Equatable>: Equatable {
+
+    public let items: [Model]
+    public let nextPage: Int?
+
+    public init(items: [Model], nextPage: Int?) {
+        self.items = items
+        self.nextPage = nextPage
+    }
 }
