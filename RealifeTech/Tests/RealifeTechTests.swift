@@ -14,6 +14,13 @@ final class RealifeTechTests: XCTestCase {
     func test_setup_modulesAreAvailable() {
         let configuration = SDKConfiguration(appCode: "", clientSecret: "")
         RealifeTech.configureSDK(with: configuration)
+        XCTAssertNotNil(RealifeTech.Core)
         XCTAssertNotNil(RealifeTech.General)
+        XCTAssertNotNil(RealifeTech.Audiences)
+        XCTAssertNotNil(RealifeTech.Analytics)
+        XCTAssertNotNil(RealifeTech.Communicate)
+        XCTAssertNotNil(RealifeTech.Canvas)
+        XCTAssertNotNil(RealifeTech.Content)
+        XCTAssertNotNil(RealifeTech.Sell)
     }
 }
