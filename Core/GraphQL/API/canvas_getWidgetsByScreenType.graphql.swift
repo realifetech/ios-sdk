@@ -15,7 +15,7 @@ public extension ApolloType {
           __typename
           edges {
             __typename
-            ...widget
+            ...FragmentWidget
           }
           nextPage
         }
@@ -26,8 +26,7 @@ public extension ApolloType {
 
     public var queryDocument: String {
       var document: String = operationDefinition
-      document.append("\n" + Widget.fragmentDefinition)
-      document.append("\n" + WidgetTranslation.fragmentDefinition)
+      document.append("\n" + FragmentWidget.fragmentDefinition)
       return document
     }
 
@@ -127,7 +126,7 @@ public extension ApolloType {
           public static var selections: [GraphQLSelection] {
             return [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLFragmentSpread(Widget.self),
+              GraphQLFragmentSpread(FragmentWidget.self),
             ]
           }
 
@@ -162,9 +161,9 @@ public extension ApolloType {
               self.resultMap = unsafeResultMap
             }
 
-            public var widget: Widget {
+            public var fragmentWidget: FragmentWidget {
               get {
-                return Widget(unsafeResultMap: resultMap)
+                return FragmentWidget(unsafeResultMap: resultMap)
               }
               set {
                 resultMap += newValue.resultMap

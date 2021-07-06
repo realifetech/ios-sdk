@@ -1,9 +1,7 @@
-#import "./canvas_fragment_widget.graphql"
-
 query getWidgetsByScreenType($type: ScreenType!, $pageSize: Int!, $page: Int = 1) {
   getWidgetsByScreenType(type: $type, pageSize: $pageSize, page: $page) {
     edges {
-      ...widget
+      ...FragmentWidget
     }
     nextPage
   }

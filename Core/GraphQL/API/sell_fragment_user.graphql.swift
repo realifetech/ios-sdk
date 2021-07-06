@@ -24,7 +24,12 @@ public extension ApolloType {
         gender
         phone
         dob
-        userConsent
+        userConsent {
+          __typename
+          id
+          marketingConsent
+          analysisConsent
+        }
       }
       """
 
@@ -45,7 +50,7 @@ public extension ApolloType {
         GraphQLField("gender", type: .scalar(String.self)),
         GraphQLField("phone", type: .scalar(String.self)),
         GraphQLField("dob", type: .scalar(String.self)),
-        GraphQLField("userConsent", type: .scalar(String.self)),
+        GraphQLField("userConsent", type: .object(UserConsent.selections)),
       ]
     }
 
@@ -55,8 +60,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, email: String? = nil, token: String? = nil, authType: String? = nil, status: String? = nil, lastLogin: String? = nil, ticketsFetchedAt: String? = nil, firstName: String? = nil, lastName: String? = nil, gender: String? = nil, phone: String? = nil, dob: String? = nil, userConsent: String? = nil) {
-      self.init(unsafeResultMap: ["__typename": "User", "id": id, "email": email, "token": token, "authType": authType, "status": status, "lastLogin": lastLogin, "ticketsFetchedAt": ticketsFetchedAt, "firstName": firstName, "lastName": lastName, "gender": gender, "phone": phone, "dob": dob, "userConsent": userConsent])
+    public init(id: GraphQLID, email: String? = nil, token: String? = nil, authType: String? = nil, status: String? = nil, lastLogin: String? = nil, ticketsFetchedAt: String? = nil, firstName: String? = nil, lastName: String? = nil, gender: String? = nil, phone: String? = nil, dob: String? = nil, userConsent: UserConsent? = nil) {
+      self.init(unsafeResultMap: ["__typename": "User", "id": id, "email": email, "token": token, "authType": authType, "status": status, "lastLogin": lastLogin, "ticketsFetchedAt": ticketsFetchedAt, "firstName": firstName, "lastName": lastName, "gender": gender, "phone": phone, "dob": dob, "userConsent": userConsent.flatMap { (value: UserConsent) -> ResultMap in value.resultMap }])
     }
 
     public var __typename: String {
@@ -176,12 +181,71 @@ public extension ApolloType {
       }
     }
 
-    public var userConsent: String? {
+    public var userConsent: UserConsent? {
       get {
-        return resultMap["userConsent"] as? String
+        return (resultMap["userConsent"] as? ResultMap).flatMap { UserConsent(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue, forKey: "userConsent")
+        resultMap.updateValue(newValue?.resultMap, forKey: "userConsent")
+      }
+    }
+
+    public struct UserConsent: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["UserConsent"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("marketingConsent", type: .scalar(Bool.self)),
+          GraphQLField("analysisConsent", type: .scalar(Bool.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID, marketingConsent: Bool? = nil, analysisConsent: Bool? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserConsent", "id": id, "marketingConsent": marketingConsent, "analysisConsent": analysisConsent])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var marketingConsent: Bool? {
+        get {
+          return resultMap["marketingConsent"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "marketingConsent")
+        }
+      }
+
+      public var analysisConsent: Bool? {
+        get {
+          return resultMap["analysisConsent"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "analysisConsent")
+        }
       }
     }
   }

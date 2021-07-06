@@ -12,7 +12,7 @@ public class ContentImplementing: Content {
 
     let graphQLManager: GraphQLManageable
 
-    public init(graphQLManager: GraphQLManageable) {
+    init(graphQLManager: GraphQLManageable) {
         self.graphQLManager = graphQLManager
     }
 
@@ -20,7 +20,7 @@ public class ContentImplementing: Content {
         forType type: WebPage.`Type`,
         completion: @escaping (Result<WebPage, Error>) -> Void
     ) {
-        let pageType = ApolloWebPageType(rawValue: type.rawValue)
+        let pageType = ApolloType.WebPageType(rawValue: type.rawValue)
         graphQLManager.dispatch(
             query: ApolloType.GetWebPageByTypeQuery(type: pageType),
             cachePolicy: .returnCacheDataAndFetch) { result in

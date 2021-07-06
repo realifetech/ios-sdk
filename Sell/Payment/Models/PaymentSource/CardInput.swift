@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CardInput {
+public struct CardInput: Equatable {
 
     public let brand: String
     public let numberToken: String
