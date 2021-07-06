@@ -20,6 +20,7 @@ public struct Order: Codable, Equatable {
     public let grossAmount: Int?
     public let discountAmount: Int?
     public let netAmount: Int?
+    public let createdAt: Date?
     public let estimatedAt: Date?
     public let collectionPreferenceType: CollectionPreferenceType?
     public let seatInfo: SeatInfo?
@@ -38,6 +39,7 @@ public struct Order: Codable, Equatable {
         grossAmount: Int?,
         discountAmount: Int?,
         netAmount: Int?,
+        createdAt: Date?,
         estimatedAt: Date?,
         collectionPreferenceType: CollectionPreferenceType?,
         seatInfo: SeatInfo?,
@@ -55,6 +57,7 @@ public struct Order: Codable, Equatable {
         self.grossAmount = grossAmount
         self.discountAmount = discountAmount
         self.netAmount = netAmount
+        self.createdAt = createdAt
         self.estimatedAt = estimatedAt
         self.collectionPreferenceType = collectionPreferenceType
         self.seatInfo = seatInfo
@@ -78,6 +81,7 @@ extension Order {
         grossAmount = response.grossAmount
         discountAmount = response.discountAmount
         netAmount = response.netAmount
+        createdAt = response.createdAt?.iso8601Date
         estimatedAt = response.estimatedAt?.iso8601Date
         collectionPreferenceType = CollectionPreferenceType(apolloType: response.collectionPreferenceType)
         seatInfo = SeatInfo(response: response.seatInfo?.fragments.fragmentSeatInfo)
