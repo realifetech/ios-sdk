@@ -36,9 +36,9 @@ extension WidgetStyle {
 
 public enum StyleType: String, Codable {
 
-    case pager
-    case carousel
-    case list
+    case pager = "PAGER"
+    case carousel = "CAROUSEL"
+    case list = "LIST"
 
     init(apolloType: ApolloType.StyleType?) {
         self = StyleType(rawValue: apolloType?.rawValue ?? "") ?? .list
@@ -47,9 +47,9 @@ public enum StyleType: String, Codable {
 
 public enum StyleSize: String, Codable {
 
-    case small
-    case medium
-    case large
+    case small = "SMALL"
+    case medium = "MEDIUM"
+    case large = "LARGE"
 
     init(apolloType: ApolloType.StyleSize?) {
         self = StyleSize(rawValue: apolloType?.rawValue ?? "") ?? .small

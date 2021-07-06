@@ -243,9 +243,11 @@
 		964D291C269335F300A69FBC /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D291B269335F300A69FBC /* ScreenType.swift */; };
 		964D291E269336B100A69FBC /* CanvasRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D291D269336B100A69FBC /* CanvasRepository.swift */; };
 		964D292026933D0A00A69FBC /* ScreenProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D291F26933D0A00A69FBC /* ScreenProvidable.swift */; };
-		964D292526933EDB00A69FBC /* CanvasRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292426933EDB00A69FBC /* CanvasRepositoryTests.swift */; };
+		964D292526933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292426933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift */; };
 		964D292726933F0D00A69FBC /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292626933F0D00A69FBC /* Canvas.swift */; };
 		964D292926933F3700A69FBC /* CanvasFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292826933F3700A69FBC /* CanvasFactory.swift */; };
+		964D292B269343DD00A69FBC /* CanvasFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292A269343DD00A69FBC /* CanvasFactoryTests.swift */; };
+		964D292D269345CF00A69FBC /* CanvasRepositoryScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292C269345CE00A69FBC /* CanvasRepositoryScreenTests.swift */; };
 		9687485D268CBC7C00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */; };
 		9687485E268CBC7C00DDC5DD /* sell_fragment_paymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */; };
 		9687485F268CBC7C00DDC5DD /* sell_fragment_paymentSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */; };
@@ -537,9 +539,11 @@
 		964D291B269335F300A69FBC /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
 		964D291D269336B100A69FBC /* CanvasRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRepository.swift; sourceTree = "<group>"; };
 		964D291F26933D0A00A69FBC /* ScreenProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenProvidable.swift; sourceTree = "<group>"; };
-		964D292426933EDB00A69FBC /* CanvasRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRepositoryTests.swift; sourceTree = "<group>"; };
+		964D292426933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRepositoryWidgetTests.swift; sourceTree = "<group>"; };
 		964D292626933F0D00A69FBC /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		964D292826933F3700A69FBC /* CanvasFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFactory.swift; sourceTree = "<group>"; };
+		964D292A269343DD00A69FBC /* CanvasFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFactoryTests.swift; sourceTree = "<group>"; };
+		964D292C269345CE00A69FBC /* CanvasRepositoryScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRepositoryScreenTests.swift; sourceTree = "<group>"; };
 		9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_deleteMyPaymentSource.graphql.swift; sourceTree = "<group>"; };
 		9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentIntent.graphql.swift; sourceTree = "<group>"; };
 		9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentSource.graphql.swift; sourceTree = "<group>"; };
@@ -1464,7 +1468,9 @@
 		964D292326933EC400A69FBC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				964D292426933EDB00A69FBC /* CanvasRepositoryTests.swift */,
+				964D292A269343DD00A69FBC /* CanvasFactoryTests.swift */,
+				964D292426933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift */,
+				964D292C269345CE00A69FBC /* CanvasRepositoryScreenTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2051,6 +2057,7 @@
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,
 				961C42CC26088374001D8467 /* RequestTimeLoggerTests.swift in Sources */,
 				961B01AA2689F84D00D8C481 /* OrderRepositoryTests.swift in Sources */,
+				964D292D269345CF00A69FBC /* CanvasRepositoryScreenTests.swift in Sources */,
 				961C42BA26088368001D8467 /* LocalDiskCacheDataProvidingTests.swift in Sources */,
 				9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */,
 				961C42C726088371001D8467 /* DiskCacheCodableInterfaceTests.swift in Sources */,
@@ -2067,10 +2074,11 @@
 				961C4285260882E4001D8467 /* RequestCreatorTests.swift in Sources */,
 				961C436626089360001D8467 /* APITokenManagerTests.swift in Sources */,
 				961C436D2608936E001D8467 /* OAuthTokenRefreshWatcherTests.swift in Sources */,
-				964D292526933EDB00A69FBC /* CanvasRepositoryTests.swift in Sources */,
+				964D292526933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
 				961C438F2608939C001D8467 /* UIDeviceHelperTests.swift in Sources */,
 				961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */,
+				964D292B269343DD00A69FBC /* CanvasFactoryTests.swift in Sources */,
 				961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */,
 				9687488A268CD64E00DDC5DD /* PaymentRepositoryPaymentSourceTests.swift in Sources */,
 				961C42B526088357001D8467 /* ReadOnlyCurrentValueTests.swift in Sources */,
