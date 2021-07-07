@@ -9,6 +9,8 @@
 import Foundation
 
 public protocol Core {
+    var reachabilityHelper: ReachabilityChecking { get }
+
     func requestValidToken(completion: ((Result<Void, Error>) -> Void)?)
     func storeCredentials(accessToken: String, secondsExpiresIn: Int, refreshToken: String?)
     func clearStoredCredentials()
