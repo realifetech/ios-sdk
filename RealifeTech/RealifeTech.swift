@@ -44,7 +44,8 @@ public class RealifeTech {
             deviceHelper: deviceHelper,
             reachabilityHelper: reachabilityChecker,
             apiHelper: apiHelper,
-            graphQLManager: graphQLManager)
+            graphQLManager: graphQLManager,
+            diskCache: DiskCache())
         let staticDeviceInformation = StaticDeviceInformation(
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,

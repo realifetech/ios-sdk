@@ -1008,7 +1008,6 @@
 				961C423D260882C8001D8467 /* Repositories */,
 				961C41BB260882BA001D8467 /* Resources */,
 				961C422E260882C8001D8467 /* Storage */,
-				961C4248260882C8001D8467 /* Tests */,
 				961C4255260882C8001D8467 /* UIDeviceHelper */,
 			);
 			path = Core;
@@ -1338,13 +1337,6 @@
 				961C4247260882C8001D8467 /* DeviceRequester.swift */,
 			);
 			path = Device;
-			sourceTree = "<group>";
-		};
-		961C4248260882C8001D8467 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 		961C424C260882C8001D8467 /* ReachabilityChecker */ = {

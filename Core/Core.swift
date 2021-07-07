@@ -9,13 +9,10 @@
 import Foundation
 
 public protocol Core {
-    var deviceHelper: UIDeviceInterface { get }
-    var reachabilityHelper: ReachabilityChecking { get }
-    var apiHelper: APITokenManagable { get }
-    var graphQLManager: GraphQLManageable { get }
-
     func requestValidToken(completion: ((Result<Void, Error>) -> Void)?)
     func storeCredentials(accessToken: String, secondsExpiresIn: Int, refreshToken: String?)
     func clearStoredCredentials()
+    func clearPrivateCachedData()
+    func clearOutdatedCachedData()
     func clearAllCachedData()
 }
