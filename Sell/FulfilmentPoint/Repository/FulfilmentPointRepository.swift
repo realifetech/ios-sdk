@@ -29,7 +29,7 @@ extension FulfilmentPointRepository: FulfilmentPointProvidable {
             query: ApolloType.GetFulfilmentPointsQuery(
                 pageSize: pageSize,
                 page: page,
-                filters: nil), // TODO: BE will change categories: ID to categories: [ID]
+                filters: filters?.apolloType),
             cachePolicy: .returnCacheDataAndFetch
         ) { result in
             switch result {

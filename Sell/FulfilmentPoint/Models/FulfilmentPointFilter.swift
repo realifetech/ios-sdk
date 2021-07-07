@@ -10,9 +10,16 @@ import Foundation
 
 public struct FulfilmentPointFilter {
 
-    public let categories: [String]?
+    public let categories: String?
 
-    public init(categories: [String]?) {
+    public init(categories: String?) {
         self.categories = categories
+    }
+}
+
+extension FulfilmentPointFilter {
+
+    var apolloType: ApolloType.FulfilmentPointFilter {
+        ApolloType.FulfilmentPointFilter(categories: categories)
     }
 }
