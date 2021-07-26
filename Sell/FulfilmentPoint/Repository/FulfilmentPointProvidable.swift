@@ -14,10 +14,12 @@ public protocol FulfilmentPointProvidable {
         pageSize: Int,
         page: Int,
         filters: FulfilmentPointFilter?,
+        params: [FilterParam]?,
         callback: @escaping (Result<PaginatedObject<FulfilmentPoint>, Error>) -> Void)
 
     func getFulfilmentPointById(
         id: String,
+        params: [FilterParam]?,
         callback: @escaping (Result<FulfilmentPoint, Error>) -> Void)
 
     func getFulfilmentPointCategories(

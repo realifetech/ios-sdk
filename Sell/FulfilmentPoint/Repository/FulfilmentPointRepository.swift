@@ -23,13 +23,15 @@ extension FulfilmentPointRepository: FulfilmentPointProvidable {
         pageSize: Int,
         page: Int,
         filters: FulfilmentPointFilter?,
+        params: [FilterParam]?,
         callback: @escaping (Result<PaginatedObject<FulfilmentPoint>, Error>) -> Void
     ) {
         graphQLManager.dispatch(
             query: ApolloType.GetFulfilmentPointsQuery(
                 pageSize: pageSize,
                 page: page,
-                filters: filters?.apolloType),
+                filters: filters?.apolloType,
+                params: params?.map { $0.apolloType }),
             cachePolicy: .returnCacheDataAndFetch
         ) { result in
             switch result {
@@ -49,10 +51,11 @@ extension FulfilmentPointRepository: FulfilmentPointProvidable {
 
     public func getFulfilmentPointById(
         id: String,
+        params: [FilterParam]?,
         callback: @escaping (Result<FulfilmentPoint, Error>) -> Void
     ) {
         graphQLManager.dispatch(
-            query: ApolloType.GetFulfilmentPointByIdQuery(id: id),
+            query: ApolloType.GetFulfilmentPointByIdQuery(id: id, params: params?.map { $0.apolloType }),
             cachePolicy: .returnCacheDataAndFetch
         ) { result in
             switch result {

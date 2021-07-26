@@ -10,8 +10,8 @@ public extension ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query getFulfilmentPointById($id: ID!) {
-        getFulfilmentPoint(id: $id) {
+      query getFulfilmentPointById($id: ID!, $params: [FilterParam!]) {
+        getFulfilmentPoint(id: $id, params: $params) {
           __typename
           ...FragmentFulfilmentPoint
         }
@@ -31,13 +31,15 @@ public extension ApolloType {
     }
 
     public var id: GraphQLID
+    public var params: [FilterParam]?
 
-    public init(id: GraphQLID) {
+    public init(id: GraphQLID, params: [FilterParam]?) {
       self.id = id
+      self.params = params
     }
 
     public var variables: GraphQLMap? {
-      return ["id": id]
+      return ["id": id, "params": params]
     }
 
     public struct Data: GraphQLSelectionSet {
@@ -45,7 +47,7 @@ public extension ApolloType {
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("getFulfilmentPoint", arguments: ["id": GraphQLVariable("id")], type: .object(GetFulfilmentPoint.selections)),
+          GraphQLField("getFulfilmentPoint", arguments: ["id": GraphQLVariable("id"), "params": GraphQLVariable("params")], type: .object(GetFulfilmentPoint.selections)),
         ]
       }
 

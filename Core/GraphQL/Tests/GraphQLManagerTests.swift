@@ -41,7 +41,7 @@ final class GraphQLManagerTests: XCTestCase {
         networkTransport.queryResultReturns = .success(graphQLResult)
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.dispatch(
-            query: UnderTestQuery(pageSize: 10),
+            query: UnderTestQuery(pageSize: 10, params: nil),
             cachePolicy: .returnCacheDataAndFetch
         ) { result in
             guard case let .success(returnedResponse) = result else {
@@ -58,7 +58,7 @@ final class GraphQLManagerTests: XCTestCase {
         networkTransport.queryResultReturns = .failure(DummyError.failure)
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.dispatch(
-            query: UnderTestQuery(pageSize: 10),
+            query: UnderTestQuery(pageSize: 10, params: nil),
             cachePolicy: .returnCacheDataAndFetch
         ) { result in
             guard case let .failure(returnedError) = result else {
