@@ -10,8 +10,8 @@ public extension ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query getProductById($id: ID!) {
-        getProduct(id: $id) {
+      query getProductById($id: ID!, $params: [FilterParam!]) {
+        getProduct(id: $id, params: $params) {
           __typename
           ...FragmentProduct
         }
@@ -34,13 +34,15 @@ public extension ApolloType {
     }
 
     public var id: GraphQLID
+    public var params: [FilterParam]?
 
-    public init(id: GraphQLID) {
+    public init(id: GraphQLID, params: [FilterParam]?) {
       self.id = id
+      self.params = params
     }
 
     public var variables: GraphQLMap? {
-      return ["id": id]
+      return ["id": id, "params": params]
     }
 
     public struct Data: GraphQLSelectionSet {
@@ -48,7 +50,7 @@ public extension ApolloType {
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("getProduct", arguments: ["id": GraphQLVariable("id")], type: .object(GetProduct.selections)),
+          GraphQLField("getProduct", arguments: ["id": GraphQLVariable("id"), "params": GraphQLVariable("params")], type: .object(GetProduct.selections)),
         ]
       }
 

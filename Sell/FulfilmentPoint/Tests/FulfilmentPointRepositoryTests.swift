@@ -55,7 +55,8 @@ extension FulfilmentPointRepositoryTests {
         sut.getFulfilmentPoints(
             pageSize: 1,
             page: 1,
-            filters: nil
+            filters: nil,
+            params: nil
         ) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
@@ -80,7 +81,8 @@ extension FulfilmentPointRepositoryTests {
         sut.getFulfilmentPoints(
             pageSize: 1,
             page: 1,
-            filters: nil
+            filters: nil,
+            params: nil
         ) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
@@ -115,7 +117,7 @@ extension FulfilmentPointRepositoryTests {
         graphQLManager.resultReturns = .success(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.getFulfilmentPointById(id: fulfilmentPointFragment.id) { result in
+        sut.getFulfilmentPointById(id: fulfilmentPointFragment.id, params: nil) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
@@ -144,7 +146,7 @@ extension FulfilmentPointRepositoryTests {
         graphQLManager.resultReturns = .success(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.getFulfilmentPointById(id: "1") { result in
+        sut.getFulfilmentPointById(id: "1", params: nil) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
             }
@@ -160,7 +162,7 @@ extension FulfilmentPointRepositoryTests {
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.getFulfilmentPointById(id: "1") { result in
+        sut.getFulfilmentPointById(id: "1", params: nil) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
             }

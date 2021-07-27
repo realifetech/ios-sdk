@@ -30,13 +30,15 @@ extension ProductRepository: ProductProvidable {
         pageSize: Int,
         page: Int?,
         filters: ProductFilter?,
+        params: [FilterParam]?,
         callback: @escaping (Result<PaginatedObject<Product>, Error>) -> Void
     ) {
         graphQLManager.dispatch(
             query: ApolloType.GetProductsQuery(
                 pageSize: pageSize,
                 page: page,
-                filters: makeApolloProductFilters(filters)),
+                filters: makeApolloProductFilters(filters),
+                params: params?.map { $0.apolloType }),
             cachePolicy: .returnCacheDataAndFetch
         ) { result in
             switch result {
@@ -56,10 +58,11 @@ extension ProductRepository: ProductProvidable {
 
     public func getProductById(
         id: String,
+        params: [FilterParam]?,
         callback: @escaping (Result<Product, Error>) -> Void
     ) {
         graphQLManager.dispatch(
-            query: ApolloType.GetProductByIdQuery(id: id),
+            query: ApolloType.GetProductByIdQuery(id: id, params: params?.map { $0.apolloType }),
             cachePolicy: .returnCacheDataAndFetch
         ) { result in
             switch result {

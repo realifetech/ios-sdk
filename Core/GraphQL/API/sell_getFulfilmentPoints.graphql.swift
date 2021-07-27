@@ -10,8 +10,13 @@ public extension ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query getFulfilmentPoints($pageSize: Int!, $page: Int = 1, $filters: FulfilmentPointFilter = null) {
-        getFulfilmentPoints(page: $page, pageSize: $pageSize, filters: $filters) {
+      query getFulfilmentPoints($pageSize: Int!, $page: Int = 1, $filters: FulfilmentPointFilter, $params: [FilterParam!]) {
+        getFulfilmentPoints(
+          page: $page
+          pageSize: $pageSize
+          filters: $filters
+          params: $params
+        ) {
           __typename
           edges {
             __typename
@@ -37,15 +42,17 @@ public extension ApolloType {
     public var pageSize: Int
     public var page: Int?
     public var filters: FulfilmentPointFilter?
+    public var params: [FilterParam]?
 
-    public init(pageSize: Int, page: Int? = nil, filters: FulfilmentPointFilter? = nil) {
+    public init(pageSize: Int, page: Int? = nil, filters: FulfilmentPointFilter? = nil, params: [FilterParam]?) {
       self.pageSize = pageSize
       self.page = page
       self.filters = filters
+      self.params = params
     }
 
     public var variables: GraphQLMap? {
-      return ["pageSize": pageSize, "page": page, "filters": filters]
+      return ["pageSize": pageSize, "page": page, "filters": filters, "params": params]
     }
 
     public struct Data: GraphQLSelectionSet {
@@ -53,7 +60,7 @@ public extension ApolloType {
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("getFulfilmentPoints", arguments: ["page": GraphQLVariable("page"), "pageSize": GraphQLVariable("pageSize"), "filters": GraphQLVariable("filters")], type: .object(GetFulfilmentPoint.selections)),
+          GraphQLField("getFulfilmentPoints", arguments: ["page": GraphQLVariable("page"), "pageSize": GraphQLVariable("pageSize"), "filters": GraphQLVariable("filters"), "params": GraphQLVariable("params")], type: .object(GetFulfilmentPoint.selections)),
         ]
       }
 

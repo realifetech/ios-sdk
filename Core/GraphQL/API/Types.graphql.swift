@@ -733,42 +733,42 @@ public enum ApolloType {
     ///   - block
     ///   - table
     public init(row: Swift.Optional<String?> = nil, seat: Swift.Optional<String?> = nil, block: Swift.Optional<String?> = nil, table: Swift.Optional<String?> = nil) {
-      graphQLMap = ["Row": row, "Seat": seat, "Block": block, "Table": table]
+      graphQLMap = ["row": row, "seat": seat, "block": block, "table": table]
     }
 
     public var row: Swift.Optional<String?> {
       get {
-        return graphQLMap["Row"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+        return graphQLMap["row"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
       }
       set {
-        graphQLMap.updateValue(newValue, forKey: "Row")
+        graphQLMap.updateValue(newValue, forKey: "row")
       }
     }
 
     public var seat: Swift.Optional<String?> {
       get {
-        return graphQLMap["Seat"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+        return graphQLMap["seat"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
       }
       set {
-        graphQLMap.updateValue(newValue, forKey: "Seat")
+        graphQLMap.updateValue(newValue, forKey: "seat")
       }
     }
 
     public var block: Swift.Optional<String?> {
       get {
-        return graphQLMap["Block"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+        return graphQLMap["block"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
       }
       set {
-        graphQLMap.updateValue(newValue, forKey: "Block")
+        graphQLMap.updateValue(newValue, forKey: "block")
       }
     }
 
     public var table: Swift.Optional<String?> {
       get {
-        return graphQLMap["Table"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+        return graphQLMap["table"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
       }
       set {
-        graphQLMap.updateValue(newValue, forKey: "Table")
+        graphQLMap.updateValue(newValue, forKey: "table")
       }
     }
   }
@@ -1050,18 +1050,47 @@ public enum ApolloType {
     }
   }
 
+  public struct FilterParam: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - key
+    ///   - value
+    public init(key: Swift.Optional<String?> = nil, value: String) {
+      graphQLMap = ["key": key, "value": value]
+    }
+
+    public var key: Swift.Optional<String?> {
+      get {
+        return graphQLMap["key"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "key")
+      }
+    }
+
+    public var value: String {
+      get {
+        return graphQLMap["value"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "value")
+      }
+    }
+  }
+
   public struct FulfilmentPointFilter: GraphQLMapConvertible {
     public var graphQLMap: GraphQLMap
 
     /// - Parameters:
     ///   - categories
-    public init(categories: Swift.Optional<GraphQLID?> = nil) {
+    public init(categories: Swift.Optional<[GraphQLID]?> = nil) {
       graphQLMap = ["categories": categories]
     }
 
-    public var categories: Swift.Optional<GraphQLID?> {
+    public var categories: Swift.Optional<[GraphQLID]?> {
       get {
-        return graphQLMap["categories"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
+        return graphQLMap["categories"] as? Swift.Optional<[GraphQLID]?> ?? Swift.Optional<[GraphQLID]?>.none
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "categories")

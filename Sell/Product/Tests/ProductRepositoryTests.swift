@@ -51,7 +51,8 @@ extension ProductRepositoryTests {
         sut.getProducts(
             pageSize: 1,
             page: 1,
-            filters: nil
+            filters: nil,
+            params: []
         ) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
@@ -75,7 +76,8 @@ extension ProductRepositoryTests {
         sut.getProducts(
             pageSize: 1,
             page: 1,
-            filters: nil
+            filters: nil,
+            params: []
         ) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
@@ -110,7 +112,7 @@ extension ProductRepositoryTests {
         graphQLManager.resultReturns = .success(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.getProductById(id: productFragment.id) { result in
+        sut.getProductById(id: productFragment.id, params: []) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
@@ -139,7 +141,7 @@ extension ProductRepositoryTests {
         graphQLManager.resultReturns = .success(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.getProductById(id: "1") { result in
+        sut.getProductById(id: "1", params: []) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
             }
@@ -155,7 +157,7 @@ extension ProductRepositoryTests {
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.getProductById(id: "1") { result in
+        sut.getProductById(id: "1", params: []) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
             }

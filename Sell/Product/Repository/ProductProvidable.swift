@@ -14,9 +14,11 @@ public protocol ProductProvidable {
         pageSize: Int,
         page: Int?,
         filters: ProductFilter?,
+        params: [FilterParam]?,
         callback: @escaping (Result<PaginatedObject<Product>, Error>) -> Void)
 
     func getProductById(
         id: String,
+        params: [FilterParam]?,
         callback: @escaping (Result<Product, Error>) -> Void)
 }

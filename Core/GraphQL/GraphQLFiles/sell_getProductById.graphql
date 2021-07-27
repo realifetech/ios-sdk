@@ -1,5 +1,5 @@
-query getProductById($id: ID!) {
-  getProduct(id: $id) {
+query getProductById($id: ID!, $params: [FilterParam!]) {
+  getProduct(id: $id, params: $params) {
     ...FragmentProduct
   }
 }
