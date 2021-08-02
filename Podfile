@@ -17,5 +17,9 @@ target 'RealifeTech' do
   target 'RealifeTechTests' do
     pod 'RxTest', '~> 6.1.0'
   end
+end
 
+target 'GraphQL' do
+  use_frameworks!
+  project 'RealifeTech-SDK'
 end
