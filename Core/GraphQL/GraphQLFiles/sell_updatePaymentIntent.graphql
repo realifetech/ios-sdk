@@ -1,21 +1,5 @@
 mutation updateMyPaymentIntent($id: ID!, $input: PaymentIntentUpdateInput!) {
   updateMyPaymentIntent(id: $id, input: $input) {
-    id
-    orderType
-    orderId
-    status
-    paymentSource {
-      ...paymentSourceDetails
-    }
-    amount
-    currency
-    livemode
-    cancellationReason
-    savePaymentSource
-    nextAction {
-      type
-      url
-    }
-    lastPaymentError
+    ...paymentIntentDetails
   }
 }
