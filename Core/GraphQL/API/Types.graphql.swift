@@ -980,101 +980,6 @@ public enum ApolloType {
     }
   }
 
-  public enum PaymentStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-    public typealias RawValue = String
-    case requiresPaymentMethod
-    case requiresAction
-    case processing
-    case succeeded
-    case canceled
-    /// Auto generated constant for unknown enum values
-    case __unknown(RawValue)
-
-    public init?(rawValue: RawValue) {
-      switch rawValue {
-        case "requires_payment_method": self = .requiresPaymentMethod
-        case "requires_action": self = .requiresAction
-        case "processing": self = .processing
-        case "succeeded": self = .succeeded
-        case "canceled": self = .canceled
-        default: self = .__unknown(rawValue)
-      }
-    }
-
-    public var rawValue: RawValue {
-      switch self {
-        case .requiresPaymentMethod: return "requires_payment_method"
-        case .requiresAction: return "requires_action"
-        case .processing: return "processing"
-        case .succeeded: return "succeeded"
-        case .canceled: return "canceled"
-        case .__unknown(let value): return value
-      }
-    }
-
-    public static func == (lhs: PaymentStatus, rhs: PaymentStatus) -> Bool {
-      switch (lhs, rhs) {
-        case (.requiresPaymentMethod, .requiresPaymentMethod): return true
-        case (.requiresAction, .requiresAction): return true
-        case (.processing, .processing): return true
-        case (.succeeded, .succeeded): return true
-        case (.canceled, .canceled): return true
-        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-        default: return false
-      }
-    }
-
-    public static var allCases: [PaymentStatus] {
-      return [
-        .requiresPaymentMethod,
-        .requiresAction,
-        .processing,
-        .succeeded,
-        .canceled,
-      ]
-    }
-  }
-
-  public enum PaymentActionType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-    public typealias RawValue = String
-    case redirectToUrl
-    case collectCvc
-    /// Auto generated constant for unknown enum values
-    case __unknown(RawValue)
-
-    public init?(rawValue: RawValue) {
-      switch rawValue {
-        case "redirect_to_url": self = .redirectToUrl
-        case "collect_cvc": self = .collectCvc
-        default: self = .__unknown(rawValue)
-      }
-    }
-
-    public var rawValue: RawValue {
-      switch self {
-        case .redirectToUrl: return "redirect_to_url"
-        case .collectCvc: return "collect_cvc"
-        case .__unknown(let value): return value
-      }
-    }
-
-    public static func == (lhs: PaymentActionType, rhs: PaymentActionType) -> Bool {
-      switch (lhs, rhs) {
-        case (.redirectToUrl, .redirectToUrl): return true
-        case (.collectCvc, .collectCvc): return true
-        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-        default: return false
-      }
-    }
-
-    public static var allCases: [PaymentActionType] {
-      return [
-        .redirectToUrl,
-        .collectCvc,
-      ]
-    }
-  }
-
   public struct FulfilmentPointFilter: GraphQLMapConvertible {
     public var graphQLMap: GraphQLMap
 
@@ -1578,6 +1483,101 @@ public enum ApolloType {
         .payInProgress,
         .refunded,
         .refundRequested,
+      ]
+    }
+  }
+
+  public enum PaymentStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case requiresPaymentMethod
+    case requiresAction
+    case processing
+    case succeeded
+    case canceled
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "requires_payment_method": self = .requiresPaymentMethod
+        case "requires_action": self = .requiresAction
+        case "processing": self = .processing
+        case "succeeded": self = .succeeded
+        case "canceled": self = .canceled
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .requiresPaymentMethod: return "requires_payment_method"
+        case .requiresAction: return "requires_action"
+        case .processing: return "processing"
+        case .succeeded: return "succeeded"
+        case .canceled: return "canceled"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: PaymentStatus, rhs: PaymentStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.requiresPaymentMethod, .requiresPaymentMethod): return true
+        case (.requiresAction, .requiresAction): return true
+        case (.processing, .processing): return true
+        case (.succeeded, .succeeded): return true
+        case (.canceled, .canceled): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [PaymentStatus] {
+      return [
+        .requiresPaymentMethod,
+        .requiresAction,
+        .processing,
+        .succeeded,
+        .canceled,
+      ]
+    }
+  }
+
+  public enum PaymentActionType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case redirectToUrl
+    case collectCvc
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "redirect_to_url": self = .redirectToUrl
+        case "collect_cvc": self = .collectCvc
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .redirectToUrl: return "redirect_to_url"
+        case .collectCvc: return "collect_cvc"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: PaymentActionType, rhs: PaymentActionType) -> Bool {
+      switch (lhs, rhs) {
+        case (.redirectToUrl, .redirectToUrl): return true
+        case (.collectCvc, .collectCvc): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [PaymentActionType] {
+      return [
+        .redirectToUrl,
+        .collectCvc,
       ]
     }
   }
