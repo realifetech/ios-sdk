@@ -47,6 +47,8 @@
 		0319F3382667995B00C01E1F /* content_getWebPageByType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3102667995B00C01E1F /* content_getWebPageByType.graphql.swift */; };
 		0319F3392667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3112667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift */; };
 		0319F33A2667995B00C01E1F /* sell_fragment_product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */; };
+		09DEE57226BC05AD00425C62 /* sell_getMyPaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEE57126BC05AD00425C62 /* sell_getMyPaymentIntent.graphql.swift */; };
+		09DEE57426BC05D500425C62 /* sell_fragment_paymentIntentDetails.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEE57326BC05D500425C62 /* sell_fragment_paymentIntentDetails.graphql.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -257,6 +259,8 @@
 		03EEB8A9252E04DB00C868AD /* AudiencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesTests.swift; sourceTree = "<group>"; };
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
+		09DEE57126BC05AD00425C62 /* sell_getMyPaymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyPaymentIntent.graphql.swift; sourceTree = "<group>"; };
+		09DEE57326BC05D500425C62 /* sell_fragment_paymentIntentDetails.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentIntentDetails.graphql.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -840,6 +844,7 @@
 				0319F3012667995B00C01E1F /* sell_fragment_order.graphql.swift */,
 				0319F2F32667995A00C01E1F /* sell_fragment_orders.graphql.swift */,
 				0319F2F72667995A00C01E1F /* sell_fragment_paymentSourceDetails.graphql.swift */,
+				09DEE57326BC05D500425C62 /* sell_fragment_paymentIntentDetails.graphql.swift */,
 				0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */,
 				0319F2FD2667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift */,
 				0319F2F12667995A00C01E1F /* sell_fragment_productModifierItemSelection.graphql.swift */,
@@ -852,6 +857,7 @@
 				0319F3072667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift */,
 				0319F3082667995B00C01E1F /* sell_getFulfilmentPointCategoryById.graphql.swift */,
 				0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */,
+				09DEE57126BC05AD00425C62 /* sell_getMyPaymentIntent.graphql.swift */,
 				0319F2EE2667995A00C01E1F /* sell_getMyPaymentSources.graphql.swift */,
 				0319F30A2667995B00C01E1F /* sell_getOrders.graphql.swift */,
 				0319F2F62667995A00C01E1F /* sell_getProductById.graphql.swift */,
@@ -1400,6 +1406,7 @@
 				961C41E5260882BA001D8467 /* OAuthRepository.swift in Sources */,
 				961C41EF260882BB001D8467 /* GraphNetworkCachePolicy.swift in Sources */,
 				961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */,
+				09DEE57426BC05D500425C62 /* sell_fragment_paymentIntentDetails.graphql.swift in Sources */,
 				961C4263260882C8001D8467 /* CodableStore.swift in Sources */,
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
@@ -1522,6 +1529,7 @@
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
 				0319F3272667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */,
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
+				09DEE57226BC05AD00425C62 /* sell_getMyPaymentIntent.graphql.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
 				0319F3182667995B00C01E1F /* sell_checkoutMyBasket.graphql.swift in Sources */,
@@ -1632,7 +1640,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1663,7 +1671,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

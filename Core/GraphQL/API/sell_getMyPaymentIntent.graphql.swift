@@ -6,19 +6,19 @@ import Foundation
 
 /// ApolloType namespace
 public extension ApolloType {
-  final class UpdateMyPaymentIntentMutation: GraphQLMutation {
+  final class GetMyPaymentIntentQuery: GraphQLQuery {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      mutation updateMyPaymentIntent($id: ID!, $input: PaymentIntentUpdateInput!) {
-        updateMyPaymentIntent(id: $id, input: $input) {
+      query getMyPaymentIntent($id: ID!) {
+        getMyPaymentIntent(id: $id) {
           __typename
           ...paymentIntentDetails
         }
       }
       """
 
-    public let operationName: String = "updateMyPaymentIntent"
+    public let operationName: String = "getMyPaymentIntent"
 
     public var queryDocument: String {
       var document: String = operationDefinition
@@ -29,23 +29,21 @@ public extension ApolloType {
     }
 
     public var id: GraphQLID
-    public var input: PaymentIntentUpdateInput
 
-    public init(id: GraphQLID, input: PaymentIntentUpdateInput) {
+    public init(id: GraphQLID) {
       self.id = id
-      self.input = input
     }
 
     public var variables: GraphQLMap? {
-      return ["id": id, "input": input]
+      return ["id": id]
     }
 
     public struct Data: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["Mutation"]
+      public static let possibleTypes: [String] = ["Query"]
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("updateMyPaymentIntent", arguments: ["id": GraphQLVariable("id"), "input": GraphQLVariable("input")], type: .object(UpdateMyPaymentIntent.selections)),
+          GraphQLField("getMyPaymentIntent", arguments: ["id": GraphQLVariable("id")], type: .object(GetMyPaymentIntent.selections)),
         ]
       }
 
@@ -55,20 +53,20 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(updateMyPaymentIntent: UpdateMyPaymentIntent? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Mutation", "updateMyPaymentIntent": updateMyPaymentIntent.flatMap { (value: UpdateMyPaymentIntent) -> ResultMap in value.resultMap }])
+      public init(getMyPaymentIntent: GetMyPaymentIntent? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getMyPaymentIntent": getMyPaymentIntent.flatMap { (value: GetMyPaymentIntent) -> ResultMap in value.resultMap }])
       }
 
-      public var updateMyPaymentIntent: UpdateMyPaymentIntent? {
+      public var getMyPaymentIntent: GetMyPaymentIntent? {
         get {
-          return (resultMap["updateMyPaymentIntent"] as? ResultMap).flatMap { UpdateMyPaymentIntent(unsafeResultMap: $0) }
+          return (resultMap["getMyPaymentIntent"] as? ResultMap).flatMap { GetMyPaymentIntent(unsafeResultMap: $0) }
         }
         set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "updateMyPaymentIntent")
+          resultMap.updateValue(newValue?.resultMap, forKey: "getMyPaymentIntent")
         }
       }
 
-      public struct UpdateMyPaymentIntent: GraphQLSelectionSet {
+      public struct GetMyPaymentIntent: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["PaymentIntent"]
 
         public static var selections: [GraphQLSelection] {
