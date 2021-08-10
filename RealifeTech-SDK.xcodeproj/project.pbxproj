@@ -1753,7 +1753,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDE0D6EFC6794CF7E8AB7F2C /* Pods-GraphQL.debug.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
@@ -1781,7 +1781,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 675C0F74BE68A8B697D67EE8 /* Pods-GraphQL.release.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
