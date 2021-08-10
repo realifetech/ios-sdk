@@ -9,6 +9,7 @@
 import XCTest
 @testable import RealifeTech
 @testable import Apollo
+import GraphQL
 
 final class AudiencesTests: XCTestCase {
 

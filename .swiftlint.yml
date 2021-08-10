@@ -3,7 +3,7 @@ excluded:
    - DummyProject/Pods
    - Core/APILayer/Tests
    - Core/APIUtilities
-   - Core/GraphQL/API
+   - GraphQL/API
 
 identifier_name:
   excluded:

@@ -9,6 +9,7 @@
 import XCTest
 import Apollo
 @testable import RealifeTech
+@testable import GraphQL
 
 final class SellFactoryTests: XCTestCase {
 
