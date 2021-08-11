@@ -247,6 +247,10 @@
 		9630DDDC26AEDFC20005BA24 /* FilterParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9630DDDB26AEDFC20005BA24 /* FilterParam.swift */; };
 		9637472D26C41801007DF92D /* CollectionPreferenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637472C26C41801007DF92D /* CollectionPreferenceTypeTests.swift */; };
 		9637472F26C41963007DF92D /* ProductModifierItemSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637472E26C41963007DF92D /* ProductModifierItemSelectionTests.swift */; };
+		9637473126C41A7E007DF92D /* FulfilmentPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473026C41A7E007DF92D /* FulfilmentPointTests.swift */; };
+		9637473326C421B5007DF92D /* FulfilmentPointFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473226C421B5007DF92D /* FulfilmentPointFilterTests.swift */; };
+		9637473526C42237007DF92D /* TimeslotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473426C42237007DF92D /* TimeslotTests.swift */; };
+		9637473726C42486007DF92D /* BasketErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473626C42486007DF92D /* BasketErrorTests.swift */; };
 		9647D9AA26861D11006F5B7F /* BasketRepositoryMutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */; };
 		9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9AB26861DF2006F5B7F /* BasketRepositoryTestHelper.swift */; };
 		9647D9AE26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9AD26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift */; };
@@ -580,6 +584,10 @@
 		9630DDDB26AEDFC20005BA24 /* FilterParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterParam.swift; sourceTree = "<group>"; };
 		9637472C26C41801007DF92D /* CollectionPreferenceTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreferenceTypeTests.swift; sourceTree = "<group>"; };
 		9637472E26C41963007DF92D /* ProductModifierItemSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemSelectionTests.swift; sourceTree = "<group>"; };
+		9637473026C41A7E007DF92D /* FulfilmentPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointTests.swift; sourceTree = "<group>"; };
+		9637473226C421B5007DF92D /* FulfilmentPointFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointFilterTests.swift; sourceTree = "<group>"; };
+		9637473426C42237007DF92D /* TimeslotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotTests.swift; sourceTree = "<group>"; };
+		9637473626C42486007DF92D /* BasketErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketErrorTests.swift; sourceTree = "<group>"; };
 		9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryMutationTests.swift; sourceTree = "<group>"; };
 		9647D9AB26861DF2006F5B7F /* BasketRepositoryTestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryTestHelper.swift; sourceTree = "<group>"; };
 		9647D9AD26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryMutationErrorTests.swift; sourceTree = "<group>"; };
@@ -1014,7 +1022,10 @@
 		961C1C9B2682435400BE6F3B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9637473226C421B5007DF92D /* FulfilmentPointFilterTests.swift */,
 				961C1C9C2682436B00BE6F3B /* FulfilmentPointRepositoryTests.swift */,
+				9637473026C41A7E007DF92D /* FulfilmentPointTests.swift */,
+				9637473426C42237007DF92D /* TimeslotTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1065,6 +1076,7 @@
 		961C1CD22685D6BD00BE6F3B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9637473626C42486007DF92D /* BasketErrorTests.swift */,
 				96302CEE26C414E0000A91EC /* BasketItemTests.swift */,
 				9647D9AD26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift */,
 				9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */,
@@ -2216,7 +2228,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9637473126C41A7E007DF92D /* FulfilmentPointTests.swift in Sources */,
 				968CA69F25EF96600000C2E2 /* ContentImplementingTests.swift in Sources */,
+				9637473526C42237007DF92D /* TimeslotTests.swift in Sources */,
 				96302CED26C4104C000A91EC /* BasketTests.swift in Sources */,
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,
@@ -2251,6 +2265,7 @@
 				964D292B269343DD00A69FBC /* CanvasFactoryTests.swift in Sources */,
 				961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */,
 				9687488A268CD64E00DDC5DD /* PaymentRepositoryPaymentSourceTests.swift in Sources */,
+				9637473726C42486007DF92D /* BasketErrorTests.swift in Sources */,
 				961C42B526088357001D8467 /* ReadOnlyCurrentValueTests.swift in Sources */,
 				961C437B26089382001D8467 /* AuthorsationStoreTests.swift in Sources */,
 				4889595F2539D8A500B978A9 /* AnalyticsImplementingTests.swift in Sources */,
@@ -2278,6 +2293,7 @@
 				96302CE626C3E9EA000A91EC /* APITokenInterceptorTests.swift in Sources */,
 				9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */,
 				961C42C42608836E001D8467 /* RemoteDiskCacheDataProvidingTests.swift in Sources */,
+				9637473326C421B5007DF92D /* FulfilmentPointFilterTests.swift in Sources */,
 				961C436326089346001D8467 /* AuthorisationWorkerTests.swift in Sources */,
 				961C4290260882FB001D8467 /* CodableStorageTests.swift in Sources */,
 				488A67CA2541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift in Sources */,

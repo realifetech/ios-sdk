@@ -43,7 +43,7 @@ final class BasketRepositoryQueryTests: XCTestCase {
         sut.getMyBasket { result in
             guard
                 case let .failure(returnedError) = result,
-                case let .regularError(error) = returnedError
+                case let .regularError(error) = returnedError.type
             else {
                 return XCTFail("This test should return failure")
             }
@@ -54,7 +54,9 @@ final class BasketRepositoryQueryTests: XCTestCase {
     }
 
     func test_transformErrorForEveryQueryAndMutation_returnsCustomError_completeWithTransformedError() {
-        BasketRepositoryTestHelper.underTestBasketErrors.forEach {
+        BasketRepositoryTestHelper.underTestBasketErrors.map {
+            BasketError(type: $0, message: "A")
+        }.forEach {
             self.helper_testGetMyBasket_customeError_failureCase($0)
         }
     }
