@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphQL
 import Apollo
 
 public final class BasketRepository {

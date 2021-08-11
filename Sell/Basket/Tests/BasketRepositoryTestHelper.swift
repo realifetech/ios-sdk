@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphQL
 @testable import RealifeTech
 
 enum BasketRepositoryTestHelper {

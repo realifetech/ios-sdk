@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphQL
 
 public enum WidgetFetchType: String, Codable {
 

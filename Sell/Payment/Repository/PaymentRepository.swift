@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphQL
 
 public final class PaymentRepository {
 
@@ -89,7 +90,7 @@ extension PaymentRepository: PaymentProvidable {
         }
     }
 
-    public func createPaymentIntent(
+    public func createMyPaymentIntent(
         input: PaymentIntentInput,
         callback: @escaping (Result<PaymentIntent, Error>) -> Void
     ) {
@@ -112,7 +113,7 @@ extension PaymentRepository: PaymentProvidable {
         }
     }
 
-    public func updatePaymentIntent(
+    public func updateMyPaymentIntent(
         id: String,
         input: PaymentIntentUpdateInput,
         callback: @escaping (Result<PaymentIntent, Error>) -> Void
@@ -125,6 +126,29 @@ extension PaymentRepository: PaymentProvidable {
             case .success(let response):
                 guard
                     let returnedPaymentIntent = response.data?.updateMyPaymentIntent?.fragments.fragmentPaymentIntent,
+                    let paymentIntent = PaymentIntent(response: returnedPaymentIntent)
+                else {
+                    return callback(.failure(GraphQLManagerError.noDataError))
+                }
+                callback(.success(paymentIntent))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
+
+    public func getMyPaymentIntent(
+        id: String,
+        callback: @escaping (Result<PaymentIntent, Error>) -> Void
+    ) {
+        graphQLManager.dispatch(
+            query: ApolloType.GetMyPaymentIntentQuery(id: id),
+            cachePolicy: .fetchIgnoringCacheCompletely
+        ) { result in
+            switch result {
+            case .success(let response):
+                guard
+                    let returnedPaymentIntent = response.data?.getMyPaymentIntent?.fragments.fragmentPaymentIntent,
                     let paymentIntent = PaymentIntent(response: returnedPaymentIntent)
                 else {
                     return callback(.failure(GraphQLManagerError.noDataError))

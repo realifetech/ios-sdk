@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphQL
 
 public typealias Content = WebPageCreatable
 public typealias WebPageType = WebPage.`Type`

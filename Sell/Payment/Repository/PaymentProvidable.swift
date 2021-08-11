@@ -23,12 +23,16 @@ public protocol PaymentProvidable {
         page: Int?,
         callback: @escaping (Result<PaginatedObject<PaymentSource>, Error>) -> Void)
 
-    func createPaymentIntent(
+    func createMyPaymentIntent(
         input: PaymentIntentInput,
         callback: @escaping (Result<PaymentIntent, Error>) -> Void)
 
-    func updatePaymentIntent(
+    func updateMyPaymentIntent(
         id: String,
         input: PaymentIntentUpdateInput,
+        callback: @escaping (Result<PaymentIntent, Error>) -> Void)
+
+    func getMyPaymentIntent(
+        id: String,
         callback: @escaping (Result<PaymentIntent, Error>) -> Void)
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphQL
 
 public struct Basket: Codable, Equatable {
 

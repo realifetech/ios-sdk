@@ -8,6 +8,7 @@
 
 import XCTest
 import Apollo
+import GraphQL
 @testable import RealifeTech
 
 final class BasketRepositoryMutationTests: XCTestCase {

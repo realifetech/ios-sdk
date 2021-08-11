@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import RealifeTech
+import GraphQL
 
 final class AnalyticsFactoryTests: XCTestCase {
 

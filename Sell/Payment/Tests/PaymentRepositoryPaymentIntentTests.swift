@@ -8,20 +8,12 @@
 
 import XCTest
 import Apollo
+import GraphQL
 @testable import RealifeTech
 
 final class PaymentRepositoryPaymentIntentTests: XCTestCase {
 
-    private let fragmentPaymentIntent = ApolloType.FragmentPaymentIntent(
-        id: "1",
-        orderType: .foodAndBeverage,
-        orderId: "1",
-        status: .processing,
-        amount: 100,
-        currency: "GBP",
-        livemode: false)
-
-    func test_createPaymentIntent_graphQLManagerHasData_completeWithSuccessCase() {
+    func test_createMyPaymentIntent_graphQLManagerHasData_completeWithSuccessCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.CreatePaymentIntentMutation.Data.self)
 
@@ -46,7 +38,7 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         graphQLManager.resultReturns = .success(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.createPaymentIntent(input: .dummy) { result in
+        sut.createMyPaymentIntent(input: .dummy) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
@@ -56,7 +48,7 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_createPaymentIntent_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
+    func test_createMyPaymentIntent_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.CreatePaymentIntentMutation.Data.self)
 
@@ -76,7 +68,7 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         graphQLManager.resultReturns = .success(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.createPaymentIntent(input: .dummy) { result in
+        sut.createMyPaymentIntent(input: .dummy) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
             }
@@ -86,14 +78,14 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_createPaymentIntent_graphQLManagerReturnsError_completeWithFailureCase() {
+    func test_createMyPaymentIntent_graphQLManagerReturnsError_completeWithFailureCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.CreatePaymentIntentMutation.Data.self)
 
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.createPaymentIntent(input: .dummy) { result in
+        sut.createMyPaymentIntent(input: .dummy) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
             }
@@ -103,7 +95,7 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_updatePaymentIntent_graphQLManagerHasData_completeWithSuccessCase() {
+    func test_updateMyPaymentIntent_graphQLManagerHasData_completeWithSuccessCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.UpdateMyPaymentIntentMutation.Data.self)
 
@@ -128,7 +120,7 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         graphQLManager.resultReturns = .success(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.updatePaymentIntent(
+        sut.updateMyPaymentIntent(
             id: fragmentPaymentIntent.id,
             input: .dummy
         ) { result in
@@ -141,7 +133,7 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_updatePaymentIntent_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
+    func test_updateMyPaymentIntent_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.UpdateMyPaymentIntentMutation.Data.self)
 
@@ -161,7 +153,7 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         graphQLManager.resultReturns = .success(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.updatePaymentIntent(
+        sut.updateMyPaymentIntent(
             id: fragmentPaymentIntent.id,
             input: .dummy
         ) { result in
@@ -174,14 +166,14 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_updatePaymentIntent_graphQLManagerReturnsError_completeWithFailureCase() {
+    func test_updateMyPaymentIntent_graphQLManagerReturnsError_completeWithFailureCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.UpdateMyPaymentIntentMutation.Data.self)
 
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
-        sut.updatePaymentIntent(
+        sut.updateMyPaymentIntent(
             id: fragmentPaymentIntent.id,
             input: .dummy
         ) { result in
@@ -192,6 +184,102 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_getMyPaymentIntent_graphQLManagerHasData_completeWithSuccessCase() {
+        let (graphQLManager, sut) = PaymentRepositoryTestHelper
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyPaymentIntentQuery.Data.self)
+
+        let getPaymentIntent = ApolloType
+            .GetMyPaymentIntentQuery
+            .Data
+            .GetMyPaymentIntent(unsafeResultMap: [:])
+        var data = ApolloType
+            .GetMyPaymentIntentQuery
+            .Data(getMyPaymentIntent: getPaymentIntent)
+        data.getMyPaymentIntent?.fragments.fragmentPaymentIntent = fragmentPaymentIntent
+        let expectedResult = GraphQLResult<
+            ApolloType
+            .GetMyPaymentIntentQuery
+            .Data
+        >(
+            data: data,
+            extensions: nil,
+            errors: nil,
+            source: .cache,
+            dependentKeys: nil)
+        graphQLManager.resultReturns = .success(expectedResult)
+
+        let expectation = XCTestExpectation(description: "callback is fulfilled")
+        sut.getMyPaymentIntent(id: fragmentPaymentIntent.id) { result in
+            guard case let .success(returnedResponse) = result else {
+                return XCTFail("This test should return success")
+            }
+            XCTAssertEqual(returnedResponse.id, self.fragmentPaymentIntent.id)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_getMyPaymentIntent_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
+        let (graphQLManager, sut) = PaymentRepositoryTestHelper
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyPaymentIntentQuery.Data.self)
+
+        let data = ApolloType
+            .GetMyPaymentIntentQuery
+            .Data(getMyPaymentIntent: nil)
+        let expectedResult = GraphQLResult<
+            ApolloType
+            .GetMyPaymentIntentQuery
+            .Data
+        >(
+            data: data,
+            extensions: nil,
+            errors: nil,
+            source: .cache,
+            dependentKeys: nil)
+        graphQLManager.resultReturns = .success(expectedResult)
+
+        let expectation = XCTestExpectation(description: "callback is fulfilled")
+        sut.getMyPaymentIntent(id: fragmentPaymentIntent.id) { result in
+            guard case let .failure(returnedError) = result else {
+                return XCTFail("This test should return failure")
+            }
+            XCTAssertEqual(returnedError as? GraphQLManagerError, GraphQLManagerError.noDataError)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_getMyPaymentIntent_graphQLManagerReturnsError_completeWithFailureCase() {
+        let (graphQLManager, sut) = PaymentRepositoryTestHelper
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyPaymentIntentQuery.Data.self)
+
+        graphQLManager.resultReturns = .failure(DummyError.failure)
+
+        let expectation = XCTestExpectation(description: "callback is fulfilled")
+        sut.getMyPaymentIntent(id: fragmentPaymentIntent.id) { result in
+            guard case let .failure(returnedError) = result else {
+                return XCTFail("This test should return failure")
+            }
+            XCTAssertEqual(returnedError as? DummyError, DummyError.failure)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+}
+
+private extension PaymentRepositoryPaymentIntentTests {
+
+    var fragmentPaymentIntent: ApolloType.FragmentPaymentIntent {
+        ApolloType.FragmentPaymentIntent(
+            id: "1",
+            orderType: .foodAndBeverage,
+            orderId: "1",
+            status: .processing,
+            amount: 100,
+            currency: "GBP",
+            livemode: false)
     }
 }
 
