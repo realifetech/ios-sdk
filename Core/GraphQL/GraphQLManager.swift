@@ -20,7 +20,7 @@ public protocol GraphQLManageable {
         cacheResultToPersistence: Bool,
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     )
-    func clearAllCachedData()
+    func clearAllCachedData(completion: (() -> Void)?)
 }
 
 public class GraphQLManager {
@@ -70,7 +70,9 @@ extension GraphQLManager: GraphQLManageable {
         }
     }
 
-    public func clearAllCachedData() {
-        client.clearCache()
+    public func clearAllCachedData(completion: (() -> Void)?) {
+        client.clearCache(callbackQueue: .main) { _ in
+            completion?()
+        }
     }
 }

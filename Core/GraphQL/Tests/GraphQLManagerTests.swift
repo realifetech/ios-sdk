@@ -111,6 +111,19 @@ final class GraphQLManagerTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
+
+    func test_clearAllCachedData_clientGetsCalled() {
+        let expectation = XCTestExpectation(description: "callback is fulfilled")
+        let cache = MockCache()
+        let store = ApolloStore(cache: cache)
+        let client = ApolloClient(networkTransport: networkTransport, store: store)
+        sut = GraphQLManager(client: client)
+        sut.clearAllCachedData {
+            XCTAssertTrue(cache.clearGetsCalled)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
 }
 
 private typealias UnderTestQuery = ApolloType.GetFulfilmentPointsQuery
@@ -147,5 +160,24 @@ private extension ApolloType.AnalyticEvent {
             action: "action",
             version: "1",
             timestamp: "now")
+    }
+}
+
+private final class MockCache: NormalizedCache {
+
+    var clearGetsCalled = false
+
+    func loadRecords(forKeys keys: Set<CacheKey>) throws -> [CacheKey: Record] {
+        [:]
+    }
+
+    func merge(records: RecordSet) throws -> Set<CacheKey> {
+        Set<CacheKey>()
+    }
+
+    func removeRecord(for key: CacheKey) throws { }
+
+    func clear() throws {
+        clearGetsCalled = true
     }
 }

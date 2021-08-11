@@ -55,6 +55,6 @@ public class CoreImplementing: Core {
     }
 
     public func clearAllCachedData() {
-        graphQLManager.clearAllCachedData()
+        graphQLManager.clearAllCachedData(completion: nil)
     }
 }
