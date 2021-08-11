@@ -9,9 +9,7 @@ Pod::Spec.new do |spec|
 
   spec.homepage     = "https://realifetech.com"
   spec.authors      = [
-    "Jonathon Albert" => "jonathon.albert@live.com",
-    "Olivier Butler" => "olivier.butler@gmail.com",
-    "Mickey Lee" => "mickey.lee@realifetech.com"
+    "Realife Tech" => "ios@realifetech.com"
   ]
 
   spec.ios.deployment_target = "13.0"
