@@ -75,6 +75,76 @@ public enum ApolloType {
     }
   }
 
+  public enum Language: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case en
+    case fr
+    case nr
+    case de
+    case sv
+    case nb
+    case lt
+    case pt
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "en": self = .en
+        case "fr": self = .fr
+        case "nr": self = .nr
+        case "de": self = .de
+        case "sv": self = .sv
+        case "nb": self = .nb
+        case "lt": self = .lt
+        case "pt": self = .pt
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .en: return "en"
+        case .fr: return "fr"
+        case .nr: return "nr"
+        case .de: return "de"
+        case .sv: return "sv"
+        case .nb: return "nb"
+        case .lt: return "lt"
+        case .pt: return "pt"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: Language, rhs: Language) -> Bool {
+      switch (lhs, rhs) {
+        case (.en, .en): return true
+        case (.fr, .fr): return true
+        case (.nr, .nr): return true
+        case (.de, .de): return true
+        case (.sv, .sv): return true
+        case (.nb, .nb): return true
+        case (.lt, .lt): return true
+        case (.pt, .pt): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [Language] {
+      return [
+        .en,
+        .fr,
+        .nr,
+        .de,
+        .sv,
+        .nb,
+        .lt,
+        .pt,
+      ]
+    }
+  }
+
   public enum ScreenType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
     case discover
@@ -168,6 +238,7 @@ public enum ApolloType {
     case quizTerms
     case quizWinner
     case ntpTerms
+    case purchasesHelp
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -194,6 +265,7 @@ public enum ApolloType {
         case "quizTerms": self = .quizTerms
         case "quizWinner": self = .quizWinner
         case "ntpTerms": self = .ntpTerms
+        case "purchasesHelp": self = .purchasesHelp
         default: self = .__unknown(rawValue)
       }
     }
@@ -221,6 +293,7 @@ public enum ApolloType {
         case .quizTerms: return "quizTerms"
         case .quizWinner: return "quizWinner"
         case .ntpTerms: return "ntpTerms"
+        case .purchasesHelp: return "purchasesHelp"
         case .__unknown(let value): return value
       }
     }
@@ -248,6 +321,7 @@ public enum ApolloType {
         case (.quizTerms, .quizTerms): return true
         case (.quizWinner, .quizWinner): return true
         case (.ntpTerms, .ntpTerms): return true
+        case (.purchasesHelp, .purchasesHelp): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -276,6 +350,7 @@ public enum ApolloType {
         .quizTerms,
         .quizWinner,
         .ntpTerms,
+        .purchasesHelp,
       ]
     }
   }
@@ -535,76 +610,6 @@ public enum ApolloType {
     }
   }
 
-  public enum Language: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-    public typealias RawValue = String
-    case en
-    case fr
-    case nr
-    case de
-    case sv
-    case nb
-    case lt
-    case pt
-    /// Auto generated constant for unknown enum values
-    case __unknown(RawValue)
-
-    public init?(rawValue: RawValue) {
-      switch rawValue {
-        case "en": self = .en
-        case "fr": self = .fr
-        case "nr": self = .nr
-        case "de": self = .de
-        case "sv": self = .sv
-        case "nb": self = .nb
-        case "lt": self = .lt
-        case "pt": self = .pt
-        default: self = .__unknown(rawValue)
-      }
-    }
-
-    public var rawValue: RawValue {
-      switch self {
-        case .en: return "en"
-        case .fr: return "fr"
-        case .nr: return "nr"
-        case .de: return "de"
-        case .sv: return "sv"
-        case .nb: return "nb"
-        case .lt: return "lt"
-        case .pt: return "pt"
-        case .__unknown(let value): return value
-      }
-    }
-
-    public static func == (lhs: Language, rhs: Language) -> Bool {
-      switch (lhs, rhs) {
-        case (.en, .en): return true
-        case (.fr, .fr): return true
-        case (.nr, .nr): return true
-        case (.de, .de): return true
-        case (.sv, .sv): return true
-        case (.nb, .nb): return true
-        case (.lt, .lt): return true
-        case (.pt, .pt): return true
-        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-        default: return false
-      }
-    }
-
-    public static var allCases: [Language] {
-      return [
-        .en,
-        .fr,
-        .nr,
-        .de,
-        .sv,
-        .nb,
-        .lt,
-        .pt,
-      ]
-    }
-  }
-
   public struct BasketInput: GraphQLMapConvertible {
     public var graphQLMap: GraphQLMap
 
@@ -615,7 +620,7 @@ public enum ApolloType {
     ///   - fulfilmentPoint
     ///   - seatInfo
     ///   - items
-    public init(collectionDate: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<String?> = nil, timeslot: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: Swift.Optional<GraphQLID?> = nil, seatInfo: Swift.Optional<[SeatInfoInput?]?> = nil, items: Swift.Optional<[BasketItemInput?]?> = nil) {
+    public init(collectionDate: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> = nil, timeslot: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: GraphQLID, seatInfo: Swift.Optional<SeatInfoInput?> = nil, items: [BasketItemInput?]) {
       graphQLMap = ["collectionDate": collectionDate, "collectionPreferenceType": collectionPreferenceType, "timeslot": timeslot, "fulfilmentPoint": fulfilmentPoint, "seatInfo": seatInfo, "items": items]
     }
 
@@ -628,9 +633,9 @@ public enum ApolloType {
       }
     }
 
-    public var collectionPreferenceType: Swift.Optional<String?> {
+    public var collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> {
       get {
-        return graphQLMap["collectionPreferenceType"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+        return graphQLMap["collectionPreferenceType"] as? Swift.Optional<CollectionPreferenceType?> ?? Swift.Optional<CollectionPreferenceType?>.none
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "collectionPreferenceType")
@@ -646,27 +651,27 @@ public enum ApolloType {
       }
     }
 
-    public var fulfilmentPoint: Swift.Optional<GraphQLID?> {
+    public var fulfilmentPoint: GraphQLID {
       get {
-        return graphQLMap["fulfilmentPoint"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
+        return graphQLMap["fulfilmentPoint"] as! GraphQLID
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "fulfilmentPoint")
       }
     }
 
-    public var seatInfo: Swift.Optional<[SeatInfoInput?]?> {
+    public var seatInfo: Swift.Optional<SeatInfoInput?> {
       get {
-        return graphQLMap["seatInfo"] as? Swift.Optional<[SeatInfoInput?]?> ?? Swift.Optional<[SeatInfoInput?]?>.none
+        return graphQLMap["seatInfo"] as? Swift.Optional<SeatInfoInput?> ?? Swift.Optional<SeatInfoInput?>.none
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "seatInfo")
       }
     }
 
-    public var items: Swift.Optional<[BasketItemInput?]?> {
+    public var items: [BasketItemInput?] {
       get {
-        return graphQLMap["items"] as? Swift.Optional<[BasketItemInput?]?> ?? Swift.Optional<[BasketItemInput?]?>.none
+        return graphQLMap["items"] as! [BasketItemInput?]
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "items")
@@ -674,31 +679,96 @@ public enum ApolloType {
     }
   }
 
+  public enum CollectionPreferenceType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case checkin
+    case asap
+    case preorder
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "CHECKIN": self = .checkin
+        case "ASAP": self = .asap
+        case "PREORDER": self = .preorder
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .checkin: return "CHECKIN"
+        case .asap: return "ASAP"
+        case .preorder: return "PREORDER"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: CollectionPreferenceType, rhs: CollectionPreferenceType) -> Bool {
+      switch (lhs, rhs) {
+        case (.checkin, .checkin): return true
+        case (.asap, .asap): return true
+        case (.preorder, .preorder): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [CollectionPreferenceType] {
+      return [
+        .checkin,
+        .asap,
+        .preorder,
+      ]
+    }
+  }
+
   public struct SeatInfoInput: GraphQLMapConvertible {
     public var graphQLMap: GraphQLMap
 
     /// - Parameters:
-    ///   - key
-    ///   - value
-    public init(key: Swift.Optional<String?> = nil, value: Swift.Optional<String?> = nil) {
-      graphQLMap = ["key": key, "value": value]
+    ///   - row
+    ///   - seat
+    ///   - block
+    ///   - table
+    public init(row: Swift.Optional<String?> = nil, seat: Swift.Optional<String?> = nil, block: Swift.Optional<String?> = nil, table: Swift.Optional<String?> = nil) {
+      graphQLMap = ["row": row, "seat": seat, "block": block, "table": table]
     }
 
-    public var key: Swift.Optional<String?> {
+    public var row: Swift.Optional<String?> {
       get {
-        return graphQLMap["key"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+        return graphQLMap["row"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
       }
       set {
-        graphQLMap.updateValue(newValue, forKey: "key")
+        graphQLMap.updateValue(newValue, forKey: "row")
       }
     }
 
-    public var value: Swift.Optional<String?> {
+    public var seat: Swift.Optional<String?> {
       get {
-        return graphQLMap["value"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+        return graphQLMap["seat"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
       }
       set {
-        graphQLMap.updateValue(newValue, forKey: "value")
+        graphQLMap.updateValue(newValue, forKey: "seat")
+      }
+    }
+
+    public var block: Swift.Optional<String?> {
+      get {
+        return graphQLMap["block"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "block")
+      }
+    }
+
+    public var table: Swift.Optional<String?> {
+      get {
+        return graphQLMap["table"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "table")
       }
     }
   }
@@ -980,18 +1050,47 @@ public enum ApolloType {
     }
   }
 
+  public struct FilterParam: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - key
+    ///   - value
+    public init(key: Swift.Optional<String?> = nil, value: String) {
+      graphQLMap = ["key": key, "value": value]
+    }
+
+    public var key: Swift.Optional<String?> {
+      get {
+        return graphQLMap["key"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "key")
+      }
+    }
+
+    public var value: String {
+      get {
+        return graphQLMap["value"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "value")
+      }
+    }
+  }
+
   public struct FulfilmentPointFilter: GraphQLMapConvertible {
     public var graphQLMap: GraphQLMap
 
     /// - Parameters:
     ///   - categories
-    public init(categories: Swift.Optional<GraphQLID?> = nil) {
+    public init(categories: Swift.Optional<[GraphQLID]?> = nil) {
       graphQLMap = ["categories": categories]
     }
 
-    public var categories: Swift.Optional<GraphQLID?> {
+    public var categories: Swift.Optional<[GraphQLID]?> {
       get {
-        return graphQLMap["categories"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
+        return graphQLMap["categories"] as? Swift.Optional<[GraphQLID]?> ?? Swift.Optional<[GraphQLID]?>.none
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "categories")
@@ -1024,6 +1123,45 @@ public enum ApolloType {
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "categories")
+      }
+    }
+  }
+
+  public struct OrderUpdateInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - status
+    ///   - collectionPreferenceType
+    ///   - checkInTime
+    public init(status: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> = nil, checkInTime: Swift.Optional<String?> = nil) {
+      graphQLMap = ["status": status, "collectionPreferenceType": collectionPreferenceType, "checkInTime": checkInTime]
+    }
+
+    public var status: Swift.Optional<String?> {
+      get {
+        return graphQLMap["status"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "status")
+      }
+    }
+
+    public var collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> {
+      get {
+        return graphQLMap["collectionPreferenceType"] as? Swift.Optional<CollectionPreferenceType?> ?? Swift.Optional<CollectionPreferenceType?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "collectionPreferenceType")
+      }
+    }
+
+    public var checkInTime: Swift.Optional<String?> {
+      get {
+        return graphQLMap["checkInTime"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "checkInTime")
       }
     }
   }

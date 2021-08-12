@@ -3,20 +3,30 @@ fragment FragmentBasket on Basket {
   discountAmount
   netAmount
   seatInfo {
-    key
-    value
+    ...FragmentSeatInfo
   }
-  timeslot { ...FragmentTimeslot }
+  timeslot {
+    ...FragmentTimeslot
+  }
   collectionDate
+  collectionPreferenceType
   items {
     id
     price
     modifierItemsPrice
     quantity
     totalPrice
-    fulfilmentPoint { ...FragmentFulfilmentPoint }
-    productVariant { ...FragmentProductVariant }
-    product { ...FragmentProduct }
-    productModifierItems { ...FragmentProductModifierItemSelection }
+    fulfilmentPoint {
+      ...FragmentFulfilmentPoint
+    }
+    productVariant {
+      ...FragmentProductVariant
+    }
+    product {
+      ...FragmentProduct
+    }
+    productModifierItems {
+      ...FragmentProductModifierItemSelection
+    }
   }
 }

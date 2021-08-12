@@ -13,7 +13,7 @@ public extension ApolloType {
       mutation createPaymentIntent($input: PaymentIntentInput!) {
         createPaymentIntent(input: $input) {
           __typename
-          ...paymentIntentDetails
+          ...FragmentPaymentIntent
         }
       }
       """
@@ -22,9 +22,9 @@ public extension ApolloType {
 
     public var queryDocument: String {
       var document: String = operationDefinition
-      document.append("\n" + PaymentIntentDetails.fragmentDefinition)
-      document.append("\n" + PaymentSourceDetails.fragmentDefinition)
-      document.append("\n" + CardDetails.fragmentDefinition)
+      document.append("\n" + FragmentPaymentIntent.fragmentDefinition)
+      document.append("\n" + FragmentPaymentSource.fragmentDefinition)
+      document.append("\n" + FragmentCard.fragmentDefinition)
       return document
     }
 
@@ -72,7 +72,7 @@ public extension ApolloType {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLFragmentSpread(PaymentIntentDetails.self),
+            GraphQLFragmentSpread(FragmentPaymentIntent.self),
           ]
         }
 
@@ -107,9 +107,9 @@ public extension ApolloType {
             self.resultMap = unsafeResultMap
           }
 
-          public var paymentIntentDetails: PaymentIntentDetails {
+          public var fragmentPaymentIntent: FragmentPaymentIntent {
             get {
-              return PaymentIntentDetails(unsafeResultMap: resultMap)
+              return FragmentPaymentIntent(unsafeResultMap: resultMap)
             }
             set {
               resultMap += newValue.resultMap

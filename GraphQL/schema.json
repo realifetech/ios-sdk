@@ -597,6 +597,24 @@
                   "ofType": null
                 },
                 "defaultValue": "null"
+              },
+              {
+                "name": "params",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "FilterParam",
+                      "ofType": null
+                    }
+                  }
+                },
+                "defaultValue": "[]"
               }
             ],
             "type": {
@@ -624,6 +642,24 @@
                   }
                 },
                 "defaultValue": null
+              },
+              {
+                "name": "params",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "FilterParam",
+                      "ofType": null
+                    }
+                  }
+                },
+                "defaultValue": "[]"
               }
             ],
             "type": {
@@ -735,6 +771,24 @@
                   "ofType": null
                 },
                 "defaultValue": "null"
+              },
+              {
+                "name": "params",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "FilterParam",
+                      "ofType": null
+                    }
+                  }
+                },
+                "defaultValue": "[]"
               }
             ],
             "type": {
@@ -762,6 +816,24 @@
                   }
                 },
                 "defaultValue": null
+              },
+              {
+                "name": "params",
+                "description": null,
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "FilterParam",
+                      "ofType": null
+                    }
+                  }
+                },
+                "defaultValue": "[]"
               }
             ],
             "type": {
@@ -1221,8 +1293,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "OBJECT",
+              "name": "UserConsent",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1641,6 +1713,57 @@
         "fields": null,
         "inputFields": null,
         "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "UserConsent",
+        "description": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "marketingConsent",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "analysisConsent",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -2387,6 +2510,12 @@
           },
           {
             "name": "ntpTerms",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "purchasesHelp",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -5940,9 +6069,17 @@
             "name": "categories",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
             },
             "defaultValue": null
           }
@@ -6306,13 +6443,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "CollectionNotes",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "CollectionNotes",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -7561,19 +7694,27 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "SeatInfo",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "SeatInfo",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "collectionPreferenceType",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "ENUM",
+              "name": "CollectionPreferenceType",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "checkInTime",
             "description": null,
             "args": [],
             "type": {
@@ -8142,13 +8283,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "SeatInfo",
-                "ofType": null
-              }
+              "kind": "OBJECT",
+              "name": "SeatInfo",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -8182,8 +8319,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "ENUM",
+              "name": "CollectionPreferenceType",
               "ofType": null
             },
             "isDeprecated": false,
@@ -8344,7 +8481,7 @@
         "description": null,
         "fields": [
           {
-            "name": "key",
+            "name": "row",
             "description": null,
             "args": [],
             "type": {
@@ -8356,7 +8493,31 @@
             "deprecationReason": null
           },
           {
-            "name": "value",
+            "name": "seat",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "block",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "table",
             "description": null,
             "args": [],
             "type": {
@@ -8393,8 +8554,8 @@
             "name": "collectionPreferenceType",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "ENUM",
+              "name": "CollectionPreferenceType",
               "ofType": null
             },
             "defaultValue": null
@@ -8413,9 +8574,13 @@
             "name": "fulfilmentPoint",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -8423,13 +8588,9 @@
             "name": "seatInfo",
             "description": null,
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "SeatInfoInput",
-                "ofType": null
-              }
+              "kind": "INPUT_OBJECT",
+              "name": "SeatInfoInput",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -8437,12 +8598,16 @@
             "name": "items",
             "description": null,
             "type": {
-              "kind": "LIST",
+              "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "BasketItemInput",
-                "ofType": null
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "BasketItemInput",
+                  "ofType": null
+                }
               }
             },
             "defaultValue": null
@@ -8472,8 +8637,8 @@
             "name": "collectionPreferenceType",
             "description": null,
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "ENUM",
+              "name": "CollectionPreferenceType",
               "ofType": null
             },
             "defaultValue": null
@@ -8500,7 +8665,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "key",
+            "name": "row",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8510,7 +8675,27 @@
             "defaultValue": null
           },
           {
-            "name": "value",
+            "name": "seat",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "block",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "table",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8864,6 +9049,35 @@
         "possibleTypes": null
       },
       {
+        "kind": "ENUM",
+        "name": "CollectionPreferenceType",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "CHECKIN",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ASAP",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "PREORDER",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "INPUT_OBJECT",
         "name": "OrderFilter",
         "description": null,
@@ -8878,6 +9092,41 @@
               "ofType": {
                 "kind": "SCALAR",
                 "name": "ID",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "FilterParam",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "key",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "value",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               }
             },

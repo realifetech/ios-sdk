@@ -1,5 +1,5 @@
 mutation createPaymentIntent($input: PaymentIntentInput!) {
   createPaymentIntent(input: $input) {
-    ...paymentIntentDetails
+    ...FragmentPaymentIntent
   }
 }

@@ -10,5 +10,4 @@ import Foundation
 import GraphQL
 
 public typealias Content = WebPageCreatable
-public typealias ApolloWebPageType = ApolloType.WebPageType
 public typealias WebPageType = WebPage.`Type`

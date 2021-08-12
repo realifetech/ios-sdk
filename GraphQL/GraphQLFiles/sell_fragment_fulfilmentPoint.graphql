@@ -21,16 +21,16 @@ fragment FragmentFulfilmentPoint on FulfilmentPoint {
       VIRTUAL_QUEUE_CHECKIN
     }
   }
-  seatForm { 
-    ...FragmentForm 
+  seatForm {
+    ...FragmentForm
   }
   categories {
-    ...FragmentFulfilmentPointCategory 
-    }
-  venue {
-    ...FragmentVenue 
+    ...FragmentFulfilmentPointCategory
   }
-  timeslots { 
-    ...FragmentTimeslot 
+  venue {
+    ...FragmentVenue
+  }
+  timeslots {
+    ...FragmentTimeslot
   }
 }

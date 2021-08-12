@@ -63,8 +63,10 @@ public extension ApolloType {
         }
         translations {
           __typename
+          id
           language
           title
+          description
         }
       }
       """
@@ -713,8 +715,10 @@ public extension ApolloType {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("language", type: .scalar(String.self)),
           GraphQLField("title", type: .scalar(String.self)),
+          GraphQLField("description", type: .scalar(String.self)),
         ]
       }
 
@@ -724,8 +728,8 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(language: String? = nil, title: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "ProductTranslation", "language": language, "title": title])
+      public init(id: GraphQLID, language: String? = nil, title: String? = nil, description: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "ProductTranslation", "id": id, "language": language, "title": title, "description": description])
       }
 
       public var __typename: String {
@@ -734,6 +738,15 @@ public extension ApolloType {
         }
         set {
           resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
@@ -752,6 +765,15 @@ public extension ApolloType {
         }
         set {
           resultMap.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var description: String? {
+        get {
+          return resultMap["description"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "description")
         }
       }
     }

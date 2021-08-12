@@ -10,10 +10,19 @@ public extension ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query getProducts($pageSize: Int!, $page: Int, $filters: ProductFilter) {
-        getProducts(pageSize: $pageSize, page: $page, filters: $filters) {
+      query getProducts($pageSize: Int!, $page: Int, $filters: ProductFilter, $params: [FilterParam!]) {
+        getProducts(
+          pageSize: $pageSize
+          page: $page
+          filters: $filters
+          params: $params
+        ) {
           __typename
-          ...FragmentProducts
+          edges {
+            __typename
+            ...FragmentProduct
+          }
+          nextPage
         }
       }
       """
@@ -22,7 +31,6 @@ public extension ApolloType {
 
     public var queryDocument: String {
       var document: String = operationDefinition
-      document.append("\n" + FragmentProducts.fragmentDefinition)
       document.append("\n" + FragmentProduct.fragmentDefinition)
       document.append("\n" + FragmentProductModifierItem.fragmentDefinition)
       document.append("\n" + FragmentProductVariant.fragmentDefinition)
@@ -37,15 +45,17 @@ public extension ApolloType {
     public var pageSize: Int
     public var page: Int?
     public var filters: ProductFilter?
+    public var params: [FilterParam]?
 
-    public init(pageSize: Int, page: Int? = nil, filters: ProductFilter? = nil) {
+    public init(pageSize: Int, page: Int? = nil, filters: ProductFilter? = nil, params: [FilterParam]?) {
       self.pageSize = pageSize
       self.page = page
       self.filters = filters
+      self.params = params
     }
 
     public var variables: GraphQLMap? {
-      return ["pageSize": pageSize, "page": page, "filters": filters]
+      return ["pageSize": pageSize, "page": page, "filters": filters, "params": params]
     }
 
     public struct Data: GraphQLSelectionSet {
@@ -53,7 +63,7 @@ public extension ApolloType {
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("getProducts", arguments: ["pageSize": GraphQLVariable("pageSize"), "page": GraphQLVariable("page"), "filters": GraphQLVariable("filters")], type: .object(GetProduct.selections)),
+          GraphQLField("getProducts", arguments: ["pageSize": GraphQLVariable("pageSize"), "page": GraphQLVariable("page"), "filters": GraphQLVariable("filters"), "params": GraphQLVariable("params")], type: .object(GetProduct.selections)),
         ]
       }
 
@@ -82,7 +92,8 @@ public extension ApolloType {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLFragmentSpread(FragmentProducts.self),
+            GraphQLField("edges", type: .list(.object(Edge.selections))),
+            GraphQLField("nextPage", type: .scalar(Int.self)),
           ]
         }
 
@@ -90,6 +101,10 @@ public extension ApolloType {
 
         public init(unsafeResultMap: ResultMap) {
           self.resultMap = unsafeResultMap
+        }
+
+        public init(edges: [Edge?]? = nil, nextPage: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "ProductEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, "nextPage": nextPage])
         }
 
         public var __typename: String {
@@ -101,28 +116,72 @@ public extension ApolloType {
           }
         }
 
-        public var fragments: Fragments {
+        public var edges: [Edge?]? {
           get {
-            return Fragments(unsafeResultMap: resultMap)
+            return (resultMap["edges"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Edge?] in value.map { (value: ResultMap?) -> Edge? in value.flatMap { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) } } }
           }
           set {
-            resultMap += newValue.resultMap
+            resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
           }
         }
 
-        public struct Fragments {
+        public var nextPage: Int? {
+          get {
+            return resultMap["nextPage"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "nextPage")
+          }
+        }
+
+        public struct Edge: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Product"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLFragmentSpread(FragmentProduct.self),
+            ]
+          }
+
           public private(set) var resultMap: ResultMap
 
           public init(unsafeResultMap: ResultMap) {
             self.resultMap = unsafeResultMap
           }
 
-          public var fragmentProducts: FragmentProducts {
+          public var __typename: String {
             get {
-              return FragmentProducts(unsafeResultMap: resultMap)
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(unsafeResultMap: resultMap)
             }
             set {
               resultMap += newValue.resultMap
+            }
+          }
+
+          public struct Fragments {
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public var fragmentProduct: FragmentProduct {
+              get {
+                return FragmentProduct(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
             }
           }
         }
