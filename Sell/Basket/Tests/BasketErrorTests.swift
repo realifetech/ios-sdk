@@ -40,6 +40,7 @@ final class BasketErrorTests: XCTestCase {
     func test_combinedErrorMessage_multipleErrors_returnJoinedErrorMessages() {
         let sut = cases.map { BasketError(type: $0.0, message: $0.1) }
         let expectedMessage = Set(cases.compactMap { $0.1 })
+            .sorted()
             .joined(separator: "\n")
         XCTAssertEqual(sut.combinedErrorMessage, expectedMessage)
     }

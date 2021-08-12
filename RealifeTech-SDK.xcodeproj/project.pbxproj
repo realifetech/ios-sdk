@@ -251,6 +251,9 @@
 		9637473326C421B5007DF92D /* FulfilmentPointFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473226C421B5007DF92D /* FulfilmentPointFilterTests.swift */; };
 		9637473526C42237007DF92D /* TimeslotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473426C42237007DF92D /* TimeslotTests.swift */; };
 		9637473726C42486007DF92D /* BasketErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473626C42486007DF92D /* BasketErrorTests.swift */; };
+		9637474B26C52EB4007DF92D /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637474A26C52EB4007DF92D /* OrderTests.swift */; };
+		9637474D26C53D83007DF92D /* OrderItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637474C26C53D83007DF92D /* OrderItemTests.swift */; };
+		9637474F26C53E5D007DF92D /* OrderModelTestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637474E26C53E5D007DF92D /* OrderModelTestsHelper.swift */; };
 		9647D9AA26861D11006F5B7F /* BasketRepositoryMutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */; };
 		9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9AB26861DF2006F5B7F /* BasketRepositoryTestHelper.swift */; };
 		9647D9AE26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9AD26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift */; };
@@ -588,6 +591,9 @@
 		9637473226C421B5007DF92D /* FulfilmentPointFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointFilterTests.swift; sourceTree = "<group>"; };
 		9637473426C42237007DF92D /* TimeslotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotTests.swift; sourceTree = "<group>"; };
 		9637473626C42486007DF92D /* BasketErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketErrorTests.swift; sourceTree = "<group>"; };
+		9637474A26C52EB4007DF92D /* OrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
+		9637474C26C53D83007DF92D /* OrderItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemTests.swift; sourceTree = "<group>"; };
+		9637474E26C53E5D007DF92D /* OrderModelTestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModelTestsHelper.swift; sourceTree = "<group>"; };
 		9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryMutationTests.swift; sourceTree = "<group>"; };
 		9647D9AB26861DF2006F5B7F /* BasketRepositoryTestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryTestHelper.swift; sourceTree = "<group>"; };
 		9647D9AD26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryMutationErrorTests.swift; sourceTree = "<group>"; };
@@ -999,7 +1005,10 @@
 		961B01A82689F83800D8C481 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9637474C26C53D83007DF92D /* OrderItemTests.swift */,
+				9637474E26C53E5D007DF92D /* OrderModelTestsHelper.swift */,
 				961B01A92689F84D00D8C481 /* OrderRepositoryTests.swift */,
+				9637474A26C52EB4007DF92D /* OrderTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2240,6 +2249,7 @@
 				964D292D269345CF00A69FBC /* CanvasRepositoryScreenTests.swift in Sources */,
 				96302CE426C3E899000A91EC /* GraphQLInterceptorProviderTests.swift in Sources */,
 				961C42BA26088368001D8467 /* LocalDiskCacheDataProvidingTests.swift in Sources */,
+				9637474B26C52EB4007DF92D /* OrderTests.swift in Sources */,
 				9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */,
 				96302CEF26C414E0000A91EC /* BasketItemTests.swift in Sources */,
 				961C42C726088371001D8467 /* DiskCacheCodableInterfaceTests.swift in Sources */,
@@ -2296,6 +2306,8 @@
 				9637473326C421B5007DF92D /* FulfilmentPointFilterTests.swift in Sources */,
 				961C436326089346001D8467 /* AuthorisationWorkerTests.swift in Sources */,
 				961C4290260882FB001D8467 /* CodableStorageTests.swift in Sources */,
+				9637474D26C53D83007DF92D /* OrderItemTests.swift in Sources */,
+				9637474F26C53E5D007DF92D /* OrderModelTestsHelper.swift in Sources */,
 				488A67CA2541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift in Sources */,
 				961C42CF26088377001D8467 /* DiskCacheTests.swift in Sources */,
 				961C43782608937C001D8467 /* RequestHeaderTests.swift in Sources */,
