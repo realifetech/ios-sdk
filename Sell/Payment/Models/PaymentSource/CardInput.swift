@@ -15,7 +15,7 @@ public struct CardInput: Equatable {
     public let numberToken: String
     public let expMonth: String
     public let expYear: String
-    public let securityCodeToken: String
+    public var securityCodeToken: String
     public let last4: String
 
     public init(
