@@ -11,7 +11,7 @@ import GraphQL
 
 public enum OrderType: String, Codable {
 
-    case foodAndBeverage
+    case foodAndBeverage = "food_and_beverage"
     case ticket
     case unknown
 
