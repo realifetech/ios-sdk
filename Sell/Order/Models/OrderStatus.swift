@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !COCOAPODS
 import GraphQL
+#endif
 
 public enum OrderStatus: String, Codable {
 

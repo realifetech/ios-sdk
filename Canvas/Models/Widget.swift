@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !COCOAPODS
 import GraphQL
+#endif
 
 public struct Widget: Codable, Equatable {
 

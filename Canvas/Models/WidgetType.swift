@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !COCOAPODS
 import GraphQL
+#endif
 
 public enum WidgetType: String, Codable {
     case unknown
