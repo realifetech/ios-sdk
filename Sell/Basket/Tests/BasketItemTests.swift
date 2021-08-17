@@ -34,7 +34,7 @@ final class BasketItemTests: XCTestCase {
         XCTAssertEqual(sut.productModifierItems?.count, item.productModifierItems?.count)
     }
 
-    func test_initWillApolloFragment_withNilResponse_returnNil() {
+    func test_initWithApolloFragment_withNilResponse_returnNil() {
         XCTAssertNil(BasketItem(response: nil))
     }
 }
