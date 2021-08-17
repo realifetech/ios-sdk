@@ -14,11 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let configuration = CoreConfiguration(
+        let configuration = SDKConfiguration(
             appCode: "",
             clientSecret: "",
             apiUrl: "",
-            graphQLApiUrl: "")
+            graphQLApiUrlString: "")
         RealifeTech.configureSDK(with: configuration)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {

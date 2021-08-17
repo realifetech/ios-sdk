@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !COCOAPODS
 import GraphQL
+#endif
 
 public enum CancellationReason: String, Codable {
 
