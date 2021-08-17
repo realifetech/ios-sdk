@@ -85,6 +85,9 @@
 		48EFE25B2539E56000CC6E58 /* GeneralImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2592539E56000CC6E58 /* GeneralImplementingTests.swift */; };
 		48EFE2612539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE25F2539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift */; };
 		48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFE2622539E5A100CC6E58 /* MockReachabilityChecker.swift */; };
+		960415D926CBD82B0096DF80 /* WebViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960415D826CBD82B0096DF80 /* WebViewWrapper.swift */; };
+		960415DB26CBD8B20096DF80 /* WebViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960415DA26CBD8B20096DF80 /* WebViewStore.swift */; };
+		960415DD26CBDFFF0096DF80 /* OrderingJourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960415DC26CBDFFF0096DF80 /* OrderingJourneyView.swift */; };
 		9606ED81267B4FE400ED24D0 /* Sell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED80267B4FE400ED24D0 /* Sell.swift */; };
 		9606ED84267B501800ED24D0 /* ProductProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED83267B501800ED24D0 /* ProductProvidable.swift */; };
 		9606ED86267B504900ED24D0 /* PaginatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606ED85267B504900ED24D0 /* PaginatedObject.swift */; };
@@ -416,6 +419,9 @@
 		675C0F74BE68A8B697D67EE8 /* Pods-GraphQL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL.release.xcconfig"; path = "Target Support Files/Pods-GraphQL/Pods-GraphQL.release.xcconfig"; sourceTree = "<group>"; };
 		7D9D16B2C12DF74A0CF791FB /* Pods_GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech_RealifeTechTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		960415D826CBD82B0096DF80 /* WebViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewWrapper.swift; sourceTree = "<group>"; };
+		960415DA26CBD8B20096DF80 /* WebViewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewStore.swift; sourceTree = "<group>"; };
+		960415DC26CBDFFF0096DF80 /* OrderingJourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyView.swift; sourceTree = "<group>"; };
 		9606ED80267B4FE400ED24D0 /* Sell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sell.swift; sourceTree = "<group>"; };
 		9606ED83267B501800ED24D0 /* ProductProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductProvidable.swift; sourceTree = "<group>"; };
 		9606ED85267B504900ED24D0 /* PaginatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedObject.swift; sourceTree = "<group>"; };
@@ -871,9 +877,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		960415D726CBD78B0096DF80 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				960415DC26CBDFFF0096DF80 /* OrderingJourneyView.swift */,
+				960415DA26CBD8B20096DF80 /* WebViewStore.swift */,
+				960415D826CBD82B0096DF80 /* WebViewWrapper.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		9606ED7F267B4FD300ED24D0 /* Sell */ = {
 			isa = PBXGroup;
 			children = (
+				960415D726CBD78B0096DF80 /* WebView */,
 				9606ED80267B4FE400ED24D0 /* Sell.swift */,
 				9606ED98267B64B600ED24D0 /* SellFactory.swift */,
 				9606ED96267B646F00ED24D0 /* SellImplementing.swift */,
@@ -2045,6 +2062,7 @@
 				961C41E5260882BA001D8467 /* OAuthRepository.swift in Sources */,
 				961C41EF260882BB001D8467 /* GraphNetworkCachePolicy.swift in Sources */,
 				961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */,
+				960415DD26CBDFFF0096DF80 /* OrderingJourneyView.swift in Sources */,
 				961C4263260882C8001D8467 /* CodableStore.swift in Sources */,
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
@@ -2149,6 +2167,7 @@
 				961C1CA32683402C00BE6F3B /* ProductModifierList.swift in Sources */,
 				961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */,
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
+				960415D926CBD82B0096DF80 /* WebViewWrapper.swift in Sources */,
 				961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */,
 				9687486D268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift in Sources */,
 				961B01A32689F3D300D8C481 /* OrderUpdateInput.swift in Sources */,
@@ -2182,6 +2201,7 @@
 				964D291A269335E000A69FBC /* WidgetProvidable.swift in Sources */,
 				96874873268CC2A800DDC5DD /* PaymentIntent.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
+				960415DB26CBD8B20096DF80 /* WebViewStore.swift in Sources */,
 				961C1CC326839D7300BE6F3B /* BasketInput.swift in Sources */,
 				961C4217260882BB001D8467 /* APIError.swift in Sources */,
 				487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */,
