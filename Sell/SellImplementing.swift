@@ -6,7 +6,7 @@
 //  Copyright © 2021 Realife Tech. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 public class SellImplementing: Sell {
 
@@ -28,5 +28,13 @@ public class SellImplementing: Sell {
         self.order = order
         self.fulfilmentPoint = fulfilmentPoint
         self.payment = payment
+    }
+
+    public func createOrderingJourneyView() -> UIHostingController<OrderingJourneyView> {
+        return OrderingJourneyViewController(urlString: "https://apple.com")
+    }
+
+    public func createOrderingJourneyView() -> AnyView {
+        return AnyView(OrderingJourneyView(urlString: "https://apple.com"))
     }
 }

@@ -14,6 +14,8 @@ public struct OrderingJourneyView: View {
     @ObservedObject private var store = WebViewStore()
     @State private var canGoBack = false
     @State private var canGoForward = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var dismiss: (() -> Void)?
 
     public let urlRequest: URLRequest
 
@@ -44,7 +46,10 @@ public struct OrderingJourneyView: View {
                 canGoForward = value
             }
             .navigationBarTitle("", displayMode: .inline)
-            .navigationBarItems(trailing: AnyView(makeReloadButton()))
+            .navigationBarItems(
+                leading: AnyView(makeCloseButton()),
+                trailing: AnyView(makeReloadButton())
+            )
         }
     }
 }
@@ -68,6 +73,14 @@ private extension OrderingJourneyView {
             }
             .disabled(!canGoForward)
             Spacer()
+        }
+    }
+
+    func makeCloseButton() -> some View {
+        Button {
+            dismiss?() ?? presentationMode.wrappedValue.dismiss()
+        } label: {
+            Image(systemName: "xmark")
         }
     }
 

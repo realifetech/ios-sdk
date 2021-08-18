@@ -8,6 +8,7 @@
 
 import UIKit
 import RealifeTech
+import SwiftUI
 
 class ViewController: UIViewController {
 
@@ -66,16 +67,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var audienceIdTextField: UITextField!
 
     @IBAction func checkAudienceButtonTapped(_ sender: Any) {
-        checkIfSDKIsReady()
-        updateLoadingSpinnerVisibility(shouldShow: true)
-        RealifeTech.Audiences.deviceIsMemberOfAudience(audienceId: audienceIdTextField.text ?? "") { [self] result in
-            switch result {
-            case .success(let isMember):
-                showAlertController(title: "Audience", message: "Success with result isMember: \(isMember)")
-            case .failure(let error):
-                showAlertController(title: "Audience", message: "Error with: \(error.localizedDescription)")
-            }
-        }
+        let controller = RealifeTech.Sell.createOrderingJourneyView()
+        present(controller, animated: true, completion: nil)
+//        checkIfSDKIsReady()
+//        updateLoadingSpinnerVisibility(shouldShow: true)
+//        RealifeTech.Audiences.deviceIsMemberOfAudience(audienceId: audienceIdTextField.text ?? "") { [self] result in
+//            switch result {
+//            case .success(let isMember):
+//                showAlertController(title: "Audience", message: "Success with result isMember: \(isMember)")
+//            case .failure(let error):
+//                showAlertController(title: "Audience", message: "Error with: \(error.localizedDescription)")
+//            }
+//        }
     }
 
     // MARK: - Content (WebPage)
