@@ -16,7 +16,7 @@ public class OrderingJourneyViewController: UIHostingController<OrderingJourneyV
     }
 
     @objc required dynamic init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 
     func dismiss() {

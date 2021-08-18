@@ -18,6 +18,10 @@ final class OrderingJourneyViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.rootView.dismiss)
     }
 
+    func test_initWithCoder_returnsNil() {
+        XCTAssertNil(OrderingJourneyViewController(coder: NSCoder()))
+    }
+
     func test_dismiss_viewControllerIsDismissed() {
         let sut = MockViewController(urlString: urlString)
         sut.dismiss()
