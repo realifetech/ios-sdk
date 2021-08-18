@@ -15,6 +15,7 @@ public struct OrderingJourneyView: View {
     @State private var canGoBack = false
     @State private var canGoForward = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     var dismiss: (() -> Void)?
 
     public let urlRequest: URLRequest

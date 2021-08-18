@@ -31,12 +31,11 @@ struct WebViewWrapper: UIViewRepresentable {
 
     func makeUIView(context: Context) -> WKWebView {
         webView.navigationDelegate = context.coordinator
+        webView.load(urlRequest)
         return webView
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.load(urlRequest)
-    }
+    func updateUIView(_ uiView: WKWebView, context: Context) { }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -88,6 +87,8 @@ extension WebViewWrapper.Coordinator: WKNavigationDelegate {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { navigation in
                 switch navigation {
+                case .initial:
+                    break
                 case .backward:
                     if webView.canGoBack {
                         webView.goBack()

@@ -30,7 +30,7 @@ public class SellImplementing: Sell {
         self.payment = payment
     }
 
-    public func createOrderingJourneyView() -> UIHostingController<OrderingJourneyView> {
+    public func createOrderingJourneyViewController() -> UIHostingController<OrderingJourneyView> {
         return OrderingJourneyViewController(urlString: "https://apple.com")
     }
 

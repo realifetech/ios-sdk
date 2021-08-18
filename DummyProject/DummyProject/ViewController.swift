@@ -67,7 +67,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var audienceIdTextField: UITextField!
 
     @IBAction func checkAudienceButtonTapped(_ sender: Any) {
-        let controller = RealifeTech.Sell.createOrderingJourneyView()
+        let controller = RealifeTech.Sell.createOrderingJourneyViewController()
         present(controller, animated: true, completion: nil)
 //        checkIfSDKIsReady()
 //        updateLoadingSpinnerVisibility(shouldShow: true)
