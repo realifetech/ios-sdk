@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public final class OrderingJourneyViewController: UIHostingController<OrderingJourneyView> {
+public class OrderingJourneyViewController: UIHostingController<OrderingJourneyView> {
 
     init(urlString: String) {
         super.init(rootView: OrderingJourneyView(urlString: urlString))
