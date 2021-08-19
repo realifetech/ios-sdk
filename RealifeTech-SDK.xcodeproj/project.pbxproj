@@ -888,11 +888,11 @@
 				961C1CB12683982C00BE6F3B /* Basket */,
 				964A3BE22680AA4A00C42C35 /* FulfilmentPoint */,
 				961B018B2689D25600D8C481 /* Order */,
+				960415D726CBD78B0096DF80 /* OrderingJourney */,
 				96874861268CBDC100DDC5DD /* Payment */,
 				9606ED82267B4FEC00ED24D0 /* Product */,
 				9606EDA3267B67BE00ED24D0 /* Tests */,
 				964A3BE92680AC3F00C42C35 /* Utils */,
-				960415D726CBD78B0096DF80 /* OrderingJourney */,
 			);
 			path = Sell;
 			sourceTree = "<group>";
