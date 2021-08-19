@@ -74,4 +74,8 @@ public class RealifeTech {
         Content = nil
         Sell = nil
     }
+
+    public static func set(webOrderingJourneyUrl: String) {
+        Sell.webOrderingJourneyUrl = webOrderingJourneyUrl
+    }
 }

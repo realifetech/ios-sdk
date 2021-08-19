@@ -15,6 +15,7 @@ public protocol Sell {
     var fulfilmentPoint: FulfilmentPointProvidable { get }
     var payment: PaymentProvidable { get }
 
+    var webOrderingJourneyUrl: String? { get set }
     func createOrderingJourneyViewController() -> UIHostingController<OrderingJourneyView>
-    func createOrderingJourneyView() -> AnyView
+    func createOrderingJourneyView() -> OrderingJourneyView
 }

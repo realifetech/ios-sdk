@@ -16,6 +16,8 @@ public class SellImplementing: Sell {
     public let fulfilmentPoint: FulfilmentPointProvidable
     public let payment: PaymentProvidable
 
+    public var webOrderingJourneyUrl: String?
+
     public init(
         product: ProductProvidable,
         basket: BasketProvidable,
@@ -34,7 +36,7 @@ public class SellImplementing: Sell {
         return OrderingJourneyViewController(urlString: "https://apple.com")
     }
 
-    public func createOrderingJourneyView() -> AnyView {
-        return AnyView(OrderingJourneyView(urlString: "https://apple.com"))
+    public func createOrderingJourneyView() -> OrderingJourneyView {
+        return OrderingJourneyView(urlString: "https://apple.com")
     }
 }

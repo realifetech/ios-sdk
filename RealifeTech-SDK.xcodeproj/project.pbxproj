@@ -296,6 +296,7 @@
 		968CA69F25EF96600000C2E2 /* ContentImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA69E25EF96600000C2E2 /* ContentImplementingTests.swift */; };
 		968CA6A525EF9B8A0000C2E2 /* WebPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA6A425EF9B8A0000C2E2 /* WebPageTests.swift */; };
 		96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */; };
+		96CE698226CEA02E0026CC13 /* SellImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */; };
 		96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */; };
 		96F1BF2326CD32AD008D1363 /* WebViewWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1BF2226CD32AD008D1363 /* WebViewWrapperTests.swift */; };
 		96F1BF3C26CD6AC6008D1363 /* OrderingJourneyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1BF3B26CD6AC6008D1363 /* OrderingJourneyViewControllerTests.swift */; };
@@ -620,6 +621,7 @@
 		968CA69E25EF96600000C2E2 /* ContentImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImplementingTests.swift; sourceTree = "<group>"; };
 		968CA6A425EF9B8A0000C2E2 /* WebPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageTests.swift; sourceTree = "<group>"; };
 		96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewTests.swift; sourceTree = "<group>"; };
+		96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellImplementingTests.swift; sourceTree = "<group>"; };
 		96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewController.swift; sourceTree = "<group>"; };
 		96F1BF2226CD32AD008D1363 /* WebViewWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewWrapperTests.swift; sourceTree = "<group>"; };
 		96F1BF3B26CD6AC6008D1363 /* OrderingJourneyViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewControllerTests.swift; sourceTree = "<group>"; };
@@ -933,6 +935,7 @@
 			isa = PBXGroup;
 			children = (
 				9606EDA4267B680B00ED24D0 /* SellFactoryTests.swift */,
+				96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2270,6 +2273,7 @@
 				96302CE226C3E849000A91EC /* GraphQLManagerErrorTests.swift in Sources */,
 				9647D9AE26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift in Sources */,
 				961C1C9D2682436B00BE6F3B /* FulfilmentPointRepositoryTests.swift in Sources */,
+				96CE698226CEA02E0026CC13 /* SellImplementingTests.swift in Sources */,
 				961C437326089379001D8467 /* EmptyTokenManagerTests.swift in Sources */,
 				48EFE2632539E5A100CC6E58 /* MockReachabilityChecker.swift in Sources */,
 				961C42A926088327001D8467 /* ReachabilityCheckerTests.swift in Sources */,
