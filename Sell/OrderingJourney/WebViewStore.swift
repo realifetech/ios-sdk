@@ -10,13 +10,12 @@ import Foundation
 import Combine
 
 final class WebViewStore: ObservableObject {
-    var webViewNavigationPublisher = CurrentValueSubject<WebViewNavigation, Never>(.initial)
+    var webViewNavigationPublisher = PassthroughSubject<WebViewNavigation, Never>()
     var canGoBack = CurrentValueSubject<Bool, Never>(false)
     var canGoForward = CurrentValueSubject<Bool, Never>(false)
 }
 
 enum WebViewNavigation {
-    case initial
     case backward
     case forward
     case reload

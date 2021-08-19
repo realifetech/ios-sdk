@@ -87,8 +87,6 @@ extension WebViewWrapper.Coordinator: WKNavigationDelegate {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { navigation in
                 switch navigation {
-                case .initial:
-                    break
                 case .backward:
                     if webView.canGoBack {
                         webView.goBack()

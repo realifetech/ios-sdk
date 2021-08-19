@@ -29,28 +29,26 @@ public struct OrderingJourneyView: View {
 
     public var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    WebViewWrapper(
-                        webView: WKWebView(),
-                        urlRequest: urlRequest,
-                        store: store)
-                    Spacer()
-                    AnyView(makeBottomView())
-                        .frame(height: 44)
-                }
+            VStack {
+                WebViewWrapper(
+                    webView: WKWebView(),
+                    urlRequest: urlRequest,
+                    store: store)
+                Spacer()
+                AnyView(makeBottomView())
+                    .frame(height: 44)
             }
+            .navigationBarItems(
+                leading: AnyView(makeCloseButton()),
+                trailing: AnyView(makeReloadButton())
+            )
+            .navigationBarTitle("", displayMode: .inline)
             .onReceive(store.canGoBack.receive(on: DispatchQueue.main)) { value in
                 canGoBack = value
             }
             .onReceive(store.canGoForward.receive(on: DispatchQueue.main)) { value in
                 canGoForward = value
             }
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarItems(
-                leading: AnyView(makeCloseButton()),
-                trailing: AnyView(makeReloadButton())
-            )
         }
     }
 }
@@ -61,18 +59,21 @@ private extension OrderingJourneyView {
         HStack(alignment: .center, spacing: 16) {
             Spacer()
                 .frame(width: 16)
+
             Button {
                 store.webViewNavigationPublisher.send(.backward)
             } label: {
                 Image(systemName: "chevron.left")
             }
             .disabled(!canGoBack)
+
             Button {
                 store.webViewNavigationPublisher.send(.forward)
             } label: {
                 Image(systemName: "chevron.right")
             }
             .disabled(!canGoForward)
+
             Spacer()
         }
     }
