@@ -28,24 +28,16 @@ final class OrderingJourneyViewTests: XCTestCase {
 
     private func getNavigationViewHierachy() throws -> InspectableView<ViewType.ClassifiedView> {
         let navigationView = try sut.body.inspect().navigationView()
-        typealias NavigationBarWrapped = VStack<
-            TupleView<
-                (WebViewWrapper,
-                 Spacer,
-                 ModifiedContent<ModifiedContent<AnyView, _FrameLayout>, _BackgroundModifier<Color>>
-                )
-            >
-        >
+        typealias NavigationBarWrapped = VStack<TupleView<(WebViewWrapper, AnyView)>>
         return try navigationView.navigationBarItems(NavigationBarWrapped.self)
     }
 
     func test_renderBottomView_canGoBackAndCanGoForwardAreFalse_buttonsAreDisabled() throws {
         let vStack = try getNavigationViewHierachy().vStack(0)
-        let bottomView = try vStack.anyView(2)
-        _ = try bottomView.hStack().spacer(0)
-        let backwardButton = try bottomView.hStack().button(1)
+        let bottomView = try vStack.anyView(1)
+        let backwardButton = try bottomView.vStack().hStack(0).button(0)
         XCTAssertTrue(backwardButton.isDisabled())
-        let forwardButton = try bottomView.hStack().button(2)
+        let forwardButton = try bottomView.vStack().hStack(0).button(1)
         XCTAssertTrue(forwardButton.isDisabled())
     }
 }

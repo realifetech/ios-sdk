@@ -31,15 +31,12 @@ public struct OrderingJourneyView: View {
 
     public var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
                 WebViewWrapper(
                     webView: WKWebView(),
                     urlRequest: urlRequest,
                     store: store)
-                Spacer()
                 AnyView(makeBottomView())
-                    .frame(height: 44)
-                    .background(colorStore.getColor(for: .primary))
             }
             .navigationBarItems(
                 leading: AnyView(makeCloseButton()),
@@ -62,28 +59,34 @@ public struct OrderingJourneyView: View {
 private extension OrderingJourneyView {
 
     func makeBottomView() -> some View {
-        HStack(alignment: .center, spacing: 16) {
-            Spacer()
-                .frame(width: 16)
+        VStack(spacing: 0) {
+            HStack(alignment: .center, spacing: 16) {
+                Button {
+                    store.webViewNavigationPublisher.send(.backward)
+                } label: {
+                    Image(systemName: "chevron.left")
+                }
+                .foregroundColor(getButtonColor(by: canGoBack))
+                .disabled(!canGoBack)
 
-            Button {
-                store.webViewNavigationPublisher.send(.backward)
-            } label: {
-                Image(systemName: "chevron.left")
+                Button {
+                    store.webViewNavigationPublisher.send(.forward)
+                } label: {
+                    Image(systemName: "chevron.right")
+                }
+                .foregroundColor(getButtonColor(by: canGoForward))
+                .disabled(!canGoForward)
+
+                Spacer()
             }
-            .foregroundColor(colorStore.getColor(for: .onPrimary))
-            .disabled(!canGoBack)
-
-            Button {
-                store.webViewNavigationPublisher.send(.forward)
-            } label: {
-                Image(systemName: "chevron.right")
-            }
-            .foregroundColor(colorStore.getColor(for: .onPrimary))
-            .disabled(!canGoForward)
-
-            Spacer()
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(colorStore.getColor(for: .surface).edgesIgnoringSafeArea(.bottom))
         }
+    }
+
+    func getButtonColor(by state: Bool) -> Color {
+        return colorStore.getColor(for: state ? .onSurface : .neutral)
     }
 
     func makeCloseButton() -> some View {
