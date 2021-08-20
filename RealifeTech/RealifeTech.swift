@@ -62,7 +62,10 @@ public class RealifeTech {
         Communicate = CommunicateFactory.makeCommunicateModule()
         Canvas = CanvasFactory.makeCanvasModule(graphQLManager: graphQLManager)
         Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
-        Sell = SellFactory.makeSellModule(graphQLManager: graphQLManager, colorStore: General)
+        Sell = SellFactory.makeSellModule(
+            graphQLManager: graphQLManager,
+            orderingJourneyUrl: configuration.webOrderingJourneyUrl,
+            colorStore: General)
     }
 
     public static func clearAllInterfaces() {
@@ -71,11 +74,12 @@ public class RealifeTech {
         Audiences = nil
         Analytics = nil
         Communicate = nil
+        Canvas = nil
         Content = nil
         Sell = nil
     }
 
     public static func set(webOrderingJourneyUrl: String) {
-        Sell.webOrderingJourneyUrl = webOrderingJourneyUrl
+        Sell.orderingJourneyUrl = webOrderingJourneyUrl
     }
 }

@@ -22,9 +22,7 @@ public struct OrderingJourneyView: View {
     public let colorStore: ColorStorable
 
     public init(urlString: String, colorStore: ColorStorable) {
-        guard let url = URL(string: urlString) else {
-            fatalError("Fail to construct URL")
-        }
+        let url = URL(string: urlString) ?? URL(fileURLWithPath: "")
         self.urlRequest = URLRequest(url: url)
         self.colorStore = colorStore
     }

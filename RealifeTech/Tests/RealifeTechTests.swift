@@ -23,4 +23,28 @@ final class RealifeTechTests: XCTestCase {
         XCTAssertNotNil(RealifeTech.Content)
         XCTAssertNotNil(RealifeTech.Sell)
     }
+
+    func test_clearAllInterface_modulesAreCleared() {
+        test_setup_modulesAreAvailable()
+        RealifeTech.clearAllInterfaces()
+        XCTAssertNil(RealifeTech.Core)
+        XCTAssertNil(RealifeTech.General)
+        XCTAssertNil(RealifeTech.Audiences)
+        XCTAssertNil(RealifeTech.Analytics)
+        XCTAssertNil(RealifeTech.Communicate)
+        XCTAssertNil(RealifeTech.Canvas)
+        XCTAssertNil(RealifeTech.Content)
+        XCTAssertNil(RealifeTech.Sell)
+    }
+
+    func test_setWebOrderingJourneyUrl_sellsOrderingJourneyUrlIsUpdated() {
+        let configuration = SDKConfiguration(
+            appCode: "",
+            clientSecret: "",
+            webOrderingJourneyUrl: "A")
+        RealifeTech.configureSDK(with: configuration)
+        XCTAssertEqual(RealifeTech.Sell.orderingJourneyUrl, "A")
+        RealifeTech.set(webOrderingJourneyUrl: "B")
+        XCTAssertEqual(RealifeTech.Sell.orderingJourneyUrl, "B")
+    }
 }
