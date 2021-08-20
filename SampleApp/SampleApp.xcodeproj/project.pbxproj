@@ -181,7 +181,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = "Olivier Butler";
+				ORGANIZATIONNAME = "Realife Tech";
 				TargetAttributes = {
 					48D6F166251E1ECF006CA623 = {
 						CreatedOnToolsVersion = 11.3.1;
