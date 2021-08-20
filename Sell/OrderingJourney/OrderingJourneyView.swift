@@ -19,12 +19,14 @@ public struct OrderingJourneyView: View {
     var dismiss: (() -> Void)?
 
     public let urlRequest: URLRequest
+    public let colorStore: ColorStorable
 
-    public init(urlString: String) {
+    public init(urlString: String, colorStore: ColorStorable) {
         guard let url = URL(string: urlString) else {
             fatalError("Fail to construct URL")
         }
         self.urlRequest = URLRequest(url: url)
+        self.colorStore = colorStore
     }
 
     public var body: some View {
@@ -37,12 +39,16 @@ public struct OrderingJourneyView: View {
                 Spacer()
                 AnyView(makeBottomView())
                     .frame(height: 44)
+                    .background(colorStore.getColor(for: .primary))
             }
             .navigationBarItems(
                 leading: AnyView(makeCloseButton()),
                 trailing: AnyView(makeReloadButton())
             )
             .navigationBarTitle("", displayMode: .inline)
+            .navigationBarColor(
+                backgroundColor: colorStore.getColor(for: .primary),
+                titleColor: colorStore.getColor(for: .onPrimary))
             .onReceive(store.canGoBack.receive(on: DispatchQueue.main)) { value in
                 canGoBack = value
             }
@@ -65,6 +71,7 @@ private extension OrderingJourneyView {
             } label: {
                 Image(systemName: "chevron.left")
             }
+            .foregroundColor(colorStore.getColor(for: .onPrimary))
             .disabled(!canGoBack)
 
             Button {
@@ -72,6 +79,7 @@ private extension OrderingJourneyView {
             } label: {
                 Image(systemName: "chevron.right")
             }
+            .foregroundColor(colorStore.getColor(for: .onPrimary))
             .disabled(!canGoForward)
 
             Spacer()
@@ -84,6 +92,7 @@ private extension OrderingJourneyView {
         } label: {
             Image(systemName: "xmark")
         }
+        .foregroundColor(colorStore.getColor(for: .onPrimary))
     }
 
     func makeReloadButton() -> some View {
@@ -92,11 +101,12 @@ private extension OrderingJourneyView {
         } label: {
             Image(systemName: "arrow.clockwise")
         }
+        .foregroundColor(colorStore.getColor(for: .onPrimary))
     }
 }
 
 struct OrderingJourneyView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderingJourneyView(urlString: "https://www.realifetech.com/")
+        OrderingJourneyView(urlString: "https://www.realifetech.com/", colorStore: PreviewColorStore())
     }
 }

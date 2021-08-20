@@ -14,7 +14,7 @@ final class OrderingJourneyViewControllerTests: XCTestCase {
     private let urlString = "https://www.google.com"
 
     func test_initWithUrlString_rootViewDismissFunctionIsSet() {
-        let sut = OrderingJourneyViewController(urlString: urlString)
+        let sut = OrderingJourneyViewController(urlString: urlString, colorStore: PreviewColorStore())
         XCTAssertNotNil(sut.rootView.dismiss)
     }
 
@@ -23,7 +23,7 @@ final class OrderingJourneyViewControllerTests: XCTestCase {
     }
 
     func test_dismiss_viewControllerIsDismissed() {
-        let sut = MockViewController(urlString: urlString)
+        let sut = MockViewController(urlString: urlString, colorStore: PreviewColorStore())
         sut.dismiss()
         XCTAssertTrue(sut.dismissGetsCalled)
     }

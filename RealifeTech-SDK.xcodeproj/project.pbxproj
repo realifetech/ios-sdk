@@ -295,6 +295,11 @@
 		968CA69B25EF95050000C2E2 /* ContentFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA69A25EF95040000C2E2 /* ContentFactoryTests.swift */; };
 		968CA69F25EF96600000C2E2 /* ContentImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA69E25EF96600000C2E2 /* ContentImplementingTests.swift */; };
 		968CA6A525EF9B8A0000C2E2 /* WebPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968CA6A425EF9B8A0000C2E2 /* WebPageTests.swift */; };
+		96AED8C326CFA54400F6C750 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED8C226CFA54400F6C750 /* ColorType.swift */; };
+		96AED8C526CFA80900F6C750 /* ColorStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED8C426CFA80900F6C750 /* ColorStorable.swift */; };
+		96AED8C726CFA82700F6C750 /* CustomisedColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED8C626CFA82700F6C750 /* CustomisedColor.swift */; };
+		96AED8CE26CFB58A00F6C750 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED8CD26CFB58A00F6C750 /* Color+Hex.swift */; };
+		96AED8D026CFB5B600F6C750 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED8CF26CFB5B600F6C750 /* NavigationBarModifier.swift */; };
 		96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */; };
 		96CE698226CEA02E0026CC13 /* SellImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */; };
 		96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */; };
@@ -620,6 +625,11 @@
 		968CA69A25EF95040000C2E2 /* ContentFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFactoryTests.swift; sourceTree = "<group>"; };
 		968CA69E25EF96600000C2E2 /* ContentImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImplementingTests.swift; sourceTree = "<group>"; };
 		968CA6A425EF9B8A0000C2E2 /* WebPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageTests.swift; sourceTree = "<group>"; };
+		96AED8C226CFA54400F6C750 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
+		96AED8C426CFA80900F6C750 /* ColorStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStorable.swift; sourceTree = "<group>"; };
+		96AED8C626CFA82700F6C750 /* CustomisedColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisedColor.swift; sourceTree = "<group>"; };
+		96AED8CD26CFB58A00F6C750 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		96AED8CF26CFB5B600F6C750 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewTests.swift; sourceTree = "<group>"; };
 		96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellImplementingTests.swift; sourceTree = "<group>"; };
 		96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewController.swift; sourceTree = "<group>"; };
@@ -803,6 +813,7 @@
 				48EFE2492539E52D00CC6E58 /* General.swift */,
 				48EFE24A2539E52D00CC6E58 /* GeneralFactory.swift */,
 				480BCD8D251E252600266617 /* GeneralImplementing.swift */,
+				96AED8C126CFA37C00F6C750 /* Customisation */,
 				48EFE24F2539E53400CC6E58 /* DeviceRegistration */,
 				48E6775A251BA843007E2741 /* Tests */,
 			);
@@ -1098,6 +1109,7 @@
 				961C423D260882C8001D8467 /* Repositories */,
 				961C41BB260882BA001D8467 /* Resources */,
 				961C422E260882C8001D8467 /* Storage */,
+				96AED8CC26CFB54800F6C750 /* SwiftUIHelpers */,
 				961C4255260882C8001D8467 /* UIDeviceHelper */,
 			);
 			path = Core;
@@ -1674,6 +1686,25 @@
 			path = WebPageTests;
 			sourceTree = "<group>";
 		};
+		96AED8C126CFA37C00F6C750 /* Customisation */ = {
+			isa = PBXGroup;
+			children = (
+				96AED8C426CFA80900F6C750 /* ColorStorable.swift */,
+				96AED8C226CFA54400F6C750 /* ColorType.swift */,
+				96AED8C626CFA82700F6C750 /* CustomisedColor.swift */,
+			);
+			path = Customisation;
+			sourceTree = "<group>";
+		};
+		96AED8CC26CFB54800F6C750 /* SwiftUIHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				96AED8CD26CFB58A00F6C750 /* Color+Hex.swift */,
+				96AED8CF26CFB5B600F6C750 /* NavigationBarModifier.swift */,
+			);
+			path = SwiftUIHelpers;
+			sourceTree = "<group>";
+		};
 		96F1BF1F26CD2FE7008D1363 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2105,6 +2136,7 @@
 				4889595C2539D89C00B978A9 /* AnalyticsLogging.swift in Sources */,
 				961C41E9260882BA001D8467 /* StandardSenderResponse.swift in Sources */,
 				961C41FF260882BB001D8467 /* APITokenInterceptor.swift in Sources */,
+				96AED8CE26CFB58A00F6C750 /* Color+Hex.swift in Sources */,
 				961C4215260882BB001D8467 /* DiskCache.swift in Sources */,
 				961C4268260882C8001D8467 /* PersistentQueue.swift in Sources */,
 				9606ED9B267B651800ED24D0 /* ProductRepository.swift in Sources */,
@@ -2143,6 +2175,7 @@
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
 				964D291C269335F300A69FBC /* ScreenType.swift in Sources */,
 				9606ED84267B501800ED24D0 /* ProductProvidable.swift in Sources */,
+				96AED8C526CFA80900F6C750 /* ColorStorable.swift in Sources */,
 				961C4278260882C8001D8467 /* ReachabilityChecking.swift in Sources */,
 				487479E825408E8A0048F03D /* Communicate.swift in Sources */,
 				961C4223260882BB001D8467 /* RequestCreator.swift in Sources */,
@@ -2152,6 +2185,7 @@
 				96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */,
 				961C4212260882BB001D8467 /* DiskCacheCodableInterface.swift in Sources */,
 				961C4266260882C8001D8467 /* QueueAction.swift in Sources */,
+				96AED8C726CFA82700F6C750 /* CustomisedColor.swift in Sources */,
 				961B01A52689F42A00D8C481 /* OrderRepository.swift in Sources */,
 				961C4265260882C8001D8467 /* QueueError.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
@@ -2169,6 +2203,7 @@
 				961C1CA32683402C00BE6F3B /* ProductModifierList.swift in Sources */,
 				961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */,
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
+				96AED8D026CFB5B600F6C750 /* NavigationBarModifier.swift in Sources */,
 				960415D926CBD82B0096DF80 /* WebViewWrapper.swift in Sources */,
 				961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */,
 				9687486D268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift in Sources */,
@@ -2201,6 +2236,7 @@
 				964A3BE62680AA6F00C42C35 /* FulfilmentPointCategory.swift in Sources */,
 				4889587D2539D04B00B978A9 /* AudienceChecking.swift in Sources */,
 				964D291A269335E000A69FBC /* WidgetProvidable.swift in Sources */,
+				96AED8C326CFA54400F6C750 /* ColorType.swift in Sources */,
 				96874873268CC2A800DDC5DD /* PaymentIntent.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
 				960415DB26CBD8B20096DF80 /* WebViewStore.swift in Sources */,

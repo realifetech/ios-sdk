@@ -15,6 +15,7 @@ public class SellImplementing: Sell {
     public let order: OrderProvidable
     public let fulfilmentPoint: FulfilmentPointProvidable
     public let payment: PaymentProvidable
+    public let colorStore: ColorStorable
 
     public var webOrderingJourneyUrl: String?
 
@@ -23,20 +24,22 @@ public class SellImplementing: Sell {
         basket: BasketProvidable,
         order: OrderProvidable,
         fulfilmentPoint: FulfilmentPointProvidable,
-        payment: PaymentProvidable
+        payment: PaymentProvidable,
+        colorStore: ColorStorable
     ) {
         self.product = product
         self.basket = basket
         self.order = order
         self.fulfilmentPoint = fulfilmentPoint
         self.payment = payment
+        self.colorStore = colorStore
     }
 
     public func createOrderingJourneyViewController() -> UIHostingController<OrderingJourneyView> {
-        return OrderingJourneyViewController(urlString: "https://apple.com")
+        return OrderingJourneyViewController(urlString: "https://apple.com", colorStore: colorStore)
     }
 
     public func createOrderingJourneyView() -> OrderingJourneyView {
-        return OrderingJourneyView(urlString: "https://apple.com")
+        return OrderingJourneyView(urlString: "https://apple.com", colorStore: colorStore)
     }
 }

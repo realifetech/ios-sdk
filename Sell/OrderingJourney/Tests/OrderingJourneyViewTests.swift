@@ -18,7 +18,7 @@ final class OrderingJourneyViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        sut = OrderingJourneyView(urlString: urlString)
+        sut = OrderingJourneyView(urlString: urlString, colorStore: PreviewColorStore())
     }
 
     override func tearDown() {

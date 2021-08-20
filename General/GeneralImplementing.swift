@@ -6,11 +6,13 @@
 //  Copyright © 2020 Realife Tech. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import SwiftUI
 
 class GeneralImplementing: General {
 
     private let deviceRegistrationWorker: DeviceRegistering
+    private var storedColours = Set<CustomisedColor>()
 
     init(deviceRegistrationWorker: DeviceRegistering) {
         self.deviceRegistrationWorker = deviceRegistrationWorker
@@ -25,5 +27,20 @@ extension GeneralImplementing {
 
     public func registerDevice(_ completion: @escaping() -> Void) {
         deviceRegistrationWorker.registerDevice(completion)
+    }
+}
+
+// MARK: - Colour Customisation
+extension GeneralImplementing {
+
+    public func setColor(_ color: UIColor, for type: ColorType) {
+        storedColours.update(with: .init(key: type, color: color))
+    }
+
+    public func getColor(for type: ColorType) -> Color {
+        guard let uiColor = storedColours.first(where: { $0.key == type })?.color else {
+            return type.default
+        }
+        return Color(uiColor)
     }
 }

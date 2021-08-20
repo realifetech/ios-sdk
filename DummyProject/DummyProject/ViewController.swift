@@ -67,7 +67,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var audienceIdTextField: UITextField!
 
     @IBAction func checkAudienceButtonTapped(_ sender: Any) {
+        RealifeTech.General.setColor(.green, for: .primary)
+        RealifeTech.General.setColor(.red, for: .onPrimary)
         let controller = RealifeTech.Sell.createOrderingJourneyViewController()
+        controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true, completion: nil)
 //        checkIfSDKIsReady()
 //        updateLoadingSpinnerVisibility(shouldShow: true)

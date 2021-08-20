@@ -15,7 +15,7 @@ final class SellFactoryTests: XCTestCase {
 
     func test_makeSellModule_returnsSellImplementing() {
         let graphQLManager = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
-        let result = SellFactory.makeSellModule(graphQLManager: graphQLManager)
+        let result = SellFactory.makeSellModule(graphQLManager: graphQLManager, colorStore: PreviewColorStore())
         XCTAssertTrue(result is SellImplementing)
         XCTAssertTrue(result.product is ProductRepository)
         XCTAssertTrue(result.basket is BasketRepository)

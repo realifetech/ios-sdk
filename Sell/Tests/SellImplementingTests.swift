@@ -14,13 +14,13 @@ final class SellImplementingTests: XCTestCase {
 
     func test_createOrderingJourneyViewController() {
         let graphQLManager = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
-        let sut = SellFactory.makeSellModule(graphQLManager: graphQLManager)
+        let sut = SellFactory.makeSellModule(graphQLManager: graphQLManager, colorStore: PreviewColorStore())
         XCTAssertTrue(sut.createOrderingJourneyViewController() is OrderingJourneyViewController)
     }
 
     func test_createOrderingJourneyView() {
         let graphQLManager = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
-        let sut = SellFactory.makeSellModule(graphQLManager: graphQLManager)
+        let sut = SellFactory.makeSellModule(graphQLManager: graphQLManager, colorStore: PreviewColorStore())
         let view = sut.createOrderingJourneyView()
         XCTAssertNotNil(view.urlRequest.url)
     }

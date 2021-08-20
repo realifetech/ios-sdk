@@ -62,7 +62,7 @@ public class RealifeTech {
         Communicate = CommunicateFactory.makeCommunicateModule()
         Canvas = CanvasFactory.makeCanvasModule(graphQLManager: graphQLManager)
         Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
-        Sell = SellFactory.makeSellModule(graphQLManager: graphQLManager)
+        Sell = SellFactory.makeSellModule(graphQLManager: graphQLManager, colorStore: General)
     }
 
     public static func clearAllInterfaces() {
