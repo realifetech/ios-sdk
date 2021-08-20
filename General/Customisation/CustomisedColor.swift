@@ -9,13 +9,17 @@
 import UIKit
 
 struct CustomisedColor {
-    let key: ColorType
+    let type: ColorType
     let color: UIColor
 }
 
 extension CustomisedColor: Equatable, Hashable {
 
+    static func == (lhs: CustomisedColor, rhs: CustomisedColor) -> Bool {
+        return lhs.type == rhs.type
+    }
+
     func hash(into hasher: inout Hasher) {
-        hasher.combine(key)
+        hasher.combine(type)
     }
 }

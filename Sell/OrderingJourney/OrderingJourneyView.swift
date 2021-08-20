@@ -107,6 +107,6 @@ private extension OrderingJourneyView {
 
 struct OrderingJourneyView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderingJourneyView(urlString: "https://www.realifetech.com/", colorStore: PreviewColorStore())
+        OrderingJourneyView(urlString: "https://www.realifetech.com/", colorStore: EmptyColorStore())
     }
 }

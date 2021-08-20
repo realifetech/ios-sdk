@@ -18,7 +18,7 @@ final class OrderingJourneyViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        sut = OrderingJourneyView(urlString: urlString, colorStore: PreviewColorStore())
+        sut = OrderingJourneyView(urlString: urlString, colorStore: EmptyColorStore())
     }
 
     override func tearDown() {
@@ -30,7 +30,10 @@ final class OrderingJourneyViewTests: XCTestCase {
         let navigationView = try sut.body.inspect().navigationView()
         typealias NavigationBarWrapped = VStack<
             TupleView<
-                (WebViewWrapper, Spacer, ModifiedContent<AnyView, _FrameLayout>)
+                (WebViewWrapper,
+                 Spacer,
+                 ModifiedContent<ModifiedContent<AnyView, _FrameLayout>, _BackgroundModifier<Color>>
+                )
             >
         >
         return try navigationView.navigationBarItems(NavigationBarWrapped.self)

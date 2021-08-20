@@ -14,11 +14,16 @@ public protocol ColorStorable {
     func getColor(for type: ColorType) -> Color
 }
 
-struct PreviewColorStore: ColorStorable {
+final class EmptyColorStore: ColorStorable {
 
-    func setColor(_ color: UIColor, for type: ColorType) { }
+    private(set) var colors = Set<CustomisedColor>()
+
+    func setColor(_ color: UIColor, for type: ColorType) {
+        colors.update(with: .init(type: type, color: color))
+    }
 
     func getColor(for type: ColorType) -> Color {
-        return Color(UIColor.clear)
+        let color = colors.first(where: { $0.type == type })?.color ?? .clear
+        return Color(color)
     }
 }

@@ -12,7 +12,7 @@ import SwiftUI
 class GeneralImplementing: General {
 
     private let deviceRegistrationWorker: DeviceRegistering
-    private var storedColours = Set<CustomisedColor>()
+    private(set) var storedColours = Set<CustomisedColor>()
 
     init(deviceRegistrationWorker: DeviceRegistering) {
         self.deviceRegistrationWorker = deviceRegistrationWorker
@@ -34,11 +34,11 @@ extension GeneralImplementing {
 extension GeneralImplementing {
 
     public func setColor(_ color: UIColor, for type: ColorType) {
-        storedColours.update(with: .init(key: type, color: color))
+        storedColours.update(with: .init(type: type, color: color))
     }
 
     public func getColor(for type: ColorType) -> Color {
-        guard let uiColor = storedColours.first(where: { $0.key == type })?.color else {
+        guard let uiColor = storedColours.first(where: { $0.type == type })?.color else {
             return type.default
         }
         return Color(uiColor)
