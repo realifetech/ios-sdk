@@ -3,7 +3,7 @@
 //  SampleApp
 //
 //  Created by Mickey Lee on 20/08/2021.
-//  Copyright © 2021 Olivier Butler. All rights reserved.
+//  Copyright © 2021 Realife Tech All rights reserved.
 //
 
 import SwiftUI
@@ -14,16 +14,16 @@ struct ModulesView: View {
         NavigationView {
             List {
                 Section(header: Text("General")) {
-                    Text("Register Device")
+                    NavigationLink("Register Device", destination: DeviceRegistrationView())
                 }
                 Section(header: Text("Analytics")) {
-                    Text("Log Events")
+                    NavigationLink("Log Events", destination: EventsLoggingView(store: LoggedEventStore()))
                 }
                 Section(header: Text("Audience")) {
-                    Text("Audience Checking")
+                    NavigationLink("Audience Checking", destination: AudienceCheckingView())
                 }
                 Section(header: Text("Content")) {
-                    Text("Web Page Type")
+                    NavigationLink("WebPageType Getter", destination: WebPageTypeGetterView())
                 }
                 Section(header: Text("Sell")) {
                     Text("Web Ordering Journey")
