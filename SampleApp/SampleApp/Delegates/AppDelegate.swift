@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import RealifeTech
 
 @UIApplicationMain
@@ -37,29 +38,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         RealifeTech.Communicate.registerForPushNotifications(tokenData: deviceToken) { result in
-            guard let rootViewController = UIApplication.shared.windows.first(
-                    where: { $0.isKeyWindow })?.rootViewController as? ViewController
-            else { return }
             switch result {
             case .success:
-                rootViewController.showAlertController(
-                    title: "Communicate",
-                    message: "Register for push notification successfully")
+                print("---> [RealifeTech SDK] Communicate - Register for push notification successfully!")
             case .failure(let error):
-                rootViewController.showAlertController(
-                    title: "Communicate",
-                    message: "Register for push notification with error: \(error.localizedDescription)")
+                print("---> [RealifeTech SDK] Communicate - Register for push notification with error: \(error.localizedDescription)")
             }
         }
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        guard let rootViewController = UIApplication.shared.windows.first(
-                where: { $0.isKeyWindow })?.rootViewController as? ViewController
-        else { return }
-        rootViewController.showAlertController(
-            title: "Communicate",
-            message: "Failed to register for remote notifications: \(error.localizedDescription)")
+        print("---> [RealifeTech SDK] Communicate - Failed to register for remote notification: \(error.localizedDescription)")
     }
 
     // MARK: UISceneSession Lifecycle

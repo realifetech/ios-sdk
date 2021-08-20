@@ -26,7 +26,7 @@ struct ModulesView: View {
                     NavigationLink("WebPageType Getter", destination: WebPageTypeGetterView())
                 }
                 Section(header: Text("Sell")) {
-                    Text("Web Ordering Journey")
+                    NavigationLink("Web Ordering Journey", destination: WebOrderingJourneyView())
                 }
                 Section(header: Text("Identity")) {
                     Text("Login")
