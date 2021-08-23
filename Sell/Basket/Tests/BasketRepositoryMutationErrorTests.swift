@@ -14,7 +14,10 @@ import GraphQL
 extension BasketRepositoryMutationTests {
 
     func test_transformErrorForEveryQueryAndMutation_returnsCustomError_completeWithTransformedError() {
-        BasketRepositoryTestHelper.underTestBasketErrors.forEach { [self] in
+        let cases = BasketRepositoryTestHelper.underTestBasketErrors.map {
+            BasketError(type: $0, message: "message")
+        }
+        cases.forEach { [self] in
             helper_testCreateMyBasket_customError_failureCase($0)
             helper_testUpdateMyBasket_customError_failureCase($0)
             helper_testDeleteMyBasket_customError_failureCase($0)
@@ -67,18 +70,10 @@ extension BasketRepositoryMutationTests {
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.deleteMyBasket { result in
-            switch error {
-            case .regularError:
-                guard case let .success(returnedResponse) = result else {
-                    return XCTFail("This test should return success")
-                }
-                XCTAssertFalse(returnedResponse)
-            default:
-                guard case let .failure(returnedError) = result else {
-                    return XCTFail("This test should return failure")
-                }
-                XCTAssertEqual(returnedError.errorCode, error.errorCode)
+            guard case let .failure(returnedError) = result else {
+                return XCTFail("This test should return failure")
             }
+            XCTAssertEqual(returnedError.errorCode, error.errorCode)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
