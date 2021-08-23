@@ -18,11 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         let configuration = SDKConfiguration(
-            appCode: "LS",
-            clientSecret: "$2y$10$O7HK3Afr1PZH3WTiQ7bTg.kfcle88e/n9GqrcCp7qWH8Rvv.Ojl/C",
-            apiUrl: "http://api-staging.livestyled.com/v3",
-            graphQLApiUrlString: "https://staging-graphql-eu.realifetech.com/",
-            webOrderingJourneyUrl: nil)
+            appCode: "",
+            clientSecret: "",
+            apiUrl: "",
+            graphQLApiUrl: "")
         RealifeTech.configureSDK(with: configuration)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {
