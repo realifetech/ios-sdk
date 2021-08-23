@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appCode: "",
             clientSecret: "",
             apiUrl: "",
-            graphQLApiUrlString: "")
+            graphQLApiUrl: "")
         RealifeTech.configureSDK(with: configuration)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {

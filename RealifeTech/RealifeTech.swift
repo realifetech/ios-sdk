@@ -39,7 +39,7 @@ public class RealifeTech {
         let graphQLManager = GraphQLFactory.makeGraphQLManager(
             deviceId: deviceHelper.deviceId,
             tokenHelper: apiHelper,
-            graphQLAPIUrl: configuration.graphQLApiUrl)
+            graphQLAPIUrl: URL(string: configuration.graphQLApiUrl) ?? URL(fileURLWithPath: ""))
         Core = CoreImplementing(
             deviceHelper: deviceHelper,
             reachabilityHelper: reachabilityChecker,
