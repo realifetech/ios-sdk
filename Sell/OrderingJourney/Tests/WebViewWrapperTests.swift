@@ -63,16 +63,6 @@ final class WebViewWrapperTests: XCTestCase {
         XCTAssertEqual(receivedPolicy, .allow)
     }
 
-//    func test_coordinatorDidStartProvisionalNavigation() {
-//        let wkNavigation = createNavigation(url: url, webView: webView)
-//        let coordinator = sut.makeCoordinator()
-//        coordinator.webView(
-//            webView,
-//            didStartProvisionalNavigation: wkNavigation)
-//        store.webViewNavigationPublisher.send(.reload)
-//        XCTAssertTrue(webView.didReload)
-//    }
-
     func test_coodinatorWebViewDidFinishNavigation() {
         let wkNavigation = createNavigation(url: url, webView: webView)
         let coordinator = sut.makeCoordinator()
