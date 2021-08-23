@@ -28,9 +28,10 @@ struct TextInput: View {
         TextField(
             placeholder,
             text: $input,
-            onEditingChanged: { _ in }) {
-            onCommitAction?(input)
-        }
+            onEditingChanged: { _ in },
+            onCommitAction: {
+                onCommitAction?(input)
+            })
         .autocapitalization(.none)
         .disableAutocorrection(true)
         .padding(16)

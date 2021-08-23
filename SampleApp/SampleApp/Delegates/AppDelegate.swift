@@ -39,15 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RealifeTech.Communicate.registerForPushNotifications(tokenData: deviceToken) { result in
             switch result {
             case .success:
-                print("---> [RealifeTech SDK] Communicate - Register for push notification successfully!")
+                print("---> [RealifeTech SDK]")
+                print("Communicate - Register for push notification successfully!")
             case .failure(let error):
-                print("---> [RealifeTech SDK] Communicate - Register for push notification with error: \(error.localizedDescription)")
+                print("---> [RealifeTech SDK]")
+                print("Communicate - Register for push notification with error: \(error.localizedDescription)")
             }
         }
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("---> [RealifeTech SDK] Communicate - Failed to register for remote notification: \(error.localizedDescription)")
+        print("---> [RealifeTech SDK]")
+        print("Failed to register for remote notification: \(error.localizedDescription)")
     }
 
     // MARK: UISceneSession Lifecycle
