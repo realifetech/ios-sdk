@@ -64,7 +64,9 @@ extension Array where Element == BasketError {
         } else if count == 1, let error = first {
             return error.message
         } else {
-            return Set(map { $0.message }).joined(separator: "\n")
+            return Set(map { $0.message })
+                .sorted()
+                .joined(separator: "\n")
         }
     }
 }
