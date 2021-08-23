@@ -22,19 +22,9 @@ public final class BasketRepository {
 
     private func transformErrorIfNeccessary(_ errors: [GraphQLError]?) -> BasketError? {
         guard let errors = errors else { return nil }
-        for error in errors {
-            switch error.extensions?["code"] as? String {
-            case "SELL_BASKET_OUT_OF_STOCK":
-                return .outOfStock
-            case "SELL_BASKET_PRICE_CHANGE":
-                return .priceChange
-            case "SELL_BASKET_MIXED":
-                return .mixedBasket
-            case "SELL_BASKET_EMPTY":
-                return .emptyBasket
-            default:
-                continue
-            }
+        let basketErrors = errors.map { BasketError(graphQLError: $0) }
+        if !basketErrors.isEmpty, let first = basketErrors.first {
+            return BasketError(type: first.type, message: basketErrors.combinedErrorMessage)
         }
         return nil
     }
@@ -88,10 +78,16 @@ extension BasketRepository: BasketProvidable {
                 } else if let returnedBasket = response.data?.getMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
-                    callback(.failure(.regularError(GraphQLManagerError.noDataError)))
+                    let basketError = BasketError(
+                        type: .regularError(GraphQLManagerError.noDataError),
+                        message: GraphQLManagerError.noDataError.localizedDescription)
+                    callback(.failure(basketError))
                 }
             case .failure(let error):
-                callback(.failure(.regularError(error)))
+                let basketError = BasketError(
+                    type: .regularError(error),
+                    message: error.localizedDescription)
+                callback(.failure(basketError))
             }
         }
     }
@@ -111,10 +107,16 @@ extension BasketRepository: BasketProvidable {
                 } else if let returnedBasket = response.data?.createMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
-                    callback(.failure(.regularError(GraphQLManagerError.noDataError)))
+                    let basketError = BasketError(
+                        type: .regularError(GraphQLManagerError.noDataError),
+                        message: GraphQLManagerError.noDataError.localizedDescription)
+                    callback(.failure(basketError))
                 }
             case .failure(let error):
-                callback(.failure(.regularError(error)))
+                let basketError = BasketError(
+                    type: .regularError(error),
+                    message: error.localizedDescription)
+                callback(.failure(basketError))
             }
         }
     }
@@ -134,10 +136,16 @@ extension BasketRepository: BasketProvidable {
                 } else if let returnedBasket = response.data?.updateMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
-                    callback(.failure(.regularError(GraphQLManagerError.noDataError)))
+                    let basketError = BasketError(
+                        type: .regularError(GraphQLManagerError.noDataError),
+                        message: GraphQLManagerError.noDataError.localizedDescription)
+                    callback(.failure(basketError))
                 }
             case .failure(let error):
-                callback(.failure(.regularError(error)))
+                let basketError = BasketError(
+                    type: .regularError(error),
+                    message: error.localizedDescription)
+                callback(.failure(basketError))
             }
         }
     }
@@ -157,7 +165,10 @@ extension BasketRepository: BasketProvidable {
                     callback(.success(response.data?.deleteMyBasket?.success ?? false))
                 }
             case .failure(let error):
-                callback(.failure(.regularError(error)))
+                let basketError = BasketError(
+                    type: .regularError(error),
+                    message: error.localizedDescription)
+                callback(.failure(basketError))
             }
         }
     }
@@ -177,10 +188,16 @@ extension BasketRepository: BasketProvidable {
                 } else if let order = Order(response: response.data?.checkoutMyBasket?.fragments.fragmentOrder) {
                     callback(.success(order))
                 } else {
-                    callback(.failure(.regularError(GraphQLManagerError.noDataError)))
+                    let basketError = BasketError(
+                        type: .regularError(GraphQLManagerError.noDataError),
+                        message: GraphQLManagerError.noDataError.localizedDescription)
+                    callback(.failure(basketError))
                 }
             case .failure(let error):
-                callback(.failure(.regularError(error)))
+                let basketError = BasketError(
+                    type: .regularError(error),
+                    message: error.localizedDescription)
+                callback(.failure(basketError))
             }
         }
     }

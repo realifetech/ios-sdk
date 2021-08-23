@@ -61,7 +61,7 @@ extension BasketRepositoryMutationTests {
         sut.createMyBasket(input: basketInput) { result in
             guard
                 case let .failure(returnedError) = result,
-                case let .regularError(error) = returnedError
+                case let .regularError(error) = returnedError.type
             else {
                 return XCTFail("This test should return failure")
             }
@@ -130,7 +130,7 @@ extension BasketRepositoryMutationTests {
         sut.updateMyBasket(input: basketInput) { result in
             guard
                 case let .failure(returnedError) = result,
-                case let .regularError(error) = returnedError
+                case let .regularError(error) = returnedError.type
             else {
                 return XCTFail("This test should return failure")
             }
@@ -197,7 +197,7 @@ extension BasketRepositoryMutationTests {
         sut.deleteMyBasket { result in
             guard
                 case let .failure(returnedError) = result,
-                case let .regularError(error) = returnedError
+                case let .regularError(error) = returnedError.type
             else {
                 return XCTFail("This test should return failure")
             }
@@ -263,7 +263,7 @@ extension BasketRepositoryMutationTests {
         sut.checkoutMyBasket(input: checkoutInput) { result in
             guard
                 case let .failure(returnedError) = result,
-                case let .regularError(error) = returnedError
+                case let .regularError(error) = returnedError.type
             else {
                 return XCTFail("This test should return failure")
             }
