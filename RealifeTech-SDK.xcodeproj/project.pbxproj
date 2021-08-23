@@ -305,6 +305,7 @@
 		96B6706F26D3E5C100DB74A4 /* AnyScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6706E26D3E5C100DB74A4 /* AnyScheduler.swift */; };
 		96B6707126D3ECAA00DB74A4 /* DispatchQueueTestScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6707026D3ECAA00DB74A4 /* DispatchQueueTestScheduler.swift */; };
 		96B6707326D3F0F300DB74A4 /* AnySchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6707226D3F0F300DB74A4 /* AnySchedulerTests.swift */; };
+		96B6707526D3FD2800DB74A4 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6707426D3FD2800DB74A4 /* Inspection.swift */; };
 		96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */; };
 		96CE698226CEA02E0026CC13 /* SellImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */; };
 		96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */; };
@@ -640,6 +641,7 @@
 		96B6706E26D3E5C100DB74A4 /* AnyScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyScheduler.swift; sourceTree = "<group>"; };
 		96B6707026D3ECAA00DB74A4 /* DispatchQueueTestScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueTestScheduler.swift; sourceTree = "<group>"; };
 		96B6707226D3F0F300DB74A4 /* AnySchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnySchedulerTests.swift; sourceTree = "<group>"; };
+		96B6707426D3FD2800DB74A4 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewTests.swift; sourceTree = "<group>"; };
 		96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellImplementingTests.swift; sourceTree = "<group>"; };
 		96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewController.swift; sourceTree = "<group>"; };
@@ -1714,6 +1716,7 @@
 			isa = PBXGroup;
 			children = (
 				96AED8CD26CFB58A00F6C750 /* Color+Hex.swift */,
+				96B6707426D3FD2800DB74A4 /* Inspection.swift */,
 				96AED8CF26CFB5B600F6C750 /* NavigationBarModifier.swift */,
 			);
 			path = SwiftUIHelpers;
@@ -2239,6 +2242,7 @@
 				9606ED97267B646F00ED24D0 /* SellImplementing.swift in Sources */,
 				9606ED89267B50B000ED24D0 /* ProductFilter.swift in Sources */,
 				961C425C260882C8001D8467 /* AnalyticEvent.swift in Sources */,
+				96B6707526D3FD2800DB74A4 /* Inspection.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
 				961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */,
 				961C1C8C268206EC00BE6F3B /* FulfilmentPointTranslation.swift in Sources */,

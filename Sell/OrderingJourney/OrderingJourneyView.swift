@@ -11,7 +11,7 @@ import WebKit
 
 public struct OrderingJourneyView: View {
 
-    @ObservedObject private var store = WebViewStore()
+    @ObservedObject var store = WebViewStore()
     @State private var canGoBack = false
     @State private var canGoForward = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -20,11 +20,21 @@ public struct OrderingJourneyView: View {
 
     public let urlRequest: URLRequest
     public let colorStore: ColorStorable
+    private let scheduler: DispatchQueueAnyScheduler
+    let inspection = Inspection<Self>()
+
+    init(urlString: String, colorStore: ColorStorable, scheduler: DispatchQueueAnyScheduler) {
+        let url = URL(string: urlString) ?? URL(fileURLWithPath: "")
+        self.urlRequest = URLRequest(url: url)
+        self.colorStore = colorStore
+        self.scheduler = scheduler
+    }
 
     public init(urlString: String, colorStore: ColorStorable) {
         let url = URL(string: urlString) ?? URL(fileURLWithPath: "")
         self.urlRequest = URLRequest(url: url)
         self.colorStore = colorStore
+        self.scheduler = .main
     }
 
     public var body: some View {
@@ -44,10 +54,10 @@ public struct OrderingJourneyView: View {
             .navigationBarColor(
                 backgroundColor: colorStore.getColor(for: .primary),
                 titleColor: colorStore.getColor(for: .onPrimary))
-            .onReceive(store.canGoBack.receive(on: DispatchQueue.main)) { value in
+            .onReceive(store.canGoBack.receive(on: scheduler)) { value in
                 canGoBack = value
             }
-            .onReceive(store.canGoForward.receive(on: DispatchQueue.main)) { value in
+            .onReceive(store.canGoForward.receive(on: scheduler)) { value in
                 canGoForward = value
             }
         }
@@ -65,6 +75,7 @@ private extension OrderingJourneyView {
                     Image(systemName: "chevron.left")
                 }
                 .foregroundColor(getButtonColor(by: canGoBack))
+                .onReceive(inspection.notice) { inspection.visit(self, $0) }
                 .disabled(!canGoBack)
 
                 Button {
@@ -73,6 +84,7 @@ private extension OrderingJourneyView {
                     Image(systemName: "chevron.right")
                 }
                 .foregroundColor(getButtonColor(by: canGoForward))
+                .onReceive(inspection.notice) { inspection.visit(self, $0) }
                 .disabled(!canGoForward)
 
                 Spacer()
