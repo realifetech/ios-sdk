@@ -16,17 +16,20 @@ struct WebViewWrapper: UIViewRepresentable {
 
     private let webView: WKWebView
     private let urlRequest: URLRequest
+    private let scheduler: DispatchQueueAnyScheduler
 
     @ObservedObject private var store: WebViewStore
 
     init(
         webView: WKWebView,
         urlRequest: URLRequest,
-        store: WebViewStore
+        store: WebViewStore,
+        scheduler: DispatchQueueAnyScheduler = .main
     ) {
         self.webView = webView
         self.urlRequest = urlRequest
         self.store = store
+        self.scheduler = scheduler
     }
 
     func makeUIView(context: Context) -> WKWebView {
@@ -38,7 +41,7 @@ struct WebViewWrapper: UIViewRepresentable {
     func updateUIView(_ uiView: WKWebView, context: Context) { }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        Coordinator(self, scheduler: scheduler)
     }
 }
 
@@ -48,10 +51,12 @@ extension WebViewWrapper {
 
         private let parent: WebViewWrapper
         private var webViewNavigationSubscriber: AnyCancellable?
+        private let scheduler: DispatchQueueAnyScheduler
 
-        init(_ wrapper: WebViewWrapper) {
-            parent = wrapper
-            webViewNavigationSubscriber = nil
+        init(_ wrapper: WebViewWrapper, scheduler: DispatchQueueAnyScheduler) {
+            self.parent = wrapper
+            self.scheduler = scheduler
+            self.webViewNavigationSubscriber = nil
         }
 
         deinit {
@@ -83,8 +88,9 @@ extension WebViewWrapper.Coordinator: WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        webViewNavigationSubscriber = parent.store.webViewNavigationPublisher
-            .receive(on: DispatchQueue.main)
+        webViewNavigationSubscriber =
+            parent.store.webViewNavigationPublisher
+            .receive(on: scheduler)
             .sink(receiveValue: { navigation in
                 switch navigation {
                 case .backward:
