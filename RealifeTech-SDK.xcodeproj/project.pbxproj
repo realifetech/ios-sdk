@@ -242,7 +242,34 @@
 		96302CE426C3E899000A91EC /* GraphQLInterceptorProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96302CE326C3E899000A91EC /* GraphQLInterceptorProviderTests.swift */; };
 		96302CE626C3E9EA000A91EC /* APITokenInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96302CE526C3E9EA000A91EC /* APITokenInterceptorTests.swift */; };
 		96302CE826C3F165000A91EC /* RequestLoggingInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96302CE726C3F165000A91EC /* RequestLoggingInterceptorTests.swift */; };
+		96302CED26C4104C000A91EC /* BasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96302CEC26C4104C000A91EC /* BasketTests.swift */; };
+		96302CEF26C414E0000A91EC /* BasketItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96302CEE26C414E0000A91EC /* BasketItemTests.swift */; };
 		9630DDDC26AEDFC20005BA24 /* FilterParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9630DDDB26AEDFC20005BA24 /* FilterParam.swift */; };
+		9637472D26C41801007DF92D /* CollectionPreferenceTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637472C26C41801007DF92D /* CollectionPreferenceTypeTests.swift */; };
+		9637472F26C41963007DF92D /* ProductModifierItemSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637472E26C41963007DF92D /* ProductModifierItemSelectionTests.swift */; };
+		9637473126C41A7E007DF92D /* FulfilmentPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473026C41A7E007DF92D /* FulfilmentPointTests.swift */; };
+		9637473326C421B5007DF92D /* FulfilmentPointFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473226C421B5007DF92D /* FulfilmentPointFilterTests.swift */; };
+		9637473526C42237007DF92D /* TimeslotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473426C42237007DF92D /* TimeslotTests.swift */; };
+		9637473726C42486007DF92D /* BasketErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637473626C42486007DF92D /* BasketErrorTests.swift */; };
+		9637474B26C52EB4007DF92D /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637474A26C52EB4007DF92D /* OrderTests.swift */; };
+		9637474D26C53D83007DF92D /* OrderItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637474C26C53D83007DF92D /* OrderItemTests.swift */; };
+		9637474F26C53E5D007DF92D /* OrderModelTestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637474E26C53E5D007DF92D /* OrderModelTestsHelper.swift */; };
+		9637475126C54057007DF92D /* CancellationReasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637475026C54057007DF92D /* CancellationReasonTests.swift */; };
+		9637475326C541D1007DF92D /* OrderTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637475226C541D1007DF92D /* OrderTypeTests.swift */; };
+		9637475526C542EF007DF92D /* PaymentActionTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637475426C542EF007DF92D /* PaymentActionTypeTests.swift */; };
+		9637475726C54439007DF92D /* PaymentIntentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637475626C54439007DF92D /* PaymentIntentTests.swift */; };
+		9637475926C54545007DF92D /* PaymentIntentNextAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637475826C54545007DF92D /* PaymentIntentNextAction.swift */; };
+		9637475B26C546A7007DF92D /* PaymentIntentNextActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637475A26C546A7007DF92D /* PaymentIntentNextActionTests.swift */; };
+		9637475D26C547B3007DF92D /* PaymentStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637475C26C547B3007DF92D /* PaymentStatusTests.swift */; };
+		9637475F26C55600007DF92D /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637475E26C55600007DF92D /* CardTests.swift */; };
+		9637476126C5576E007DF92D /* CardInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637476026C5576E007DF92D /* CardInputTests.swift */; };
+		9637476326C558C1007DF92D /* PaymentSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637476226C558C1007DF92D /* PaymentSourceTests.swift */; };
+		9637476526C55FE0007DF92D /* ProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637476426C55FE0007DF92D /* ProductTests.swift */; };
+		9637476726C5709C007DF92D /* ProductCategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637476626C5709C007DF92D /* ProductCategoryTests.swift */; };
+		9637476926C570E0007DF92D /* ProductFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637476826C570E0007DF92D /* ProductFilterTests.swift */; };
+		9637476B26C57177007DF92D /* ProductModifierItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637476A26C57177007DF92D /* ProductModifierItemTests.swift */; };
+		9637476D26C5726C007DF92D /* ProductModifierItemSelectionInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637476C26C5726C007DF92D /* ProductModifierItemSelectionInputTests.swift */; };
+		9637476F26C572B9007DF92D /* ProductModifierListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637476E26C572B9007DF92D /* ProductModifierListTests.swift */; };
 		9647D9AA26861D11006F5B7F /* BasketRepositoryMutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */; };
 		9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9AB26861DF2006F5B7F /* BasketRepositoryTestHelper.swift */; };
 		9647D9AE26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647D9AD26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift */; };
@@ -564,7 +591,34 @@
 		96302CE326C3E899000A91EC /* GraphQLInterceptorProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLInterceptorProviderTests.swift; sourceTree = "<group>"; };
 		96302CE526C3E9EA000A91EC /* APITokenInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITokenInterceptorTests.swift; sourceTree = "<group>"; };
 		96302CE726C3F165000A91EC /* RequestLoggingInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoggingInterceptorTests.swift; sourceTree = "<group>"; };
+		96302CEC26C4104C000A91EC /* BasketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTests.swift; sourceTree = "<group>"; };
+		96302CEE26C414E0000A91EC /* BasketItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItemTests.swift; sourceTree = "<group>"; };
 		9630DDDB26AEDFC20005BA24 /* FilterParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterParam.swift; sourceTree = "<group>"; };
+		9637472C26C41801007DF92D /* CollectionPreferenceTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreferenceTypeTests.swift; sourceTree = "<group>"; };
+		9637472E26C41963007DF92D /* ProductModifierItemSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemSelectionTests.swift; sourceTree = "<group>"; };
+		9637473026C41A7E007DF92D /* FulfilmentPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointTests.swift; sourceTree = "<group>"; };
+		9637473226C421B5007DF92D /* FulfilmentPointFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfilmentPointFilterTests.swift; sourceTree = "<group>"; };
+		9637473426C42237007DF92D /* TimeslotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeslotTests.swift; sourceTree = "<group>"; };
+		9637473626C42486007DF92D /* BasketErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketErrorTests.swift; sourceTree = "<group>"; };
+		9637474A26C52EB4007DF92D /* OrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
+		9637474C26C53D83007DF92D /* OrderItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemTests.swift; sourceTree = "<group>"; };
+		9637474E26C53E5D007DF92D /* OrderModelTestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModelTestsHelper.swift; sourceTree = "<group>"; };
+		9637475026C54057007DF92D /* CancellationReasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationReasonTests.swift; sourceTree = "<group>"; };
+		9637475226C541D1007DF92D /* OrderTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTypeTests.swift; sourceTree = "<group>"; };
+		9637475426C542EF007DF92D /* PaymentActionTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentActionTypeTests.swift; sourceTree = "<group>"; };
+		9637475626C54439007DF92D /* PaymentIntentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIntentTests.swift; sourceTree = "<group>"; };
+		9637475826C54545007DF92D /* PaymentIntentNextAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIntentNextAction.swift; sourceTree = "<group>"; };
+		9637475A26C546A7007DF92D /* PaymentIntentNextActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIntentNextActionTests.swift; sourceTree = "<group>"; };
+		9637475C26C547B3007DF92D /* PaymentStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatusTests.swift; sourceTree = "<group>"; };
+		9637475E26C55600007DF92D /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
+		9637476026C5576E007DF92D /* CardInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInputTests.swift; sourceTree = "<group>"; };
+		9637476226C558C1007DF92D /* PaymentSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSourceTests.swift; sourceTree = "<group>"; };
+		9637476426C55FE0007DF92D /* ProductTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTests.swift; sourceTree = "<group>"; };
+		9637476626C5709C007DF92D /* ProductCategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategoryTests.swift; sourceTree = "<group>"; };
+		9637476826C570E0007DF92D /* ProductFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFilterTests.swift; sourceTree = "<group>"; };
+		9637476A26C57177007DF92D /* ProductModifierItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemTests.swift; sourceTree = "<group>"; };
+		9637476C26C5726C007DF92D /* ProductModifierItemSelectionInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemSelectionInputTests.swift; sourceTree = "<group>"; };
+		9637476E26C572B9007DF92D /* ProductModifierListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierListTests.swift; sourceTree = "<group>"; };
 		9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryMutationTests.swift; sourceTree = "<group>"; };
 		9647D9AB26861DF2006F5B7F /* BasketRepositoryTestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryTestHelper.swift; sourceTree = "<group>"; };
 		9647D9AD26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRepositoryMutationErrorTests.swift; sourceTree = "<group>"; };
@@ -993,7 +1047,10 @@
 		961B01A82689F83800D8C481 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9637474C26C53D83007DF92D /* OrderItemTests.swift */,
+				9637474E26C53E5D007DF92D /* OrderModelTestsHelper.swift */,
 				961B01A92689F84D00D8C481 /* OrderRepositoryTests.swift */,
+				9637474A26C52EB4007DF92D /* OrderTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1016,7 +1073,10 @@
 		961C1C9B2682435400BE6F3B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9637473226C421B5007DF92D /* FulfilmentPointFilterTests.swift */,
 				961C1C9C2682436B00BE6F3B /* FulfilmentPointRepositoryTests.swift */,
+				9637473026C41A7E007DF92D /* FulfilmentPointTests.swift */,
+				9637473426C42237007DF92D /* TimeslotTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1024,7 +1084,13 @@
 		961C1CAC26834AA500BE6F3B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9637476626C5709C007DF92D /* ProductCategoryTests.swift */,
+				9637476826C570E0007DF92D /* ProductFilterTests.swift */,
+				9637476C26C5726C007DF92D /* ProductModifierItemSelectionInputTests.swift */,
+				9637476A26C57177007DF92D /* ProductModifierItemTests.swift */,
+				9637476E26C572B9007DF92D /* ProductModifierListTests.swift */,
 				961C1CAD26834AC000BE6F3B /* ProductRepositoryTests.swift */,
+				9637476426C55FE0007DF92D /* ProductTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1067,10 +1133,15 @@
 		961C1CD22685D6BD00BE6F3B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9647D9AB26861DF2006F5B7F /* BasketRepositoryTestHelper.swift */,
-				961C1CD32685D6DC00BE6F3B /* BasketRepositoryQueryTests.swift */,
-				9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */,
+				9637473626C42486007DF92D /* BasketErrorTests.swift */,
+				96302CEE26C414E0000A91EC /* BasketItemTests.swift */,
 				9647D9AD26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift */,
+				9647D9A926861D11006F5B7F /* BasketRepositoryMutationTests.swift */,
+				961C1CD32685D6DC00BE6F3B /* BasketRepositoryQueryTests.swift */,
+				9647D9AB26861DF2006F5B7F /* BasketRepositoryTestHelper.swift */,
+				96302CEC26C4104C000A91EC /* BasketTests.swift */,
+				9637472C26C41801007DF92D /* CollectionPreferenceTypeTests.swift */,
+				9637472E26C41963007DF92D /* ProductModifierItemSelectionTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1608,6 +1679,7 @@
 				9687487E268CC4F500DDC5DD /* PaymentActionType.swift */,
 				96874872268CC2A800DDC5DD /* PaymentIntent.swift */,
 				96874874268CC3CC00DDC5DD /* PaymentIntentInput.swift */,
+				9637475826C54545007DF92D /* PaymentIntentNextAction.swift */,
 				96874886268CD3C800DDC5DD /* PaymentIntentUpdateInput.swift */,
 				96874878268CC42800DDC5DD /* PaymentStatus.swift */,
 			);
@@ -1617,9 +1689,18 @@
 		96874888268CD63600DDC5DD /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9687488B268DB9A400DDC5DD /* PaymentRepositoryTestHelper.swift */,
-				96874889268CD64E00DDC5DD /* PaymentRepositoryPaymentSourceTests.swift */,
+				9637475026C54057007DF92D /* CancellationReasonTests.swift */,
+				9637476026C5576E007DF92D /* CardInputTests.swift */,
+				9637475E26C55600007DF92D /* CardTests.swift */,
+				9637475226C541D1007DF92D /* OrderTypeTests.swift */,
+				9637475426C542EF007DF92D /* PaymentActionTypeTests.swift */,
+				9637475A26C546A7007DF92D /* PaymentIntentNextActionTests.swift */,
+				9637475626C54439007DF92D /* PaymentIntentTests.swift */,
 				9687488D268DBBE200DDC5DD /* PaymentRepositoryPaymentIntentTests.swift */,
+				96874889268CD64E00DDC5DD /* PaymentRepositoryPaymentSourceTests.swift */,
+				9687488B268DB9A400DDC5DD /* PaymentRepositoryTestHelper.swift */,
+				9637476226C558C1007DF92D /* PaymentSourceTests.swift */,
+				9637475C26C547B3007DF92D /* PaymentStatusTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2098,6 +2179,7 @@
 				961C41D3260882BA001D8467 /* OAuthTokenRefreshWatcher.swift in Sources */,
 				961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */,
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
+				9637475926C54545007DF92D /* PaymentIntentNextAction.swift in Sources */,
 				961C41D5260882BA001D8467 /* DeviceIdHeaderRequestInserting.swift in Sources */,
 				961C41D7260882BA001D8467 /* OAuthHeaderRequestInserting.swift in Sources */,
 				961C41E8260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift in Sources */,
@@ -2226,7 +2308,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9637473126C41A7E007DF92D /* FulfilmentPointTests.swift in Sources */,
 				968CA69F25EF96600000C2E2 /* ContentImplementingTests.swift in Sources */,
+				9637473526C42237007DF92D /* TimeslotTests.swift in Sources */,
+				96302CED26C4104C000A91EC /* BasketTests.swift in Sources */,
 				96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */,
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,
@@ -2236,41 +2321,58 @@
 				964D292D269345CF00A69FBC /* CanvasRepositoryScreenTests.swift in Sources */,
 				96302CE426C3E899000A91EC /* GraphQLInterceptorProviderTests.swift in Sources */,
 				961C42BA26088368001D8467 /* LocalDiskCacheDataProvidingTests.swift in Sources */,
+				9637474B26C52EB4007DF92D /* OrderTests.swift in Sources */,
 				9606EDA5267B680B00ED24D0 /* SellFactoryTests.swift in Sources */,
+				96302CEF26C414E0000A91EC /* BasketItemTests.swift in Sources */,
 				961C42C726088371001D8467 /* DiskCacheCodableInterfaceTests.swift in Sources */,
 				961C4295260882FE001D8467 /* DiskStorageTests.swift in Sources */,
 				961C429F26088312001D8467 /* DeviceRequesterTests.swift in Sources */,
 				961C437026089377001D8467 /* APIRequesterTests.swift in Sources */,
+				9637476526C55FE0007DF92D /* ProductTests.swift in Sources */,
 				9687488E268DBBE200DDC5DD /* PaymentRepositoryPaymentIntentTests.swift in Sources */,
 				961C438026089385001D8467 /* StandardSenderResponseTests.swift in Sources */,
 				48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */,
+				9637476B26C57177007DF92D /* ProductModifierItemTests.swift in Sources */,
 				968CA69B25EF95050000C2E2 /* ContentFactoryTests.swift in Sources */,
+				9637472F26C41963007DF92D /* ProductModifierItemSelectionTests.swift in Sources */,
+				9637476126C5576E007DF92D /* CardInputTests.swift in Sources */,
 				488958E92539D09D00B978A9 /* AudiencesTests.swift in Sources */,
 				961C1CD42685D6DC00BE6F3B /* BasketRepositoryQueryTests.swift in Sources */,
 				961C42AC2608832D001D8467 /* BluetoothManagerWrapperTests.swift in Sources */,
 				961C4285260882E4001D8467 /* RequestCreatorTests.swift in Sources */,
 				961C436626089360001D8467 /* APITokenManagerTests.swift in Sources */,
 				961C436D2608936E001D8467 /* OAuthTokenRefreshWatcherTests.swift in Sources */,
+				9637472D26C41801007DF92D /* CollectionPreferenceTypeTests.swift in Sources */,
 				964D292526933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
 				961C438F2608939C001D8467 /* UIDeviceHelperTests.swift in Sources */,
 				961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */,
 				964D292B269343DD00A69FBC /* CanvasFactoryTests.swift in Sources */,
 				961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */,
+				9637475126C54057007DF92D /* CancellationReasonTests.swift in Sources */,
+				9637475726C54439007DF92D /* PaymentIntentTests.swift in Sources */,
+				9637475526C542EF007DF92D /* PaymentActionTypeTests.swift in Sources */,
+				9637475D26C547B3007DF92D /* PaymentStatusTests.swift in Sources */,
 				9687488A268CD64E00DDC5DD /* PaymentRepositoryPaymentSourceTests.swift in Sources */,
+				9637473726C42486007DF92D /* BasketErrorTests.swift in Sources */,
 				961C42B526088357001D8467 /* ReadOnlyCurrentValueTests.swift in Sources */,
 				961C437B26089382001D8467 /* AuthorsationStoreTests.swift in Sources */,
 				4889595F2539D8A500B978A9 /* AnalyticsImplementingTests.swift in Sources */,
 				9647D9AA26861D11006F5B7F /* BasketRepositoryMutationTests.swift in Sources */,
+				9637476F26C572B9007DF92D /* ProductModifierListTests.swift in Sources */,
 				961C4288260882E8001D8467 /* APIErrorTests.swift in Sources */,
 				48EFE25B2539E56000CC6E58 /* GeneralImplementingTests.swift in Sources */,
 				48EEF19F25470C2E00F8E4D9 /* SDKConfigurationTests.swift in Sources */,
 				48EFE2612539E59A00CC6E58 /* DeviceRegistrationWorkerTests.swift in Sources */,
+				9637476326C558C1007DF92D /* PaymentSourceTests.swift in Sources */,
+				9637476D26C5726C007DF92D /* ProductModifierItemSelectionInputTests.swift in Sources */,
 				968CA6A525EF9B8A0000C2E2 /* WebPageTests.swift in Sources */,
 				961C42BD2608836B001D8467 /* MockDiskCache.swift in Sources */,
 				961C1C98268240CF00BE6F3B /* GraphQLFactoryTests.swift in Sources */,
+				9637476726C5709C007DF92D /* ProductCategoryTests.swift in Sources */,
 				488A67C22541D8AA005C030E /* MockAnalyticsLogger.swift in Sources */,
 				96302CE226C3E849000A91EC /* GraphQLManagerErrorTests.swift in Sources */,
+				9637475F26C55600007DF92D /* CardTests.swift in Sources */,
 				9647D9AE26862143006F5B7F /* BasketRepositoryMutationErrorTests.swift in Sources */,
 				961C1C9D2682436B00BE6F3B /* FulfilmentPointRepositoryTests.swift in Sources */,
 				96CE698226CEA02E0026CC13 /* SellImplementingTests.swift in Sources */,
@@ -2280,18 +2382,24 @@
 				961C1C962682323700BE6F3B /* GraphQLManagerTests.swift in Sources */,
 				96302CE826C3F165000A91EC /* RequestLoggingInterceptorTests.swift in Sources */,
 				488A67C62541DA8B005C030E /* AnalyticsLoggerTests.swift in Sources */,
+				9637475B26C546A7007DF92D /* PaymentIntentNextActionTests.swift in Sources */,
 				961C42982608830E001D8467 /* DeviceTokenTests.swift in Sources */,
 				9606EDC0267CBF4E00ED24D0 /* DummyError.swift in Sources */,
 				9687488C268DB9A400DDC5DD /* PaymentRepositoryTestHelper.swift in Sources */,
 				96302CE626C3E9EA000A91EC /* APITokenInterceptorTests.swift in Sources */,
 				9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */,
 				961C42C42608836E001D8467 /* RemoteDiskCacheDataProvidingTests.swift in Sources */,
+				9637473326C421B5007DF92D /* FulfilmentPointFilterTests.swift in Sources */,
 				96F1BF3C26CD6AC6008D1363 /* OrderingJourneyViewControllerTests.swift in Sources */,
 				961C436326089346001D8467 /* AuthorisationWorkerTests.swift in Sources */,
 				961C4290260882FB001D8467 /* CodableStorageTests.swift in Sources */,
+				9637475326C541D1007DF92D /* OrderTypeTests.swift in Sources */,
+				9637474D26C53D83007DF92D /* OrderItemTests.swift in Sources */,
+				9637474F26C53E5D007DF92D /* OrderModelTestsHelper.swift in Sources */,
 				488A67CA2541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift in Sources */,
 				961C42CF26088377001D8467 /* DiskCacheTests.swift in Sources */,
 				961C43782608937C001D8467 /* RequestHeaderTests.swift in Sources */,
+				9637476926C570E0007DF92D /* ProductFilterTests.swift in Sources */,
 				961C42A226088315001D8467 /* DeviceTests.swift in Sources */,
 				961C438A2608938D001D8467 /* OAuthRefreshOrWaitActionGeneratorTests.swift in Sources */,
 				96F1BF2326CD32AD008D1363 /* WebViewWrapperTests.swift in Sources */,

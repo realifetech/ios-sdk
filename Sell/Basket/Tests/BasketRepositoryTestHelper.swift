@@ -14,7 +14,7 @@ enum BasketRepositoryTestHelper {
 
     static let fragmentBasket = ApolloType.FragmentBasket(netAmount: 100)
 
-    static let underTestBasketErrors: [BasketError] = [
+    static let underTestBasketErrors: [BasketError.`Type`] = [
         .outOfStock,
         .priceChange,
         .mixedBasket,
@@ -42,7 +42,7 @@ extension ApolloType.FragmentBasket {
 extension BasketError {
 
     var errorCode: String {
-        switch self {
+        switch type {
         case .outOfStock:
             return "SELL_BASKET_OUT_OF_STOCK"
         case .priceChange:
