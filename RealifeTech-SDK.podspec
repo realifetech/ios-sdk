@@ -22,7 +22,7 @@ Pod::Spec.new do |spec|
   ]
   spec.exclude_files = [
     '**/Tests/**/*',
-    'DummyProject/**/*',
+    'SampleApp/**/*',
     'Pods/**/*'
   ]
   spec.resource_bundle = { 'RealifeTech' => ['**/Resources/*.lproj/*.strings'] }

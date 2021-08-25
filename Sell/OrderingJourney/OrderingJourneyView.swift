@@ -11,7 +11,7 @@ import WebKit
 
 public struct OrderingJourneyView: View {
 
-    @ObservedObject private var store = WebViewStore()
+    @ObservedObject var store = WebViewStore()
     @State private var canGoBack = false
     @State private var canGoForward = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -23,34 +23,45 @@ public struct OrderingJourneyView: View {
     var dismiss: (() -> Void)?
 
     public let urlRequest: URLRequest
+    public let colorStore: ColorStorable
+    private let scheduler: DispatchQueueAnyScheduler
+    let inspection = Inspection<Self>()
 
-    public init(urlString: String) {
-        guard let url = URL(string: urlString) else {
-            fatalError("Fail to construct URL")
-        }
+    init(urlString: String, colorStore: ColorStorable, scheduler: DispatchQueueAnyScheduler) {
+        let url = URL(string: urlString) ?? URL(fileURLWithPath: "")
         self.urlRequest = URLRequest(url: url)
+        self.colorStore = colorStore
+        self.scheduler = scheduler
+    }
+
+    public init(urlString: String, colorStore: ColorStorable) {
+        let url = URL(string: urlString) ?? URL(fileURLWithPath: "")
+        self.urlRequest = URLRequest(url: url)
+        self.colorStore = colorStore
+        self.scheduler = .main
     }
 
     public var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
                 WebViewWrapper(
                     webView: WKWebView(),
                     urlRequest: urlRequest,
                     store: store)
-                Spacer()
                 AnyView(makeBottomView())
-                    .frame(height: 44)
             }
             .navigationBarItems(
                 leading: AnyView(makeCloseButton()),
                 trailing: AnyView(makeReloadButton())
             )
             .navigationBarTitle("", displayMode: .inline)
-            .onReceive(store.canGoBack.receive(on: DispatchQueue.main)) { value in
+            .navigationBarColor(
+                backgroundColor: colorStore.getColor(for: .primary),
+                titleColor: colorStore.getColor(for: .onPrimary))
+            .onReceive(store.canGoBack.receive(on: scheduler)) { value in
                 canGoBack = value
             }
-            .onReceive(store.canGoForward.receive(on: DispatchQueue.main)) { value in
+            .onReceive(store.canGoForward.receive(on: scheduler)) { value in
                 canGoForward = value
             }
         }
@@ -60,26 +71,36 @@ public struct OrderingJourneyView: View {
 private extension OrderingJourneyView {
 
     func makeBottomView() -> some View {
-        HStack(alignment: .center, spacing: 16) {
-            Spacer()
-                .frame(width: 16)
+        VStack(spacing: 0) {
+            HStack(alignment: .center, spacing: 16) {
+                Button {
+                    store.webViewNavigationPublisher.send(.backward)
+                } label: {
+                    Image(systemName: "chevron.left")
+                }
+                .foregroundColor(getButtonColor(by: canGoBack))
+                .onReceive(inspection.notice) { inspection.visit(self, $0) }
+                .disabled(!canGoBack)
 
-            Button {
-                store.webViewNavigationPublisher.send(.backward)
-            } label: {
-                Image(systemName: "chevron.left")
+                Button {
+                    store.webViewNavigationPublisher.send(.forward)
+                } label: {
+                    Image(systemName: "chevron.right")
+                }
+                .foregroundColor(getButtonColor(by: canGoForward))
+                .onReceive(inspection.notice) { inspection.visit(self, $0) }
+                .disabled(!canGoForward)
+
+                Spacer()
             }
-            .disabled(!canGoBack)
-
-            Button {
-                store.webViewNavigationPublisher.send(.forward)
-            } label: {
-                Image(systemName: "chevron.right")
-            }
-            .disabled(!canGoForward)
-
-            Spacer()
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(colorStore.getColor(for: .surface).edgesIgnoringSafeArea(.bottom))
         }
+    }
+
+    func getButtonColor(by state: Bool) -> Color {
+        return colorStore.getColor(for: state ? .onSurface : .neutral)
     }
 
     func makeCloseButton() -> some View {
@@ -88,6 +109,7 @@ private extension OrderingJourneyView {
         } label: {
             Image(systemName: "xmark")
         }
+        .foregroundColor(colorStore.getColor(for: .onPrimary))
     }
 
     func makeReloadButton() -> some View {
@@ -96,11 +118,12 @@ private extension OrderingJourneyView {
         } label: {
             Image(systemName: "arrow.clockwise")
         }
+        .foregroundColor(colorStore.getColor(for: .onPrimary))
     }
 }
 
 struct OrderingJourneyView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderingJourneyView(urlString: "https://www.realifetech.com/")
+        OrderingJourneyView(urlString: "https://www.realifetech.com/", colorStore: EmptyColorStore())
     }
 }
