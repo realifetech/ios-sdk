@@ -12,12 +12,14 @@ import RxSwift
 protocol DefaultDiskCacheStrategyProviding { }
 
 private extension Bool {
+
     var diskCacheDataProvidingStrategy: DiskCacheDataProvidingStrategy {
         return self ? .localAndForcedRemote : .localAndRemote
     }
 }
 
 extension DefaultDiskCacheStrategyProviding where Self: RemoteDiskCacheDataProviding {
+
     static func retrieve<Model: Codable>(
         type: Model.Type,
         forRequest request: URLRequest = Rqstr.request(forId: nil),
