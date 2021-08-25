@@ -1357,14 +1357,14 @@
 		961C41BE260882BA001D8467 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				961C41BF260882BA001D8467 /* RequestCreatorTests.swift */,
-				961C41C0260882BA001D8467 /* Util */,
+				961C41C5260882BA001D8467 /* DiskCacheCodableInterfaceTests.swift */,
+				961C41C7260882BA001D8467 /* DiskCacheTests.swift */,
 				961C41C2260882BA001D8467 /* LocalDiskCacheDataProvidingTests.swift */,
 				961C41C3260882BA001D8467 /* MockDiskCache.swift */,
 				961C41C4260882BA001D8467 /* RemoteDiskCacheDataProvidingTests.swift */,
-				961C41C5260882BA001D8467 /* DiskCacheCodableInterfaceTests.swift */,
+				961C41BF260882BA001D8467 /* RequestCreatorTests.swift */,
 				961C41C6260882BA001D8467 /* RequestTimeLoggerTests.swift */,
-				961C41C7260882BA001D8467 /* DiskCacheTests.swift */,
+				961C41C0260882BA001D8467 /* Util */,
 			);
 			path = Tests;
 			sourceTree = "<group>";

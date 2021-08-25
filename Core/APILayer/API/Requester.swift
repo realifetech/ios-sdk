@@ -40,7 +40,7 @@ public extension Requester {
     static func response(forRequest request: URLRequest) -> Observable<Data> {
         var interceptedAction: Observable<Data> {
             let request = Self.applyInterceptors(request: request)
-            return RequestDispatcher.dispatch(request: request)
+            return RequestDispatcher().dispatch(request: request)
         }
         // If we have a pre-dispatch action (e.g. in OAuthRefreshOrWaitActionGenerator),
         // we wrap the original request in that action. If not, we just return the original action.

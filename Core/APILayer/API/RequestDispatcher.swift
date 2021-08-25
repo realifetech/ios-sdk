@@ -10,10 +10,27 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-public struct RequestDispatcher {
+protocol ReqeustDispatching {
+    var timeLogger: RequestTimeLogger { get }
 
-    static func dispatch(request: URLRequest) -> Observable<Data> {
-        return URLSession.shared.rx.response(request: request)
+    func getSessionObservable(from request: URLRequest) -> Observable<(response: HTTPURLResponse, data: Data)>
+    func dispatch(request: URLRequest) -> Observable<Data>
+}
+
+struct RequestDispatcher: ReqeustDispatching {
+
+    let timeLogger: RequestTimeLogger
+
+    init(timeLogger: RequestTimeLogger = .shared) {
+        self.timeLogger = timeLogger
+    }
+
+    func getSessionObservable(from request: URLRequest) -> Observable<(response: HTTPURLResponse, data: Data)> {
+        URLSession.shared.rx.response(request: request)
+    }
+
+    func dispatch(request: URLRequest) -> Observable<Data> {
+        return getSessionObservable(from: request)
             .flatMap({ (tuple: (response: URLResponse, data: Data)) -> Observable<Data> in
                 let (response, data) = tuple
                 if let response = response as? HTTPURLResponse {
@@ -26,12 +43,12 @@ public struct RequestDispatcher {
                     return .error(APIError.unparseableError())
                 }
             })
-            .do(onNext: { (_) in
-                RequestTimeLogger.shared.removeRequest(withIdentifier: request.identifier)
-            }, onError: { (_) in
-                RequestTimeLogger.shared.removeRequest(withIdentifier: request.identifier)
+            .do(onNext: { _ in
+                self.timeLogger.removeRequest(withIdentifier: request.identifier)
+            }, onError: { _ in
+                self.timeLogger.removeRequest(withIdentifier: request.identifier)
             }, onSubscribe: {
-                RequestTimeLogger.shared.addRequest(withIdentifier: request.identifier)
+                self.timeLogger.addRequest(withIdentifier: request.identifier)
             })
     }
 }
