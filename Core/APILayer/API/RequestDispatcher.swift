@@ -13,12 +13,10 @@ import RxCocoa
 public struct RequestDispatcher {
 
     static func dispatch(request: URLRequest) -> Observable<Data> {
-        RequestLogger.log(request: request)
         return URLSession.shared.rx.response(request: request)
             .flatMap({ (tuple: (response: URLResponse, data: Data)) -> Observable<Data> in
                 let (response, data) = tuple
                 if let response = response as? HTTPURLResponse {
-                    RequestLogger.log(response: response, withData: data)
                     if 200 ..< 300 ~= response.statusCode {
                         return .just(data)
                     } else {
