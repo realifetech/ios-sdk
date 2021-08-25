@@ -7,21 +7,66 @@
 //
 
 import Foundation
+import Apollo
 
-public enum BasketError: Error, LocalizedError {
+public struct BasketError: Error, LocalizedError {
 
-    case outOfStock
-    case priceChange
-    case mixedBasket
-    case emptyBasket
-    case regularError(Error)
+    public enum `Type` {
+        case outOfStock
+        case priceChange
+        case mixedBasket
+        case emptyBasket
+        case regularError(Error)
+    }
+
+    public let type: `Type`
+    public let message: String
+
+    public init(type: `Type`, message: String) {
+        self.type = type
+        self.message = message
+    }
 
     public var errorDescription: String? {
-        switch self {
+        switch type {
         case .regularError(let error):
             return error.localizedDescription
         default:
-            return localizedDescription
+            return message
+        }
+    }
+}
+
+extension BasketError {
+
+    init(graphQLError: GraphQLError) {
+        let message = graphQLError.message ?? graphQLError.localizedDescription
+        switch graphQLError.extensions?["code"] as? String {
+        case "SELL_BASKET_OUT_OF_STOCK":
+            self = BasketError(type: .outOfStock, message: message)
+        case "SELL_BASKET_PRICE_CHANGE":
+            self = BasketError(type: .priceChange, message: message)
+        case "SELL_BASKET_MIXED":
+            self = BasketError(type: .mixedBasket, message: message)
+        case "SELL_BASKET_EMPTY":
+            self = BasketError(type: .emptyBasket, message: message)
+        default:
+            self = BasketError(type: .regularError(graphQLError), message: message)
+        }
+    }
+}
+
+extension Array where Element == BasketError {
+
+    var combinedErrorMessage: String {
+        if isEmpty {
+            return ""
+        } else if count == 1, let error = first {
+            return error.message
+        } else {
+            return Set(map { $0.message })
+                .sorted()
+                .joined(separator: "\n")
         }
     }
 }
