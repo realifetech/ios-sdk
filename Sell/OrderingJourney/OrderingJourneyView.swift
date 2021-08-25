@@ -16,6 +16,10 @@ public struct OrderingJourneyView: View {
     @State private var canGoForward = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
+    // NOTE: This is only assigned from UIHostController
+    // as the presentationMode doesn't support dismissing from UIKit until iOS 15.
+    // swiftlint:disable:next line_length
+    // https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-15-beta-release-notes#Updates-in-iOS-&-iPadOS-15-beta
     var dismiss: (() -> Void)?
 
     public let urlRequest: URLRequest
