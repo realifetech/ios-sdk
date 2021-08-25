@@ -8,47 +8,38 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
 
-protocol ReqeustDispatching {
-    var timeLogger: RequestTimeLogger { get }
+struct RequestDispatcher {
 
-    func getSessionObservable(from request: URLRequest) -> Observable<(response: HTTPURLResponse, data: Data)>
-    func dispatch(request: URLRequest) -> Observable<Data>
-}
-
-struct RequestDispatcher: ReqeustDispatching {
-
+    let request: URLRequest
     let timeLogger: RequestTimeLogger
+    let sessionObservable: Observable<(response: HTTPURLResponse, data: Data)>
 
-    init(timeLogger: RequestTimeLogger = .shared) {
+    init(
+        request: URLRequest,
+        timeLogger: RequestTimeLogger = .shared,
+        sessionObservable: Observable<(response: HTTPURLResponse, data: Data)>
+    ) {
+        self.request = request
         self.timeLogger = timeLogger
+        self.sessionObservable = sessionObservable
     }
 
-    func getSessionObservable(from request: URLRequest) -> Observable<(response: HTTPURLResponse, data: Data)> {
-        URLSession.shared.rx.response(request: request)
-    }
-
-    func dispatch(request: URLRequest) -> Observable<Data> {
-        return getSessionObservable(from: request)
-            .flatMap({ (tuple: (response: URLResponse, data: Data)) -> Observable<Data> in
-                let (response, data) = tuple
-                if let response = response as? HTTPURLResponse {
-                    if 200 ..< 300 ~= response.statusCode {
-                        return .just(data)
-                    } else {
-                        return .error(APIError.constructedError(data: data, statusCode: response.statusCode))
-                    }
+    func dispatch() -> Observable<Data> {
+        return sessionObservable
+            .flatMap({ (response: HTTPURLResponse, data: Data) -> Observable<Data> in
+                if 200 ..< 300 ~= response.statusCode {
+                    return .just(data)
                 } else {
-                    return .error(APIError.unparseableError())
+                    return .error(APIError.constructedError(data: data, statusCode: response.statusCode))
                 }
             })
             .do(onNext: { _ in
-                self.timeLogger.removeRequest(withIdentifier: request.identifier)
+                timeLogger.removeRequest(withIdentifier: request.identifier)
             }, onError: { _ in
-                self.timeLogger.removeRequest(withIdentifier: request.identifier)
+                timeLogger.removeRequest(withIdentifier: request.identifier)
             }, onSubscribe: {
-                self.timeLogger.addRequest(withIdentifier: request.identifier)
+                timeLogger.addRequest(withIdentifier: request.identifier)
             })
     }
 }

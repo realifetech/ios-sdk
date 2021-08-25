@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 public enum RequesterDateFormat {
     case timestampMilliseconds
@@ -40,7 +41,10 @@ public extension Requester {
     static func response(forRequest request: URLRequest) -> Observable<Data> {
         var interceptedAction: Observable<Data> {
             let request = Self.applyInterceptors(request: request)
-            return RequestDispatcher().dispatch(request: request)
+            let dispatcher = RequestDispatcher(
+                request: request,
+                sessionObservable: URLSession.shared.rx.response(request: request))
+            return dispatcher.dispatch()
         }
         // If we have a pre-dispatch action (e.g. in OAuthRefreshOrWaitActionGenerator),
         // we wrap the original request in that action. If not, we just return the original action.
