@@ -324,6 +324,7 @@
 		96B6709426D66DB000DB74A4 /* DiskCacheDataProvidingErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6709326D66DB000DB74A4 /* DiskCacheDataProvidingErrorTests.swift */; };
 		96B6709626D6704700DB74A4 /* OAuthRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6709526D6704700DB74A4 /* OAuthRequesterTests.swift */; };
 		96B670A826D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B670A726D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift */; };
+		96B670AA26D6935C00DB74A4 /* NetworkConnectivityCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B670A926D6935C00DB74A4 /* NetworkConnectivityCheckerTests.swift */; };
 		B469FB064974C885C01F0F73 /* Pods_GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9D16B2C12DF74A0CF791FB /* Pods_GraphQL.framework */; };
 		CC97A359B339D0D9FC49BECC /* Pods_RealifeTech_RealifeTechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */; };
 		D1A307806D5B3AE84B11702B /* Pods_RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */; };
@@ -673,6 +674,7 @@
 		96B6709326D66DB000DB74A4 /* DiskCacheDataProvidingErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheDataProvidingErrorTests.swift; sourceTree = "<group>"; };
 		96B6709526D6704700DB74A4 /* OAuthRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRequesterTests.swift; sourceTree = "<group>"; };
 		96B670A726D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDiskCacheStrategyProvidingTests.swift; sourceTree = "<group>"; };
+		96B670A926D6935C00DB74A4 /* NetworkConnectivityCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectivityCheckerTests.swift; sourceTree = "<group>"; };
 		B15A23E46832D3D390247B2D /* Pods-RealifeTech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.release.xcconfig"; sourceTree = "<group>"; };
 		CDE0D6EFC6794CF7E8AB7F2C /* Pods-GraphQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL.debug.xcconfig"; path = "Target Support Files/Pods-GraphQL/Pods-GraphQL.debug.xcconfig"; sourceTree = "<group>"; };
 		D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1503,6 +1505,7 @@
 			isa = PBXGroup;
 			children = (
 				961C4251260882C8001D8467 /* BluetoothManagerWrapperTests.swift */,
+				96B670A926D6935C00DB74A4 /* NetworkConnectivityCheckerTests.swift */,
 				961C4250260882C8001D8467 /* ReachabilityCheckerTests.swift */,
 			);
 			path = Tests;
@@ -2335,6 +2338,7 @@
 				9637475726C54439007DF92D /* PaymentIntentTests.swift in Sources */,
 				9637475526C542EF007DF92D /* PaymentActionTypeTests.swift in Sources */,
 				9637475D26C547B3007DF92D /* PaymentStatusTests.swift in Sources */,
+				96B670AA26D6935C00DB74A4 /* NetworkConnectivityCheckerTests.swift in Sources */,
 				9687488A268CD64E00DDC5DD /* PaymentRepositoryPaymentSourceTests.swift in Sources */,
 				9637473726C42486007DF92D /* BasketErrorTests.swift in Sources */,
 				961C42B526088357001D8467 /* ReadOnlyCurrentValueTests.swift in Sources */,

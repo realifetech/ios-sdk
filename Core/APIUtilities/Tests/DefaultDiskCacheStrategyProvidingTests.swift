@@ -39,7 +39,7 @@ final class DefaultDiskCacheStrategyProvidingTests: XCTestCase {
 
     func test_retrieveWithForceUpdate_forceUpdateIsTrue_strategyIsLocalAndForceRemote() {
         let expectation = XCTestExpectation(description: "event is emitted")
-        sut.retrieve(type: TestObject.self, forceUpdate: false)
+        sut.retrieve(type: TestObject.self, forceUpdate: true)
             .subscribe(onNext: { object in
                 XCTAssertEqual(object.id, "1")
                 XCTAssertEqual(self.sut.receivedStrategy, .localAndForcedRemote)

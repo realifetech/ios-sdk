@@ -12,47 +12,87 @@ import CoreBluetooth
 
 final class ReachabilityCheckerTests: XCTestCase {
 
-    func test_bluetooth_enabled() {
-        let mockBluetoothManager = MockBluetoothManager()
-        mockBluetoothManager.bluetoothEnabled = true
-        let sut = ReachabilityChecker(bluetoothManager: mockBluetoothManager)
+    private var sut: ReachabilityChecker!
+    private var bluetoothManager: MockBluetoothManager!
+    private var networkChecker: MockWifiConnectivityChecker!
+
+    override func setUp() {
+        super.setUp()
+        bluetoothManager = MockBluetoothManager()
+        networkChecker = MockWifiConnectivityChecker()
+        sut = ReachabilityChecker(
+            bluetoothManager: bluetoothManager,
+            networkConnectivityChecker: networkChecker)
+    }
+
+    override func tearDown() {
+        sut = nil
+        networkChecker = nil
+        bluetoothManager = nil
+        super.tearDown()
+    }
+
+    func test_isBluetoothConnected_enabled() {
+        bluetoothManager.bluetoothEnabled = true
         XCTAssertTrue(sut.isBluetoothConnected)
     }
 
-    func test_bluetooth_disabled() {
-        let mockBluetoothManager = MockBluetoothManager()
-        let sut = ReachabilityChecker(bluetoothManager: mockBluetoothManager)
+    func test_isBluetoothConnected_disabled() {
+        bluetoothManager.bluetoothEnabled = false
         XCTAssertFalse(sut.isBluetoothConnected)
     }
 
-    func test_wifi_connected() {
-        let mockHelper = MockWifiConnectivityChecker()
-        mockHelper.wifiEnabled = true
-        let sut = ReachabilityChecker(
-            bluetoothManager: MockBluetoothManager(),
-            networkConnectivityChecker: mockHelper)
+    func test_isConnectedToWifi_connected() {
+        networkChecker.wifiEnabled = true
         XCTAssertTrue(sut.isConnectedToWifi)
     }
 
-    func test_wifi_notConnected() {
-        let mockHelper = MockWifiConnectivityChecker()
-        let sut = ReachabilityChecker(
-            bluetoothManager: MockBluetoothManager(),
-            networkConnectivityChecker: mockHelper)
+    func test_isConnectedToWifi_notConnected() {
+        networkChecker.wifiEnabled = false
         XCTAssertFalse(sut.isConnectedToWifi)
     }
 
-    private final class MockBluetoothManager: BluetoothManagable {
-
-        var bluetoothEnabled: Bool = false
+    func test_hasNetworkConnection_yes() {
+        networkChecker.shouldHaveNetworkConnection = true
+        XCTAssertTrue(sut.hasNetworkConnection)
     }
 
-    private final class MockWifiConnectivityChecker: NetworkConnectivityChecker {
+    func test_hasNetworkConnection_no() {
+        networkChecker.shouldHaveNetworkConnection = false
+        XCTAssertFalse(sut.hasNetworkConnection)
+    }
 
-        var wifiEnabled: Bool = false
+    func test_isPoorNetworkConnection_yes() {
+        networkChecker.shouldBePoorNetworkConnection = true
+        XCTAssertTrue(sut.isPoorNetworkConnection)
+    }
 
-        override var wifiConnected: Bool {
-            return wifiEnabled
-        }
+    func test_isPoorNetworkConnection_no() {
+        networkChecker.shouldBePoorNetworkConnection = false
+        XCTAssertFalse(sut.isPoorNetworkConnection)
+    }
+}
+
+private final class MockBluetoothManager: BluetoothManagable {
+
+    var bluetoothEnabled: Bool = false
+}
+
+private final class MockWifiConnectivityChecker: NetworkConnectivityChecker {
+
+    var wifiEnabled = false
+    var shouldHaveNetworkConnection = false
+    var shouldBePoorNetworkConnection = false
+
+    override var wifiConnected: Bool {
+        wifiEnabled
+    }
+
+    override var hasNetworkConnection: Bool {
+        shouldHaveNetworkConnection
+    }
+
+    override var isPoorNetworkConnection: Bool {
+        shouldBePoorNetworkConnection
     }
 }
