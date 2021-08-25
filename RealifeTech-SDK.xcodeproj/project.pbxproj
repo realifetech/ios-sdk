@@ -323,6 +323,7 @@
 		96B6709226D6661300DB74A4 /* RequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6709126D6661300DB74A4 /* RequesterTests.swift */; };
 		96B6709426D66DB000DB74A4 /* DiskCacheDataProvidingErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6709326D66DB000DB74A4 /* DiskCacheDataProvidingErrorTests.swift */; };
 		96B6709626D6704700DB74A4 /* OAuthRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6709526D6704700DB74A4 /* OAuthRequesterTests.swift */; };
+		96B670A826D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B670A726D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift */; };
 		B469FB064974C885C01F0F73 /* Pods_GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9D16B2C12DF74A0CF791FB /* Pods_GraphQL.framework */; };
 		CC97A359B339D0D9FC49BECC /* Pods_RealifeTech_RealifeTechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */; };
 		D1A307806D5B3AE84B11702B /* Pods_RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */; };
@@ -671,6 +672,7 @@
 		96B6709126D6661300DB74A4 /* RequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequesterTests.swift; sourceTree = "<group>"; };
 		96B6709326D66DB000DB74A4 /* DiskCacheDataProvidingErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheDataProvidingErrorTests.swift; sourceTree = "<group>"; };
 		96B6709526D6704700DB74A4 /* OAuthRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRequesterTests.swift; sourceTree = "<group>"; };
+		96B670A726D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDiskCacheStrategyProvidingTests.swift; sourceTree = "<group>"; };
 		B15A23E46832D3D390247B2D /* Pods-RealifeTech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.release.xcconfig"; sourceTree = "<group>"; };
 		CDE0D6EFC6794CF7E8AB7F2C /* Pods-GraphQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL.debug.xcconfig"; path = "Target Support Files/Pods-GraphQL/Pods-GraphQL.debug.xcconfig"; sourceTree = "<group>"; };
 		D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1209,6 +1211,7 @@
 				961C4173260882BA001D8467 /* APITokenManagerTests.swift */,
 				961C4172260882BA001D8467 /* AuthorisationWorkerTests.swift */,
 				961C4174260882BA001D8467 /* AuthorsationStoreTests.swift */,
+				96B670A726D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift */,
 				961C4170260882BA001D8467 /* EmptyTokenManagerTests.swift */,
 				961C4177260882BA001D8467 /* OAuthRefreshOrWaitActionGeneratorTests.swift */,
 				96B6709526D6704700DB74A4 /* OAuthRequesterTests.swift */,
@@ -2321,6 +2324,7 @@
 				961C436D2608936E001D8467 /* OAuthTokenRefreshWatcherTests.swift in Sources */,
 				9637472D26C41801007DF92D /* CollectionPreferenceTypeTests.swift in Sources */,
 				964D292526933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift in Sources */,
+				96B670A826D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
 				961C438F2608939C001D8467 /* UIDeviceHelperTests.swift in Sources */,
 				961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */,
