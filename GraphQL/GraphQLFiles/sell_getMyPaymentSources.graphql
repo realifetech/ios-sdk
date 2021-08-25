@@ -1,0 +1,8 @@
+query getMyPaymentSources($pageSize: Int!, $page: Int = 1) {
+  getMyPaymentSources(page: $page, pageSize: $pageSize) {
+    edges {
+      ...FragmentPaymentSource
+    }
+    nextPage
+  }
+}

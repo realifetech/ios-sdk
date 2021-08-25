@@ -12,6 +12,10 @@ public struct WebPage {
 
     public let url: URL
 
+    public init(url: URL) {
+        self.url = url
+    }
+
     public enum `Type`: String, CaseIterable {
         case audioGuidesHelp
         case tAndC

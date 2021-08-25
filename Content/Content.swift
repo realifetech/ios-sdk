@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if !COCOAPODS
+import GraphQL
+#endif
 
 public typealias Content = WebPageCreatable
-public typealias ApolloWebPageType = ApolloType.WebPageType
 public typealias WebPageType = WebPage.`Type`

@@ -10,4 +10,8 @@ import Foundation
 
 public protocol Sell {
     var product: ProductProvidable { get }
+    var basket: BasketProvidable { get }
+    var order: OrderProvidable { get }
+    var fulfilmentPoint: FulfilmentPointProvidable { get }
+    var payment: PaymentProvidable { get }
 }

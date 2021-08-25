@@ -1,0 +1,32 @@
+fragment FragmentBasket on Basket {
+  grossAmount
+  discountAmount
+  netAmount
+  seatInfo {
+    ...FragmentSeatInfo
+  }
+  timeslot {
+    ...FragmentTimeslot
+  }
+  collectionDate
+  collectionPreferenceType
+  items {
+    id
+    price
+    modifierItemsPrice
+    quantity
+    totalPrice
+    fulfilmentPoint {
+      ...FragmentFulfilmentPoint
+    }
+    productVariant {
+      ...FragmentProductVariant
+    }
+    product {
+      ...FragmentProduct
+    }
+    productModifierItems {
+      ...FragmentProductModifierItemSelection
+    }
+  }
+}

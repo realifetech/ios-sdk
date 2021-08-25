@@ -17,9 +17,10 @@ public protocol GraphQLManageable {
     )
     func dispatchMutation<Mutation: GraphQLMutation>(
         mutation: Mutation,
+        cacheResultToPersistence: Bool,
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     )
-    func clearAllCachedData()
+    func clearAllCachedData(completion: (() -> Void)?)
 }
 
 public class GraphQLManager {
@@ -38,7 +39,10 @@ extension GraphQLManager: GraphQLManageable {
         cachePolicy: GraphNetworkCachePolicy,
         completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     ) {
-        client.fetch(query: query, cachePolicy: cachePolicy.apolloCachePolicyType) { result in
+        client.fetch(
+            query: query,
+            cachePolicy: cachePolicy.apolloCachePolicyType
+        ) { result in
             switch result {
             case .success(let graphQLResult):
                 return completion(.success(graphQLResult))
@@ -50,9 +54,13 @@ extension GraphQLManager: GraphQLManageable {
 
     public func dispatchMutation<Mutation: GraphQLMutation>(
         mutation: Mutation,
+        cacheResultToPersistence: Bool,
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     ) {
-        client.perform(mutation: mutation) { result in
+        client.perform(
+            mutation: mutation,
+            publishResultToStore: cacheResultToPersistence
+        ) { result in
             switch result {
             case .success(let graphQLResult):
                 return completion(.success(graphQLResult))
@@ -62,7 +70,9 @@ extension GraphQLManager: GraphQLManageable {
         }
     }
 
-    public func clearAllCachedData() {
-        client.clearCache()
+    public func clearAllCachedData(completion: (() -> Void)?) {
+        client.clearCache(callbackQueue: .main) { _ in
+            completion?()
+        }
     }
 }

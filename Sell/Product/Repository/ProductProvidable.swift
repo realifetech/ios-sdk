@@ -9,9 +9,16 @@
 import Foundation
 
 public protocol ProductProvidable {
+
     func getProducts(
         pageSize: Int,
-        page: Int,
-        filters: ProductFilterWrapper,
-        callback: (Result<PaginatedObject<Product>, Error>) -> Void)
+        page: Int?,
+        filters: ProductFilter?,
+        params: [FilterParam]?,
+        callback: @escaping (Result<PaginatedObject<Product>, Error>) -> Void)
+
+    func getProductById(
+        id: String,
+        params: [FilterParam]?,
+        callback: @escaping (Result<Product, Error>) -> Void)
 }

@@ -9,6 +9,7 @@
 import XCTest
 import Apollo
 @testable import RealifeTech
+@testable import GraphQL
 
 typealias PutAnalyticEventMutationDataType = ApolloType.PutAnalyticEventMutation.Data
 

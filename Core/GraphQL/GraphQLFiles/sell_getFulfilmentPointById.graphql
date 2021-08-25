@@ -1,5 +1,0 @@
-query getFulfilmentPointById($id: ID!) {
-  getFulfilmentPoint(id: $id) {
-    ...FragmentFulfilmentPoint
-  }
-}

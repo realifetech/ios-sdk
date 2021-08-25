@@ -1,5 +1,0 @@
-mutation deleteMyPaymentSource($id: ID!) {
-  deleteMyPaymentSource(id: $id) {
-    ...paymentSourceDetails
-  }
-}

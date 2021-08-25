@@ -1,0 +1,7 @@
+fragment FragmentProductModifierItemSelection on ProductModifierItemSelection {
+  productModifierItem {
+    ...FragmentProductModifierItem
+  }
+  quantity
+  totalPrice
+}

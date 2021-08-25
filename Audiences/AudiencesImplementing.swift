@@ -7,6 +7,9 @@
 //
 
 import Foundation
+#if !COCOAPODS
+import GraphQL
+#endif
 
 public class AudiencesImplementing: AudienceChecking {
 

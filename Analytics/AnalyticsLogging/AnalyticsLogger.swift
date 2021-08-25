@@ -7,6 +7,9 @@
 //
 
 import Foundation
+#if !COCOAPODS
+import GraphQL
+#endif
 
 class AnalyticsLogger {
 
@@ -91,7 +94,10 @@ class AnalyticsLogger {
             old: event.oldString,
             version: event.version,
             timestamp: event.timestampString)
-        graphQLManager.dispatchMutation(mutation: ApolloType.PutAnalyticEventMutation(input: input)) { result in
+        graphQLManager.dispatchMutation(
+            mutation: ApolloType.PutAnalyticEventMutation(input: input),
+            cacheResultToPersistence: false
+        ) { result in
             switch result {
             case .success(let success):
                 completion(.success(success.data?.putAnalyticEvent.success ?? false))
