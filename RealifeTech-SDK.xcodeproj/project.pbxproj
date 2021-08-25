@@ -302,6 +302,10 @@
 		96AED8D026CFB5B600F6C750 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED8CF26CFB5B600F6C750 /* NavigationBarModifier.swift */; };
 		96AED8D326CFBC9A00F6C750 /* EmptyColorStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED8D226CFBC9A00F6C750 /* EmptyColorStoreTests.swift */; };
 		96AED8D526CFC71900F6C750 /* ColorTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED8D426CFC71900F6C750 /* ColorTypeTests.swift */; };
+		96B6706F26D3E5C100DB74A4 /* AnyScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6706E26D3E5C100DB74A4 /* AnyScheduler.swift */; };
+		96B6707126D3ECAA00DB74A4 /* DispatchQueueTestScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6707026D3ECAA00DB74A4 /* DispatchQueueTestScheduler.swift */; };
+		96B6707326D3F0F300DB74A4 /* AnySchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6707226D3F0F300DB74A4 /* AnySchedulerTests.swift */; };
+		96B6707526D3FD2800DB74A4 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6707426D3FD2800DB74A4 /* Inspection.swift */; };
 		96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */; };
 		96CE698226CEA02E0026CC13 /* SellImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */; };
 		96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */; };
@@ -634,6 +638,10 @@
 		96AED8CF26CFB5B600F6C750 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		96AED8D226CFBC9A00F6C750 /* EmptyColorStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyColorStoreTests.swift; sourceTree = "<group>"; };
 		96AED8D426CFC71900F6C750 /* ColorTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTypeTests.swift; sourceTree = "<group>"; };
+		96B6706E26D3E5C100DB74A4 /* AnyScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyScheduler.swift; sourceTree = "<group>"; };
+		96B6707026D3ECAA00DB74A4 /* DispatchQueueTestScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueTestScheduler.swift; sourceTree = "<group>"; };
+		96B6707226D3F0F300DB74A4 /* AnySchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnySchedulerTests.swift; sourceTree = "<group>"; };
+		96B6707426D3FD2800DB74A4 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewTests.swift; sourceTree = "<group>"; };
 		96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellImplementingTests.swift; sourceTree = "<group>"; };
 		96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewController.swift; sourceTree = "<group>"; };
@@ -1274,6 +1282,7 @@
 		961C41AC260882BA001D8467 /* CombineHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				96B6706E26D3E5C100DB74A4 /* AnyScheduler.swift */,
 				961C41AF260882BA001D8467 /* ReadOnlyCurrentValue.swift */,
 				961C41AD260882BA001D8467 /* Tests */,
 			);
@@ -1283,6 +1292,8 @@
 		961C41AD260882BA001D8467 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				96B6707226D3F0F300DB74A4 /* AnySchedulerTests.swift */,
+				96B6707026D3ECAA00DB74A4 /* DispatchQueueTestScheduler.swift */,
 				961C41AE260882BA001D8467 /* ReadOnlyCurrentValueTests.swift */,
 			);
 			path = Tests;
@@ -1705,6 +1716,7 @@
 			isa = PBXGroup;
 			children = (
 				96AED8CD26CFB58A00F6C750 /* Color+Hex.swift */,
+				96B6707426D3FD2800DB74A4 /* Inspection.swift */,
 				96AED8CF26CFB5B600F6C750 /* NavigationBarModifier.swift */,
 			);
 			path = SwiftUIHelpers;
@@ -2224,11 +2236,13 @@
 				961B01A32689F3D300D8C481 /* OrderUpdateInput.swift in Sources */,
 				480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */,
 				961C1CCB2684E3B200BE6F3B /* ProductModifierItemSelection.swift in Sources */,
+				96B6706F26D3E5C100DB74A4 /* AnyScheduler.swift in Sources */,
 				968CA62325EF69370000C2E2 /* ContentFactory.swift in Sources */,
 				961C1CA72683405400BE6F3B /* ProductVariant.swift in Sources */,
 				9606ED97267B646F00ED24D0 /* SellImplementing.swift in Sources */,
 				9606ED89267B50B000ED24D0 /* ProductFilter.swift in Sources */,
 				961C425C260882C8001D8467 /* AnalyticEvent.swift in Sources */,
+				96B6707526D3FD2800DB74A4 /* Inspection.swift in Sources */,
 				487479CE254044430048F03D /* AnalyticsFactory.swift in Sources */,
 				961C41CE260882BA001D8467 /* APITokenManager.swift in Sources */,
 				961C1C8C268206EC00BE6F3B /* FulfilmentPointTranslation.swift in Sources */,
@@ -2300,6 +2314,7 @@
 				96AED8D326CFBC9A00F6C750 /* EmptyColorStoreTests.swift in Sources */,
 				961C1CD42685D6DC00BE6F3B /* BasketRepositoryQueryTests.swift in Sources */,
 				961C42AC2608832D001D8467 /* BluetoothManagerWrapperTests.swift in Sources */,
+				96B6707326D3F0F300DB74A4 /* AnySchedulerTests.swift in Sources */,
 				961C4285260882E4001D8467 /* RequestCreatorTests.swift in Sources */,
 				961C436626089360001D8467 /* APITokenManagerTests.swift in Sources */,
 				961C436D2608936E001D8467 /* OAuthTokenRefreshWatcherTests.swift in Sources */,
@@ -2337,6 +2352,7 @@
 				9687488C268DB9A400DDC5DD /* PaymentRepositoryTestHelper.swift in Sources */,
 				96302CE626C3E9EA000A91EC /* APITokenInterceptorTests.swift in Sources */,
 				9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */,
+				96B6707126D3ECAA00DB74A4 /* DispatchQueueTestScheduler.swift in Sources */,
 				961C42C42608836E001D8467 /* RemoteDiskCacheDataProvidingTests.swift in Sources */,
 				96F1BF3C26CD6AC6008D1363 /* OrderingJourneyViewControllerTests.swift in Sources */,
 				961C436326089346001D8467 /* AuthorisationWorkerTests.swift in Sources */,
