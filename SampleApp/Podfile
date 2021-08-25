@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '13.0'
 inhibit_all_warnings!
 
-target 'DummyProject' do
+target 'SampleApp' do
   use_frameworks!
 
   pod 'RealifeTech-SDK', :path => '../'

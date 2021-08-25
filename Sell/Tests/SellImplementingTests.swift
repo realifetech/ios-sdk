@@ -12,15 +12,28 @@ import GraphQL
 
 final class SellImplementingTests: XCTestCase {
 
-    func test_createOrderingJourneyViewController() {
+    private var sut: SellImplementing!
+
+    override func setUpWithError() throws {
+        try super.setUpWithError()
         let graphQLManager = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
-        let sut = SellFactory.makeSellModule(graphQLManager: graphQLManager)
+        let sell = SellFactory.makeSellModule(
+            graphQLManager: graphQLManager,
+            orderingJourneyUrl: "",
+            colorStore: EmptyColorStore())
+        sut = try XCTUnwrap(sell as? SellImplementing)
+    }
+
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
+    }
+
+    func test_createOrderingJourneyViewController() {
         XCTAssertTrue(sut.createOrderingJourneyViewController() is OrderingJourneyViewController)
     }
 
     func test_createOrderingJourneyView() {
-        let graphQLManager = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
-        let sut = SellFactory.makeSellModule(graphQLManager: graphQLManager)
         let view = sut.createOrderingJourneyView()
         XCTAssertNotNil(view.urlRequest.url)
     }

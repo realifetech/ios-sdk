@@ -18,6 +18,7 @@ final class WebViewWrapperTests: XCTestCase {
     private var url: URL!
     private var urlRequest: URLRequest!
     private var store: WebViewStore!
+    private var scheduler: DispatchQueueTestScheduler!
     private var sut: WebViewWrapper!
     private var bag = Set<AnyCancellable>()
 
@@ -27,14 +28,17 @@ final class WebViewWrapperTests: XCTestCase {
         url = try XCTUnwrap(URL(string: "https://www.google.com"))
         urlRequest = URLRequest(url: url)
         store = WebViewStore()
+        scheduler = DispatchQueueTestScheduler()
         sut = WebViewWrapper(
             webView: webView,
             urlRequest: urlRequest,
-            store: store)
+            store: store,
+            scheduler: scheduler.eraseToAnyScheduler())
     }
 
     override func tearDown() {
         sut = nil
+        scheduler = nil
         store = nil
         urlRequest = nil
         url = nil
@@ -63,6 +67,36 @@ final class WebViewWrapperTests: XCTestCase {
         XCTAssertEqual(receivedPolicy, .allow)
     }
 
+    func test_coordinatorDidStartProvisionalNavigation_reloadNavigation_webViewDidReload() {
+        let wkNavigation = createNavigation(url: url, webView: webView)
+        let coordinator = sut.makeCoordinator()
+        coordinator.webView(
+            webView,
+            didStartProvisionalNavigation: wkNavigation)
+        store.webViewNavigationPublisher.send(.reload)
+        XCTAssertTrue(webView.didReload)
+    }
+
+    func test_coordinatorDidStartProvisionalNavigation_backwardNavigation_webViewGoesBack() {
+        let wkNavigation = createNavigation(url: url, webView: webView)
+        let coordinator = sut.makeCoordinator()
+        coordinator.webView(
+            webView,
+            didStartProvisionalNavigation: wkNavigation)
+        store.webViewNavigationPublisher.send(.backward)
+        XCTAssertTrue(webView.didGoBack)
+    }
+
+    func test_coordinatorDidStartProvisionalNavigation_forwardNavigation_webViewGoesForward() {
+        let wkNavigation = createNavigation(url: url, webView: webView)
+        let coordinator = sut.makeCoordinator()
+        coordinator.webView(
+            webView,
+            didStartProvisionalNavigation: wkNavigation)
+        store.webViewNavigationPublisher.send(.forward)
+        XCTAssertTrue(webView.didGoForward)
+    }
+
     func test_coodinatorWebViewDidFinishNavigation() {
         let wkNavigation = createNavigation(url: url, webView: webView)
         let coordinator = sut.makeCoordinator()
@@ -79,15 +113,28 @@ final class WebViewWrapperTests: XCTestCase {
                 canGoForwardExpectation.fulfill()
             }
             .store(in: &bag)
-        wait(for: [canGoBackExpectation, canGoForwardExpectation], timeout: 0.05)
+        wait(for: [canGoBackExpectation, canGoForwardExpectation], timeout: 0.01)
     }
 }
 
 // MARK: - Mocks
 private final class MockWebView: WKWebView {
 
+    var shouldGoBack = true
+    var shouldGoForward = true
+
     var receivedUrl: URL?
     var didReload = false
+    var didGoBack = false
+    var didGoForward = false
+
+    override var canGoBack: Bool {
+        shouldGoBack
+    }
+
+    override var canGoForward: Bool {
+        shouldGoForward
+    }
 
     override func load(_ request: URLRequest) -> WKNavigation? {
         receivedUrl = request.url
@@ -96,6 +143,16 @@ private final class MockWebView: WKWebView {
 
     override func reload() -> WKNavigation? {
         didReload = true
+        return nil
+    }
+
+    override func goBack() -> WKNavigation? {
+        didGoBack = true
+        return nil
+    }
+
+    override func goForward() -> WKNavigation? {
+        didGoForward = true
         return nil
     }
 }

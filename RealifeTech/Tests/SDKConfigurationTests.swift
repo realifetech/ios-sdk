@@ -20,27 +20,23 @@ final class SDKConfigurationTests: XCTestCase {
             appCode: testAppCode,
             clientSecret: testClientSecret,
             apiUrl: testApiUrl,
-            graphQLApiUrlString: testGraphQLApiUrl)
+            graphQLApiUrl: testGraphQLApiUrl)
         XCTAssertEqual(testAppCode, sut.appCode)
         XCTAssertEqual(testClientSecret, sut.clientSecret)
         XCTAssertEqual(testApiUrl, sut.apiUrl)
-        XCTAssertEqual(testGraphQLApiUrl, sut.graphQLApiUrlString)
+        XCTAssertEqual(testGraphQLApiUrl, sut.graphQLApiUrl)
     }
 
     func test_defaults_areUrls() {
         XCTAssertNotNil(URL(string: SDKConfiguration.defaultApiUrl))
         XCTAssertNotNil(URL(string: SDKConfiguration.defaultGraphQLApiUrl))
+        XCTAssertNotNil(URL(string: SDKConfiguration.defaultWebOrderingJourneyUrl))
     }
 
     func test_defaults_areUsed() {
         let sut = SDKConfiguration(appCode: "", clientSecret: "")
         XCTAssertEqual(sut.apiUrl, SDKConfiguration.defaultApiUrl)
-        XCTAssertEqual(sut.graphQLApiUrlString, SDKConfiguration.defaultGraphQLApiUrl)
-    }
-
-    func test_graphApiUrl() {
-        let testUrlString = "http://realifetech.com"
-        let sut = SDKConfiguration(appCode: "", clientSecret: "", graphQLApiUrlString: testUrlString)
-        XCTAssertEqual(sut.graphQLApiUrl.absoluteString, testUrlString)
+        XCTAssertEqual(sut.graphQLApiUrl, SDKConfiguration.defaultGraphQLApiUrl)
+        XCTAssertEqual(sut.webOrderingJourneyUrl, SDKConfiguration.defaultWebOrderingJourneyUrl)
     }
 }
