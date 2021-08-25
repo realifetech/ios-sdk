@@ -10,4 +10,4 @@ import Foundation
 
 // Add more protocols here as the functionality of the module grows.
 // E.g. typealias General = DeviceRegistering & OtherProtocol
-public typealias General = DeviceRegistering
+public typealias General = DeviceRegistering & ColorStorable
