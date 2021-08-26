@@ -6,7 +6,7 @@
 //  Copyright © 2021 Realife Tech. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 public protocol Sell {
     var product: ProductProvidable { get }
@@ -14,4 +14,8 @@ public protocol Sell {
     var order: OrderProvidable { get }
     var fulfilmentPoint: FulfilmentPointProvidable { get }
     var payment: PaymentProvidable { get }
+    var orderingJourneyUrl: String { get set }
+
+    func createOrderingJourneyViewController() -> UIHostingController<OrderingJourneyView>
+    func createOrderingJourneyView() -> OrderingJourneyView
 }
