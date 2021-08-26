@@ -13,7 +13,7 @@ import GraphQL
 
 public class AudiencesImplementing: AudienceChecking {
 
-    let graphQLManager: GraphQLManageable
+    private let graphQLManager: GraphQLManageable
 
     public init(graphQLManager: GraphQLManageable) {
         self.graphQLManager = graphQLManager
