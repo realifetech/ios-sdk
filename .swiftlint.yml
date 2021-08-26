@@ -1,6 +1,6 @@
 excluded:
    - Pods
-   - DummyProject/Pods
+   - SampleApp/Pods
    - Core/APILayer/Tests
    - Core/APIUtilities
    - GraphQL/API

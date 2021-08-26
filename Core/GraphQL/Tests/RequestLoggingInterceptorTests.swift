@@ -43,7 +43,7 @@ final class RequestLoggingInterceptorTests: XCTestCase {
         ) { _ in
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 0.01)
+        wait(for: [expectation], timeout: 0.5)
     }
 }
 
