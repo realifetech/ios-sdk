@@ -10,11 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-public enum RequesterDateFormat {
-    case timestampMilliseconds
-    case timestampSeconds
-    case formatted(format: String, localeIdentifier: String)
-}
+public typealias RequesterDateFormat = (format: String, localeIdentifier: String)
 
 public protocol Requester {
     static func root() -> String

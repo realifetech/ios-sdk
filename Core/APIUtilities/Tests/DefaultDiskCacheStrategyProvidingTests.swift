@@ -85,6 +85,6 @@ private struct MockRequester: Requester {
     }
 
     static func dateFormat() -> RequesterDateFormat? {
-        .timestampSeconds
+        nil
     }
 }

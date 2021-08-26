@@ -85,6 +85,6 @@ private struct SUT: Requester {
     }
 
     static func dateFormat() -> RequesterDateFormat? {
-        .timestampSeconds
+        nil
     }
 }

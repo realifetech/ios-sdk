@@ -45,7 +45,7 @@ extension APIRequester {
     }
 
     public static func dateFormat() -> RequesterDateFormat? {
-        return .formatted(format: dateFormatString(), localeIdentifier: "en_US_POSIX")
+        return (format: dateFormatString(), localeIdentifier: "en_US_POSIX")
     }
 }
 

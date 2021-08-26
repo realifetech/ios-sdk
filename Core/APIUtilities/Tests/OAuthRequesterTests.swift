@@ -23,10 +23,8 @@ final class OAuthRequesterTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_dateFormat() {
-        guard case let .formatted(format, locale) = sut.dateFormat() else {
-            return XCTFail("Failed to get dateFormat")
-        }
+    func test_dateFormat() throws {
+        let (format, locale) = try XCTUnwrap(sut.dateFormat())
         XCTAssertEqual(format, "yyyy-MM-dd'T'HH:mm:ssZ")
         XCTAssertEqual(locale, "en_US_POSIX")
     }

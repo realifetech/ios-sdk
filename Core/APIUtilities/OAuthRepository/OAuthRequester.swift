@@ -31,7 +31,7 @@ extension OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderR
     }
 
     static func dateFormat() -> RequesterDateFormat? {
-        return .formatted(format: "yyyy-MM-dd'T'HH:mm:ssZ", localeIdentifier: "en_US_POSIX")
+        return (format: "yyyy-MM-dd'T'HH:mm:ssZ", localeIdentifier: "en_US_POSIX")
     }
 
     static func preDispatchAction() -> Observable<Any?>? { return nil }
