@@ -10,6 +10,7 @@ import Foundation
 import Combine
 @testable import RealifeTech
 
+/// TestScheduler is used when unit testing Combine scheduler.
 final class DispatchQueueTestScheduler: Scheduler {
 
     typealias SchedulerTimeType = DispatchQueue.SchedulerTimeType

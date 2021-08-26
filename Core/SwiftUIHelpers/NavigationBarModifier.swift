@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Customised navigation bar identifier. This modifier will be replaced by `toolbar` with iOS 14+
 struct NavigationBarModifier: ViewModifier {
 
     var backgroundColor: Color?

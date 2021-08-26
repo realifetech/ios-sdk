@@ -37,10 +37,32 @@ public class SellImplementing: Sell {
         self.colorStore = colorStore
     }
 
+    /// Get the Web Ordering Journey view controller with orderingJourneyUrl
+    /// - Returns: UIHostingController<OrderingJourneyView>
+    /// - Example:
+    /// ```
+    /// import SwiftUI
+    ///
+    /// let viewController = RealifeTech.Sell.createOrderingJourneyViewController()
+    /// navigationController?.present(viewController, animated: true, completion: nil)
+    /// ```
     public func createOrderingJourneyViewController() -> UIHostingController<OrderingJourneyView> {
         return OrderingJourneyViewController(urlString: orderingJourneyUrl, colorStore: colorStore)
     }
 
+    /// Get the Web Ordering Journey SwiftUI view with orderingJourneyUrl
+    /// - Returns: OrderingJourneyView (SwiftUI View)
+    /// - Example:
+    /// ```
+    /// @State var isModal = false
+    ///
+    /// Button("Launch") {
+    ///     isModal.toggle()
+    /// }
+    /// .sheet(isPresented: $isModal) {
+    ///     RealifeTech.Sell.createOrderingJourneyView()
+    /// }
+    /// ```
     public func createOrderingJourneyView() -> OrderingJourneyView {
         return OrderingJourneyView(urlString: orderingJourneyUrl, colorStore: colorStore)
     }

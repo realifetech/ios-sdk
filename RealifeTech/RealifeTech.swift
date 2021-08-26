@@ -79,6 +79,8 @@ public class RealifeTech {
         Sell = nil
     }
 
+    /// Override the webOrderingJourneyUrl
+    /// - Parameter webOrderingJourneyUrl: New URL with the string type
     public static func set(webOrderingJourneyUrl: String) {
         Sell.orderingJourneyUrl = webOrderingJourneyUrl
     }

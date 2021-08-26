@@ -9,6 +9,7 @@
 import Combine
 import SwiftUI
 
+/// The class is used by SwiftUI views and it inspects the onReceive events.
 final class Inspection<V> {
 
     let notice = PassthroughSubject<UInt, Never>()
