@@ -9,7 +9,7 @@
 import Foundation
 @testable import RealifeTech
 
-// Note: Current implementaion has matching signatures for LogEventSending & AnalyticsLogging, so we only need one mock
+// NOTE: Current implementaion has matching signatures for LogEventSending & AnalyticsLogging, so we only need one mock
 final class MockAnalyticsLogger: AnalyticsLogging, LogEventSending {
 
     var eventsLogged: [AnalyticEvent] = []

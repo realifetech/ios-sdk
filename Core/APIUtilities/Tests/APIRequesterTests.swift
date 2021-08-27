@@ -38,17 +38,10 @@ final class APIRequesterTests: XCTestCase {
         XCTAssertEqual(MockRequester.dateFormatString(), expectedFormat)
     }
 
-    func test_dateFormat() {
-        guard let format = MockRequester.dateFormat() else {
-            return XCTFail("No format returned")
-        }
-        switch format {
-        case .formatted(let format, let localeIdentifier):
-            XCTAssertEqual(localeIdentifier, expectedLocale)
-            XCTAssertEqual(format, expectedFormat)
-        default:
-            XCTFail("Unexpected format returned")
-        }
+    func test_dateFormat() throws {
+        let (format, localeIdentifier) = try XCTUnwrap(MockRequester.dateFormat())
+        XCTAssertEqual(localeIdentifier, expectedLocale)
+        XCTAssertEqual(format, expectedFormat)
     }
 
     func test_format() {

@@ -8,11 +8,17 @@
 
 import Foundation
 
-public class RequestTimeLogger {
+class RequestTimeLogger {
 
-    public static let shared = RequestTimeLogger()
-    var requestEntries = [String: Date]()
-    let requestEntriesQueue = DispatchQueue(label: "requestEntriesQueue")
+    static let shared = RequestTimeLogger()
+
+    private let requestEntriesQueue: DispatchQueue
+    private(set) var requestEntries: [String: Date]
+
+    init(queue: DispatchQueue = DispatchQueue(label: "requestEntriesQueue")) {
+        self.requestEntriesQueue = queue
+        self.requestEntries = [:]
+    }
 
     func addRequest(withIdentifier identifier: String, andDate date: Date = Date()) {
         requestEntriesQueue.async {
@@ -26,17 +32,17 @@ public class RequestTimeLogger {
         }
     }
 
-    public func containsSlowRequestsAndRemove() -> Bool {
+    func containsSlowRequestsAndRemove() -> Bool {
         var isSlow = false
         for entry in requestEntries {
-            guard RequestTimeLogger.isSlowRequest(requestDate: entry.value) else { continue }
+            guard isSlowRequest(requestDate: entry.value) else { continue }
             removeRequest(withIdentifier: entry.key)
             isSlow = true
         }
         return isSlow
     }
 
-    static func isSlowRequest(requestDate: Date, currentDate: Date = Date()) -> Bool {
+    private func isSlowRequest(requestDate: Date, currentDate: Date = Date()) -> Bool {
         return currentDate.timeIntervalSince(requestDate) >= 3
     }
 }

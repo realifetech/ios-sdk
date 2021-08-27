@@ -58,6 +58,17 @@ final class APITokenManagerTests: XCTestCase {
         XCTAssertTrue(synchronousCompletionCheck)
     }
 
+    func test_getValidToken_onError_shouldRemoveCredentials() {
+        let expectation = XCTestExpectation(description: "Valid token completion called")
+        let observableSource = PublishSubject<Void>.error(DummyError.failure)
+        testRefreshGenerator.refreshTokenOrWaitAction = observableSource.asObservable()
+        sut.getValidToken { _ in
+            XCTAssertTrue(self.testStore.removeCredentialsCalled)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
     func test_getValidToken_delayedByObservable() {
         let expectation = XCTestExpectation(description: "Valid token completion called")
         let observableSource = PublishSubject<Void>.just(())

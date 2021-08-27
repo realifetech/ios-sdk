@@ -69,9 +69,8 @@ public struct DiskCacheCodableInterface {
         with fileName: String,
         canFileBeExpired: Bool = true
     ) throws {
-        let encoder = makeEncoder(for: nil)
         guard
-            let jsonData = try? encoder.encode(object),
+            let jsonData = try? JSONEncoder().encode(object),
             let file = String(data: jsonData, encoding: .utf8)
         else {
             return
@@ -99,38 +98,12 @@ public struct DiskCacheCodableInterface {
 
     private func makeDecoder(for dateFormat: RequesterDateFormat?) -> JSONDecoder {
         let decoder = JSONDecoder()
-        if let dateFormat = dateFormat {
-            switch dateFormat {
-            case .timestampMilliseconds:
-                decoder.dateDecodingStrategy = .millisecondsSince1970
-            case .timestampSeconds:
-                decoder.dateDecodingStrategy = .secondsSince1970
-            case .formatted(let format, let localeIdentifier):
-                decoder.dateDecodingStrategy = .formatted(
-                    dateDecodingStrategy(
-                        dateFormat: format,
-                        localeIdentifier: localeIdentifier))
-            }
-        }
+        guard let (format, localeIdentifier) = dateFormat else { return decoder }
+        decoder.dateDecodingStrategy = .formatted(
+            dateDecodingStrategy(
+                dateFormat: format,
+                localeIdentifier: localeIdentifier))
         return decoder
-    }
-
-    private func makeEncoder(for dateFormat: RequesterDateFormat?) -> JSONEncoder {
-        let encoder = JSONEncoder()
-        if let dateFormat = dateFormat {
-            switch dateFormat {
-            case .timestampMilliseconds:
-                encoder.dateEncodingStrategy = .millisecondsSince1970
-            case .timestampSeconds:
-                encoder.dateEncodingStrategy = .secondsSince1970
-            case .formatted(let format, let localeIdentifier):
-                encoder.dateEncodingStrategy = .formatted(
-                    dateDecodingStrategy(
-                        dateFormat: format,
-                        localeIdentifier: localeIdentifier))
-            }
-        }
-        return encoder
     }
 
     private func dateDecodingStrategy(dateFormat: String, localeIdentifier: String) -> DateFormatter {

@@ -14,4 +14,5 @@ final class MockReachabilityChecker: ReachabilityChecking {
     var isBluetoothConnected: Bool = false
     var isConnectedToWifi: Bool = false
     var hasNetworkConnection: Bool = false
+    var isPoorNetworkConnection: Bool = false
 }
