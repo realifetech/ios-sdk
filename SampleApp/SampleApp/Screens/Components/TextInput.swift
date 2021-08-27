@@ -29,7 +29,7 @@ struct TextInput: View {
             placeholder,
             text: $input,
             onEditingChanged: { _ in },
-            onCommitAction: {
+            onCommit: {
                 onCommitAction?(input)
             })
         .autocapitalization(.none)
