@@ -76,7 +76,7 @@ final class AuthorisationStoreTests: XCTestCase {
             .toMilliseconds()
         sut.saveCredentials(token: testToken, secondsExpiresIn: testExpirySeconds, refreshToken: nil)
         XCTAssertEqual(keychain.mutatedKeyValues[tokenKey], testToken)
-        // Note: The store will calculate its expiry value later than we make our expected result
+        // NOTE: The store will calculate its expiry value later than we make our expected result
         //       This means the expiry times can differ by 1ms, so we check for a range
         guard
             let resultString = keychain.mutatedKeyValues[expiryKey],
@@ -97,7 +97,7 @@ final class AuthorisationStoreTests: XCTestCase {
         sut.saveCredentials(token: testToken, secondsExpiresIn: testExpirySeconds, refreshToken: testToken)
         XCTAssertEqual(keychain.mutatedKeyValues[tokenKey], testToken)
         XCTAssertEqual(keychain.mutatedKeyValues[refreshTokenKey], testToken)
-        // Note: The store will calculate its expiry value later than we make our expected result
+        // NOTE: The store will calculate its expiry value later than we make our expected result
         //       This means the expiry times can differ by 1ms, so we check for a range
         guard
             let resultString = keychain.mutatedKeyValues[expiryKey],

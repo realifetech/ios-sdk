@@ -25,4 +25,4 @@ struct OAuthToken: Codable {
     let scope: String?
 }
 
-extension OAuthToken: Equatable {}
+extension OAuthToken: Equatable { }

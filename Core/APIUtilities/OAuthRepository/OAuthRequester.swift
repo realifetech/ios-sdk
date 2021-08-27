@@ -5,15 +5,16 @@
 //  Created by Ross Patman on 13/11/2017.
 //  Copyright © 2017 ConcertLive. All rights reserved.
 //
+
 import Foundation
 import RxSwift
 
-struct OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, Requester {
+struct OAuthRequester: Requester {
     static var endpoint: String = "/oauth/v2/token"
     private static var defaultOAuthParameters: [String: Any] = [:]
 }
 
-extension OAuthRequester {
+extension OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting {
 
     /// Must be called during setup. Provides secrets for getting initial access token.
     static func setDefaultOAuthParameters(clientId: String, clientSecret: String) {
@@ -30,7 +31,7 @@ extension OAuthRequester {
     }
 
     static func dateFormat() -> RequesterDateFormat? {
-        return .formatted(format: "yyyy-MM-dd'T'HH:mm:ssZ", localeIdentifier: "en_US_POSIX")
+        return (format: "yyyy-MM-dd'T'HH:mm:ssZ", localeIdentifier: "en_US_POSIX")
     }
 
     static func preDispatchAction() -> Observable<Any?>? { return nil }
@@ -39,21 +40,8 @@ extension OAuthRequester {
         return [
             addJSONContentTypeHeader,
             addDeviceIdHeader,
-            addAuthorisationHeader
+            addOAuthHeader
         ]
-    }
-
-    private static func addAuthorisationHeader(toRequest request: URLRequest) -> URLRequest {
-        var request = request
-        guard
-            APIRequesterHelper.tokenManager.tokenIsValid,
-            let accessToken = APIRequesterHelper.tokenManager.token
-        else {
-            return request
-        }
-        let oAuthHeader = RequestHeader.generateAuthHeader(accessToken: accessToken)
-        request.addValue(oAuthHeader.valueForHeader, forHTTPHeaderField: oAuthHeader.header)
-        return request
     }
 
     // MARK: - Generate Requests

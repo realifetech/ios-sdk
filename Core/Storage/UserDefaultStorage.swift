@@ -25,7 +25,7 @@ public struct UserDefaultsStorage {
 extension UserDefaultsStorage: ReadableStorage {
 
     public func fetchValues(with prefix: String) throws -> [Data] {
-        return try UserDefaults.standard.dictionaryRepresentation().keys.filter { key in
+        return try userDefaults.dictionaryRepresentation().keys.filter { key in
             key.starts(with: prefix)
         }.compactMap { key in
             return try fetchValue(for: key)
@@ -47,7 +47,6 @@ extension UserDefaultsStorage: ReadableStorage {
             return handler(.success(data))
         }
     }
-
 }
 
 extension UserDefaultsStorage: WritableStorage {

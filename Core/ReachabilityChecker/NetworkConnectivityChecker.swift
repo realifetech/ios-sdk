@@ -19,6 +19,10 @@ public class NetworkConnectivityChecker {
         return connectionStatus(wifiOnly: false)
     }
 
+    var isPoorNetworkConnection: Bool {
+        return requestTimeLogger.containsSlowRequestsAndRemove()
+    }
+
     private var reachabilityTarget: SCNetworkReachability? {
         var zeroAddress = sockaddr_in(
             sin_len: 0,
@@ -29,11 +33,17 @@ public class NetworkConnectivityChecker {
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)
         let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { zeroSockAddress in
                 SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
             }
         }
         return defaultRouteReachability
+    }
+
+    private let requestTimeLogger: RequestTimeLogger
+
+    init(requestTimeLogger: RequestTimeLogger = .shared) {
+        self.requestTimeLogger = requestTimeLogger
     }
 
     /// Checks system network reachability flags. Can check for any connectivity or wifi specifically.

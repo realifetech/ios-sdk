@@ -14,6 +14,10 @@ final class LocalDiskCacheDataProvidingTests: XCTestCase {
     private let fileName = "test_file"
     private lazy var expectedFileName = String(describing: LocalDiskCacheDataProvider.self) + "-" + fileName
 
+    func test_defaultDiskCacheType() {
+        XCTAssertTrue(DefaultDiskCacheDataProvider.diskCache is DiskCache)
+    }
+
     func test_saveItem_nonPrivateObject_savedFileWithoutPrivateIndicator() throws {
         LocalDiskCacheDataProvider.saveItem(codable: object, identifier: fileName)
         XCTAssertEqual(mockDiskCache.savedFileName, expectedFileName)
@@ -54,4 +58,9 @@ private final class LocalDiskCacheDataProvider: LocalDiskCacheDataProviding {
     class var diskCache: DiskCachable {
         return mockDiskCache
     }
+}
+
+private final class DefaultDiskCacheDataProvider: LocalDiskCacheDataProviding {
+
+    typealias Cdble =  TestObject
 }

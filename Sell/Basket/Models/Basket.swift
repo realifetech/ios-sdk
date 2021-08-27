@@ -7,7 +7,7 @@
 //
 
 import Foundation
-// Note. Why do we need this macro?
+// NOTE: Why do we need this macro?
 // The host app fails to compile the project due to error No such module 'GraphQL' in SDK files.
 // This is caused by multiple targets in the ios-sdk when creating a framework via CocoaPods.
 // We import GraphQL to the places that need it,
