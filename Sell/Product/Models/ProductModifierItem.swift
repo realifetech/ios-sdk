@@ -11,18 +11,21 @@ import Foundation
 import GraphQL
 #endif
 
-public struct ProductModifierItem: Codable, Equatable {
+public struct ProductModifierItem: Codable, Equatable, Hashable {
 
     public let id: String
+    public let status: ProductModifierItemStatus?
     public let additionalPrice: Int?
     public let translations: [StandardTitleTranslation]?
 
     public init(
         id: String,
+        status: ProductModifierItemStatus?,
         additionalPrice: Int?,
         translations: [StandardTitleTranslation]?
     ) {
         self.id = id
+        self.status = status
         self.additionalPrice = additionalPrice
         self.translations = translations
     }
@@ -33,6 +36,7 @@ extension ProductModifierItem {
     init?(response: ApolloType.FragmentProductModifierItem?) {
         guard let response = response else { return nil }
         id = response.id
+        status = ProductModifierItemStatus(response: response.status)
         additionalPrice = response.additionalPrice
         translations = response.translations?.compactMap {
             StandardTitleTranslation(
