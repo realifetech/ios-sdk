@@ -35,11 +35,7 @@ public final class BasketRepository {
             collectionPreferenceType: input.collectionPreferenceType?.apolloType,
             timeslot: input.timeslotId,
             fulfilmentPoint: input.fulfilmentPointId,
-            seatInfo: ApolloType.SeatInfoInput(
-                row: input.seatInfo?.row,
-                seat: input.seatInfo?.seat,
-                block: input.seatInfo?.block,
-                table: input.seatInfo?.table),
+            seatInfo: input.seatInfo?.mapToApolloJSON(),
             items: input.items.compactMap {
                 ApolloType.BasketItemInput(
                     product: $0.productId,
@@ -162,7 +158,7 @@ extension BasketRepository: BasketProvidable {
                 if let transformedError = self.transformErrorIfNeccessary(response.errors) {
                     callback(.failure(transformedError))
                 } else {
-                    callback(.success(response.data?.deleteMyBasket?.success ?? false))
+                    callback(.success(response.data?.deleteMyBasket.success ?? false))
                 }
             case .failure(let error):
                 let basketError = BasketError(

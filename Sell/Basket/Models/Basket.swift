@@ -55,7 +55,11 @@ extension Basket {
         grossAmount = response.grossAmount
         discountAmount = response.discountAmount
         netAmount = response.netAmount
-        seatInfo = SeatInfo(response: response.seatInfo?.fragments.fragmentSeatInfo)
+        if let responseSeatInfo = response.seatInfo {
+            seatInfo = try? SeatInfo(jsonValue: responseSeatInfo.jsonValue)
+        } else {
+            seatInfo = nil
+        }
         timeslot = Timeslot(response: response.timeslot?.fragments.fragmentTimeslot)
         collectionDate = response.collectionDate?.iso8601Date
         collectionPreferenceType = CollectionPreferenceType(apolloType: response.collectionPreferenceType)

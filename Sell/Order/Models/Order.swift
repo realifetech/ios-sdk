@@ -87,7 +87,11 @@ extension Order {
         createdAt = response.createdAt?.iso8601Date
         estimatedAt = response.estimatedAt?.iso8601Date
         collectionPreferenceType = CollectionPreferenceType(apolloType: response.collectionPreferenceType)
-        seatInfo = SeatInfo(response: response.seatInfo?.fragments.fragmentSeatInfo)
+        if let responseSeatInfo = response.seatInfo {
+            seatInfo = try? SeatInfo(jsonValue: responseSeatInfo.jsonValue)
+        } else {
+            seatInfo = nil
+        }
         items = response.items?.compactMap {
             OrderItem(response: $0)
         }

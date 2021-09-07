@@ -15,10 +15,7 @@ public extension ApolloType {
         grossAmount
         discountAmount
         netAmount
-        seatInfo {
-          __typename
-          ...FragmentSeatInfo
-        }
+        seatInfo
         timeslot {
           __typename
           ...FragmentTimeslot
@@ -60,7 +57,7 @@ public extension ApolloType {
         GraphQLField("grossAmount", type: .scalar(Int.self)),
         GraphQLField("discountAmount", type: .scalar(Int.self)),
         GraphQLField("netAmount", type: .scalar(Int.self)),
-        GraphQLField("seatInfo", type: .object(SeatInfo.selections)),
+        GraphQLField("seatInfo", type: .scalar(JSON.self)),
         GraphQLField("timeslot", type: .object(Timeslot.selections)),
         GraphQLField("collectionDate", type: .scalar(String.self)),
         GraphQLField("collectionPreferenceType", type: .scalar(CollectionPreferenceType.self)),
@@ -74,8 +71,8 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, seatInfo: SeatInfo? = nil, timeslot: Timeslot? = nil, collectionDate: String? = nil, collectionPreferenceType: CollectionPreferenceType? = nil, items: [Item?]? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Basket", "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "seatInfo": seatInfo.flatMap { (value: SeatInfo) -> ResultMap in value.resultMap }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "collectionDate": collectionDate, "collectionPreferenceType": collectionPreferenceType, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }])
+    public init(grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, seatInfo: JSON? = nil, timeslot: Timeslot? = nil, collectionDate: String? = nil, collectionPreferenceType: CollectionPreferenceType? = nil, items: [Item?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Basket", "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "seatInfo": seatInfo, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "collectionDate": collectionDate, "collectionPreferenceType": collectionPreferenceType, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }])
     }
 
     public var __typename: String {
@@ -114,12 +111,12 @@ public extension ApolloType {
       }
     }
 
-    public var seatInfo: SeatInfo? {
+    public var seatInfo: JSON? {
       get {
-        return (resultMap["seatInfo"] as? ResultMap).flatMap { SeatInfo(unsafeResultMap: $0) }
+        return resultMap["seatInfo"] as? JSON
       }
       set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "seatInfo")
+        resultMap.updateValue(newValue, forKey: "seatInfo")
       }
     }
 
@@ -156,62 +153,6 @@ public extension ApolloType {
       }
       set {
         resultMap.updateValue(newValue.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }, forKey: "items")
-      }
-    }
-
-    public struct SeatInfo: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["SeatInfo"]
-
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLFragmentSpread(FragmentSeatInfo.self),
-        ]
-      }
-
-      public private(set) var resultMap: ResultMap
-
-      public init(unsafeResultMap: ResultMap) {
-        self.resultMap = unsafeResultMap
-      }
-
-      public init(row: String? = nil, seat: String? = nil, block: String? = nil, table: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "SeatInfo", "row": row, "seat": seat, "block": block, "table": table])
-      }
-
-      public var __typename: String {
-        get {
-          return resultMap["__typename"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "__typename")
-        }
-      }
-
-      public var fragments: Fragments {
-        get {
-          return Fragments(unsafeResultMap: resultMap)
-        }
-        set {
-          resultMap += newValue.resultMap
-        }
-      }
-
-      public struct Fragments {
-        public private(set) var resultMap: ResultMap
-
-        public init(unsafeResultMap: ResultMap) {
-          self.resultMap = unsafeResultMap
-        }
-
-        public var fragmentSeatInfo: FragmentSeatInfo {
-          get {
-            return FragmentSeatInfo(unsafeResultMap: resultMap)
-          }
-          set {
-            resultMap += newValue.resultMap
-          }
-        }
       }
     }
 

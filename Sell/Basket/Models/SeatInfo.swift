@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Apollo
 #if !COCOAPODS
 import GraphQL
 #endif
@@ -31,12 +32,25 @@ public struct SeatInfo: Codable, Equatable {
     }
 }
 
-extension SeatInfo {
+extension SeatInfo: JSONDecodable {
 
-    init(response: ApolloType.FragmentSeatInfo?) {
-        row = response?.row
-        seat = response?.seat
-        block = response?.block
-        table = response?.table
+    public init(jsonValue value: JSONValue) throws {
+        guard let dictionary = value as? [String: String] else {
+            throw JSONDecodingError.couldNotConvert(value: value, to: SeatInfo.self)
+        }
+        let data = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
+        let decoder = JSONDecoder()
+        do {
+            self = try decoder.decode(SeatInfo.self, from: data)
+        } catch {
+            throw JSONDecodingError.couldNotConvert(value: value, to: SeatInfo.self)
+        }
+    }
+
+    public func mapToApolloJSON() -> JSON? {
+        return ["row": self.row,
+                "seat": self.seat,
+                "block": self.block,
+                "table": self.table]
     }
 }
