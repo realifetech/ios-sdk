@@ -32,29 +32,27 @@ public struct SeatInfo: Codable, Equatable {
     }
 }
 
-extension SeatInfo: JSONDecodable {
+extension SeatInfo {
 
-    public init?(json: JSON?) throws {
-        try? self.init(jsonValue: json.jsonValue)
+    /// For GraphQL JSON type, when the response has no data for SeatInfo, we get `[]`, so we initialise SeatInfo with nil for this case.
+    /// On the other hand, if there's data for SeatInfo, we get [["row": "a", "seat": "b"]], we can initialise SeatInfo(row: "a", seat: "b")
+    init?(json: JSON?) throws {
+        guard let json = json, json.isEmpty else {
+            return nil
+        }
+        try? self.init(jsonValue: json)
     }
 
-    public init(jsonValue value: JSONValue) throws {
-        guard let dictionary = value as? [String: String] else {
-            throw JSONDecodingError.couldNotConvert(value: value, to: SeatInfo.self)
+    init?(jsonValue value: JSON) throws {
+        if let dic = value.first as? [String: String?] {
+            let decoder = JSONDecoder()
+            let data = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            do {
+                self = try decoder.decode(SeatInfo.self, from: data)
+            } catch {
+                throw JSONDecodingError.couldNotConvert(value: value, to: SeatInfo.self)
+            }
         }
-        let data = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
-        let decoder = JSONDecoder()
-        do {
-            self = try decoder.decode(SeatInfo.self, from: data)
-        } catch {
-            throw JSONDecodingError.couldNotConvert(value: value, to: SeatInfo.self)
-        }
-    }
-
-    public func mapToApolloJSON() -> JSON? {
-        return ["row": self.row,
-                "seat": self.seat,
-                "block": self.block,
-                "table": self.table]
+        return nil
     }
 }

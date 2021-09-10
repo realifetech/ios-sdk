@@ -7,5 +7,16 @@
 //
 
 import Foundation
+import Apollo
 
-public typealias JSON = [String: String?]
+public typealias JSON = [Any]
+
+extension Array: JSONDecodable {
+
+    public init(jsonValue value: JSONValue) throws {
+        guard let array = value as? Array else {
+          throw JSONDecodingError.couldNotConvert(value: value, to: Array.self)
+        }
+        self = array
+    }
+}
