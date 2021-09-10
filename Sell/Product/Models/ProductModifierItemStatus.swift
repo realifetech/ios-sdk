@@ -7,22 +7,8 @@
 //
 
 import Foundation
-#if !COCOAPODS
-import GraphQL
-#endif
 
 public enum ProductModifierItemStatus: String, Codable {
     case active
     case disabled
-
-    init?(response: ApolloType.ProductModifierItemStatus?) {
-        switch response {
-        case .active:
-            self = .active
-        case .disabled:
-            self = .disabled
-        default:
-            return nil
-        }
-    }
 }

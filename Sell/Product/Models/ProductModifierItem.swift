@@ -36,7 +36,7 @@ extension ProductModifierItem {
     init?(response: ApolloType.FragmentProductModifierItem?) {
         guard let response = response else { return nil }
         id = response.id
-        status = ProductModifierItemStatus(response: response.status)
+        status = ProductModifierItemStatus(rawValue: response.status?.rawValue ?? "")
         additionalPrice = response.additionalPrice
         translations = response.translations?.compactMap {
             StandardTitleTranslation(
