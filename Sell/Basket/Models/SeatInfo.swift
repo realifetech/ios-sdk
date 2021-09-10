@@ -34,6 +34,10 @@ public struct SeatInfo: Codable, Equatable {
 
 extension SeatInfo: JSONDecodable {
 
+    public init?(json: JSON?) throws {
+        try? self.init(jsonValue: json.jsonValue)
+    }
+
     public init(jsonValue value: JSONValue) throws {
         guard let dictionary = value as? [String: String] else {
             throw JSONDecodingError.couldNotConvert(value: value, to: SeatInfo.self)
