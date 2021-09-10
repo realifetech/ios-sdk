@@ -27,7 +27,7 @@ final class ProductTests: XCTestCase {
                     items: [
                         ProductModifierItem(
                             id: "1",
-                            status: .active,
+                            status: "active",
                             additionalPrice: 100,
                             translations: [dummyTranslation])],
                     translations: [dummyTranslation])
