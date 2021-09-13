@@ -31,7 +31,7 @@ public final class BasketRepository {
 
     private func makeApolloBasketInput(_ input: BasketInput) -> ApolloType.BasketInput {
         ApolloType.BasketInput(
-            collectionDate: input.collectionDate?.iso8601String,
+            collectionDate: input.collectionDate?.apiParameterDateFormat,
             collectionPreferenceType: input.collectionPreferenceType?.apolloType,
             timeslot: input.timeslotId,
             fulfilmentPoint: input.fulfilmentPointId,
@@ -87,9 +87,7 @@ extension BasketRepository: BasketProvidable {
                 } else if let returnedBasket = response.data?.getMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
-                    let basketError = BasketError(
-                        type: .regularError(GraphQLManagerError.noDataError),
-                        message: GraphQLManagerError.noDataError.localizedDescription)
+                    let basketError = BasketError(type: .emptyBasket, message: "")
                     callback(.failure(basketError))
                 }
             case .failure(let error):
