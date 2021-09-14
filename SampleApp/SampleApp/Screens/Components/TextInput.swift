@@ -7,31 +7,31 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TextInput: View {
 
     let placeholder: String
     @State var input: String
-    let onCommitAction: ((String) -> Void)?
+    let onChangeAction: ((String) -> Void)?
 
     init(
         placeholder: String,
         input: String,
-        onCommitAction: ((String) -> Void)?
+        onChangeAction: ((String) -> Void)?
     ) {
         self.placeholder = placeholder
         self.input = input
-        self.onCommitAction = onCommitAction
+        self.onChangeAction = onChangeAction
     }
 
     var body: some View {
         TextField(
             placeholder,
-            text: $input,
-            onEditingChanged: { _ in },
-            onCommit: {
-                onCommitAction?(input)
-            })
+            text: $input)
+            .onReceive(Just(input)) {
+                onChangeAction?($0)
+            }
         .autocapitalization(.none)
         .disableAutocorrection(true)
         .padding(16)
@@ -44,6 +44,6 @@ struct TextInput: View {
 
 struct TextInput_Previews: PreviewProvider {
     static var previews: some View {
-        TextInput(placeholder: "Placeholder", input: "", onCommitAction: nil)
+        TextInput(placeholder: "Placeholder", input: "", onChangeAction: nil)
     }
 }
