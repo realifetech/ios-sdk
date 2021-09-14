@@ -162,7 +162,7 @@ extension BasketRepository: BasketProvidable {
                 if let transformedError = self.transformErrorIfNeccessary(response.errors) {
                     callback(.failure(transformedError))
                 } else {
-                    callback(.success(response.data?.deleteMyBasket?.success ?? false))
+                    callback(.success(response.data?.deleteMyBasket.success ?? false))
                 }
             case .failure(let error):
                 let basketError = BasketError(
