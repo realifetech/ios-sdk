@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct StandardTitleTranslation: Codable, Equatable {
+public struct StandardTitleTranslation: Codable, Equatable, Hashable {
 
     public let language: String?
     public let title: String?
