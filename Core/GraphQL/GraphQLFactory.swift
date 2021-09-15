@@ -9,7 +9,7 @@
 import Foundation
 import Apollo
 
-public class GraphQLFactory {
+public struct GraphQLFactory {
 
     static let store: ApolloStore = {
         let documentsPath = NSSearchPathForDirectoriesInDomains(
@@ -22,40 +22,27 @@ public class GraphQLFactory {
         return ApolloStore(cache: sqliteCache ?? InMemoryNormalizedCache())
     }()
 
-    static let networkTransport: RequestChainNetworkTransport? = {
+    static func makeGraphQLManager(
+        deviceId: String,
+        tokenHelper: APITokenManagable,
+        graphQLAPIUrl: URL
+    ) -> GraphQLManageable {
         var headers: [String: String] = ["X-Ls-DeviceId": deviceId]
-        guard let tokenHelper = tokenHelper, let graphQLAPIUrl = graphQLAPIUrl else {
-            return nil
-        }
         if tokenHelper.tokenIsValid, let token = tokenHelper.token {
             headers["Authorization"] = "Bearer \(token)"
         }
-        let transport = RequestChainNetworkTransport(
+        let networkTransport = RequestChainNetworkTransport(
             interceptorProvider: GraphQLInterceptorProvider(
                 store: store,
                 client: URLSessionClient(),
                 tokenHelper: tokenHelper),
             endpointURL: graphQLAPIUrl,
             additionalHeaders: headers)
-        return transport
-    }()
-
-    static var deviceId: String = ""
-    static var tokenHelper: APITokenManagable?
-    static var graphQLAPIUrl: URL?
-    static var client: ApolloClient?
-
-    static func makeGraphQLManager(
-        deviceId: String,
-        tokenHelper: APITokenManagable,
-        graphQLAPIUrl: URL
-    ) -> GraphQLManageable? {
-        self.deviceId = deviceId
-        self.tokenHelper = tokenHelper
-        self.graphQLAPIUrl = graphQLAPIUrl
-        guard let networkTransport = networkTransport else { return nil }
-        client = ApolloClient(networkTransport: networkTransport, store: store)
-        guard let client = client else { return nil }
-        return GraphQLManager(client: client)
+        GraphQLManager.shared = GraphQLManager(
+            endpointUrl: graphQLAPIUrl,
+            store: store,
+            networkTransport: networkTransport,
+            client: ApolloClient(networkTransport: networkTransport, store: store))
+        return GraphQLManager.shared
     }
 }

@@ -25,9 +25,23 @@ public protocol GraphQLManageable {
 
 public class GraphQLManager {
 
+    public static var shared: GraphQLManager!
+
+    private(set) var networkTransport: NetworkTransport
+
+    public let endpointUrl: URL
+    private let store: ApolloStore
     private let client: ApolloClient
 
-    public init(client: ApolloClient) {
+    public init(
+        endpointUrl: URL,
+        store: ApolloStore,
+        networkTransport: NetworkTransport,
+        client: ApolloClient
+    ) {
+        self.endpointUrl = endpointUrl
+        self.store = store
+        self.networkTransport = networkTransport
         self.client = client
     }
 }

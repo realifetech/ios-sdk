@@ -20,8 +20,13 @@ final class GraphQLManagerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         networkTransport = MockNetworkTransport()
-        client = ApolloClient(networkTransport: networkTransport, store: ApolloStore())
-        sut = GraphQLManager(client: client)
+        let store = ApolloStore()
+        client = ApolloClient(networkTransport: networkTransport, store: store)
+        sut = GraphQLManager(
+            endpointUrl: URL(fileURLWithPath: ""),
+            store: store,
+            networkTransport: networkTransport,
+            client: client)
     }
 
     override func tearDown() {
@@ -117,7 +122,11 @@ final class GraphQLManagerTests: XCTestCase {
         let cache = MockCache()
         let store = ApolloStore(cache: cache)
         let client = ApolloClient(networkTransport: networkTransport, store: store)
-        sut = GraphQLManager(client: client)
+        sut = GraphQLManager(
+            endpointUrl: URL(fileURLWithPath: ""),
+            store: store,
+            networkTransport: networkTransport,
+            client: client)
         sut.clearAllCachedData {
             XCTAssertTrue(cache.clearGetsCalled)
             expectation.fulfill()

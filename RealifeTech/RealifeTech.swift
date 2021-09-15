@@ -36,16 +36,15 @@ public class RealifeTech {
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl)
-        guard let graphQLManager = GraphQLFactory.makeGraphQLManager(
+        let graphQLManager = GraphQLFactory.makeGraphQLManager(
             deviceId: deviceHelper.deviceId,
             tokenHelper: apiHelper,
             graphQLAPIUrl: URL(string: configuration.graphQLApiUrl) ?? URL(fileURLWithPath: ""))
-        else { return }
         Core = CoreImplementing(
             deviceHelper: deviceHelper,
             reachabilityHelper: reachabilityChecker,
             apiHelper: apiHelper,
-            graphQLManager: graphQLManager,
+            graphQLManager: GraphQLManager.shared,
             diskCache: DiskCache())
         let staticDeviceInformation = StaticDeviceInformation(
             deviceId: deviceHelper.deviceId,
@@ -55,16 +54,16 @@ public class RealifeTech {
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
-        Audiences = AudiencesImplementing(graphQLManager: graphQLManager)
+        Audiences = AudiencesImplementing(graphQLManager: GraphQLManager.shared)
         Analytics = AnalyticsFactory.makeAnalyticsModule(
             graphQLManager: graphQLManager,
             reachabilityHelper: reachabilityChecker,
             deviceRegistering: General)
         Communicate = CommunicateFactory.makeCommunicateModule()
-        Canvas = CanvasFactory.makeCanvasModule(graphQLManager: graphQLManager)
-        Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
+        Canvas = CanvasFactory.makeCanvasModule(graphQLManager: GraphQLManager.shared)
+        Content = ContentFactory.makeContentModule(graphQLManager: GraphQLManager.shared)
         Sell = SellFactory.makeSellModule(
-            graphQLManager: graphQLManager,
+            graphQLManager: GraphQLManager.shared,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
     }
