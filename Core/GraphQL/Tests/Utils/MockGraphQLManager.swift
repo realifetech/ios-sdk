@@ -15,6 +15,7 @@ final class MockGraphQLManager<ResultDataType>: GraphQLManageable {
     var dispatchQueryIsCalled = false
     var dispatchMutationIsCalled = false
     var resultReturns: Result<GraphQLResult<ResultDataType>, Error> = .failure(DummyError.failure)
+    var newApiHelper: APITokenManagable?
 
     func dispatch<Query: GraphQLQuery>(
         query: Query,
@@ -43,4 +44,8 @@ final class MockGraphQLManager<ResultDataType>: GraphQLManageable {
     }
 
     func clearAllCachedData(completion: (() -> Void)?) { }
+
+    func updateHeadersToNetworkTransport(deviceId: String, apiHelper: APITokenManagable) {
+        newApiHelper = apiHelper
+    }
 }

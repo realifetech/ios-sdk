@@ -21,6 +21,7 @@ public protocol GraphQLManageable {
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     )
     func clearAllCachedData(completion: (() -> Void)?)
+    func updateHeadersToNetworkTransport(deviceId: String, apiHelper: APITokenManagable)
 }
 
 public class GraphQLManager {
@@ -28,10 +29,10 @@ public class GraphQLManager {
     public static var shared: GraphQLManager!
 
     private(set) var networkTransport: NetworkTransport
+    private(set) var client: ApolloClient
 
-    public let endpointUrl: URL
+    private let endpointUrl: URL
     private let store: ApolloStore
-    private let client: ApolloClient
 
     public init(
         endpointUrl: URL,
@@ -88,5 +89,20 @@ extension GraphQLManager: GraphQLManageable {
         client.clearCache(callbackQueue: .main) { _ in
             completion?()
         }
+    }
+
+    public func updateHeadersToNetworkTransport(deviceId: String, apiHelper: APITokenManagable) {
+        var headers: [String: String] = ["X-Ls-DeviceId": deviceId]
+        if apiHelper.tokenIsValid, let token = apiHelper.token {
+            headers["Authorization"] = "Bearer \(token)"
+        }
+        networkTransport = RequestChainNetworkTransport(
+            interceptorProvider: GraphQLInterceptorProvider(
+                store: store,
+                client: URLSessionClient(),
+                tokenHelper: apiHelper),
+            endpointURL: endpointUrl,
+            additionalHeaders: headers)
+        client = ApolloClient(networkTransport: networkTransport, store: store)
     }
 }
