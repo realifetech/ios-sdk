@@ -3,7 +3,7 @@
 //  Audiences
 //
 //  Created by Jonathon Albert on 07/10/2020.
-//  Copyright © 2020 Olivier Butler. All rights reserved.
+//  Copyright © 2021 Realife Tech All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import GraphQL
 
 public class AudiencesImplementing: AudienceChecking {
 
-    let graphQLManager: GraphQLManageable
+    private let graphQLManager: GraphQLManageable
 
     public init(graphQLManager: GraphQLManageable) {
         self.graphQLManager = graphQLManager

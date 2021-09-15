@@ -57,6 +57,7 @@ public extension ApolloType {
         self.init(unsafeResultMap: ["__typename": "Mutation", "createPaymentIntent": createPaymentIntent.flatMap { (value: CreatePaymentIntent) -> ResultMap in value.resultMap }])
       }
 
+      @available(*, deprecated, message: "use createMyPaymentIntent instead")
       public var createPaymentIntent: CreatePaymentIntent? {
         get {
           return (resultMap["createPaymentIntent"] as? ResultMap).flatMap { CreatePaymentIntent(unsafeResultMap: $0) }

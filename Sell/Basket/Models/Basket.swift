@@ -7,7 +7,7 @@
 //
 
 import Foundation
-// Note. Why do we need this macro?
+// NOTE: Why do we need this macro?
 // The host app fails to compile the project due to error No such module 'GraphQL' in SDK files.
 // This is caused by multiple targets in the ios-sdk when creating a framework via CocoaPods.
 // We import GraphQL to the places that need it,
@@ -55,7 +55,7 @@ extension Basket {
         grossAmount = response.grossAmount
         discountAmount = response.discountAmount
         netAmount = response.netAmount
-        seatInfo = SeatInfo(response: response.seatInfo?.fragments.fragmentSeatInfo)
+        seatInfo = try? SeatInfo(json: response.seatInfo)
         timeslot = Timeslot(response: response.timeslot?.fragments.fragmentTimeslot)
         collectionDate = response.collectionDate?.iso8601Date
         collectionPreferenceType = CollectionPreferenceType(apolloType: response.collectionPreferenceType)

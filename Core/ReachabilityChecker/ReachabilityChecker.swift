@@ -36,4 +36,8 @@ extension ReachabilityChecker: ReachabilityChecking {
     public var hasNetworkConnection: Bool {
         return networkConnectivityChecker.hasNetworkConnection
     }
+
+    public var isPoorNetworkConnection: Bool {
+        return networkConnectivityChecker.isPoorNetworkConnection
+    }
 }

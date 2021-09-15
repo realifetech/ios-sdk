@@ -11,106 +11,72 @@ import XCTest
 
 final class RequestTimeLoggerTests: XCTestCase {
 
-    func test_addRequests() {
-        let timeLogger = RequestTimeLogger()
-        timeLogger.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 0))
-        timeLogger.requestEntriesQueue.async {
-            XCTAssertEqual(timeLogger.requestEntries.count, 1)
-        }
-        timeLogger.addRequest(withIdentifier: "bbb", andDate: Date(timeIntervalSince1970: 0))
-        timeLogger.requestEntriesQueue.async {
-            XCTAssertEqual(timeLogger.requestEntries.count, 2)
-        }
-        timeLogger.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 1))
-        timeLogger.requestEntriesQueue.async {
-            XCTAssertEqual(timeLogger.requestEntries.count, 2)
-        }
+    private var sut: RequestTimeLogger!
+    private let queue = DispatchQueue(label: "RequestTimeLoggerTests")
+
+    override func setUp() {
+        super.setUp()
+        sut = RequestTimeLogger(queue: queue)
     }
 
-    func test_removeRequests() {
-        let timeLogger = RequestTimeLogger()
-        timeLogger.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 0))
-        timeLogger.addRequest(withIdentifier: "bbb", andDate: Date(timeIntervalSince1970: 1))
-        timeLogger.removeRequest(withIdentifier: "ccc")
-        timeLogger.requestEntriesQueue.async {
-            XCTAssertEqual(timeLogger.requestEntries.count, 2)
-        }
-        timeLogger.removeRequest(withIdentifier: "aaa")
-        timeLogger.requestEntriesQueue.async {
-            XCTAssertEqual(timeLogger.requestEntries.count, 1)
-            XCTAssertEqual(timeLogger.requestEntries.first?.key, "bbb")
-        }
-        timeLogger.removeRequest(withIdentifier: "bbb")
-        timeLogger.requestEntriesQueue.async {
-            XCTAssertTrue(timeLogger.requestEntries.isEmpty)
-        }
-        timeLogger.removeRequest(withIdentifier: "aaa")
-        timeLogger.requestEntriesQueue.async {
-            XCTAssertTrue(timeLogger.requestEntries.isEmpty)
-        }
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
     }
 
-    func test_noRequests() {
-        let timeLogger = RequestTimeLogger()
-        timeLogger.requestEntriesQueue.async {
-            let containedSlow = timeLogger.containsSlowRequestsAndRemove()
-            sleep(1)
-            XCTAssertFalse(containedSlow)
-            XCTAssertTrue(timeLogger.requestEntries.isEmpty)
-        }
+    func test_addRequests_addMultipleUniqueIdentifiers_returnsCorrectCount() {
+        sut.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 0))
+        sut.addRequest(withIdentifier: "bbb", andDate: Date(timeIntervalSince1970: 0))
+        queue.sync { } // A trick to make async behaviour to sync
+        XCTAssertEqual(sut.requestEntries.count, 2)
+        let comparableKeys = Array(sut.requestEntries.keys)
+        XCTAssertTrue(comparableKeys.contains("aaa"))
+        XCTAssertTrue(comparableKeys.contains("bbb"))
     }
 
-    func test_slowRequests() {
-        let timeLogger = RequestTimeLogger()
-        timeLogger.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 0))
-        timeLogger.requestEntriesQueue.async {
-            let containedSlow = timeLogger.containsSlowRequestsAndRemove()
-            sleep(1)
-            XCTAssertTrue(containedSlow)
-            XCTAssertTrue(timeLogger.requestEntries.isEmpty)
-        }
+    func test_addRequests_addMultipleSameIdentifiers_returnsCorrectCount() {
+        sut.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 0))
+        sut.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 1))
+        queue.sync { }
+        XCTAssertEqual(sut.requestEntries.count, 1)
+        XCTAssertEqual(sut.requestEntries.first?.key, "aaa")
+        XCTAssertEqual(sut.requestEntries.first?.value, Date(timeIntervalSince1970: 1))
     }
 
-    func test_slowAndFastRequests() {
-        let timeLogger = RequestTimeLogger()
-        timeLogger.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 0))
-        timeLogger.addRequest(withIdentifier: "bbb", andDate: Date(timeIntervalSinceNow: 20))
-        timeLogger.requestEntriesQueue.async {
-            let containedSlow = timeLogger.containsSlowRequestsAndRemove()
-            sleep(1)
-            XCTAssertTrue(containedSlow)
-            XCTAssertEqual(timeLogger.requestEntries.count, 1)
-            XCTAssertEqual(timeLogger.requestEntries.first?.key, "bbb")
-        }
+    func test_removeRequest() {
+        sut.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSince1970: 0))
+        sut.removeRequest(withIdentifier: "aaa")
+        queue.sync { }
+        XCTAssertTrue(sut.requestEntries.isEmpty)
     }
 
-    func test_fastRequests() {
-        let timeLogger = RequestTimeLogger()
-        timeLogger.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSinceNow: 20))
-        timeLogger.addRequest(withIdentifier: "bbb", andDate: Date(timeIntervalSinceNow: 21))
-        timeLogger.requestEntriesQueue.async {
-            let containedSlow = timeLogger.containsSlowRequestsAndRemove()
-            sleep(1)
-            XCTAssertFalse(containedSlow)
-            XCTAssertEqual(timeLogger.requestEntries.count, 2)
-        }
+    func test_containsSlowRequestsAndRemove_noRequestsInEntries_shouldReturnFalse() {
+        queue.sync { }
+        XCTAssertFalse(sut.containsSlowRequestsAndRemove())
     }
 
-    func testIsSlowRequest() {
-        XCTAssertTrue(RequestTimeLogger.isSlowRequest(
-                        requestDate: Date(timeIntervalSince1970: 0),
-                        currentDate: Date(timeIntervalSince1970: 3)))
-        XCTAssertTrue(RequestTimeLogger.isSlowRequest(
-                        requestDate: Date(timeIntervalSince1970: 0),
-                        currentDate: Date(timeIntervalSince1970: 4)))
+    func test_containsSlowRequestsAndRemove_hasSlowRequestOnlyInEntries_shouldReturnTrue() {
+        sut.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSinceNow: -3600))
+        queue.sync { }
+        XCTAssertTrue(sut.containsSlowRequestsAndRemove())
+        queue.sync { }
+        XCTAssertTrue(sut.requestEntries.isEmpty)
     }
 
-    func testIsFastRequest() {
-        XCTAssertFalse(RequestTimeLogger.isSlowRequest(
-                        requestDate: Date(timeIntervalSince1970: 0),
-                        currentDate: Date(timeIntervalSince1970: 0)))
-        XCTAssertFalse(RequestTimeLogger.isSlowRequest(
-                        requestDate: Date(timeIntervalSince1970: 0),
-                        currentDate: Date(timeIntervalSince1970: 2)))
+    func test_containsSlowRequestsAndRemove_containsSlowAndFastRequestsInEntries_shouldReturnTrue() {
+        sut.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSinceNow: -3600))
+        sut.addRequest(withIdentifier: "bbb", andDate: Date(timeIntervalSinceNow: 1))
+        queue.sync { }
+        XCTAssertTrue(sut.containsSlowRequestsAndRemove())
+        queue.sync { }
+        XCTAssertEqual(sut.requestEntries.first?.key, "bbb")
+    }
+
+    func test_containsSlowRequestsAndRemove_hasFastRequestOnlyInEntries_shouldReturnFalse() {
+        sut.addRequest(withIdentifier: "aaa", andDate: Date(timeIntervalSinceNow: 1))
+        queue.sync { }
+        XCTAssertFalse(sut.containsSlowRequestsAndRemove())
+        queue.sync { }
+        XCTAssertEqual(sut.requestEntries.first?.key, "aaa")
     }
 }

@@ -8,32 +8,38 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
 
-public struct RequestDispatcher {
+struct RequestDispatcher {
 
-    static func dispatch(request: URLRequest) -> Observable<Data> {
-        RequestLogger.log(request: request)
-        return URLSession.shared.rx.response(request: request)
-            .flatMap({ (tuple: (response: URLResponse, data: Data)) -> Observable<Data> in
-                let (response, data) = tuple
-                if let response = response as? HTTPURLResponse {
-                    RequestLogger.log(response: response, withData: data)
-                    if 200 ..< 300 ~= response.statusCode {
-                        return .just(data)
-                    } else {
-                        return .error(APIError.constructedError(data: data, statusCode: response.statusCode))
-                    }
+    let request: URLRequest
+    let timeLogger: RequestTimeLogger
+    let sessionObservable: Observable<(response: HTTPURLResponse, data: Data)>
+
+    init(
+        request: URLRequest,
+        timeLogger: RequestTimeLogger = .shared,
+        sessionObservable: Observable<(response: HTTPURLResponse, data: Data)>
+    ) {
+        self.request = request
+        self.timeLogger = timeLogger
+        self.sessionObservable = sessionObservable
+    }
+
+    func dispatch() -> Observable<Data> {
+        return sessionObservable
+            .flatMap({ (response: HTTPURLResponse, data: Data) -> Observable<Data> in
+                if 200 ..< 300 ~= response.statusCode {
+                    return .just(data)
                 } else {
-                    return .error(APIError.unparseableError())
+                    return .error(APIError.constructedError(data: data, statusCode: response.statusCode))
                 }
             })
-            .do(onNext: { (_) in
-                RequestTimeLogger.shared.removeRequest(withIdentifier: request.identifier)
-            }, onError: { (_) in
-                RequestTimeLogger.shared.removeRequest(withIdentifier: request.identifier)
+            .do(onNext: { _ in
+                timeLogger.removeRequest(withIdentifier: request.identifier)
+            }, onError: { _ in
+                timeLogger.removeRequest(withIdentifier: request.identifier)
             }, onSubscribe: {
-                RequestTimeLogger.shared.addRequest(withIdentifier: request.identifier)
+                timeLogger.addRequest(withIdentifier: request.identifier)
             })
     }
 }

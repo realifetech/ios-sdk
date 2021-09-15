@@ -13,8 +13,8 @@ enum CommunicateFactory {
     static func makeCommunicateModule() -> Communicate {
         let storage = CodableStore(storage: UserDefaultsStorage(), storagePrefix: "apnToken")
         let pushNotificationRegistrar = PushNotificationRegistrar(
-            scheduler: nil,
-            tokenStore: storage)
+            tokenStore: storage,
+            deviceRepository: DeviceRepository.self)
         return CommunicateImplementing(pushNotificationRegistrar: pushNotificationRegistrar)
     }
 }

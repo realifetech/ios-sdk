@@ -15,6 +15,13 @@ public protocol RemoteDiskCacheDataProviding {
     associatedtype Rqstr: Requester
 
     static var diskCache: DiskCachable { get }
+
+    static func retrieve<Model: Codable>(
+        type: Model.Type,
+        forRequest request: URLRequest,
+        privateObj: Bool,
+        strategy: DiskCacheDataProvidingStrategy
+    ) -> Observable<Model>
 }
 
 public extension RemoteDiskCacheDataProviding {

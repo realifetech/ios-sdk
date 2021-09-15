@@ -122,7 +122,7 @@ public extension ApolloType {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("address", type: .object(Address.selections)),
           GraphQLField("email", type: .scalar(String.self)),
-          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("name", type: .scalar(String.self)),
           GraphQLField("phone", type: .scalar(String.self)),
         ]
       }
@@ -133,7 +133,7 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(address: Address? = nil, email: String? = nil, name: String, phone: String? = nil) {
+      public init(address: Address? = nil, email: String? = nil, name: String? = nil, phone: String? = nil) {
         self.init(unsafeResultMap: ["__typename": "PaymentSourceBillingDetails", "address": address.flatMap { (value: Address) -> ResultMap in value.resultMap }, "email": email, "name": name, "phone": phone])
       }
 
@@ -164,9 +164,9 @@ public extension ApolloType {
         }
       }
 
-      public var name: String {
+      public var name: String? {
         get {
-          return resultMap["name"]! as! String
+          return resultMap["name"] as? String
         }
         set {
           resultMap.updateValue(newValue, forKey: "name")
