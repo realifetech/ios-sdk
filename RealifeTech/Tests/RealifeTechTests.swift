@@ -36,7 +36,7 @@ final class RealifeTechTests: XCTestCase {
         XCTAssertNil(RealifeTech.Canvas)
         XCTAssertNil(RealifeTech.Content)
         XCTAssertNil(RealifeTech.Sell)
-        XCTAssertNotNil(RealifeTech.Identity)
+        XCTAssertNil(RealifeTech.Identity)
     }
 
     func test_setWebOrderingJourneyUrl_sellsOrderingJourneyUrlIsUpdated() {
