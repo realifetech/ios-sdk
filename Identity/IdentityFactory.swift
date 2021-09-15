@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum IdentityFactory {
+public enum IdentityFactory {
 
     static func makeIdentityModule() -> Identity {
         return IdentityImplementing()
