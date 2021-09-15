@@ -29,7 +29,7 @@ public extension ApolloType {
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("deleteMyBasket", type: .object(DeleteMyBasket.selections)),
+          GraphQLField("deleteMyBasket", type: .nonNull(.object(DeleteMyBasket.selections))),
         ]
       }
 
@@ -39,16 +39,16 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(deleteMyBasket: DeleteMyBasket? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Mutation", "deleteMyBasket": deleteMyBasket.flatMap { (value: DeleteMyBasket) -> ResultMap in value.resultMap }])
+      public init(deleteMyBasket: DeleteMyBasket) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "deleteMyBasket": deleteMyBasket.resultMap])
       }
 
-      public var deleteMyBasket: DeleteMyBasket? {
+      public var deleteMyBasket: DeleteMyBasket {
         get {
-          return (resultMap["deleteMyBasket"] as? ResultMap).flatMap { DeleteMyBasket(unsafeResultMap: $0) }
+          return DeleteMyBasket(unsafeResultMap: resultMap["deleteMyBasket"]! as! ResultMap)
         }
         set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "deleteMyBasket")
+          resultMap.updateValue(newValue.resultMap, forKey: "deleteMyBasket")
         }
       }
 

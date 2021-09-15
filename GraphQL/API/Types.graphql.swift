@@ -620,7 +620,7 @@ public enum ApolloType {
     ///   - fulfilmentPoint
     ///   - seatInfo
     ///   - items
-    public init(collectionDate: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> = nil, timeslot: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: GraphQLID, seatInfo: Swift.Optional<SeatInfoInput?> = nil, items: [BasketItemInput?]) {
+    public init(collectionDate: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> = nil, timeslot: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: GraphQLID, seatInfo: Swift.Optional<JSON?> = nil, items: [BasketItemInput?]) {
       graphQLMap = ["collectionDate": collectionDate, "collectionPreferenceType": collectionPreferenceType, "timeslot": timeslot, "fulfilmentPoint": fulfilmentPoint, "seatInfo": seatInfo, "items": items]
     }
 
@@ -660,9 +660,9 @@ public enum ApolloType {
       }
     }
 
-    public var seatInfo: Swift.Optional<SeatInfoInput?> {
+    public var seatInfo: Swift.Optional<JSON?> {
       get {
-        return graphQLMap["seatInfo"] as? Swift.Optional<SeatInfoInput?> ?? Swift.Optional<SeatInfoInput?>.none
+        return graphQLMap["seatInfo"] as? Swift.Optional<JSON?> ?? Swift.Optional<JSON?>.none
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "seatInfo")
@@ -721,55 +721,6 @@ public enum ApolloType {
         .asap,
         .preorder,
       ]
-    }
-  }
-
-  public struct SeatInfoInput: GraphQLMapConvertible {
-    public var graphQLMap: GraphQLMap
-
-    /// - Parameters:
-    ///   - row
-    ///   - seat
-    ///   - block
-    ///   - table
-    public init(row: Swift.Optional<String?> = nil, seat: Swift.Optional<String?> = nil, block: Swift.Optional<String?> = nil, table: Swift.Optional<String?> = nil) {
-      graphQLMap = ["row": row, "seat": seat, "block": block, "table": table]
-    }
-
-    public var row: Swift.Optional<String?> {
-      get {
-        return graphQLMap["row"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "row")
-      }
-    }
-
-    public var seat: Swift.Optional<String?> {
-      get {
-        return graphQLMap["seat"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "seat")
-      }
-    }
-
-    public var block: Swift.Optional<String?> {
-      get {
-        return graphQLMap["block"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "block")
-      }
-    }
-
-    public var table: Swift.Optional<String?> {
-      get {
-        return graphQLMap["table"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
-      }
-      set {
-        graphQLMap.updateValue(newValue, forKey: "table")
-      }
     }
   }
 

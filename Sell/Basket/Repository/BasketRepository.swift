@@ -31,15 +31,11 @@ public final class BasketRepository {
 
     private func makeApolloBasketInput(_ input: BasketInput) -> ApolloType.BasketInput {
         ApolloType.BasketInput(
-            collectionDate: input.collectionDate?.iso8601String,
+            collectionDate: input.collectionDate?.apiParameterDateFormat,
             collectionPreferenceType: input.collectionPreferenceType?.apolloType,
             timeslot: input.timeslotId,
             fulfilmentPoint: input.fulfilmentPointId,
-            seatInfo: ApolloType.SeatInfoInput(
-                row: input.seatInfo?.row,
-                seat: input.seatInfo?.seat,
-                block: input.seatInfo?.block,
-                table: input.seatInfo?.table),
+            seatInfo: covertSeatInfoToJSONType(input.seatInfo),
             items: input.items.compactMap {
                 ApolloType.BasketItemInput(
                     product: $0.productId,
@@ -61,6 +57,19 @@ public final class BasketRepository {
             netAmount: input.netAmount,
             language: ApolloType.Language(rawValue: input.language ?? ""))
     }
+
+    /// Note: If seatInfo is nil, we need to send empty dictionary array to backend
+    private func covertSeatInfoToJSONType(_ seatInfo: SeatInfo?) -> JSON {
+        guard let seatInfo = seatInfo else {
+            return []
+        }
+        let dic: [String: String?] =
+            ["row": seatInfo.row,
+             "seat": seatInfo.seat,
+             "block": seatInfo.block,
+             "table": seatInfo.table]
+        return [dic]
+    }
 }
 
 extension BasketRepository: BasketProvidable {
@@ -78,9 +87,7 @@ extension BasketRepository: BasketProvidable {
                 } else if let returnedBasket = response.data?.getMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
-                    let basketError = BasketError(
-                        type: .regularError(GraphQLManagerError.noDataError),
-                        message: GraphQLManagerError.noDataError.localizedDescription)
+                    let basketError = BasketError(type: .emptyBasket, message: "")
                     callback(.failure(basketError))
                 }
             case .failure(let error):
@@ -162,7 +169,7 @@ extension BasketRepository: BasketProvidable {
                 if let transformedError = self.transformErrorIfNeccessary(response.errors) {
                     callback(.failure(transformedError))
                 } else {
-                    callback(.success(response.data?.deleteMyBasket?.success ?? false))
+                    callback(.success(response.data?.deleteMyBasket.success ?? false))
                 }
             case .failure(let error):
                 let basketError = BasketError(

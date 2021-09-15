@@ -41,13 +41,13 @@ public struct PaymentSourceBillingDetails: Codable, Equatable {
 
     public let address: Address?
     public let email: String?
-    public let name: String
+    public let name: String?
     public let phone: String?
 
     public init(
         address: Address?,
         email: String?,
-        name: String,
+        name: String?,
         phone: String?
     ) {
         self.address = address

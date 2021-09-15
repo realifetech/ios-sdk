@@ -23,7 +23,6 @@ public extension ApolloType {
     public var queryDocument: String {
       var document: String = operationDefinition
       document.append("\n" + FragmentBasket.fragmentDefinition)
-      document.append("\n" + FragmentSeatInfo.fragmentDefinition)
       document.append("\n" + FragmentTimeslot.fragmentDefinition)
       document.append("\n" + FragmentFulfilmentPoint.fragmentDefinition)
       document.append("\n" + FragmentForm.fragmentDefinition)
