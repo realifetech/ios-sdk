@@ -79,6 +79,7 @@ public class RealifeTech {
         Canvas = nil
         Content = nil
         Sell = nil
+        Identity = nil
     }
 
     /// Override the webOrderingJourneyUrl
