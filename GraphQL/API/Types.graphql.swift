@@ -77,55 +77,1048 @@ public enum ApolloType {
 
   public enum Language: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
-    case en
-    case fr
-    case nr
+    case bo
+    case aa
+    case ab
+    case af
+    case ak
+    case als
+    case am
+    case an
+    case ang
+    case ar
+    case arc
+    case `as`
+    case ast
+    case av
+    case awa
+    case ay
+    case az
+    case ba
+    case bar
+    case bat
+    case bcl
+    case be
+    case bg
+    case bh
+    case bi
+    case bm
+    case bn
+    case bpy
+    case br
+    case bs
+    case bug
+    case bxr
+    case ca
+    case cdo
+    case ce
+    case ceb
+    case ch
+    case cho
+    case chr
+    case chy
+    case ckb
+    case co
+    case cr
+    case cs
+    case csb
+    case cu
+    case cv
+    case cy
+    case da
     case de
-    case sv
-    case nb
+    case diq
+    case dsb
+    case dv
+    case dz
+    case ee
+    case el
+    case en
+    case eo
+    case es
+    case et
+    case eu
+    case ext
+    case fa
+    case ff
+    case fi
+    case fiu
+    case fj
+    case fo
+    case fr
+    case frp
+    case fur
+    case fy
+    case ga
+    case gan
+    case gbm
+    case gd
+    case gil
+    case gl
+    case gn
+    case got
+    case gu
+    case gv
+    case ha
+    case hak
+    case haw
+    case he
+    case hi
+    case ho
+    case hr
+    case ht
+    case hu
+    case hy
+    case hz
+    case ia
+    case id
+    case ie
+    case ig
+    case ii
+    case ik
+    case ilo
+    case inh
+    case io
+    case `is`
+    case it
+    case iu
+    case ja
+    case jbo
+    case jv
+    case ka
+    case kg
+    case ki
+    case kj
+    case kk
+    case kl
+    case km
+    case kn
+    case khw
+    case ko
+    case kr
+    case ks
+    case ksh
+    case ku
+    case kv
+    case kw
+    case ky
+    case la
+    case lad
+    case lan
+    case lb
+    case lg
+    case li
+    case lij
+    case lmo
+    case ln
+    case lo
+    case lzz
     case lt
+    case lv
+    case map
+    case mg
+    case man
+    case mh
+    case mi
+    case min
+    case mk
+    case ml
+    case mn
+    case mo
+    case mr
+    case mrh
+    case ms
+    case mt
+    case mus
+    case mwl
+    case my
+    case na
+    case nah
+    case nap
+    case nd
+    case nds
+    /// nds-nl
+    case ne
+    case new
+    case ng
+    case nl
+    case nn
+    case no
+    case nr
+    case nso
+    case nrm
+    case nv
+    case ny
+    case oc
+    case oj
+    case om
+    case or
+    case os
+    case pa
+    case pag
+    case pam
+    case pap
+    case pdc
+    case pi
+    case pih
+    case pl
+    case pms
+    case ps
     case pt
+    case qu
+    case rm
+    case rmy
+    case rn
+    case ro
+    case roa
+    case ru
+    case rw
+    case sa
+    case sc
+    case scn
+    case sco
+    case sd
+    case se
+    case sg
+    case sh
+    case si
+    case sk
+    case sl
+    case sm
+    case sn
+    case so
+    case sq
+    case sr
+    case ss
+    case st
+    case su
+    case sv
+    case sw
+    case ta
+    case te
+    case tet
+    case tg
+    case th
+    case ti
+    case tk
+    case tl
+    case tlh
+    case tn
+    case to
+    case tpi
+    case tr
+    case ts
+    case tt
+    case tum
+    case tw
+    case ty
+    case udm
+    case ug
+    case uk
+    case ur
+    case uz
+    case uzAf
+    case ve
+    case vi
+    case vec
+    case vls
+    case vo
+    case wa
+    case war
+    case wo
+    case xal
+    case xh
+    case xmf
+    case yi
+    case yo
+    case za
+    case zh
+    case zu
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
     public init?(rawValue: RawValue) {
       switch rawValue {
-        case "en": self = .en
-        case "fr": self = .fr
-        case "nr": self = .nr
+        case "bo": self = .bo
+        case "aa": self = .aa
+        case "ab": self = .ab
+        case "af": self = .af
+        case "ak": self = .ak
+        case "als": self = .als
+        case "am": self = .am
+        case "an": self = .an
+        case "ang": self = .ang
+        case "ar": self = .ar
+        case "arc": self = .arc
+        case "as": self = .as
+        case "ast": self = .ast
+        case "av": self = .av
+        case "awa": self = .awa
+        case "ay": self = .ay
+        case "az": self = .az
+        case "ba": self = .ba
+        case "bar": self = .bar
+        case "bat": self = .bat
+        case "bcl": self = .bcl
+        case "be": self = .be
+        case "bg": self = .bg
+        case "bh": self = .bh
+        case "bi": self = .bi
+        case "bm": self = .bm
+        case "bn": self = .bn
+        case "bpy": self = .bpy
+        case "br": self = .br
+        case "bs": self = .bs
+        case "bug": self = .bug
+        case "bxr": self = .bxr
+        case "ca": self = .ca
+        case "cdo": self = .cdo
+        case "ce": self = .ce
+        case "ceb": self = .ceb
+        case "ch": self = .ch
+        case "cho": self = .cho
+        case "chr": self = .chr
+        case "chy": self = .chy
+        case "ckb": self = .ckb
+        case "co": self = .co
+        case "cr": self = .cr
+        case "cs": self = .cs
+        case "csb": self = .csb
+        case "cu": self = .cu
+        case "cv": self = .cv
+        case "cy": self = .cy
+        case "da": self = .da
         case "de": self = .de
-        case "sv": self = .sv
-        case "nb": self = .nb
+        case "diq": self = .diq
+        case "dsb": self = .dsb
+        case "dv": self = .dv
+        case "dz": self = .dz
+        case "ee": self = .ee
+        case "el": self = .el
+        case "en": self = .en
+        case "eo": self = .eo
+        case "es": self = .es
+        case "et": self = .et
+        case "eu": self = .eu
+        case "ext": self = .ext
+        case "fa": self = .fa
+        case "ff": self = .ff
+        case "fi": self = .fi
+        case "fiu": self = .fiu
+        case "fj": self = .fj
+        case "fo": self = .fo
+        case "fr": self = .fr
+        case "frp": self = .frp
+        case "fur": self = .fur
+        case "fy": self = .fy
+        case "ga": self = .ga
+        case "gan": self = .gan
+        case "gbm": self = .gbm
+        case "gd": self = .gd
+        case "gil": self = .gil
+        case "gl": self = .gl
+        case "gn": self = .gn
+        case "got": self = .got
+        case "gu": self = .gu
+        case "gv": self = .gv
+        case "ha": self = .ha
+        case "hak": self = .hak
+        case "haw": self = .haw
+        case "he": self = .he
+        case "hi": self = .hi
+        case "ho": self = .ho
+        case "hr": self = .hr
+        case "ht": self = .ht
+        case "hu": self = .hu
+        case "hy": self = .hy
+        case "hz": self = .hz
+        case "ia": self = .ia
+        case "id": self = .id
+        case "ie": self = .ie
+        case "ig": self = .ig
+        case "ii": self = .ii
+        case "ik": self = .ik
+        case "ilo": self = .ilo
+        case "inh": self = .inh
+        case "io": self = .io
+        case "is": self = .is
+        case "it": self = .it
+        case "iu": self = .iu
+        case "ja": self = .ja
+        case "jbo": self = .jbo
+        case "jv": self = .jv
+        case "ka": self = .ka
+        case "kg": self = .kg
+        case "ki": self = .ki
+        case "kj": self = .kj
+        case "kk": self = .kk
+        case "kl": self = .kl
+        case "km": self = .km
+        case "kn": self = .kn
+        case "khw": self = .khw
+        case "ko": self = .ko
+        case "kr": self = .kr
+        case "ks": self = .ks
+        case "ksh": self = .ksh
+        case "ku": self = .ku
+        case "kv": self = .kv
+        case "kw": self = .kw
+        case "ky": self = .ky
+        case "la": self = .la
+        case "lad": self = .lad
+        case "lan": self = .lan
+        case "lb": self = .lb
+        case "lg": self = .lg
+        case "li": self = .li
+        case "lij": self = .lij
+        case "lmo": self = .lmo
+        case "ln": self = .ln
+        case "lo": self = .lo
+        case "lzz": self = .lzz
         case "lt": self = .lt
+        case "lv": self = .lv
+        case "map": self = .map
+        case "mg": self = .mg
+        case "man": self = .man
+        case "mh": self = .mh
+        case "mi": self = .mi
+        case "min": self = .min
+        case "mk": self = .mk
+        case "ml": self = .ml
+        case "mn": self = .mn
+        case "mo": self = .mo
+        case "mr": self = .mr
+        case "mrh": self = .mrh
+        case "ms": self = .ms
+        case "mt": self = .mt
+        case "mus": self = .mus
+        case "mwl": self = .mwl
+        case "my": self = .my
+        case "na": self = .na
+        case "nah": self = .nah
+        case "nap": self = .nap
+        case "nd": self = .nd
+        case "nds": self = .nds
+        case "ne": self = .ne
+        case "new": self = .new
+        case "ng": self = .ng
+        case "nl": self = .nl
+        case "nn": self = .nn
+        case "no": self = .no
+        case "nr": self = .nr
+        case "nso": self = .nso
+        case "nrm": self = .nrm
+        case "nv": self = .nv
+        case "ny": self = .ny
+        case "oc": self = .oc
+        case "oj": self = .oj
+        case "om": self = .om
+        case "or": self = .or
+        case "os": self = .os
+        case "pa": self = .pa
+        case "pag": self = .pag
+        case "pam": self = .pam
+        case "pap": self = .pap
+        case "pdc": self = .pdc
+        case "pi": self = .pi
+        case "pih": self = .pih
+        case "pl": self = .pl
+        case "pms": self = .pms
+        case "ps": self = .ps
         case "pt": self = .pt
+        case "qu": self = .qu
+        case "rm": self = .rm
+        case "rmy": self = .rmy
+        case "rn": self = .rn
+        case "ro": self = .ro
+        case "roa": self = .roa
+        case "ru": self = .ru
+        case "rw": self = .rw
+        case "sa": self = .sa
+        case "sc": self = .sc
+        case "scn": self = .scn
+        case "sco": self = .sco
+        case "sd": self = .sd
+        case "se": self = .se
+        case "sg": self = .sg
+        case "sh": self = .sh
+        case "si": self = .si
+        case "sk": self = .sk
+        case "sl": self = .sl
+        case "sm": self = .sm
+        case "sn": self = .sn
+        case "so": self = .so
+        case "sq": self = .sq
+        case "sr": self = .sr
+        case "ss": self = .ss
+        case "st": self = .st
+        case "su": self = .su
+        case "sv": self = .sv
+        case "sw": self = .sw
+        case "ta": self = .ta
+        case "te": self = .te
+        case "tet": self = .tet
+        case "tg": self = .tg
+        case "th": self = .th
+        case "ti": self = .ti
+        case "tk": self = .tk
+        case "tl": self = .tl
+        case "tlh": self = .tlh
+        case "tn": self = .tn
+        case "to": self = .to
+        case "tpi": self = .tpi
+        case "tr": self = .tr
+        case "ts": self = .ts
+        case "tt": self = .tt
+        case "tum": self = .tum
+        case "tw": self = .tw
+        case "ty": self = .ty
+        case "udm": self = .udm
+        case "ug": self = .ug
+        case "uk": self = .uk
+        case "ur": self = .ur
+        case "uz": self = .uz
+        case "uz_AF": self = .uzAf
+        case "ve": self = .ve
+        case "vi": self = .vi
+        case "vec": self = .vec
+        case "vls": self = .vls
+        case "vo": self = .vo
+        case "wa": self = .wa
+        case "war": self = .war
+        case "wo": self = .wo
+        case "xal": self = .xal
+        case "xh": self = .xh
+        case "xmf": self = .xmf
+        case "yi": self = .yi
+        case "yo": self = .yo
+        case "za": self = .za
+        case "zh": self = .zh
+        case "zu": self = .zu
         default: self = .__unknown(rawValue)
       }
     }
 
     public var rawValue: RawValue {
       switch self {
-        case .en: return "en"
-        case .fr: return "fr"
-        case .nr: return "nr"
+        case .bo: return "bo"
+        case .aa: return "aa"
+        case .ab: return "ab"
+        case .af: return "af"
+        case .ak: return "ak"
+        case .als: return "als"
+        case .am: return "am"
+        case .an: return "an"
+        case .ang: return "ang"
+        case .ar: return "ar"
+        case .arc: return "arc"
+        case .as: return "as"
+        case .ast: return "ast"
+        case .av: return "av"
+        case .awa: return "awa"
+        case .ay: return "ay"
+        case .az: return "az"
+        case .ba: return "ba"
+        case .bar: return "bar"
+        case .bat: return "bat"
+        case .bcl: return "bcl"
+        case .be: return "be"
+        case .bg: return "bg"
+        case .bh: return "bh"
+        case .bi: return "bi"
+        case .bm: return "bm"
+        case .bn: return "bn"
+        case .bpy: return "bpy"
+        case .br: return "br"
+        case .bs: return "bs"
+        case .bug: return "bug"
+        case .bxr: return "bxr"
+        case .ca: return "ca"
+        case .cdo: return "cdo"
+        case .ce: return "ce"
+        case .ceb: return "ceb"
+        case .ch: return "ch"
+        case .cho: return "cho"
+        case .chr: return "chr"
+        case .chy: return "chy"
+        case .ckb: return "ckb"
+        case .co: return "co"
+        case .cr: return "cr"
+        case .cs: return "cs"
+        case .csb: return "csb"
+        case .cu: return "cu"
+        case .cv: return "cv"
+        case .cy: return "cy"
+        case .da: return "da"
         case .de: return "de"
-        case .sv: return "sv"
-        case .nb: return "nb"
+        case .diq: return "diq"
+        case .dsb: return "dsb"
+        case .dv: return "dv"
+        case .dz: return "dz"
+        case .ee: return "ee"
+        case .el: return "el"
+        case .en: return "en"
+        case .eo: return "eo"
+        case .es: return "es"
+        case .et: return "et"
+        case .eu: return "eu"
+        case .ext: return "ext"
+        case .fa: return "fa"
+        case .ff: return "ff"
+        case .fi: return "fi"
+        case .fiu: return "fiu"
+        case .fj: return "fj"
+        case .fo: return "fo"
+        case .fr: return "fr"
+        case .frp: return "frp"
+        case .fur: return "fur"
+        case .fy: return "fy"
+        case .ga: return "ga"
+        case .gan: return "gan"
+        case .gbm: return "gbm"
+        case .gd: return "gd"
+        case .gil: return "gil"
+        case .gl: return "gl"
+        case .gn: return "gn"
+        case .got: return "got"
+        case .gu: return "gu"
+        case .gv: return "gv"
+        case .ha: return "ha"
+        case .hak: return "hak"
+        case .haw: return "haw"
+        case .he: return "he"
+        case .hi: return "hi"
+        case .ho: return "ho"
+        case .hr: return "hr"
+        case .ht: return "ht"
+        case .hu: return "hu"
+        case .hy: return "hy"
+        case .hz: return "hz"
+        case .ia: return "ia"
+        case .id: return "id"
+        case .ie: return "ie"
+        case .ig: return "ig"
+        case .ii: return "ii"
+        case .ik: return "ik"
+        case .ilo: return "ilo"
+        case .inh: return "inh"
+        case .io: return "io"
+        case .is: return "is"
+        case .it: return "it"
+        case .iu: return "iu"
+        case .ja: return "ja"
+        case .jbo: return "jbo"
+        case .jv: return "jv"
+        case .ka: return "ka"
+        case .kg: return "kg"
+        case .ki: return "ki"
+        case .kj: return "kj"
+        case .kk: return "kk"
+        case .kl: return "kl"
+        case .km: return "km"
+        case .kn: return "kn"
+        case .khw: return "khw"
+        case .ko: return "ko"
+        case .kr: return "kr"
+        case .ks: return "ks"
+        case .ksh: return "ksh"
+        case .ku: return "ku"
+        case .kv: return "kv"
+        case .kw: return "kw"
+        case .ky: return "ky"
+        case .la: return "la"
+        case .lad: return "lad"
+        case .lan: return "lan"
+        case .lb: return "lb"
+        case .lg: return "lg"
+        case .li: return "li"
+        case .lij: return "lij"
+        case .lmo: return "lmo"
+        case .ln: return "ln"
+        case .lo: return "lo"
+        case .lzz: return "lzz"
         case .lt: return "lt"
+        case .lv: return "lv"
+        case .map: return "map"
+        case .mg: return "mg"
+        case .man: return "man"
+        case .mh: return "mh"
+        case .mi: return "mi"
+        case .min: return "min"
+        case .mk: return "mk"
+        case .ml: return "ml"
+        case .mn: return "mn"
+        case .mo: return "mo"
+        case .mr: return "mr"
+        case .mrh: return "mrh"
+        case .ms: return "ms"
+        case .mt: return "mt"
+        case .mus: return "mus"
+        case .mwl: return "mwl"
+        case .my: return "my"
+        case .na: return "na"
+        case .nah: return "nah"
+        case .nap: return "nap"
+        case .nd: return "nd"
+        case .nds: return "nds"
+        case .ne: return "ne"
+        case .new: return "new"
+        case .ng: return "ng"
+        case .nl: return "nl"
+        case .nn: return "nn"
+        case .no: return "no"
+        case .nr: return "nr"
+        case .nso: return "nso"
+        case .nrm: return "nrm"
+        case .nv: return "nv"
+        case .ny: return "ny"
+        case .oc: return "oc"
+        case .oj: return "oj"
+        case .om: return "om"
+        case .or: return "or"
+        case .os: return "os"
+        case .pa: return "pa"
+        case .pag: return "pag"
+        case .pam: return "pam"
+        case .pap: return "pap"
+        case .pdc: return "pdc"
+        case .pi: return "pi"
+        case .pih: return "pih"
+        case .pl: return "pl"
+        case .pms: return "pms"
+        case .ps: return "ps"
         case .pt: return "pt"
+        case .qu: return "qu"
+        case .rm: return "rm"
+        case .rmy: return "rmy"
+        case .rn: return "rn"
+        case .ro: return "ro"
+        case .roa: return "roa"
+        case .ru: return "ru"
+        case .rw: return "rw"
+        case .sa: return "sa"
+        case .sc: return "sc"
+        case .scn: return "scn"
+        case .sco: return "sco"
+        case .sd: return "sd"
+        case .se: return "se"
+        case .sg: return "sg"
+        case .sh: return "sh"
+        case .si: return "si"
+        case .sk: return "sk"
+        case .sl: return "sl"
+        case .sm: return "sm"
+        case .sn: return "sn"
+        case .so: return "so"
+        case .sq: return "sq"
+        case .sr: return "sr"
+        case .ss: return "ss"
+        case .st: return "st"
+        case .su: return "su"
+        case .sv: return "sv"
+        case .sw: return "sw"
+        case .ta: return "ta"
+        case .te: return "te"
+        case .tet: return "tet"
+        case .tg: return "tg"
+        case .th: return "th"
+        case .ti: return "ti"
+        case .tk: return "tk"
+        case .tl: return "tl"
+        case .tlh: return "tlh"
+        case .tn: return "tn"
+        case .to: return "to"
+        case .tpi: return "tpi"
+        case .tr: return "tr"
+        case .ts: return "ts"
+        case .tt: return "tt"
+        case .tum: return "tum"
+        case .tw: return "tw"
+        case .ty: return "ty"
+        case .udm: return "udm"
+        case .ug: return "ug"
+        case .uk: return "uk"
+        case .ur: return "ur"
+        case .uz: return "uz"
+        case .uzAf: return "uz_AF"
+        case .ve: return "ve"
+        case .vi: return "vi"
+        case .vec: return "vec"
+        case .vls: return "vls"
+        case .vo: return "vo"
+        case .wa: return "wa"
+        case .war: return "war"
+        case .wo: return "wo"
+        case .xal: return "xal"
+        case .xh: return "xh"
+        case .xmf: return "xmf"
+        case .yi: return "yi"
+        case .yo: return "yo"
+        case .za: return "za"
+        case .zh: return "zh"
+        case .zu: return "zu"
         case .__unknown(let value): return value
       }
     }
 
     public static func == (lhs: Language, rhs: Language) -> Bool {
       switch (lhs, rhs) {
-        case (.en, .en): return true
-        case (.fr, .fr): return true
-        case (.nr, .nr): return true
+        case (.bo, .bo): return true
+        case (.aa, .aa): return true
+        case (.ab, .ab): return true
+        case (.af, .af): return true
+        case (.ak, .ak): return true
+        case (.als, .als): return true
+        case (.am, .am): return true
+        case (.an, .an): return true
+        case (.ang, .ang): return true
+        case (.ar, .ar): return true
+        case (.arc, .arc): return true
+        case (.as, .as): return true
+        case (.ast, .ast): return true
+        case (.av, .av): return true
+        case (.awa, .awa): return true
+        case (.ay, .ay): return true
+        case (.az, .az): return true
+        case (.ba, .ba): return true
+        case (.bar, .bar): return true
+        case (.bat, .bat): return true
+        case (.bcl, .bcl): return true
+        case (.be, .be): return true
+        case (.bg, .bg): return true
+        case (.bh, .bh): return true
+        case (.bi, .bi): return true
+        case (.bm, .bm): return true
+        case (.bn, .bn): return true
+        case (.bpy, .bpy): return true
+        case (.br, .br): return true
+        case (.bs, .bs): return true
+        case (.bug, .bug): return true
+        case (.bxr, .bxr): return true
+        case (.ca, .ca): return true
+        case (.cdo, .cdo): return true
+        case (.ce, .ce): return true
+        case (.ceb, .ceb): return true
+        case (.ch, .ch): return true
+        case (.cho, .cho): return true
+        case (.chr, .chr): return true
+        case (.chy, .chy): return true
+        case (.ckb, .ckb): return true
+        case (.co, .co): return true
+        case (.cr, .cr): return true
+        case (.cs, .cs): return true
+        case (.csb, .csb): return true
+        case (.cu, .cu): return true
+        case (.cv, .cv): return true
+        case (.cy, .cy): return true
+        case (.da, .da): return true
         case (.de, .de): return true
-        case (.sv, .sv): return true
-        case (.nb, .nb): return true
+        case (.diq, .diq): return true
+        case (.dsb, .dsb): return true
+        case (.dv, .dv): return true
+        case (.dz, .dz): return true
+        case (.ee, .ee): return true
+        case (.el, .el): return true
+        case (.en, .en): return true
+        case (.eo, .eo): return true
+        case (.es, .es): return true
+        case (.et, .et): return true
+        case (.eu, .eu): return true
+        case (.ext, .ext): return true
+        case (.fa, .fa): return true
+        case (.ff, .ff): return true
+        case (.fi, .fi): return true
+        case (.fiu, .fiu): return true
+        case (.fj, .fj): return true
+        case (.fo, .fo): return true
+        case (.fr, .fr): return true
+        case (.frp, .frp): return true
+        case (.fur, .fur): return true
+        case (.fy, .fy): return true
+        case (.ga, .ga): return true
+        case (.gan, .gan): return true
+        case (.gbm, .gbm): return true
+        case (.gd, .gd): return true
+        case (.gil, .gil): return true
+        case (.gl, .gl): return true
+        case (.gn, .gn): return true
+        case (.got, .got): return true
+        case (.gu, .gu): return true
+        case (.gv, .gv): return true
+        case (.ha, .ha): return true
+        case (.hak, .hak): return true
+        case (.haw, .haw): return true
+        case (.he, .he): return true
+        case (.hi, .hi): return true
+        case (.ho, .ho): return true
+        case (.hr, .hr): return true
+        case (.ht, .ht): return true
+        case (.hu, .hu): return true
+        case (.hy, .hy): return true
+        case (.hz, .hz): return true
+        case (.ia, .ia): return true
+        case (.id, .id): return true
+        case (.ie, .ie): return true
+        case (.ig, .ig): return true
+        case (.ii, .ii): return true
+        case (.ik, .ik): return true
+        case (.ilo, .ilo): return true
+        case (.inh, .inh): return true
+        case (.io, .io): return true
+        case (.is, .is): return true
+        case (.it, .it): return true
+        case (.iu, .iu): return true
+        case (.ja, .ja): return true
+        case (.jbo, .jbo): return true
+        case (.jv, .jv): return true
+        case (.ka, .ka): return true
+        case (.kg, .kg): return true
+        case (.ki, .ki): return true
+        case (.kj, .kj): return true
+        case (.kk, .kk): return true
+        case (.kl, .kl): return true
+        case (.km, .km): return true
+        case (.kn, .kn): return true
+        case (.khw, .khw): return true
+        case (.ko, .ko): return true
+        case (.kr, .kr): return true
+        case (.ks, .ks): return true
+        case (.ksh, .ksh): return true
+        case (.ku, .ku): return true
+        case (.kv, .kv): return true
+        case (.kw, .kw): return true
+        case (.ky, .ky): return true
+        case (.la, .la): return true
+        case (.lad, .lad): return true
+        case (.lan, .lan): return true
+        case (.lb, .lb): return true
+        case (.lg, .lg): return true
+        case (.li, .li): return true
+        case (.lij, .lij): return true
+        case (.lmo, .lmo): return true
+        case (.ln, .ln): return true
+        case (.lo, .lo): return true
+        case (.lzz, .lzz): return true
         case (.lt, .lt): return true
+        case (.lv, .lv): return true
+        case (.map, .map): return true
+        case (.mg, .mg): return true
+        case (.man, .man): return true
+        case (.mh, .mh): return true
+        case (.mi, .mi): return true
+        case (.min, .min): return true
+        case (.mk, .mk): return true
+        case (.ml, .ml): return true
+        case (.mn, .mn): return true
+        case (.mo, .mo): return true
+        case (.mr, .mr): return true
+        case (.mrh, .mrh): return true
+        case (.ms, .ms): return true
+        case (.mt, .mt): return true
+        case (.mus, .mus): return true
+        case (.mwl, .mwl): return true
+        case (.my, .my): return true
+        case (.na, .na): return true
+        case (.nah, .nah): return true
+        case (.nap, .nap): return true
+        case (.nd, .nd): return true
+        case (.nds, .nds): return true
+        case (.ne, .ne): return true
+        case (.new, .new): return true
+        case (.ng, .ng): return true
+        case (.nl, .nl): return true
+        case (.nn, .nn): return true
+        case (.no, .no): return true
+        case (.nr, .nr): return true
+        case (.nso, .nso): return true
+        case (.nrm, .nrm): return true
+        case (.nv, .nv): return true
+        case (.ny, .ny): return true
+        case (.oc, .oc): return true
+        case (.oj, .oj): return true
+        case (.om, .om): return true
+        case (.or, .or): return true
+        case (.os, .os): return true
+        case (.pa, .pa): return true
+        case (.pag, .pag): return true
+        case (.pam, .pam): return true
+        case (.pap, .pap): return true
+        case (.pdc, .pdc): return true
+        case (.pi, .pi): return true
+        case (.pih, .pih): return true
+        case (.pl, .pl): return true
+        case (.pms, .pms): return true
+        case (.ps, .ps): return true
         case (.pt, .pt): return true
+        case (.qu, .qu): return true
+        case (.rm, .rm): return true
+        case (.rmy, .rmy): return true
+        case (.rn, .rn): return true
+        case (.ro, .ro): return true
+        case (.roa, .roa): return true
+        case (.ru, .ru): return true
+        case (.rw, .rw): return true
+        case (.sa, .sa): return true
+        case (.sc, .sc): return true
+        case (.scn, .scn): return true
+        case (.sco, .sco): return true
+        case (.sd, .sd): return true
+        case (.se, .se): return true
+        case (.sg, .sg): return true
+        case (.sh, .sh): return true
+        case (.si, .si): return true
+        case (.sk, .sk): return true
+        case (.sl, .sl): return true
+        case (.sm, .sm): return true
+        case (.sn, .sn): return true
+        case (.so, .so): return true
+        case (.sq, .sq): return true
+        case (.sr, .sr): return true
+        case (.ss, .ss): return true
+        case (.st, .st): return true
+        case (.su, .su): return true
+        case (.sv, .sv): return true
+        case (.sw, .sw): return true
+        case (.ta, .ta): return true
+        case (.te, .te): return true
+        case (.tet, .tet): return true
+        case (.tg, .tg): return true
+        case (.th, .th): return true
+        case (.ti, .ti): return true
+        case (.tk, .tk): return true
+        case (.tl, .tl): return true
+        case (.tlh, .tlh): return true
+        case (.tn, .tn): return true
+        case (.to, .to): return true
+        case (.tpi, .tpi): return true
+        case (.tr, .tr): return true
+        case (.ts, .ts): return true
+        case (.tt, .tt): return true
+        case (.tum, .tum): return true
+        case (.tw, .tw): return true
+        case (.ty, .ty): return true
+        case (.udm, .udm): return true
+        case (.ug, .ug): return true
+        case (.uk, .uk): return true
+        case (.ur, .ur): return true
+        case (.uz, .uz): return true
+        case (.uzAf, .uzAf): return true
+        case (.ve, .ve): return true
+        case (.vi, .vi): return true
+        case (.vec, .vec): return true
+        case (.vls, .vls): return true
+        case (.vo, .vo): return true
+        case (.wa, .wa): return true
+        case (.war, .war): return true
+        case (.wo, .wo): return true
+        case (.xal, .xal): return true
+        case (.xh, .xh): return true
+        case (.xmf, .xmf): return true
+        case (.yi, .yi): return true
+        case (.yo, .yo): return true
+        case (.za, .za): return true
+        case (.zh, .zh): return true
+        case (.zu, .zu): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -133,14 +1126,262 @@ public enum ApolloType {
 
     public static var allCases: [Language] {
       return [
-        .en,
-        .fr,
-        .nr,
+        .bo,
+        .aa,
+        .ab,
+        .af,
+        .ak,
+        .als,
+        .am,
+        .an,
+        .ang,
+        .ar,
+        .arc,
+        .as,
+        .ast,
+        .av,
+        .awa,
+        .ay,
+        .az,
+        .ba,
+        .bar,
+        .bat,
+        .bcl,
+        .be,
+        .bg,
+        .bh,
+        .bi,
+        .bm,
+        .bn,
+        .bpy,
+        .br,
+        .bs,
+        .bug,
+        .bxr,
+        .ca,
+        .cdo,
+        .ce,
+        .ceb,
+        .ch,
+        .cho,
+        .chr,
+        .chy,
+        .ckb,
+        .co,
+        .cr,
+        .cs,
+        .csb,
+        .cu,
+        .cv,
+        .cy,
+        .da,
         .de,
-        .sv,
-        .nb,
+        .diq,
+        .dsb,
+        .dv,
+        .dz,
+        .ee,
+        .el,
+        .en,
+        .eo,
+        .es,
+        .et,
+        .eu,
+        .ext,
+        .fa,
+        .ff,
+        .fi,
+        .fiu,
+        .fj,
+        .fo,
+        .fr,
+        .frp,
+        .fur,
+        .fy,
+        .ga,
+        .gan,
+        .gbm,
+        .gd,
+        .gil,
+        .gl,
+        .gn,
+        .got,
+        .gu,
+        .gv,
+        .ha,
+        .hak,
+        .haw,
+        .he,
+        .hi,
+        .ho,
+        .hr,
+        .ht,
+        .hu,
+        .hy,
+        .hz,
+        .ia,
+        .id,
+        .ie,
+        .ig,
+        .ii,
+        .ik,
+        .ilo,
+        .inh,
+        .io,
+        .is,
+        .it,
+        .iu,
+        .ja,
+        .jbo,
+        .jv,
+        .ka,
+        .kg,
+        .ki,
+        .kj,
+        .kk,
+        .kl,
+        .km,
+        .kn,
+        .khw,
+        .ko,
+        .kr,
+        .ks,
+        .ksh,
+        .ku,
+        .kv,
+        .kw,
+        .ky,
+        .la,
+        .lad,
+        .lan,
+        .lb,
+        .lg,
+        .li,
+        .lij,
+        .lmo,
+        .ln,
+        .lo,
+        .lzz,
         .lt,
+        .lv,
+        .map,
+        .mg,
+        .man,
+        .mh,
+        .mi,
+        .min,
+        .mk,
+        .ml,
+        .mn,
+        .mo,
+        .mr,
+        .mrh,
+        .ms,
+        .mt,
+        .mus,
+        .mwl,
+        .my,
+        .na,
+        .nah,
+        .nap,
+        .nd,
+        .nds,
+        .ne,
+        .new,
+        .ng,
+        .nl,
+        .nn,
+        .no,
+        .nr,
+        .nso,
+        .nrm,
+        .nv,
+        .ny,
+        .oc,
+        .oj,
+        .om,
+        .or,
+        .os,
+        .pa,
+        .pag,
+        .pam,
+        .pap,
+        .pdc,
+        .pi,
+        .pih,
+        .pl,
+        .pms,
+        .ps,
         .pt,
+        .qu,
+        .rm,
+        .rmy,
+        .rn,
+        .ro,
+        .roa,
+        .ru,
+        .rw,
+        .sa,
+        .sc,
+        .scn,
+        .sco,
+        .sd,
+        .se,
+        .sg,
+        .sh,
+        .si,
+        .sk,
+        .sl,
+        .sm,
+        .sn,
+        .so,
+        .sq,
+        .sr,
+        .ss,
+        .st,
+        .su,
+        .sv,
+        .sw,
+        .ta,
+        .te,
+        .tet,
+        .tg,
+        .th,
+        .ti,
+        .tk,
+        .tl,
+        .tlh,
+        .tn,
+        .to,
+        .tpi,
+        .tr,
+        .ts,
+        .tt,
+        .tum,
+        .tw,
+        .ty,
+        .udm,
+        .ug,
+        .uk,
+        .ur,
+        .uz,
+        .uzAf,
+        .ve,
+        .vi,
+        .vec,
+        .vls,
+        .vo,
+        .wa,
+        .war,
+        .wo,
+        .xal,
+        .xh,
+        .xmf,
+        .yi,
+        .yo,
+        .za,
+        .zh,
+        .zu,
       ]
     }
   }

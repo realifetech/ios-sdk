@@ -1,0 +1,5 @@
+mutation createMyPaymentIntent($input: PaymentIntentInput!) {
+  createMyPaymentIntent(input: $input) {
+    ...FragmentPaymentIntent
+  }
+}

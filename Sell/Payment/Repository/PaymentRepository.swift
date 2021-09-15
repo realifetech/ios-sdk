@@ -97,13 +97,13 @@ extension PaymentRepository: PaymentProvidable {
         callback: @escaping (Result<PaymentIntent, Error>) -> Void
     ) {
         graphQLManager.dispatchMutation(
-            mutation: ApolloType.CreatePaymentIntentMutation(input: input.apolloInput),
+            mutation: ApolloType.CreateMyPaymentIntentMutation(input: input.apolloInput),
             cacheResultToPersistence: false
         ) { result in
             switch result {
             case .success(let response):
                 guard
-                    let returnedPaymentIntent = response.data?.createPaymentIntent?.fragments.fragmentPaymentIntent,
+                    let returnedPaymentIntent = response.data?.createMyPaymentIntent?.fragments.fragmentPaymentIntent,
                     let paymentIntent = PaymentIntent(response: returnedPaymentIntent)
                 else {
                     return callback(.failure(GraphQLManagerError.noDataError))
