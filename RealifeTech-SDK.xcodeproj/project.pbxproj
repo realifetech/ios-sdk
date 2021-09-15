@@ -292,6 +292,7 @@
 		964D292926933F3700A69FBC /* CanvasFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292826933F3700A69FBC /* CanvasFactory.swift */; };
 		964D292B269343DD00A69FBC /* CanvasFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292A269343DD00A69FBC /* CanvasFactoryTests.swift */; };
 		964D292D269345CF00A69FBC /* CanvasRepositoryScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D292C269345CE00A69FBC /* CanvasRepositoryScreenTests.swift */; };
+		9659609D26F2187F006FBC3E /* SeatInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9659609C26F2187F006FBC3E /* SeatInfoTests.swift */; };
 		96874865268CBDF100DDC5DD /* PaymentProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874864268CBDF100DDC5DD /* PaymentProvidable.swift */; };
 		96874867268CBE1400DDC5DD /* PaymentSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874866268CBE1400DDC5DD /* PaymentSource.swift */; };
 		96874869268CBEC900DDC5DD /* PaymentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96874868268CBEC900DDC5DD /* PaymentRepository.swift */; };
@@ -670,6 +671,7 @@
 		964D292826933F3700A69FBC /* CanvasFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFactory.swift; sourceTree = "<group>"; };
 		964D292A269343DD00A69FBC /* CanvasFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFactoryTests.swift; sourceTree = "<group>"; };
 		964D292C269345CE00A69FBC /* CanvasRepositoryScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRepositoryScreenTests.swift; sourceTree = "<group>"; };
+		9659609C26F2187F006FBC3E /* SeatInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatInfoTests.swift; sourceTree = "<group>"; };
 		9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_deleteMyPaymentSource.graphql.swift; sourceTree = "<group>"; };
 		9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentIntent.graphql.swift; sourceTree = "<group>"; };
 		9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentSource.graphql.swift; sourceTree = "<group>"; };
@@ -1204,6 +1206,7 @@
 				96302CEC26C4104C000A91EC /* BasketTests.swift */,
 				9637472C26C41801007DF92D /* CollectionPreferenceTypeTests.swift */,
 				9637472E26C41963007DF92D /* ProductModifierItemSelectionTests.swift */,
+				9659609C26F2187F006FBC3E /* SeatInfoTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2516,6 +2519,7 @@
 				961C42B526088357001D8467 /* ReadOnlyCurrentValueTests.swift in Sources */,
 				961C437B26089382001D8467 /* AuthorsationStoreTests.swift in Sources */,
 				4889595F2539D8A500B978A9 /* AnalyticsImplementingTests.swift in Sources */,
+				9659609D26F2187F006FBC3E /* SeatInfoTests.swift in Sources */,
 				9647D9AA26861D11006F5B7F /* BasketRepositoryMutationTests.swift in Sources */,
 				96B670AE26D6A6F100DB74A4 /* UserDefaultsStorageTests.swift in Sources */,
 				9637476F26C572B9007DF92D /* ProductModifierListTests.swift in Sources */,
@@ -2681,7 +2685,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.3.2;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2714,7 +2718,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.3.2;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
