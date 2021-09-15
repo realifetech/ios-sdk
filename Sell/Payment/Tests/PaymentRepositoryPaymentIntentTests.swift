@@ -15,19 +15,19 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
 
     func test_createMyPaymentIntent_graphQLManagerHasData_completeWithSuccessCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
-            .makeGraphQLManagerAndSUT(ofType: ApolloType.CreatePaymentIntentMutation.Data.self)
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.CreateMyPaymentIntentMutation.Data.self)
 
         let createPaymentIntent = ApolloType
-            .CreatePaymentIntentMutation
+            .CreateMyPaymentIntentMutation
             .Data
-            .CreatePaymentIntent(unsafeResultMap: [:])
+            .CreateMyPaymentIntent(unsafeResultMap: [:])
         var data = ApolloType
-            .CreatePaymentIntentMutation
-            .Data(createPaymentIntent: createPaymentIntent)
-        data.createPaymentIntent?.fragments.fragmentPaymentIntent = fragmentPaymentIntent
+            .CreateMyPaymentIntentMutation
+            .Data(createMyPaymentIntent: createPaymentIntent)
+        data.createMyPaymentIntent?.fragments.fragmentPaymentIntent = fragmentPaymentIntent
         let expectedResult = GraphQLResult<
             ApolloType
-            .CreatePaymentIntentMutation
+            .CreateMyPaymentIntentMutation
             .Data
         >(
             data: data,
@@ -50,14 +50,14 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
 
     func test_createMyPaymentIntent_graphQLManagerHasNoData_completeWithNoDataErrorCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
-            .makeGraphQLManagerAndSUT(ofType: ApolloType.CreatePaymentIntentMutation.Data.self)
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.CreateMyPaymentIntentMutation.Data.self)
 
         let data = ApolloType
-            .CreatePaymentIntentMutation
-            .Data(createPaymentIntent: nil)
+            .CreateMyPaymentIntentMutation
+            .Data(createMyPaymentIntent: nil)
         let expectedResult = GraphQLResult<
             ApolloType
-            .CreatePaymentIntentMutation
+            .CreateMyPaymentIntentMutation
             .Data
         >(
             data: data,
@@ -80,7 +80,7 @@ final class PaymentRepositoryPaymentIntentTests: XCTestCase {
 
     func test_createMyPaymentIntent_graphQLManagerReturnsError_completeWithFailureCase() {
         let (graphQLManager, sut) = PaymentRepositoryTestHelper
-            .makeGraphQLManagerAndSUT(ofType: ApolloType.CreatePaymentIntentMutation.Data.self)
+            .makeGraphQLManagerAndSUT(ofType: ApolloType.CreateMyPaymentIntentMutation.Data.self)
 
         graphQLManager.resultReturns = .failure(DummyError.failure)
 

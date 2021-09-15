@@ -22,4 +22,12 @@ extension Date {
         let dateFormatter = ISO8601DateFormatter()
         return dateFormatter.string(from: self)
     }
+
+    var apiParameterDateFormat: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
 }

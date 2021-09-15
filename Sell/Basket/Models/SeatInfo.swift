@@ -33,10 +33,25 @@ public struct SeatInfo: Codable, Equatable {
 
 extension SeatInfo {
 
-    init(response: ApolloType.FragmentSeatInfo?) {
-        row = response?.row
-        seat = response?.seat
-        block = response?.block
-        table = response?.table
+    // For GraphQL JSON type, when the response has no data for SeatInfo, we get `[]`,
+    // so we initialise SeatInfo with nil for this case.
+    // On the other hand, if there's data for SeatInfo, we get [["row": "a", "seat": "b"]],
+    // we can initialise SeatInfo(row: "a", seat: "b")
+    init?(json: JSON?) {
+        guard let json = json, !json.isEmpty else {
+            return nil
+        }
+        self.init(jsonValue: json)
+    }
+
+    init?(jsonValue value: JSON) {
+        guard
+            let dic = value.first as? [String: String?],
+            let data = try? JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted),
+            let decoded = try? JSONDecoder().decode(SeatInfo.self, from: data)
+        else {
+            return nil
+        }
+        self = decoded
     }
 }
