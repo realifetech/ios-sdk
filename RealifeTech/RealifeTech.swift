@@ -36,10 +36,11 @@ public class RealifeTech {
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl)
-        let graphQLManager = GraphQLFactory.makeGraphQLManager(
+        guard let graphQLManager = GraphQLFactory.makeGraphQLManager(
             deviceId: deviceHelper.deviceId,
             tokenHelper: apiHelper,
             graphQLAPIUrl: URL(string: configuration.graphQLApiUrl) ?? URL(fileURLWithPath: ""))
+        else { return }
         Core = CoreImplementing(
             deviceHelper: deviceHelper,
             reachabilityHelper: reachabilityChecker,
