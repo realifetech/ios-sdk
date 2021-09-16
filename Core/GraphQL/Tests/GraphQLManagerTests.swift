@@ -133,6 +133,25 @@ final class GraphQLManagerTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
+
+    func test_updateHeadersToNetworkTransport_validToken_addBearerTokenToHeader() throws {
+        let apiHelper = SpyApiHelper()
+        apiHelper.tokenReturns = "token"
+        apiHelper.tokenIsValidReturns = true
+        sut.updateHeadersToNetworkTransport(deviceId: "A", apiHelper: apiHelper)
+        let transport = try XCTUnwrap(sut.networkTransport as? RequestChainNetworkTransport)
+        XCTAssertEqual(transport.additionalHeaders["X-Ls-DeviceId"], "A")
+        XCTAssertEqual(transport.additionalHeaders["Authorization"], "Bearer token")
+    }
+
+    func test_updateHeadersToNetworkTransport_invalidToken_doesntAdBearerTokenToHeader() throws {
+        let apiHelper = SpyApiHelper()
+        apiHelper.tokenIsValidReturns = false
+        sut.updateHeadersToNetworkTransport(deviceId: "A", apiHelper: apiHelper)
+        let transport = try XCTUnwrap(sut.networkTransport as? RequestChainNetworkTransport)
+        XCTAssertEqual(transport.additionalHeaders["X-Ls-DeviceId"], "A")
+        XCTAssertNil(transport.additionalHeaders["Authorization"])
+    }
 }
 
 private typealias UnderTestQuery = ApolloType.GetFulfilmentPointsQuery

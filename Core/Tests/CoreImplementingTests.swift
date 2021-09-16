@@ -47,13 +47,17 @@ final class CoreImplementingTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_storeCredentials_storeToApiHelper() {
+    func test_storeCredentials_storeToApiHelper() throws {
         sut.storeCredentials(
             accessToken: "A",
             secondsExpiresIn: 1,
             refreshToken: "B")
-        XCTAssertEqual(apiHelper.receivedTokens?.accessToken, "A")
-        XCTAssertEqual(apiHelper.receivedTokens?.refreshToken, "B")
+        let tokens = try XCTUnwrap(apiHelper.receivedTokens)
+        XCTAssertEqual(tokens.accessToken, "A")
+        XCTAssertEqual(tokens.refreshToken, "B")
+        XCTAssertNotNil(graphQLManager.receivedDeviceId)
+        let tokensInGraphQLManager = try XCTUnwrap((graphQLManager.newApiHelper as? SpyApiHelper)?.receivedTokens)
+        XCTAssertEqual(tokensInGraphQLManager.accessToken, "A")
     }
 
     func test_clearStoredCredentials_clearFromApiHelper() {
@@ -79,7 +83,7 @@ final class CoreImplementingTests: XCTestCase {
 }
 
 // MARK: - Spies
-private final class SpyApiHelper: APITokenManagable {
+final class SpyApiHelper: APITokenManagable {
 
     var tokenReturns: String?
     var tokenIsValidReturns = false
@@ -116,6 +120,8 @@ private final class SpyApiHelper: APITokenManagable {
 private final class SpyGraphQLManager: GraphQLManageable {
 
     var didClearAllData = false
+    var receivedDeviceId: String?
+    var newApiHelper: APITokenManagable?
 
     func dispatch<Query: GraphQLQuery>(
         query: Query,
@@ -131,6 +137,11 @@ private final class SpyGraphQLManager: GraphQLManageable {
 
     func clearAllCachedData(completion: (() -> Void)?) {
         didClearAllData = true
+    }
+
+    func updateHeadersToNetworkTransport(deviceId: String, apiHelper: APITokenManagable) {
+        receivedDeviceId = deviceId
+        newApiHelper = apiHelper
     }
 }
 
