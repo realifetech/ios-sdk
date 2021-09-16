@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import GraphQL
 @testable import RealifeTech
 
 final class SeatInfoTests: XCTestCase {
@@ -43,8 +44,43 @@ final class SeatInfoTests: XCTestCase {
         XCTAssertNil(sut.table)
     }
 
-    func test_initWithJson_nonNilJsonWithMismatchedFirstType_returnsNil() throws {
-        let json: [Any] = ["a"]
-        XCTAssertNil(SeatInfo(json: json))
+    func test_initWithJsonValue_DictionaryType_returnsSeatInfo() throws {
+        let jsonValueDict: [String: String?] = [
+            "row": "A",
+            "seat": "B",
+            "block": "C",
+            "table": "D"
+        ]
+        let json = try JSON(jsonValue: jsonValueDict)
+        let sut = try XCTUnwrap(SeatInfo(json: json))
+        XCTAssertEqual(sut.row, "A")
+        XCTAssertEqual(sut.seat, "B")
+        XCTAssertEqual(sut.block, "C")
+        XCTAssertEqual(sut.table, "D")
+    }
+
+    func test_initWithJSONValue_ArrayType_returnsSeatInfo() throws {
+        let jsonValueArray: [[String: String?]] = [[
+            "row": "A",
+            "seat": "B",
+            "block": "C",
+            "table": "D"
+        ]]
+        let json = try JSON(jsonValue: jsonValueArray)
+        let sut = try XCTUnwrap(SeatInfo(json: json))
+        XCTAssertEqual(sut.row, "A")
+        XCTAssertEqual(sut.seat, "B")
+        XCTAssertEqual(sut.block, "C")
+        XCTAssertEqual(sut.table, "D")
+    }
+
+    func test_initWithJsonValue_notArrayOrDictionayType_returnsError() throws {
+        let jsonValueString = "a"
+        do {
+            let json = try JSON(jsonValue: jsonValueString)
+            XCTAssertNil(SeatInfo(json: json))
+        } catch let error {
+            XCTAssertNotNil(error)
+        }
     }
 }

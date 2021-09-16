@@ -46,7 +46,7 @@ extension SeatInfo {
 
     init?(jsonValue value: JSON) {
         guard
-            let dic = value.first as? [String: String?],
+            let dic = value.first,
             let data = try? JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted),
             let decoded = try? JSONDecoder().decode(SeatInfo.self, from: data)
         else {

@@ -9,13 +9,17 @@
 import Foundation
 import Apollo
 
-public typealias JSON = [Any]
+public typealias JSON = [[String: String?]]
 
-extension Array: JSONDecodable {
+extension JSON: JSONDecodable {
 
     public init(jsonValue value: JSONValue) throws {
         guard let array = value as? Array else {
-          throw JSONDecodingError.couldNotConvert(value: value, to: Array.self)
+            guard let dict = value as? [String: String?] else {
+                throw JSONDecodingError.couldNotConvert(value: value, to: [String: String?].self)
+            }
+            self = [dict]
+            return
         }
         self = array
     }
