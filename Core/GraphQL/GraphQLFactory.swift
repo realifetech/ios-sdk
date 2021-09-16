@@ -27,22 +27,33 @@ public struct GraphQLFactory {
         tokenHelper: APITokenManagable,
         graphQLAPIUrl: URL
     ) -> GraphQLManageable {
-        var headers: [String: String] = ["X-Ls-DeviceId": deviceId]
-        if tokenHelper.tokenIsValid, let token = tokenHelper.token {
-            headers["Authorization"] = "Bearer \(token)"
-        }
-        let networkTransport = RequestChainNetworkTransport(
-            interceptorProvider: GraphQLInterceptorProvider(
-                store: store,
-                client: URLSessionClient(),
-                tokenHelper: tokenHelper),
-            endpointURL: graphQLAPIUrl,
-            additionalHeaders: headers)
+        let networkTransport = makeNetworkTransport(
+            deviceId: deviceId,
+            apiHelper: tokenHelper,
+            graphQLAPIUrl: graphQLAPIUrl)
         GraphQLManager.shared = GraphQLManager(
             endpointUrl: graphQLAPIUrl,
             store: store,
             networkTransport: networkTransport,
             client: ApolloClient(networkTransport: networkTransport, store: store))
         return GraphQLManager.shared
+    }
+
+    static func makeNetworkTransport(
+        deviceId: String,
+        apiHelper: APITokenManagable,
+        graphQLAPIUrl: URL
+    ) -> NetworkTransport {
+        var headers: [String: String] = ["X-Ls-DeviceId": deviceId]
+        if apiHelper.tokenIsValid, let token = apiHelper.token {
+            headers["Authorization"] = "Bearer \(token)"
+        }
+        return RequestChainNetworkTransport(
+            interceptorProvider: GraphQLInterceptorProvider(
+                store: store,
+                client: URLSessionClient(),
+                tokenHelper: apiHelper),
+            endpointURL: graphQLAPIUrl,
+            additionalHeaders: headers)
     }
 }

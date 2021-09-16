@@ -92,17 +92,10 @@ extension GraphQLManager: GraphQLManageable {
     }
 
     public func updateHeadersToNetworkTransport(deviceId: String, apiHelper: APITokenManagable) {
-        var headers: [String: String] = ["X-Ls-DeviceId": deviceId]
-        if apiHelper.tokenIsValid, let token = apiHelper.token {
-            headers["Authorization"] = "Bearer \(token)"
-        }
-        networkTransport = RequestChainNetworkTransport(
-            interceptorProvider: GraphQLInterceptorProvider(
-                store: store,
-                client: URLSessionClient(),
-                tokenHelper: apiHelper),
-            endpointURL: endpointUrl,
-            additionalHeaders: headers)
+        networkTransport = GraphQLFactory.makeNetworkTransport(
+            deviceId: deviceId,
+            apiHelper: apiHelper,
+            graphQLAPIUrl: endpointUrl)
         client = ApolloClient(networkTransport: networkTransport, store: store)
     }
 }
