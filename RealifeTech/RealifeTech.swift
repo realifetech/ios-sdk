@@ -44,7 +44,7 @@ public class RealifeTech {
             deviceHelper: deviceHelper,
             reachabilityHelper: reachabilityChecker,
             apiHelper: apiHelper,
-            graphQLManager: GraphQLManager.shared,
+            graphQLManager: graphQLManager,
             diskCache: DiskCache())
         let staticDeviceInformation = StaticDeviceInformation(
             deviceId: deviceHelper.deviceId,
@@ -54,16 +54,16 @@ public class RealifeTech {
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
-        Audiences = AudiencesImplementing(graphQLManager: GraphQLManager.shared)
+        Audiences = AudiencesImplementing(graphQLManager: graphQLManager)
         Analytics = AnalyticsFactory.makeAnalyticsModule(
             graphQLManager: graphQLManager,
             reachabilityHelper: reachabilityChecker,
             deviceRegistering: General)
         Communicate = CommunicateFactory.makeCommunicateModule()
-        Canvas = CanvasFactory.makeCanvasModule(graphQLManager: GraphQLManager.shared)
-        Content = ContentFactory.makeContentModule(graphQLManager: GraphQLManager.shared)
+        Canvas = CanvasFactory.makeCanvasModule(graphQLManager: graphQLManager)
+        Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
         Sell = SellFactory.makeSellModule(
-            graphQLManager: GraphQLManager.shared,
+            graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
     }
