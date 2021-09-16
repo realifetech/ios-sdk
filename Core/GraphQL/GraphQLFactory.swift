@@ -21,6 +21,7 @@ public struct GraphQLFactory {
         let sqliteCache = try? SQLiteNormalizedCache(fileURL: sqliteFileUrl)
         return ApolloStore(cache: sqliteCache ?? InMemoryNormalizedCache())
     }()
+    static let urlSessionClient = URLSessionClient()
 
     static func makeGraphQLManager(
         deviceId: String,
@@ -51,7 +52,7 @@ public struct GraphQLFactory {
         return RequestChainNetworkTransport(
             interceptorProvider: GraphQLInterceptorProvider(
                 store: store,
-                client: URLSessionClient(),
+                client: urlSessionClient,
                 tokenHelper: apiHelper),
             endpointURL: graphQLAPIUrl,
             additionalHeaders: headers)
