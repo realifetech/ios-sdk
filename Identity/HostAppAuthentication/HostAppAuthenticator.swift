@@ -7,17 +7,31 @@
 //
 
 import Foundation
+import RxSwift
 
 class HostAppAuthenticator: HostAppAuthenticating {
 
     func attemptLogin(userInfo: HostAppUserInfo, salt: String, completion: HostAppCompletion?) {
         // generate nonce
         // sign info
-        let signature = generateUserInfoSignature(userInfo: userInfo, salt: salt)
         // authenticateUserBySignedUserInfo
         // get reference to web view
         // call acceptAuthDetails
         // reload web view
+        let signature = generateUserInfoSignature(userInfo: userInfo, salt: salt)
+        generateNonce()
+            .flatMap { nonce in
+                self.authenticateUserBySignedUserInfo(nonce: nonce, signature: signature)
+            }
+        // need to call error completion if failed
+    }
+
+    public func generateNonce() -> Observable<String> {
+        return Observable.from(optional: "a")
+    }
+
+    public func authenticateUserBySignedUserInfo(nonce: String, signature: String) -> Observable<[String: Any]> {
+        return Observable.from(optional: ["token": "ascjn", "expires": 123])
     }
 
     public func generateUserInfoSignature(userInfo: HostAppUserInfo, salt: String) -> String {
