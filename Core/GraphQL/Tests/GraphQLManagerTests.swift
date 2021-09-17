@@ -20,8 +20,13 @@ final class GraphQLManagerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         networkTransport = MockNetworkTransport()
-        client = ApolloClient(networkTransport: networkTransport, store: ApolloStore())
-        sut = GraphQLManager(client: client)
+        let store = ApolloStore()
+        client = ApolloClient(networkTransport: networkTransport, store: store)
+        sut = GraphQLManager(
+            endpointUrl: URL(fileURLWithPath: ""),
+            store: store,
+            networkTransport: networkTransport,
+            client: client)
     }
 
     override func tearDown() {
@@ -117,12 +122,35 @@ final class GraphQLManagerTests: XCTestCase {
         let cache = MockCache()
         let store = ApolloStore(cache: cache)
         let client = ApolloClient(networkTransport: networkTransport, store: store)
-        sut = GraphQLManager(client: client)
+        sut = GraphQLManager(
+            endpointUrl: URL(fileURLWithPath: ""),
+            store: store,
+            networkTransport: networkTransport,
+            client: client)
         sut.clearAllCachedData {
             XCTAssertTrue(cache.clearGetsCalled)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_updateHeadersToNetworkTransport_validToken_addBearerTokenToHeader() throws {
+        let apiHelper = SpyApiHelper()
+        apiHelper.tokenReturns = "token"
+        apiHelper.tokenIsValidReturns = true
+        sut.updateHeadersToNetworkTransport(deviceId: "A", apiHelper: apiHelper)
+        let transport = try XCTUnwrap(sut.networkTransport as? RequestChainNetworkTransport)
+        XCTAssertEqual(transport.additionalHeaders["X-Ls-DeviceId"], "A")
+        XCTAssertEqual(transport.additionalHeaders["Authorization"], "Bearer token")
+    }
+
+    func test_updateHeadersToNetworkTransport_invalidToken_doesntAdBearerTokenToHeader() throws {
+        let apiHelper = SpyApiHelper()
+        apiHelper.tokenIsValidReturns = false
+        sut.updateHeadersToNetworkTransport(deviceId: "A", apiHelper: apiHelper)
+        let transport = try XCTUnwrap(sut.networkTransport as? RequestChainNetworkTransport)
+        XCTAssertEqual(transport.additionalHeaders["X-Ls-DeviceId"], "A")
+        XCTAssertNil(transport.additionalHeaders["Authorization"])
     }
 }
 
