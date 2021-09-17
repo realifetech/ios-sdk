@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
 		3E2C1FCC26F0F35800C9C72B /* IdentityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC426F0F35800C9C72B /* IdentityFactory.swift */; };
 		3E2C1FCD26F0F35800C9C72B /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC526F0F35800C9C72B /* Identity.swift */; };
 		3E2C1FD026F0F35800C9C72B /* IdentityImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */; };
 		3E2C1FD226F0FBB200C9C72B /* IdentityImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FD126F0FBB200C9C72B /* IdentityImplementingTests.swift */; };
-		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		3E6BB8B926F4DD66003A7883 /* HostAppAuthenticatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BB8B826F4DD66003A7883 /* HostAppAuthenticatorTests.swift */; };
 		3E78BCF226B8231800BF3026 /* sell_updatePaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */; };
 		3E78BCF326B8231800BF3026 /* analytics_putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */; };
 		3E78BCF426B8231800BF3026 /* canvas_getWidgetsByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F30D2667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift */; };
@@ -50,6 +51,8 @@
 		3E78BD1826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD1926B8231800BF3026 /* sell_fragment_product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */; };
 		3E78BD2226B83F0300BF3026 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 961C41AB260882BA001D8467 /* schema.json */; };
+		3E7AA32226F23EC200BE3733 /* HostAppAuthenticating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7AA32126F23EC200BE3733 /* HostAppAuthenticating.swift */; };
+		3E7AA32426F23ECE00BE3733 /* HostAppAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -428,8 +431,11 @@
 		3E2C1FC526F0F35800C9C72B /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityImplementing.swift; sourceTree = "<group>"; };
 		3E2C1FD126F0FBB200C9C72B /* IdentityImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityImplementingTests.swift; sourceTree = "<group>"; };
+		3E6BB8B826F4DD66003A7883 /* HostAppAuthenticatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticatorTests.swift; sourceTree = "<group>"; };
 		3E78BCEA26B8226800BF3026 /* GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E78BCED26B8226800BF3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E7AA32126F23EC200BE3733 /* HostAppAuthenticating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticating.swift; sourceTree = "<group>"; };
+		3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticator.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
 		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
@@ -805,6 +811,7 @@
 				3E2C1FC426F0F35800C9C72B /* IdentityFactory.swift */,
 				3E2C1FC526F0F35800C9C72B /* Identity.swift */,
 				3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */,
+				3E7AA32026F23E0500BE3733 /* HostAppAuthentication */,
 				3E2C1FC626F0F35800C9C72B /* Tests */,
 			);
 			path = Identity;
@@ -814,6 +821,7 @@
 			isa = PBXGroup;
 			children = (
 				3E2C1FD126F0FBB200C9C72B /* IdentityImplementingTests.swift */,
+				3E6BB8B826F4DD66003A7883 /* HostAppAuthenticatorTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -827,6 +835,15 @@
 				961C419B260882BA001D8467 /* API */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		3E7AA32026F23E0500BE3733 /* HostAppAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				3E7AA32126F23EC200BE3733 /* HostAppAuthenticating.swift */,
+				3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */,
+			);
+			path = HostAppAuthentication;
 			sourceTree = "<group>";
 		};
 		482BE53F2541D11200110368 /* AnalyticsLoggingTests */ = {
@@ -2299,6 +2316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				961C41D4260882BA001D8467 /* APIRequester.swift in Sources */,
+				3E7AA32226F23EC200BE3733 /* HostAppAuthenticating.swift in Sources */,
 				487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */,
 				9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */,
 				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
@@ -2391,6 +2409,7 @@
 				964D290F2693351F00A69FBC /* WidgetType.swift in Sources */,
 				961B019A2689EF7500D8C481 /* OrderStatus.swift in Sources */,
 				961C4275260882C8001D8467 /* ReachabilityChecker.swift in Sources */,
+				3E7AA32426F23ECE00BE3733 /* HostAppAuthenticator.swift in Sources */,
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
 				964D291C269335F300A69FBC /* ScreenType.swift in Sources */,
 				9606ED84267B501800ED24D0 /* ProductProvidable.swift in Sources */,
@@ -2515,6 +2534,7 @@
 				9687488E268DBBE200DDC5DD /* PaymentRepositoryPaymentIntentTests.swift in Sources */,
 				96B6709426D66DB000DB74A4 /* DiskCacheDataProvidingErrorTests.swift in Sources */,
 				961C438026089385001D8467 /* StandardSenderResponseTests.swift in Sources */,
+				3E6BB8B926F4DD66003A7883 /* HostAppAuthenticatorTests.swift in Sources */,
 				48D6F148251E158E006CA623 /* RealifeTechTests.swift in Sources */,
 				9637476B26C57177007DF92D /* ProductModifierItemTests.swift in Sources */,
 				968CA69B25EF95050000C2E2 /* ContentFactoryTests.swift in Sources */,

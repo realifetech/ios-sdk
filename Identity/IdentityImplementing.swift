@@ -11,7 +11,11 @@ import RxSwift
 
 public class IdentityImplementing: Identity {
 
-    public init() { }
+    let hostAppAuthenticator: HostAppAuthenticating
+
+    public init(hostAppAuthenticator: HostAppAuthenticating) {
+        self.hostAppAuthenticator = hostAppAuthenticator
+    }
 
     /// Can be used to determine if the deep link you have received was triggered by our ordering journey
     /// in order to prompt you to show your login flow.
@@ -27,5 +31,25 @@ public class IdentityImplementing: Identity {
     /// ```
     public func isHostAppLoginDeepLink(url: URL?) -> Bool {
         return (url?.absoluteString ?? "").contains("rlthostapplogin")
+    }
+
+    /// Can be used to determine if the deep link you have received was triggered by our ordering journey
+    /// in order to prompt you to show your login flow.
+    /// - Returns: Void
+    /// - Example:
+    /// ```
+    ///
+    /// RealifeTech.Identity.attemptLogin(emailAddress: String,
+    ///                                     firstName: String?,
+    ///                                     lastName: String?,
+    ///                                     salt: String,
+    ///                                     completion: (success: Bool, errorMessage: String?))
+    /// ```
+    public func attemptLogin(emailAddress: String,
+                             firstName: String?,
+                             lastName: String?,
+                             salt: String,
+                             completion: (success: Bool, errorMessage: String?)) {
+        print("called")
     }
 }
