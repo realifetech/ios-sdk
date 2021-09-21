@@ -11,27 +11,28 @@ import RxSwift
 
 class HostAppAuthenticator: HostAppAuthenticating {
 
-    func attemptLogin(userInfo: HostAppUserInfo, salt: String, completion: HostAppCompletion?) {
-        // generate nonce
-        // sign info
-        // authenticateUserBySignedUserInfo
-        // get reference to web view
-        // call acceptAuthDetails
-        // reload web view
-        let signature = generateUserInfoSignature(userInfo: userInfo, salt: salt)
-        generateNonce()
-            .flatMap { nonce in
-                self.authenticateUserBySignedUserInfo(nonce: nonce, signature: signature)
-            }
-        // need to call error completion if failed
+    private let hostAppLoginDataProvider: HostAppLoginDataProviding
+//    private weak var webView: WKWebView
+    private var userInfo: HostAppUserInfo!
+    private var salt: String!
+    private var signature: String!
+    private var completion: HostAppLoginCompletion!
+
+    public init(hostAppLoginDataProvider: HostAppLoginDataProviding) {
+        self.hostAppLoginDataProvider = hostAppLoginDataProvider
     }
 
-    public func generateNonce() -> Observable<String> {
-        return Observable.from(optional: "a")
-    }
-
-    public func authenticateUserBySignedUserInfo(nonce: String, signature: String) -> Observable<[String: Any]> {
-        return Observable.from(optional: ["token": "ascjn", "expires": 123])
+    // sign info
+    // generate nonce
+    // authenticateUserBySignedUserInfo
+    // call acceptAuthDetails on web view
+    // reload web view
+    func attemptLogin(userInfo: HostAppUserInfo, salt: String, completion: @escaping HostAppLoginCompletion) {
+        self.userInfo = userInfo
+        self.salt = salt
+        self.completion = completion
+        self.signature = generateUserInfoSignature(userInfo: userInfo, salt: salt)
+        hostAppLoginDataProvider.generateNonce(completion: generateNonceHandler(next: authenticateUserHandler()))
     }
 
     public func generateUserInfoSignature(userInfo: HostAppUserInfo, salt: String) -> String {
@@ -45,5 +46,32 @@ class HostAppAuthenticator: HostAppAuthenticating {
         let urlAllowed: CharacterSet = .alphanumerics.union(.init(charactersIn: "-._~"))
         guard let encoded = description.addingPercentEncoding(withAllowedCharacters: urlAllowed) else { return "" }
         return "\(encoded).\(salt)".sha256
+    }
+
+    private func generateNonceHandler(next: @escaping AuthenticateUserBySignedUserInfoHandler) -> GenerateNonceHandler {
+        return { result in
+            switch result {
+            case .success(let nonce):
+                self.hostAppLoginDataProvider.authenticateUserBySignedUserInfo(userInfo: self.userInfo,
+                                                                               salt: self.salt,
+                                                                               nonce: nonce,
+                                                                               signature: self.signature,
+                                                                               completion: next)
+            case.failure(let error):
+                self.completion(error)
+            }
+        }
+    }
+
+    private func authenticateUserHandler(next: (Error?) -> Void) -> AuthenticateUserBySignedUserInfoHandler {
+        return { result in
+            switch result {
+            case .success(let token):
+                // pass to web view and reload
+                break
+            case.failure(let error):
+                self.completion(error)
+            }
+        }
     }
 }

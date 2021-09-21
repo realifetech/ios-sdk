@@ -53,6 +53,8 @@
 		3E78BD2226B83F0300BF3026 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 961C41AB260882BA001D8467 /* schema.json */; };
 		3E7AA32226F23EC200BE3733 /* HostAppAuthenticating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7AA32126F23EC200BE3733 /* HostAppAuthenticating.swift */; };
 		3E7AA32426F23ECE00BE3733 /* HostAppAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */; };
+		3EB48CE526F9DABC008AECB1 /* HostAppLoginDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB48CE426F9DABC008AECB1 /* HostAppLoginDataProviding.swift */; };
+		3EB48CE726F9DCAB008AECB1 /* HostAppLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB48CE626F9DCAB008AECB1 /* HostAppLoginRepository.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -436,6 +438,8 @@
 		3E78BCED26B8226800BF3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E7AA32126F23EC200BE3733 /* HostAppAuthenticating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticating.swift; sourceTree = "<group>"; };
 		3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticator.swift; sourceTree = "<group>"; };
+		3EB48CE426F9DABC008AECB1 /* HostAppLoginDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppLoginDataProviding.swift; sourceTree = "<group>"; };
+		3EB48CE626F9DCAB008AECB1 /* HostAppLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppLoginRepository.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
 		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
@@ -842,8 +846,18 @@
 			children = (
 				3E7AA32126F23EC200BE3733 /* HostAppAuthenticating.swift */,
 				3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */,
+				3EB48CE326F9DA9C008AECB1 /* Repository */,
 			);
 			path = HostAppAuthentication;
+			sourceTree = "<group>";
+		};
+		3EB48CE326F9DA9C008AECB1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				3EB48CE426F9DABC008AECB1 /* HostAppLoginDataProviding.swift */,
+				3EB48CE626F9DCAB008AECB1 /* HostAppLoginRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		482BE53F2541D11200110368 /* AnalyticsLoggingTests */ = {
@@ -2443,6 +2457,7 @@
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
 				96AED8D026CFB5B600F6C750 /* NavigationBarModifier.swift in Sources */,
 				960415D926CBD82B0096DF80 /* WebViewWrapper.swift in Sources */,
+				3EB48CE526F9DABC008AECB1 /* HostAppLoginDataProviding.swift in Sources */,
 				961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */,
 				9687486D268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift in Sources */,
 				961B01A32689F3D300D8C481 /* OrderUpdateInput.swift in Sources */,
@@ -2489,6 +2504,7 @@
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
 				96874875268CC3CC00DDC5DD /* PaymentIntentInput.swift in Sources */,
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
+				3EB48CE726F9DCAB008AECB1 /* HostAppLoginRepository.swift in Sources */,
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				3E2C1FD026F0F35800C9C72B /* IdentityImplementing.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,

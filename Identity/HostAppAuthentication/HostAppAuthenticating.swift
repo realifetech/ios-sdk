@@ -14,8 +14,8 @@ public struct HostAppUserInfo {
     let lastName: String?
 }
 
-public typealias HostAppCompletion = (success: Bool, errorMessage: String?)
+public typealias HostAppLoginCompletion = (Error?) -> Void
 
 public protocol HostAppAuthenticating {
-    func attemptLogin(userInfo: HostAppUserInfo, salt: String, completion: HostAppCompletion?)
+    func attemptLogin(userInfo: HostAppUserInfo, salt: String, completion: @escaping HostAppLoginCompletion)
 }

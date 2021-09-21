@@ -11,6 +11,8 @@ import Foundation
 public enum IdentityFactory {
 
     static func makeIdentityModule() -> Identity {
-        return IdentityImplementing(hostAppAuthenticator: HostAppAuthenticator())
+        let hostAppLoginRepository = HostAppLoginRepository()
+        let hostAppLoginAuthenticator = HostAppAuthenticator(hostAppLoginDataProvider: hostAppLoginRepository)
+        return IdentityImplementing(hostAppAuthenticator: hostAppLoginAuthenticator)
     }
 }
