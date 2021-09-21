@@ -9,7 +9,8 @@
 import Foundation
 
 typealias GenerateNonceHandler = (Result<String, Error>) -> Void
-typealias AuthenticateUserBySignedUserInfoHandler = (Result<OAuthToken, Error>) -> Void
+typealias AuthenticateUserHandler = (Result<OAuthToken, Error>) -> Void
+typealias AuthenticateWebViewHandler = (Any?, Error?) -> Void
 
 protocol HostAppLoginDataProviding {
     func generateNonce(completion: GenerateNonceHandler)
@@ -17,5 +18,5 @@ protocol HostAppLoginDataProviding {
                                           salt: String,
                                           nonce: String,
                                           signature: String,
-                                          completion: AuthenticateUserBySignedUserInfoHandler)
+                                          completion: AuthenticateUserHandler)
 }

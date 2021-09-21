@@ -55,6 +55,7 @@
 		3E7AA32426F23ECE00BE3733 /* HostAppAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */; };
 		3EB48CE526F9DABC008AECB1 /* HostAppLoginDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB48CE426F9DABC008AECB1 /* HostAppLoginDataProviding.swift */; };
 		3EB48CE726F9DCAB008AECB1 /* HostAppLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB48CE626F9DCAB008AECB1 /* HostAppLoginRepository.swift */; };
+		3EB48CF326FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB48CF226FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -440,6 +441,7 @@
 		3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticator.swift; sourceTree = "<group>"; };
 		3EB48CE426F9DABC008AECB1 /* HostAppLoginDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppLoginDataProviding.swift; sourceTree = "<group>"; };
 		3EB48CE626F9DCAB008AECB1 /* HostAppLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppLoginRepository.swift; sourceTree = "<group>"; };
+		3EB48CF226FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewUpdating.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
 		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
@@ -1049,6 +1051,7 @@
 			children = (
 				960415DC26CBDFFF0096DF80 /* OrderingJourneyView.swift */,
 				96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */,
+				3EB48CF226FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift */,
 				960415DA26CBD8B20096DF80 /* WebViewStore.swift */,
 				960415D826CBD82B0096DF80 /* WebViewWrapper.swift */,
 				96F1BF1F26CD2FE7008D1363 /* Tests */,
@@ -2412,6 +2415,7 @@
 				964D29112693353000A69FBC /* WidgetStyle.swift in Sources */,
 				961C4270260882C8001D8467 /* DeviceRequester.swift in Sources */,
 				961B01A12689F35C00D8C481 /* OrderProvidable.swift in Sources */,
+				3EB48CF326FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift in Sources */,
 				961C426F260882C8001D8467 /* Device.swift in Sources */,
 				961C1CCD2684EF8600BE6F3B /* BasketItemInput.swift in Sources */,
 				9606ED81267B4FE400ED24D0 /* Sell.swift in Sources */,

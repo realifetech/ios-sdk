@@ -14,7 +14,7 @@ class HostAppLoginRepository: HostAppLoginDataProviding {
                                           salt: String,
                                           nonce: String,
                                           signature: String,
-                                          completion: AuthenticateUserBySignedUserInfoHandler) { }
+                                          completion: AuthenticateUserHandler) { }
 }
 
 /*

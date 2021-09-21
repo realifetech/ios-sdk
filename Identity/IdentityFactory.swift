@@ -10,9 +10,10 @@ import Foundation
 
 public enum IdentityFactory {
 
-    static func makeIdentityModule() -> Identity {
+    static func makeIdentityModule(orderingJourneyViewUpdater: OrderingJourneyViewUpdating) -> Identity {
         let hostAppLoginRepository = HostAppLoginRepository()
-        let hostAppLoginAuthenticator = HostAppAuthenticator(hostAppLoginDataProvider: hostAppLoginRepository)
+        let hostAppLoginAuthenticator = HostAppAuthenticator(hostAppLoginDataProvider: hostAppLoginRepository,
+                                                             orderingJourneyViewUpdater: orderingJourneyViewUpdater)
         return IdentityImplementing(hostAppAuthenticator: hostAppLoginAuthenticator)
     }
 }

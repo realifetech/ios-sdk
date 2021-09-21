@@ -22,6 +22,7 @@ public enum SellFactory {
             fulfilmentPoint: FulfilmentPointRepository(graphQLManager: graphQLManager),
             payment: PaymentRepository(graphQLManager: graphQLManager),
             orderingJourneyUrl: orderingJourneyUrl,
-            colorStore: colorStore)
+            colorStore: colorStore,
+            orderingJourneyViewUpdater: OrderingJourneyViewUpdater())
     }
 }

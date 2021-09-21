@@ -18,6 +18,7 @@ public class SellImplementing: Sell {
     public let colorStore: ColorStorable
 
     public var orderingJourneyUrl: String
+    public var orderingJourneyViewUpdater: OrderingJourneyViewUpdating
 
     public init(
         product: ProductProvidable,
@@ -26,7 +27,8 @@ public class SellImplementing: Sell {
         fulfilmentPoint: FulfilmentPointProvidable,
         payment: PaymentProvidable,
         orderingJourneyUrl: String,
-        colorStore: ColorStorable
+        colorStore: ColorStorable,
+        orderingJourneyViewUpdater: OrderingJourneyViewUpdating
     ) {
         self.product = product
         self.basket = basket
@@ -35,6 +37,7 @@ public class SellImplementing: Sell {
         self.payment = payment
         self.orderingJourneyUrl = orderingJourneyUrl
         self.colorStore = colorStore
+        self.orderingJourneyViewUpdater = orderingJourneyViewUpdater
     }
 
     /// Get the Web Ordering Journey view controller with orderingJourneyUrl
@@ -47,7 +50,10 @@ public class SellImplementing: Sell {
     /// navigationController?.present(viewController, animated: true, completion: nil)
     /// ```
     public func createOrderingJourneyViewController() -> UIHostingController<OrderingJourneyView> {
-        return OrderingJourneyViewController(urlString: orderingJourneyUrl, colorStore: colorStore)
+        let oJVC = OrderingJourneyViewController(urlString: orderingJourneyUrl, colorStore: colorStore)
+        let orderingJourneyView = oJVC.rootView
+        orderingJourneyViewUpdater.orderingJourneyView = orderingJourneyView
+        return oJVC
     }
 
     /// Get the Web Ordering Journey SwiftUI view with orderingJourneyUrl
@@ -64,6 +70,8 @@ public class SellImplementing: Sell {
     /// }
     /// ```
     public func createOrderingJourneyView() -> OrderingJourneyView {
-        return OrderingJourneyView(urlString: orderingJourneyUrl, colorStore: colorStore)
+        let orderingJourneyView = OrderingJourneyView(urlString: orderingJourneyUrl, colorStore: colorStore)
+        orderingJourneyViewUpdater.orderingJourneyView = orderingJourneyView
+        return orderingJourneyView
     }
 }

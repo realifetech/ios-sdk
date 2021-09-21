@@ -67,7 +67,7 @@ public class RealifeTech {
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
-        Identity = IdentityFactory.makeIdentityModule()
+        Identity = IdentityFactory.makeIdentityModule(orderingJourneyViewUpdater: Sell.orderingJourneyViewUpdater)
     }
 
     public static func clearAllInterfaces() {

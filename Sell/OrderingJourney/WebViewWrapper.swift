@@ -40,6 +40,14 @@ struct WebViewWrapper: UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) { }
 
+    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
+        webView.evaluateJavaScript(javascript, completionHandler: completion)
+    }
+
+    func reload() {
+        store.webViewNavigationPublisher.send(.reload)
+    }
+
     func makeCoordinator() -> Coordinator {
         Coordinator(self, scheduler: scheduler)
     }

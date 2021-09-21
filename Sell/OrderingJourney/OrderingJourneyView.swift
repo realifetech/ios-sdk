@@ -25,6 +25,7 @@ public struct OrderingJourneyView: View {
     public let urlRequest: URLRequest
     public let colorStore: ColorStorable
     private let scheduler: DispatchQueueAnyScheduler
+    private var webViewWrapper: WebViewWrapper!
     let inspection = Inspection<Self>()
 
     init(urlString: String, colorStore: ColorStorable, scheduler: DispatchQueueAnyScheduler) {
@@ -41,13 +42,17 @@ public struct OrderingJourneyView: View {
         self.scheduler = .main
     }
 
+    private func createWebViewWrapper() -> WebViewWrapper {
+        return WebViewWrapper(
+            webView: WKWebView(),
+            urlRequest: urlRequest,
+            store: store)
+    }
+
     public var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                WebViewWrapper(
-                    webView: WKWebView(),
-                    urlRequest: urlRequest,
-                    store: store)
+                createWebViewWrapper()
                 AnyView(makeBottomView())
             }
             .navigationBarItems(
@@ -125,5 +130,15 @@ private extension OrderingJourneyView {
 struct OrderingJourneyView_Previews: PreviewProvider {
     static var previews: some View {
         OrderingJourneyView(urlString: "https://www.realifetech.com/", colorStore: EmptyColorStore())
+    }
+}
+
+extension OrderingJourneyView {
+    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
+        webViewWrapper.evaluate(javascript: javascript, completion: completion)
+    }
+
+    func reload() {
+        webViewWrapper.reload()
     }
 }

@@ -15,7 +15,7 @@ class IdentityImplementingTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        let sell = IdentityFactory.makeIdentityModule()
+        let sell = IdentityFactory.makeIdentityModule(orderingJourneyViewUpdater: MockOrderingJourneyViewUpdater())
         sut = try XCTUnwrap(sell as? IdentityImplementing)
     }
 
@@ -31,4 +31,10 @@ class IdentityImplementingTests: XCTestCase {
     func test_isHostAppLoginDeepLink_false() {
         XCTAssertFalse(sut.isHostAppLoginDeepLink(url: URL(string: "deeplinkscheme://someotherdeeplink")))
     }
+}
+
+private final class MockOrderingJourneyViewUpdater: OrderingJourneyViewUpdating {
+    var orderingJourneyView: OrderingJourneyView?
+    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) { }
+    func reload() { }
 }
