@@ -68,7 +68,9 @@ class HostAppAuthenticator: HostAppAuthenticating {
             switch result {
             case .success(let token):
                 let javascript = self.constructJavascript(token: token)
-                self.orderingJourneyViewUpdater.evaluate(javascript: javascript, completion: next)
+                self.orderingJourneyViewUpdater.evaluate(javascript: javascript,
+                                                         reloadOnSuccess: true,
+                                                         completion: next)
             case.failure(let error):
                 self.completion(error)
             }
@@ -77,9 +79,6 @@ class HostAppAuthenticator: HostAppAuthenticating {
 
     private func authenticateWebViewHandler() -> AuthenticateWebViewHandler {
         return { _, error in
-            if error == nil {
-                self.orderingJourneyViewUpdater.reload()
-            }
             self.completion(error)
         }
     }

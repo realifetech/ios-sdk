@@ -115,6 +115,32 @@ final class WebViewWrapperTests: XCTestCase {
             .store(in: &bag)
         wait(for: [canGoBackExpectation, canGoForwardExpectation], timeout: 0.01)
     }
+
+    func test_evaluateJavascript_notLoading() {
+        webView.shouldBeLoading = false
+        let expectation = XCTestExpectation()
+        sut.evaluate(javascript: "abc") { _, _ in
+            XCTAssertEqual(self.webView.javascriptEvaluated, "abc")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_evaluateJavascript_loading_loadingComplete() {
+        let wkNavigation = createNavigation(url: url, webView: webView)
+        let coordinator = sut.makeCoordinator()
+        webView.shouldBeLoading = true
+        let expectation = XCTestExpectation()
+        sut.evaluate(javascript: "abc") { _, _ in
+            XCTAssertFalse(self.webView.shouldBeLoading)
+            XCTAssertEqual(self.webView.javascriptEvaluated, "abc")
+            expectation.fulfill()
+        }
+        XCTAssertNil(webView.javascriptEvaluated)
+        webView.shouldBeLoading = false
+        coordinator.webView(webView, didFinish: wkNavigation)
+        wait(for: [expectation], timeout: 0.01)
+    }
 }
 
 // MARK: - Mocks
@@ -122,11 +148,17 @@ private final class MockWebView: WKWebView {
 
     var shouldGoBack = true
     var shouldGoForward = true
+    var shouldBeLoading = false
 
     var receivedUrl: URL?
     var didReload = false
     var didGoBack = false
     var didGoForward = false
+    var javascriptEvaluated: String?
+
+    override var isLoading: Bool {
+        return shouldBeLoading
+    }
 
     override var canGoBack: Bool {
         shouldGoBack
@@ -154,6 +186,11 @@ private final class MockWebView: WKWebView {
     override func goForward() -> WKNavigation? {
         didGoForward = true
         return nil
+    }
+
+    override func evaluateJavaScript(_ javaScriptString: String, completionHandler: ((Any?, Error?) -> Void)? = nil) {
+        javascriptEvaluated = javaScriptString
+        completionHandler?(nil, nil)
     }
 }
 

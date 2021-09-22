@@ -13,6 +13,7 @@
 		3E2C1FD026F0F35800C9C72B /* IdentityImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */; };
 		3E2C1FD226F0FBB200C9C72B /* IdentityImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FD126F0FBB200C9C72B /* IdentityImplementingTests.swift */; };
 		3E36BA3526FB43E4000C0B33 /* OrderingJourneyViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36BA3426FB43E4000C0B33 /* OrderingJourneyViewUpdater.swift */; };
+		3E36BA3726FB99A7000C0B33 /* OrderingJourneyViewUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36BA3626FB99A7000C0B33 /* OrderingJourneyViewUpdaterTests.swift */; };
 		3E6BB8B926F4DD66003A7883 /* HostAppAuthenticatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BB8B826F4DD66003A7883 /* HostAppAuthenticatorTests.swift */; };
 		3E78BCF226B8231800BF3026 /* sell_updatePaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */; };
 		3E78BCF326B8231800BF3026 /* analytics_putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */; };
@@ -436,6 +437,7 @@
 		3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityImplementing.swift; sourceTree = "<group>"; };
 		3E2C1FD126F0FBB200C9C72B /* IdentityImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityImplementingTests.swift; sourceTree = "<group>"; };
 		3E36BA3426FB43E4000C0B33 /* OrderingJourneyViewUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewUpdater.swift; sourceTree = "<group>"; };
+		3E36BA3626FB99A7000C0B33 /* OrderingJourneyViewUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewUpdaterTests.swift; sourceTree = "<group>"; };
 		3E6BB8B826F4DD66003A7883 /* HostAppAuthenticatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticatorTests.swift; sourceTree = "<group>"; };
 		3E78BCEA26B8226800BF3026 /* GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E78BCED26B8226800BF3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1964,6 +1966,7 @@
 				96F1BF3B26CD6AC6008D1363 /* OrderingJourneyViewControllerTests.swift */,
 				96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */,
 				96F1BF2226CD32AD008D1363 /* WebViewWrapperTests.swift */,
+				3E36BA3626FB99A7000C0B33 /* OrderingJourneyViewUpdaterTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2634,6 +2637,7 @@
 				961C436326089346001D8467 /* AuthorisationWorkerTests.swift in Sources */,
 				961C4290260882FB001D8467 /* CodableStorageTests.swift in Sources */,
 				96B670B826D7C10400DB74A4 /* ScreenTypeTests.swift in Sources */,
+				3E36BA3726FB99A7000C0B33 /* OrderingJourneyViewUpdaterTests.swift in Sources */,
 				9637475326C541D1007DF92D /* OrderTypeTests.swift in Sources */,
 				9637474D26C53D83007DF92D /* OrderItemTests.swift in Sources */,
 				9637474F26C53E5D007DF92D /* OrderModelTestsHelper.swift in Sources */,

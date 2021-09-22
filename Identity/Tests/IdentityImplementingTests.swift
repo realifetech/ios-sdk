@@ -64,7 +64,8 @@ private final class MockAuthenticator: HostAppAuthenticating {
 }
 
 private final class MockOrderingJourneyViewUpdater: OrderingJourneyViewUpdating {
-    var orderingJourneyView: OrderingJourneyView?
-    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) { }
+    var orderingJourneyView: OrderingJourneyViewUpdatable?
+    func evaluate(javascript: String, reloadOnSuccess: Bool, completion: ((Any?, Error?) -> Void)?) { }
     func reload() { }
+    func ensureUpdated() { }
 }

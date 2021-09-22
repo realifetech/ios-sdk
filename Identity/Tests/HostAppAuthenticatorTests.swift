@@ -36,14 +36,13 @@ final class HostAppAuthenticatorTests: XCTestCase {
         XCTAssert(signature == shaHash)
     }
 
-    func test_attemptLogin_logicDataFlow() {
+    func test_attemptLogin_dataFlow() {
         let expectation = XCTestExpectation()
         let completion: HostAppLoginCompletion = { error in
             XCTAssertEqual(self.repository.userInfo?.firstName, self.userInfo.firstName)
             XCTAssertEqual(self.repository.salt, self.salt)
             XCTAssertEqual(self.repository.nonce, "nonce")
             XCTAssertEqual(self.viewUpdater.javacriptEvaluated, "acceptAuthDetails(\'a\', \'b\', 10, \'c\')")
-            XCTAssertTrue(self.viewUpdater.reloaded)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -133,12 +132,11 @@ final class MockDataFlowRepository: HostAppLoginDataProviding {
 
 private final class MockOrderingJourneyViewUpdater: OrderingJourneyViewUpdating {
 
-    var orderingJourneyView: OrderingJourneyView?
+    var orderingJourneyView: OrderingJourneyViewUpdatable?
     var javacriptEvaluated = ""
-    var reloaded = false
     var shouldFail = false
 
-    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
+    func evaluate(javascript: String, reloadOnSuccess: Bool, completion: ((Any?, Error?) -> Void)?) {
         if shouldFail {
             completion?(nil, DummyError.failure)
             return
@@ -146,7 +144,6 @@ private final class MockOrderingJourneyViewUpdater: OrderingJourneyViewUpdating 
         javacriptEvaluated = javascript
         completion?(nil, nil)
     }
-    func reload() {
-        reloaded = true
-    }
+
+    func ensureUpdated() { }
 }

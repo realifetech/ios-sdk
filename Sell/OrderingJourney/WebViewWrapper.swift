@@ -10,13 +10,15 @@ import SwiftUI
 import Combine
 import WebKit
 
-struct WebViewWrapper: UIViewRepresentable {
+final class WebViewWrapper: UIViewRepresentable {
 
     typealias UIViewType = WKWebView
 
     private let webView: WKWebView
     private let urlRequest: URLRequest
     private let scheduler: DispatchQueueAnyScheduler
+    private var javascriptToEvaluate: String?
+    private var completionToFireAfterEvaluation: ((Any?, Error?) -> Void)?
 
     @ObservedObject private var store: WebViewStore
 
@@ -41,6 +43,11 @@ struct WebViewWrapper: UIViewRepresentable {
     func updateUIView(_ uiView: WKWebView, context: Context) { }
 
     func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
+        guard !webView.isLoading else {
+            javascriptToEvaluate = javascript
+            completionToFireAfterEvaluation = completion
+            return
+        }
         webView.evaluateJavaScript(javascript, completionHandler: completion)
     }
 
@@ -118,5 +125,8 @@ extension WebViewWrapper.Coordinator: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         parent.store.canGoBack.send(webView.canGoBack)
         parent.store.canGoForward.send(webView.canGoForward)
+        if let javascript = parent.javascriptToEvaluate {
+            parent.evaluate(javascript: javascript, completion: parent.completionToFireAfterEvaluation)
+        }
     }
 }

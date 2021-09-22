@@ -133,12 +133,17 @@ struct OrderingJourneyView_Previews: PreviewProvider {
     }
 }
 
-extension OrderingJourneyView {
-    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
+public protocol OrderingJourneyViewUpdatable {
+    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?)
+    func reload()
+}
+
+extension OrderingJourneyView: OrderingJourneyViewUpdatable {
+    public func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
         webViewWrapper.evaluate(javascript: javascript, completion: completion)
     }
 
-    func reload() {
+    public func reload() {
         webViewWrapper.reload()
     }
 }
