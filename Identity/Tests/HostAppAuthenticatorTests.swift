@@ -51,8 +51,38 @@ final class HostAppAuthenticatorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.5)
     }
 
-    // TODO: Test failure case
-    // TODO: Test viewUpdater
+    func test_attemptLogin_generateNonceFailure() {
+        repository.failure = .generateNonce
+        let expectation = XCTestExpectation()
+        let completion: HostAppLoginCompletion = { error in
+            XCTAssertNotNil(error)
+            expectation.fulfill()
+        }
+        sut.attemptLogin(userInfo: userInfo, salt: salt, completion: completion)
+        wait(for: [expectation], timeout: 0.5)
+    }
+
+    func test_attemptLogin_authenticateUserFailure() {
+        repository.failure = .authenticateUser
+        let expectation = XCTestExpectation()
+        let completion: HostAppLoginCompletion = { error in
+            XCTAssertNotNil(error)
+            expectation.fulfill()
+        }
+        sut.attemptLogin(userInfo: userInfo, salt: salt, completion: completion)
+        wait(for: [expectation], timeout: 0.5)
+    }
+
+    func test_attemptLogin_authenticateWebViewFailure() {
+        viewUpdater.shouldFail = true
+        let expectation = XCTestExpectation()
+        let completion: HostAppLoginCompletion = { error in
+            XCTAssertNotNil(error)
+            expectation.fulfill()
+        }
+        sut.attemptLogin(userInfo: userInfo, salt: salt, completion: completion)
+        wait(for: [expectation], timeout: 0.5)
+    }
 
     // ------------- Util -------------
     var userInfo: HostAppUserInfo {
@@ -66,13 +96,21 @@ final class HostAppAuthenticatorTests: XCTestCase {
 
 final class MockDataFlowRepository: HostAppLoginDataProviding {
 
+    enum Failure {
+        case none, generateNonce, authenticateUser
+    }
+
     var userInfo: HostAppUserInfo?
     var salt: String?
     var nonce: String?
     var signature: String?
     var token: OAuthToken?
+    var failure: Failure = .none
 
     func generateNonce(completion: GenerateNonceHandler) {
+        if failure == .generateNonce {
+            return completion(.failure(DummyError.failure))
+        }
         completion(.success("nonce"))
     }
 
@@ -81,6 +119,9 @@ final class MockDataFlowRepository: HostAppLoginDataProviding {
                                           nonce: String,
                                           signature: String,
                                           completion: AuthenticateUserHandler) {
+        if failure == .authenticateUser {
+            return completion(.failure(DummyError.failure))
+        }
         self.userInfo = userInfo
         self.salt = salt
         self.nonce = nonce
@@ -95,8 +136,13 @@ private final class MockOrderingJourneyViewUpdater: OrderingJourneyViewUpdating 
     var orderingJourneyView: OrderingJourneyView?
     var javacriptEvaluated = ""
     var reloaded = false
+    var shouldFail = false
 
     func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
+        if shouldFail {
+            completion?(nil, DummyError.failure)
+            return
+        }
         javacriptEvaluated = javascript
         completion?(nil, nil)
     }

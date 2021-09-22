@@ -13,16 +13,3 @@ public protocol OrderingJourneyViewUpdating {
     func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?)
     func reload()
 }
-
-public class OrderingJourneyViewUpdater: OrderingJourneyViewUpdating {
-
-    public var orderingJourneyView: OrderingJourneyView?
-
-    public func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
-        orderingJourneyView?.evaluate(javascript: javascript, completion: completion)
-    }
-
-    public func reload() {
-        orderingJourneyView?.reload()
-    }
-}

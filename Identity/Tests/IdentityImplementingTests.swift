@@ -31,6 +31,36 @@ class IdentityImplementingTests: XCTestCase {
     func test_isHostAppLoginDeepLink_false() {
         XCTAssertFalse(sut.isHostAppLoginDeepLink(url: URL(string: "deeplinkscheme://someotherdeeplink")))
     }
+
+    func test_isHostAppLoginDeepLink_nil() {
+        XCTAssertFalse(sut.isHostAppLoginDeepLink(url: nil))
+    }
+
+    func test_isHostAppLoginDeepLink_unparseable() {
+        XCTAssertFalse(sut.isHostAppLoginDeepLink(url: URL(string: "...")))
+    }
+
+    func test_attemptLogin_authenticatorCalled() {
+        let authenticator = MockAuthenticator()
+        let sut = IdentityImplementing(hostAppAuthenticator: authenticator)
+        sut.attemptLogin(emailAddress: "a", firstName: "b", lastName: "c", salt: "d") { error in
+            XCTAssertEqual(authenticator.userInfo?.emailAddress, "a")
+            XCTAssertEqual(authenticator.userInfo?.firstName, "b")
+            XCTAssertEqual(authenticator.userInfo?.lastName, "c")
+            XCTAssertEqual(authenticator.salt, "d")
+            XCTAssertEqual(error as? DummyError, .failure)
+        }
+    }
+}
+
+private final class MockAuthenticator: HostAppAuthenticating {
+    var userInfo: HostAppUserInfo?
+    var salt: String?
+    func attemptLogin(userInfo: HostAppUserInfo, salt: String, completion: @escaping HostAppLoginCompletion) {
+        self.userInfo = userInfo
+        self.salt = salt
+        completion(DummyError.failure)
+    }
 }
 
 private final class MockOrderingJourneyViewUpdater: OrderingJourneyViewUpdating {

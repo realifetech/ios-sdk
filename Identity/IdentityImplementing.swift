@@ -11,7 +11,7 @@ import RxSwift
 
 public class IdentityImplementing: Identity {
 
-    let hostAppAuthenticator: HostAppAuthenticating
+    public let hostAppAuthenticator: HostAppAuthenticating
 
     public init(hostAppAuthenticator: HostAppAuthenticating) {
         self.hostAppAuthenticator = hostAppAuthenticator
@@ -33,8 +33,8 @@ public class IdentityImplementing: Identity {
         return (url?.absoluteString ?? "").contains("rlthostapplogin")
     }
 
-    /// Can be used to determine if the deep link you have received was triggered by our ordering journey
-    /// in order to prompt you to show your login flow.
+    /// Used to authenticate a user on our system, creating a new user if one doesn't exist.
+    /// A missing/present error in the completion signals success/failure.
     /// - Returns: Void
     /// - Example:
     /// ```
@@ -43,13 +43,14 @@ public class IdentityImplementing: Identity {
     ///                                     firstName: String?,
     ///                                     lastName: String?,
     ///                                     salt: String,
-    ///                                     completion: (success: Bool, errorMessage: String?))
+    ///                                     completion: (Error?) -> Void)
     /// ```
     public func attemptLogin(emailAddress: String,
                              firstName: String?,
                              lastName: String?,
                              salt: String,
-                             completion: (success: Bool, errorMessage: String?)) {
-        print("called")
+                             completion: @escaping (Error?) -> Void) {
+        let userInfo = HostAppUserInfo(emailAddress: emailAddress, firstName: firstName, lastName: lastName)
+        hostAppAuthenticator.attemptLogin(userInfo: userInfo, salt: salt, completion: completion)
     }
 }

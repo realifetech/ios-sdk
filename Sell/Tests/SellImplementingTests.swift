@@ -30,11 +30,15 @@ final class SellImplementingTests: XCTestCase {
     }
 
     func test_createOrderingJourneyViewController() {
+        XCTAssertNil(sut.orderingJourneyViewUpdater.orderingJourneyView)
         XCTAssertTrue(sut.createOrderingJourneyViewController() is OrderingJourneyViewController)
+        XCTAssertNotNil(sut.orderingJourneyViewUpdater.orderingJourneyView)
     }
 
     func test_createOrderingJourneyView() {
+        XCTAssertNil(sut.orderingJourneyViewUpdater.orderingJourneyView)
         let view = sut.createOrderingJourneyView()
         XCTAssertNotNil(view.urlRequest.url)
+        XCTAssertNotNil(sut.orderingJourneyViewUpdater.orderingJourneyView)
     }
 }
