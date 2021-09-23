@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		3E13834126FC977E0037878F /* IdentityClearing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834026FC977E0037878F /* IdentityClearing.swift */; };
+		3E13834326FC9FDE0037878F /* IdentityClearable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834226FC9FDE0037878F /* IdentityClearable+Extensions.swift */; };
+		3E13834526FC9FF80037878F /* IdentityClearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834426FC9FF80037878F /* IdentityClearer.swift */; };
+		3E13834726FCA2350037878F /* IdentityClearerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834626FCA2350037878F /* IdentityClearerTests.swift */; };
 		3E2C1FCC26F0F35800C9C72B /* IdentityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC426F0F35800C9C72B /* IdentityFactory.swift */; };
 		3E2C1FCD26F0F35800C9C72B /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC526F0F35800C9C72B /* Identity.swift */; };
 		3E2C1FD026F0F35800C9C72B /* IdentityImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */; };
@@ -432,6 +436,10 @@
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E13834026FC977E0037878F /* IdentityClearing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityClearing.swift; sourceTree = "<group>"; };
+		3E13834226FC9FDE0037878F /* IdentityClearable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdentityClearable+Extensions.swift"; sourceTree = "<group>"; };
+		3E13834426FC9FF80037878F /* IdentityClearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityClearer.swift; sourceTree = "<group>"; };
+		3E13834626FCA2350037878F /* IdentityClearerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityClearerTests.swift; sourceTree = "<group>"; };
 		3E2C1FC426F0F35800C9C72B /* IdentityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityFactory.swift; sourceTree = "<group>"; };
 		3E2C1FC526F0F35800C9C72B /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityImplementing.swift; sourceTree = "<group>"; };
@@ -815,6 +823,16 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		3E13833F26FC975E0037878F /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				3E13834026FC977E0037878F /* IdentityClearing.swift */,
+				3E13834426FC9FF80037878F /* IdentityClearer.swift */,
+				3E13834226FC9FDE0037878F /* IdentityClearable+Extensions.swift */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
 		3E2C1FC026F0F35800C9C72B /* Identity */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +840,7 @@
 				3E2C1FC526F0F35800C9C72B /* Identity.swift */,
 				3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */,
 				3E7AA32026F23E0500BE3733 /* HostAppAuthentication */,
+				3E13833F26FC975E0037878F /* Logout */,
 				3E2C1FC626F0F35800C9C72B /* Tests */,
 			);
 			path = Identity;
@@ -832,6 +851,7 @@
 			children = (
 				3E2C1FD126F0FBB200C9C72B /* IdentityImplementingTests.swift */,
 				3E6BB8B826F4DD66003A7883 /* HostAppAuthenticatorTests.swift */,
+				3E13834626FCA2350037878F /* IdentityClearerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2354,6 +2374,7 @@
 				961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */,
 				960415DD26CBDFFF0096DF80 /* OrderingJourneyView.swift in Sources */,
 				961C4263260882C8001D8467 /* CodableStore.swift in Sources */,
+				3E13834526FC9FF80037878F /* IdentityClearer.swift in Sources */,
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
@@ -2378,6 +2399,7 @@
 				96874871268CC29700DDC5DD /* Card.swift in Sources */,
 				961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */,
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
+				3E13834326FC9FDE0037878F /* IdentityClearable+Extensions.swift in Sources */,
 				9687487D268CC4BB00DDC5DD /* CancellationReason.swift in Sources */,
 				961C1C9F26833C8800BE6F3B /* StandardTitleTranslation.swift in Sources */,
 				9606ED8B267B512900ED24D0 /* Product.swift in Sources */,
@@ -2389,6 +2411,7 @@
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
 				9637475926C54545007DF92D /* PaymentIntentNextAction.swift in Sources */,
 				961C41D5260882BA001D8467 /* DeviceIdHeaderRequestInserting.swift in Sources */,
+				3E13834126FC977E0037878F /* IdentityClearing.swift in Sources */,
 				961C41D7260882BA001D8467 /* OAuthHeaderRequestInserting.swift in Sources */,
 				961C41E8260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift in Sources */,
 				961C1CA12683400500BE6F3B /* ProductImage.swift in Sources */,
@@ -2538,6 +2561,7 @@
 				96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */,
 				96AED8D526CFC71900F6C750 /* ColorTypeTests.swift in Sources */,
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
+				3E13834726FCA2350037878F /* IdentityClearerTests.swift in Sources */,
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,
 				96302CE026C3E4A7000A91EC /* GraphNetworkCachePolicyTests.swift in Sources */,
 				961C42CC26088374001D8467 /* RequestTimeLoggerTests.swift in Sources */,
