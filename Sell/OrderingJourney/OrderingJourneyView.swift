@@ -9,14 +9,6 @@
 import SwiftUI
 import WebKit
 
-// TODO: Move somewhere else
-public protocol ApplicationURLOpening {
-    func canOpenURL(_ url: URL) -> Bool
-    func open(_ url: URL,
-              options: [UIApplication.OpenExternalURLOptionsKey: Any],
-              completionHandler completion: ((Bool) -> Void)?)
-}
-
 public struct OrderingJourneyView: View {
 
     @ObservedObject var store = WebViewStore()
@@ -158,11 +150,6 @@ struct OrderingJourneyView_Previews: PreviewProvider {
                             javascriptRunDetails: nil,
                             applicationURLOpener: EmptyURLOpener())
     }
-}
-
-// TODO: Move somewhere else
-public protocol OrderingJourneyViewUpdatable {
-    func evaluate(javascriptRunDetails: JavascriptRunDetails)
 }
 
 extension OrderingJourneyView: OrderingJourneyViewUpdatable {

@@ -8,13 +8,6 @@
 
 import Foundation
 
-// TODO: Move elsewhere
-public struct JavascriptRunDetails {
-    let javascript: String
-    let reloadOnSuccess: Bool
-    var completion: ((Any?, Error?) -> Void)?
-}
-
 /*
  This class will retain jsRunDetails until there is an OrderingJourneyView to pass it to.
  Once passed, it will let go and let the view handle the execution
