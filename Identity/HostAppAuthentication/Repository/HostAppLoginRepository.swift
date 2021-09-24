@@ -9,12 +9,21 @@
 import Foundation
 
 class HostAppLoginRepository: HostAppLoginDataProviding {
-    func generateNonce(completion: (Result<String, Error>) -> Void) { }
+    func generateNonce(completion: (Result<String, Error>) -> Void) {
+        completion(.success("nonce"))
+    }
     func authenticateUserBySignedUserInfo(userInfo: HostAppUserInfo,
                                           salt: String,
                                           nonce: String,
                                           signature: String,
-                                          completion: AuthenticateUserHandler) { }
+                                          completion: AuthenticateUserHandler) {
+        let tempToken = "\(userInfo.emailAddress)-\(userInfo.firstName ?? "")-\(userInfo.lastName ?? "")"
+        completion(.success(OAuthToken(accessToken: tempToken,
+                                       refreshToken: "refreshToken",
+                                       expiresIn: 3600,
+                                       tokenType: "type",
+                                       scope: "scope")))
+    }
 }
 
 /*
@@ -28,5 +37,4 @@ class HostAppLoginRepository: HostAppLoginDataProviding {
          return completion(.failure(error))
      }
  }
- 
  */

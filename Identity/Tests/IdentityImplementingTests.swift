@@ -99,6 +99,7 @@ private final class MockIdentityClearer: IdentityClearing {
 }
 
 private final class MockOrderingJourneyViewUpdater: OrderingJourneyViewUpdating {
+    var javascriptRunDetails: JavascriptRunDetails?
     var orderingJourneyView: OrderingJourneyViewUpdatable?
     func evaluate(javascript: String, reloadOnSuccess: Bool, completion: ((Any?, Error?) -> Void)?) { }
     func reload() { }

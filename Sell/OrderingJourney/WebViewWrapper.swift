@@ -10,6 +10,8 @@ import SwiftUI
 import Combine
 import WebKit
 
+extension UIApplication: ApplicationURLOpening { }
+
 final class WebViewWrapper: UIViewRepresentable {
 
     typealias UIViewType = WKWebView
@@ -17,8 +19,8 @@ final class WebViewWrapper: UIViewRepresentable {
     private let webView: WKWebView
     private let urlRequest: URLRequest
     private let scheduler: DispatchQueueAnyScheduler
-    private var javascriptToEvaluate: String?
-    private var completionToFireAfterEvaluation: ((Any?, Error?) -> Void)?
+    public var javascriptRunDetails: JavascriptRunDetails?
+    private let applicationURLOpener: ApplicationURLOpening
 
     @ObservedObject private var store: WebViewStore
 
@@ -26,12 +28,16 @@ final class WebViewWrapper: UIViewRepresentable {
         webView: WKWebView,
         urlRequest: URLRequest,
         store: WebViewStore,
-        scheduler: DispatchQueueAnyScheduler = .main
+        scheduler: DispatchQueueAnyScheduler = .main,
+        javascriptRunDetails: JavascriptRunDetails?,
+        applicationURLOpener: ApplicationURLOpening
     ) {
         self.webView = webView
         self.urlRequest = urlRequest
         self.store = store
         self.scheduler = scheduler
+        self.javascriptRunDetails = javascriptRunDetails
+        self.applicationURLOpener = applicationURLOpener
     }
 
     func makeUIView(context: Context) -> WKWebView {
@@ -42,21 +48,26 @@ final class WebViewWrapper: UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) { }
 
-    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
+    func evaluate(javascriptRunDetails: JavascriptRunDetails) {
         guard !webView.isLoading else {
-            javascriptToEvaluate = javascript
-            completionToFireAfterEvaluation = completion
+            self.javascriptRunDetails = javascriptRunDetails
             return
         }
-        webView.evaluateJavaScript(javascript, completionHandler: completion)
+        webView.evaluateJavaScript(javascriptRunDetails.javascript) { [weak self] result, error in
+            if error == nil && javascriptRunDetails.reloadOnSuccess {
+                self?.webView.reload()
+            }
+            javascriptRunDetails.completion?(result, error)
+            self?.javascriptRunDetails = nil
+        }
     }
 
     func reload() {
-        store.webViewNavigationPublisher.send(.reload)
+        webView.reload()
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, scheduler: scheduler)
+        Coordinator(self, scheduler: scheduler, applicationURLOpener: applicationURLOpener)
     }
 }
 
@@ -67,11 +78,20 @@ extension WebViewWrapper {
         private let parent: WebViewWrapper
         private var webViewNavigationSubscriber: AnyCancellable?
         private let scheduler: DispatchQueueAnyScheduler
+        private let applicationURLOpener: ApplicationURLOpening
 
-        init(_ wrapper: WebViewWrapper, scheduler: DispatchQueueAnyScheduler) {
+        init(_ wrapper: WebViewWrapper,
+             scheduler: DispatchQueueAnyScheduler,
+             applicationURLOpener: ApplicationURLOpening) {
             self.parent = wrapper
             self.scheduler = scheduler
             self.webViewNavigationSubscriber = nil
+            self.applicationURLOpener = applicationURLOpener
+        }
+
+        func evaluateOutstandingJavascript() {
+            guard let runDetails = parent.javascriptRunDetails else { return }
+            self.parent.evaluate(javascriptRunDetails: runDetails)
         }
 
         deinit {
@@ -99,7 +119,22 @@ extension WebViewWrapper.Coordinator: WKNavigationDelegate {
         decidePolicyFor navigationAction: WKNavigationAction,
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
-        decisionHandler(.allow)
+        if let url = deepLinkURL(urlToEvaluate: navigationAction.request.url) {
+            applicationURLOpener.open(url, options: [:], completionHandler: nil)
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
+    }
+
+    func deepLinkURL(urlToEvaluate: URL?) -> URL? {
+        guard let url = urlToEvaluate,
+              !url.absoluteString.hasPrefix("http://"),
+              !url.absoluteString.hasPrefix("https://"),
+              applicationURLOpener.canOpenURL(url) else {
+            return nil
+        }
+        return url
     }
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -118,6 +153,8 @@ extension WebViewWrapper.Coordinator: WKNavigationDelegate {
                     }
                 case .reload:
                     webView.reload()
+                case .evaluateJavascript(let runDetails):
+                    self.parent.evaluate(javascriptRunDetails: runDetails)
                 }
             })
     }
@@ -125,8 +162,6 @@ extension WebViewWrapper.Coordinator: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         parent.store.canGoBack.send(webView.canGoBack)
         parent.store.canGoForward.send(webView.canGoForward)
-        if let javascript = parent.javascriptToEvaluate {
-            parent.evaluate(javascript: javascript, completion: parent.completionToFireAfterEvaluation)
-        }
+        evaluateOutstandingJavascript()
     }
 }

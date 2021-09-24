@@ -12,6 +12,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let hostAppLoginHandler = HostAppLoginHandler()
 
     func scene(
         _ scene: UIScene,
@@ -23,5 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UIHostingController(rootView: ModulesView())
         self.window = window
         window.makeKeyAndVisible()
+        hostAppLoginHandler.window = window
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        let handled = hostAppLoginHandler.handleHostAppLoginIfNecessary(url: URLContexts.first?.url)
+        print(handled)
     }
 }

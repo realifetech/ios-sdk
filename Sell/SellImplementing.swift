@@ -16,6 +16,7 @@ public class SellImplementing: Sell {
     public let fulfilmentPoint: FulfilmentPointProvidable
     public let payment: PaymentProvidable
     public let colorStore: ColorStorable
+    public let applicationURLOpener: ApplicationURLOpening
 
     public var orderingJourneyUrl: String
     public var orderingJourneyViewUpdater: OrderingJourneyViewUpdating
@@ -28,6 +29,7 @@ public class SellImplementing: Sell {
         payment: PaymentProvidable,
         orderingJourneyUrl: String,
         colorStore: ColorStorable,
+        applicationURLOpener: ApplicationURLOpening,
         orderingJourneyViewUpdater: OrderingJourneyViewUpdating
     ) {
         self.product = product
@@ -37,6 +39,7 @@ public class SellImplementing: Sell {
         self.payment = payment
         self.orderingJourneyUrl = orderingJourneyUrl
         self.colorStore = colorStore
+        self.applicationURLOpener = applicationURLOpener
         self.orderingJourneyViewUpdater = orderingJourneyViewUpdater
     }
 
@@ -50,9 +53,11 @@ public class SellImplementing: Sell {
     /// navigationController?.present(viewController, animated: true, completion: nil)
     /// ```
     public func createOrderingJourneyViewController() -> UIHostingController<OrderingJourneyView> {
-        let oJVC = OrderingJourneyViewController(urlString: orderingJourneyUrl, colorStore: colorStore)
-        let orderingJourneyView = oJVC.rootView
-        orderingJourneyViewUpdater.orderingJourneyView = orderingJourneyView
+        let oJVC = OrderingJourneyViewController(urlString: orderingJourneyUrl,
+                                                 colorStore: colorStore,
+                                                 javascriptRunDetails: orderingJourneyViewUpdater.javascriptRunDetails,
+                                                 applicationURLOpener: applicationURLOpener)
+        orderingJourneyViewUpdater.orderingJourneyView = oJVC.rootView
         return oJVC
     }
 
@@ -70,7 +75,11 @@ public class SellImplementing: Sell {
     /// }
     /// ```
     public func createOrderingJourneyView() -> OrderingJourneyView {
-        let orderingJourneyView = OrderingJourneyView(urlString: orderingJourneyUrl, colorStore: colorStore)
+        let javascriptRunDetails = orderingJourneyViewUpdater.javascriptRunDetails
+        let orderingJourneyView = OrderingJourneyView(urlString: orderingJourneyUrl,
+                                                      colorStore: colorStore,
+                                                      javascriptRunDetails: javascriptRunDetails,
+                                                      applicationURLOpener: applicationURLOpener)
         orderingJourneyViewUpdater.orderingJourneyView = orderingJourneyView
         return orderingJourneyView
     }

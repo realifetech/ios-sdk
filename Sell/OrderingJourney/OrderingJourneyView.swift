@@ -9,6 +9,14 @@
 import SwiftUI
 import WebKit
 
+// TODO: Move somewhere else
+public protocol ApplicationURLOpening {
+    func canOpenURL(_ url: URL) -> Bool
+    func open(_ url: URL,
+              options: [UIApplication.OpenExternalURLOptionsKey: Any],
+              completionHandler completion: ((Bool) -> Void)?)
+}
+
 public struct OrderingJourneyView: View {
 
     @ObservedObject var store = WebViewStore()
@@ -25,28 +33,44 @@ public struct OrderingJourneyView: View {
     public let urlRequest: URLRequest
     public let colorStore: ColorStorable
     private let scheduler: DispatchQueueAnyScheduler
+    private var javascriptRunDetails: JavascriptRunDetails?
+    public let applicationURLOpener: ApplicationURLOpening
     private var webViewWrapper: WebViewWrapper!
     let inspection = Inspection<Self>()
 
-    init(urlString: String, colorStore: ColorStorable, scheduler: DispatchQueueAnyScheduler) {
+    init(urlString: String,
+         colorStore: ColorStorable,
+         scheduler: DispatchQueueAnyScheduler,
+         javascriptRunDetails: JavascriptRunDetails?,
+         applicationURLOpener: ApplicationURLOpening) {
         let url = URL(string: urlString) ?? URL(fileURLWithPath: "")
-        self.urlRequest = URLRequest(url: url)
+        let urlRequest = URLRequest(url: url)
+        self.urlRequest = urlRequest
         self.colorStore = colorStore
         self.scheduler = scheduler
+        self.javascriptRunDetails = javascriptRunDetails
+        self.applicationURLOpener = applicationURLOpener
     }
 
-    public init(urlString: String, colorStore: ColorStorable) {
+    public init(urlString: String,
+                colorStore: ColorStorable,
+                javascriptRunDetails: JavascriptRunDetails?,
+                applicationURLOpener: ApplicationURLOpening) {
         let url = URL(string: urlString) ?? URL(fileURLWithPath: "")
         self.urlRequest = URLRequest(url: url)
         self.colorStore = colorStore
         self.scheduler = .main
+        self.javascriptRunDetails = javascriptRunDetails
+        self.applicationURLOpener = applicationURLOpener
     }
 
     private func createWebViewWrapper() -> WebViewWrapper {
-        return WebViewWrapper(
+        WebViewWrapper(
             webView: WKWebView(),
             urlRequest: urlRequest,
-            store: store)
+            store: store,
+            javascriptRunDetails: javascriptRunDetails,
+            applicationURLOpener: applicationURLOpener)
     }
 
     public var body: some View {
@@ -129,21 +153,29 @@ private extension OrderingJourneyView {
 
 struct OrderingJourneyView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderingJourneyView(urlString: "https://www.realifetech.com/", colorStore: EmptyColorStore())
+        OrderingJourneyView(urlString: "https://www.realifetech.com/",
+                            colorStore: EmptyColorStore(),
+                            javascriptRunDetails: nil,
+                            applicationURLOpener: EmptyURLOpener())
     }
 }
 
+// TODO: Move somewhere else
 public protocol OrderingJourneyViewUpdatable {
-    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?)
-    func reload()
+    func evaluate(javascriptRunDetails: JavascriptRunDetails)
 }
 
 extension OrderingJourneyView: OrderingJourneyViewUpdatable {
-    public func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
-        webViewWrapper.evaluate(javascript: javascript, completion: completion)
+    public func evaluate(javascriptRunDetails: JavascriptRunDetails) {
+        store.webViewNavigationPublisher.send(.evaluateJavascript(javascriptRunDetails: javascriptRunDetails))
     }
+}
 
-    public func reload() {
-        webViewWrapper.reload()
+private class EmptyURLOpener: ApplicationURLOpening {
+    func canOpenURL(_ url: URL) -> Bool {
+        return false
     }
+    func open(_ url: URL,
+              options: [UIApplication.OpenExternalURLOptionsKey: Any],
+              completionHandler completion: ((Bool) -> Void)?) { }
 }

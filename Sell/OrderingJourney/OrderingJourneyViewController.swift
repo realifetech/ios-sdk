@@ -10,9 +10,15 @@ import SwiftUI
 
 public class OrderingJourneyViewController: UIHostingController<OrderingJourneyView> {
 
-    init(urlString: String, colorStore: ColorStorable) {
+    init(urlString: String,
+         colorStore: ColorStorable,
+         javascriptRunDetails: JavascriptRunDetails?,
+         applicationURLOpener: ApplicationURLOpening) {
         super.init(
-            rootView: OrderingJourneyView(urlString: urlString, colorStore: colorStore))
+            rootView: OrderingJourneyView(urlString: urlString,
+                                          colorStore: colorStore,
+                                          javascriptRunDetails: javascriptRunDetails,
+                                          applicationURLOpener: applicationURLOpener))
         rootView.dismiss = dismiss
     }
 
