@@ -21,13 +21,28 @@ public protocol GraphQLManageable {
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     )
     func clearAllCachedData(completion: (() -> Void)?)
+    func updateHeadersToNetworkTransport(deviceId: String, apiHelper: APITokenManagable)
 }
 
 public class GraphQLManager {
 
-    private let client: ApolloClient
+    public static var shared: GraphQLManager!
 
-    public init(client: ApolloClient) {
+    private(set) var networkTransport: NetworkTransport
+    private(set) var client: ApolloClient
+
+    private let endpointUrl: URL
+    private let store: ApolloStore
+
+    public init(
+        endpointUrl: URL,
+        store: ApolloStore,
+        networkTransport: NetworkTransport,
+        client: ApolloClient
+    ) {
+        self.endpointUrl = endpointUrl
+        self.store = store
+        self.networkTransport = networkTransport
         self.client = client
     }
 }
@@ -74,5 +89,13 @@ extension GraphQLManager: GraphQLManageable {
         client.clearCache(callbackQueue: .main) { _ in
             completion?()
         }
+    }
+
+    public func updateHeadersToNetworkTransport(deviceId: String, apiHelper: APITokenManagable) {
+        networkTransport = GraphQLFactory.makeNetworkTransport(
+            deviceId: deviceId,
+            apiHelper: apiHelper,
+            graphQLAPIUrl: endpointUrl)
+        client = ApolloClient(networkTransport: networkTransport, store: store)
     }
 }

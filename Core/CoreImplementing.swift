@@ -39,6 +39,7 @@ public class CoreImplementing: Core {
             accessToken: accessToken,
             secondsExpiresIn: secondsExpiresIn,
             refreshToken: refreshToken)
+        graphQLManager.updateHeadersToNetworkTransport(deviceId: deviceHelper.deviceId, apiHelper: apiHelper)
     }
 
     public func clearStoredCredentials() {
