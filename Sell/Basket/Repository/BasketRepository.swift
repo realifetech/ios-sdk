@@ -35,7 +35,8 @@ public final class BasketRepository {
             collectionPreferenceType: input.collectionPreferenceType?.apolloType,
             timeslot: input.timeslotId,
             fulfilmentPoint: input.fulfilmentPointId,
-            seatInfo: covertSeatInfoToJSONType(input.seatInfo),
+            seatInfo: input.seatInfo,
+//            seatInfo: covertSeatInfoToJSONType(input.seatInfo),
             items: input.items.compactMap {
                 ApolloType.BasketItemInput(
                     product: $0.productId,
@@ -56,19 +57,6 @@ public final class BasketRepository {
         ApolloType.CheckoutInput(
             netAmount: input.netAmount,
             language: ApolloType.Language(rawValue: input.language ?? ""))
-    }
-
-    /// Note: If seatInfo is nil, we need to send empty dictionary array to backend
-    private func covertSeatInfoToJSONType(_ seatInfo: SeatInfo?) -> JSON {
-        guard let seatInfo = seatInfo else {
-            return []
-        }
-        let dic: [String: String?] =
-            ["row": seatInfo.row,
-             "seat": seatInfo.seat,
-             "block": seatInfo.block,
-             "table": seatInfo.table]
-        return [dic]
     }
 }
 

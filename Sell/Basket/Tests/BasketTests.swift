@@ -17,11 +17,12 @@ final class BasketTests: XCTestCase {
             grossAmount: 10,
             discountAmount: 10,
             netAmount: 100,
-            seatInfo: SeatInfo(
-                row: "A",
-                seat: "B",
-                block: "C",
-                table: "D"),
+            seatInfo: [
+                "row": "A",
+                "seat": "B",
+                "block": "C",
+                "table": "D"
+            ],
             timeslot: Timeslot(
                 id: "1",
                 startTime: Date().iso8601String,
