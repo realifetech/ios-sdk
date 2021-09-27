@@ -16,7 +16,8 @@ class IdentityImplementingTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        let identity = IdentityFactory.makeIdentityModule(orderingJourneyViewUpdater: MockOrderingJourneyViewUpdater())
+        let identity = IdentityFactory.makeIdentityModule(graphQLManager: MockGraphQLManager<HostAppLoginRepository>(),
+                                                          orderingJourneyViewUpdater: MockOrderingJourneyViewUpdater())
         sut = try XCTUnwrap(identity as? IdentityImplementing)
     }
 
