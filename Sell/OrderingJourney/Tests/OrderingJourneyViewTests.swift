@@ -25,7 +25,9 @@ final class OrderingJourneyViewTests: XCTestCase {
         sut = OrderingJourneyView(
             urlString: urlString,
             colorStore: EmptyColorStore(),
-            scheduler: scheduler.eraseToAnyScheduler())
+            scheduler: scheduler.eraseToAnyScheduler(),
+            javascriptRunDetails: nil,
+            applicationURLOpener: MockApplicationURLOpener())
     }
 
     override func tearDown() {
@@ -95,6 +97,22 @@ final class OrderingJourneyViewTests: XCTestCase {
         wait(for: [expectation1, expectation2, expectation3], timeout: 1)
     }
 
+    func test_evaluateJavascript_publisherReceivesValue() throws {
+        let runDetails = JavascriptRunDetails(javascript: "abc",
+                                              reloadOnSuccess: true,
+                                              completion: nil)
+        let expectation1 = sut.inspection.inspect { [self] _ in
+            sut.evaluate(javascriptRunDetails: runDetails)
+        }
+        sut.store.webViewNavigationPublisher
+            .sink { receivedNavigation in
+                XCTAssertEqual(receivedNavigation, .evaluateJavascript(javascriptRunDetails: runDetails))
+                expectation1.fulfill()
+            }.store(in: &bag)
+        ViewHosting.host(view: sut)
+        wait(for: [expectation1], timeout: 0.5)
+    }
+
     private func getBottomViewFromInsepctedView(
         _ view: InspectableView<ViewType.View<OrderingJourneyView>>
     ) throws -> InspectableView<ViewType.AnyView> {
@@ -105,5 +123,24 @@ final class OrderingJourneyViewTests: XCTestCase {
     }
 }
 
+private final class MockApplicationURLOpener: ApplicationURLOpening {
+    func canOpenURL(_ url: URL) -> Bool { return false }
+    func open(_ url: URL,
+              options: [UIApplication.OpenExternalURLOptionsKey: Any],
+              completionHandler completion: ((Bool) -> Void)?) { }
+}
+
 extension Inspection: InspectionEmissary { }
 extension OrderingJourneyView: Inspectable { }
+extension WebViewNavigation: Equatable {
+    public static func == (lhs: WebViewNavigation, rhs: WebViewNavigation) -> Bool {
+        switch (lhs, rhs) {
+        case (.backward, .backward): return true
+        case (.forward, .forward): return true
+        case (.reload, .reload): return true
+        case (.evaluateJavascript(let javascriptDetails1), .evaluateJavascript(let javascriptDetails2)):
+            return javascriptDetails1.javascript == javascriptDetails2.javascript
+        default: return false
+        }
+    }
+}

@@ -7,12 +7,19 @@
 //
 
 import Foundation
+import WebKit
 
 public enum IdentityFactory {
 
-    static func makeIdentityModule() -> Identity {
-        let hostAppLoginRepository = HostAppLoginRepository()
-        let hostAppLoginAuthenticator = HostAppAuthenticator(hostAppLoginDataProvider: hostAppLoginRepository)
-        return IdentityImplementing(hostAppAuthenticator: hostAppLoginAuthenticator)
+    static func makeIdentityModule(graphQLManager: GraphQLManageable,
+                                   orderingJourneyViewUpdater: OrderingJourneyViewUpdating) -> Identity {
+        let hostAppLoginRepository = HostAppLoginRepository(graphQLManager: graphQLManager)
+        let hostAppLoginAuthenticator = HostAppAuthenticator(hostAppLoginDataProvider: hostAppLoginRepository,
+                                                             orderingJourneyViewUpdater: orderingJourneyViewUpdater)
+        // I've decided to include these web references in Identity, as they are global to logout systems, not just WOJ
+        let identityClearer = IdentityClearer(urlCache: URLCache.shared,
+                                              httpCookieStorage: HTTPCookieStorage.shared,
+                                              websiteDataStore: WKWebsiteDataStore.default())
+        return IdentityImplementing(hostAppAuthenticator: hostAppLoginAuthenticator, identityClearer: identityClearer)
     }
 }

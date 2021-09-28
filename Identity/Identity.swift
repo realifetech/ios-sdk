@@ -14,5 +14,6 @@ public protocol Identity {
                       firstName: String?,
                       lastName: String?,
                       salt: String,
-                      completion: (success: Bool, errorMessage: String?))
+                      completion: @escaping (Error?) -> Void)
+    func logout()
 }

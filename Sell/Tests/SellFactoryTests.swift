@@ -18,12 +18,21 @@ final class SellFactoryTests: XCTestCase {
         let result = SellFactory.makeSellModule(
             graphQLManager: graphQLManager,
             orderingJourneyUrl: "",
-            colorStore: EmptyColorStore())
+            colorStore: EmptyColorStore(),
+            applicationURLOpener: MockApplicationURLOpener())
         XCTAssertTrue(result is SellImplementing)
         XCTAssertTrue(result.product is ProductRepository)
         XCTAssertTrue(result.basket is BasketRepository)
         XCTAssertTrue(result.order is OrderRepository)
         XCTAssertTrue(result.fulfilmentPoint is FulfilmentPointRepository)
         XCTAssertTrue(result.payment is PaymentRepository)
+        XCTAssertTrue(result.applicationURLOpener is MockApplicationURLOpener)
     }
+}
+
+private final class MockApplicationURLOpener: ApplicationURLOpening {
+    func canOpenURL(_ url: URL) -> Bool { return false }
+    func open(_ url: URL,
+              options: [UIApplication.OpenExternalURLOptionsKey: Any],
+              completionHandler completion: ((Bool) -> Void)?) { }
 }
