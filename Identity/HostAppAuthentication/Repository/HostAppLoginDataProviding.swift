@@ -13,10 +13,10 @@ typealias AuthenticateUserHandler = (Result<OAuthToken, Error>) -> Void
 typealias AuthenticateWebViewHandler = (Any?, Error?) -> Void
 
 protocol HostAppLoginDataProviding {
-    func generateNonce(completion: GenerateNonceHandler)
+    func generateNonce(completion: @escaping GenerateNonceHandler)
     func authenticateUserBySignedUserInfo(userInfo: HostAppUserInfo,
                                           salt: String,
                                           nonce: String,
                                           signature: String,
-                                          completion: AuthenticateUserHandler)
+                                          completion: @escaping AuthenticateUserHandler)
 }

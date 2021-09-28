@@ -7,34 +7,70 @@
 //
 
 import Foundation
+#if !COCOAPODS
+import GraphQL
+#endif
 
-class HostAppLoginRepository: HostAppLoginDataProviding {
-    func generateNonce(completion: (Result<String, Error>) -> Void) {
-        completion(.success("nonce"))
+public final class HostAppLoginRepository {
+
+    private let graphQLManager: GraphQLManageable
+
+    init(graphQLManager: GraphQLManageable) {
+        self.graphQLManager = graphQLManager
     }
+}
+
+extension HostAppLoginRepository: HostAppLoginDataProviding {
+
+    func generateNonce(completion: @escaping (Result<String, Error>) -> Void) {
+        graphQLManager.dispatchMutation(
+            mutation: ApolloType.GenerateNonceMutation(),
+            cacheResultToPersistence: false) { result in
+            switch result {
+            case .success(let response):
+                return completion(.success(response.data?.generateNonce?.token ?? ""))
+            case .failure(let error):
+                return completion(.failure(error))
+            }
+        }
+    }
+
     func authenticateUserBySignedUserInfo(userInfo: HostAppUserInfo,
                                           salt: String,
                                           nonce: String,
                                           signature: String,
-                                          completion: AuthenticateUserHandler) {
-        let tempToken = "\(userInfo.emailAddress)-\(userInfo.firstName ?? "")-\(userInfo.lastName ?? "")"
-        completion(.success(OAuthToken(accessToken: tempToken,
-                                       refreshToken: "refreshToken",
-                                       expiresIn: 3600,
-                                       tokenType: "type",
-                                       scope: "scope")))
+                                          completion: @escaping AuthenticateUserHandler) {
+        let input = ApolloType.SignedUserInfoInput(email: userInfo.emailAddress,
+                                                   firstName: userInfo.firstName,
+                                                   lastName: userInfo.lastName,
+                                                   dob: nil,
+                                                   phone: nil,
+                                                   nonce: nonce,
+                                                   signature: signature)
+        graphQLManager.dispatchMutation(
+            mutation: ApolloType.AuthenticateUserBySignedUserInfoMutation(input: input),
+            cacheResultToPersistence: false) { [weak self] result in
+            switch result {
+            case .success(let response):
+                let apolloToken = response.data?.authenticateUserBySignedUserInfo?.fragments.authToken
+                guard let token = self?.generateOAuthToken(apolloToken: apolloToken) else {
+                    return completion(.failure(APIError.unparseableError()))
+                }
+                return completion(.success(token))
+            case .failure(let error):
+                return completion(.failure(error))
+            }
+        }
+    }
+
+    func generateOAuthToken(apolloToken: ApolloType.AuthToken?) -> OAuthToken? {
+        guard let token = apolloToken else {
+            return nil
+        }
+        return OAuthToken(accessToken: token.accessToken,
+                                    refreshToken: token.refreshToken,
+                                    expiresIn: token.expiresIn,
+                                    tokenType: token.tokenType,
+                                    scope: token.scope)
     }
 }
-
-/*
- graphQLManager.dispatch(
-     query: ApolloType.BelongsToAudienceWithExternalIdQuery(externalAudienceId: audienceId),
-     cachePolicy: .returnCacheDataElseFetch) { result in
-     switch result {
-     case .success(let response):
-         return completion(.success(response.data?.me?.device?.belongsToAudienceWithExternalId ?? false))
-     case .failure(let error):
-         return completion(.failure(error))
-     }
- }
- */
