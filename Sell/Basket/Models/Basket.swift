@@ -22,7 +22,7 @@ public struct Basket: Codable, Equatable {
     public let grossAmount: Int?
     public let discountAmount: Int?
     public let netAmount: Int?
-    public let seatInfo: SeatInfo?
+    public let seatInfo: [String: String?]?
     public let timeslot: Timeslot?
     public let collectionDate: Date?
     public let collectionPreferenceType: CollectionPreferenceType?
@@ -32,7 +32,7 @@ public struct Basket: Codable, Equatable {
         grossAmount: Int?,
         discountAmount: Int?,
         netAmount: Int?,
-        seatInfo: SeatInfo?,
+        seatInfo: [String: String?]?,
         timeslot: Timeslot?,
         collectionDate: Date?,
         collectionPreferenceType: CollectionPreferenceType?,
@@ -55,7 +55,7 @@ extension Basket {
         grossAmount = response.grossAmount
         discountAmount = response.discountAmount
         netAmount = response.netAmount
-        seatInfo = SeatInfo(json: response.seatInfo)
+        seatInfo = response.seatInfo
         timeslot = Timeslot(response: response.timeslot?.fragments.fragmentTimeslot)
         collectionDate = response.collectionDate?.iso8601Date
         collectionPreferenceType = CollectionPreferenceType(apolloType: response.collectionPreferenceType)
