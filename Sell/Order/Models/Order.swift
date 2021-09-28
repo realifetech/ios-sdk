@@ -26,7 +26,7 @@ public struct Order: Codable, Equatable {
     public let createdAt: Date?
     public let estimatedAt: Date?
     public let collectionPreferenceType: CollectionPreferenceType?
-    public let seatInfo: SeatInfo?
+    public let seatInfo: [String: String?]?
     public let items: [OrderItem]?
     public let timeslot: Timeslot?
     public let fulfilmentPoint: FulfilmentPoint?
@@ -45,7 +45,7 @@ public struct Order: Codable, Equatable {
         createdAt: Date?,
         estimatedAt: Date?,
         collectionPreferenceType: CollectionPreferenceType?,
-        seatInfo: SeatInfo?,
+        seatInfo: [String: String?]?,
         items: [OrderItem]?,
         timeslot: Timeslot?,
         fulfilmentPoint: FulfilmentPoint?
@@ -87,7 +87,7 @@ extension Order {
         createdAt = response.createdAt?.iso8601Date
         estimatedAt = response.estimatedAt?.iso8601Date
         collectionPreferenceType = CollectionPreferenceType(apolloType: response.collectionPreferenceType)
-        seatInfo = SeatInfo(json: response.seatInfo)
+        seatInfo = response.seatInfo
         items = response.items?.compactMap {
             OrderItem(response: $0)
         }

@@ -14,7 +14,7 @@ public struct BasketInput {
     public let collectionPreferenceType: CollectionPreferenceType?
     public let timeslotId: String?
     public let fulfilmentPointId: String
-    public let seatInfo: SeatInfo?
+    public let seatInfo: [String: String?]?
     public let items: [BasketItemInput]
 
     public init(
@@ -22,7 +22,7 @@ public struct BasketInput {
         collectionPreferenceType: CollectionPreferenceType?,
         timeslotId: String?,
         fulfilmentPointId: String,
-        seatInfo: SeatInfo?,
+        seatInfo: [String: String?]?,
         items: [BasketItemInput]
     ) {
         self.collectionDate = collectionDate
