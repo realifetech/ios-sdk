@@ -29,6 +29,9 @@ final class IdentityClearerTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        urlCache = nil
+        httpCookieStorage = nil
+        websiteDataStore = nil
         super.tearDown()
     }
 

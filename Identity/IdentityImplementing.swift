@@ -62,7 +62,6 @@ public class IdentityImplementing: Identity {
     /// RealifeTech.Identity.logout()
     /// ```
     public func logout() {
-        print("logout")
         identityClearer.clearIdentity(completion: nil)
     }
 }
