@@ -8,43 +8,38 @@
 
 import Foundation
 
+/*
+ This class will retain jsRunDetails until there is an OrderingJourneyView to pass it to.
+ Once passed, it will let go and let the view handle the execution
+ Doing the above allows for JS to be executed when the web view next opens, if it's not already open.
+ */
 public class OrderingJourneyViewUpdater: OrderingJourneyViewUpdating {
 
     public var orderingJourneyView: OrderingJourneyViewUpdatable? {
         didSet {
-            ensureUpdated()
+            evaluateSavedJavascript()
         }
     }
-    var javascriptToEvaluate: String?
-    var reloadOnSuccessAfterEvaluation: Bool?
-    var completionToFireAfterEvaluation: ((Any?, Error?) -> Void)?
+    public var javascriptRunDetails: JavascriptRunDetails?
 
     public func evaluate(javascript: String, reloadOnSuccess: Bool, completion: ((Any?, Error?) -> Void)?) {
-        if orderingJourneyView == nil {
-            javascriptToEvaluate = javascript
-            reloadOnSuccessAfterEvaluation = reloadOnSuccess
-            completionToFireAfterEvaluation = completion
+        let javascriptRunDetails = JavascriptRunDetails(javascript: javascript,
+                                                        reloadOnSuccess: reloadOnSuccess,
+                                                        completion: completion)
+        triggerEvaluation(javascriptRunDetails: javascriptRunDetails)
+    }
+
+    public func evaluateSavedJavascript() {
+        guard let javascriptRunDetails = javascriptRunDetails else { return }
+        triggerEvaluation(javascriptRunDetails: javascriptRunDetails)
+    }
+
+    private func triggerEvaluation(javascriptRunDetails: JavascriptRunDetails) {
+        guard orderingJourneyView != nil else {
+            self.javascriptRunDetails = javascriptRunDetails
+            return
         }
-        triggerEvaluation(javascript: javascript,
-                          reloadOnSuccess: reloadOnSuccess,
-                          completion: completion)
-    }
-
-    public func ensureUpdated() {
-        guard let javascriptToEvaluate = javascriptToEvaluate,
-              let reloadOnSuccessAfterEvaluation = reloadOnSuccessAfterEvaluation,
-              orderingJourneyView != nil else { return }
-        triggerEvaluation(javascript: javascriptToEvaluate,
-                          reloadOnSuccess: reloadOnSuccessAfterEvaluation,
-                          completion: completionToFireAfterEvaluation)
-    }
-
-    private func triggerEvaluation(javascript: String, reloadOnSuccess: Bool, completion: ((Any?, Error?) -> Void)?) {
-        orderingJourneyView?.evaluate(javascript: javascript, completion: { result, error in
-            if error == nil && reloadOnSuccess {
-                self.orderingJourneyView?.reload()
-            }
-            completion?(result, error)
-        })
+        orderingJourneyView?.evaluate(javascriptRunDetails: javascriptRunDetails)
+        self.javascriptRunDetails = nil
     }
 }

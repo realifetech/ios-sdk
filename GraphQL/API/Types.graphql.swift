@@ -1596,6 +1596,85 @@ public enum ApolloType {
     }
   }
 
+  public struct SignedUserInfoInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - email
+    ///   - firstName
+    ///   - lastName
+    ///   - dob
+    ///   - phone
+    ///   - nonce
+    ///   - signature
+    public init(email: String, firstName: Swift.Optional<String?> = nil, lastName: Swift.Optional<String?> = nil, dob: Swift.Optional<String?> = nil, phone: Swift.Optional<String?> = nil, nonce: String, signature: String) {
+      graphQLMap = ["email": email, "firstName": firstName, "lastName": lastName, "dob": dob, "phone": phone, "nonce": nonce, "signature": signature]
+    }
+
+    public var email: String {
+      get {
+        return graphQLMap["email"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "email")
+      }
+    }
+
+    public var firstName: Swift.Optional<String?> {
+      get {
+        return graphQLMap["firstName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "firstName")
+      }
+    }
+
+    public var lastName: Swift.Optional<String?> {
+      get {
+        return graphQLMap["lastName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "lastName")
+      }
+    }
+
+    public var dob: Swift.Optional<String?> {
+      get {
+        return graphQLMap["dob"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "dob")
+      }
+    }
+
+    public var phone: Swift.Optional<String?> {
+      get {
+        return graphQLMap["phone"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "phone")
+      }
+    }
+
+    public var nonce: String {
+      get {
+        return graphQLMap["nonce"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "nonce")
+      }
+    }
+
+    public var signature: String {
+      get {
+        return graphQLMap["signature"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "signature")
+      }
+    }
+  }
+
   public struct PaymentSourceInput: GraphQLMapConvertible {
     public var graphQLMap: GraphQLMap
 

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ModulesView: View {
 
+    let hostAppLoginHandler = HostAppLoginHandler()
+
     var body: some View {
         NavigationView {
             List {
@@ -29,7 +31,8 @@ struct ModulesView: View {
                     NavigationLink("Web Ordering Journey", destination: WebOrderingJourneyView())
                 }
                 Section(header: Text("Identity")) {
-                    Text("Login")
+                    NavigationLink("Host App Login Example",
+                                   destination: hostAppLoginHandler.createLoginViewController().rootView)
                 }
             }
             .navigationBarTitle("Realife Tech SDK")

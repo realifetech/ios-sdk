@@ -20,6 +20,7 @@ final class WebViewWrapperTests: XCTestCase {
     private var store: WebViewStore!
     private var scheduler: DispatchQueueTestScheduler!
     private var sut: WebViewWrapper!
+    private var urlOpener: MockApplicationURLOpener!
     private var bag = Set<AnyCancellable>()
 
     override func setUpWithError() throws {
@@ -29,11 +30,14 @@ final class WebViewWrapperTests: XCTestCase {
         urlRequest = URLRequest(url: url)
         store = WebViewStore()
         scheduler = DispatchQueueTestScheduler()
+        urlOpener = MockApplicationURLOpener()
         sut = WebViewWrapper(
             webView: webView,
             urlRequest: urlRequest,
             store: store,
-            scheduler: scheduler.eraseToAnyScheduler())
+            scheduler: scheduler.eraseToAnyScheduler(),
+            javascriptRunDetails: nil,
+            applicationURLOpener: urlOpener)
     }
 
     override func tearDown() {
@@ -119,10 +123,11 @@ final class WebViewWrapperTests: XCTestCase {
     func test_evaluateJavascript_notLoading() {
         webView.shouldBeLoading = false
         let expectation = XCTestExpectation()
-        sut.evaluate(javascript: "abc") { _, _ in
+        let javascriptRunDetails = JavascriptRunDetails(javascript: "abc", reloadOnSuccess: false) { _, _ in
             XCTAssertEqual(self.webView.javascriptEvaluated, "abc")
             expectation.fulfill()
         }
+        sut.evaluate(javascriptRunDetails: javascriptRunDetails)
         wait(for: [expectation], timeout: 0.01)
     }
 
@@ -131,15 +136,46 @@ final class WebViewWrapperTests: XCTestCase {
         let coordinator = sut.makeCoordinator()
         webView.shouldBeLoading = true
         let expectation = XCTestExpectation()
-        sut.evaluate(javascript: "abc") { _, _ in
+        let javascriptRunDetails = JavascriptRunDetails(javascript: "abc", reloadOnSuccess: false) { _, _ in
             XCTAssertFalse(self.webView.shouldBeLoading)
             XCTAssertEqual(self.webView.javascriptEvaluated, "abc")
             expectation.fulfill()
         }
+        sut.evaluate(javascriptRunDetails: javascriptRunDetails)
         XCTAssertNil(webView.javascriptEvaluated)
         webView.shouldBeLoading = false
         coordinator.webView(webView, didFinish: wkNavigation)
         wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_navigate_deepLink() throws {
+        let coordinator = sut.makeCoordinator()
+        let url = try XCTUnwrap(URL(string: "deeplinkscheme://rlthostapplogin"))
+        XCTAssertEqual(coordinator.deepLinkURL(urlToEvaluate: url), url)
+        var receivedPolicy: WKNavigationActionPolicy?
+        let navigationAction = createFakeNavigationAction(url: url)
+        sut.makeCoordinator().webView(
+            webView,
+            decidePolicyFor: navigationAction
+        ) { receivedPolicy = $0 }
+        XCTAssertEqual(receivedPolicy, .cancel)
+        XCTAssertEqual(urlOpener.urlOpened, url)
+    }
+
+    func test_navigate_notDeepLink() throws {
+        let coordinator = sut.makeCoordinator()
+        let httpUrl = try XCTUnwrap(URL(string: "http://google.com"))
+        XCTAssertNil(coordinator.deepLinkURL(urlToEvaluate: URL(string: "")))
+        XCTAssertNil(coordinator.deepLinkURL(urlToEvaluate: httpUrl))
+        XCTAssertNil(coordinator.deepLinkURL(urlToEvaluate: URL(string: "https://google.com")))
+        var receivedPolicy: WKNavigationActionPolicy?
+        let navigationAction = createFakeNavigationAction(url: httpUrl)
+        sut.makeCoordinator().webView(
+            webView,
+            decidePolicyFor: navigationAction
+        ) { receivedPolicy = $0 }
+        XCTAssertEqual(receivedPolicy, .allow)
+        XCTAssertNil(urlOpener.urlOpened)
     }
 }
 
@@ -208,6 +244,16 @@ private final class FakeNavigationAction: WKNavigationAction {
     init(testRequest: URLRequest) {
         self.testRequest = testRequest
         super.init()
+    }
+}
+
+private final class MockApplicationURLOpener: ApplicationURLOpening {
+    var urlOpened: URL?
+    func canOpenURL(_ url: URL) -> Bool { return true }
+    func open(_ url: URL,
+              options: [UIApplication.OpenExternalURLOptionsKey: Any],
+              completionHandler completion: ((Bool) -> Void)?) {
+        urlOpened = url
     }
 }
 

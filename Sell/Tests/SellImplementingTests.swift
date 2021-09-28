@@ -20,7 +20,8 @@ final class SellImplementingTests: XCTestCase {
         let sell = SellFactory.makeSellModule(
             graphQLManager: graphQLManager,
             orderingJourneyUrl: "",
-            colorStore: EmptyColorStore())
+            colorStore: EmptyColorStore(),
+            applicationURLOpener: MockApplicationURLOpener())
         sut = try XCTUnwrap(sell as? SellImplementing)
     }
 
@@ -41,4 +42,11 @@ final class SellImplementingTests: XCTestCase {
         XCTAssertNotNil(view.urlRequest.url)
         XCTAssertNotNil(sut.orderingJourneyViewUpdater.orderingJourneyView)
     }
+}
+
+private final class MockApplicationURLOpener: ApplicationURLOpening {
+    func canOpenURL(_ url: URL) -> Bool { return false }
+    func open(_ url: URL,
+              options: [UIApplication.OpenExternalURLOptionsKey: Any],
+              completionHandler completion: ((Bool) -> Void)?) { }
 }

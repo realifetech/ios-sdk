@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="123">POC</title>
+</head>
+<body onload="setAccessTokenStatus()">
+    <script>
+        function acceptAuthDetails(access_token, refresh_token, expires_in, token_type) {
+            alert(access_token + ' ' + refresh_token + ' ' + expires_in + ' ' + token_type);
+            window.localStorage.setItem('access_token', access_token);
+            window.localStorage.setItem('refresh_token', refresh_token);
+            window.localStorage.setItem('expires_in', expires_in);
+            window.localStorage.setItem('token_type', token_type);
+            setAccessTokenStatus()
+            return access_token
+        }
+        function getSavedDetails() {
+            return window.localStorage.getItem('access_token')
+        }
+        function checkoutOrRedirect() {
+            if(window.localStorage.getItem('access_token')) {
+                setStatus("Redirecting to checkout")
+            } else {
+                setStatus("Triggering host app login")
+                window.location.href = "rltsampleapp://rlthostapplogin"; // To test, replace rltsampleapp with your deep link scheme
+            }
+        }
+        function reset() {
+            window.localStorage.removeItem('access_token');
+            window.localStorage.removeItem('refresh_token');
+            window.localStorage.removeItem('expires_in');
+            window.localStorage.removeItem('token_type');
+            setAccessTokenStatus()
+        }
+        function setAccessTokenStatus() {
+            var accessToken = window.localStorage.getItem('access_token')
+            if(accessToken) {
+                setStatus("Authenticated with access token: "+accessToken)
+            } else {
+                setStatus("Not authenticated")
+            }
+            
+        }
+        function setStatus(status) {
+            document.getElementById("status").innerHTML = status
+        }
+      </script>
+      <h1>Order Journey Example</h1>
+      <button onClick="checkoutOrRedirect()">Checkout</button>
+      <button onClick="reset()">Reset</button>
+      <h4 id="status"></h4>
+</body>
+
+</html>

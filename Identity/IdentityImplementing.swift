@@ -12,9 +12,11 @@ import RxSwift
 public class IdentityImplementing: Identity {
 
     public let hostAppAuthenticator: HostAppAuthenticating
+    public let identityClearer: IdentityClearing
 
-    public init(hostAppAuthenticator: HostAppAuthenticating) {
+    public init(hostAppAuthenticator: HostAppAuthenticating, identityClearer: IdentityClearing) {
         self.hostAppAuthenticator = hostAppAuthenticator
+        self.identityClearer = identityClearer
     }
 
     /// Can be used to determine if the deep link you have received was triggered by our ordering journey
@@ -38,7 +40,6 @@ public class IdentityImplementing: Identity {
     /// - Returns: Void
     /// - Example:
     /// ```
-    ///
     /// RealifeTech.Identity.attemptLogin(emailAddress: String,
     ///                                     firstName: String?,
     ///                                     lastName: String?,
@@ -52,5 +53,16 @@ public class IdentityImplementing: Identity {
                              completion: @escaping (Error?) -> Void) {
         let userInfo = HostAppUserInfo(emailAddress: emailAddress, firstName: firstName, lastName: lastName)
         hostAppAuthenticator.attemptLogin(userInfo: userInfo, salt: salt, completion: completion)
+    }
+
+    /// Used to clear user data from the SDK after they have logged out from your apps
+    /// - Returns: Void
+    /// - Example:
+    /// ```
+    /// RealifeTech.Identity.logout()
+    /// ```
+    public func logout() {
+        print("logout")
+        identityClearer.clearIdentity(completion: nil)
     }
 }

@@ -132,6 +132,7 @@ final class MockDataFlowRepository: HostAppLoginDataProviding {
 
 private final class MockOrderingJourneyViewUpdater: OrderingJourneyViewUpdating {
 
+    var javascriptRunDetails: JavascriptRunDetails?
     var orderingJourneyView: OrderingJourneyViewUpdatable?
     var javacriptEvaluated = ""
     var shouldFail = false

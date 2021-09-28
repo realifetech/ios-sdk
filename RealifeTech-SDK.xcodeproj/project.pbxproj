@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		3E13834126FC977E0037878F /* IdentityClearing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834026FC977E0037878F /* IdentityClearing.swift */; };
+		3E13834326FC9FDE0037878F /* IdentityClearable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834226FC9FDE0037878F /* IdentityClearable+Extensions.swift */; };
+		3E13834526FC9FF80037878F /* IdentityClearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834426FC9FF80037878F /* IdentityClearer.swift */; };
+		3E13834726FCA2350037878F /* IdentityClearerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834626FCA2350037878F /* IdentityClearerTests.swift */; };
 		3E2C1FCC26F0F35800C9C72B /* IdentityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC426F0F35800C9C72B /* IdentityFactory.swift */; };
 		3E2C1FCD26F0F35800C9C72B /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC526F0F35800C9C72B /* Identity.swift */; };
 		3E2C1FD026F0F35800C9C72B /* IdentityImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */; };
@@ -55,9 +59,16 @@
 		3E78BD2226B83F0300BF3026 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 961C41AB260882BA001D8467 /* schema.json */; };
 		3E7AA32226F23EC200BE3733 /* HostAppAuthenticating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7AA32126F23EC200BE3733 /* HostAppAuthenticating.swift */; };
 		3E7AA32426F23ECE00BE3733 /* HostAppAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */; };
+		3EB3CA6726FE8C6F000FF48A /* JavascriptRunDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3CA6626FE8C6F000FF48A /* JavascriptRunDetails.swift */; };
+		3EB3CA6926FE8C90000FF48A /* ApplicationURLOpening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3CA6826FE8C8F000FF48A /* ApplicationURLOpening.swift */; };
+		3EB3CA6B26FE8CB5000FF48A /* OrderingJourneyViewUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3CA6A26FE8CB5000FF48A /* OrderingJourneyViewUpdatable.swift */; };
 		3EB48CE526F9DABC008AECB1 /* HostAppLoginDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB48CE426F9DABC008AECB1 /* HostAppLoginDataProviding.swift */; };
 		3EB48CE726F9DCAB008AECB1 /* HostAppLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB48CE626F9DCAB008AECB1 /* HostAppLoginRepository.swift */; };
 		3EB48CF326FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB48CF226FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift */; };
+		3EE4CDA327022F53005DBAE4 /* identity_authenticateUserBySignedUserInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE4CDA027022F53005DBAE4 /* identity_authenticateUserBySignedUserInfo.graphql.swift */; };
+		3EE4CDA427022F53005DBAE4 /* identity_fragment_authToken.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE4CDA127022F53005DBAE4 /* identity_fragment_authToken.graphql.swift */; };
+		3EE4CDA527022F53005DBAE4 /* identity_generateNonce.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE4CDA227022F53005DBAE4 /* identity_generateNonce.graphql.swift */; };
+		3EE4CDA727023B7C005DBAE4 /* HostAppLoginRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE4CDA627023B7C005DBAE4 /* HostAppLoginRepositoryTests.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -432,6 +443,10 @@
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E13834026FC977E0037878F /* IdentityClearing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityClearing.swift; sourceTree = "<group>"; };
+		3E13834226FC9FDE0037878F /* IdentityClearable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdentityClearable+Extensions.swift"; sourceTree = "<group>"; };
+		3E13834426FC9FF80037878F /* IdentityClearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityClearer.swift; sourceTree = "<group>"; };
+		3E13834626FCA2350037878F /* IdentityClearerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityClearerTests.swift; sourceTree = "<group>"; };
 		3E2C1FC426F0F35800C9C72B /* IdentityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityFactory.swift; sourceTree = "<group>"; };
 		3E2C1FC526F0F35800C9C72B /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityImplementing.swift; sourceTree = "<group>"; };
@@ -443,9 +458,16 @@
 		3E78BCED26B8226800BF3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E7AA32126F23EC200BE3733 /* HostAppAuthenticating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticating.swift; sourceTree = "<group>"; };
 		3E7AA32326F23ECE00BE3733 /* HostAppAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppAuthenticator.swift; sourceTree = "<group>"; };
+		3EB3CA6626FE8C6F000FF48A /* JavascriptRunDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavascriptRunDetails.swift; sourceTree = "<group>"; };
+		3EB3CA6826FE8C8F000FF48A /* ApplicationURLOpening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationURLOpening.swift; sourceTree = "<group>"; };
+		3EB3CA6A26FE8CB5000FF48A /* OrderingJourneyViewUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewUpdatable.swift; sourceTree = "<group>"; };
 		3EB48CE426F9DABC008AECB1 /* HostAppLoginDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppLoginDataProviding.swift; sourceTree = "<group>"; };
 		3EB48CE626F9DCAB008AECB1 /* HostAppLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppLoginRepository.swift; sourceTree = "<group>"; };
 		3EB48CF226FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewUpdating.swift; sourceTree = "<group>"; };
+		3EE4CDA027022F53005DBAE4 /* identity_authenticateUserBySignedUserInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = identity_authenticateUserBySignedUserInfo.graphql.swift; sourceTree = "<group>"; };
+		3EE4CDA127022F53005DBAE4 /* identity_fragment_authToken.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = identity_fragment_authToken.graphql.swift; sourceTree = "<group>"; };
+		3EE4CDA227022F53005DBAE4 /* identity_generateNonce.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = identity_generateNonce.graphql.swift; sourceTree = "<group>"; };
+		3EE4CDA627023B7C005DBAE4 /* HostAppLoginRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppLoginRepositoryTests.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
 		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
@@ -815,6 +837,16 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		3E13833F26FC975E0037878F /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				3E13834026FC977E0037878F /* IdentityClearing.swift */,
+				3E13834426FC9FF80037878F /* IdentityClearer.swift */,
+				3E13834226FC9FDE0037878F /* IdentityClearable+Extensions.swift */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
 		3E2C1FC026F0F35800C9C72B /* Identity */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +854,7 @@
 				3E2C1FC526F0F35800C9C72B /* Identity.swift */,
 				3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */,
 				3E7AA32026F23E0500BE3733 /* HostAppAuthentication */,
+				3E13833F26FC975E0037878F /* Logout */,
 				3E2C1FC626F0F35800C9C72B /* Tests */,
 			);
 			path = Identity;
@@ -832,6 +865,8 @@
 			children = (
 				3E2C1FD126F0FBB200C9C72B /* IdentityImplementingTests.swift */,
 				3E6BB8B826F4DD66003A7883 /* HostAppAuthenticatorTests.swift */,
+				3E13834626FCA2350037878F /* IdentityClearerTests.swift */,
+				3EE4CDA627023B7C005DBAE4 /* HostAppLoginRepositoryTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1053,10 +1088,13 @@
 		960415D726CBD78B0096DF80 /* OrderingJourney */ = {
 			isa = PBXGroup;
 			children = (
+				3EB3CA6826FE8C8F000FF48A /* ApplicationURLOpening.swift */,
 				960415DC26CBDFFF0096DF80 /* OrderingJourneyView.swift */,
 				96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */,
 				3EB48CF226FA5EEC008AECB1 /* OrderingJourneyViewUpdating.swift */,
 				3E36BA3426FB43E4000C0B33 /* OrderingJourneyViewUpdater.swift */,
+				3EB3CA6A26FE8CB5000FF48A /* OrderingJourneyViewUpdatable.swift */,
+				3EB3CA6626FE8C6F000FF48A /* JavascriptRunDetails.swift */,
 				960415DA26CBD8B20096DF80 /* WebViewStore.swift */,
 				960415D826CBD82B0096DF80 /* WebViewWrapper.swift */,
 				96F1BF1F26CD2FE7008D1363 /* Tests */,
@@ -1419,6 +1457,9 @@
 				0319F3032667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift */,
 				0319F30D2667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift */,
 				0319F3102667995B00C01E1F /* content_getWebPageByType.graphql.swift */,
+				3EE4CDA027022F53005DBAE4 /* identity_authenticateUserBySignedUserInfo.graphql.swift */,
+				3EE4CDA127022F53005DBAE4 /* identity_fragment_authToken.graphql.swift */,
+				3EE4CDA227022F53005DBAE4 /* identity_generateNonce.graphql.swift */,
 				0319F2EC2667995A00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift */,
 				0319F2F02667995A00C01E1F /* sell_checkoutMyBasket.graphql.swift */,
 				0319F30C2667995B00C01E1F /* sell_createMyBasket.graphql.swift */,
@@ -2285,6 +2326,7 @@
 				3E78BD1326B8231800BF3026 /* sell_getFulfilmentPoints.graphql.swift in Sources */,
 				3E78BD1526B8231800BF3026 /* sell_getProductById.graphql.swift in Sources */,
 				3E78BD0C26B8231800BF3026 /* sell_addPaymentSourceToMyWallet.graphql.swift in Sources */,
+				3EE4CDA527022F53005DBAE4 /* identity_generateNonce.graphql.swift in Sources */,
 				9627A9F826F09E7E00786880 /* sell_createMyPaymentIntent.graphql.swift in Sources */,
 				3E78BCF226B8231800BF3026 /* sell_updatePaymentIntent.graphql.swift in Sources */,
 				3E78BD1926B8231800BF3026 /* sell_fragment_product.graphql.swift in Sources */,
@@ -2310,6 +2352,7 @@
 				3E78BD0326B8231800BF3026 /* sell_fragment_venue.graphql.swift in Sources */,
 				3E78BD1126B8231800BF3026 /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */,
 				3E78BCFD26B8231800BF3026 /* canvas_fragment_widget.graphql.swift in Sources */,
+				3EE4CDA327022F53005DBAE4 /* identity_authenticateUserBySignedUserInfo.graphql.swift in Sources */,
 				3E78BD1426B8231800BF3026 /* sell_getMyPaymentSources.graphql.swift in Sources */,
 				3E78BCFA26B8231800BF3026 /* sell_fragment_user.graphql.swift in Sources */,
 				3E78BD0426B8231800BF3026 /* sell_getFulfilmentPointById.graphql.swift in Sources */,
@@ -2325,6 +2368,7 @@
 				3E78BD0726B8231800BF3026 /* sell_checkoutMyBasket.graphql.swift in Sources */,
 				960B00E426C3CF5A002C82E9 /* canvas_fragment_screen.graphql.swift in Sources */,
 				3E78BD0E26B8231800BF3026 /* sell_updateMyBasket.graphql.swift in Sources */,
+				3EE4CDA427022F53005DBAE4 /* identity_fragment_authToken.graphql.swift in Sources */,
 				960B00DC26C3CE57002C82E9 /* sell_updateMyOrder.graphql.swift in Sources */,
 				3E78BD1626B8231800BF3026 /* sell_getProducts.graphql.swift in Sources */,
 				9627A9F726F09E7E00786880 /* sell_getMyOrders.graphql.swift in Sources */,
@@ -2354,6 +2398,7 @@
 				961C41EE260882BB001D8467 /* GraphQLInterceptorProvider.swift in Sources */,
 				960415DD26CBDFFF0096DF80 /* OrderingJourneyView.swift in Sources */,
 				961C4263260882C8001D8467 /* CodableStore.swift in Sources */,
+				3E13834526FC9FF80037878F /* IdentityClearer.swift in Sources */,
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
@@ -2378,6 +2423,7 @@
 				96874871268CC29700DDC5DD /* Card.swift in Sources */,
 				961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */,
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
+				3E13834326FC9FDE0037878F /* IdentityClearable+Extensions.swift in Sources */,
 				9687487D268CC4BB00DDC5DD /* CancellationReason.swift in Sources */,
 				961C1C9F26833C8800BE6F3B /* StandardTitleTranslation.swift in Sources */,
 				9606ED8B267B512900ED24D0 /* Product.swift in Sources */,
@@ -2389,6 +2435,7 @@
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
 				9637475926C54545007DF92D /* PaymentIntentNextAction.swift in Sources */,
 				961C41D5260882BA001D8467 /* DeviceIdHeaderRequestInserting.swift in Sources */,
+				3E13834126FC977E0037878F /* IdentityClearing.swift in Sources */,
 				961C41D7260882BA001D8467 /* OAuthHeaderRequestInserting.swift in Sources */,
 				961C41E8260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift in Sources */,
 				961C1CA12683400500BE6F3B /* ProductImage.swift in Sources */,
@@ -2435,6 +2482,7 @@
 				961C4275260882C8001D8467 /* ReachabilityChecker.swift in Sources */,
 				3E7AA32426F23ECE00BE3733 /* HostAppAuthenticator.swift in Sources */,
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
+				3EB3CA6B26FE8CB5000FF48A /* OrderingJourneyViewUpdatable.swift in Sources */,
 				964D291C269335F300A69FBC /* ScreenType.swift in Sources */,
 				9606ED84267B501800ED24D0 /* ProductProvidable.swift in Sources */,
 				96AED8C526CFA80900F6C750 /* ColorStorable.swift in Sources */,
@@ -2458,6 +2506,7 @@
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
+				3EB3CA6926FE8C90000FF48A /* ApplicationURLOpening.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				961C4274260882C8001D8467 /* NetworkConnectivityChecker.swift in Sources */,
 				964D29132693354300A69FBC /* WidgetVariation.swift in Sources */,
@@ -2508,6 +2557,7 @@
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
 				960415DB26CBD8B20096DF80 /* WebViewStore.swift in Sources */,
 				961C1CC326839D7300BE6F3B /* BasketInput.swift in Sources */,
+				3EB3CA6726FE8C6F000FF48A /* JavascriptRunDetails.swift in Sources */,
 				961C4217260882BB001D8467 /* APIError.swift in Sources */,
 				487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */,
 				961C1CB526839A5100BE6F3B /* Basket.swift in Sources */,
@@ -2538,6 +2588,7 @@
 				96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */,
 				96AED8D526CFC71900F6C750 /* ColorTypeTests.swift in Sources */,
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
+				3E13834726FCA2350037878F /* IdentityClearerTests.swift in Sources */,
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,
 				96302CE026C3E4A7000A91EC /* GraphNetworkCachePolicyTests.swift in Sources */,
 				961C42CC26088374001D8467 /* RequestTimeLoggerTests.swift in Sources */,
@@ -2581,6 +2632,7 @@
 				964D292526933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift in Sources */,
 				96B670A826D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
+				3EE4CDA727023B7C005DBAE4 /* HostAppLoginRepositoryTests.swift in Sources */,
 				961C438F2608939C001D8467 /* UIDeviceHelperTests.swift in Sources */,
 				96B670CC26D7E11500DB74A4 /* AudiencesImplementingTests.swift in Sources */,
 				961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */,
