@@ -9,6 +9,7 @@
 import Foundation
 
 public protocol OrderingJourneyViewUpdating {
+    var javascriptRunDetails: JavascriptRunDetails? { get }
     var orderingJourneyView: OrderingJourneyViewUpdatable? { get set }
     func evaluate(javascript: String, reloadOnSuccess: Bool, completion: ((Any?, Error?) -> Void)?)
 }

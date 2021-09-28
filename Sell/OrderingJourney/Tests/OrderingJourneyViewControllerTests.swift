@@ -14,7 +14,10 @@ final class OrderingJourneyViewControllerTests: XCTestCase {
     private let urlString = "https://www.google.com"
 
     func test_initWithUrlString_rootViewDismissFunctionIsSet() {
-        let sut = OrderingJourneyViewController(urlString: urlString, colorStore: EmptyColorStore())
+        let sut = OrderingJourneyViewController(urlString: urlString,
+                                                colorStore: EmptyColorStore(),
+                                                javascriptRunDetails: nil,
+                                                applicationURLOpener: MockApplicationURLOpener())
         XCTAssertNotNil(sut.rootView.dismiss)
     }
 
@@ -23,7 +26,10 @@ final class OrderingJourneyViewControllerTests: XCTestCase {
     }
 
     func test_dismiss_viewControllerIsDismissed() {
-        let sut = MockViewController(urlString: urlString, colorStore: EmptyColorStore())
+        let sut = MockViewController(urlString: urlString,
+                                     colorStore: EmptyColorStore(),
+                                     javascriptRunDetails: nil,
+                                     applicationURLOpener: MockApplicationURLOpener())
         sut.dismiss()
         XCTAssertTrue(sut.dismissGetsCalled)
     }
@@ -36,4 +42,11 @@ private final class MockViewController: OrderingJourneyViewController {
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         dismissGetsCalled = true
     }
+}
+
+private final class MockApplicationURLOpener: ApplicationURLOpening {
+    func canOpenURL(_ url: URL) -> Bool { return false }
+    func open(_ url: URL,
+              options: [UIApplication.OpenExternalURLOptionsKey: Any],
+              completionHandler completion: ((Bool) -> Void)?) { }
 }

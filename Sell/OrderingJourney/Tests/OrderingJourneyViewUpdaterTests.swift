@@ -11,76 +11,39 @@ import XCTest
 
 class OrderingJourneyViewUpdaterTests: XCTestCase {
 
-    func test_evaluate_reloadCalled_shouldReload() {
-        let sut = OrderingJourneyViewUpdater()
-        let oJV = MockOJView()
-        sut.orderingJourneyView = oJV
-        let expectation = XCTestExpectation()
-        sut.evaluate(javascript: "abc", reloadOnSuccess: true) { _, _ in
-            XCTAssertTrue(oJV.reloadCalled)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.5)
-    }
-
-    func test_evaluate_reloadNotCalled_shouldNotReload() {
-        let sut = OrderingJourneyViewUpdater()
-        let oJV = MockOJView()
-        sut.orderingJourneyView = oJV
-        let expectation = XCTestExpectation()
-        sut.evaluate(javascript: "abc", reloadOnSuccess: false) { _, _ in
-            XCTAssertFalse(oJV.reloadCalled)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.5)
-    }
-
-    func test_evaluate_reloadNotCalled_shouldReload_evaluationFailed() {
-        let sut = OrderingJourneyViewUpdater()
-        let oJV = MockOJView()
-        oJV.shouldFailEvaluation = true
-        sut.orderingJourneyView = oJV
-        let expectation = XCTestExpectation()
-        sut.evaluate(javascript: "abc", reloadOnSuccess: false) { _, _ in
-            XCTAssertFalse(oJV.reloadCalled)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.5)
-    }
-
     func test_evaluate_noWebView_detailsSaved_laterCalled() {
         let sut = OrderingJourneyViewUpdater()
         sut.evaluate(javascript: "abc", reloadOnSuccess: true) { _, _ in
             print("Done")
         }
-        XCTAssertEqual(sut.javascriptToEvaluate, "abc")
-        XCTAssertNotNil(sut.completionToFireAfterEvaluation)
+        XCTAssertEqual(sut.javascriptRunDetails?.javascript, "abc")
+        XCTAssertNotNil(sut.javascriptRunDetails?.completion)
         let oJV = MockOJView()
         sut.orderingJourneyView = oJV
-        XCTAssertEqual(oJV.javascriptEvaluated, "abc")
+        XCTAssertEqual(oJV.javascriptEvaluated?.javascript, "abc")
+        XCTAssertTrue(oJV.javascriptEvaluated?.reloadOnSuccess ?? false)
     }
 
     func test_evaluate_webView_evaluateCalled() {
         let sut = OrderingJourneyViewUpdater()
         let oJV = MockOJView()
         sut.orderingJourneyView = oJV
-        sut.evaluate(javascript: "abc", reloadOnSuccess: true, completion: nil)
-        XCTAssertEqual(oJV.javascriptEvaluated, "abc")
+        sut.evaluate(javascript: "abc", reloadOnSuccess: false, completion: nil)
+        XCTAssertEqual(oJV.javascriptEvaluated?.javascript, "abc")
+        XCTAssertFalse(oJV.javascriptEvaluated?.reloadOnSuccess ?? true)
     }
 }
 
 private final class MockOJView: OrderingJourneyViewUpdatable {
 
-    var javascriptEvaluated: String?
+    var javascriptEvaluated: JavascriptRunDetails?
     var reloadCalled = false
     var shouldFailEvaluation = false
 
-    func evaluate(javascript: String, completion: ((Any?, Error?) -> Void)?) {
-        javascriptEvaluated = javascript
-        completion?(nil, shouldFailEvaluation ? DummyError.failure : nil)
+    func evaluate(javascriptRunDetails: JavascriptRunDetails) {
+        javascriptEvaluated = javascriptRunDetails
+        javascriptRunDetails.completion?(nil, shouldFailEvaluation ? DummyError.failure : nil)
     }
 
-    func reload() {
-        reloadCalled = true
-    }
+    func reload() { }
 }

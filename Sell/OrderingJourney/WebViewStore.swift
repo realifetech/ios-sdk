@@ -19,4 +19,5 @@ enum WebViewNavigation {
     case backward
     case forward
     case reload
+    case evaluateJavascript(javascriptRunDetails: JavascriptRunDetails)
 }
