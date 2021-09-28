@@ -1,0 +1,14 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "debug": true,
+                "targets": {
+                    "esmodules": true,
+                    "node": "current"
+                }
+            }
+        ]
+    ]
+}

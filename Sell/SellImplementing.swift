@@ -16,8 +16,10 @@ public class SellImplementing: Sell {
     public let fulfilmentPoint: FulfilmentPointProvidable
     public let payment: PaymentProvidable
     public let colorStore: ColorStorable
+    public let applicationURLOpener: ApplicationURLOpening
 
     public var orderingJourneyUrl: String
+    public var orderingJourneyViewUpdater: OrderingJourneyViewUpdating
 
     public init(
         product: ProductProvidable,
@@ -26,7 +28,9 @@ public class SellImplementing: Sell {
         fulfilmentPoint: FulfilmentPointProvidable,
         payment: PaymentProvidable,
         orderingJourneyUrl: String,
-        colorStore: ColorStorable
+        colorStore: ColorStorable,
+        applicationURLOpener: ApplicationURLOpening,
+        orderingJourneyViewUpdater: OrderingJourneyViewUpdating
     ) {
         self.product = product
         self.basket = basket
@@ -35,6 +39,8 @@ public class SellImplementing: Sell {
         self.payment = payment
         self.orderingJourneyUrl = orderingJourneyUrl
         self.colorStore = colorStore
+        self.applicationURLOpener = applicationURLOpener
+        self.orderingJourneyViewUpdater = orderingJourneyViewUpdater
     }
 
     /// Get the Web Ordering Journey view controller with orderingJourneyUrl
@@ -47,7 +53,12 @@ public class SellImplementing: Sell {
     /// navigationController?.present(viewController, animated: true, completion: nil)
     /// ```
     public func createOrderingJourneyViewController() -> UIHostingController<OrderingJourneyView> {
-        return OrderingJourneyViewController(urlString: orderingJourneyUrl, colorStore: colorStore)
+        let oJVC = OrderingJourneyViewController(urlString: orderingJourneyUrl,
+                                                 colorStore: colorStore,
+                                                 javascriptRunDetails: orderingJourneyViewUpdater.javascriptRunDetails,
+                                                 applicationURLOpener: applicationURLOpener)
+        orderingJourneyViewUpdater.orderingJourneyView = oJVC.rootView
+        return oJVC
     }
 
     /// Get the Web Ordering Journey SwiftUI view with orderingJourneyUrl
@@ -64,6 +75,12 @@ public class SellImplementing: Sell {
     /// }
     /// ```
     public func createOrderingJourneyView() -> OrderingJourneyView {
-        return OrderingJourneyView(urlString: orderingJourneyUrl, colorStore: colorStore)
+        let javascriptRunDetails = orderingJourneyViewUpdater.javascriptRunDetails
+        let orderingJourneyView = OrderingJourneyView(urlString: orderingJourneyUrl,
+                                                      colorStore: colorStore,
+                                                      javascriptRunDetails: javascriptRunDetails,
+                                                      applicationURLOpener: applicationURLOpener)
+        orderingJourneyViewUpdater.orderingJourneyView = orderingJourneyView
+        return orderingJourneyView
     }
 }

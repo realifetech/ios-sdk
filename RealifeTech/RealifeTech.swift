@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class RealifeTech {
 
@@ -66,8 +67,9 @@ public class RealifeTech {
         Sell = SellFactory.makeSellModule(
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
-            colorStore: General)
-        Identity = IdentityFactory.makeIdentityModule()
+            colorStore: General,
+            applicationURLOpener: UIApplication.shared)
+        Identity = IdentityFactory.makeIdentityModule(graphQLManager: graphQLManager, orderingJourneyViewUpdater: Sell.orderingJourneyViewUpdater)
     }
 
     public static func clearAllInterfaces() {

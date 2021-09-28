@@ -13,7 +13,8 @@ public enum SellFactory {
     static func makeSellModule(
         graphQLManager: GraphQLManageable,
         orderingJourneyUrl: String,
-        colorStore: ColorStorable
+        colorStore: ColorStorable,
+        applicationURLOpener: ApplicationURLOpening
     ) -> Sell {
         return SellImplementing(
             product: ProductRepository(graphQLManager: graphQLManager),
@@ -22,6 +23,8 @@ public enum SellFactory {
             fulfilmentPoint: FulfilmentPointRepository(graphQLManager: graphQLManager),
             payment: PaymentRepository(graphQLManager: graphQLManager),
             orderingJourneyUrl: orderingJourneyUrl,
-            colorStore: colorStore)
+            colorStore: colorStore,
+            applicationURLOpener: applicationURLOpener,
+            orderingJourneyViewUpdater: OrderingJourneyViewUpdater())
     }
 }

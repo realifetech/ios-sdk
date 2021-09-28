@@ -10,4 +10,10 @@ import Foundation
 
 public protocol Identity {
     func isHostAppLoginDeepLink(url: URL?) -> Bool
+    func attemptLogin(emailAddress: String,
+                      firstName: String?,
+                      lastName: String?,
+                      salt: String,
+                      completion: @escaping (Error?) -> Void)
+    func logout()
 }
