@@ -31,8 +31,9 @@ struct ModulesView: View {
                     NavigationLink("Web Ordering Journey", destination: WebOrderingJourneyView())
                 }
                 Section(header: Text("Identity")) {
-                    NavigationLink("Host App Login Example",
+                    NavigationLink("Host App Login",
                                    destination: hostAppLoginHandler.createLoginViewController().rootView)
+                    NavigationLink("Host App Logout", destination: ExampleLogoutView())
                 }
             }
             .navigationBarTitle("Realife Tech SDK")

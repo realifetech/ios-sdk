@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EB66B4B270477760065049B /* ExampleLogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB66B4A270477760065049B /* ExampleLogoutView.swift */; };
 		3EF6C48826FE161400FC154E /* ExampleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6C48726FE161400FC154E /* ExampleLoginView.swift */; };
 		3EF6C48A26FE203900FC154E /* HostAppLoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6C48926FE203900FC154E /* HostAppLoginHandler.swift */; };
 		3FA1EF186BD30C3A0EB371A8 /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB1AA0FB8D493ED0238EC14 /* Pods_SampleApp.framework */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3EB66B4A270477760065049B /* ExampleLogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLogoutView.swift; sourceTree = "<group>"; };
 		3EF6C48726FE161400FC154E /* ExampleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLoginView.swift; sourceTree = "<group>"; };
 		3EF6C48926FE203900FC154E /* HostAppLoginHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostAppLoginHandler.swift; sourceTree = "<group>"; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -123,6 +125,7 @@
 				96AED99F26D00D2400F6C750 /* WebOrderingJourneyView.swift */,
 				96AED99D26D00A2100F6C750 /* WebPageTypeGetterView.swift */,
 				3EF6C48726FE161400FC154E /* ExampleLoginView.swift */,
+				3EB66B4A270477760065049B /* ExampleLogoutView.swift */,
 				96AED99426CFF4B000F6C750 /* Components */,
 			);
 			path = Screens;
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EB66B4B270477760065049B /* ExampleLogoutView.swift in Sources */,
 				96AED99326CFF4A500F6C750 /* DeviceRegistrationView.swift in Sources */,
 				96AED99126CFEFF600F6C750 /* ModulesView.swift in Sources */,
 				96AED99C26D0079200F6C750 /* AudienceCheckingView.swift in Sources */,
