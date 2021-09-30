@@ -50,7 +50,7 @@ class HostAppAuthenticator: HostAppAuthenticating {
     }
 
     public func generateUserInfoSignature(userInfo: HostAppUserInfo, salt: String, deviceId: String) -> String {
-        var userInfoDict: [String: String] = ["emailAddress": userInfo.emailAddress]
+        var userInfoDict: [String: String] = ["email": userInfo.emailAddress]
         if let firstName = userInfo.firstName { userInfoDict["firstName"] = firstName }
         if let lastName = userInfo.lastName { userInfoDict["lastName"] = lastName }
         userInfoDict["device"] = deviceId
