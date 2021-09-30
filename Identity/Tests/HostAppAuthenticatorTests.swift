@@ -103,7 +103,7 @@ final class HostAppAuthenticatorTests: XCTestCase {
     }
 
     var signatureToCheck: String {
-        return "af5fbe741eabc8ecebdb58ac4b5cceb2f906e528839452fd17f0fbbb591405f7"
+        return "a03f0362eb18a8c601cc9bcbf72c5d21e76e797b90e215db6f44f0548f4c034b"
     }
 }
 
