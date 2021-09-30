@@ -22,13 +22,32 @@ public final class HostAppLoginRepository {
 
 extension HostAppLoginRepository: HostAppLoginDataProviding {
 
-    func generateNonce(completion: @escaping (Result<String, Error>) -> Void) {
+    func getDeviceId(completion: @escaping GetDeviceIdHandler) {
+        graphQLManager.dispatch(
+            query: ApolloType.GetDeviceIdQuery(),
+            cachePolicy: .returnCacheDataElseFetch) { result in
+            switch result {
+            case .success(let response):
+                guard let deviceId = response.data?.me?.device?.id else {
+                    return completion(.failure(APIError.unparseableError()))
+                }
+                return completion(.success(deviceId))
+            case .failure(let error):
+                return completion(.failure(error))
+            }
+        }
+    }
+
+    func generateNonce(completion: @escaping GenerateNonceHandler) {
         graphQLManager.dispatchMutation(
             mutation: ApolloType.GenerateNonceMutation(),
             cacheResultToPersistence: false) { result in
             switch result {
             case .success(let response):
-                return completion(.success(response.data?.generateNonce?.token ?? ""))
+                guard let token = response.data?.generateNonce?.token else {
+                    return completion(.failure(APIError.unparseableError()))
+                }
+                return completion(.success(token))
             case .failure(let error):
                 return completion(.failure(error))
             }
