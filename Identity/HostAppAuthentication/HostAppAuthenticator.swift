@@ -45,7 +45,7 @@ class HostAppAuthenticator: HostAppAuthenticating {
         let description = "{" + (sorted.map { "\"\($0.key)\":\"\($0.value)\"" }.joined(separator: ",")) + "}"
         let urlAllowed: CharacterSet = .alphanumerics.union(.init(charactersIn: "-._~"))
         guard let encoded = description.addingPercentEncoding(withAllowedCharacters: urlAllowed) else { return "" }
-        return "\(encoded).\(salt)".sha256
+        return "\(encoded).\(salt)".sha256.lowercased()
     }
 
     private func generateNonceHandler(next: @escaping AuthenticateUserHandler) -> GenerateNonceHandler {
