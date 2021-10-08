@@ -20,6 +20,7 @@ final class BasketRepositoryMutationTests: XCTestCase {
         fulfilmentPointId: "1",
         seatInfo: nil,
         items: [BasketItemInput(
+                    id: "1",
                     productId: "1",
                     productVariantId: "1",
                     fulfilmentPointId: "1",
