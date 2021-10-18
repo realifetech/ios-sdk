@@ -34,7 +34,7 @@ final class OAuthRequesterTests: XCTestCase {
     }
 
     func test_interceptors() {
-        XCTAssertEqual(sut.interceptors()?.count, 3)
+        XCTAssertEqual(sut.interceptors()?.count, 4)
     }
 
     func test_requestInitialAccessToken() throws {
