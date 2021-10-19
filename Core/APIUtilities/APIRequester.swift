@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-public protocol APIRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting {
+public protocol APIRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting, AcceptLanguageHeaderRequestInserting {
     static func root() -> String
     static func preDispatchAction() -> Observable<Any?>?
     static func interceptors() -> [(URLRequest) -> (URLRequest)]?
@@ -30,6 +30,7 @@ extension APIRequester {
 
     public static func interceptors() -> [(URLRequest) -> (URLRequest)]? {
         return [
+            addLanguageHeader,
             addJSONContentTypeHeader,
             addDeviceIdHeader,
             addOAuthHeader
