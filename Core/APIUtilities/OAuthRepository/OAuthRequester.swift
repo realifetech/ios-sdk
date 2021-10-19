@@ -14,7 +14,7 @@ struct OAuthRequester: Requester {
     private static var defaultOAuthParameters: [String: Any] = [:]
 }
 
-extension OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting {
+extension OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderRequestInserting, OAuthHeaderRequestInserting, AcceptLanguageHeaderRequestInserting {
 
     /// Must be called during setup. Provides secrets for getting initial access token.
     static func setDefaultOAuthParameters(clientId: String, clientSecret: String) {
@@ -38,6 +38,7 @@ extension OAuthRequester: JSONContentTypeHeaderRequestInserting, DeviceIdHeaderR
 
     static func interceptors() -> [(URLRequest) -> (URLRequest)]? {
         return [
+            addLanguageHeader,
             addJSONContentTypeHeader,
             addDeviceIdHeader,
             addOAuthHeader

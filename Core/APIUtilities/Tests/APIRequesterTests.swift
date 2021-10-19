@@ -66,7 +66,7 @@ final class APIRequesterTests: XCTestCase {
         guard let sutInterceptors = MockRequester.interceptors() else {
             return XCTFail("Did not get interceptors")
         }
-        XCTAssertEqual(sutInterceptors.count, 3)
+        XCTAssertEqual(sutInterceptors.count, 4)
         sutInterceptors.forEach {
             request = $0(request)
         }
@@ -86,6 +86,10 @@ final class APIRequesterTests: XCTestCase {
             let(key, value) = tuple
             let expectedHeader = RequestHeader.generateAuthHeader(accessToken: testToken)
             return key == expectedHeader.header && value == expectedHeader.valueForHeader
+        }))
+        XCTAssertTrue(headerFields.contains(where: { tuple in
+            let(key, value) = tuple
+            return key == "Accept-Language" && value.count == 2
         }))
     }
 
