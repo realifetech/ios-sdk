@@ -37,7 +37,7 @@ public class CoreImplementing: Core {
     public func storeCredentials(accessToken: String, secondsExpiresIn: Int, refreshToken: String?) {
         apiHelper.storeCredentials(
             accessToken: accessToken,
-            secondsExpiresIn: secondsExpiresIn,
+            secondsExpiresIn: 20,
             refreshToken: refreshToken)
         graphQLManager.updateHeadersToNetworkTransport(deviceId: deviceHelper.deviceId, apiHelper: apiHelper)
     }

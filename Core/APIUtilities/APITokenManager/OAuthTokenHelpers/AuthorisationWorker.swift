@@ -49,7 +49,7 @@ struct AuthorisationWorker: AuthorisationWorkable {
                 if let accessToken = token.accessToken, let expiresIn = token.expiresIn {
                     authorisationStore.saveCredentials(
                         token: accessToken,
-                        secondsExpiresIn: expiresIn,
+                        secondsExpiresIn: 20,
                         refreshToken: token.refreshToken)
                 }
                 return token
