@@ -23,7 +23,8 @@ final class APIRequesterHelperTests: XCTestCase {
             deviceId: testDeviceId,
             clientId: testClientId,
             clientSecret: testClientSecret,
-            baseUrl: testBaseUrl)
+            baseUrl: testBaseUrl,
+            notificationCenter: NotificationCenter.default)
     }
 
     override func tearDown() {
