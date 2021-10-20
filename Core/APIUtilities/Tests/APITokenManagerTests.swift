@@ -88,10 +88,18 @@ final class APITokenManagerTests: XCTestCase {
         XCTAssertEqual(credentialsReceived.refreshToken, "B")
     }
 
-    func test_removeCredentials() {
+    func test_removeCredentials_loggedIn() {
+        testStore.refreshToken = "abc123"
         _ = expectation(forNotification: Notification.Name("rltSDKUserRequiresLogout"), object: nil, handler: nil)
         sut.removeCredentials()
         XCTAssertTrue(self.testStore.removeCredentialsCalled)
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func test_removeCredentials_loggedOut_notificationNotPosted() {
+        testStore.refreshToken = nil
+        let expectation = expectation(forNotification: Notification.Name("rltSDKUserRequiresLogout"), object: nil, handler: nil)
+        expectation.isInverted = true
         waitForExpectations(timeout: 1, handler: nil)
     }
 }

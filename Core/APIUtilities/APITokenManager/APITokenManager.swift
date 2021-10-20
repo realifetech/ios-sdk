@@ -62,7 +62,9 @@ public class APITokenManager: APITokenManagable {
     }
 
     public func removeCredentials() {
-        notificationCenter.post(Notification(name: Notification.Name("rltSDKUserRequiresLogout")))
+        if authorisationStore.refreshToken != nil {
+            notificationCenter.post(Notification(name: Notification.Name("rltSDKUserRequiresLogout")))
+        }
         authorisationStore.removeCredentials()
     }
 }
