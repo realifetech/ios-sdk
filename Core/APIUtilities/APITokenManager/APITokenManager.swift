@@ -57,7 +57,7 @@ public class APITokenManager: APITokenManagable {
     public func storeCredentials(accessToken: String, secondsExpiresIn: Int, refreshToken: String?) {
         authorisationStore.saveCredentials(
             token: accessToken,
-            secondsExpiresIn: 20,
+            secondsExpiresIn: secondsExpiresIn,
             refreshToken: refreshToken)
     }
 
