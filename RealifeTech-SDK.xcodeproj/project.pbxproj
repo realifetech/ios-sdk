@@ -12,6 +12,7 @@
 		3E13834326FC9FDE0037878F /* IdentityClearable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834226FC9FDE0037878F /* IdentityClearable+Extensions.swift */; };
 		3E13834526FC9FF80037878F /* IdentityClearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834426FC9FF80037878F /* IdentityClearer.swift */; };
 		3E13834726FCA2350037878F /* IdentityClearerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13834626FCA2350037878F /* IdentityClearerTests.swift */; };
+		3E2679D12705D16300926FAC /* general_getDeviceId.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2679D02705D16300926FAC /* general_getDeviceId.graphql.swift */; };
 		3E2C1FCC26F0F35800C9C72B /* IdentityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC426F0F35800C9C72B /* IdentityFactory.swift */; };
 		3E2C1FCD26F0F35800C9C72B /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC526F0F35800C9C72B /* Identity.swift */; };
 		3E2C1FD026F0F35800C9C72B /* IdentityImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */; };
@@ -447,6 +448,7 @@
 		3E13834226FC9FDE0037878F /* IdentityClearable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdentityClearable+Extensions.swift"; sourceTree = "<group>"; };
 		3E13834426FC9FF80037878F /* IdentityClearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityClearer.swift; sourceTree = "<group>"; };
 		3E13834626FCA2350037878F /* IdentityClearerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityClearerTests.swift; sourceTree = "<group>"; };
+		3E2679D02705D16300926FAC /* general_getDeviceId.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = general_getDeviceId.graphql.swift; sourceTree = "<group>"; };
 		3E2C1FC426F0F35800C9C72B /* IdentityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityFactory.swift; sourceTree = "<group>"; };
 		3E2C1FC526F0F35800C9C72B /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		3E2C1FC926F0F35800C9C72B /* IdentityImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityImplementing.swift; sourceTree = "<group>"; };
@@ -1457,6 +1459,7 @@
 				0319F3032667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift */,
 				0319F30D2667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift */,
 				0319F3102667995B00C01E1F /* content_getWebPageByType.graphql.swift */,
+				3E2679D02705D16300926FAC /* general_getDeviceId.graphql.swift */,
 				3EE4CDA027022F53005DBAE4 /* identity_authenticateUserBySignedUserInfo.graphql.swift */,
 				3EE4CDA127022F53005DBAE4 /* identity_fragment_authToken.graphql.swift */,
 				3EE4CDA227022F53005DBAE4 /* identity_generateNonce.graphql.swift */,
@@ -2338,6 +2341,7 @@
 				960B00DB26C3CE4C002C82E9 /* sell_getMyOrder.graphql.swift in Sources */,
 				3E78BCFF26B8231800BF3026 /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */,
 				960B00DE26C3CEAA002C82E9 /* sell_deleteMyPaymentSource.graphql.swift in Sources */,
+				3E2679D12705D16300926FAC /* general_getDeviceId.graphql.swift in Sources */,
 				3E78BD0526B8231800BF3026 /* (null) in Sources */,
 				3E78BCFE26B8231800BF3026 /* sell_fragment_basket.graphql.swift in Sources */,
 				960B00DD26C3CE9B002C82E9 /* sell_fragment_paymentIntent.graphql.swift in Sources */,

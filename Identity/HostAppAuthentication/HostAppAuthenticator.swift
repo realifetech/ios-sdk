@@ -28,24 +28,37 @@ class HostAppAuthenticator: HostAppAuthenticating {
         self.userInfo = userInfo
         self.salt = salt
         self.completion = completion
-        self.signature = generateUserInfoSignature(userInfo: userInfo, salt: salt)
         let webViewHandler = authenticateWebViewHandler()
         let userHandler = authenticateUserHandler(next: webViewHandler)
         let nonceHandler = generateNonceHandler(next: userHandler)
-        hostAppLoginDataProvider.generateNonce(completion: nonceHandler)
+        let deviceIdHandler = getDeviceIdHandler(next: nonceHandler)
+        hostAppLoginDataProvider.getDeviceId(completion: deviceIdHandler)
     }
 
-    public func generateUserInfoSignature(userInfo: HostAppUserInfo, salt: String) -> String {
-        var userInfoDict: [String: String] = ["emailAddress": userInfo.emailAddress]
+    private func getDeviceIdHandler(next: @escaping GenerateNonceHandler) -> GetDeviceIdHandler {
+        return { result in
+            switch result {
+            case .success(let deviceId):
+                self.signature = self.generateUserInfoSignature(userInfo: self.userInfo,
+                                                                salt: self.salt,
+                                                                deviceId: deviceId)
+                self.hostAppLoginDataProvider.generateNonce(completion: next)
+            case.failure(let error):
+                self.completion(error)
+            }
+        }
+    }
+
+    public func generateUserInfoSignature(userInfo: HostAppUserInfo, salt: String, deviceId: String) -> String {
+        var userInfoDict: [String: String] = ["email": userInfo.emailAddress]
         if let firstName = userInfo.firstName { userInfoDict["firstName"] = firstName }
         if let lastName = userInfo.lastName { userInfoDict["lastName"] = lastName }
+        userInfoDict["device"] = deviceId
         let sorted = userInfoDict.sorted { one, two in
             return one.key < two.key
         }
         let description = "{" + (sorted.map { "\"\($0.key)\":\"\($0.value)\"" }.joined(separator: ",")) + "}"
-        let urlAllowed: CharacterSet = .alphanumerics.union(.init(charactersIn: "-._~"))
-        guard let encoded = description.addingPercentEncoding(withAllowedCharacters: urlAllowed) else { return "" }
-        return "\(encoded).\(salt)".sha256
+        return "\(description).\(salt)".sha256.lowercased()
     }
 
     private func generateNonceHandler(next: @escaping AuthenticateUserHandler) -> GenerateNonceHandler {

@@ -30,20 +30,26 @@ final class HostAppAuthenticatorTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_generateSignature() {
-        let signature = sut.generateUserInfoSignature(userInfo: userInfo, salt: salt)
-        let shaHash = "7614244E2ADE7000CCC7FBDE88839F48EEB86EE91B70E208BD3A92C7C93A3138"
-        XCTAssert(signature == shaHash)
-    }
-
-    func test_attemptLogin_dataFlow() {
+    func test_attemptLogin_success() {
         let expectation = XCTestExpectation()
         let completion: HostAppLoginCompletion = { error in
             XCTAssertEqual(self.repository.userInfo?.firstName, self.userInfo.firstName)
             XCTAssertEqual(self.repository.salt, self.salt)
             XCTAssertEqual(self.repository.nonce, "nonce")
+            XCTAssertEqual(self.repository.signature, self.signatureToCheck)
             XCTAssertEqual(self.viewUpdater.javacriptEvaluated, "acceptAuthDetails(\'a\', \'b\', 10, \'c\')")
             XCTAssertNil(error)
+            expectation.fulfill()
+        }
+        sut.attemptLogin(userInfo: userInfo, salt: salt, completion: completion)
+        wait(for: [expectation], timeout: 0.5)
+    }
+
+    func test_attemptLogin_getDeviceIdFailure() {
+        repository.failure = .getDeviceId
+        let expectation = XCTestExpectation()
+        let completion: HostAppLoginCompletion = { error in
+            XCTAssertNotNil(error)
             expectation.fulfill()
         }
         sut.attemptLogin(userInfo: userInfo, salt: salt, completion: completion)
@@ -89,14 +95,22 @@ final class HostAppAuthenticatorTests: XCTestCase {
     }
 
     var salt: String {
-        return "abc123"
+        return "salt123"
+    }
+
+    var deviceId: String {
+        return "deviceId123"
+    }
+
+    var signatureToCheck: String {
+        return "a03f0362eb18a8c601cc9bcbf72c5d21e76e797b90e215db6f44f0548f4c034b"
     }
 }
 
 final class MockDataFlowRepository: HostAppLoginDataProviding {
 
     enum Failure {
-        case none, generateNonce, authenticateUser
+        case none, getDeviceId, generateNonce, authenticateUser
     }
 
     var userInfo: HostAppUserInfo?
@@ -105,6 +119,13 @@ final class MockDataFlowRepository: HostAppLoginDataProviding {
     var signature: String?
     var token: OAuthToken?
     var failure: Failure = .none
+
+    func getDeviceId(completion: GetDeviceIdHandler) {
+        if failure == .getDeviceId {
+            return completion(.failure(DummyError.failure))
+        }
+        completion(.success("deviceId123"))
+    }
 
     func generateNonce(completion: GenerateNonceHandler) {
         if failure == .generateNonce {
