@@ -20,15 +20,18 @@ public class APITokenManager: APITokenManagable {
     private let oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating
     private let scheduler: SchedulerType
     private let disposeBag = DisposeBag()
+    private let notificationCenter: NotificationCenter
 
     init(
         authorisationStore: AuthorisationStoring,
         oAuthRefreshOrWaitActionGenerator: OAuthRefreshOrWaitActionGenerating,
-        subscibeOnScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)
+        subscibeOnScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background),
+        notificationCenter: NotificationCenter
     ) {
         self.scheduler = subscibeOnScheduler
         self.authorisationStore = authorisationStore
         self.oAuthRefreshOrWaitActionGenerator = oAuthRefreshOrWaitActionGenerator
+        self.notificationCenter = notificationCenter
     }
 
     public func getValidToken(_ completion: ((Result<Void, Error>) -> Void)?) {
@@ -43,7 +46,9 @@ public class APITokenManager: APITokenManagable {
             .subscribe(onNext: {
                 completion?(.success(()))
             }, onError: { [weak self] error in
-                self?.removeCredentials()
+                if let apiError = error as? APIError, apiError.clientError {
+                    self?.removeCredentials()
+                }
                 completion?(.failure(error))
             })
             .disposed(by: disposeBag)
@@ -57,6 +62,9 @@ public class APITokenManager: APITokenManagable {
     }
 
     public func removeCredentials() {
+        if authorisationStore.refreshToken != nil {
+            notificationCenter.post(Notification(name: Notification.Name("rltSDKUserRequiresLogout")))
+        }
         authorisationStore.removeCredentials()
     }
 }
