@@ -22,7 +22,8 @@ final class APITokenManagerTests: XCTestCase {
         sut = APITokenManager(
             authorisationStore: testStore,
             oAuthRefreshOrWaitActionGenerator: testRefreshGenerator,
-            subscibeOnScheduler: MainScheduler.instance)
+            subscibeOnScheduler: MainScheduler.instance,
+            notificationCenter: NotificationCenter.default)
     }
 
     func test_token() {
@@ -60,7 +61,7 @@ final class APITokenManagerTests: XCTestCase {
 
     func test_getValidToken_onError_shouldRemoveCredentials() {
         let expectation = XCTestExpectation(description: "Valid token completion called")
-        let observableSource = PublishSubject<Void>.error(DummyError.failure)
+        let observableSource = PublishSubject<Void>.error(APIError.constructedError(data: Data(), statusCode: 403))
         testRefreshGenerator.refreshTokenOrWaitAction = observableSource.asObservable()
         sut.getValidToken { _ in
             XCTAssertTrue(self.testStore.removeCredentialsCalled)
@@ -87,9 +88,19 @@ final class APITokenManagerTests: XCTestCase {
         XCTAssertEqual(credentialsReceived.refreshToken, "B")
     }
 
-    func test_removeCredentials() {
+    func test_removeCredentials_loggedIn() {
+        testStore.refreshToken = "abc123"
+        _ = expectation(forNotification: Notification.Name("rltSDKUserRequiresLogout"), object: nil, handler: nil)
         sut.removeCredentials()
-        XCTAssertTrue(testStore.removeCredentialsCalled)
+        XCTAssertTrue(self.testStore.removeCredentialsCalled)
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+
+    func test_removeCredentials_loggedOut_notificationNotPosted() {
+        testStore.refreshToken = nil
+        let expectation = expectation(forNotification: Notification.Name("rltSDKUserRequiresLogout"), object: nil, handler: nil)
+        expectation.isInverted = true
+        waitForExpectations(timeout: 1, handler: nil)
     }
 }
 
