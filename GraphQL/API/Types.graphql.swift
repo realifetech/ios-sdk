@@ -1969,13 +1969,23 @@ public enum ApolloType {
     public var graphQLMap: GraphQLMap
 
     /// - Parameters:
+    ///   - id
     ///   - product
     ///   - productVariant
     ///   - fulfilmentPoint
     ///   - quantity
     ///   - productModifierItems
-    public init(product: Swift.Optional<GraphQLID?> = nil, productVariant: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: Swift.Optional<GraphQLID?> = nil, quantity: Swift.Optional<Int?> = nil, productModifierItems: Swift.Optional<[ProductModifierItemSelectionInput?]?> = nil) {
-      graphQLMap = ["product": product, "productVariant": productVariant, "fulfilmentPoint": fulfilmentPoint, "quantity": quantity, "productModifierItems": productModifierItems]
+    public init(id: Swift.Optional<GraphQLID?> = nil, product: Swift.Optional<GraphQLID?> = nil, productVariant: Swift.Optional<GraphQLID?> = nil, fulfilmentPoint: Swift.Optional<GraphQLID?> = nil, quantity: Swift.Optional<Int?> = nil, productModifierItems: Swift.Optional<[ProductModifierItemSelectionInput?]?> = nil) {
+      graphQLMap = ["id": id, "product": product, "productVariant": productVariant, "fulfilmentPoint": fulfilmentPoint, "quantity": quantity, "productModifierItems": productModifierItems]
+    }
+
+    public var id: Swift.Optional<GraphQLID?> {
+      get {
+        return graphQLMap["id"] as? Swift.Optional<GraphQLID?> ?? Swift.Optional<GraphQLID?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "id")
+      }
     }
 
     public var product: Swift.Optional<GraphQLID?> {

@@ -10,6 +10,7 @@ import Foundation
 
 public struct BasketItemInput {
 
+    public let id: String?
     public let productId: String?
     public let productVariantId: String?
     public let fulfilmentPointId: String?
@@ -17,12 +18,14 @@ public struct BasketItemInput {
     public let productModifierItems: [ProductModifierItemSelectionInput]?
 
     public init(
+        id: String?,
         productId: String?,
         productVariantId: String?,
         fulfilmentPointId: String?,
         quantity: Int?,
         productModifierItems: [ProductModifierItemSelectionInput]?
     ) {
+        self.id = id
         self.productId = productId
         self.productVariantId = productVariantId
         self.fulfilmentPointId = fulfilmentPointId
