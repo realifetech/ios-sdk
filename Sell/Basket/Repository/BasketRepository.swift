@@ -38,6 +38,7 @@ public final class BasketRepository {
             seatInfo: input.seatInfo,
             items: input.items.compactMap {
                 ApolloType.BasketItemInput(
+                    id: $0.id,
                     product: $0.productId,
                     productVariant: $0.productVariantId,
                     fulfilmentPoint: $0.fulfilmentPointId,
