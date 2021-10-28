@@ -24,17 +24,18 @@ public struct APIRequesterHelper {
         deviceId: String,
         clientId: String,
         clientSecret: String,
-        baseUrl: String
+        baseUrl: String,
+        notificationCenter: NotificationCenter
     ) -> APITokenManagable {
         OAuthRequester.setDefaultOAuthParameters(clientId: clientId, clientSecret: clientSecret)
         self.baseUrl = baseUrl
         self.deviceId = deviceId
-        let apiTokenManager = constructTokenManager()
+        let apiTokenManager = constructTokenManager(notificationCenter: notificationCenter)
         self.tokenManager = apiTokenManager
         return apiTokenManager
     }
 
-    private static func constructTokenManager() -> APITokenManagable {
+    private static func constructTokenManager(notificationCenter: NotificationCenter) -> APITokenManagable {
         let authorisationStore = AuthorisationStore()
         let authorisationWorker = AuthorisationWorker(authorisationStore: authorisationStore)
         let oAuthTokenRefreshWatcher = OAuthTokenRefreshWatcher()
@@ -44,6 +45,7 @@ public struct APIRequesterHelper {
             authorisationStore: authorisationStore)
         return APITokenManager(
             authorisationStore: authorisationStore,
-            oAuthRefreshOrWaitActionGenerator: oAuthRefreshOrWaitActionGenerator)
+            oAuthRefreshOrWaitActionGenerator: oAuthRefreshOrWaitActionGenerator,
+            notificationCenter: notificationCenter)
     }
 }

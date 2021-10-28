@@ -35,7 +35,8 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
-            baseUrl: configuration.apiUrl)
+            baseUrl: configuration.apiUrl,
+            notificationCenter: NotificationCenter.default)
         let graphQLManager = GraphQLFactory.makeGraphQLManager(
             deviceId: deviceHelper.deviceId,
             tokenHelper: apiHelper,
