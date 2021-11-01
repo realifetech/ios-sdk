@@ -1601,10 +1601,12 @@ public enum ApolloType {
 
     /// - Parameters:
     ///   - id
+    ///   - tokenProvider
+    ///   - type
     ///   - billingDetails
     ///   - card
-    public init(id: Swift.Optional<GraphQLID?> = nil, billingDetails: Swift.Optional<PaymentSourceBillingDetailsInput?> = nil, card: Swift.Optional<CardInput?> = nil) {
-      graphQLMap = ["id": id, "billingDetails": billingDetails, "card": card]
+    public init(id: Swift.Optional<GraphQLID?> = nil, tokenProvider: Swift.Optional<String?> = nil, type: Swift.Optional<PaymentSourceType?> = nil, billingDetails: Swift.Optional<PaymentSourceBillingDetailsInput?> = nil, card: Swift.Optional<CardInput?> = nil) {
+      graphQLMap = ["id": id, "tokenProvider": tokenProvider, "type": type, "billingDetails": billingDetails, "card": card]
     }
 
     public var id: Swift.Optional<GraphQLID?> {
@@ -1613,6 +1615,24 @@ public enum ApolloType {
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "id")
+      }
+    }
+
+    public var tokenProvider: Swift.Optional<String?> {
+      get {
+        return graphQLMap["tokenProvider"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "tokenProvider")
+      }
+    }
+
+    public var type: Swift.Optional<PaymentSourceType?> {
+      get {
+        return graphQLMap["type"] as? Swift.Optional<PaymentSourceType?> ?? Swift.Optional<PaymentSourceType?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "type")
       }
     }
 
@@ -1632,6 +1652,41 @@ public enum ApolloType {
       set {
         graphQLMap.updateValue(newValue, forKey: "card")
       }
+    }
+  }
+
+  public enum PaymentSourceType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case card
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "card": self = .card
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .card: return "card"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: PaymentSourceType, rhs: PaymentSourceType) -> Bool {
+      switch (lhs, rhs) {
+        case (.card, .card): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [PaymentSourceType] {
+      return [
+        .card,
+      ]
     }
   }
 
@@ -2918,41 +2973,6 @@ public enum ApolloType {
       return [
         .redirectToUrl,
         .collectCvc,
-      ]
-    }
-  }
-
-  public enum PaymentSourceType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-    public typealias RawValue = String
-    case card
-    /// Auto generated constant for unknown enum values
-    case __unknown(RawValue)
-
-    public init?(rawValue: RawValue) {
-      switch rawValue {
-        case "card": self = .card
-        default: self = .__unknown(rawValue)
-      }
-    }
-
-    public var rawValue: RawValue {
-      switch self {
-        case .card: return "card"
-        case .__unknown(let value): return value
-      }
-    }
-
-    public static func == (lhs: PaymentSourceType, rhs: PaymentSourceType) -> Bool {
-      switch (lhs, rhs) {
-        case (.card, .card): return true
-        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-        default: return false
-      }
-    }
-
-    public static var allCases: [PaymentSourceType] {
-      return [
-        .card,
       ]
     }
   }
