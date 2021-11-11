@@ -14,9 +14,9 @@ import GraphQL
 public struct Card: Codable, Equatable {
 
     public let brand: String
-    public let numberToken: String
-    public let expMonth: String
-    public let expYear: String
+    public let numberToken: String?
+    public let expMonth: String?
+    public let expYear: String?
     public let last4: String
     public let fingerprint: String?
 

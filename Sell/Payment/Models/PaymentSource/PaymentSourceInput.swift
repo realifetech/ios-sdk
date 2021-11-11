@@ -33,6 +33,8 @@ extension PaymentSourceInput {
     var apolloInput: ApolloType.PaymentSourceInput {
         ApolloType.PaymentSourceInput(
             id: id,
+            tokenProvider: "vgs",
+            type: .card,
             billingDetails: billingDetails?.apolloInput,
             card: card?.apolloCardInput)
     }
