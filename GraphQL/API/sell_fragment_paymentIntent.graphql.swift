@@ -239,7 +239,7 @@ public extension ApolloType {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("type", type: .nonNull(.scalar(PaymentActionType.self))),
+          GraphQLField("type", type: .scalar(PaymentActionType.self)),
           GraphQLField("url", type: .scalar(String.self)),
         ]
       }
@@ -250,7 +250,7 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(type: PaymentActionType, url: String? = nil) {
+      public init(type: PaymentActionType? = nil, url: String? = nil) {
         self.init(unsafeResultMap: ["__typename": "PaymentAction", "type": type, "url": url])
       }
 
@@ -263,9 +263,9 @@ public extension ApolloType {
         }
       }
 
-      public var type: PaymentActionType {
+      public var type: PaymentActionType? {
         get {
-          return resultMap["type"]! as! PaymentActionType
+          return resultMap["type"] as? PaymentActionType
         }
         set {
           resultMap.updateValue(newValue, forKey: "type")
