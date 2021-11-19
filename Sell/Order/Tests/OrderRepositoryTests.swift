@@ -194,7 +194,7 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: .complete,
+                status: "complete",
                 collectionPreferenceType: .asap,
                 checkInTime: nil)
         ) { result in
@@ -229,7 +229,7 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: .complete,
+                status: "complete",
                 collectionPreferenceType: .asap,
                 checkInTime: nil)
         ) { result in
@@ -251,7 +251,7 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: .complete,
+                status: "complete",
                 collectionPreferenceType: .asap,
                 checkInTime: nil)
         ) { result in
