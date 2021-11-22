@@ -288,7 +288,7 @@ public extension ApolloType {
         self.resultMap = unsafeResultMap
       }
 
-      public init(brand: String, numberToken: String, expMonth: String, expYear: String, last4: String, fingerprint: String? = nil) {
+      public init(brand: String, numberToken: String? = nil, expMonth: String? = nil, expYear: String? = nil, last4: String, fingerprint: String? = nil) {
         self.init(unsafeResultMap: ["__typename": "Card", "brand": brand, "numberToken": numberToken, "expMonth": expMonth, "expYear": expYear, "last4": last4, "fingerprint": fingerprint])
       }
 
@@ -350,9 +350,9 @@ public extension ApolloType {
       return [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("brand", type: .nonNull(.scalar(String.self))),
-        GraphQLField("numberToken", type: .nonNull(.scalar(String.self))),
-        GraphQLField("expMonth", type: .nonNull(.scalar(String.self))),
-        GraphQLField("expYear", type: .nonNull(.scalar(String.self))),
+        GraphQLField("numberToken", type: .scalar(String.self)),
+        GraphQLField("expMonth", type: .scalar(String.self)),
+        GraphQLField("expYear", type: .scalar(String.self)),
         GraphQLField("last4", type: .nonNull(.scalar(String.self))),
         GraphQLField("fingerprint", type: .scalar(String.self)),
       ]
@@ -364,7 +364,7 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(brand: String, numberToken: String, expMonth: String, expYear: String, last4: String, fingerprint: String? = nil) {
+    public init(brand: String, numberToken: String? = nil, expMonth: String? = nil, expYear: String? = nil, last4: String, fingerprint: String? = nil) {
       self.init(unsafeResultMap: ["__typename": "Card", "brand": brand, "numberToken": numberToken, "expMonth": expMonth, "expYear": expYear, "last4": last4, "fingerprint": fingerprint])
     }
 
@@ -386,27 +386,27 @@ public extension ApolloType {
       }
     }
 
-    public var numberToken: String {
+    public var numberToken: String? {
       get {
-        return resultMap["numberToken"]! as! String
+        return resultMap["numberToken"] as? String
       }
       set {
         resultMap.updateValue(newValue, forKey: "numberToken")
       }
     }
 
-    public var expMonth: String {
+    public var expMonth: String? {
       get {
-        return resultMap["expMonth"]! as! String
+        return resultMap["expMonth"] as? String
       }
       set {
         resultMap.updateValue(newValue, forKey: "expMonth")
       }
     }
 
-    public var expYear: String {
+    public var expYear: String? {
       get {
-        return resultMap["expYear"]! as! String
+        return resultMap["expYear"] as? String
       }
       set {
         resultMap.updateValue(newValue, forKey: "expYear")

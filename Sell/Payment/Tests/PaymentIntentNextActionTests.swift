@@ -15,7 +15,8 @@ final class PaymentIntentNextActionTests: XCTestCase {
     func test_initWithResponse_hasValidActionType_returnsValue() throws {
         let response = ApolloType.FragmentPaymentIntent.NextAction(type: .collectCvc, url: "url")
         let sut = try XCTUnwrap(PaymentIntentNextAction(response: response))
-        XCTAssertEqual(sut.type, PaymentActionType(apolloType: response.type))
+        let actionType = try XCTUnwrap(response.type)
+        XCTAssertEqual(sut.type, PaymentActionType(apolloType: actionType))
         XCTAssertEqual(sut.url, response.url)
     }
 

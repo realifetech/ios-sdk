@@ -27,7 +27,8 @@ extension PaymentIntentNextAction {
     init?(response: ApolloType.FragmentPaymentIntent.NextAction?) {
         guard
             let response = response,
-            let paymentActionType = PaymentActionType(apolloType: response.type)
+            let actionType = response.type,
+            let paymentActionType = PaymentActionType(apolloType: actionType)
         else { return nil }
         type = paymentActionType
         url = response.url
