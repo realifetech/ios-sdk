@@ -334,6 +334,7 @@ public enum ApolloType {
     case za
     case zh
     case zu
+    case nb
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -595,6 +596,7 @@ public enum ApolloType {
         case "za": self = .za
         case "zh": self = .zh
         case "zu": self = .zu
+        case "nb": self = .nb
         default: self = .__unknown(rawValue)
       }
     }
@@ -857,6 +859,7 @@ public enum ApolloType {
         case .za: return "za"
         case .zh: return "zh"
         case .zu: return "zu"
+        case .nb: return "nb"
         case .__unknown(let value): return value
       }
     }
@@ -1119,6 +1122,7 @@ public enum ApolloType {
         case (.za, .za): return true
         case (.zh, .zh): return true
         case (.zu, .zu): return true
+        case (.nb, .nb): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -1382,6 +1386,7 @@ public enum ApolloType {
         .za,
         .zh,
         .zu,
+        .nb,
       ]
     }
   }
@@ -2806,6 +2811,7 @@ public enum ApolloType {
     case payInProgress
     case refunded
     case refundRequested
+    case paymentError
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -2823,6 +2829,7 @@ public enum ApolloType {
         case "PAY_IN_PROGRESS": self = .payInProgress
         case "REFUNDED": self = .refunded
         case "REFUND_REQUESTED": self = .refundRequested
+        case "PAYMENT_ERROR": self = .paymentError
         default: self = .__unknown(rawValue)
       }
     }
@@ -2841,6 +2848,7 @@ public enum ApolloType {
         case .payInProgress: return "PAY_IN_PROGRESS"
         case .refunded: return "REFUNDED"
         case .refundRequested: return "REFUND_REQUESTED"
+        case .paymentError: return "PAYMENT_ERROR"
         case .__unknown(let value): return value
       }
     }
@@ -2859,6 +2867,7 @@ public enum ApolloType {
         case (.payInProgress, .payInProgress): return true
         case (.refunded, .refunded): return true
         case (.refundRequested, .refundRequested): return true
+        case (.paymentError, .paymentError): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -2878,6 +2887,7 @@ public enum ApolloType {
         .payInProgress,
         .refunded,
         .refundRequested,
+        .paymentError,
       ]
     }
   }
