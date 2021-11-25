@@ -63,7 +63,7 @@ final class OrderTests: XCTestCase {
         XCTAssertEqual(sut.state?.workingState, fragment.state?.workingState)
         XCTAssertEqual(sut.state?.status, fragment.state?.status)
         XCTAssertEqual(sut.state?.translations?.first?.title, fragment.state?.translations?.first?.underlying?.title)
-        XCTAssertEqual(sut.paymentStatus, fragment.paymentStatus)
+        XCTAssertEqual(sut.paymentStatus, fragment.paymentStatus?.rawValue)
         XCTAssertEqual(sut.grossAmount, fragment.grossAmount)
         XCTAssertEqual(sut.discountAmount, fragment.discountAmount)
         XCTAssertEqual(sut.netAmount, fragment.netAmount)

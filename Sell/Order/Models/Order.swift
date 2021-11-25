@@ -80,7 +80,7 @@ extension Order {
         collectionDate = response.collectionDate?.iso8601Date
         status = response.status?.rawValue
         state = OrderState(response: response.state)
-        paymentStatus = response.paymentStatus
+        paymentStatus = response.paymentStatus?.rawValue
         grossAmount = response.grossAmount
         discountAmount = response.discountAmount
         netAmount = response.netAmount

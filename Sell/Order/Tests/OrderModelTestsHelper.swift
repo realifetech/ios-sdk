@@ -31,7 +31,7 @@ enum OrderModelTestsHelper {
                         title: orderStateString,
                         description: orderStateString)
                 ]),
-            paymentStatus: paymentStatusString,
+            paymentStatus: ApolloType.PaymentOrderStatus(rawValue: paymentStatusString),
             grossAmount: 10,
             discountAmount: 10,
             netAmount: 100,
