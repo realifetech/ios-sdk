@@ -196,7 +196,8 @@ extension OrderRepositoryTests {
             input: OrderUpdateInput(
                 status: "COMPLETE",
                 collectionPreferenceType: .asap,
-                checkInTime: nil)
+                checkInTime: nil,
+                paymentStatus: nil)
         ) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
@@ -231,7 +232,8 @@ extension OrderRepositoryTests {
             input: OrderUpdateInput(
                 status: "COMPLETE",
                 collectionPreferenceType: .asap,
-                checkInTime: nil)
+                checkInTime: nil,
+                paymentStatus: nil)
         ) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
@@ -253,7 +255,8 @@ extension OrderRepositoryTests {
             input: OrderUpdateInput(
                 status: "COMPLETE",
                 collectionPreferenceType: .asap,
-                checkInTime: nil)
+                checkInTime: nil,
+                paymentStatus: nil)
         ) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")

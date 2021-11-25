@@ -2396,8 +2396,9 @@ public enum ApolloType {
     ///   - status
     ///   - collectionPreferenceType
     ///   - checkInTime
-    public init(status: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> = nil, checkInTime: Swift.Optional<String?> = nil) {
-      graphQLMap = ["status": status, "collectionPreferenceType": collectionPreferenceType, "checkInTime": checkInTime]
+    ///   - paymentStatus
+    public init(status: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> = nil, checkInTime: Swift.Optional<String?> = nil, paymentStatus: Swift.Optional<PaymentOrderStatus?> = nil) {
+      graphQLMap = ["status": status, "collectionPreferenceType": collectionPreferenceType, "checkInTime": checkInTime, "paymentStatus": paymentStatus]
     }
 
     public var status: Swift.Optional<String?> {
@@ -2425,6 +2426,60 @@ public enum ApolloType {
       set {
         graphQLMap.updateValue(newValue, forKey: "checkInTime")
       }
+    }
+
+    public var paymentStatus: Swift.Optional<PaymentOrderStatus?> {
+      get {
+        return graphQLMap["paymentStatus"] as? Swift.Optional<PaymentOrderStatus?> ?? Swift.Optional<PaymentOrderStatus?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "paymentStatus")
+      }
+    }
+  }
+
+  public enum PaymentOrderStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case standing
+    case succeed
+    case declined
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "STANDING": self = .standing
+        case "SUCCEED": self = .succeed
+        case "DECLINED": self = .declined
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .standing: return "STANDING"
+        case .succeed: return "SUCCEED"
+        case .declined: return "DECLINED"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: PaymentOrderStatus, rhs: PaymentOrderStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.standing, .standing): return true
+        case (.succeed, .succeed): return true
+        case (.declined, .declined): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [PaymentOrderStatus] {
+      return [
+        .standing,
+        .succeed,
+        .declined,
+      ]
     }
   }
 

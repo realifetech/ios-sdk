@@ -9689,8 +9689,8 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "kind": "ENUM",
+              "name": "PaymentOrderStatus",
               "ofType": null
             },
             "isDeprecated": false,
@@ -10740,6 +10740,16 @@
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "paymentStatus",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "PaymentOrderStatus",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -11094,6 +11104,35 @@
           },
           {
             "name": "PAYMENT_ERROR",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "PaymentOrderStatus",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "STANDING",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SUCCEED",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DECLINED",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null

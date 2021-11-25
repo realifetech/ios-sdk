@@ -13,14 +13,17 @@ public struct OrderUpdateInput {
     public let status: String?
     public let collectionPreferenceType: CollectionPreferenceType?
     public let checkInTime: String?
+    public let paymentStatus: String?
 
     public init(
         status: String?,
         collectionPreferenceType: CollectionPreferenceType?,
-        checkInTime: String?
+        checkInTime: String?,
+        paymentStatus: String?
     ) {
         self.status = status
         self.collectionPreferenceType = collectionPreferenceType
         self.checkInTime = checkInTime
+        self.paymentStatus = paymentStatus
     }
 }
