@@ -17,7 +17,7 @@ public struct Order: Codable, Equatable {
     public let orderNumber: String
     public let qrCodeUrl: String?
     public let collectionDate: Date?
-    public let status: String?
+    public let status: OrderStatus?
     public let state: OrderState?
     public let paymentStatus: String?
     public let grossAmount: Int?
@@ -36,7 +36,7 @@ public struct Order: Codable, Equatable {
         orderNumber: String,
         qrCodeUrl: String?,
         collectionDate: Date?,
-        status: String?,
+        status: OrderStatus?,
         state: OrderState?,
         paymentStatus: String?,
         grossAmount: Int?,
@@ -78,7 +78,7 @@ extension Order {
         orderNumber = response.orderNumber
         qrCodeUrl = response.qrCodeUrl
         collectionDate = response.collectionDate?.iso8601Date
-        status = response.status?.rawValue
+        status = OrderStatus(apolloType: response.status)
         state = OrderState(response: response.state)
         paymentStatus = response.paymentStatus?.rawValue
         grossAmount = response.grossAmount
