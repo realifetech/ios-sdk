@@ -31,8 +31,12 @@ public struct PaymentIntentUpdateInput {
 extension PaymentIntentUpdateInput {
 
     var apolloInput: ApolloType.PaymentIntentUpdateInput {
-        ApolloType.PaymentIntentUpdateInput(
-            status: ApolloType.UpdatePaymentStatus(rawValue: status?.rawValue ?? ""),
+        var updatePaymentStatus: ApolloType.UpdatePaymentStatus?
+        if let status = status?.rawValue {
+            updatePaymentStatus = ApolloType.UpdatePaymentStatus(rawValue: status)
+        }
+        return ApolloType.PaymentIntentUpdateInput(
+            status: updatePaymentStatus,
             paymentSource: paymentSource?.apolloInput,
             savePaymentSource: savePaymentSource)
     }
