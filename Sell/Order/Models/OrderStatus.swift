@@ -26,12 +26,4 @@ public enum OrderStatus: String, Codable {
     case refunded = "REFUNDED"
     case refundRequested = "REFUND_REQUESTED"
     case paymentError = "PAYMENT_ERROR"
-
-    init?(apolloType: ApolloType.OrderStatus?) {
-        guard
-            let apolloType = apolloType,
-            let type = OrderStatus(rawValue: apolloType.rawValue)
-        else { return nil }
-        self = type
-    }
 }
