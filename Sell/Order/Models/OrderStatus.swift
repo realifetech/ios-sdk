@@ -25,6 +25,7 @@ public enum OrderStatus: String, Codable {
     case paymentInProgress = "PAY_IN_PROGRESS"
     case refunded = "REFUNDED"
     case refundRequested = "REFUND_REQUESTED"
+    case paymentError = "PAYMENT_ERROR"
 
     init?(apolloType: ApolloType.OrderStatus?) {
         guard

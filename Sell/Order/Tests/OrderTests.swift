@@ -21,7 +21,7 @@ final class OrderTests: XCTestCase {
             orderNumber: id,
             qrCodeUrl: "B",
             collectionDate: Date(),
-            status: .complete,
+            status: "COMPLETE",
             state: OrderState(
                 status: orderStateString,
                 workingState: orderStateString,
@@ -59,7 +59,7 @@ final class OrderTests: XCTestCase {
         XCTAssertEqual(sut.orderNumber, fragment.orderNumber)
         XCTAssertEqual(sut.qrCodeUrl, fragment.qrCodeUrl)
         XCTAssertEqual(sut.collectionDate, fragment.collectionDate?.iso8601Date)
-        XCTAssertEqual(sut.status, .inProgress)
+        XCTAssertEqual(sut.status, "IN_PROGRESS")
         XCTAssertEqual(sut.state?.workingState, fragment.state?.workingState)
         XCTAssertEqual(sut.state?.status, fragment.state?.status)
         XCTAssertEqual(sut.state?.translations?.first?.title, fragment.state?.translations?.first?.underlying?.title)

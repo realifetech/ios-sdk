@@ -26,7 +26,8 @@ public final class OrderRepository {
         return ApolloType.OrderUpdateInput(
             status: status,
             collectionPreferenceType: input.collectionPreferenceType?.apolloType,
-            checkInTime: input.checkInTime)
+            checkInTime: input.checkInTime,
+            paymentStatus: input.paymentStatus?.apolloType)
     }
 }
 
