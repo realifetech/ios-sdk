@@ -194,7 +194,7 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: "COMPLETE",
+                status: OrderStatus.complete.rawValue,
                 collectionPreferenceType: .asap,
                 checkInTime: nil,
                 paymentStatus: nil)
@@ -230,7 +230,7 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: "COMPLETE",
+                status: OrderStatus.complete.rawValue,
                 collectionPreferenceType: .asap,
                 checkInTime: nil,
                 paymentStatus: nil)
@@ -253,7 +253,7 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: "COMPLETE",
+                status: OrderStatus.complete.rawValue,
                 collectionPreferenceType: .asap,
                 checkInTime: nil,
                 paymentStatus: nil)
