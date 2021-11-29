@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */; };
+		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
 		3E78BCF226B8231800BF3026 /* sell_updatePaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */; };
 		3E78BCF326B8231800BF3026 /* analytics_putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */; };
@@ -418,6 +419,7 @@
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
 		0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderStatus.swift; sourceTree = "<group>"; };
+		0913A9DE275511B500DB9D99 /* Order+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Extension.swift"; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1093,6 +1095,7 @@
 			isa = PBXGroup;
 			children = (
 				961B01932689EB6900D8C481 /* Order.swift */,
+				0913A9DE275511B500DB9D99 /* Order+Extension.swift */,
 				961B019B2689EFD400D8C481 /* OrderItem.swift */,
 				961B019D2689EFE700D8C481 /* OrderState.swift */,
 				961B01992689EF7500D8C481 /* OrderStatus.swift */,
@@ -2303,6 +2306,7 @@
 				961C4218260882BB001D8467 /* String+RequestIdentifier.swift in Sources */,
 				968CA5C025EE7A610000C2E2 /* WebPage.swift in Sources */,
 				9687486F268CC25E00DDC5DD /* PaymentSourceType.swift in Sources */,
+				0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */,
 				961C4219260882BB001D8467 /* String+CoreLocalization.swift in Sources */,
 				4889588D2539D04B00B978A9 /* GeneralImplementing.swift in Sources */,
 				961C4226260882BB001D8467 /* RequestTimeLogger.swift in Sources */,
