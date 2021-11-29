@@ -98,7 +98,7 @@ public extension ApolloType {
         GraphQLField("collectionDate", type: .scalar(String.self)),
         GraphQLField("status", type: .scalar(OrderStatus.self)),
         GraphQLField("state", type: .object(State.selections)),
-        GraphQLField("paymentStatus", type: .scalar(String.self)),
+        GraphQLField("paymentStatus", type: .scalar(PaymentOrderStatus.self)),
         GraphQLField("grossAmount", type: .scalar(Int.self)),
         GraphQLField("discountAmount", type: .scalar(Int.self)),
         GraphQLField("netAmount", type: .scalar(Int.self)),
@@ -121,7 +121,7 @@ public extension ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID, orderNumber: String, qrCodeUrl: String? = nil, collectionDate: String? = nil, status: OrderStatus? = nil, state: State? = nil, paymentStatus: String? = nil, grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, estimatedAt: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, items: [Item?]? = nil, orderNotes: [OrderNote?]? = nil, timeslot: Timeslot? = nil, fulfilmentPoint: FulfilmentPoint? = nil, user: User? = nil, collectionPreferenceType: CollectionPreferenceType? = nil, seatInfo: JSON? = nil) {
+    public init(id: GraphQLID, orderNumber: String, qrCodeUrl: String? = nil, collectionDate: String? = nil, status: OrderStatus? = nil, state: State? = nil, paymentStatus: PaymentOrderStatus? = nil, grossAmount: Int? = nil, discountAmount: Int? = nil, netAmount: Int? = nil, estimatedAt: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, items: [Item?]? = nil, orderNotes: [OrderNote?]? = nil, timeslot: Timeslot? = nil, fulfilmentPoint: FulfilmentPoint? = nil, user: User? = nil, collectionPreferenceType: CollectionPreferenceType? = nil, seatInfo: JSON? = nil) {
       self.init(unsafeResultMap: ["__typename": "Order", "id": id, "orderNumber": orderNumber, "qrCodeUrl": qrCodeUrl, "collectionDate": collectionDate, "status": status, "state": state.flatMap { (value: State) -> ResultMap in value.resultMap }, "paymentStatus": paymentStatus, "grossAmount": grossAmount, "discountAmount": discountAmount, "netAmount": netAmount, "estimatedAt": estimatedAt, "createdAt": createdAt, "updatedAt": updatedAt, "items": items.flatMap { (value: [Item?]) -> [ResultMap?] in value.map { (value: Item?) -> ResultMap? in value.flatMap { (value: Item) -> ResultMap in value.resultMap } } }, "orderNotes": orderNotes.flatMap { (value: [OrderNote?]) -> [ResultMap?] in value.map { (value: OrderNote?) -> ResultMap? in value.flatMap { (value: OrderNote) -> ResultMap in value.resultMap } } }, "timeslot": timeslot.flatMap { (value: Timeslot) -> ResultMap in value.resultMap }, "fulfilmentPoint": fulfilmentPoint.flatMap { (value: FulfilmentPoint) -> ResultMap in value.resultMap }, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }, "collectionPreferenceType": collectionPreferenceType, "seatInfo": seatInfo])
     }
 
@@ -188,9 +188,9 @@ public extension ApolloType {
       }
     }
 
-    public var paymentStatus: String? {
+    public var paymentStatus: PaymentOrderStatus? {
       get {
-        return resultMap["paymentStatus"] as? String
+        return resultMap["paymentStatus"] as? PaymentOrderStatus
       }
       set {
         resultMap.updateValue(newValue, forKey: "paymentStatus")
