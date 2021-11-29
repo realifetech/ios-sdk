@@ -20,16 +20,14 @@ public final class OrderRepository {
     }
 
     private func makeApolloOrderUpdateInput(_ input: OrderUpdateInput) -> ApolloType.OrderUpdateInput? {
-        guard
-            let status = input.status,
-            let collectionPreferenceType = input.collectionPreferenceType
-        else {
+        guard let status = input.status else {
             return nil
         }
         return ApolloType.OrderUpdateInput(
-            status: status.rawValue,
-            collectionPreferenceType: collectionPreferenceType.apolloType,
-            checkInTime: input.checkInTime)
+            status: status,
+            collectionPreferenceType: input.collectionPreferenceType?.apolloType,
+            checkInTime: input.checkInTime,
+            paymentStatus: input.paymentStatus?.apolloType)
     }
 }
 

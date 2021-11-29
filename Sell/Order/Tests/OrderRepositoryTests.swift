@@ -194,9 +194,10 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: .complete,
+                status: OrderStatus.complete.rawValue,
                 collectionPreferenceType: .asap,
-                checkInTime: nil)
+                checkInTime: nil,
+                paymentStatus: nil)
         ) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
@@ -229,9 +230,10 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: .complete,
+                status: OrderStatus.complete.rawValue,
                 collectionPreferenceType: .asap,
-                checkInTime: nil)
+                checkInTime: nil,
+                paymentStatus: nil)
         ) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
@@ -251,9 +253,10 @@ extension OrderRepositoryTests {
         sut.updateMyOrder(
             id: orderFragment.id,
             input: OrderUpdateInput(
-                status: .complete,
+                status: OrderStatus.complete.rawValue,
                 collectionPreferenceType: .asap,
-                checkInTime: nil)
+                checkInTime: nil,
+                paymentStatus: nil)
         ) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")

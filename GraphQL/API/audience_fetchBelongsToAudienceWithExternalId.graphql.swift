@@ -128,6 +128,7 @@ public extension ApolloType {
             }
           }
 
+          @available(*, deprecated, message: "Field is deprecated!. Use getDeviceBelongsToAudience")
           public var belongsToAudienceWithExternalId: Bool? {
             get {
               return resultMap["belongsToAudienceWithExternalId"] as? Bool

@@ -334,6 +334,7 @@ public enum ApolloType {
     case za
     case zh
     case zu
+    case nb
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -595,6 +596,7 @@ public enum ApolloType {
         case "za": self = .za
         case "zh": self = .zh
         case "zu": self = .zu
+        case "nb": self = .nb
         default: self = .__unknown(rawValue)
       }
     }
@@ -857,6 +859,7 @@ public enum ApolloType {
         case .za: return "za"
         case .zh: return "zh"
         case .zu: return "zu"
+        case .nb: return "nb"
         case .__unknown(let value): return value
       }
     }
@@ -1119,6 +1122,7 @@ public enum ApolloType {
         case (.za, .za): return true
         case (.zh, .zh): return true
         case (.zu, .zu): return true
+        case (.nb, .nb): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -1382,6 +1386,7 @@ public enum ApolloType {
         .za,
         .zh,
         .zu,
+        .nb,
       ]
     }
   }
@@ -2391,8 +2396,9 @@ public enum ApolloType {
     ///   - status
     ///   - collectionPreferenceType
     ///   - checkInTime
-    public init(status: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> = nil, checkInTime: Swift.Optional<String?> = nil) {
-      graphQLMap = ["status": status, "collectionPreferenceType": collectionPreferenceType, "checkInTime": checkInTime]
+    ///   - paymentStatus
+    public init(status: Swift.Optional<String?> = nil, collectionPreferenceType: Swift.Optional<CollectionPreferenceType?> = nil, checkInTime: Swift.Optional<String?> = nil, paymentStatus: Swift.Optional<PaymentOrderStatus?> = nil) {
+      graphQLMap = ["status": status, "collectionPreferenceType": collectionPreferenceType, "checkInTime": checkInTime, "paymentStatus": paymentStatus]
     }
 
     public var status: Swift.Optional<String?> {
@@ -2420,6 +2426,60 @@ public enum ApolloType {
       set {
         graphQLMap.updateValue(newValue, forKey: "checkInTime")
       }
+    }
+
+    public var paymentStatus: Swift.Optional<PaymentOrderStatus?> {
+      get {
+        return graphQLMap["paymentStatus"] as? Swift.Optional<PaymentOrderStatus?> ?? Swift.Optional<PaymentOrderStatus?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "paymentStatus")
+      }
+    }
+  }
+
+  public enum PaymentOrderStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case standing
+    case succeed
+    case declined
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "STANDING": self = .standing
+        case "SUCCEED": self = .succeed
+        case "DECLINED": self = .declined
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .standing: return "STANDING"
+        case .succeed: return "SUCCEED"
+        case .declined: return "DECLINED"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: PaymentOrderStatus, rhs: PaymentOrderStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.standing, .standing): return true
+        case (.succeed, .succeed): return true
+        case (.declined, .declined): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [PaymentOrderStatus] {
+      return [
+        .standing,
+        .succeed,
+        .declined,
+      ]
     }
   }
 
@@ -2806,6 +2866,7 @@ public enum ApolloType {
     case payInProgress
     case refunded
     case refundRequested
+    case paymentError
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -2823,6 +2884,7 @@ public enum ApolloType {
         case "PAY_IN_PROGRESS": self = .payInProgress
         case "REFUNDED": self = .refunded
         case "REFUND_REQUESTED": self = .refundRequested
+        case "PAYMENT_ERROR": self = .paymentError
         default: self = .__unknown(rawValue)
       }
     }
@@ -2841,6 +2903,7 @@ public enum ApolloType {
         case .payInProgress: return "PAY_IN_PROGRESS"
         case .refunded: return "REFUNDED"
         case .refundRequested: return "REFUND_REQUESTED"
+        case .paymentError: return "PAYMENT_ERROR"
         case .__unknown(let value): return value
       }
     }
@@ -2859,6 +2922,7 @@ public enum ApolloType {
         case (.payInProgress, .payInProgress): return true
         case (.refunded, .refunded): return true
         case (.refundRequested, .refundRequested): return true
+        case (.paymentError, .paymentError): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -2878,6 +2942,7 @@ public enum ApolloType {
         .payInProgress,
         .refunded,
         .refundRequested,
+        .paymentError,
       ]
     }
   }

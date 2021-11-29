@@ -10,17 +10,20 @@ import Foundation
 
 public struct OrderUpdateInput {
 
-    public let status: OrderStatus?
+    public let status: String?
     public let collectionPreferenceType: CollectionPreferenceType?
     public let checkInTime: String?
+    public let paymentStatus: PaymentOrderStatus?
 
     public init(
-        status: OrderStatus?,
+        status: String?,
         collectionPreferenceType: CollectionPreferenceType?,
-        checkInTime: String?
+        checkInTime: String?,
+        paymentStatus: PaymentOrderStatus?
     ) {
         self.status = status
         self.collectionPreferenceType = collectionPreferenceType
         self.checkInTime = checkInTime
+        self.paymentStatus = paymentStatus
     }
 }
