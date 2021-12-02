@@ -10,10 +10,18 @@ import Apollo
 
 class APITokenInterceptor: ApolloInterceptor {
 
-    let tokenHelper: APITokenManagable
+    private let tokenHelper: APITokenManagable
+    private let graphQLManager: GraphQLManageable
+    private let deviceId: String
 
-    init(tokenHelper: APITokenManagable) {
+    init(
+        tokenHelper: APITokenManagable,
+        graphQLManager: GraphQLManageable = GraphQLManager.shared,
+        deviceId: String
+    ) {
         self.tokenHelper = tokenHelper
+        self.graphQLManager = graphQLManager
+        self.deviceId = deviceId
     }
 
     func interceptAsync<Operation: GraphQLOperation>(
@@ -34,6 +42,9 @@ class APITokenInterceptor: ApolloInterceptor {
         if urlResponse.statusCode == 400 {
             tokenHelper.getValidToken { [self] _ in
                 guard let token = tokenHelper.token, tokenHelper.tokenIsValid else { return }
+                graphQLManager.updateHeadersToNetworkTransport(
+                    deviceId: deviceId,
+                    apiHelper: tokenHelper)
                 request.addHeader(name: "Authorization", value: "Bearer \(token)")
                 chain.retry(request: request, completion: completion)
             }

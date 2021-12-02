@@ -15,7 +15,9 @@ final class APITokenInterceptorTests: XCTestCase {
 
     private var sut: APITokenInterceptor!
     private var tokenHelper: MockTokenHelper!
+    private let graphQLManagerSpy = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
     private var url: URL!
+    private let deviceId = "mockDeviceId"
 
     private let operation = ApolloType.GetFulfilmentPointsQuery(pageSize: 10, params: nil)
     private lazy var request = MockRequest<ApolloType.GetFulfilmentPointsQuery>(
@@ -29,8 +31,11 @@ final class APITokenInterceptorTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         tokenHelper = MockTokenHelper()
-        sut = APITokenInterceptor(tokenHelper: tokenHelper)
         url = URL(string: "localhost://")
+        sut = APITokenInterceptor(
+            tokenHelper: tokenHelper,
+            graphQLManager: graphQLManagerSpy,
+            deviceId: deviceId)
     }
 
     override func tearDown() {
@@ -68,6 +73,24 @@ final class APITokenInterceptorTests: XCTestCase {
             response: response
         ) { _ in
             XCTAssertEqual(self.request.additionalHeaders["Authorization"], "Bearer \(token)")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_interceptAsync_httpStatusCodeIs400AndTokenHelperReturnsToken_shouldUpdateGraphQLHeader() throws {
+        let expectation = XCTestExpectation(description: "callback is fulfilled")
+        let response = try XCTUnwrap(makeHttpResponse(statusCode: 400))
+        let token = "New Token"
+        tokenHelper.tokenReturns = token
+        tokenHelper.tokenIsValidReturns = true
+        sut.interceptAsync(
+            chain: RequestChain(interceptors: [sut]),
+            request: request,
+            response: response
+        ) { _ in
+            XCTAssertTrue(self.graphQLManagerSpy.didCallUpdateHeadersToNetworkTransport)
+            XCTAssertEqual(self.graphQLManagerSpy.receivedDeviceId, self.deviceId)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
