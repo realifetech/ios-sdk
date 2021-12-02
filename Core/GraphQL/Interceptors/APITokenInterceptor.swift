@@ -29,7 +29,7 @@ class APITokenInterceptor: ApolloInterceptor {
         request: HTTPRequest<Operation>,
         response: HTTPResponse<Operation>?,
         completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) {
-        guard let urlResponse = response?.httpResponse else {
+        guard let receivedResponse = response else {
             chain.handleErrorAsync(
                 ResponseCodeInterceptor.ResponseCodeError.invalidResponseCode(
                     response: response?.httpResponse,
@@ -39,7 +39,9 @@ class APITokenInterceptor: ApolloInterceptor {
                 completion: completion)
             return
         }
-        if urlResponse.statusCode == 400 {
+        if let error = receivedResponse.parsedResponse?.errors?.first,
+           let errorCode = error.extensions?["code"] as? String,
+           errorCode == "UNAUTHENTICATED" {
             tokenHelper.getValidToken { [self] _ in
                 guard let token = tokenHelper.token, tokenHelper.tokenIsValid else { return }
                 graphQLManager.updateHeadersToNetworkTransport(

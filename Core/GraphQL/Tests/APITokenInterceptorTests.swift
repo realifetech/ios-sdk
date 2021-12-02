@@ -13,6 +13,7 @@ import GraphQL
 
 final class APITokenInterceptorTests: XCTestCase {
 
+    typealias GetFulfilmentPointsQueryApolloData = ApolloType.GetFulfilmentPointsQuery.Data
     private var sut: APITokenInterceptor!
     private var tokenHelper: MockTokenHelper!
     private let graphQLManagerSpy = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
@@ -61,7 +62,7 @@ final class APITokenInterceptorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_interceptAsync_httpStatusCodeIs400AndTokenHelperReturnsToken_shouldRetryWithNewToken() throws {
+    func test_interceptAsync_UnauthenticatedErrorAndTokenHelperReturnsToken_shouldRetryWithNewToken() throws {
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         let response = try XCTUnwrap(makeHttpResponse(statusCode: 400))
         let token = "New Token"
@@ -78,7 +79,7 @@ final class APITokenInterceptorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_interceptAsync_httpStatusCodeIs400AndTokenHelperReturnsToken_shouldUpdateGraphQLHeader() throws {
+    func test_interceptAsync_UnauthenticatedErrorAndTokenHelperReturnsToken_shouldUpdateGraphQLHeader() throws {
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         let response = try XCTUnwrap(makeHttpResponse(statusCode: 400))
         let token = "New Token"
@@ -109,6 +110,17 @@ final class APITokenInterceptorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
+    private func makeUnauthenticatedResult() -> GraphQLResult<GetFulfilmentPointsQueryApolloData>? {
+        let graphQLErrors = [GraphQLError(
+            ["extensions": ["code": "UNAUTHENTICATED"]])]
+        return GraphQLResult(
+            data: GetFulfilmentPointsQueryApolloData(),
+            extensions: nil,
+            errors: graphQLErrors,
+            source: .cache,
+            dependentKeys: nil)
+    }
+
     private func makeHttpResponse(statusCode: Int) throws -> HTTPResponse<ApolloType.GetFulfilmentPointsQuery> {
         let response = try XCTUnwrap(
             HTTPURLResponse(
@@ -117,10 +129,14 @@ final class APITokenInterceptorTests: XCTestCase {
                 httpVersion: nil,
                 headerFields: nil)
         )
+        var unauthenticatedResponse = makeUnauthenticatedResult()
+        if statusCode == 200 {
+            unauthenticatedResponse = nil
+        }
         return HTTPResponse<ApolloType.GetFulfilmentPointsQuery>(
             response: response,
             rawData: Data(),
-            parsedResponse: nil)
+            parsedResponse: unauthenticatedResponse)
     }
 }
 
