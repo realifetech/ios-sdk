@@ -51,6 +51,16 @@
 		3E98B93D275A3F3000E67321 /* CampaignAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */; };
 		3E98B93F275A41A800E67321 /* CampaignAutomationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */; };
 		3E98B941275A41D000E67321 /* CampaignAutomationimplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B940275A41D000E67321 /* CampaignAutomationimplementing.swift */; };
+		3E98B946275A8F5B00E67321 /* RLTCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B945275A8F5B00E67321 /* RLTCreatable.swift */; };
+		3E98B948275A8F8700E67321 /* RLTMediaTypeFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B947275A8F8700E67321 /* RLTMediaTypeFetching.swift */; };
+		3E98B94A275A8FBF00E67321 /* RLTCreatableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B949275A8FBF00E67321 /* RLTCreatableFactory.swift */; };
+		3E98B94C275A8FE000E67321 /* RLTDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B94B275A8FE000E67321 /* RLTDataModel.swift */; };
+		3E98B94E275A8FF900E67321 /* RLTContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B94D275A8FF900E67321 /* RLTContentType.swift */; };
+		3E98B951275A901600E67321 /* RLTBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B950275A901600E67321 /* RLTBanner.swift */; };
+		3E98B953275A904400E67321 /* RLTLinkHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B952275A904400E67321 /* RLTLinkHandling.swift */; };
+		3E98B955275A909400E67321 /* RLTViewCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B954275A909400E67321 /* RLTViewCreatable.swift */; };
+		3E98B958275A910600E67321 /* RLTBannerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B957275A910600E67321 /* RLTBannerFactory.swift */; };
+		3E98B95B275A93C800E67321 /* RLTViewFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */; };
 		3E9CD181271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */; };
 		3E9CD183271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
@@ -432,6 +442,16 @@
 		3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomation.swift; sourceTree = "<group>"; };
 		3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationFactory.swift; sourceTree = "<group>"; };
 		3E98B940275A41D000E67321 /* CampaignAutomationimplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationimplementing.swift; sourceTree = "<group>"; };
+		3E98B945275A8F5B00E67321 /* RLTCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTCreatable.swift; sourceTree = "<group>"; };
+		3E98B947275A8F8700E67321 /* RLTMediaTypeFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTMediaTypeFetching.swift; sourceTree = "<group>"; };
+		3E98B949275A8FBF00E67321 /* RLTCreatableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTCreatableFactory.swift; sourceTree = "<group>"; };
+		3E98B94B275A8FE000E67321 /* RLTDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTDataModel.swift; sourceTree = "<group>"; };
+		3E98B94D275A8FF900E67321 /* RLTContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentType.swift; sourceTree = "<group>"; };
+		3E98B950275A901600E67321 /* RLTBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTBanner.swift; sourceTree = "<group>"; };
+		3E98B952275A904400E67321 /* RLTLinkHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTLinkHandling.swift; sourceTree = "<group>"; };
+		3E98B954275A909400E67321 /* RLTViewCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTViewCreatable.swift; sourceTree = "<group>"; };
+		3E98B957275A910600E67321 /* RLTBannerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTBannerFactory.swift; sourceTree = "<group>"; };
+		3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTViewFetcher.swift; sourceTree = "<group>"; };
 		3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptLanguageHeaderRequestInserting.swift; sourceTree = "<group>"; };
 		3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptLanguageHeaderRequestInsertingTests.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
@@ -815,11 +835,53 @@
 		3E98B93B275A3E3300E67321 /* CampaignAutomation */ = {
 			isa = PBXGroup;
 			children = (
+				3E98B959275A93BB00E67321 /* Fetchers */,
+				3E98B956275A90EF00E67321 /* CreatableFactories */,
+				3E98B94F275A900500E67321 /* Models */,
+				3E98B944275A8F4900E67321 /* Protocols */,
 				3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */,
 				3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */,
 				3E98B940275A41D000E67321 /* CampaignAutomationimplementing.swift */,
 			);
 			path = CampaignAutomation;
+			sourceTree = "<group>";
+		};
+		3E98B944275A8F4900E67321 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3E98B94B275A8FE000E67321 /* RLTDataModel.swift */,
+				3E98B952275A904400E67321 /* RLTLinkHandling.swift */,
+				3E98B945275A8F5B00E67321 /* RLTCreatable.swift */,
+				3E98B949275A8FBF00E67321 /* RLTCreatableFactory.swift */,
+				3E98B954275A909400E67321 /* RLTViewCreatable.swift */,
+				3E98B947275A8F8700E67321 /* RLTMediaTypeFetching.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3E98B94F275A900500E67321 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E98B94D275A8FF900E67321 /* RLTContentType.swift */,
+				3E98B950275A901600E67321 /* RLTBanner.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3E98B956275A90EF00E67321 /* CreatableFactories */ = {
+			isa = PBXGroup;
+			children = (
+				3E98B957275A910600E67321 /* RLTBannerFactory.swift */,
+			);
+			path = CreatableFactories;
+			sourceTree = "<group>";
+		};
+		3E98B959275A93BB00E67321 /* Fetchers */ = {
+			isa = PBXGroup;
+			children = (
+				3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */,
+			);
+			path = Fetchers;
 			sourceTree = "<group>";
 		};
 		482BE53F2541D11200110368 /* AnalyticsLoggingTests */ = {
@@ -2295,6 +2357,7 @@
 			files = (
 				961C41D4260882BA001D8467 /* APIRequester.swift in Sources */,
 				487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */,
+				3E98B95B275A93C800E67321 /* RLTViewFetcher.swift in Sources */,
 				9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */,
 				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
 				96874867268CBE1400DDC5DD /* PaymentSource.swift in Sources */,
@@ -2310,6 +2373,7 @@
 				961C4263260882C8001D8467 /* CodableStore.swift in Sources */,
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
+				3E98B948275A8F8700E67321 /* RLTMediaTypeFetching.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
 				964D2917269335B400A69FBC /* WidgetParam.swift in Sources */,
 				961C425B260882C8001D8467 /* LogEventSending.swift in Sources */,
@@ -2317,6 +2381,7 @@
 				9606ED86267B504900ED24D0 /* PaginatedObject.swift in Sources */,
 				487479C22540425C0048F03D /* AnalyticsEventAndCompletion.swift in Sources */,
 				3E98B93F275A41A800E67321 /* CampaignAutomationFactory.swift in Sources */,
+				3E98B955275A909400E67321 /* RLTViewCreatable.swift in Sources */,
 				961C425F260882C8001D8467 /* UserDefaultStorage.swift in Sources */,
 				961C41E3260882BA001D8467 /* OAuthRequester.swift in Sources */,
 				964D292926933F3700A69FBC /* CanvasFactory.swift in Sources */,
@@ -2333,6 +2398,7 @@
 				961C4227260882BB001D8467 /* RequestDispatcher.swift in Sources */,
 				96874871268CC29700DDC5DD /* Card.swift in Sources */,
 				961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */,
+				3E98B946275A8F5B00E67321 /* RLTCreatable.swift in Sources */,
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
 				3E98B93D275A3F3000E67321 /* CampaignAutomation.swift in Sources */,
 				9687487D268CC4BB00DDC5DD /* CancellationReason.swift in Sources */,
@@ -2372,6 +2438,7 @@
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
 				961B01942689EB6900D8C481 /* Order.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
+				3E98B94A275A8FBF00E67321 /* RLTCreatableFactory.swift in Sources */,
 				961C1CC126839CC500BE6F3B /* BasketRepository.swift in Sources */,
 				961C4225260882BB001D8467 /* Requester.swift in Sources */,
 				964D29112693353000A69FBC /* WidgetStyle.swift in Sources */,
@@ -2398,7 +2465,9 @@
 				961C4223260882BB001D8467 /* RequestCreator.swift in Sources */,
 				961C1C902682071400BE6F3B /* FulfilmentPointType.swift in Sources */,
 				961C426E260882C8001D8467 /* DeviceToken.swift in Sources */,
+				3E98B958275A910600E67321 /* RLTBannerFactory.swift in Sources */,
 				961C425E260882C8001D8467 /* Storage.swift in Sources */,
+				3E98B94C275A8FE000E67321 /* RLTDataModel.swift in Sources */,
 				96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */,
 				961C4212260882BB001D8467 /* DiskCacheCodableInterface.swift in Sources */,
 				961C4266260882C8001D8467 /* QueueAction.swift in Sources */,
@@ -2410,6 +2479,7 @@
 				9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */,
 				964D292726933F0D00A69FBC /* Canvas.swift in Sources */,
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
+				3E98B953275A904400E67321 /* RLTLinkHandling.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
@@ -2457,6 +2527,7 @@
 				964D291A269335E000A69FBC /* WidgetProvidable.swift in Sources */,
 				96AED8C326CFA54400F6C750 /* ColorType.swift in Sources */,
 				96874873268CC2A800DDC5DD /* PaymentIntent.swift in Sources */,
+				3E98B94E275A8FF900E67321 /* RLTContentType.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
 				960415DB26CBD8B20096DF80 /* WebViewStore.swift in Sources */,
 				961C1CC326839D7300BE6F3B /* BasketInput.swift in Sources */,
@@ -2472,6 +2543,7 @@
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
 				9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */,
+				3E98B951275A901600E67321 /* RLTBanner.swift in Sources */,
 				961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */,
 				961C1CB726839AE100BE6F3B /* CollectionPreferenceType.swift in Sources */,
 			);
