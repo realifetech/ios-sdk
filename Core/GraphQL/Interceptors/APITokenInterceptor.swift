@@ -39,9 +39,8 @@ class APITokenInterceptor: ApolloInterceptor {
                 completion: completion)
             return
         }
-        if let error = receivedResponse.parsedResponse?.errors?.first,
-           let errorCode = error.extensions?["code"] as? String,
-           errorCode == "UNAUTHENTICATED" {
+        if let graphQLErrorCode = try? convertToGraphQLErrorCode(receivedResponse.rawData),
+           graphQLErrorCode == "UNAUTHENTICATED" {
             tokenHelper.getValidToken { [self] _ in
                 guard let token = tokenHelper.token, tokenHelper.tokenIsValid else { return }
                 graphQLManager.updateHeadersToNetworkTransport(
@@ -55,6 +54,29 @@ class APITokenInterceptor: ApolloInterceptor {
                 request: request,
                 response: response,
                 completion: completion)
+        }
+    }
+
+    // Note: When access token expired, GraphQL response returns this error:
+    /*
+     { "errors": [
+           { "message": "Context creation failed: Access denied: Invalid auth token",
+             "extensions": {
+               "code": "UNAUTHENTICATED",
+                ...
+             }}]
+     }
+     */
+    private func convertToGraphQLErrorCode(_ data: Data) throws -> String? {
+        do {
+            guard let json = try? JSONSerializationFormat.deserialize(data: data) as? JSONObject,
+                  let errors = json["errors"] as? [JSONObject],
+                  let firstGraphQLErrorJson = errors.first,
+                  let extensions = GraphQLError(firstGraphQLErrorJson).extensions
+            else {
+                return nil
+            }
+            return extensions["code"] as? String
         }
     }
 }

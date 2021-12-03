@@ -110,15 +110,19 @@ final class APITokenInterceptorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    private func makeUnauthenticatedResult() -> GraphQLResult<GetFulfilmentPointsQueryApolloData>? {
-        let graphQLErrors = [GraphQLError(
-            ["extensions": ["code": "UNAUTHENTICATED"]])]
-        return GraphQLResult(
-            data: GetFulfilmentPointsQueryApolloData(),
-            extensions: nil,
-            errors: graphQLErrors,
-            source: .cache,
-            dependentKeys: nil)
+    private func makeUnauthenticatedErrorData() -> Data {
+        let unauthenticatedError = #"""
+            { "errors": [
+                  {
+                    "message": "Context creation failed: Access denied: Invalid auth token",
+                    "extensions": {
+                      "code": "UNAUTHENTICATED"
+                    }
+                  }
+                ]
+            }
+        """#
+        return unauthenticatedError.data(using: .utf8) ?? Data()
     }
 
     private func makeHttpResponse(statusCode: Int) throws -> HTTPResponse<ApolloType.GetFulfilmentPointsQuery> {
@@ -129,14 +133,10 @@ final class APITokenInterceptorTests: XCTestCase {
                 httpVersion: nil,
                 headerFields: nil)
         )
-        var unauthenticatedResponse = makeUnauthenticatedResult()
-        if statusCode == 200 {
-            unauthenticatedResponse = nil
-        }
         return HTTPResponse<ApolloType.GetFulfilmentPointsQuery>(
             response: response,
-            rawData: Data(),
-            parsedResponse: unauthenticatedResponse)
+            rawData: statusCode == 200 ? Data() : makeUnauthenticatedErrorData(),
+            parsedResponse: nil)
     }
 }
 
