@@ -6,8 +6,8 @@
 //  Copyright © 2021 Realife Tech. All rights reserved.
 //
 
-class RLTViewFetcher: RLTMediaTypeFetching {
-    typealias MediaType = RLTViewCreatable
+public class RLTViewFetcher: RLTMediaTypeFetching {
+    public typealias MediaType = RLTViewCreatable
     static let shared = RLTViewFetcher()
-    var factories: [RLTContentType: RLTCreatableFactory] = [:]
+    public var factories: [RLTContentType: RLTCreatableFactory] = [:]
 }

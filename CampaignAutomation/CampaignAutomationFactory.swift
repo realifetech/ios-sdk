@@ -8,8 +8,7 @@
 
 import Foundation
 
-public enum CampaignAutomationFactory {
-
+public struct CampaignAutomationFactory {
     static func makeModule(
         graphQLManager: GraphQLManageable
     ) -> CampaignAutomation {

@@ -8,4 +8,4 @@
 
 import Foundation
 
-protocol RLTCreatable { }
+public protocol RLTCreatable { }

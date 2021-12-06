@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RLTDataModel: Decodable {
+public protocol RLTDataModel: Decodable {
     static func create(json: [String: Any]) -> RLTDataModel?
 }
 

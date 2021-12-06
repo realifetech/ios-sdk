@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-protocol RLTViewCreatable: RLTCreatable {
+public protocol RLTViewCreatable: RLTCreatable {
     func embed(in containerView: UIView, on parentViewController: UIViewController)
 }
 

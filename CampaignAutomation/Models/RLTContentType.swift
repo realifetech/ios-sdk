@@ -6,7 +6,7 @@
 //  Copyright © 2021 Realife Tech. All rights reserved.
 //
 
-enum RLTContentType: String {
+public enum RLTContentType: String {
     case banner, unknown
     var correspondingDataModel: RLTDataModel.Type? {
         switch self {

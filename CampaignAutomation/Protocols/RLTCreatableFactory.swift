@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol RLTCreatableFactory {
+public protocol RLTCreatableFactory {
     func create(from dataModel: RLTDataModel) -> RLTCreatable?
 }

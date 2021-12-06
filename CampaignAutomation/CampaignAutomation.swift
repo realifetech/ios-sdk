@@ -11,7 +11,20 @@ import Foundation
 import GraphQL
 #endif
 
+struct RLTResponseItem {
+    let contentType: String
+    let data: [String: Any]
+    var unwrappedContentType: RLTContentType {
+        RLTContentType(rawValue: contentType) ?? .unknown
+    }
+    var unwrappedDataModel: RLTDataModel? {
+        return unwrappedContentType.correspondingDataModel?.create(json: data)
+    }
+}
+
 public protocol CampaignAutomation {
-    // register factories
-    // generate creatables
+    func generateCreatables(for location: String,
+                            factories: [RLTContentType: RLTCreatableFactory],
+                            completion: (Result<[RLTCreatable], Error>) -> Void)
+    var viewFetcher: RLTViewFetcher { get }
 }

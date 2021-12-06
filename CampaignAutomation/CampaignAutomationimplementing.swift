@@ -8,4 +8,12 @@
 
 import Foundation
 
-public class CampaignAutomationImplementing: CampaignAutomation { }
+public class CampaignAutomationImplementing: CampaignAutomation {
+    public func generateCreatables(for location: String,
+                                   factories: [RLTContentType: RLTCreatableFactory],
+                                   completion: (Result<[RLTCreatable], Error>) -> Void) { }
+
+    public var viewFetcher: RLTViewFetcher {
+        return RLTViewFetcher() // Should initialise and save the instance
+    }
+}
