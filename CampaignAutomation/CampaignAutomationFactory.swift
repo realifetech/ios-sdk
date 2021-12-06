@@ -12,6 +12,6 @@ public struct CampaignAutomationFactory {
     static func makeModule(
         graphQLManager: GraphQLManageable
     ) -> CampaignAutomation {
-        return CampaignAutomationImplementing()
+        return CampaignAutomationImplementing(defaultFetcher: RLTViewFetcher())
     }
 }

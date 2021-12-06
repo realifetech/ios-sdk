@@ -9,11 +9,18 @@
 import Foundation
 
 public class CampaignAutomationImplementing: CampaignAutomation {
+
+    private let defaultFetcher: RLTViewFetcher!
+
+    init(defaultFetcher: RLTViewFetcher) {
+        self.defaultFetcher = defaultFetcher
+    }
+
     public func generateCreatables(for location: String,
                                    factories: [RLTContentType: RLTCreatableFactory],
                                    completion: (Result<[RLTCreatable], Error>) -> Void) { }
 
     public var viewFetcher: RLTViewFetcher {
-        return RLTViewFetcher() // Should initialise and save the instance
+        return defaultFetcher
     }
 }

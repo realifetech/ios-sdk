@@ -8,6 +8,5 @@
 
 public class RLTViewFetcher: RLTMediaTypeFetching {
     public typealias MediaType = RLTViewCreatable
-    static let shared = RLTViewFetcher()
     public var factories: [RLTContentType: RLTCreatableFactory] = [:]
 }
