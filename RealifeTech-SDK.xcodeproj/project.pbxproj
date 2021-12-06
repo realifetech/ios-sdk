@@ -835,12 +835,12 @@
 		3E98B93B275A3E3300E67321 /* CampaignAutomation */ = {
 			isa = PBXGroup;
 			children = (
-				3E98B959275A93BB00E67321 /* Fetchers */,
-				3E98B956275A90EF00E67321 /* Creatable */,
-				3E98B94F275A900500E67321 /* Models */,
 				3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */,
 				3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */,
 				3E98B940275A41D000E67321 /* CampaignAutomationimplementing.swift */,
+				3E98B94F275A900500E67321 /* Models */,
+				3E98B956275A90EF00E67321 /* Creatable */,
+				3E98B959275A93BB00E67321 /* Fetchers */,
 			);
 			path = CampaignAutomation;
 			sourceTree = "<group>";
