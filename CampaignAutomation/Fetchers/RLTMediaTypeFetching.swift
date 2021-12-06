@@ -10,7 +10,7 @@ import Foundation
 
 public protocol RLTMediaTypeFetching {
     associatedtype MediaType
-    var factories: [RLTContentType: RLTCreatableFactory] { get }
+    var factories: [RLTContentType: RLTCreatableFactory] { get set }
 }
 
 public extension RLTMediaTypeFetching {
@@ -18,9 +18,7 @@ public extension RLTMediaTypeFetching {
         RealifeTech.CampaignAutomation.generateCreatables(for: location, factories: factories) { result in
             switch result {
             case .failure(let error): completion(.failure(error))
-            case .success(let creatables):
-                let unwrappedCreatables = creatables.map { $0 as? MediaType }.compactMap { $0 }
-                completion(.success(unwrappedCreatables))
+            case .success(let creatables): completion(.success(creatables.map { $0 as? MediaType }.compactMap { $0 }))
             }
         }
     }
