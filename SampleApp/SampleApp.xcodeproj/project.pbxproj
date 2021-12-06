@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3ED5CD1C275E7A0F00C7D877 /* CreatablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */; };
 		3FA1EF186BD30C3A0EB371A8 /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB1AA0FB8D493ED0238EC14 /* Pods_SampleApp.framework */; };
 		48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16A251E1ECF006CA623 /* AppDelegate.swift */; };
 		48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatablesView.swift; sourceTree = "<group>"; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		48D6F167251E1ECF006CA623 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F16A251E1ECF006CA623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,13 @@
 				E4C19406F720CA122B0856C4 /* Pods-SampleApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3ED5CD1D275E8E5C00C7D877 /* CampaignAutomationComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CampaignAutomationComponents;
 			sourceTree = "<group>";
 		};
 		48D6F15E251E1ECF006CA623 = {
@@ -118,6 +127,8 @@
 				96AED99026CFEFF600F6C750 /* ModulesView.swift */,
 				96AED99F26D00D2400F6C750 /* WebOrderingJourneyView.swift */,
 				96AED99D26D00A2100F6C750 /* WebPageTypeGetterView.swift */,
+				3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */,
+				3ED5CD1D275E8E5C00C7D877 /* CampaignAutomationComponents */,
 				96AED99426CFF4B000F6C750 /* Components */,
 			);
 			path = Screens;
@@ -265,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ED5CD1C275E7A0F00C7D877 /* CreatablesView.swift in Sources */,
 				96AED99326CFF4A500F6C750 /* DeviceRegistrationView.swift in Sources */,
 				96AED99126CFEFF600F6C750 /* ModulesView.swift in Sources */,
 				96AED99C26D0079200F6C750 /* AudienceCheckingView.swift in Sources */,

@@ -12,7 +12,7 @@ public protocol RLTDataModel: Decodable {
     static func create(json: [String: Any]) -> RLTDataModel?
 }
 
-extension RLTDataModel {
+public extension RLTDataModel {
     static func create(json: [String: Any]) -> RLTDataModel? {
         guard let data = try? JSONSerialization.data(withJSONObject: json, options: []) else { return nil }
         return try? JSONDecoder().decode(self, from: data)

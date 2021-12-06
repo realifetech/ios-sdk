@@ -6,11 +6,11 @@
 //  Copyright © 2021 Realife Tech. All rights reserved.
 //
 
-protocol RLTBannerFactory: RLTCreatableFactory {
+public protocol RLTBannerFactory: RLTCreatableFactory {
     func create(from dataModel: RLTBanner) -> RLTCreatable?
 }
 
-extension RLTBannerFactory {
+public extension RLTBannerFactory {
     func create(from dataModel: RLTDataModel) -> RLTCreatable? {
         guard let dataModel = dataModel as? RLTBanner else { return nil }
         return create(from: dataModel)

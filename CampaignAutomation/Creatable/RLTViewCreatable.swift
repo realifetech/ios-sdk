@@ -11,12 +11,23 @@ import SwiftUI
 
 public protocol RLTViewCreatable: RLTCreatable {
     func embed(in containerView: UIView, on parentViewController: UIViewController)
+    var unwrappedGenericView: AnyView? { get }
 }
 
 extension RLTViewCreatable where Self: UIViewController {
     func embed(in containerView: UIView, on parentViewController: UIViewController) {
         embed(in: containerView, on: parentViewController)
     }
+    var unwrappedGenericView: AnyView? { return nil }
+}
+
+public extension RLTViewCreatable where Self: View {
+    func embed(in containerView: UIView, on parentViewController: UIViewController) {
+        let hostingController = UIHostingController(rootView: self)
+        hostingController.view.backgroundColor = .clear
+        hostingController.embed(in: containerView, on: parentViewController)
+    }
+    var unwrappedGenericView: AnyView? { return AnyView(self) }
 }
 
 private extension UIViewController {
@@ -25,13 +36,5 @@ private extension UIViewController {
         containerView.addSubview(view)
         parentViewController.addChild(self)
         didMove(toParent: parentViewController)
-    }
-}
-
-extension RLTViewCreatable where Self: View {
-    func embed(in containerView: UIView, on parentViewController: UIViewController) {
-        let hostingController = UIHostingController(rootView: self)
-        hostingController.view.backgroundColor = .clear
-        hostingController.embed(in: containerView, on: parentViewController)
     }
 }

@@ -13,8 +13,14 @@ protocol RLTLinkHandling {
     var linkAnalyticsEvent: (() -> Void)? { get }
 }
 
+/*
+ I would have preferred to have this remain private but be accessible
+ through the individual data models, but that doesn't seem possible
+ */
 extension RLTLinkHandling {
-    func generateLinkHandler(openHandler: @escaping (URL) -> Void) -> () -> Void {
+    static func generateLinkHandler(link: String?,
+                                    linkAnalyticsEvent: (() -> Void)?,
+                                    openHandler: @escaping (URL) -> Void) -> () -> Void {
         return {
             linkAnalyticsEvent?()
             guard let link = link, let url = URL(string: link) else { return }

@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct RLTBanner: RLTDataModel, RLTLinkHandling {
+public struct RLTBanner: RLTDataModel, RLTLinkHandling {
     private enum CodingKeys: String, CodingKey {
         case title, link
     }
-    let title: String?
+    public let title: String?
     internal var link: String?
     internal var linkAnalyticsEvent: (() -> Void)?
+
+    public func generateLinkHandler(openHandler: @escaping (URL) -> Void) -> () -> Void {
+        Self.generateLinkHandler(link: link, linkAnalyticsEvent: linkAnalyticsEvent, openHandler: openHandler)
+    }
 }
