@@ -8,6 +8,17 @@
 
 import Foundation
 
+private struct RLTResponseItem {
+    let contentType: String
+    let data: [String: Any]
+    var unwrappedContentType: RLTContentType {
+        RLTContentType(rawValue: contentType) ?? .unknown
+    }
+    var unwrappedDataModel: RLTDataModel? {
+        return unwrappedContentType.correspondingDataModel?.create(json: data)
+    }
+}
+
 public class CampaignAutomationImplementing: CampaignAutomation {
 
     private let defaultFetcher: RLTViewFetcher!
@@ -16,11 +27,34 @@ public class CampaignAutomationImplementing: CampaignAutomation {
         self.defaultFetcher = defaultFetcher
     }
 
-    public func generateCreatables(for location: String,
-                                   factories: [RLTContentType: RLTCreatableFactory],
-                                   completion: (Result<[RLTCreatable], Error>) -> Void) { }
-
     public var viewFetcher: RLTViewFetcher {
         return defaultFetcher
+    }
+
+    public func generateCreatables(for location: String,
+                                   factories: [RLTContentType: RLTCreatableFactory],
+                                   completion: (Result<[RLTCreatable], Error>) -> Void) {
+        fetchData(location: location) { result in
+            switch result {
+            case .failure(let error): completion(.failure(error))
+            case .success(let responseItems):
+                let creatables: [RLTCreatable?] = responseItems.map {
+                    guard let factory = factories[$0.unwrappedContentType],
+                          let data = $0.unwrappedDataModel else { return nil }
+                    return factory.create(from: data)
+                }
+                completion(.success(creatables.compactMap { $0 }))
+            }
+        }
+    }
+
+    private func fetchData(location: String, completion: (Result<[RLTResponseItem], Error>) -> Void) {
+        let responseItems = [
+            RLTResponseItem(contentType: "banner", data: ["title": "Banner title", "link": "https://google.com"]),
+            RLTResponseItem(contentType: "ticket", data: ["eventName": "Event 1"]),
+            RLTResponseItem(contentType: "ticket", data: ["eventName": "Event 2"]),
+            RLTResponseItem(contentType: "product", data: ["price": 2.0])
+        ]
+        completion(.success(responseItems))
     }
 }

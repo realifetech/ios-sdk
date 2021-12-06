@@ -10,7 +10,7 @@ import Foundation
 
 public protocol RLTMediaTypeFetching {
     associatedtype MediaType
-    var factories: [RLTContentType: RLTCreatableFactory] { get set }
+    var factories: [RLTContentType: RLTCreatableFactory] { get }
 }
 
 public extension RLTMediaTypeFetching {
