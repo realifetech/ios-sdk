@@ -840,6 +840,7 @@
 				3E98B940275A41D000E67321 /* CampaignAutomationimplementing.swift */,
 				3E98B94F275A900500E67321 /* Models */,
 				3E98B956275A90EF00E67321 /* Creatable */,
+				3ED5CD1A275E378400C7D877 /* Factories */,
 				3E98B959275A93BB00E67321 /* Fetchers */,
 			);
 			path = CampaignAutomation;
@@ -861,8 +862,6 @@
 			children = (
 				3E98B945275A8F5B00E67321 /* RLTCreatable.swift */,
 				3E98B954275A909400E67321 /* RLTViewCreatable.swift */,
-				3E98B949275A8FBF00E67321 /* RLTCreatableFactory.swift */,
-				3E98B957275A910600E67321 /* RLTBannerFactory.swift */,
 			);
 			path = Creatable;
 			sourceTree = "<group>";
@@ -874,6 +873,15 @@
 				3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */,
 			);
 			path = Fetchers;
+			sourceTree = "<group>";
+		};
+		3ED5CD1A275E378400C7D877 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				3E98B949275A8FBF00E67321 /* RLTCreatableFactory.swift */,
+				3E98B957275A910600E67321 /* RLTBannerFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		482BE53F2541D11200110368 /* AnalyticsLoggingTests */ = {
