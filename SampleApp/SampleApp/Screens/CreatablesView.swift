@@ -47,9 +47,12 @@ struct CreatablesView_Previews: PreviewProvider {
 
 struct BannerViewFactory: RLTBannerFactory {
     func create(from dataModel: RLTBanner) -> RLTCreatable? {
-        return BannerView(title: dataModel.title ?? "Title", subtitle: "Subtitle", linkHandler: dataModel.generateLinkHandler(openHandler: { url in
-                        UIApplication.shared.open(url, options: [:])
-            }))
+        return BannerView(title: dataModel.title ?? "Title",
+                          subtitle: "Subtitle",
+                          linkHandler: dataModel.generateLinkHandler(openHandler: { url in
+                            UIApplication.shared.open(url, options: [:])
+                          })
+        )
     }
 }
 
