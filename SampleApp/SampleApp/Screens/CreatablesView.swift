@@ -21,12 +21,12 @@ struct CreatablesView: View {
             Spacer()
         }
         .onAppear(perform: {
-            RealifeTech.CampaignAutomation.viewFetcher.factories = [.banner: BannerViewFactory()]
             fetchTopView()
         })
     }
 
     func fetchTopView() {
+        RealifeTech.CampaignAutomation.viewFetcher.factories = [.banner: BannerViewFactory()]   // Could be set in AppDelegate
         RealifeTech.CampaignAutomation.viewFetcher.fetch(location: "homepage-top-view") { result in
             switch result {
             case .success(let fetchedCreatables):
