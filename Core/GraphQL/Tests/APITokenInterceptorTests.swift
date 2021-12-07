@@ -13,9 +13,12 @@ import GraphQL
 
 final class APITokenInterceptorTests: XCTestCase {
 
+    typealias GetFulfilmentPointsQueryApolloData = ApolloType.GetFulfilmentPointsQuery.Data
     private var sut: APITokenInterceptor!
     private var tokenHelper: MockTokenHelper!
+    private let graphQLManagerSpy = MockGraphQLManager<ApolloType.GetProductsQuery.Data>()
     private var url: URL!
+    private let deviceId = "mockDeviceId"
 
     private let operation = ApolloType.GetFulfilmentPointsQuery(pageSize: 10, params: nil)
     private lazy var request = MockRequest<ApolloType.GetFulfilmentPointsQuery>(
@@ -29,8 +32,11 @@ final class APITokenInterceptorTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         tokenHelper = MockTokenHelper()
-        sut = APITokenInterceptor(tokenHelper: tokenHelper)
         url = URL(string: "localhost://")
+        sut = APITokenInterceptor(
+            tokenHelper: tokenHelper,
+            graphQLManager: graphQLManagerSpy,
+            deviceId: deviceId)
     }
 
     override func tearDown() {
@@ -56,7 +62,7 @@ final class APITokenInterceptorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_interceptAsync_httpStatusCodeIs400AndTokenHelperReturnsToken_shouldRetryWithNewToken() throws {
+    func test_interceptAsync_UnauthenticatedErrorAndTokenHelperReturnsToken_shouldRetryWithNewToken() throws {
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         let response = try XCTUnwrap(makeHttpResponse(statusCode: 400))
         let token = "New Token"
@@ -68,6 +74,24 @@ final class APITokenInterceptorTests: XCTestCase {
             response: response
         ) { _ in
             XCTAssertEqual(self.request.additionalHeaders["Authorization"], "Bearer \(token)")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_interceptAsync_UnauthenticatedErrorAndTokenHelperReturnsToken_shouldUpdateGraphQLHeader() throws {
+        let expectation = XCTestExpectation(description: "callback is fulfilled")
+        let response = try XCTUnwrap(makeHttpResponse(statusCode: 400))
+        let token = "New Token"
+        tokenHelper.tokenReturns = token
+        tokenHelper.tokenIsValidReturns = true
+        sut.interceptAsync(
+            chain: RequestChain(interceptors: [sut]),
+            request: request,
+            response: response
+        ) { _ in
+            XCTAssertTrue(self.graphQLManagerSpy.didCallUpdateHeadersToNetworkTransport)
+            XCTAssertEqual(self.graphQLManagerSpy.receivedDeviceId, self.deviceId)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -86,6 +110,21 @@ final class APITokenInterceptorTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
+    private func makeUnauthenticatedErrorData() -> Data {
+        let unauthenticatedError = #"""
+            { "errors": [
+                  {
+                    "message": "Context creation failed: Access denied: Invalid auth token",
+                    "extensions": {
+                      "code": "UNAUTHENTICATED"
+                    }
+                  }
+                ]
+            }
+        """#
+        return unauthenticatedError.data(using: .utf8) ?? Data()
+    }
+
     private func makeHttpResponse(statusCode: Int) throws -> HTTPResponse<ApolloType.GetFulfilmentPointsQuery> {
         let response = try XCTUnwrap(
             HTTPURLResponse(
@@ -96,7 +135,7 @@ final class APITokenInterceptorTests: XCTestCase {
         )
         return HTTPResponse<ApolloType.GetFulfilmentPointsQuery>(
             response: response,
-            rawData: Data(),
+            rawData: statusCode == 200 ? Data() : makeUnauthenticatedErrorData(),
             parsedResponse: nil)
     }
 }

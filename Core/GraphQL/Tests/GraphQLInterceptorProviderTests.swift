@@ -17,7 +17,8 @@ final class GraphQLInterceptorProviderTests: XCTestCase {
         let sut = GraphQLInterceptorProvider(
             store: ApolloStore(),
             client: MockURLSessionClient(),
-            tokenHelper: EmptyTokenManager())
+            tokenHelper: EmptyTokenManager(),
+            deviceId: "mockDeviceId")
         let interceptors = sut.interceptors(for: ApolloType.GetFulfilmentPointsQuery(pageSize: 10, params: nil))
         XCTAssertEqual(interceptors.count, 7)
         XCTAssertTrue(interceptors[0] is LegacyCacheReadInterceptor)
