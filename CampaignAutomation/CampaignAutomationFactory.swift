@@ -13,6 +13,6 @@ public struct CampaignAutomationFactory {
         graphQLManager: GraphQLManageable,
         analyticsLogger: Analytics
     ) -> CampaignAutomation {
-        return CampaignAutomationImplementing(defaultFetcher: RLTViewFetcher())
+        return CampaignAutomationImplementing(defaultFetcher: RLTViewFetcher(), analyticsLogger: analyticsLogger)
     }
 }
