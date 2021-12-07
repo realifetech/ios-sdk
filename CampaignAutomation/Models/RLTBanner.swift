@@ -10,13 +10,16 @@ import Foundation
 
 public struct RLTBanner: RLTDataModel, RLTLinkHandling {
     private enum CodingKeys: String, CodingKey {
-        case title, link
+        case title, subtitle, url, imageUrl, language
     }
-    public let title: String?
-    internal var link: String?
+    let title: String?
+    let subtitle: String?
+    internal let url: URL?
+    let imageUrl: URL?
+    let language: String?
     internal var linkAnalyticsEvent: (() -> Void)?
 
     public func generateLinkHandler(openHandler: @escaping (URL) -> Void) -> () -> Void {
-        Self.generateLinkHandler(link: link, linkAnalyticsEvent: linkAnalyticsEvent, openHandler: openHandler)
+        Self.generateLinkHandler(url: url, linkAnalyticsEvent: linkAnalyticsEvent, openHandler: openHandler)
     }
 }

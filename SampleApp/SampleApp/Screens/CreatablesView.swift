@@ -26,7 +26,8 @@ struct CreatablesView: View {
     }
 
     func fetchTopView() {
-        RealifeTech.CampaignAutomation.viewFetcher.factories = [.banner: BannerViewFactory()]   // Could be set in AppDelegate
+        // Could be set in AppDelegate
+        RealifeTech.CampaignAutomation.viewFetcher.factories = [.banner: BannerViewFactory()]
         RealifeTech.CampaignAutomation.viewFetcher.fetch(location: "homepage-top-view") { result in
             switch result {
             case .success(let fetchedCreatables):
@@ -43,7 +44,6 @@ struct CreatablesView_Previews: PreviewProvider {
         CreatablesView()
     }
 }
-
 
 // Creatable
 struct BannerView: View, RLTViewCreatable {
@@ -67,7 +67,6 @@ struct BannerView: View, RLTViewCreatable {
         self.linkHandler = linkHandler
     }
 }
-
 
 // Factory
 struct BannerViewFactory: RLTBannerFactory {
