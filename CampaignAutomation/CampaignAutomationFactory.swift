@@ -10,7 +10,8 @@ import Foundation
 
 public struct CampaignAutomationFactory {
     static func makeModule(
-        graphQLManager: GraphQLManageable
+        graphQLManager: GraphQLManageable,
+        analyticsLogger: Analytics
     ) -> CampaignAutomation {
         return CampaignAutomationImplementing(defaultFetcher: RLTViewFetcher())
     }

@@ -21,10 +21,12 @@ private struct RLTResponseItem {
 
 public class CampaignAutomationImplementing: CampaignAutomation {
 
-    private let defaultFetcher: RLTViewFetcher!
+    private let defaultFetcher: RLTViewFetcher
+    private let analyticsLogger: Analytics
 
-    init(defaultFetcher: RLTViewFetcher) {
+    init(defaultFetcher: RLTViewFetcher, analyticsLogger: Analytics) {
         self.defaultFetcher = defaultFetcher
+        self.analyticsLogger = analyticsLogger
     }
 
     public var viewFetcher: RLTViewFetcher {
@@ -41,6 +43,7 @@ public class CampaignAutomationImplementing: CampaignAutomation {
                 let creatables: [RLTCreatable?] = responseItems.map {
                     guard let factory = factories[$0.unwrappedContentType],
                           let data = $0.unwrappedDataModel else { return nil }
+//                    logLoadEvent()
                     return factory.create(from: data)
                 }
                 completion(.success(creatables.compactMap { $0 }))
@@ -56,5 +59,17 @@ public class CampaignAutomationImplementing: CampaignAutomation {
             RLTResponseItem(contentType: "product", data: ["price": 2.0])
         ]
         completion(.success(responseItems))
+    }
+
+    /*
+     ["campaignId": 123,
+               "externalId": "homepage-top-view",
+               "contentId": 123,
+               "contentType": "banner",
+               "languageCode": "en"]
+     */
+    private func logLoadEvent(campaignId: Int, externalId: String, contentId: String, contentType: String, languageCode: String) {
+        let event = AnalyticEvent(type: "user", action: "loadContent", new: [:], version: "TODO")
+        analyticsLogger.logEvent(event, completion: {_ in})
     }
 }

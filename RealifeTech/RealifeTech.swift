@@ -68,7 +68,8 @@ public class RealifeTech {
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
-        CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: graphQLManager)
+        CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: graphQLManager,
+                                                                  analyticsLogger: Analytics)
     }
 
     public static func clearAllInterfaces() {
