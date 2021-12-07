@@ -13,13 +13,11 @@ public struct AnalyticEvent: Codable {
     public var storedName: String?
     public let type: String
     public let action: String
-    public let new: [String: String]?
-    public let old: [String: String]?
+    public let new: String?
+    public let old: String?
     public let version: String
     public let timestamp: Date
 
-    public var newString: String? { escape(new) }
-    public var oldString: String? { escape(old) }
     public var timestampString: String { timestamp.rltFormatted }
 
     public init(
@@ -32,23 +30,17 @@ public struct AnalyticEvent: Codable {
     ) {
         self.type = type
         self.action = action
-        self.new = new
-        self.old = old
+        self.new = Self.escape(new)
+        self.old = Self.escape(old)
         self.version = version
         self.timestamp = timestamp
     }
 
-    private func escape(_ dictionary: [String: String]?) -> String? {
-        let encoder = JSONEncoder()
-        guard
-            dictionary != nil,
-            let dictionaryString = try? encoder.encode(dictionary),
-            let jsonString = String(data: dictionaryString, encoding: .utf8)
-        else {
-            return nil
-        }
-        return NSRegularExpression.escapedPattern(for: jsonString).replacingOccurrences(of: "\\", with: "")
+    private static func escape(_ dictionary: [String: Any]?) -> String? {
+        guard let dictionary = dictionary,
+              let data = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else { return nil }
+        return String(data: data, encoding: String.Encoding.utf8)
     }
 }
 
-extension AnalyticEvent: Equatable {}
+extension AnalyticEvent: Equatable { }

@@ -90,8 +90,8 @@ class AnalyticsLogger {
         let input = ApolloType.AnalyticEvent(
             type: event.type,
             action: event.action,
-            new: event.newString,
-            old: event.oldString,
+            new: event.new,
+            old: event.old,
             version: event.version,
             timestamp: event.timestampString)
         graphQLManager.dispatchMutation(
