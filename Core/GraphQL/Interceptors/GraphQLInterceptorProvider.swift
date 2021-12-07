@@ -13,13 +13,14 @@ struct GraphQLInterceptorProvider: InterceptorProvider {
     let store: ApolloStore
     let client: URLSessionClient
     let tokenHelper: APITokenManagable
+    let deviceId: String
 
     func interceptors<Operation: GraphQLOperation>(for operation: Operation) -> [ApolloInterceptor] {
         return [
             LegacyCacheReadInterceptor(store: store),
             NetworkFetchInterceptor(client: client),
             RequestLoggingInterceptor(),
-            APITokenInterceptor(tokenHelper: tokenHelper),
+            APITokenInterceptor(tokenHelper: tokenHelper, deviceId: deviceId),
             ResponseCodeInterceptor(),
             LegacyParsingInterceptor(cacheKeyForObject: store.cacheKeyForObject),
             LegacyCacheWriteInterceptor(store: store)

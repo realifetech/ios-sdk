@@ -53,7 +53,8 @@ public struct GraphQLFactory {
             interceptorProvider: GraphQLInterceptorProvider(
                 store: store,
                 client: urlSessionClient,
-                tokenHelper: apiHelper),
+                tokenHelper: apiHelper,
+                deviceId: deviceId),
             endpointURL: graphQLAPIUrl,
             additionalHeaders: headers)
     }
