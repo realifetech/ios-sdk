@@ -72,13 +72,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		3ED5CD1D275E8E5C00C7D877 /* CampaignAutomationComponents */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CampaignAutomationComponents;
-			sourceTree = "<group>";
-		};
 		48D6F15E251E1ECF006CA623 = {
 			isa = PBXGroup;
 			children = (
@@ -128,7 +121,6 @@
 				96AED99F26D00D2400F6C750 /* WebOrderingJourneyView.swift */,
 				96AED99D26D00A2100F6C750 /* WebPageTypeGetterView.swift */,
 				3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */,
-				3ED5CD1D275E8E5C00C7D877 /* CampaignAutomationComponents */,
 				96AED99426CFF4B000F6C750 /* Components */,
 			);
 			path = Screens;
