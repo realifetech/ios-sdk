@@ -31,6 +31,7 @@ struct CreatablesView: View {
             switch result {
             case .success(let fetchedCreatables):
                 creatables = fetchedCreatables.map { $0.unwrappedGenericView }.compactMap { $0 }
+                // if this were a ViewController, you could use RLTViewCreatable.embed(...)
             case .failure(let error): self.error = error.localizedDescription
             }
         }
