@@ -26,7 +26,7 @@ struct CreatablesView: View {
     }
 
     func fetchTopView() {
-        // Could be set in AppDelegate
+        // Factories could be set once in AppDelegate
         RealifeTech.CampaignAutomation.viewFetcher.factories = [.banner: BannerViewFactory()]
         RealifeTech.CampaignAutomation.viewFetcher.fetch(location: "homepage-top-view") { result in
             switch result {
