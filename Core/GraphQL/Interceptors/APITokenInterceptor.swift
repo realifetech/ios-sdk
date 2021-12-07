@@ -40,7 +40,7 @@ class APITokenInterceptor: ApolloInterceptor {
             return
         }
         if let graphQLErrorCode = try? convertToGraphQLErrorCode(receivedResponse.rawData),
-           graphQLErrorCode == "UNAUTHENTICATED" {
+           graphQLErrorCode == .unauthenticated {
             tokenHelper.getValidToken { [self] _ in
                 guard let token = tokenHelper.token, tokenHelper.tokenIsValid else { return }
                 graphQLManager.updateHeadersToNetworkTransport(
@@ -67,16 +67,17 @@ class APITokenInterceptor: ApolloInterceptor {
              }}]
      }
      */
-    private func convertToGraphQLErrorCode(_ data: Data) throws -> String? {
+    private func convertToGraphQLErrorCode(_ data: Data) throws -> GraphQLErrorCode? {
         do {
             guard let json = try? JSONSerializationFormat.deserialize(data: data) as? JSONObject,
                   let errors = json["errors"] as? [JSONObject],
                   let firstGraphQLErrorJson = errors.first,
-                  let extensions = GraphQLError(firstGraphQLErrorJson).extensions
+                  let extensions = GraphQLError(firstGraphQLErrorJson).extensions,
+                  let code = extensions["code"] as? String
             else {
                 return nil
             }
-            return extensions["code"] as? String
+            return GraphQLErrorCode(rawValue: code)
         }
     }
 }
