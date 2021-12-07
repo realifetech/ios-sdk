@@ -68,7 +68,11 @@ public class CampaignAutomationImplementing: CampaignAutomation {
                "contentType": "banner",
                "languageCode": "en"]
      */
-    private func logLoadEvent(campaignId: Int, externalId: String, contentId: String, contentType: String, languageCode: String) {
+    private func logLoadEvent(campaignId: Int,
+                              externalId: String,
+                              contentId: String,
+                              contentType: String,
+                              languageCode: String) {
         let event = AnalyticEvent(type: "user", action: "loadContent", new: [:], version: "TODO")
         analyticsLogger.logEvent(event, completion: {_ in})
     }
