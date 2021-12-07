@@ -12,11 +12,11 @@ public struct RLTBanner: RLTDataModel, RLTLinkHandling {
     private enum CodingKeys: String, CodingKey {
         case title, subtitle, url, imageUrl, language
     }
-    let title: String?
-    let subtitle: String?
+    public let title: String?
+    public let subtitle: String?
+    public let imageUrl: URL?
+    public let language: String?
     internal let url: URL?
-    let imageUrl: URL?
-    let language: String?
     internal var linkAnalyticsEvent: (() -> Void)?
 
     public func generateLinkHandler(openHandler: @escaping (URL) -> Void) -> () -> Void {
