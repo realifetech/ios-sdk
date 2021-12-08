@@ -12,9 +12,9 @@ import XCTest
 final class AnalyticEventAndCompletionTests: XCTestCase {
 
     let event = AnalyticEvent(
-        type: "Chumps",
-        action: "Eat",
-        version: "Eggs")
+        type: "a",
+        action: "b",
+        version: "c")
 
     func test_hasUUID() {
         let sut = AnalyticEventAndCompletion(analyticEvent: event, analyticCompletion: nil)

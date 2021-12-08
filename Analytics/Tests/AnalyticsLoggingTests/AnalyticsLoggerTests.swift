@@ -21,9 +21,9 @@ final class AnalyticsLoggerTests: XCTestCase {
     private var mockDeviceRegistering: MockDeviceRegistering!
 
     private let testEvent = AnalyticEvent(
-        type: "We",
-        action: "Want",
-        version: "Your")
+        type: "a",
+        action: "b",
+        version: "c")
 
     override func setUp() {
         super.setUp()

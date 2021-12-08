@@ -23,8 +23,8 @@ public struct AnalyticEvent: Codable {
     public init(
         type: String,
         action: String,
-        new: [String: String]? = nil,
-        old: [String: String]? = nil,
+        new: [String: Any]? = nil,
+        old: [String: Any]? = nil,
         version: String,
         timestamp: Date = Date()
     ) {
