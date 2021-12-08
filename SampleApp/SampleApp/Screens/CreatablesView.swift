@@ -65,8 +65,8 @@ struct BannerView: View, RLTViewCreatable {
 // Factory
 struct BannerViewFactory: RLTBannerFactory {
     func create(from dataModel: RLTBanner) -> RLTCreatable? {
-        return BannerView(title: dataModel.title ?? "Title",
-                          subtitle: "Subtitle",
+        return BannerView(title: dataModel.title ?? "Title missing",
+                          subtitle: dataModel.subtitle ?? "Subtitle missing",
                           linkHandler: dataModel.generateLinkHandler(openHandler: { url in
                             UIApplication.shared.open(url, options: [:])
                           })

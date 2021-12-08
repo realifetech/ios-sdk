@@ -8,16 +8,16 @@
 
 import Foundation
 
-protocol RLTLinkHandling {
+internal protocol RLTLinkHandling {
     var url: URL? { get }
-    var linkAnalyticsEvent: (() -> Void)? { get }
+    var linkAnalyticsEvent: (() -> Void)? { get set }
 }
 
 /*
  I would have preferred to have this remain private but be accessible
  through the individual data models, but that doesn't seem possible
  */
-extension RLTLinkHandling {
+internal extension RLTLinkHandling {
     static func generateLinkHandler(url: URL?,
                                     linkAnalyticsEvent: (() -> Void)?,
                                     openHandler: @escaping (URL) -> Void) -> () -> Void {

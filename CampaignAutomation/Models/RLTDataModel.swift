@@ -9,12 +9,15 @@
 import Foundation
 
 public protocol RLTDataModel: Decodable {
-    static func create(json: [String: Any]) -> RLTDataModel?
+    var id: Int? { get }
+    var language: String? { get }
+    static func create(json: [String: Any]?) -> RLTDataModel?
 }
 
 public extension RLTDataModel {
-    static func create(json: [String: Any]) -> RLTDataModel? {
-        guard let data = try? JSONSerialization.data(withJSONObject: json, options: []) else { return nil }
+    static func create(json: [String: Any]?) -> RLTDataModel? {
+        guard let json = json,
+              let data = try? JSONSerialization.data(withJSONObject: json, options: []) else { return nil }
         return try? JSONDecoder().decode(self, from: data)
     }
 }

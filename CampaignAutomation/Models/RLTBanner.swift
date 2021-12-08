@@ -10,8 +10,9 @@ import Foundation
 
 public struct RLTBanner: RLTDataModel, RLTLinkHandling {
     private enum CodingKeys: String, CodingKey {
-        case title, subtitle, url, imageUrl, language
+        case id, title, subtitle, url, imageUrl, language
     }
+    public let id: Int?
     public let title: String?
     public let subtitle: String?
     public let imageUrl: URL?

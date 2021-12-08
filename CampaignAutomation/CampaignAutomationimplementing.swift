@@ -9,10 +9,11 @@
 import Foundation
 
 private struct RLTResponseItem {
-    let contentType: String
-    let data: [String: Any]
+    let campaignId: Int?
+    let contentType: String?
+    let data: [String: Any]?
     var unwrappedContentType: RLTContentType {
-        RLTContentType(rawValue: contentType) ?? .unknown
+        RLTContentType(rawValue: contentType ?? "") ?? .unknown
     }
     var unwrappedDataModel: RLTDataModel? {
         return unwrappedContentType.correspondingDataModel?.create(json: data)
@@ -39,41 +40,66 @@ public class CampaignAutomationImplementing: CampaignAutomation {
         fetchData(location: location) { result in
             switch result {
             case .failure(let error): completion(.failure(error))
-            case .success(let responseItems):
-                let creatables: [RLTCreatable?] = responseItems.map {
-                    guard let factory = factories[$0.unwrappedContentType],
-                          let data = $0.unwrappedDataModel else { return nil }
-//                    logLoadEvent()
-                    return factory.create(from: data)
-                }
-                completion(.success(creatables.compactMap { $0 }))
+            case .success(let responseItems): completion(.success(generateCreatables(for: location,
+                                                                                     from: responseItems,
+                                                                                     using: factories)))
             }
         }
     }
 
+    private func generateCreatables(for location: String,
+                                    from responseItems: [RLTResponseItem],
+                                    using factories: [RLTContentType: RLTCreatableFactory]) -> [RLTCreatable] {
+        let creatables: [RLTCreatable?] = responseItems.map {
+            guard let factory = factories[$0.unwrappedContentType],
+                  var data = $0.unwrappedDataModel else { return nil }
+            let eventDictionary = eventDictionary(campaignId: $0.campaignId,
+                                                  externalId: location,
+                                                  contentId: data.id,
+                                                  contentType: $0.contentType,
+                                                  languageCode: data.language)
+            logEvent(.loadContent, new: eventDictionary)
+            if var linkHandling = data as? RLTLinkHandling & RLTDataModel {
+                linkHandling.linkAnalyticsEvent = { [weak self] in
+                    self?.logEvent(.interactWithContent, new: eventDictionary)
+                }
+                data = linkHandling
+            }
+            return factory.create(from: data)
+        }
+        return creatables.compactMap { $0 }
+    }
+
     private func fetchData(location: String, completion: (Result<[RLTResponseItem], Error>) -> Void) {
         let responseItems = [
-            RLTResponseItem(contentType: "banner", data: ["title": "Banner title", "link": "https://google.com"]),
-            RLTResponseItem(contentType: "ticket", data: ["eventName": "Event 1"]),
-            RLTResponseItem(contentType: "ticket", data: ["eventName": "Event 2"]),
-            RLTResponseItem(contentType: "product", data: ["price": 2.0])
+            RLTResponseItem(campaignId: 1, contentType: "banner", data: ["title": "Banner title",
+                                                                         "subtitle": "Banner subtitle",
+                                                                         "link": "https://google.com"]),
+            RLTResponseItem(campaignId: 1, contentType: "ticket", data: ["eventName": "Event 1"]),
+            RLTResponseItem(campaignId: 1, contentType: "ticket", data: ["eventName": "Event 2"]),
+            RLTResponseItem(campaignId: 1, contentType: "product", data: ["price": 2.0])
         ]
         completion(.success(responseItems))
     }
 
-    /*
-     ["campaignId": 123,
-               "externalId": "homepage-top-view",
-               "contentId": 123,
-               "contentType": "banner",
-               "languageCode": "en"]
-     */
-    private func logLoadEvent(campaignId: Int,
-                              externalId: String,
-                              contentId: String,
-                              contentType: String,
-                              languageCode: String) {
-        let event = AnalyticEvent(type: "user", action: "loadContent", new: [:], version: "TODO")
+    private enum AnalyticEventAction: String {
+        case loadContent, interactWithContent
+    }
+
+    private func logEvent(_ action: AnalyticEventAction, new: [String: Any]) {
+        let event = AnalyticEvent(type: "user", action: action.rawValue, new: new, version: "TODO")
         analyticsLogger.logEvent(event, completion: {_ in})
+    }
+
+    private func eventDictionary(campaignId: Int?,
+                                 externalId: String,
+                                 contentId: Int?,
+                                 contentType: String?,
+                                 languageCode: String?) -> [String: Any] {
+        return ["campaignId": campaignId ?? 0,
+                "externalId": externalId,
+                "contentId": contentId ?? 0,
+                "contentType": contentType ?? "",
+                "languageCode": languageCode ?? ""]
     }
 }
