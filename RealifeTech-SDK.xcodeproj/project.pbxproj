@@ -10,6 +10,7 @@
 		0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */; };
 		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */; };
 		3E78BCF226B8231800BF3026 /* sell_updatePaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */; };
 		3E78BCF326B8231800BF3026 /* analytics_putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */; };
 		3E78BCF426B8231800BF3026 /* canvas_getWidgetsByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F30D2667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift */; };
@@ -437,6 +438,7 @@
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationImplementingTests.swift; sourceTree = "<group>"; };
 		3E78BCEA26B8226800BF3026 /* GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E78BCED26B8226800BF3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomation.swift; sourceTree = "<group>"; };
@@ -821,6 +823,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		3E2D35D627612B1900630598 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		3E78BCEB26B8226800BF3026 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +852,7 @@
 				3E98B956275A90EF00E67321 /* Creatable */,
 				3ED5CD1A275E378400C7D877 /* Factories */,
 				3E98B959275A93BB00E67321 /* Fetchers */,
+				3E2D35D627612B1900630598 /* Tests */,
 			);
 			path = CampaignAutomation;
 			sourceTree = "<group>";
@@ -2661,6 +2672,7 @@
 				9637475326C541D1007DF92D /* OrderTypeTests.swift in Sources */,
 				9637474D26C53D83007DF92D /* OrderItemTests.swift in Sources */,
 				9637474F26C53E5D007DF92D /* OrderModelTestsHelper.swift in Sources */,
+				3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */,
 				488A67CA2541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift in Sources */,
 				961C42CF26088377001D8467 /* DiskCacheTests.swift in Sources */,
 				961C43782608937C001D8467 /* RequestHeaderTests.swift in Sources */,
