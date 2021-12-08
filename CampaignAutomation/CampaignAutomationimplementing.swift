@@ -74,7 +74,7 @@ public class CampaignAutomationImplementing: CampaignAutomation {
         let responseItems = [
             RLTResponseItem(campaignId: 1, contentType: "banner", data: ["title": "Banner title",
                                                                          "subtitle": "Banner subtitle",
-                                                                         "link": "https://google.com"]),
+                                                                         "url": "https://google.com"]),
             RLTResponseItem(campaignId: 1, contentType: "ticket", data: ["eventName": "Event 1"]),
             RLTResponseItem(campaignId: 1, contentType: "ticket", data: ["eventName": "Event 2"]),
             RLTResponseItem(campaignId: 1, contentType: "product", data: ["price": 2.0])
@@ -87,7 +87,7 @@ public class CampaignAutomationImplementing: CampaignAutomation {
     }
 
     private func logEvent(_ action: AnalyticEventAction, new: [String: Any]) {
-        let event = AnalyticEvent(type: "user", action: action.rawValue, new: new, version: "TODO")
+        let event = AnalyticEvent(type: "user", action: action.rawValue, new: new, version: "TODO-make-optional")
         analyticsLogger.logEvent(event, completion: {_ in})
     }
 
