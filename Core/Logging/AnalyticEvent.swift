@@ -20,6 +20,7 @@ public struct AnalyticEvent: Codable {
 
     public var timestampString: String { timestamp.rltFormatted }
 
+    // If you would like to send a number with a decimal point, such as 6.6, to `new` or `old` we recommend that you use Decimal(6.6)
     public init(
         type: String,
         action: String,

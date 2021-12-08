@@ -14,6 +14,8 @@ final class AnalyticEventAndCompletionTests: XCTestCase {
     let event = AnalyticEvent(
         type: "a",
         action: "b",
+        new: ["d": "dd", "e": 55],
+        old: ["f": Decimal(6.6)],
         version: "c")
 
     func test_hasUUID() {
@@ -39,5 +41,10 @@ final class AnalyticEventAndCompletionTests: XCTestCase {
         } catch {
             XCTFail("Could not encode & decode sut. Error: \(error.localizedDescription)")
         }
+    }
+
+    func test_encoding_dictionaries() {
+        XCTAssertTrue(event.new == "{\"e\":55,\"d\":\"dd\"}" || event.new == "{\"d\":\"dd\",\"e\":55}")
+        XCTAssertEqual(event.old, "{\"f\":6.6}")
     }
 }
