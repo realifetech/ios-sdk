@@ -20,7 +20,8 @@ public struct AnalyticEvent: Codable {
 
     public var timestampString: String { timestamp.rltFormatted }
 
-    // If you would like to send a number with a decimal point, such as 6.6, to `new` or `old` we recommend that you use Decimal(6.6)
+    /* If you would like to send a number with a decimal point, such as 6.6,
+        to `new` or `old` we recommend that you use Decimal(6.6) */
     public init(
         type: String,
         action: String,
@@ -40,7 +41,7 @@ public struct AnalyticEvent: Codable {
     private static func escape(_ dictionary: [String: Any]?) -> String? {
         guard let dictionary = dictionary,
               let data = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else { return nil }
-        return String(data: data, encoding: String.Encoding.utf8)
+        return String(data: data, encoding: .utf8)
     }
 }
 
