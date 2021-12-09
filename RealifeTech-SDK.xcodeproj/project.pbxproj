@@ -11,6 +11,7 @@
 		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
 		3E0C2595276215C700B6F7D1 /* RLTBannerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */; };
+		3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */; };
 		3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */; };
 		3E78BCF226B8231800BF3026 /* sell_updatePaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */; };
 		3E78BCF326B8231800BF3026 /* analytics_putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */; };
@@ -440,6 +441,7 @@
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTBannerFactoryTests.swift; sourceTree = "<group>"; };
+		3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTLinkHandlingTests.swift; sourceTree = "<group>"; };
 		3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationImplementingTests.swift; sourceTree = "<group>"; };
 		3E78BCEA26B8226800BF3026 /* GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E78BCED26B8226800BF3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -830,6 +832,7 @@
 			children = (
 				3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */,
 				3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */,
+				3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2573,6 +2576,7 @@
 				96B670C526D7CE4B00DB74A4 /* FilterParamTests.swift in Sources */,
 				96302CED26C4104C000A91EC /* BasketTests.swift in Sources */,
 				96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */,
+				3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */,
 				96AED8D526CFC71900F6C750 /* ColorTypeTests.swift in Sources */,
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,

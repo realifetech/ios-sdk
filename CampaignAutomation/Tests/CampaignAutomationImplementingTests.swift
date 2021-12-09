@@ -41,6 +41,10 @@ class CampaignAutomationImplementingTests: XCTestCase {
         XCTAssertEqual(mockAnalytics.loggedEvents.first?.action, "loadContent")
         XCTAssertEqual(mockAnalytics.loggedEvents.last?.type, "user")
         XCTAssertNotNil(mockAnalytics.loggedEvents.last?.new)
+        (creatables.first as? MockBannerCreatable)?.linkEvent?()
+        XCTAssertEqual(mockAnalytics.loggedEvents.count, 3)
+        XCTAssertEqual(mockAnalytics.loggedEvents.last?.action, "interactWithContent")
+        XCTAssertNotNil(mockAnalytics.loggedEvents.last?.new)
     }
 
     func test_generateAnalyticEventDictionary() {
@@ -78,10 +82,16 @@ private class MockAnalytics: Analytics {
 
 private struct MockBannerCreatable: RLTCreatable {
     let title: String
+    let linkEvent: (() -> Void)?
 }
 
 private class MockBannerFactory: RLTBannerFactory {
+    var urlOpened: URL?
     func create(from dataModel: RLTBanner) -> RLTCreatable? {
-        return MockBannerCreatable(title: dataModel.title ?? "")
+        let openHandler: (URL) -> Void = { url in
+            self.urlOpened = url
+        }
+        return MockBannerCreatable(title: dataModel.title ?? "",
+                                   linkEvent: dataModel.generateLinkHandler(openHandler: openHandler))
     }
 }
