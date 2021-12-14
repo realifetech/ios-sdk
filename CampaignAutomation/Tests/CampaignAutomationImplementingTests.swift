@@ -15,12 +15,14 @@ class CampaignAutomationImplementingTests: XCTestCase {
     private var sut: CampaignAutomationImplementing!
 
     override func setUpWithError() throws {
+        try super.setUpWithError()
         mockAnalytics = MockAnalytics()
         sut = CampaignAutomationImplementing(defaultFetcher: RLTViewFetcher(),
                                              analyticsLogger: mockAnalytics)
     }
 
     override func tearDownWithError() throws {
+        try super.tearDownWithError()
         mockAnalytics = nil
         sut = nil
     }
