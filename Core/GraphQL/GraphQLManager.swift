@@ -60,6 +60,9 @@ extension GraphQLManager: GraphQLManageable {
         ) { result in
             switch result {
             case .success(let graphQLResult):
+                if let errors = graphQLResult.errors {
+                    return completion(.failure(errors[0]))
+                }
                 return completion(.success(graphQLResult))
             case .failure(let error):
                 return completion(.failure(error))
@@ -78,6 +81,9 @@ extension GraphQLManager: GraphQLManageable {
         ) { result in
             switch result {
             case .success(let graphQLResult):
+                if let errors = graphQLResult.errors {
+                    return completion(.failure(errors[0]))
+                }
                 return completion(.success(graphQLResult))
             case .failure(let error):
                 return completion(.failure(error))

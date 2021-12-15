@@ -20,13 +20,22 @@ public final class BasketRepository {
         self.graphQLManager = graphQLManager
     }
 
-    private func transformErrorIfNeccessary(_ errors: [GraphQLError]?) -> BasketError? {
-        guard let errors = errors else { return nil }
-        let basketErrors = errors.map { BasketError(graphQLError: $0) }
-        if !basketErrors.isEmpty, let first = basketErrors.first {
-            return BasketError(type: first.type, message: basketErrors.combinedErrorMessage)
+    private func transformErrorIfNeccessary(_ error: GraphQLError?) -> BasketError? {
+        guard let error = error else { return nil }
+        let basketError = BasketError(graphQLError: error)
+        return BasketError(type: basketError.type, message: basketError.message)
+    }
+
+    private func handleBasketError<T>(_ error: Error, callback: @escaping (Result<T, BasketError>) -> Void) {
+        if let error = error as? GraphQLError,
+           let transformedError = self.transformErrorIfNeccessary(error) {
+            callback(.failure(transformedError))
+        } else {
+            let basketError = BasketError(
+                type: .regularError(error),
+                message: error.localizedDescription)
+            callback(.failure(basketError))
         }
-        return nil
     }
 
     private func makeApolloBasketInput(_ input: BasketInput) -> ApolloType.BasketInput {
@@ -70,19 +79,14 @@ extension BasketRepository: BasketProvidable {
             cachePolicy: .fetchIgnoringCacheCompletely) { result in
             switch result {
             case .success(let response):
-                if let transformedError = self.transformErrorIfNeccessary(response.errors) {
-                    callback(.failure(transformedError))
-                } else if let returnedBasket = response.data?.getMyBasket?.fragments.fragmentBasket {
+                if let returnedBasket = response.data?.getMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
                     let basketError = BasketError(type: .emptyBasket, message: "")
                     callback(.failure(basketError))
                 }
             case .failure(let error):
-                let basketError = BasketError(
-                    type: .regularError(error),
-                    message: error.localizedDescription)
-                callback(.failure(basketError))
+                self.handleBasketError(error, callback: callback)
             }
         }
     }
@@ -97,9 +101,7 @@ extension BasketRepository: BasketProvidable {
         ) { result in
             switch result {
             case .success(let response):
-                if let transformedError = self.transformErrorIfNeccessary(response.errors) {
-                    callback(.failure(transformedError))
-                } else if let returnedBasket = response.data?.createMyBasket?.fragments.fragmentBasket {
+                if let returnedBasket = response.data?.createMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
                     let basketError = BasketError(
@@ -108,10 +110,7 @@ extension BasketRepository: BasketProvidable {
                     callback(.failure(basketError))
                 }
             case .failure(let error):
-                let basketError = BasketError(
-                    type: .regularError(error),
-                    message: error.localizedDescription)
-                callback(.failure(basketError))
+                self.handleBasketError(error, callback: callback)
             }
         }
     }
@@ -126,9 +125,7 @@ extension BasketRepository: BasketProvidable {
         ) { result in
             switch result {
             case .success(let response):
-                if let transformedError = self.transformErrorIfNeccessary(response.errors) {
-                    callback(.failure(transformedError))
-                } else if let returnedBasket = response.data?.updateMyBasket?.fragments.fragmentBasket {
+                if let returnedBasket = response.data?.updateMyBasket?.fragments.fragmentBasket {
                     callback(.success(Basket(response: returnedBasket)))
                 } else {
                     let basketError = BasketError(
@@ -137,10 +134,7 @@ extension BasketRepository: BasketProvidable {
                     callback(.failure(basketError))
                 }
             case .failure(let error):
-                let basketError = BasketError(
-                    type: .regularError(error),
-                    message: error.localizedDescription)
-                callback(.failure(basketError))
+                self.handleBasketError(error, callback: callback)
             }
         }
     }
@@ -154,16 +148,9 @@ extension BasketRepository: BasketProvidable {
         ) { result in
             switch result {
             case .success(let response):
-                if let transformedError = self.transformErrorIfNeccessary(response.errors) {
-                    callback(.failure(transformedError))
-                } else {
-                    callback(.success(response.data?.deleteMyBasket.success ?? false))
-                }
+                callback(.success(response.data?.deleteMyBasket.success ?? false))
             case .failure(let error):
-                let basketError = BasketError(
-                    type: .regularError(error),
-                    message: error.localizedDescription)
-                callback(.failure(basketError))
+                self.handleBasketError(error, callback: callback)
             }
         }
     }
@@ -178,9 +165,7 @@ extension BasketRepository: BasketProvidable {
         ) { result in
             switch result {
             case .success(let response):
-                if let transformedError = self.transformErrorIfNeccessary(response.errors) {
-                    callback(.failure(transformedError))
-                } else if let order = Order(response: response.data?.checkoutMyBasket?.fragments.fragmentOrder) {
+                if let order = Order(response: response.data?.checkoutMyBasket?.fragments.fragmentOrder) {
                     callback(.success(order))
                 } else {
                     let basketError = BasketError(
@@ -189,10 +174,7 @@ extension BasketRepository: BasketProvidable {
                     callback(.failure(basketError))
                 }
             case .failure(let error):
-                let basketError = BasketError(
-                    type: .regularError(error),
-                    message: error.localizedDescription)
-                callback(.failure(basketError))
+                self.handleBasketError(error, callback: callback)
             }
         }
     }
