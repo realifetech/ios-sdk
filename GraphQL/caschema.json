@@ -121,7 +121,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "JSONGeneric",
               "ofType": null
             },
             "isDeprecated": false,
@@ -152,7 +152,7 @@
       },
       {
         "kind": "SCALAR",
-        "name": "JSON",
+        "name": "JSONGeneric",
         "description": "Use to represent a generic Dict as graphene does not provide such. May need improvement",
         "fields": null,
         "inputFields": null,

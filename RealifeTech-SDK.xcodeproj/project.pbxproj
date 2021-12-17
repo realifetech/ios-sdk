@@ -894,13 +894,6 @@
 			path = Fetchers;
 			sourceTree = "<group>";
 		};
-		3EA8FFF2276BB485001059B3 /* CA */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CA;
-			sourceTree = "<group>";
-		};
 		3ED5CD1A275E378400C7D877 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1454,7 +1447,6 @@
 		961C419B260882BA001D8467 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				3EA8FFF2276BB485001059B3 /* CA */,
 				0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */,
 				0319F2FF2667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift */,
 				960B00E026C3CF5A002C82E9 /* canvas_fragment_screen.graphql.swift */,
@@ -2272,7 +2264,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/GraphQL\"\ncd $GRAPHQL_PATH\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com/ca/graphql\" caschema.json --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --passthroughCustomScalars --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\",\"${GRAPHQL_PATH}/caschema.json\" \"${GRAPHQL_PATH}/API/\"\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/GraphQL\"\ncd $GRAPHQL_PATH\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com/ca/graphql\" caschema.json --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --passthroughCustomScalars --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\",\"${GRAPHQL_PATH}/caschema.json\" \"${GRAPHQL_PATH}/API/\"\n";
 		};
 		C727D3220B094BF8B35EE985 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
