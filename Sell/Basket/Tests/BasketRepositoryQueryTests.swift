@@ -65,8 +65,8 @@ final class BasketRepositoryQueryTests: XCTestCase {
         let (graphQLManager, sut) = BasketRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyBasketQuery.Data.self)
 
-        let expectedResult = makeGetMyBasketGraphQLResult(error: error)
-        graphQLManager.resultReturns = .success(expectedResult)
+        let expectedResult = makeGraphQLError(error)
+        graphQLManager.resultReturns = .failure(expectedResult)
 
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.getMyBasket { result in
@@ -79,12 +79,7 @@ final class BasketRepositoryQueryTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    private func makeGetMyBasketGraphQLResult(
-        error: BasketError? = nil
-    ) -> GraphQLResult<ApolloType.GetMyBasketQuery.Data> {
-        let extensions: [String: Any] = ["code": error?.errorCode as JSONValue]
-        let graphQLError = GraphQLError(["extensions": extensions])
-
+    private func makeGetMyBasketGraphQLResult() -> GraphQLResult<ApolloType.GetMyBasketQuery.Data> {
         let getMyBasket = ApolloType
             .GetMyBasketQuery
             .Data
@@ -97,10 +92,15 @@ final class BasketRepositoryQueryTests: XCTestCase {
             ApolloType
             .GetMyBasketQuery
             .Data>(
-            data: error == nil ? data : nil,
+            data: data,
             extensions: nil,
-            errors: error == nil ? nil : [graphQLError],
+            errors: nil,
             source: .cache,
             dependentKeys: nil)
+    }
+
+    private func makeGraphQLError(_ error: BasketError) -> GraphQLError {
+        let extensions: [String: Any] = ["code": error.errorCode as JSONValue]
+        return GraphQLError(["extensions": extensions])
     }
 }

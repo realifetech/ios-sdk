@@ -55,18 +55,3 @@ extension BasketError {
         }
     }
 }
-
-extension Array where Element == BasketError {
-
-    var combinedErrorMessage: String {
-        if isEmpty {
-            return ""
-        } else if count == 1, let error = first {
-            return error.message
-        } else {
-            return Set(map { $0.message })
-                .sorted()
-                .joined(separator: "\n")
-        }
-    }
-}
