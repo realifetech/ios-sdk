@@ -25,13 +25,15 @@ extension BasketRepositoryMutationTests {
         }
     }
 
+    private func makeBasketGraphQLError(_ error: BasketError) -> GraphQLError {
+        let extensions: [String: Any] = ["code": error.errorCode as JSONValue]
+        return GraphQLError(["extensions": extensions])
+    }
+
     private func helper_testCreateMyBasket_customError_failureCase(_ error: BasketError) {
         let (graphQLManager, sut) = BasketRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.CreateMyBasketMutation.Data.self)
-
-        let expectedResult = makeCreateMyBasketGraphQLResult(error: error)
-        graphQLManager.resultReturns = .success(expectedResult)
-
+        graphQLManager.resultReturns = .failure(makeBasketGraphQLError(error))
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.createMyBasket(input: basketInput) { result in
             guard case let .failure(returnedError) = result else {
@@ -46,10 +48,7 @@ extension BasketRepositoryMutationTests {
     private func helper_testUpdateMyBasket_customError_failureCase(_ error: BasketError) {
         let (graphQLManager, sut) = BasketRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.UpdateMyBasketMutation.Data.self)
-
-        let expectedResult = makeUpdateMyBasketGraphQLResult(error: error)
-        graphQLManager.resultReturns = .success(expectedResult)
-
+        graphQLManager.resultReturns = .failure(makeBasketGraphQLError(error))
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.updateMyBasket(input: basketInput) { result in
             guard case let .failure(returnedError) = result else {
@@ -64,10 +63,7 @@ extension BasketRepositoryMutationTests {
     private func helper_testDeleteMyBasket_customError_failureCase(_ error: BasketError) {
         let (graphQLManager, sut) = BasketRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.DeleteMyBasketMutation.Data.self)
-
-        let expectedResult = makeDeleteMyBasketGraphQLResult(error: error)
-        graphQLManager.resultReturns = .success(expectedResult)
-
+        graphQLManager.resultReturns = .failure(makeBasketGraphQLError(error))
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.deleteMyBasket { result in
             guard case let .failure(returnedError) = result else {
@@ -82,10 +78,7 @@ extension BasketRepositoryMutationTests {
     private func helper_testCheckoutMyBasket_customError_failureCase(_ error: BasketError) {
         let (graphQLManager, sut) = BasketRepositoryTestHelper
             .makeGraphQLManagerAndSUT(ofType: ApolloType.CheckoutMyBasketMutation.Data.self)
-
-        let expectedResult = makeCheckoutMyBasketGraphQLResult(error: error)
-        graphQLManager.resultReturns = .success(expectedResult)
-
+        graphQLManager.resultReturns = .failure(makeBasketGraphQLError(error))
         let expectation = XCTestExpectation(description: "callback is fulfilled")
         sut.checkoutMyBasket(input: checkoutInput) { result in
             guard case let .failure(returnedError) = result else {

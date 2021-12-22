@@ -18,6 +18,7 @@ public class RealifeTech {
     public static var Canvas: Canvas!
     public static var Content: Content!
     public static var Sell: Sell!
+    public static var CampaignAutomation: CampaignAutomation!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -67,6 +68,8 @@ public class RealifeTech {
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
+        CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: graphQLManager,
+                                                                  analyticsLogger: Analytics)
     }
 
     public static func clearAllInterfaces() {
@@ -78,6 +81,7 @@ public class RealifeTech {
         Canvas = nil
         Content = nil
         Sell = nil
+        CampaignAutomation = nil
     }
 
     /// Override the webOrderingJourneyUrl
