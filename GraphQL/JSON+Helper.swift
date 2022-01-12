@@ -10,3 +10,4 @@ import Foundation
 import Apollo
 
 public typealias JSON = [String: String?]
+public typealias JSONGeneric = [String: Any?]
