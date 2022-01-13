@@ -8,16 +8,22 @@
 
 import XCTest
 @testable import RealifeTech
+@testable import GraphQL
+
+private typealias QueryDataType = ApolloTypeCA.GetContentByExternalIdQuery.Data
 
 class CampaignAutomationImplementingTests: XCTestCase {
 
     private var mockAnalytics: MockAnalytics!
     private var sut: CampaignAutomationImplementing!
+    private var graphQLManager: MockGraphQLManager<QueryDataType>!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         mockAnalytics = MockAnalytics()
-        sut = CampaignAutomationImplementing(defaultFetcher: RLTViewFetcher(),
+        graphQLManager = MockGraphQLManager<QueryDataType>()
+        sut = CampaignAutomationImplementing(graphQLManager: graphQLManager,
+                                             defaultFetcher: RLTViewFetcher(),
                                              analyticsLogger: mockAnalytics)
     }
 
@@ -50,12 +56,12 @@ class CampaignAutomationImplementingTests: XCTestCase {
     }
 
     func test_generateAnalyticEventDictionary() {
-        let dictionary = sut.createAnalyticEventDictionary(campaignId: 1,
+        let dictionary = sut.createAnalyticEventDictionary(campaignId: "1",
                                                            externalId: "2",
                                                            contentId: 3,
                                                            contentType: "4",
                                                            languageCode: "5")
-        XCTAssertEqual(dictionary["campaignId"] as? Int, 1)
+        XCTAssertEqual(dictionary["campaignId"] as? String, "1")
         XCTAssertEqual(dictionary["externalId"] as? String, "2")
         XCTAssertEqual(dictionary["contentId"] as? Int, 3)
         XCTAssertEqual(dictionary["contentType"] as? String, "4")
@@ -63,13 +69,13 @@ class CampaignAutomationImplementingTests: XCTestCase {
     }
 
     private let responseItems = [
-        CAGetContentResponseItem(campaignId: 1, contentType: "banner", data: ["title": "Banner title",
+        CAGetContentResponseItem(campaignId: "1", contentType: "banner", data: ["title": "Banner title",
                                                                      "subtitle": "Banner subtitle",
                                                                      "url": "https://google.com"]),
-        CAGetContentResponseItem(campaignId: 1, contentType: "ticket", data: ["eventName": "Event 1"]),
-        CAGetContentResponseItem(campaignId: 1, contentType: "ticket", data: ["eventName": "Event 2"]),
-        CAGetContentResponseItem(campaignId: 1, contentType: "product", data: ["price": 2.0]),
-        CAGetContentResponseItem(campaignId: 1, contentType: "banner", data: ["title": "Banner title 2",
+        CAGetContentResponseItem(campaignId: "1", contentType: "ticket", data: ["eventName": "Event 1"]),
+        CAGetContentResponseItem(campaignId: "1", contentType: "ticket", data: ["eventName": "Event 2"]),
+        CAGetContentResponseItem(campaignId: "1", contentType: "product", data: ["price": 2.0]),
+        CAGetContentResponseItem(campaignId: "1", contentType: "banner", data: ["title": "Banner title 2",
                                                                      "subtitle": "Banner subtitle 2",
                                                                      "url": "https://google.com/2"])
     ]

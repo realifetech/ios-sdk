@@ -11,11 +11,11 @@ import Foundation
 public protocol RLTDataModel: Decodable {
     var id: Int? { get }
     var language: String? { get }
-    static func create(json: [String: Any]?) -> RLTDataModel?
+    static func create(json: [String: Any?]?) -> RLTDataModel?
 }
 
 public extension RLTDataModel {
-    static func create(json: [String: Any]?) -> RLTDataModel? {
+    static func create(json: [String: Any?]?) -> RLTDataModel? {
         guard let json = json,
               let data = try? JSONSerialization.data(withJSONObject: json, options: []) else { return nil }
         return try? JSONDecoder().decode(self, from: data)

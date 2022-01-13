@@ -32,12 +32,7 @@ public class RealifeTech {
     public static func configureSDK(with configuration: SDKConfiguration) {
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
-        let apiHelper = APIRequesterHelper.setupAPI(
-            deviceId: deviceHelper.deviceId,
-            clientId: configuration.appCode,
-            clientSecret: configuration.clientSecret,
-            baseUrl: configuration.apiUrl,
-            notificationCenter: NotificationCenter.default)
+        let apiHelper = createAPIHelper(with: configuration, deviceId: deviceHelper.deviceId)
         let graphQLManager = GraphQLFactory.makeGraphQLManager(
             deviceId: deviceHelper.deviceId,
             tokenHelper: apiHelper,
@@ -68,7 +63,28 @@ public class RealifeTech {
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
-        CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: graphQLManager,
+        configureCampaignAutomation(deviceId: deviceHelper.deviceId,
+                                    tokenHelper: apiHelper,
+                                    graphQLAPIUrl: configuration.graphQLApiUrl)
+    }
+
+    private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
+        return APIRequesterHelper.setupAPI(
+            deviceId: deviceId,
+            clientId: configuration.appCode,
+            clientSecret: configuration.clientSecret,
+            baseUrl: configuration.apiUrl,
+            notificationCenter: NotificationCenter.default)
+    }
+
+    private static func configureCampaignAutomation(deviceId: String,
+                                                    tokenHelper: APITokenManagable,
+                                                    graphQLAPIUrl: String) {
+        let caGraphQLManager = GraphQLFactory.makeGraphQLManager(
+            deviceId: deviceId,
+            tokenHelper: tokenHelper,
+            graphQLAPIUrl: URL(string: graphQLAPIUrl + "/ca/graphql") ?? URL(fileURLWithPath: ""))
+        CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: caGraphQLManager,
                                                                   analyticsLogger: Analytics)
     }
 

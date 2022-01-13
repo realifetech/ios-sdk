@@ -15,5 +15,5 @@ public protocol CampaignAutomation {
     var viewFetcher: RLTViewFetcher { get }
     func generateCreatables(for location: String,
                             factories: [RLTContentType: RLTCreatableFactory],
-                            completion: (Result<[RLTCreatable], Error>) -> Void)
+                            completion: @escaping (Result<[RLTCreatable], Error>) -> Void)
 }
