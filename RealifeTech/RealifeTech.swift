@@ -83,7 +83,7 @@ public class RealifeTech {
         let caGraphQLManager = GraphQLFactory.makeGraphQLManager(
             deviceId: deviceId,
             tokenHelper: tokenHelper,
-            graphQLAPIUrl: URL(string: graphQLAPIUrl + "/ca/graphql") ?? URL(fileURLWithPath: ""))
+            graphQLAPIUrl: URL(string: "\(graphQLAPIUrl)/ca/graphql") ?? URL(fileURLWithPath: ""))
         CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: caGraphQLManager,
                                                                   analyticsLogger: Analytics)
     }

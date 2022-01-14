@@ -77,17 +77,6 @@ public class CampaignAutomationImplementing: CampaignAutomation {
 
     private func fetchData(location: String,
                            completion: @escaping (Result<[CAGetContentResponseItem], Error>) -> Void) {
-        /*
-        let responseItems = [
-            CAGetContentResponseItem(campaignId: "1", contentType: "banner", data: ["title": "Banner title",
-                                                                         "subtitle": "Banner subtitle",
-                                                                         "url": "https://google.com"]),
-            CAGetContentResponseItem(campaignId: "1", contentType: "ticket", data: ["eventName": "Event 1"]),
-            CAGetContentResponseItem(campaignId: "1", contentType: "ticket", data: ["eventName": "Event 2"]),
-            CAGetContentResponseItem(campaignId: "1", contentType: "product", data: ["price": 2.0])
-        ]
-        completion(.success(responseItems))
-        */
         graphQLManager.dispatch(
             query: ApolloTypeCA.GetContentByExternalIdQuery(externalId: location),
             cachePolicy: .returnCacheDataAndFetch) { result in
