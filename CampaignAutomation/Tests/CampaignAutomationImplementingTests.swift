@@ -9,6 +9,7 @@
 import XCTest
 @testable import RealifeTech
 @testable import GraphQL
+import Apollo
 
 private typealias QueryDataType = ApolloTypeCA.GetContentByExternalIdQuery.Data
 
@@ -30,6 +31,7 @@ class CampaignAutomationImplementingTests: XCTestCase {
     override func tearDownWithError() throws {
         try super.tearDownWithError()
         mockAnalytics = nil
+        graphQLManager = nil
         sut = nil
     }
 
@@ -66,6 +68,45 @@ class CampaignAutomationImplementingTests: XCTestCase {
         XCTAssertEqual(dictionary["contentId"] as? Int, 3)
         XCTAssertEqual(dictionary["contentType"] as? String, "4")
         XCTAssertEqual(dictionary["languageCode"] as? String, "5")
+    }
+
+    func test_generateCreatables_success() {
+        let item = QueryDataType.GetContentByExternalId.Item(contentType: .banner, data: responseItems[0].data)
+        let getContentByExternalId = QueryDataType.GetContentByExternalId(campaignId: "1",
+                                                                          items: [item])
+        let data = QueryDataType(getContentByExternalId: getContentByExternalId)
+        let result = GraphQLResult<QueryDataType>(
+            data: data,
+            extensions: nil,
+            errors: nil,
+            source: .server,
+            dependentKeys: nil)
+        graphQLManager.resultReturns = .success(result)
+
+        let expectation = XCTestExpectation(description: "Completion fulfilled")
+        sut.generateCreatables(for: "", factories: [.banner: MockBannerFactory()]) { result in
+            guard case let .success(creatables) = result, let banner = creatables.first as? MockBannerCreatable else {
+                return XCTFail("Test failed")
+            }
+            XCTAssertEqual(creatables.count, 1)
+            XCTAssertEqual(banner.title, "Banner title")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_generateCreatables_failure() {
+        graphQLManager.resultReturns = .failure(DummyError.failure)
+
+        let expectation = XCTestExpectation(description: "Completion fulfilled")
+        sut.generateCreatables(for: "", factories: [.banner: MockBannerFactory()]) { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("Test failed")
+            }
+            XCTAssertEqual((error as? DummyError), DummyError.failure)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
     }
 
     private let responseItems = [

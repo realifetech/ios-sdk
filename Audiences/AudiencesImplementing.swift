@@ -25,7 +25,7 @@ public class AudiencesImplementing: AudienceChecking {
             cachePolicy: .returnCacheDataElseFetch) { result in
             switch result {
             case .success(let response):
-                return completion(.success(response.data?.me?.device?.belongsToAudienceWithExternalId ?? false))
+                 return completion(.success(response.data?.me?.device?.belongsToAudienceWithExternalId ?? false))
             case .failure(let error):
                 return completion(.failure(error))
             }
