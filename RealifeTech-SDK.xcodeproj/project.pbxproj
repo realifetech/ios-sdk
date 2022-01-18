@@ -14,43 +14,9 @@
 		3E0C2595276215C700B6F7D1 /* RLTBannerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */; };
 		3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */; };
 		3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */; };
-		3E78BCF226B8231800BF3026 /* sell_updatePaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */; };
-		3E78BCF326B8231800BF3026 /* analytics_putAnalyticEvent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */; };
-		3E78BCF426B8231800BF3026 /* canvas_getWidgetsByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F30D2667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift */; };
-		3E78BCF526B8231800BF3026 /* content_getWebPageByType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3102667995B00C01E1F /* content_getWebPageByType.graphql.swift */; };
-		3E78BCF626B8231800BF3026 /* sell_createMyBasket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F30C2667995B00C01E1F /* sell_createMyBasket.graphql.swift */; };
-		3E78BCF726B8231800BF3026 /* sell_fragment_fulfilmentPoint.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F30F2667995B00C01E1F /* sell_fragment_fulfilmentPoint.graphql.swift */; };
 		3E78BCF826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3E78BCF926B8231800BF3026 /* sell_fragment_timeslot.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3052667995B00C01E1F /* sell_fragment_timeslot.graphql.swift */; };
-		3E78BCFA26B8231800BF3026 /* sell_fragment_user.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2ED2667995A00C01E1F /* sell_fragment_user.graphql.swift */; };
-		3E78BCFB26B8231800BF3026 /* sell_fragment_productVariant.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F82667995B00C01E1F /* sell_fragment_productVariant.graphql.swift */; };
-		3E78BCFC26B8231800BF3026 /* sell_getFulfilmentPointCategoryById.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3082667995B00C01E1F /* sell_getFulfilmentPointCategoryById.graphql.swift */; };
-		3E78BCFD26B8231800BF3026 /* canvas_fragment_widget.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F30E2667995B00C01E1F /* canvas_fragment_widget.graphql.swift */; };
-		3E78BCFE26B8231800BF3026 /* sell_fragment_basket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F52667995A00C01E1F /* sell_fragment_basket.graphql.swift */; };
-		3E78BCFF26B8231800BF3026 /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3092667995B00C01E1F /* sell_fragment_fulfilmentPointCategory.graphql.swift */; };
-		3E78BD0026B8231800BF3026 /* sell_fragment_order.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3012667995B00C01E1F /* sell_fragment_order.graphql.swift */; };
-		3E78BD0126B8231800BF3026 /* sell_fragment_productModifierItemSelection.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F12667995A00C01E1F /* sell_fragment_productModifierItemSelection.graphql.swift */; };
-		3E78BD0226B8231800BF3026 /* canvas_getScreenByScreenType.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3112667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift */; };
-		3E78BD0326B8231800BF3026 /* sell_fragment_venue.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FC2667995B00C01E1F /* sell_fragment_venue.graphql.swift */; };
-		3E78BD0426B8231800BF3026 /* sell_getFulfilmentPointById.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3062667995B00C01E1F /* sell_getFulfilmentPointById.graphql.swift */; };
 		3E78BD0526B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3E78BD0626B8231800BF3026 /* canvas_getWidgetsByScreenId.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3032667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift */; };
-		3E78BD0726B8231800BF3026 /* sell_checkoutMyBasket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F02667995A00C01E1F /* sell_checkoutMyBasket.graphql.swift */; };
-		3E78BD0826B8231800BF3026 /* sell_fragment_form.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F30B2667995B00C01E1F /* sell_fragment_form.graphql.swift */; };
-		3E78BD0926B8231800BF3026 /* sell_fragment_productModifierItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FD2667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift */; };
-		3E78BD0A26B8231800BF3026 /* sell_getFulfilmentPointCategories.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3072667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift */; };
-		3E78BD0C26B8231800BF3026 /* sell_addPaymentSourceToMyWallet.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2EC2667995A00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift */; };
-		3E78BD0D26B8231800BF3026 /* sell_deleteMyBasket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FA2667995B00C01E1F /* sell_deleteMyBasket.graphql.swift */; };
-		3E78BD0E26B8231800BF3026 /* sell_updateMyBasket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2EF2667995A00C01E1F /* sell_updateMyBasket.graphql.swift */; };
-		3E78BD0F26B8231800BF3026 /* canvas_getScreenByScreenId.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F42667995A00C01E1F /* canvas_getScreenByScreenId.graphql.swift */; };
-		3E78BD1126B8231800BF3026 /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FF2667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift */; };
-		3E78BD1326B8231800BF3026 /* sell_getFulfilmentPoints.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */; };
-		3E78BD1426B8231800BF3026 /* sell_getMyPaymentSources.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2EE2667995A00C01E1F /* sell_getMyPaymentSources.graphql.swift */; };
-		3E78BD1526B8231800BF3026 /* sell_getProductById.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2F62667995A00C01E1F /* sell_getProductById.graphql.swift */; };
-		3E78BD1626B8231800BF3026 /* sell_getProducts.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3002667995B00C01E1F /* sell_getProducts.graphql.swift */; };
-		3E78BD1726B8231800BF3026 /* Types.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F2FB2667995B00C01E1F /* Types.graphql.swift */; };
 		3E78BD1826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		3E78BD1926B8231800BF3026 /* sell_fragment_product.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */; };
 		3E78BD2226B83F0300BF3026 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 961C41AB260882BA001D8467 /* schema.json */; };
 		3E98B93D275A3F3000E67321 /* CampaignAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */; };
 		3E98B93F275A41A800E67321 /* CampaignAutomationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */; };
@@ -67,6 +33,9 @@
 		3E98B95B275A93C800E67321 /* RLTViewFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */; };
 		3E9CD181271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */; };
 		3E9CD183271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */; };
+		3EEB5C34278F347B00B6396E /* campaignautomationschema.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EEB5C33278F347B00B6396E /* campaignautomationschema.json */; };
+		3EEB5C3D278F35FE00B6396E /* CampaignAutomationGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */; };
+		3EEB5C3E278F35FE00B6396E /* GeneralGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -117,17 +86,6 @@
 		9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */; };
 		9606EDBE267CA6A400ED24D0 /* MockGraphQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */; };
 		9606EDC0267CBF4E00ED24D0 /* DummyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606EDBF267CBF4E00ED24D0 /* DummyError.swift */; };
-		960B00D826C3CE12002C82E9 /* sell_fragment_paymentSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */; };
-		960B00D926C3CE3D002C82E9 /* sell_fragment_seatInfo.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B018F2689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift */; };
-		960B00DA26C3CE49002C82E9 /* sell_getMyBasket.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */; };
-		960B00DB26C3CE4C002C82E9 /* sell_getMyOrder.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B018D2689E33B00D8C481 /* sell_getMyOrder.graphql.swift */; };
-		960B00DC26C3CE57002C82E9 /* sell_updateMyOrder.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B018E2689E33B00D8C481 /* sell_updateMyOrder.graphql.swift */; };
-		960B00DD26C3CE9B002C82E9 /* sell_fragment_paymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */; };
-		960B00DE26C3CEAA002C82E9 /* sell_deleteMyPaymentSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */; };
-		960B00E326C3CF5A002C82E9 /* sell_fragment_orders.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B00DF26C3CF5A002C82E9 /* sell_fragment_orders.graphql.swift */; };
-		960B00E426C3CF5A002C82E9 /* canvas_fragment_screen.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B00E026C3CF5A002C82E9 /* canvas_fragment_screen.graphql.swift */; };
-		960B00E526C3CF5A002C82E9 /* sell_fragment_products.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B00E126C3CF5A002C82E9 /* sell_fragment_products.graphql.swift */; };
-		960B00E626C3CF5A002C82E9 /* sell_getMyPaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B00E226C3CF5A002C82E9 /* sell_getMyPaymentIntent.graphql.swift */; };
 		961B01942689EB6900D8C481 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01932689EB6900D8C481 /* Order.swift */; };
 		961B019A2689EF7500D8C481 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B01992689EF7500D8C481 /* OrderStatus.swift */; };
 		961B019C2689EFD400D8C481 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961B019B2689EFD400D8C481 /* OrderItem.swift */; };
@@ -254,8 +212,6 @@
 		961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4178260882BA001D8467 /* APIRequesterHelperTests.swift */; };
 		961C438A2608938D001D8467 /* OAuthRefreshOrWaitActionGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4177260882BA001D8467 /* OAuthRefreshOrWaitActionGeneratorTests.swift */; };
 		961C438F2608939C001D8467 /* UIDeviceHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C4258260882C8001D8467 /* UIDeviceHelperTests.swift */; };
-		9627A9F726F09E7E00786880 /* sell_getMyOrders.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9627A9F526F09E7E00786880 /* sell_getMyOrders.graphql.swift */; };
-		9627A9F826F09E7E00786880 /* sell_createMyPaymentIntent.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9627A9F626F09E7E00786880 /* sell_createMyPaymentIntent.graphql.swift */; };
 		96302CE026C3E4A7000A91EC /* GraphNetworkCachePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96302CDF26C3E4A7000A91EC /* GraphNetworkCachePolicyTests.swift */; };
 		96302CE226C3E849000A91EC /* GraphQLManagerErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96302CE126C3E849000A91EC /* GraphQLManagerErrorTests.swift */; };
 		96302CE426C3E899000A91EC /* GraphQLInterceptorProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96302CE326C3E899000A91EC /* GraphQLInterceptorProviderTests.swift */; };
@@ -398,40 +354,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0319F2EC2667995A00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_addPaymentSourceToMyWallet.graphql.swift; sourceTree = "<group>"; };
-		0319F2ED2667995A00C01E1F /* sell_fragment_user.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_user.graphql.swift; sourceTree = "<group>"; };
-		0319F2EE2667995A00C01E1F /* sell_getMyPaymentSources.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyPaymentSources.graphql.swift; sourceTree = "<group>"; };
-		0319F2EF2667995A00C01E1F /* sell_updateMyBasket.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_updateMyBasket.graphql.swift; sourceTree = "<group>"; };
-		0319F2F02667995A00C01E1F /* sell_checkoutMyBasket.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_checkoutMyBasket.graphql.swift; sourceTree = "<group>"; };
-		0319F2F12667995A00C01E1F /* sell_fragment_productModifierItemSelection.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_productModifierItemSelection.graphql.swift; sourceTree = "<group>"; };
-		0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = analytics_putAnalyticEvent.graphql.swift; sourceTree = "<group>"; };
-		0319F2F42667995A00C01E1F /* canvas_getScreenByScreenId.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_getScreenByScreenId.graphql.swift; sourceTree = "<group>"; };
-		0319F2F52667995A00C01E1F /* sell_fragment_basket.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_basket.graphql.swift; sourceTree = "<group>"; };
-		0319F2F62667995A00C01E1F /* sell_getProductById.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getProductById.graphql.swift; sourceTree = "<group>"; };
-		0319F2F82667995B00C01E1F /* sell_fragment_productVariant.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_productVariant.graphql.swift; sourceTree = "<group>"; };
-		0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_updatePaymentIntent.graphql.swift; sourceTree = "<group>"; };
-		0319F2FA2667995B00C01E1F /* sell_deleteMyBasket.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_deleteMyBasket.graphql.swift; sourceTree = "<group>"; };
-		0319F2FB2667995B00C01E1F /* Types.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.graphql.swift; sourceTree = "<group>"; };
-		0319F2FC2667995B00C01E1F /* sell_fragment_venue.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_venue.graphql.swift; sourceTree = "<group>"; };
-		0319F2FD2667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_productModifierItem.graphql.swift; sourceTree = "<group>"; };
-		0319F2FF2667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = audience_fetchBelongsToAudienceWithExternalId.graphql.swift; sourceTree = "<group>"; };
-		0319F3002667995B00C01E1F /* sell_getProducts.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getProducts.graphql.swift; sourceTree = "<group>"; };
-		0319F3012667995B00C01E1F /* sell_fragment_order.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_order.graphql.swift; sourceTree = "<group>"; };
-		0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getFulfilmentPoints.graphql.swift; sourceTree = "<group>"; };
-		0319F3032667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_getWidgetsByScreenId.graphql.swift; sourceTree = "<group>"; };
-		0319F3052667995B00C01E1F /* sell_fragment_timeslot.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_timeslot.graphql.swift; sourceTree = "<group>"; };
-		0319F3062667995B00C01E1F /* sell_getFulfilmentPointById.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getFulfilmentPointById.graphql.swift; sourceTree = "<group>"; };
-		0319F3072667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getFulfilmentPointCategories.graphql.swift; sourceTree = "<group>"; };
-		0319F3082667995B00C01E1F /* sell_getFulfilmentPointCategoryById.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getFulfilmentPointCategoryById.graphql.swift; sourceTree = "<group>"; };
-		0319F3092667995B00C01E1F /* sell_fragment_fulfilmentPointCategory.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_fulfilmentPointCategory.graphql.swift; sourceTree = "<group>"; };
-		0319F30B2667995B00C01E1F /* sell_fragment_form.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_form.graphql.swift; sourceTree = "<group>"; };
-		0319F30C2667995B00C01E1F /* sell_createMyBasket.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_createMyBasket.graphql.swift; sourceTree = "<group>"; };
-		0319F30D2667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_getWidgetsByScreenType.graphql.swift; sourceTree = "<group>"; };
-		0319F30E2667995B00C01E1F /* canvas_fragment_widget.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_fragment_widget.graphql.swift; sourceTree = "<group>"; };
-		0319F30F2667995B00C01E1F /* sell_fragment_fulfilmentPoint.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_fulfilmentPoint.graphql.swift; sourceTree = "<group>"; };
-		0319F3102667995B00C01E1F /* content_getWebPageByType.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = content_getWebPageByType.graphql.swift; sourceTree = "<group>"; };
-		0319F3112667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_getScreenByScreenType.graphql.swift; sourceTree = "<group>"; };
-		0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_product.graphql.swift; sourceTree = "<group>"; };
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
 		0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderStatus.swift; sourceTree = "<group>"; };
@@ -461,6 +383,9 @@
 		3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTViewFetcher.swift; sourceTree = "<group>"; };
 		3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptLanguageHeaderRequestInserting.swift; sourceTree = "<group>"; };
 		3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptLanguageHeaderRequestInsertingTests.swift; sourceTree = "<group>"; };
+		3EEB5C33278F347B00B6396E /* campaignautomationschema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = campaignautomationschema.json; sourceTree = "<group>"; };
+		3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignAutomationGQLAPI.swift; sourceTree = "<group>"; };
+		3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralGQLAPI.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
 		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
@@ -516,13 +441,6 @@
 		9606EDAA267B7CF900ED24D0 /* GraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManager.swift; sourceTree = "<group>"; };
 		9606EDBD267CA6A400ED24D0 /* MockGraphQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGraphQLManager.swift; sourceTree = "<group>"; };
 		9606EDBF267CBF4E00ED24D0 /* DummyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyError.swift; sourceTree = "<group>"; };
-		960B00DF26C3CF5A002C82E9 /* sell_fragment_orders.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_orders.graphql.swift; sourceTree = "<group>"; };
-		960B00E026C3CF5A002C82E9 /* canvas_fragment_screen.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = canvas_fragment_screen.graphql.swift; sourceTree = "<group>"; };
-		960B00E126C3CF5A002C82E9 /* sell_fragment_products.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_products.graphql.swift; sourceTree = "<group>"; };
-		960B00E226C3CF5A002C82E9 /* sell_getMyPaymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyPaymentIntent.graphql.swift; sourceTree = "<group>"; };
-		961B018D2689E33B00D8C481 /* sell_getMyOrder.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyOrder.graphql.swift; sourceTree = "<group>"; };
-		961B018E2689E33B00D8C481 /* sell_updateMyOrder.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_updateMyOrder.graphql.swift; sourceTree = "<group>"; };
-		961B018F2689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_seatInfo.graphql.swift; sourceTree = "<group>"; };
 		961B01932689EB6900D8C481 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		961B01992689EF7500D8C481 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		961B019B2689EFD400D8C481 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
@@ -547,7 +465,6 @@
 		961C1CA82683407B00BE6F3B /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDescriptionTranslation.swift; sourceTree = "<group>"; };
 		961C1CAD26834AC000BE6F3B /* ProductRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryTests.swift; sourceTree = "<group>"; };
-		961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyBasket.graphql.swift; sourceTree = "<group>"; };
 		961C1CB426839A5100BE6F3B /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		961C1CB626839AE100BE6F3B /* CollectionPreferenceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPreferenceType.swift; sourceTree = "<group>"; };
 		961C1CBA26839C2500BE6F3B /* BasketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItem.swift; sourceTree = "<group>"; };
@@ -651,8 +568,6 @@
 		961C4258260882C8001D8467 /* UIDeviceHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceHelperTests.swift; sourceTree = "<group>"; };
 		961C4259260882C8001D8467 /* UIDeviceWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceWrapper.swift; sourceTree = "<group>"; };
 		961C425A260882C8001D8467 /* UIDeviceInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceInterface.swift; sourceTree = "<group>"; };
-		9627A9F526F09E7E00786880 /* sell_getMyOrders.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_getMyOrders.graphql.swift; sourceTree = "<group>"; };
-		9627A9F626F09E7E00786880 /* sell_createMyPaymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_createMyPaymentIntent.graphql.swift; sourceTree = "<group>"; };
 		96302CDF26C3E4A7000A91EC /* GraphNetworkCachePolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNetworkCachePolicyTests.swift; sourceTree = "<group>"; };
 		96302CE126C3E849000A91EC /* GraphQLManagerErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLManagerErrorTests.swift; sourceTree = "<group>"; };
 		96302CE326C3E899000A91EC /* GraphQLInterceptorProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLInterceptorProviderTests.swift; sourceTree = "<group>"; };
@@ -708,9 +623,6 @@
 		964D292826933F3700A69FBC /* CanvasFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFactory.swift; sourceTree = "<group>"; };
 		964D292A269343DD00A69FBC /* CanvasFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFactoryTests.swift; sourceTree = "<group>"; };
 		964D292C269345CE00A69FBC /* CanvasRepositoryScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRepositoryScreenTests.swift; sourceTree = "<group>"; };
-		9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_deleteMyPaymentSource.graphql.swift; sourceTree = "<group>"; };
-		9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentIntent.graphql.swift; sourceTree = "<group>"; };
-		9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_paymentSource.graphql.swift; sourceTree = "<group>"; };
 		96874864268CBDF100DDC5DD /* PaymentProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProvidable.swift; sourceTree = "<group>"; };
 		96874866268CBE1400DDC5DD /* PaymentSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSource.swift; sourceTree = "<group>"; };
 		96874868268CBEC900DDC5DD /* PaymentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRepository.swift; sourceTree = "<group>"; };
@@ -841,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				961C41AB260882BA001D8467 /* schema.json */,
+				3EEB5C33278F347B00B6396E /* campaignautomationschema.json */,
 				3E78BCED26B8226800BF3026 /* Info.plist */,
 				09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */,
 				961C419B260882BA001D8467 /* API */,
@@ -1444,53 +1357,8 @@
 		961C419B260882BA001D8467 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				0319F2F22667995A00C01E1F /* analytics_putAnalyticEvent.graphql.swift */,
-				0319F2FF2667995B00C01E1F /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift */,
-				960B00E026C3CF5A002C82E9 /* canvas_fragment_screen.graphql.swift */,
-				0319F30E2667995B00C01E1F /* canvas_fragment_widget.graphql.swift */,
-				0319F2F42667995A00C01E1F /* canvas_getScreenByScreenId.graphql.swift */,
-				0319F3112667995B00C01E1F /* canvas_getScreenByScreenType.graphql.swift */,
-				0319F3032667995B00C01E1F /* canvas_getWidgetsByScreenId.graphql.swift */,
-				0319F30D2667995B00C01E1F /* canvas_getWidgetsByScreenType.graphql.swift */,
-				0319F3102667995B00C01E1F /* content_getWebPageByType.graphql.swift */,
-				0319F2EC2667995A00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift */,
-				0319F2F02667995A00C01E1F /* sell_checkoutMyBasket.graphql.swift */,
-				0319F30C2667995B00C01E1F /* sell_createMyBasket.graphql.swift */,
-				9627A9F626F09E7E00786880 /* sell_createMyPaymentIntent.graphql.swift */,
-				0319F2FA2667995B00C01E1F /* sell_deleteMyBasket.graphql.swift */,
-				9687485A268CBC7B00DDC5DD /* sell_deleteMyPaymentSource.graphql.swift */,
-				0319F2F52667995A00C01E1F /* sell_fragment_basket.graphql.swift */,
-				0319F30B2667995B00C01E1F /* sell_fragment_form.graphql.swift */,
-				0319F30F2667995B00C01E1F /* sell_fragment_fulfilmentPoint.graphql.swift */,
-				0319F3092667995B00C01E1F /* sell_fragment_fulfilmentPointCategory.graphql.swift */,
-				0319F3012667995B00C01E1F /* sell_fragment_order.graphql.swift */,
-				960B00DF26C3CF5A002C82E9 /* sell_fragment_orders.graphql.swift */,
-				9687485B268CBC7B00DDC5DD /* sell_fragment_paymentIntent.graphql.swift */,
-				9687485C268CBC7B00DDC5DD /* sell_fragment_paymentSource.graphql.swift */,
-				0319F3122667995B00C01E1F /* sell_fragment_product.graphql.swift */,
-				0319F2FD2667995B00C01E1F /* sell_fragment_productModifierItem.graphql.swift */,
-				0319F2F12667995A00C01E1F /* sell_fragment_productModifierItemSelection.graphql.swift */,
-				960B00E126C3CF5A002C82E9 /* sell_fragment_products.graphql.swift */,
-				0319F2F82667995B00C01E1F /* sell_fragment_productVariant.graphql.swift */,
-				961B018F2689E33B00D8C481 /* sell_fragment_seatInfo.graphql.swift */,
-				0319F3052667995B00C01E1F /* sell_fragment_timeslot.graphql.swift */,
-				0319F2ED2667995A00C01E1F /* sell_fragment_user.graphql.swift */,
-				0319F2FC2667995B00C01E1F /* sell_fragment_venue.graphql.swift */,
-				0319F3062667995B00C01E1F /* sell_getFulfilmentPointById.graphql.swift */,
-				0319F3072667995B00C01E1F /* sell_getFulfilmentPointCategories.graphql.swift */,
-				0319F3082667995B00C01E1F /* sell_getFulfilmentPointCategoryById.graphql.swift */,
-				0319F3022667995B00C01E1F /* sell_getFulfilmentPoints.graphql.swift */,
-				961C1CAF268396F100BE6F3B /* sell_getMyBasket.graphql.swift */,
-				961B018D2689E33B00D8C481 /* sell_getMyOrder.graphql.swift */,
-				9627A9F526F09E7E00786880 /* sell_getMyOrders.graphql.swift */,
-				960B00E226C3CF5A002C82E9 /* sell_getMyPaymentIntent.graphql.swift */,
-				0319F2EE2667995A00C01E1F /* sell_getMyPaymentSources.graphql.swift */,
-				0319F2F62667995A00C01E1F /* sell_getProductById.graphql.swift */,
-				0319F3002667995B00C01E1F /* sell_getProducts.graphql.swift */,
-				0319F2EF2667995A00C01E1F /* sell_updateMyBasket.graphql.swift */,
-				961B018E2689E33B00D8C481 /* sell_updateMyOrder.graphql.swift */,
-				0319F2F92667995B00C01E1F /* sell_updatePaymentIntent.graphql.swift */,
-				0319F2FB2667995B00C01E1F /* Types.graphql.swift */,
+				3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */,
+				3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2149,6 +2017,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EEB5C34278F347B00B6396E /* campaignautomationschema.json in Resources */,
 				3E78BD2226B83F0300BF3026 /* schema.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2261,7 +2130,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/GraphQL\"\ncd $GRAPHQL_PATH\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/*.graphql --passthroughCustomScalars --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" \"${GRAPHQL_PATH}/API/\"\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/GraphQL\"\ncd $GRAPHQL_PATH\n\n# --- DOWNLOAD SCHEMAS ---\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com/ca/graphql\" campaignautomationschema.json --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\n# --- GENERATE SWIFT FILES ---\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/General/*.graphql --passthroughCustomScalars --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" \"${GRAPHQL_PATH}/API/GeneralGQLAPI.swift\"\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloTypeCA\" --includes=${GRAPHQL_PATH}/GraphQLFiles/CampaignAutomation/*.graphql --passthroughCustomScalars --localSchemaFile=\"${GRAPHQL_PATH}/campaignautomationschema.json\" \"${GRAPHQL_PATH}/API/CampaignAutomationGQLAPI.swift\"\n";
 		};
 		C727D3220B094BF8B35EE985 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2314,56 +2183,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E78BCFB26B8231800BF3026 /* sell_fragment_productVariant.graphql.swift in Sources */,
-				3E78BCF526B8231800BF3026 /* content_getWebPageByType.graphql.swift in Sources */,
-				3E78BD1326B8231800BF3026 /* sell_getFulfilmentPoints.graphql.swift in Sources */,
-				3E78BD1526B8231800BF3026 /* sell_getProductById.graphql.swift in Sources */,
-				3E78BD0C26B8231800BF3026 /* sell_addPaymentSourceToMyWallet.graphql.swift in Sources */,
-				9627A9F826F09E7E00786880 /* sell_createMyPaymentIntent.graphql.swift in Sources */,
-				3E78BCF226B8231800BF3026 /* sell_updatePaymentIntent.graphql.swift in Sources */,
-				3E78BD1926B8231800BF3026 /* sell_fragment_product.graphql.swift in Sources */,
-				3E78BD0A26B8231800BF3026 /* sell_getFulfilmentPointCategories.graphql.swift in Sources */,
-				3E78BCF426B8231800BF3026 /* canvas_getWidgetsByScreenType.graphql.swift in Sources */,
-				960B00E326C3CF5A002C82E9 /* sell_fragment_orders.graphql.swift in Sources */,
-				3E78BCF326B8231800BF3026 /* analytics_putAnalyticEvent.graphql.swift in Sources */,
-				3E78BD0826B8231800BF3026 /* sell_fragment_form.graphql.swift in Sources */,
-				960B00DB26C3CE4C002C82E9 /* sell_getMyOrder.graphql.swift in Sources */,
-				3E78BCFF26B8231800BF3026 /* sell_fragment_fulfilmentPointCategory.graphql.swift in Sources */,
-				960B00DE26C3CEAA002C82E9 /* sell_deleteMyPaymentSource.graphql.swift in Sources */,
 				3E78BD0526B8231800BF3026 /* (null) in Sources */,
-				3E78BCFE26B8231800BF3026 /* sell_fragment_basket.graphql.swift in Sources */,
-				960B00DD26C3CE9B002C82E9 /* sell_fragment_paymentIntent.graphql.swift in Sources */,
-				3E78BD0F26B8231800BF3026 /* canvas_getScreenByScreenId.graphql.swift in Sources */,
-				960B00D926C3CE3D002C82E9 /* sell_fragment_seatInfo.graphql.swift in Sources */,
-				3E78BD0126B8231800BF3026 /* sell_fragment_productModifierItemSelection.graphql.swift in Sources */,
+				3EEB5C3D278F35FE00B6396E /* CampaignAutomationGQLAPI.swift in Sources */,
+				3EEB5C3E278F35FE00B6396E /* GeneralGQLAPI.swift in Sources */,
 				3E78BD1826B8231800BF3026 /* (null) in Sources */,
-				3E78BCFC26B8231800BF3026 /* sell_getFulfilmentPointCategoryById.graphql.swift in Sources */,
-				960B00E626C3CF5A002C82E9 /* sell_getMyPaymentIntent.graphql.swift in Sources */,
-				960B00D826C3CE12002C82E9 /* sell_fragment_paymentSource.graphql.swift in Sources */,
-				3E78BD0226B8231800BF3026 /* canvas_getScreenByScreenType.graphql.swift in Sources */,
-				3E78BD0326B8231800BF3026 /* sell_fragment_venue.graphql.swift in Sources */,
-				3E78BD1126B8231800BF3026 /* audience_fetchBelongsToAudienceWithExternalId.graphql.swift in Sources */,
-				3E78BCFD26B8231800BF3026 /* canvas_fragment_widget.graphql.swift in Sources */,
-				3E78BD1426B8231800BF3026 /* sell_getMyPaymentSources.graphql.swift in Sources */,
-				3E78BCFA26B8231800BF3026 /* sell_fragment_user.graphql.swift in Sources */,
-				3E78BD0426B8231800BF3026 /* sell_getFulfilmentPointById.graphql.swift in Sources */,
-				3E78BD0926B8231800BF3026 /* sell_fragment_productModifierItem.graphql.swift in Sources */,
 				3E78BCF826B8231800BF3026 /* (null) in Sources */,
-				3E78BD0626B8231800BF3026 /* canvas_getWidgetsByScreenId.graphql.swift in Sources */,
-				960B00E526C3CF5A002C82E9 /* sell_fragment_products.graphql.swift in Sources */,
-				3E78BD0D26B8231800BF3026 /* sell_deleteMyBasket.graphql.swift in Sources */,
-				960B00DA26C3CE49002C82E9 /* sell_getMyBasket.graphql.swift in Sources */,
-				3E78BCF626B8231800BF3026 /* sell_createMyBasket.graphql.swift in Sources */,
-				3E78BD0026B8231800BF3026 /* sell_fragment_order.graphql.swift in Sources */,
-				3E78BCF726B8231800BF3026 /* sell_fragment_fulfilmentPoint.graphql.swift in Sources */,
-				3E78BD0726B8231800BF3026 /* sell_checkoutMyBasket.graphql.swift in Sources */,
-				960B00E426C3CF5A002C82E9 /* canvas_fragment_screen.graphql.swift in Sources */,
-				3E78BD0E26B8231800BF3026 /* sell_updateMyBasket.graphql.swift in Sources */,
-				960B00DC26C3CE57002C82E9 /* sell_updateMyOrder.graphql.swift in Sources */,
-				3E78BD1626B8231800BF3026 /* sell_getProducts.graphql.swift in Sources */,
-				9627A9F726F09E7E00786880 /* sell_getMyOrders.graphql.swift in Sources */,
-				3E78BD1726B8231800BF3026 /* Types.graphql.swift in Sources */,
-				3E78BCF926B8231800BF3026 /* sell_fragment_timeslot.graphql.swift in Sources */,
 				09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

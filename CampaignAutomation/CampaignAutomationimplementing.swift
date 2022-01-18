@@ -7,11 +7,14 @@
 //
 
 import Foundation
+#if !COCOAPODS
+import GraphQL
+#endif
 
 public struct CAGetContentResponseItem {
-    let campaignId: Int?
+    let campaignId: String?
     let contentType: String?
-    let data: [String: Any]?
+    let data: [String: Any?]?
     var unwrappedContentType: RLTContentType {
         RLTContentType(rawValue: contentType ?? "") ?? .unknown
     }
@@ -22,10 +25,12 @@ public struct CAGetContentResponseItem {
 
 public class CampaignAutomationImplementing: CampaignAutomation {
 
+    private let graphQLManager: GraphQLManageable
     private let defaultFetcher: RLTViewFetcher
     private let analyticsLogger: Analytics
 
-    init(defaultFetcher: RLTViewFetcher, analyticsLogger: Analytics) {
+    init(graphQLManager: GraphQLManageable, defaultFetcher: RLTViewFetcher, analyticsLogger: Analytics) {
+        self.graphQLManager = graphQLManager
         self.defaultFetcher = defaultFetcher
         self.analyticsLogger = analyticsLogger
     }
@@ -36,11 +41,11 @@ public class CampaignAutomationImplementing: CampaignAutomation {
 
     public func generateCreatables(for location: String,
                                    factories: [RLTContentType: RLTCreatableFactory],
-                                   completion: (Result<[RLTCreatable], Error>) -> Void) {
+                                   completion: @escaping (Result<[RLTCreatable], Error>) -> Void) {
         fetchData(location: location) { result in
             switch result {
             case .failure(let error): completion(.failure(error))
-            case .success(let responseItems): completion(.success(buildCreatables(for: location,
+            case .success(let responseItems): completion(.success(self.buildCreatables(for: location,
                                                                                   from: responseItems,
                                                                                   using: factories)))
             }
@@ -70,16 +75,24 @@ public class CampaignAutomationImplementing: CampaignAutomation {
         return creatables.compactMap { $0 }
     }
 
-    private func fetchData(location: String, completion: (Result<[CAGetContentResponseItem], Error>) -> Void) {
-        let responseItems = [
-            CAGetContentResponseItem(campaignId: 1, contentType: "banner", data: ["title": "Banner title",
-                                                                         "subtitle": "Banner subtitle",
-                                                                         "url": "https://google.com"]),
-            CAGetContentResponseItem(campaignId: 1, contentType: "ticket", data: ["eventName": "Event 1"]),
-            CAGetContentResponseItem(campaignId: 1, contentType: "ticket", data: ["eventName": "Event 2"]),
-            CAGetContentResponseItem(campaignId: 1, contentType: "product", data: ["price": 2.0])
-        ]
-        completion(.success(responseItems))
+    private func fetchData(location: String,
+                           completion: @escaping (Result<[CAGetContentResponseItem], Error>) -> Void) {
+        graphQLManager.dispatch(
+            query: ApolloTypeCA.GetContentByExternalIdQuery(externalId: location),
+            cachePolicy: .returnCacheDataAndFetch) { result in
+            switch result {
+            case .success(let response):
+                guard let data = response.data?.getContentByExternalId,
+                      let items = data.items else { return completion(.success([])) }
+                let responseItems = items.map({ item in
+                    CAGetContentResponseItem(campaignId: data.campaignId,
+                                             contentType: item?.contentType?.rawValue ?? "unknown",
+                                             data: item?.data)
+                })
+                completion(.success(responseItems))
+            case .failure(let error): completion(.failure(error))
+            }
+        }
     }
 
     private enum AnalyticEventAction: String {
@@ -91,12 +104,12 @@ public class CampaignAutomationImplementing: CampaignAutomation {
         analyticsLogger.logEvent(event, completion: {_ in})
     }
 
-    public func createAnalyticEventDictionary(campaignId: Int?,
+    public func createAnalyticEventDictionary(campaignId: String?,
                                               externalId: String,
                                               contentId: Int?,
                                               contentType: String?,
                                               languageCode: String?) -> [String: Any] {
-        return ["campaignId": campaignId ?? 0,
+        return ["campaignId": campaignId ?? "0",
                 "externalId": externalId,
                 "contentId": contentId ?? 0,
                 "contentType": contentType ?? "",
