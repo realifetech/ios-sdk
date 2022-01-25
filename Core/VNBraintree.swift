@@ -3,9 +3,10 @@
 // VenueNext SDK document: https://venuenext.github.io/ios-2/apple-pay/
 
 import Foundation
-import VNWebSDK
 import Braintree
 import BraintreeDropIn
+
+/*
 
 @objc class VNBraintree: NSObject, PaymentProcessable, PaymentRepresentable {
     let zeroCost = "0.00"
@@ -225,3 +226,4 @@ extension VNBraintree: PKPaymentAuthorizationViewControllerDelegate {
         }
     }
 }
+*/
