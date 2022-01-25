@@ -5,17 +5,47 @@ PODS:
   - Apollo/SQLite (0.40.0):
     - Apollo/Core
     - SQLite.swift (~> 0.12.2)
-  - Braintree (5.5.0):
-    - Braintree/Card (= 5.5.0)
-    - Braintree/Core (= 5.5.0)
-    - Braintree/PayPal (= 5.5.0)
-  - Braintree/Card (5.5.0):
+  - Braintree (4.36.1):
+    - Braintree/Card (= 4.36.1)
+    - Braintree/Core (= 4.36.1)
+    - Braintree/PayPal (= 4.36.1)
+    - Braintree/UI (= 4.36.1)
+  - Braintree/Apple-Pay (4.36.1):
     - Braintree/Core
-  - Braintree/Core (5.5.0)
-  - Braintree/PayPal (5.5.0):
+  - Braintree/Card (4.36.1):
+    - Braintree/Core
+  - Braintree/Core (4.36.1)
+  - Braintree/PaymentFlow (4.36.1):
+    - Braintree/Card
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPal (4.36.1):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.36.1):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.36.1):
     - Braintree/Core
     - Braintree/PayPalDataCollector
-  - Braintree/PayPalDataCollector (5.5.0)
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.36.1)
+  - Braintree/UI (4.36.1):
+    - Braintree/Card
+    - Braintree/Core
+  - Braintree/UnionPay (4.36.1):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (8.1.2):
+    - BraintreeDropIn/DropIn (= 8.1.2)
+  - BraintreeDropIn/DropIn (8.1.2):
+    - Braintree/Card (~> 4.32)
+    - Braintree/Core (~> 4.32)
+    - Braintree/PaymentFlow (~> 4.32)
+    - Braintree/PayPal (~> 4.32)
+    - Braintree/UnionPay (~> 4.32)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (8.1.2)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
     - RxSwift (= 6.1.0)
@@ -33,7 +63,9 @@ PODS:
 DEPENDENCIES:
   - Apollo (~> 0.40.0)
   - Apollo/SQLite
-  - Braintree (= 5.5.0)
+  - Braintree (= 4.36.1)
+  - Braintree/Apple-Pay (= 4.36.1)
+  - BraintreeDropIn (= 8.1.2)
   - RxCocoa (~> 6.1.0)
   - RxSwift (~> 6.1.0)
   - RxTest (~> 6.1.0)
@@ -43,6 +75,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Braintree
+    - BraintreeDropIn
     - ViewInspector
   trunk:
     - Apollo
@@ -55,7 +88,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Apollo: 9fb70b598511a6212a81a34c00fa9bf8bac19a23
-  Braintree: acd5dd18b4aff8858346d6b6f6f3b5bc059332fb
+  Braintree: f7e0e9a5030e22b8ad77e617f27ac9327d7bc004
+  BraintreeDropIn: 50b79151c55f2ffbfbbf9157c2d07d8e85479588
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
@@ -64,6 +98,6 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   ViewInspector: 8f12eb0709a6159991afc8d7b27fae72cca50dc6
 
-PODFILE CHECKSUM: 855c8cd26c13d14984d52ae58adf11b708fe8605
+PODFILE CHECKSUM: 659f61a59c8c7b2e244faf48b82e8ecad4e2b206
 
 COCOAPODS: 1.11.2

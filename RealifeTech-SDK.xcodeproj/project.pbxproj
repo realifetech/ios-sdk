@@ -3,14 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */; };
 		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
+		09283DDA27A039E50024971D /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 09283DD927A039E50024971D /* SwiftJWT */; };
 		09860AFF275F35E300764142 /* GraphQLErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09860AFE275F35E300764142 /* GraphQLErrorCode.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		09B7D7BC27A0362D00F9866B /* VNBraintree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7D7BB27A0362D00F9866B /* VNBraintree.swift */; };
+		09B7D7BF27A036D500F9866B /* VNWebSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B7D7BD27A036D200F9866B /* VNWebSDK.framework */; };
+		09B7D7C027A036D500F9866B /* VNWebSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09B7D7BD27A036D200F9866B /* VNWebSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3E0C2595276215C700B6F7D1 /* RLTBannerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */; };
 		3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */; };
 		3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */; };
@@ -397,6 +401,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		09B7D7C127A036D500F9866B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09B7D7C027A036D500F9866B /* VNWebSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0319F2EC2667995A00C01E1F /* sell_addPaymentSourceToMyWallet.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_addPaymentSourceToMyWallet.graphql.swift; sourceTree = "<group>"; };
 		0319F2ED2667995A00C01E1F /* sell_fragment_user.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sell_fragment_user.graphql.swift; sourceTree = "<group>"; };
@@ -438,6 +456,8 @@
 		0913A9DE275511B500DB9D99 /* Order+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Extension.swift"; sourceTree = "<group>"; };
 		09860AFE275F35E300764142 /* GraphQLErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLErrorCode.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
+		09B7D7BB27A0362D00F9866B /* VNBraintree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VNBraintree.swift; sourceTree = "<group>"; };
+		09B7D7BD27A036D200F9866B /* VNWebSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VNWebSDK.framework; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -793,7 +813,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09B7D7BF27A036D500F9866B /* VNWebSDK.framework in Frameworks */,
 				D1A307806D5B3AE84B11702B /* Pods_RealifeTech.framework in Frameworks */,
+				09283DDA27A039E50024971D /* SwiftJWT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1100,7 @@
 		5C396E6F979EB13FBDECCA85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09B7D7BD27A036D200F9866B /* VNWebSDK.framework */,
 				D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */,
 				8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */,
 				7D9D16B2C12DF74A0CF791FB /* Pods_GraphQL.framework */,
@@ -1322,6 +1345,7 @@
 		961C415F26088298001D8467 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				09B7D7BB27A0362D00F9866B /* VNBraintree.swift */,
 				961C4184260882BA001D8467 /* Core.swift */,
 				964D290226932CDC00A69FBC /* CoreImplementing.swift */,
 				961C41B0260882BA001D8467 /* APILayer */,
@@ -2070,6 +2094,7 @@
 				48D6F138251E158E006CA623 /* Resources */,
 				48D6F137251E158E006CA623 /* Frameworks */,
 				48D6F15B251E18A0006CA623 /* ShellScript */,
+				09B7D7C127A036D500F9866B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2077,6 +2102,9 @@
 				96FC143926CC1683004E4816 /* PBXTargetDependency */,
 			);
 			name = RealifeTech;
+			packageProductDependencies = (
+				09283DD927A039E50024971D /* SwiftJWT */,
+			);
 			productName = RealifeTech;
 			productReference = 48D6F13A251E158E006CA623 /* RealifeTech.framework */;
 			productType = "com.apple.product-type.framework";
@@ -2133,6 +2161,9 @@
 				Base,
 			);
 			mainGroup = 48E67725251BA7F0007E2741;
+			packageReferences = (
+				09283DD827A039E50024971D /* XCRemoteSwiftPackageReference "Swift-JWT" */,
+			);
 			productRefGroup = 48E67730251BA7F0007E2741 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2439,6 +2470,7 @@
 				96AED8CE26CFB58A00F6C750 /* Color+Hex.swift in Sources */,
 				961C4215260882BB001D8467 /* DiskCache.swift in Sources */,
 				961C4268260882C8001D8467 /* PersistentQueue.swift in Sources */,
+				09B7D7BC27A0362D00F9866B /* VNBraintree.swift in Sources */,
 				9606ED9B267B651800ED24D0 /* ProductRepository.swift in Sources */,
 				961C1CBB26839C2500BE6F3B /* BasketItem.swift in Sources */,
 				480BCD95251E254D00266617 /* RealifeTech.swift in Sources */,
@@ -2796,6 +2828,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = RealifeTech/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -2829,6 +2865,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = RealifeTech/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -3050,6 +3090,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		09283DD827A039E50024971D /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.6.201;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		09283DD927A039E50024971D /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09283DD827A039E50024971D /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 48E67726251BA7F0007E2741 /* Project object */;
 }

@@ -11,7 +11,9 @@ pod 'RxSwift', '~> 6.1.0'
 pod 'RxCocoa', '~> 6.1.0'
 pod 'Apollo', '~> 0.40.0'
 pod 'Apollo/SQLite'
-pod 'Braintree', '5.5.0'
+pod 'Braintree', '4.36.1'
+pod 'Braintree/Apple-Pay', '4.36.1'
+pod 'BraintreeDropIn', '8.1.2'
 
 target 'RealifeTech' do
   use_frameworks!
