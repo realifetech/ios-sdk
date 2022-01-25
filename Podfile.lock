@@ -5,6 +5,17 @@ PODS:
   - Apollo/SQLite (0.40.0):
     - Apollo/Core
     - SQLite.swift (~> 0.12.2)
+  - Braintree (5.5.0):
+    - Braintree/Card (= 5.5.0)
+    - Braintree/Core (= 5.5.0)
+    - Braintree/PayPal (= 5.5.0)
+  - Braintree/Card (5.5.0):
+    - Braintree/Core
+  - Braintree/Core (5.5.0)
+  - Braintree/PayPal (5.5.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPalDataCollector (5.5.0)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
     - RxSwift (= 6.1.0)
@@ -22,6 +33,7 @@ PODS:
 DEPENDENCIES:
   - Apollo (~> 0.40.0)
   - Apollo/SQLite
+  - Braintree (= 5.5.0)
   - RxCocoa (~> 6.1.0)
   - RxSwift (~> 6.1.0)
   - RxTest (~> 6.1.0)
@@ -30,6 +42,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Braintree
     - ViewInspector
   trunk:
     - Apollo
@@ -42,6 +55,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Apollo: 9fb70b598511a6212a81a34c00fa9bf8bac19a23
+  Braintree: acd5dd18b4aff8858346d6b6f6f3b5bc059332fb
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
@@ -50,6 +64,6 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   ViewInspector: 8f12eb0709a6159991afc8d7b27fae72cca50dc6
 
-PODFILE CHECKSUM: 9216457abc060dda06da210817957a6ca1225e53
+PODFILE CHECKSUM: 855c8cd26c13d14984d52ae58adf11b708fe8605
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
