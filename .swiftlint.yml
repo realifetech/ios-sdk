@@ -4,6 +4,7 @@ excluded:
    - Core/APILayer/Tests
    - Core/APIUtilities
    - GraphQL/API
+   - Core/VNBraintree.swift
 
 identifier_name:
   excluded:
