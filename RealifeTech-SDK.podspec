@@ -32,5 +32,6 @@ Pod::Spec.new do |spec|
   spec.dependency 'Apollo', '~> 0.40.0'
   spec.dependency 'Apollo/SQLite'
   spec.dependency 'SwiftLint', '~> 0.43.1'
+  spec.dependency 'Braintree', '~> 4.36.1'
 
 end
