@@ -122,7 +122,7 @@ class CampaignAutomationImplementingTests: XCTestCase {
     ]
 }
 
-private class MockAnalytics: Analytics {
+private class MockAnalytics: Analytics {    // TODO: Use MockAnalyticsLogger
     var loggedEvents = [AnalyticEvent]()
     func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
         loggedEvents.append(event)

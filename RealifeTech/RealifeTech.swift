@@ -19,6 +19,7 @@ public class RealifeTech {
     public static var Content: Content!
     public static var Sell: Sell!
     public static var CampaignAutomation: CampaignAutomation!
+    public static var Identity: Identity!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -66,6 +67,7 @@ public class RealifeTech {
         configureCampaignAutomation(deviceId: deviceHelper.deviceId,
                                     tokenHelper: apiHelper,
                                     graphQLAPIUrl: configuration.graphQLApiUrl)
+        Identity = IdentityFactory.makeModule(analyticsLogger: Analytics)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
@@ -98,6 +100,7 @@ public class RealifeTech {
         Content = nil
         Sell = nil
         CampaignAutomation = nil
+        Identity = nil
     }
 
     /// Override the webOrderingJourneyUrl
