@@ -15,13 +15,13 @@ private typealias QueryDataType = ApolloTypeCA.GetContentByExternalIdQuery.Data
 
 class CampaignAutomationImplementingTests: XCTestCase {
 
-    private var mockAnalytics: MockAnalytics!
+    private var mockAnalytics: MockAnalyticsLogger!
     private var sut: CampaignAutomationImplementing!
     private var graphQLManager: MockGraphQLManager<QueryDataType>!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockAnalytics = MockAnalytics()
+        mockAnalytics = MockAnalyticsLogger()
         graphQLManager = MockGraphQLManager<QueryDataType>()
         sut = CampaignAutomationImplementing(graphQLManager: graphQLManager,
                                              defaultFetcher: RLTViewFetcher(),
@@ -47,14 +47,14 @@ class CampaignAutomationImplementingTests: XCTestCase {
         XCTAssertEqual(creatables.count, 2)
         XCTAssertEqual((creatables.first as? MockBannerCreatable)?.title, "Banner title")
         XCTAssertEqual((creatables.last as? MockBannerCreatable)?.title, "Banner title 2")
-        XCTAssertEqual(mockAnalytics.loggedEvents.count, 2)
-        XCTAssertEqual(mockAnalytics.loggedEvents.first?.action, "loadContent")
-        XCTAssertEqual(mockAnalytics.loggedEvents.last?.type, "user")
-        XCTAssertNotNil(mockAnalytics.loggedEvents.last?.new)
+        XCTAssertEqual(mockAnalytics.eventsLogged.count, 2)
+        XCTAssertEqual(mockAnalytics.eventsLogged.first?.action, "loadContent")
+        XCTAssertEqual(mockAnalytics.eventsLogged.last?.type, "user")
+        XCTAssertNotNil(mockAnalytics.eventsLogged.last?.new)
         (creatables.first as? MockBannerCreatable)?.linkEvent?()
-        XCTAssertEqual(mockAnalytics.loggedEvents.count, 3)
-        XCTAssertEqual(mockAnalytics.loggedEvents.last?.action, "interactWithContent")
-        XCTAssertNotNil(mockAnalytics.loggedEvents.last?.new)
+        XCTAssertEqual(mockAnalytics.eventsLogged.count, 3)
+        XCTAssertEqual(mockAnalytics.eventsLogged.last?.action, "interactWithContent")
+        XCTAssertNotNil(mockAnalytics.eventsLogged.last?.new)
     }
 
     func test_generateAnalyticEventDictionary() {
@@ -120,13 +120,6 @@ class CampaignAutomationImplementingTests: XCTestCase {
                                                                      "subtitle": "Banner subtitle 2",
                                                                      "url": "https://google.com/2"])
     ]
-}
-
-private class MockAnalytics: Analytics {    // TODO: Use MockAnalyticsLogger
-    var loggedEvents = [AnalyticEvent]()
-    func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
-        loggedEvents.append(event)
-    }
 }
 
 private struct MockBannerCreatable: RLTCreatable {
