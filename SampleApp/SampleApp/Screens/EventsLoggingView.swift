@@ -18,7 +18,7 @@ final class LoggedEventStore: ObservableObject {
 struct EventsLoggingView: View {
 
     @State var result = ""
-    @ObservedObject var store: LoggedEventStore
+    @State var store: LoggedEventStore
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
