@@ -47,7 +47,7 @@ struct IdentityView: View {
 
     var resultView: some View {
         ResultView(
-            title: "Checking Result",
+            title: "Result:",
             message: result)
     }
 
