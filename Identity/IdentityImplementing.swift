@@ -11,9 +11,11 @@ import Foundation
 public class IdentityImplementing: Identity {
 
     private let analyticsLogger: Analytics
+    private let identityPersister: IdentityPersisting
 
-    init(analyticsLogger: Analytics) {
+    init(analyticsLogger: Analytics, identityPersister: IdentityPersisting) {
         self.analyticsLogger = analyticsLogger
+        self.identityPersister = identityPersister
     }
 
     /// Identify the user to our system, along with any traits known about them
@@ -24,6 +26,7 @@ public class IdentityImplementing: Identity {
     public func identify(userId: String,
                          traits: [RLTTraitType: Any],
                          completion: ((Result<Bool, Error>) -> Void)?) {
+        identityPersister.persist(userId: userId)
         let stringKeyTraits: [String: Any] = Dictionary(uniqueKeysWithValues: traits.map { key, value in
                                                             (key.stringValue, value)
                                                         })
@@ -39,6 +42,15 @@ public class IdentityImplementing: Identity {
                       aliasId: String,
                       completion: ((Result<Bool, Error>) -> Void)?) {
         logEvent(.alias, new: [aliasType.stringValue: aliasId], completion: completion)
+    }
+
+    /// Clears the current user so analytics can be sent for a non-logged-in user. Can be used after your users log out.
+    /// - Example:
+    /// ```
+    /// RealifeTech.Identity.clear()
+    /// ```
+    public func clear() {
+        identityPersister.clear()
     }
 
     private enum AnalyticEventAction: String {

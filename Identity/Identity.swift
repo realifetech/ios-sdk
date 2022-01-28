@@ -11,6 +11,7 @@ import Foundation
 public protocol Identity {
     func identify(userId: String, traits: [RLTTraitType: Any], completion: ((Result<Bool, Error>) -> Void)?)
     func alias(aliasType: RLTAliasType, aliasId: String, completion: ((Result<Bool, Error>) -> Void)?)
+    func clear()
 }
 
 private protocol StringRepresentable {

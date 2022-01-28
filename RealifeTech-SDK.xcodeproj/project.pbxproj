@@ -40,6 +40,8 @@
 		3EEB5C34278F347B00B6396E /* campaignautomationschema.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EEB5C33278F347B00B6396E /* campaignautomationschema.json */; };
 		3EEB5C3D278F35FE00B6396E /* CampaignAutomationGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */; };
 		3EEB5C3E278F35FE00B6396E /* GeneralGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */; };
+		3EFB4E3C27A41CF40004BE5E /* IdentityPersisting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3B27A41CF40004BE5E /* IdentityPersisting.swift */; };
+		3EFB4E3E27A41D130004BE5E /* IdentityPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3D27A41D130004BE5E /* IdentityPersister.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -394,6 +396,8 @@
 		3EEB5C33278F347B00B6396E /* campaignautomationschema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = campaignautomationschema.json; sourceTree = "<group>"; };
 		3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignAutomationGQLAPI.swift; sourceTree = "<group>"; };
 		3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralGQLAPI.swift; sourceTree = "<group>"; };
+		3EFB4E3B27A41CF40004BE5E /* IdentityPersisting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityPersisting.swift; sourceTree = "<group>"; };
+		3EFB4E3D27A41D130004BE5E /* IdentityPersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityPersister.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
 		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
@@ -772,6 +776,7 @@
 		3E7F338327A2F8250054ACF1 /* Identity */ = {
 			isa = PBXGroup;
 			children = (
+				3EFB4E3A27A41CDC0004BE5E /* Persistence */,
 				3E7F338627A2F86C0054ACF1 /* Identity.swift */,
 				3E7F338427A2F86C0054ACF1 /* IdentityFactory.swift */,
 				3E7F338527A2F86C0054ACF1 /* IdentityImplementing.swift */,
@@ -839,6 +844,15 @@
 				3E98B957275A910600E67321 /* RLTBannerFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		3EFB4E3A27A41CDC0004BE5E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				3EFB4E3B27A41CF40004BE5E /* IdentityPersisting.swift */,
+				3EFB4E3D27A41D130004BE5E /* IdentityPersister.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		482BE53F2541D11200110368 /* AnalyticsLoggingTests */ = {
@@ -2233,6 +2247,7 @@
 				961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */,
 				968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */,
 				961C427E260882C8001D8467 /* UIDeviceInterface.swift in Sources */,
+				3EFB4E3C27A41CF40004BE5E /* IdentityPersisting.swift in Sources */,
 				96874865268CBDF100DDC5DD /* PaymentProvidable.swift in Sources */,
 				961C41EB260882BA001D8467 /* Core.swift in Sources */,
 				961C41E5260882BA001D8467 /* OAuthRepository.swift in Sources */,
@@ -2411,6 +2426,7 @@
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
 				96874875268CC3CC00DDC5DD /* PaymentIntentInput.swift in Sources */,
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
+				3EFB4E3E27A41D130004BE5E /* IdentityPersister.swift in Sources */,
 				0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */,
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,

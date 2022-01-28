@@ -53,10 +53,12 @@ public class RealifeTech {
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
         Audiences = AudiencesImplementing(graphQLManager: graphQLManager)
+        let identityPersister = IdentityPersister(defaults: UserDefaults(suiteName: "RLT") ?? .standard)
         Analytics = AnalyticsFactory.makeAnalyticsModule(
             graphQLManager: graphQLManager,
             reachabilityHelper: reachabilityChecker,
-            deviceRegistering: General)
+            deviceRegistering: General,
+            identityPersister: identityPersister)
         Communicate = CommunicateFactory.makeCommunicateModule()
         Canvas = CanvasFactory.makeCanvasModule(graphQLManager: graphQLManager)
         Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
@@ -67,7 +69,7 @@ public class RealifeTech {
         configureCampaignAutomation(deviceId: deviceHelper.deviceId,
                                     tokenHelper: apiHelper,
                                     graphQLAPIUrl: configuration.graphQLApiUrl)
-        Identity = IdentityFactory.makeModule(analyticsLogger: Analytics)
+        Identity = IdentityFactory.makeModule(analyticsLogger: Analytics, identityPersister: identityPersister)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {

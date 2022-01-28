@@ -10,8 +10,9 @@ import Foundation
 
 public struct IdentityFactory {
     static func makeModule(
-        analyticsLogger: Analytics
+        analyticsLogger: Analytics,
+        identityPersister: IdentityPersisting
     ) -> Identity {
-        return IdentityImplementing(analyticsLogger: analyticsLogger)
+        return IdentityImplementing(analyticsLogger: analyticsLogger, identityPersister: identityPersister)
     }
 }

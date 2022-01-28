@@ -17,6 +17,7 @@ public struct AnalyticEvent: Codable {
     public let old: String?
     public let version: String
     public let timestamp: Date
+    public var userId: String?
 
     public var timestampString: String { timestamp.rltFormatted }
 
@@ -36,6 +37,7 @@ public struct AnalyticEvent: Codable {
         self.old = Self.escape(old)
         self.version = version
         self.timestamp = timestamp
+        self.userId = nil   // should be auto-inserted
     }
 
     private static func escape(_ dictionary: [String: Any]?) -> String? {
