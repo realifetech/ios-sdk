@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3ED5CD1C275E7A0F00C7D877 /* CreatablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */; };
+		3EFB4E4027A4301D0004BE5E /* IdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */; };
 		3FA1EF186BD30C3A0EB371A8 /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB1AA0FB8D493ED0238EC14 /* Pods_SampleApp.framework */; };
 		48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16A251E1ECF006CA623 /* AppDelegate.swift */; };
 		48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D6F16C251E1ECF006CA623 /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatablesView.swift; sourceTree = "<group>"; };
+		3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityView.swift; sourceTree = "<group>"; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		48D6F167251E1ECF006CA623 /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D6F16A251E1ECF006CA623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				96AED99F26D00D2400F6C750 /* WebOrderingJourneyView.swift */,
 				96AED99D26D00A2100F6C750 /* WebPageTypeGetterView.swift */,
 				3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */,
+				3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */,
 				96AED99426CFF4B000F6C750 /* Components */,
 			);
 			path = Screens;
@@ -278,6 +281,7 @@
 				48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */,
 				96AED99E26D00A2100F6C750 /* WebPageTypeGetterView.swift in Sources */,
 				96AED99626CFF5CA00F6C750 /* ResultView.swift in Sources */,
+				3EFB4E4027A4301D0004BE5E /* IdentityView.swift in Sources */,
 				96AED99A26CFFC3200F6C750 /* TextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
