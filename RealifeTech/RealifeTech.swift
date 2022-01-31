@@ -19,6 +19,7 @@ public class RealifeTech {
     public static var Content: Content!
     public static var Sell: Sell!
     public static var CampaignAutomation: CampaignAutomation!
+    public static var Identity: Identity!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -52,10 +53,12 @@ public class RealifeTech {
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker)
         Audiences = AudiencesImplementing(graphQLManager: graphQLManager)
+        let identityPersister = IdentityPersister(defaults: UserDefaults(suiteName: "RLT") ?? .standard)
         Analytics = AnalyticsFactory.makeAnalyticsModule(
             graphQLManager: graphQLManager,
             reachabilityHelper: reachabilityChecker,
-            deviceRegistering: General)
+            deviceRegistering: General,
+            identityPersister: identityPersister)
         Communicate = CommunicateFactory.makeCommunicateModule()
         Canvas = CanvasFactory.makeCanvasModule(graphQLManager: graphQLManager)
         Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
@@ -66,6 +69,7 @@ public class RealifeTech {
         configureCampaignAutomation(deviceId: deviceHelper.deviceId,
                                     tokenHelper: apiHelper,
                                     graphQLAPIUrl: configuration.graphQLApiUrl)
+        Identity = IdentityFactory.makeModule(analyticsLogger: Analytics, identityPersister: identityPersister)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
@@ -98,6 +102,7 @@ public class RealifeTech {
         Content = nil
         Sell = nil
         CampaignAutomation = nil
+        Identity = nil
     }
 
     /// Override the webOrderingJourneyUrl

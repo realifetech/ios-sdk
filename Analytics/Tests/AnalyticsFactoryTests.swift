@@ -16,7 +16,8 @@ final class AnalyticsFactoryTests: XCTestCase {
         let module = AnalyticsFactory.makeAnalyticsModule(
             graphQLManager: MockGraphQLManager<PutAnalyticEventMutationDataType>(),
             reachabilityHelper: MockReachabilityChecker(),
-            deviceRegistering: MockDeviceRegistering())
+            deviceRegistering: MockDeviceRegistering(),
+            identityPersister: IdentityPersister(defaults: .standard))
         XCTAssertTrue(module is AnalyticsImplementing)
     }
 
@@ -34,7 +35,8 @@ final class AnalyticsFactoryTests: XCTestCase {
         let module = AnalyticsFactory.makeAnalyticsModule(
             graphQLManager: graphQLManager,
             reachabilityHelper: mockReachabilityChecker,
-            deviceRegistering: MockDeviceRegistering())
+            deviceRegistering: MockDeviceRegistering(),
+            identityPersister: IdentityPersister(defaults: .standard))
         module.logEvent(testEvent) { _ in
             expectation.fulfill()
         }

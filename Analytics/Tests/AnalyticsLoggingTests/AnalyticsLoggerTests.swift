@@ -19,6 +19,7 @@ final class AnalyticsLoggerTests: XCTestCase {
     private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
     private var mockReachabilityChecker: MockReachabilityChecker!
     private var mockDeviceRegistering: MockDeviceRegistering!
+    private var identityPersister: IdentityPersister!
 
     private let testEvent = AnalyticEvent(
         type: "a",
@@ -31,6 +32,7 @@ final class AnalyticsLoggerTests: XCTestCase {
         mockReachabilityChecker = MockReachabilityChecker()
         mockQueue = MockQueue<AnalyticEventAndCompletion>()
         mockDeviceRegistering = MockDeviceRegistering()
+        identityPersister = IdentityPersister(defaults: .standard)
     }
 
     override func tearDown() {
@@ -38,6 +40,7 @@ final class AnalyticsLoggerTests: XCTestCase {
         mockQueue = nil
         mockReachabilityChecker = nil
         mockGraphQLManager = nil
+        identityPersister.clear()
         super.tearDown()
     }
 
@@ -47,7 +50,8 @@ final class AnalyticsLoggerTests: XCTestCase {
             reachabilityHelper: mockReachabilityChecker,
             persistentQueue: AnyQueue(mockQueue),
             failureDebounceSeconds: 0.01,
-            deviceRegistering: mockDeviceRegistering)
+            deviceRegistering: mockDeviceRegistering,
+            identityPersister: IdentityPersister(defaults: .standard))
     }
 
     private func makeEvents(from strings: [String]) -> [AnalyticEvent] {
@@ -215,6 +219,31 @@ final class AnalyticsLoggerTests: XCTestCase {
     func test_logEvent_willContinueWhenGivenMoreItems() {
         test_init_hasItemInPersistentQueue_sendItem()
         test_logEvent_loopIsNotRunning_sendItem()
+    }
+
+    func test_logEvent_noPersistedUserId() {
+        identityPersister.persist(userId: "123")
+        identityPersister.clear()
+        let expectation = XCTestExpectation(description: "Item was added to queue")
+        mockQueue.addedToQueueExpectation = expectation
+        mockReachabilityChecker.hasNetworkConnection = false
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
+        let sut = makeSut()
+        sut.logEvent(testEvent) { _ in }
+        wait(for: [expectation], timeout: 0.01)
+        XCTAssertNil(mockQueue.underlyingStorage.first?.analyticEvent.userId)
+    }
+
+    func test_logEvent_persistedUserIdIncluded() {
+        identityPersister.persist(userId: "123")
+        let expectation = XCTestExpectation(description: "Item was added to queue")
+        mockQueue.addedToQueueExpectation = expectation
+        mockReachabilityChecker.hasNetworkConnection = false
+        mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
+        let sut = makeSut()
+        sut.logEvent(testEvent) { _ in }
+        wait(for: [expectation], timeout: 0.01)
+        XCTAssertEqual(mockQueue.underlyingStorage.first?.analyticEvent.userId, "123")
     }
 }
 

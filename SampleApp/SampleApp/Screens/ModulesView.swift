@@ -34,6 +34,9 @@ struct ModulesView: View {
                 Section(header: Text("Campaign Automation")) {
                     NavigationLink("Creatables Example", destination: CreatablesView())
                 }
+                Section(header: Text("Identity")) {
+                    NavigationLink("Identity Control", destination: IdentityView())
+                }
             }
             .navigationBarTitle("Realife Tech SDK")
         }

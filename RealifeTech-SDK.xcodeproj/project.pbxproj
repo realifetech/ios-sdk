@@ -18,6 +18,10 @@
 		3E78BD0526B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD1826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD2226B83F0300BF3026 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 961C41AB260882BA001D8467 /* schema.json */; };
+		3E7F338727A2F86C0054ACF1 /* IdentityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F338427A2F86C0054ACF1 /* IdentityFactory.swift */; };
+		3E7F338827A2F86C0054ACF1 /* IdentityImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F338527A2F86C0054ACF1 /* IdentityImplementing.swift */; };
+		3E7F338927A2F86C0054ACF1 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F338627A2F86C0054ACF1 /* Identity.swift */; };
+		3E7F338C27A3100F0054ACF1 /* IdentityImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F338B27A3100F0054ACF1 /* IdentityImplementingTests.swift */; };
 		3E98B93D275A3F3000E67321 /* CampaignAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */; };
 		3E98B93F275A41A800E67321 /* CampaignAutomationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */; };
 		3E98B941275A41D000E67321 /* CampaignAutomationImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B940275A41D000E67321 /* CampaignAutomationImplementing.swift */; };
@@ -36,6 +40,8 @@
 		3EEB5C34278F347B00B6396E /* campaignautomationschema.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EEB5C33278F347B00B6396E /* campaignautomationschema.json */; };
 		3EEB5C3D278F35FE00B6396E /* CampaignAutomationGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */; };
 		3EEB5C3E278F35FE00B6396E /* GeneralGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */; };
+		3EFB4E3C27A41CF40004BE5E /* IdentityPersisting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3B27A41CF40004BE5E /* IdentityPersisting.swift */; };
+		3EFB4E3E27A41D130004BE5E /* IdentityPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3D27A41D130004BE5E /* IdentityPersister.swift */; };
 		480BCD94251E254D00266617 /* SDKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD92251E254D00266617 /* SDKConfiguration.swift */; };
 		480BCD95251E254D00266617 /* RealifeTech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480BCD93251E254D00266617 /* RealifeTech.swift */; };
 		487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487479BD2540423D0048F03D /* AnalyticsLogger.swift */; };
@@ -368,6 +374,10 @@
 		3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationImplementingTests.swift; sourceTree = "<group>"; };
 		3E78BCEA26B8226800BF3026 /* GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E78BCED26B8226800BF3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E7F338427A2F86C0054ACF1 /* IdentityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityFactory.swift; sourceTree = "<group>"; };
+		3E7F338527A2F86C0054ACF1 /* IdentityImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityImplementing.swift; sourceTree = "<group>"; };
+		3E7F338627A2F86C0054ACF1 /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
+		3E7F338B27A3100F0054ACF1 /* IdentityImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityImplementingTests.swift; sourceTree = "<group>"; };
 		3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomation.swift; sourceTree = "<group>"; };
 		3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationFactory.swift; sourceTree = "<group>"; };
 		3E98B940275A41D000E67321 /* CampaignAutomationImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationImplementing.swift; sourceTree = "<group>"; };
@@ -386,6 +396,8 @@
 		3EEB5C33278F347B00B6396E /* campaignautomationschema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = campaignautomationschema.json; sourceTree = "<group>"; };
 		3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignAutomationGQLAPI.swift; sourceTree = "<group>"; };
 		3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralGQLAPI.swift; sourceTree = "<group>"; };
+		3EFB4E3B27A41CF40004BE5E /* IdentityPersisting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityPersisting.swift; sourceTree = "<group>"; };
+		3EFB4E3D27A41D130004BE5E /* IdentityPersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityPersister.swift; sourceTree = "<group>"; };
 		480BCD8D251E252600266617 /* GeneralImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralImplementing.swift; sourceTree = "<group>"; };
 		480BCD92251E254D00266617 /* SDKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfiguration.swift; sourceTree = "<group>"; };
 		480BCD93251E254D00266617 /* RealifeTech.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealifeTech.swift; sourceTree = "<group>"; };
@@ -761,6 +773,26 @@
 			path = GraphQL;
 			sourceTree = "<group>";
 		};
+		3E7F338327A2F8250054ACF1 /* Identity */ = {
+			isa = PBXGroup;
+			children = (
+				3EFB4E3A27A41CDC0004BE5E /* Persistence */,
+				3E7F338627A2F86C0054ACF1 /* Identity.swift */,
+				3E7F338427A2F86C0054ACF1 /* IdentityFactory.swift */,
+				3E7F338527A2F86C0054ACF1 /* IdentityImplementing.swift */,
+				3E7F338A27A30FF20054ACF1 /* Tests */,
+			);
+			path = Identity;
+			sourceTree = "<group>";
+		};
+		3E7F338A27A30FF20054ACF1 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3E7F338B27A3100F0054ACF1 /* IdentityImplementingTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		3E98B93B275A3E3300E67321 /* CampaignAutomation */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +844,15 @@
 				3E98B957275A910600E67321 /* RLTBannerFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		3EFB4E3A27A41CDC0004BE5E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				3EFB4E3B27A41CF40004BE5E /* IdentityPersisting.swift */,
+				3EFB4E3D27A41D130004BE5E /* IdentityPersister.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		482BE53F2541D11200110368 /* AnalyticsLoggingTests */ = {
@@ -907,6 +948,7 @@
 				968CA5B625EE79960000C2E2 /* Content */,
 				9606ED7F267B4FD300ED24D0 /* Sell */,
 				3E98B93B275A3E3300E67321 /* CampaignAutomation */,
+				3E7F338327A2F8250054ACF1 /* Identity */,
 				48D6F13B251E158E006CA623 /* RealifeTech */,
 				3E78BCEB26B8226800BF3026 /* GraphQL */,
 				48E67730251BA7F0007E2741 /* Products */,
@@ -2205,6 +2247,7 @@
 				961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */,
 				968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */,
 				961C427E260882C8001D8467 /* UIDeviceInterface.swift in Sources */,
+				3EFB4E3C27A41CF40004BE5E /* IdentityPersisting.swift in Sources */,
 				96874865268CBDF100DDC5DD /* PaymentProvidable.swift in Sources */,
 				961C41EB260882BA001D8467 /* Core.swift in Sources */,
 				961C41E5260882BA001D8467 /* OAuthRepository.swift in Sources */,
@@ -2215,6 +2258,7 @@
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
 				3E98B948275A8F8700E67321 /* RLTMediaTypeFetching.swift in Sources */,
+				3E7F338727A2F86C0054ACF1 /* IdentityFactory.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
 				964D2917269335B400A69FBC /* WidgetParam.swift in Sources */,
 				961C425B260882C8001D8467 /* LogEventSending.swift in Sources */,
@@ -2292,6 +2336,7 @@
 				3E98B941275A41D000E67321 /* CampaignAutomationImplementing.swift in Sources */,
 				961C41EC260882BA001D8467 /* RequestLoggingInterceptor.swift in Sources */,
 				961C1CA52683404300BE6F3B /* ProductModifierItem.swift in Sources */,
+				3E7F338927A2F86C0054ACF1 /* Identity.swift in Sources */,
 				964A3BED2680B49300C42C35 /* FulfilmentPointProvidable.swift in Sources */,
 				48EFE24B2539E52D00CC6E58 /* General.swift in Sources */,
 				961C1CD12684EFB400BE6F3B /* CheckoutInput.swift in Sources */,
@@ -2333,6 +2378,7 @@
 				961C1C88268204EF00BE6F3B /* FulfilmentPoint.swift in Sources */,
 				961C4264260882C8001D8467 /* QueueProviding+AnyQueue.swift in Sources */,
 				96AED8D026CFB5B600F6C750 /* NavigationBarModifier.swift in Sources */,
+				3E7F338827A2F86C0054ACF1 /* IdentityImplementing.swift in Sources */,
 				960415D926CBD82B0096DF80 /* WebViewWrapper.swift in Sources */,
 				961C1CBF26839CBA00BE6F3B /* BasketProvidable.swift in Sources */,
 				9687486D268CC1DB00DDC5DD /* PaymentSourceBillingDetails.swift in Sources */,
@@ -2380,6 +2426,7 @@
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
 				96874875268CC3CC00DDC5DD /* PaymentIntentInput.swift in Sources */,
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
+				3EFB4E3E27A41D130004BE5E /* IdentityPersister.swift in Sources */,
 				0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */,
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
@@ -2407,6 +2454,7 @@
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,
 				96302CE026C3E4A7000A91EC /* GraphNetworkCachePolicyTests.swift in Sources */,
 				961C42CC26088374001D8467 /* RequestTimeLoggerTests.swift in Sources */,
+				3E7F338C27A3100F0054ACF1 /* IdentityImplementingTests.swift in Sources */,
 				96B6709626D6704700DB74A4 /* OAuthRequesterTests.swift in Sources */,
 				961B01AA2689F84D00D8C481 /* OrderRepositoryTests.swift in Sources */,
 				964D292D269345CF00A69FBC /* CanvasRepositoryScreenTests.swift in Sources */,
