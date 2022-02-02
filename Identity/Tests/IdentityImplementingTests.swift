@@ -15,7 +15,9 @@ class IdentityImplementingTests: XCTestCase {
         let spy = MockAnalyticsLogger()
         let defaults = UserDefaults(suiteName: "test_identify_logged_userId_Persisted") ?? .standard
         let identityPersister = IdentityPersister(defaults: defaults)
-        let sut = IdentityFactory.makeModule(analyticsLogger: spy, identityPersister: identityPersister)
+        let sut = IdentityFactory.makeModule(analyticsLogger: spy,
+                                             identityPersister: identityPersister,
+                                             graphQLManager: MockGraphQLManager<Void>())
         sut.identify(userId: "123", traits: [.firstName: "John",
                                              .lastName: "Smith",
                                              .dynamic(rawValue: "otherKey"): "AAA"]) { result in
@@ -38,7 +40,9 @@ class IdentityImplementingTests: XCTestCase {
         let spy = MockAnalyticsLogger()
         let defaults = UserDefaults(suiteName: "test_alias_logged") ?? .standard
         let identityPersister = IdentityPersister(defaults: defaults)
-        let sut = IdentityFactory.makeModule(analyticsLogger: spy, identityPersister: identityPersister)
+        let sut = IdentityFactory.makeModule(analyticsLogger: spy,
+                                             identityPersister: identityPersister,
+                                             graphQLManager: MockGraphQLManager<Void>())
         sut.alias(aliasType: .dynamic(rawValue: "ABC"), aliasId: "123") { result in
             switch result {
             case .success:
@@ -56,7 +60,10 @@ class IdentityImplementingTests: XCTestCase {
         let spy = MockAnalyticsLogger()
         let defaults = UserDefaults(suiteName: "test_clear") ?? .standard
         let identityPersister = IdentityPersister(defaults: defaults)
-        let sut = IdentityFactory.makeModule(analyticsLogger: spy, identityPersister: identityPersister)
+        let sut = IdentityFactory.makeModule(analyticsLogger: spy,
+                                             identityPersister:
+                                                identityPersister,
+                                             graphQLManager: MockGraphQLManager<Void>())
         XCTAssertNil(identityPersister.retrieveUserId())
         sut.identify(userId: "aaa", traits: [:], completion: nil)
         XCTAssertEqual(identityPersister.retrieveUserId(), "aaa")
