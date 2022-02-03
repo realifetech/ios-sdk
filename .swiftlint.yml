@@ -8,3 +8,6 @@ excluded:
 identifier_name:
   excluded:
     - id
+  
+inclusive_language:
+  override_allowed_terms: ['ticketmaster']

@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = SDKConfiguration(
             appCode: "",
             clientSecret: "",
-            apiUrl: "",
-            graphQLApiUrl: "")
+            apiUrl: "https://api-staging.livestyled.com/v3",
+            graphQLApiUrl: "https://staging-graphql-eu.realifetech.com")
         RealifeTech.configureSDK(with: configuration)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
             if let error = error {

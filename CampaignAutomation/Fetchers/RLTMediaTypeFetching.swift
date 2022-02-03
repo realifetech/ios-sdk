@@ -14,7 +14,7 @@ public protocol RLTMediaTypeFetching {
 }
 
 public extension RLTMediaTypeFetching {
-    func fetch(location: String, completion: (Result<[MediaType], Error>) -> Void) {
+    func fetch(location: String, completion: @escaping (Result<[MediaType], Error>) -> Void) {
         RealifeTech.CampaignAutomation.generateCreatables(for: location, factories: factories) { result in
             switch result {
             case .failure(let error): completion(.failure(error))

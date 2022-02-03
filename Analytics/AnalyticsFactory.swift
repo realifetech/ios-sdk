@@ -13,14 +13,16 @@ public enum AnalyticsFactory {
     static func makeAnalyticsModule(
         graphQLManager: GraphQLManageable,
         reachabilityHelper: ReachabilityChecking,
-        deviceRegistering: DeviceRegistering
+        deviceRegistering: DeviceRegistering,
+        identityPersister: IdentityPersisting
     ) -> Analytics {
         let queue = PersistentQueue<AnalyticEventAndCompletion>(name: "analyticsEvent")
         let analyticsLogger = AnalyticsLogger(
             graphQLManager: graphQLManager,
             reachabilityHelper: reachabilityHelper,
             persistentQueue: AnyQueue(queue),
-            deviceRegistering: deviceRegistering)
+            deviceRegistering: deviceRegistering,
+            identityPersister: identityPersister)
         return AnalyticsImplementing(analyticsLogger: analyticsLogger)
     }
 }
