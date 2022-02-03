@@ -69,7 +69,9 @@ public class RealifeTech {
         configureCampaignAutomation(deviceId: deviceHelper.deviceId,
                                     tokenHelper: apiHelper,
                                     graphQLAPIUrl: configuration.graphQLApiUrl)
-        Identity = IdentityFactory.makeModule(analyticsLogger: Analytics, identityPersister: identityPersister)
+        Identity = IdentityFactory.makeModule(analyticsLogger: Analytics,
+                                              identityPersister: identityPersister,
+                                              graphQLManager: graphQLManager)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {

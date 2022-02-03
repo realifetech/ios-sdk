@@ -11,8 +11,11 @@ import Foundation
 public struct IdentityFactory {
     static func makeModule(
         analyticsLogger: Analytics,
-        identityPersister: IdentityPersisting
+        identityPersister: IdentityPersisting,
+        graphQLManager: GraphQLManageable
     ) -> Identity {
-        return IdentityImplementing(analyticsLogger: analyticsLogger, identityPersister: identityPersister)
+        return IdentityImplementing(analyticsLogger: analyticsLogger,
+                                    identityPersister: identityPersister,
+                                    ssoProvider: SSORepository(graphQLManager: graphQLManager))
     }
 }

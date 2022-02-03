@@ -340,6 +340,9 @@
 		B469FB064974C885C01F0F73 /* Pods_GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9D16B2C12DF74A0CF791FB /* Pods_GraphQL.framework */; };
 		CC97A359B339D0D9FC49BECC /* Pods_RealifeTech_RealifeTechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */; };
 		D1A307806D5B3AE84B11702B /* Pods_RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */; };
+		FA9BEE4E27A8317B00A597E4 /* SSOProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9BEE4D27A8317B00A597E4 /* SSOProvidable.swift */; };
+		FA9BEE5027A8319100A597E4 /* SSORepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9BEE4F27A8319100A597E4 /* SSORepository.swift */; };
+		FA9BEE6B27AA6FB000A597E4 /* SSORepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9BEE6A27AA6FB000A597E4 /* SSORepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -702,6 +705,9 @@
 		B15A23E46832D3D390247B2D /* Pods-RealifeTech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.release.xcconfig"; sourceTree = "<group>"; };
 		CDE0D6EFC6794CF7E8AB7F2C /* Pods-GraphQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL.debug.xcconfig"; path = "Target Support Files/Pods-GraphQL/Pods-GraphQL.debug.xcconfig"; sourceTree = "<group>"; };
 		D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9BEE4D27A8317B00A597E4 /* SSOProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSOProvidable.swift; sourceTree = "<group>"; };
+		FA9BEE4F27A8319100A597E4 /* SSORepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSORepository.swift; sourceTree = "<group>"; };
+		FA9BEE6A27AA6FB000A597E4 /* SSORepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSORepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -776,6 +782,7 @@
 		3E7F338327A2F8250054ACF1 /* Identity */ = {
 			isa = PBXGroup;
 			children = (
+				FA9BEE4C27A8315A00A597E4 /* SSO */,
 				3EFB4E3A27A41CDC0004BE5E /* Persistence */,
 				3E7F338627A2F86C0054ACF1 /* Identity.swift */,
 				3E7F338427A2F86C0054ACF1 /* IdentityFactory.swift */,
@@ -1929,6 +1936,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA9BEE4C27A8315A00A597E4 /* SSO */ = {
+			isa = PBXGroup;
+			children = (
+				FA9BEE6927AA6F9100A597E4 /* Tests */,
+				FA9BEE4D27A8317B00A597E4 /* SSOProvidable.swift */,
+				FA9BEE4F27A8319100A597E4 /* SSORepository.swift */,
+			);
+			path = SSO;
+			sourceTree = "<group>";
+		};
+		FA9BEE6927AA6F9100A597E4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FA9BEE6A27AA6FB000A597E4 /* SSORepositoryTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2261,6 +2286,7 @@
 				3E7F338727A2F86C0054ACF1 /* IdentityFactory.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
 				964D2917269335B400A69FBC /* WidgetParam.swift in Sources */,
+				FA9BEE5027A8319100A597E4 /* SSORepository.swift in Sources */,
 				961C425B260882C8001D8467 /* LogEventSending.swift in Sources */,
 				968CA5BC25EE79DD0000C2E2 /* Content.swift in Sources */,
 				9606ED86267B504900ED24D0 /* PaginatedObject.swift in Sources */,
@@ -2333,6 +2359,7 @@
 				961C426F260882C8001D8467 /* Device.swift in Sources */,
 				961C1CCD2684EF8600BE6F3B /* BasketItemInput.swift in Sources */,
 				9606ED81267B4FE400ED24D0 /* Sell.swift in Sources */,
+				FA9BEE4E27A8317B00A597E4 /* SSOProvidable.swift in Sources */,
 				3E98B941275A41D000E67321 /* CampaignAutomationImplementing.swift in Sources */,
 				961C41EC260882BA001D8467 /* RequestLoggingInterceptor.swift in Sources */,
 				961C1CA52683404300BE6F3B /* ProductModifierItem.swift in Sources */,
@@ -2443,6 +2470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9637473126C41A7E007DF92D /* FulfilmentPointTests.swift in Sources */,
+				FA9BEE6B27AA6FB000A597E4 /* SSORepositoryTests.swift in Sources */,
 				968CA69F25EF96600000C2E2 /* ContentImplementingTests.swift in Sources */,
 				9637473526C42237007DF92D /* TimeslotTests.swift in Sources */,
 				96B670C526D7CE4B00DB74A4 /* FilterParamTests.swift in Sources */,
