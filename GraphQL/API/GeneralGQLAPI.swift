@@ -5997,6 +5997,92 @@ public enum ApolloType {
     }
   }
 
+  public final class GetMyUserSsoQuery: GraphQLQuery {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      query getMyUserSSO {
+        getMyUserSSO {
+          __typename
+          sub
+        }
+      }
+      """
+
+    public let operationName: String = "getMyUserSSO"
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Query"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("getMyUserSSO", type: .object(GetMyUserSso.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(getMyUserSso: GetMyUserSso? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getMyUserSSO": getMyUserSso.flatMap { (value: GetMyUserSso) -> ResultMap in value.resultMap }])
+      }
+
+      public var getMyUserSso: GetMyUserSso? {
+        get {
+          return (resultMap["getMyUserSSO"] as? ResultMap).flatMap { GetMyUserSso(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "getMyUserSSO")
+        }
+      }
+
+      public struct GetMyUserSso: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["UserSSO"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("sub", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(sub: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "UserSSO", "sub": sub])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var sub: String? {
+          get {
+            return resultMap["sub"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "sub")
+          }
+        }
+      }
+    }
+  }
+
   public final class GetProductByIdQuery: GraphQLQuery {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =

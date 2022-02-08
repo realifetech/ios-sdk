@@ -20,6 +20,7 @@ class AnalyticsLogger {
     private let persistentQueue: AnyQueue<AnalyticEventAndCompletion>
     private let reachabilityHelper: ReachabilityChecking
     private let deviceRegistering: DeviceRegistering
+    private let identityPersister: IdentityPersisting
 
     private var loopIsRunning = false
 
@@ -28,13 +29,15 @@ class AnalyticsLogger {
         reachabilityHelper: ReachabilityChecking,
         persistentQueue: AnyQueue<AnalyticEventAndCompletion>,
         failureDebounceSeconds: Double = 45,
-        deviceRegistering: DeviceRegistering
+        deviceRegistering: DeviceRegistering,
+        identityPersister: IdentityPersisting
     ) {
         self.graphQLManager = graphQLManager
         self.reachabilityHelper = reachabilityHelper
         self.persistentQueue = persistentQueue
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
         self.deviceRegistering = deviceRegistering
+        self.identityPersister = identityPersister
         startLoop()
     }
 
@@ -111,8 +114,12 @@ class AnalyticsLogger {
 extension AnalyticsLogger: AnalyticsLogging {
 
     public func logEvent(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
+        var eventToPersist = event
+        if let userId = identityPersister.retrieveUserId() {
+            eventToPersist.userId = userId
+        }
         let eventAndCompletion = AnalyticEventAndCompletion(
-            analyticEvent: event,
+            analyticEvent: eventToPersist,
             analyticCompletion: completion)
         persistentQueue.addToQueue(eventAndCompletion)
         if !loopIsRunning { startLoop() }
