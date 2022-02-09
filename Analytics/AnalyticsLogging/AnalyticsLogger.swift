@@ -114,7 +114,7 @@ class AnalyticsLogger {
 
 extension AnalyticsLogger: AnalyticsLogging {
 
-    public func logEvent(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
+    public func track(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
         var eventToPersist = event
         if let userId = identityPersister.retrieveUserId() {
             eventToPersist.userId = userId

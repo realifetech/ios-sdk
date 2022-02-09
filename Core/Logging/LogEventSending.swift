@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol LogEventSending {
-    func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void)
+    func track(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void)
 }
