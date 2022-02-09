@@ -96,7 +96,8 @@ class AnalyticsLogger {
             new: event.new,
             old: event.old,
             version: event.version,
-            timestamp: event.timestampString)
+            timestamp: event.timestampString,
+            userId: event.userId)
         graphQLManager.dispatchMutation(
             mutation: ApolloType.PutAnalyticEventMutation(input: input),
             cacheResultToPersistence: false
