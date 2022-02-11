@@ -37,7 +37,7 @@ final class AnalyticsFactoryTests: XCTestCase {
             reachabilityHelper: mockReachabilityChecker,
             deviceRegistering: MockDeviceRegistering(),
             identityPersister: IdentityPersister(defaults: .standard))
-        module.logEvent(testEvent) { _ in
+        module.track(testEvent) { _ in
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)

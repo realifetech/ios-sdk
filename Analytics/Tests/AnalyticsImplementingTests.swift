@@ -11,14 +11,14 @@ import XCTest
 
 final class AnalyticsImplementingTests: XCTestCase {
 
-    func test_logEvent() {
+    func test_track() {
         let spy = MockAnalyticsLogger()
         let sut = AnalyticsImplementing(analyticsLogger: spy)
         let testEvent = AnalyticEvent(
             type: "One",
             action: "two",
             version: "three")
-        sut.logEvent(testEvent) { result in
+        sut.track(testEvent) { result in
             switch result {
             case .success: break
             case .failure: XCTFail("Failure result from analytics implementing")

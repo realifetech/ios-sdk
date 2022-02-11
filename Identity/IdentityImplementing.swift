@@ -35,7 +35,7 @@ public class IdentityImplementing: Identity {
         let stringKeyTraits: [String: Any] = Dictionary(uniqueKeysWithValues: traits.map { key, value in
                                                             (key.stringValue, value)
                                                         })
-        logEvent(.identify, new: stringKeyTraits, completion: completion)
+        track(.identify, new: stringKeyTraits, completion: completion)
     }
 
     /// Link the current user (as identified previously) to the id of an external system
@@ -46,7 +46,7 @@ public class IdentityImplementing: Identity {
     public func alias(aliasType: RLTAliasType,
                       aliasId: String,
                       completion: ((Result<Bool, Error>) -> Void)?) {
-        logEvent(.alias, new: [aliasType.stringValue: aliasId], completion: completion)
+        track(.alias, new: [aliasType.stringValue: aliasId], completion: completion)
     }
 
     /// Clears the current user so analytics can be sent for a non-logged-in user. Can be used after your users log out.
@@ -62,10 +62,10 @@ public class IdentityImplementing: Identity {
         case identify, alias
     }
 
-    private func logEvent(_ action: AnalyticEventAction,
-                          new: [String: Any],
-                          completion: ((Result<Bool, Error>) -> Void)?) {
+    private func track(_ action: AnalyticEventAction,
+                       new: [String: Any],
+                       completion: ((Result<Bool, Error>) -> Void)?) {
         let event = AnalyticEvent(type: "user", action: action.rawValue, new: new, version: "TODO-make-optional")
-        analyticsLogger.logEvent(event, completion: completion ?? {_ in})
+        analyticsLogger.track(event, completion: completion ?? {_ in})
     }
 }
