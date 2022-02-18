@@ -96,7 +96,8 @@ class AnalyticsLogger {
             new: event.new,
             old: event.old,
             version: event.version,
-            timestamp: event.timestampString)
+            timestamp: event.timestampString,
+            userId: event.userId)
         graphQLManager.dispatchMutation(
             mutation: ApolloType.PutAnalyticEventMutation(input: input),
             cacheResultToPersistence: false
@@ -113,7 +114,7 @@ class AnalyticsLogger {
 
 extension AnalyticsLogger: AnalyticsLogging {
 
-    public func logEvent(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
+    public func track(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
         var eventToPersist = event
         if let userId = identityPersister.retrieveUserId() {
             eventToPersist.userId = userId

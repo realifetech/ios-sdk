@@ -16,8 +16,9 @@ public enum ApolloType {
     ///   - old
     ///   - version
     ///   - timestamp
-    public init(type: String, action: String, new: Swift.Optional<String?> = nil, old: Swift.Optional<String?> = nil, version: String, timestamp: String) {
-      graphQLMap = ["type": type, "action": action, "new": new, "old": old, "version": version, "timestamp": timestamp]
+    ///   - userId
+    public init(type: String, action: String, new: Swift.Optional<String?> = nil, old: Swift.Optional<String?> = nil, version: String, timestamp: String, userId: Swift.Optional<String?> = nil) {
+      graphQLMap = ["type": type, "action": action, "new": new, "old": old, "version": version, "timestamp": timestamp, "userId": userId]
     }
 
     public var type: String {
@@ -71,6 +72,15 @@ public enum ApolloType {
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "timestamp")
+      }
+    }
+
+    public var userId: Swift.Optional<String?> {
+      get {
+        return graphQLMap["userId"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "userId")
       }
     }
   }

@@ -111,7 +111,7 @@ Until the token has successfully been sent to our backend, it will be stored per
 Use the following function to log an analytic event
 
 ``` swift
-RealifeTech.Analytics.logEvent(
+RealifeTech.Analytics.track(
     type: "type",
     action: "action",
     new: ["someValue": "123"],

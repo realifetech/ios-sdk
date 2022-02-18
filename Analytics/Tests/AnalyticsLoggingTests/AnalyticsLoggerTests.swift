@@ -93,22 +93,22 @@ final class AnalyticsLoggerTests: XCTestCase {
         XCTAssertTrue(mockGraphQLManager.dispatchMutationIsCalled)
     }
 
-    func test_logEvent_loopIsNotRunning_sendItem() {
+    func test_track_loopIsNotRunning_sendItem() {
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent) { _ in expectation.fulfill() }
+        sut.track(testEvent) { _ in expectation.fulfill() }
         wait(for: [expectation], timeout: 0.01)
         XCTAssertTrue(mockGraphQLManager.dispatchMutationIsCalled)
     }
 
-    func test_logEvent_onSuccess_reportsSuccessToCaller() {
+    func test_track_onSuccess_reportsSuccessToCaller() {
         let expectation = XCTestExpectation(description: "Event sending fulfilled")
         mockReachabilityChecker.hasNetworkConnection = true
         mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent) { result in
+        sut.track(testEvent) { result in
             switch result {
             case .success(let isSuccess):
                 XCTAssertTrue(isSuccess)
@@ -120,12 +120,12 @@ final class AnalyticsLoggerTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_logEvent_onNotSuccess_delaySingleItem() {
+    func test_track_onNotSuccess_delaySingleItem() {
         let expectation = XCTestExpectation(description: "Event sending fulfilled")
         mockReachabilityChecker.hasNetworkConnection = true
         mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation(shouldReturnSuccess: false))
         let sut = makeSut()
-        sut.logEvent(testEvent) { result in
+        sut.track(testEvent) { result in
             switch result {
             case .success(let isSuccess):
                 XCTAssertFalse(isSuccess)
@@ -137,12 +137,12 @@ final class AnalyticsLoggerTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_logEvent_onFailure_delaySingleItem() {
+    func test_track_onFailure_delaySingleItem() {
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         mockGraphQLManager.resultReturns = .failure(DummyError.failure)
         let sut = makeSut()
-        sut.logEvent(testEvent) { result in
+        sut.track(testEvent) { result in
             switch result {
             case .success:
                 XCTFail("We should have faliure sent this")
@@ -153,12 +153,12 @@ final class AnalyticsLoggerTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func test_logEvent_hasNoNetworkConnection_delaysSingleItemUntilConnected() {
+    func test_track_hasNoNetworkConnection_delaysSingleItemUntilConnected() {
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = false
         mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent) { result in
+        sut.track(testEvent) { result in
             switch result {
             case .success:
                 XCTAssertTrue(self.mockGraphQLManager.dispatchMutationIsCalled)
@@ -173,13 +173,13 @@ final class AnalyticsLoggerTests: XCTestCase {
         wait(for: [expectation], timeout: 0.02)
     }
 
-    func test_logEvent_deviceHasntBeenRegistered_delaysSingleItemUntilRegistered() {
+    func test_track_deviceHasntBeenRegistered_delaysSingleItemUntilRegistered() {
         let expectation = XCTestExpectation(description: "Event sending completed")
         mockReachabilityChecker.hasNetworkConnection = true
         mockDeviceRegistering.shouldBeReady = false
         mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent) { result in
+        sut.track(testEvent) { result in
             switch result {
             case .success:
                 XCTAssertTrue(self.mockGraphQLManager.dispatchMutationIsCalled)
@@ -194,34 +194,34 @@ final class AnalyticsLoggerTests: XCTestCase {
         wait(for: [expectation], timeout: 0.02)
     }
 
-    func test_logEvent_addsItemsToQueue() {
+    func test_track_addsItemsToQueue() {
         let expectation = XCTestExpectation(description: "Item was added to queue")
         mockQueue.addedToQueueExpectation = expectation
         mockReachabilityChecker.hasNetworkConnection = false
         mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent) { _ in }
+        sut.track(testEvent) { _ in }
         wait(for: [expectation], timeout: 0.01)
         XCTAssertEqual(mockQueue.underlyingStorage.first?.analyticEvent, testEvent)
     }
 
-    func test_logEvent_removesFromQueueWhenDone() {
-        test_logEvent_onSuccess_reportsSuccessToCaller()
+    func test_track_removesFromQueueWhenDone() {
+        test_track_onSuccess_reportsSuccessToCaller()
         XCTAssertTrue(mockQueue.isEmpty)
     }
 
-    func test_logEvent_leavesInQueueOnFailure() {
-        test_logEvent_hasNoNetworkConnection_delaysSingleItemUntilConnected()
+    func test_track_leavesInQueueOnFailure() {
+        test_track_hasNoNetworkConnection_delaysSingleItemUntilConnected()
         XCTAssertEqual(mockQueue.receivedQueueActions.first, .doNothing)
         XCTAssertEqual(mockQueue.receivedQueueActions.last, .removeFirst)
     }
 
-    func test_logEvent_willContinueWhenGivenMoreItems() {
+    func test_track_willContinueWhenGivenMoreItems() {
         test_init_hasItemInPersistentQueue_sendItem()
-        test_logEvent_loopIsNotRunning_sendItem()
+        test_track_loopIsNotRunning_sendItem()
     }
 
-    func test_logEvent_noPersistedUserId() {
+    func test_track_noPersistedUserId() {
         identityPersister.persist(userId: "123")
         identityPersister.clear()
         let expectation = XCTestExpectation(description: "Item was added to queue")
@@ -229,19 +229,19 @@ final class AnalyticsLoggerTests: XCTestCase {
         mockReachabilityChecker.hasNetworkConnection = false
         mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent) { _ in }
+        sut.track(testEvent) { _ in }
         wait(for: [expectation], timeout: 0.01)
         XCTAssertNil(mockQueue.underlyingStorage.first?.analyticEvent.userId)
     }
 
-    func test_logEvent_persistedUserIdIncluded() {
+    func test_track_persistedUserIdIncluded() {
         identityPersister.persist(userId: "123")
         let expectation = XCTestExpectation(description: "Item was added to queue")
         mockQueue.addedToQueueExpectation = expectation
         mockReachabilityChecker.hasNetworkConnection = false
         mockGraphQLManager.resultReturns = .success(makeStubAnalyticsEventMutation())
         let sut = makeSut()
-        sut.logEvent(testEvent) { _ in }
+        sut.track(testEvent) { _ in }
         wait(for: [expectation], timeout: 0.01)
         XCTAssertEqual(mockQueue.underlyingStorage.first?.analyticEvent.userId, "123")
     }

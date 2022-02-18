@@ -35,7 +35,7 @@ struct EventsLoggingView: View {
             }
 
             Button("Log") {
-                logEvents()
+                trackEvents()
             }
 
             Divider()
@@ -53,7 +53,7 @@ struct EventsLoggingView: View {
             message: result)
     }
 
-    private func logEvents() {
+    private func trackEvents() {
         let event = AnalyticEvent(
             type: store.type,
             action: store.action,
@@ -61,7 +61,7 @@ struct EventsLoggingView: View {
             old: nil,
             version: "1.0",
             timestamp: Date())
-        RealifeTech.Analytics.logEvent(event) { response in
+        RealifeTech.Analytics.track(event) { response in
             switch response {
             case .success(let isLogged):
                 result = "Success with result isLogged: \(isLogged)"

@@ -16,7 +16,7 @@ class AnalyticsImplementing: Analytics {
         self.analyticsLogger = analyticsLogger
     }
 
-    func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
-        analyticsLogger.logEvent(event, completion: completion)
+    func track(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
+        analyticsLogger.track(event, completion: completion)
     }
 }

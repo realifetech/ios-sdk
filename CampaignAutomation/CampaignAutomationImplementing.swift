@@ -63,10 +63,10 @@ public class CampaignAutomationImplementing: CampaignAutomation {
                                                                 contentId: data.id,
                                                                 contentType: $0.contentType,
                                                                 languageCode: data.language)
-            logEvent(.loadContent, new: eventDictionary)
+            track(.loadContent, new: eventDictionary)
             if var linkHandling = data as? RLTLinkHandling & RLTDataModel {
                 linkHandling.linkAnalyticsEvent = { [weak self] in
-                    self?.logEvent(.interactWithContent, new: eventDictionary)
+                    self?.track(.interactWithContent, new: eventDictionary)
                 }
                 data = linkHandling
             }
@@ -99,9 +99,9 @@ public class CampaignAutomationImplementing: CampaignAutomation {
         case loadContent, interactWithContent
     }
 
-    private func logEvent(_ action: AnalyticEventAction, new: [String: Any]) {
+    private func track(_ action: AnalyticEventAction, new: [String: Any]) {
         let event = AnalyticEvent(type: "user", action: action.rawValue, new: new, version: "TODO-make-optional")
-        analyticsLogger.logEvent(event, completion: {_ in})
+        analyticsLogger.track(event, completion: {_ in})
     }
 
     public func createAnalyticEventDictionary(campaignId: String?,

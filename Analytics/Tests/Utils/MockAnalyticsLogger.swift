@@ -15,7 +15,7 @@ final class MockAnalyticsLogger: AnalyticsLogging, LogEventSending {
     var eventsLogged: [AnalyticEvent] = []
     var completionToSend: Result<Bool, Error> = .success(true)
 
-    func logEvent(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func track(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
         self.eventsLogged.append(event)
         completion(completionToSend)
     }
