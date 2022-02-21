@@ -19,6 +19,7 @@ enum BasketRepositoryTestHelper {
         .priceChange,
         .mixedBasket,
         .emptyBasket,
+        .timeslotAtCapacity,
         .regularError(GraphQLManagerError.noDataError)
     ]
 
@@ -51,6 +52,8 @@ extension BasketError {
             return "SELL_BASKET_MIXED"
         case .emptyBasket:
             return "SELL_BASKET_EMPTY"
+        case .timeslotAtCapacity:
+            return "BASKET_TIMESLOT_AT_CAPACITY"
         default:
             return "default"
         }
