@@ -16,6 +16,7 @@ public struct BasketError: Error, LocalizedError {
         case priceChange
         case mixedBasket
         case emptyBasket
+        case timeslotAtCapacity
         case regularError(Error)
     }
 
@@ -50,6 +51,8 @@ extension BasketError {
             self = BasketError(type: .mixedBasket, message: message)
         case "SELL_BASKET_EMPTY":
             self = BasketError(type: .emptyBasket, message: message)
+        case "BASKET_TIMESLOT_AT_CAPACITY":
+            self = BasketError(type: .timeslotAtCapacity, message: message)
         default:
             self = BasketError(type: .regularError(graphQLError), message: message)
         }
