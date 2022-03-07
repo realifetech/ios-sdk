@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct ProductModifierItemSelectionInput {
+public struct ProductModifierItemSelectionInput: Equatable {
 
     public let productModifierItemId: String?
-    public let quantity: Int?
+    public var quantity: Int?
 
     public init(productModifierItemId: String?, quantity: Int?) {
         self.productModifierItemId = productModifierItemId
