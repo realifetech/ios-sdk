@@ -14,13 +14,13 @@ import GraphQL
 public struct ProductModifierItem: Codable, Equatable, Hashable {
 
     public let id: String
-    public let status: String?
+    public let status: ProductModifierItemStatus?
     public let additionalPrice: Int?
     public let translations: [StandardTitleTranslation]?
 
     public init(
         id: String,
-        status: String?,
+        status: ProductModifierItemStatus?,
         additionalPrice: Int?,
         translations: [StandardTitleTranslation]?
     ) {
@@ -36,7 +36,7 @@ extension ProductModifierItem {
     init?(response: ApolloType.FragmentProductModifierItem?) {
         guard let response = response else { return nil }
         id = response.id
-        status = response.status?.rawValue
+        status = ProductModifierItemStatus(rawValue: response.status?.rawValue ?? "")
         additionalPrice = response.additionalPrice
         translations = response.translations?.compactMap {
             StandardTitleTranslation(
