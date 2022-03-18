@@ -16,7 +16,7 @@ final class ProductModifierItemSelectionTests: XCTestCase {
         let sut = ProductModifierItemSelection(
             productModifierItem: ProductModifierItem(
                 id: "1",
-                status: "active",
+                status: .active,
                 additionalPrice: 10,
                 translations: [StandardTitleTranslation(language: "en", title: "A")]),
             quantity: 1,

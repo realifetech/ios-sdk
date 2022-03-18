@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09008ECE27E1F74200F6155D /* ProductModifierItemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */; };
 		0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */; };
 		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
 		09860AFF275F35E300764142 /* GraphQLErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09860AFE275F35E300764142 /* GraphQLErrorCode.swift */; };
@@ -365,6 +366,7 @@
 /* Begin PBXFileReference section */
 		03EEB8B3252E05E700C868AD /* AudienceChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceChecking.swift; sourceTree = "<group>"; };
 		03EEB8B5252E08B400C868AD /* AudiencesImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementing.swift; sourceTree = "<group>"; };
+		09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemStatus.swift; sourceTree = "<group>"; };
 		0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderStatus.swift; sourceTree = "<group>"; };
 		0913A9DE275511B500DB9D99 /* Order+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Extension.swift"; sourceTree = "<group>"; };
 		09860AFE275F35E300764142 /* GraphQLErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLErrorCode.swift; sourceTree = "<group>"; };
@@ -1098,6 +1100,7 @@
 				961C1CCE2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift */,
 				961C1CA22683402C00BE6F3B /* ProductModifierList.swift */,
 				961C1CA62683405400BE6F3B /* ProductVariant.swift */,
+				09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2348,6 +2351,7 @@
 				964D2915269335A200A69FBC /* WidgetFetchType.swift in Sources */,
 				961C1CAB2683409C00BE6F3B /* StandardDescriptionTranslation.swift in Sources */,
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
+				09008ECE27E1F74200F6155D /* ProductModifierItemStatus.swift in Sources */,
 				961B01942689EB6900D8C481 /* Order.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				3E98B94A275A8FBF00E67321 /* RLTCreatableFactory.swift in Sources */,
