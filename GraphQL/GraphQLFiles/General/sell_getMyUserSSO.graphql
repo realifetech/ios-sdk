@@ -1,5 +1,0 @@
-query getMyUserSSO {
-  getMyUserSSO {
-    sub
-  }
-}

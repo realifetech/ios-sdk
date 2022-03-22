@@ -1,0 +1,12 @@
+query getUserAliases {
+  me {
+    user {
+      userAliases {
+        userAliasType {
+          userAliasType
+        }
+        value
+      }
+    }
+  }
+}
