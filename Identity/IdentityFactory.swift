@@ -16,6 +16,6 @@ public struct IdentityFactory {
     ) -> Identity {
         return IdentityImplementing(analyticsLogger: analyticsLogger,
                                     identityPersister: identityPersister,
-                                    ssoProvider: SSORepository(graphQLManager: graphQLManager))
+                                    userAliasesProvider: UserAliasesRepository(graphQLManager: graphQLManager))
     }
 }

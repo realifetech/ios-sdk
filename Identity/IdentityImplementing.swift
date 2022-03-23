@@ -13,14 +13,14 @@ public class IdentityImplementing: Identity {
     private let analyticsLogger: Analytics
     private let identityPersister: IdentityPersisting
 
-    public let ssoProvider: SSOProvidable
+    public let userAliasesProvider: UserAliasesProvidable
 
     init(analyticsLogger: Analytics,
          identityPersister: IdentityPersisting,
-         ssoProvider: SSOProvidable) {
+         userAliasesProvider: UserAliasesProvidable) {
         self.analyticsLogger = analyticsLogger
         self.identityPersister = identityPersister
-        self.ssoProvider = ssoProvider
+        self.userAliasesProvider = userAliasesProvider
     }
 
     /// Identify the user to our system, along with any traits known about them
