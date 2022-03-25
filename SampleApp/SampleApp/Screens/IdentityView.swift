@@ -52,7 +52,11 @@ struct IdentityView: View {
     }
 
     private func identify() {
-        RealifeTech.Identity.identify(userId: userId, traits: [.firstName: firstName, .email: email]) { response in
+        RealifeTech.Identity.identify(userId: userId,
+                                      traits: [.firstName: firstName,
+                                               .email: email,
+                                               .lastName: "ABC",
+                                               .dateOfBirth: "1956-03-22T10:21:32Z"]) { response in
             switch response {
             case .success(_):
                 result = "Success. You will now see the userId \(userId) logged as Analytic Events"
