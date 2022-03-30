@@ -13,6 +13,7 @@ import Apollo
 final class MockGraphQLManager<ResultDataType>: GraphQLManageable {
 
     var dispatchQueryIsCalled = false
+    var numberOfQueriesCalled = 0
     var dispatchMutationIsCalled = false
     var resultReturns: Result<GraphQLResult<ResultDataType>, Error> = .failure(DummyError.failure)
     var newApiHelper: APITokenManagable?
@@ -25,6 +26,7 @@ final class MockGraphQLManager<ResultDataType>: GraphQLManageable {
         completion: @escaping (Result<GraphQLResult<Query.Data>, Error>) -> Void
     ) {
         dispatchQueryIsCalled = true
+        numberOfQueriesCalled += 1
         if let result = resultReturns as? Result<GraphQLResult<Query.Data>, Error> {
             completion(result)
         } else {

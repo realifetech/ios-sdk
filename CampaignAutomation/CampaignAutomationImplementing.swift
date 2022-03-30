@@ -10,6 +10,7 @@ import Foundation
 #if !COCOAPODS
 import GraphQL
 #endif
+import Apollo
 
 public struct CAGetContentResponseItem {
     let campaignId: String?
@@ -77,22 +78,37 @@ public class CampaignAutomationImplementing: CampaignAutomation {
 
     private func fetchData(location: String,
                            completion: @escaping (Result<[CAGetContentResponseItem], Error>) -> Void) {
-        graphQLManager.dispatch(
-            query: ApolloTypeCA.GetContentByExternalIdQuery(externalId: location),
-            cachePolicy: .returnCacheDataAndFetch) { result in
-            switch result {
-            case .success(let response):
-                guard let data = response.data?.getContentByExternalId,
-                      let items = data.items else { return completion(.success([])) }
-                let responseItems = items.map({ item in
-                    CAGetContentResponseItem(campaignId: data.campaignId,
-                                             contentType: item?.contentType?.rawValue ?? "unknown",
-                                             data: item?.data)
-                })
-                completion(.success(responseItems))
-            case .failure(let error): completion(.failure(error))
+
+        let dealWithResponse: (GraphQLResult<ApolloTypeCA.GetContentByExternalIdQuery.Data>) -> Void = { response in
+            guard let data = response.data?.getContentByExternalId,
+                  let items = data.items else { return completion(.success([])) }
+            let responseItems = items.map({ item in
+                CAGetContentResponseItem(campaignId: data.campaignId,
+                                         contentType: item?.contentType?.rawValue ?? "unknown",
+                                         data: item?.data)
+            })
+            completion(.success(responseItems))
+        }
+
+        let makeCall: (GraphNetworkCachePolicy, (() -> Void)?) -> Void = { cachePolicy, retry in
+            self.graphQLManager.dispatch(
+                query: ApolloTypeCA.GetContentByExternalIdQuery(externalId: location),
+                cachePolicy: cachePolicy) { result in
+                switch result {
+                case .success(let response): dealWithResponse(response)
+                case .failure(let error): retry == nil ? completion(.failure(error)) : retry?()
+                }
             }
         }
+
+        /*
+         If we need to reuse this in the future, we can abstract it somewhere else.
+         Apollo recommends using an interceptor, but I don't see a way to implement that per query.
+         Adding it to the whole GraphQLManager seems overkill
+        */
+        makeCall(.fetchIgnoringCacheData, {
+            makeCall(.returnCacheDataDontFetch, nil)
+        })
     }
 
     private enum AnalyticEventAction: String {

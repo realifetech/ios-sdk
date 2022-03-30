@@ -104,6 +104,8 @@ class CampaignAutomationImplementingTests: XCTestCase {
                 return XCTFail("Test failed")
             }
             XCTAssertEqual((error as? DummyError), DummyError.failure)
+            // ensure that cache was accessed after server query failure
+            XCTAssertEqual(self.graphQLManager.numberOfQueriesCalled, 2)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
