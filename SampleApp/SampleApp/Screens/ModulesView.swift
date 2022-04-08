@@ -43,6 +43,7 @@ struct ModulesView: View {
             }
             .navigationBarTitle("Realife Tech SDK")
         }
+        .navigationViewStyle(.stack)
     }
 
     private func createRLTViewFetcher() -> RLTViewFetcher {

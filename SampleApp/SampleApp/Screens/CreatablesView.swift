@@ -63,5 +63,16 @@ final class CreatableViewModel: ObservableObject {
             }
         }
     }
-    
 }
+
+// You could create and use your own Fetcher instead of using our default:
+protocol ExampleMediaType { }
+extension BannerView: ExampleMediaType { }
+class ExampleFetcher: RLTMediaTypeFetching {
+    typealias MediaType = ExampleMediaType
+    var factories: [RLTContentType: RLTCreatableFactory] = [.banner: BannerViewFactory()]
+}
+/*
+ ExampleFetcher().fetch(location: "location-id") { result in in }
+ (All results would be guaranteed to conform to ExampleMediaType)
+*/
