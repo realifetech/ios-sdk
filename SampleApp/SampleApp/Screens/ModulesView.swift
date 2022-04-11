@@ -33,7 +33,7 @@ struct ModulesView: View {
                     Text("Login")
                 }
                 Section(header: Text("Campaign Automation")) {
-                    let viewFetcher = createRLTViewFetcher()
+                    let viewFetcher = setupRLTViewFetcher()
                     let viewModel = CreatableViewModel(viewFetcher: viewFetcher)
                     NavigationLink("Creatables Example", destination: CreatablesView(viewModel: viewModel))
                 }
@@ -46,7 +46,7 @@ struct ModulesView: View {
         .navigationViewStyle(.stack)
     }
 
-    private func createRLTViewFetcher() -> RLTViewFetcher {
+    private func setupRLTViewFetcher() -> RLTViewFetcher {
         let viewFetcher = RealifeTech.CampaignAutomation.viewFetcher
         viewFetcher.factories = [.banner: BannerViewFactory()]
         return viewFetcher
