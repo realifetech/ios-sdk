@@ -12,26 +12,51 @@ import RealifeTech
 struct CreatablesView: View {
 
     @ObservedObject private var viewModel: CreatableViewModel
+    @Environment(\.presentationMode) var presentation
 
     init(viewModel: CreatableViewModel) {
         self.viewModel = viewModel
+        Theme.navigationBarColors(background: .white, titleColor: UIColor(Color("client")))
     }
 
-    var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(viewModel.views, id: \.id) { item in
-                    item.creatables
-                }
-                Text(viewModel.error)
-                .background(Color.white)
-                Spacer()
+    var backButton : some View { Button(action: {
+        self.presentation.wrappedValue.dismiss()
+        }) {
+            HStack {
+            Image(systemName: "chevron.left")
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(Color("client"))
             }
         }
-        .padding(16)
+    }
+    
+    var body: some View {
+        ZStack {
+            Color("client").opacity(0.8)
+            ScrollView {
+                VStack {
+                    ForEach(viewModel.views, id: \.id) { item in
+                        item.creatables
+                    }
+                    Text(viewModel.error)
+                    Spacer()
+                }
+            }.padding(EdgeInsets(top: 122, leading: 16, bottom: 16, trailing: 16))
+        }
+        .ignoresSafeArea()
         .onAppear(perform: {
             viewModel.fetchCreatables()
         })
+        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(leading: backButton)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Image("icon2")
+                    .resizable()
+                    .frame(width: 150, height: 40, alignment: .leading)
+            }
+        }
     }
 }
 

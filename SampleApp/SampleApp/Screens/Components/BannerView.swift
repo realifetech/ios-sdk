@@ -39,10 +39,13 @@ struct BannerView: View, RLTViewCreatable {
                         .resizable()
                         .scaledToFill()
                         .frame(minWidth: 0, maxWidth: .infinity, idealHeight: idealImageHeight, alignment: .center)
+                        .cornerRadius(12)
                         .clipped()
                 } placeholder: {
                     Color.gray
                         .frame(minWidth: 0, maxWidth: .infinity, idealHeight: idealImageHeight)
+                        .cornerRadius(12)
+                        .clipped()
                 }
             } else {
                 if let image = imageLoader.image {
@@ -55,11 +58,11 @@ struct BannerView: View, RLTViewCreatable {
             }
             Spacer()
             if let header = header {
-                Text(header)
+                Text(header).foregroundColor(.white).bold()
             }
             Spacer()
             if let subtitle = subtitle {
-                Text(subtitle)
+                Text(subtitle).foregroundColor(.white)
             }
         }
         .onTapGesture {
