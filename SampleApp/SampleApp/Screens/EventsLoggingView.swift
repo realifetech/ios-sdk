@@ -9,33 +9,61 @@
 import SwiftUI
 import RealifeTech
 
-final class LoggedEventStore: ObservableObject {
+final class LoggedEventViewModel: ObservableObject {
     @Published var type = "user"
     @Published var action = "externalLogin"
-    @Published var parameters = "[\"userId\": \"a3890e983e\", \"provider\": \"ticketmaster\"]"
+    @Published var userId = ""
+    @Published var provider = ""
+    @Published var result = ""
+
+    func trackEvents() {
+        let parameters = setupParameters(userId: userId, provider: provider)
+        let event = AnalyticEvent(
+            type: type,
+            action: action,
+            new: parameters,
+            old: nil,
+            version: "1.0",
+            timestamp: Date())
+        RealifeTech.Analytics.track(event) { [weak self] response in
+            switch response {
+            case .success(let isLogged):
+                self?.result = "Success with result isLogged: \(isLogged)"
+            case .failure(let error):
+                self?.result = "Error with: \(error.localizedDescription)"
+            }
+        }
+    }
+
+    func setupParameters(userId: String, provider: String) -> [String: Any] {
+        var parameter: [String: Any] = [:]
+        if !userId.isEmpty {
+            parameter["userId"] = userId
+        }
+        if !provider.isEmpty {
+            parameter["provider"] = provider
+        }
+        return parameter
+    }
 }
 
 struct EventsLoggingView: View {
 
-    @State var result = ""
-    @State var store: LoggedEventStore
+    @StateObject var viewModel = LoggedEventViewModel()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            TextInput(placeholder: "Type", input: store.type) { value in
-                store.type = value
-            }
-            TextInput(placeholder: "Action", input: store.action) { value in
-                store.action = value
-            }
-            TextInput(
-                placeholder: "Parameters",
-                input: store.parameters) { value in
-                store.parameters = value
-            }
+            TextField("Type", text: $viewModel.type)
+                .roundedBorderTextField()
+            TextField("Action", text: $viewModel.action)
+                .roundedBorderTextField()
+            TextField("UserId", text: $viewModel.userId)
+                .roundedBorderTextField()
+            TextField("Provider", text: $viewModel.provider)
+                .roundedBorderTextField()
 
             Button("Log") {
-                trackEvents()
+                viewModel.trackEvents()
             }
 
             Divider()
@@ -50,30 +78,12 @@ struct EventsLoggingView: View {
     var resultView: some View {
         ResultView(
             title: "Logging Result",
-            message: result)
-    }
-
-    private func trackEvents() {
-        let event = AnalyticEvent(
-            type: store.type,
-            action: store.action,
-            new: ["userId": "a3890e983e", "provider": "ticketmaster"],
-            old: nil,
-            version: "1.0",
-            timestamp: Date())
-        RealifeTech.Analytics.track(event) { response in
-            switch response {
-            case .success(let isLogged):
-                result = "Success with result isLogged: \(isLogged)"
-            case .failure(let error):
-                result = "Error with: \(error.localizedDescription)"
-            }
-        }
+            message: viewModel.result)
     }
 }
 
 struct EventsLoggingView_Previews: PreviewProvider {
     static var previews: some View {
-        EventsLoggingView(store: LoggedEventStore())
+        EventsLoggingView(viewModel: LoggedEventViewModel())
     }
 }

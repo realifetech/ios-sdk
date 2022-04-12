@@ -26,24 +26,37 @@ struct TextInput: View {
     }
 
     var body: some View {
-        TextField(
-            placeholder,
-            text: $input)
+        TextField(placeholder, text: $input)
             .onReceive(Just(input)) {
                 onChangeAction?($0)
             }
-        .autocapitalization(.none)
-        .disableAutocorrection(true)
-        .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 5)
-                .strokeBorder(Color(.separator), lineWidth: 1)
-        )
+        .roundedBorderTextField()
     }
 }
 
 struct TextInput_Previews: PreviewProvider {
     static var previews: some View {
         TextInput(placeholder: "Placeholder", input: "", onChangeAction: nil)
+    }
+}
+
+struct RoundedBorderTextField: ViewModifier {
+
+    func body(content: Content) -> some View {
+            content
+            .autocapitalization(.none)
+            .disableAutocorrection(true)
+            .padding(16)
+            .background(
+                RoundedRectangle(cornerRadius: 5)
+                    .strokeBorder(Color(.separator), lineWidth: 1)
+            )
+        }
+}
+
+extension View {
+
+    func roundedBorderTextField() -> some View {
+        modifier(RoundedBorderTextField())
     }
 }

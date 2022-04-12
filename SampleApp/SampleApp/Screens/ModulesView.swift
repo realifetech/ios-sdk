@@ -18,7 +18,7 @@ struct ModulesView: View {
                     NavigationLink("Register Device", destination: DeviceRegistrationView())
                 }
                 Section(header: Text("Analytics")) {
-                    NavigationLink("Log Events", destination: EventsLoggingView(store: LoggedEventStore()))
+                    NavigationLink("Log Events", destination: EventsLoggingView())
                 }
                 Section(header: Text("Audience")) {
                     NavigationLink("Audience Checking", destination: AudienceCheckingView())
