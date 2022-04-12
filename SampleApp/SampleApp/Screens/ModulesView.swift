@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import RealifeTech
 
 struct ModulesView: View {
 
@@ -32,7 +33,9 @@ struct ModulesView: View {
                     Text("Login")
                 }
                 Section(header: Text("Campaign Automation")) {
-                    NavigationLink("Creatables Example", destination: CreatablesView())
+                    let viewFetcher = setupRLTViewFetcher()
+                    let viewModel = CreatableViewModel(viewFetcher: viewFetcher)
+                    NavigationLink("Creatables Example", destination: CreatablesView(viewModel: viewModel))
                 }
                 Section(header: Text("Identity")) {
                     NavigationLink("Identity Control", destination: IdentityView())
@@ -40,11 +43,12 @@ struct ModulesView: View {
             }
             .navigationBarTitle("Realife Tech SDK")
         }
+        .navigationViewStyle(.stack)
     }
-}
 
-struct ModulesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ModulesView()
+    private func setupRLTViewFetcher() -> RLTViewFetcher {
+        let viewFetcher = RealifeTech.CampaignAutomation.viewFetcher
+        viewFetcher.factories = [.banner: BannerViewFactory()]
+        return viewFetcher
     }
 }

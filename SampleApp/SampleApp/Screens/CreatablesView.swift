@@ -11,66 +11,57 @@ import RealifeTech
 
 struct CreatablesView: View {
 
-    @State var creatables: [AnyView] = []
-    @State var error: String = ""
+    @ObservedObject private var viewModel: CreatableViewModel
 
-    var body: some View {
-        VStack {
-            creatables.first ?? AnyView(Text("No view available"))
-            Text(error)
-            Spacer()
-        }
-        .onAppear(perform: {
-            fetchTopView()
-        })
+    init(viewModel: CreatableViewModel) {
+        self.viewModel = viewModel
     }
 
-    func fetchTopView() {
-        // Factories could be set once in AppDelegate
-        RealifeTech.CampaignAutomation.viewFetcher.factories = [.banner: BannerViewFactory()]
-        RealifeTech.CampaignAutomation.viewFetcher.fetch(location: "homepage-top-view") { result in
-            switch result {
-            case .success(let fetchedCreatables):
-                creatables = fetchedCreatables.map { $0.unwrappedGenericView }.compactMap { $0 }
-                // if this were a ViewController, you could use RLTViewCreatable.embed(...)
-            case .failure(let error): self.error = error.localizedDescription
+    var body: some View {
+        ScrollView {
+            VStack {
+                ForEach(viewModel.views, id: \.id) { item in
+                    item.creatables
+                }
+                Text(viewModel.error)
+                .background(Color.white)
+                Spacer()
             }
         }
+        .padding(16)
+        .onAppear(perform: {
+            viewModel.fetchCreatables()
+        })
     }
 }
 
-// Creatable
-struct BannerView: View, RLTViewCreatable {
+struct GenericCreatableViews {
+    let id = UUID()
+    let creatables: AnyView
+}
 
-    var header: String?
-    var subtitle: String?
-    var linkHandler: (() -> Void)?
+final class CreatableViewModel: ObservableObject {
 
-    var body: some View {
-        VStack {
-            Text(header ?? "").font(.title)
-            Text(subtitle ?? "").font(.subheadline)
-        }.onTapGesture {
-            linkHandler?()
+    @Published var error: String = ""
+    @Published var views: [GenericCreatableViews] = []
+    private let viewFetcher: RLTViewFetcher
+
+    init(viewFetcher: RLTViewFetcher) {
+        self.viewFetcher = viewFetcher
+    }
+
+    func fetchCreatables(location: String = "homepage-top-view") {
+        viewFetcher.fetch(location: location) { [weak self] result in
+            switch result {
+            case .success(let fetchedCreatables):
+                self?.views = fetchedCreatables
+                    .compactMap { $0.unwrappedGenericView }
+                    .compactMap { GenericCreatableViews(creatables: $0) }
+                // if this were a ViewController, you could use RLTViewCreatable.embed(...)
+            case .failure(let error):
+                self?.error = error.localizedDescription
+            }
         }
-    }
-
-    init(title: String, subtitle: String, linkHandler: @escaping () -> Void) {
-        self.header = title
-        self.subtitle = subtitle
-        self.linkHandler = linkHandler
-    }
-}
-
-// Factory
-struct BannerViewFactory: RLTBannerFactory {
-    func create(from dataModel: RLTBanner) -> RLTCreatable? {
-        return BannerView(title: dataModel.title ?? "Title missing",
-                          subtitle: dataModel.subtitle ?? "Subtitle missing",
-                          linkHandler: dataModel.generateLinkHandler(openHandler: { url in
-                            UIApplication.shared.open(url, options: [:])
-                          })
-        )
     }
 }
 
