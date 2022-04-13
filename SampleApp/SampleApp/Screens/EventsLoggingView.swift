@@ -35,7 +35,7 @@ final class LoggedEventViewModel: ObservableObject {
         }
     }
 
-    func setupParameters(userId: String, provider: String) -> [String: Any] {
+    private func setupParameters(userId: String, provider: String) -> [String: Any] {
         var parameter: [String: Any] = [:]
         if !userId.isEmpty {
             parameter["userId"] = userId
