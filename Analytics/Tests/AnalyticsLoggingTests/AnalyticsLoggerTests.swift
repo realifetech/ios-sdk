@@ -110,8 +110,8 @@ final class AnalyticsLoggerTests: XCTestCase {
         let sut = makeSut()
         sut.track(testEvent) { result in
             switch result {
-            case .success(let isSuccess):
-                XCTAssertTrue(isSuccess)
+            case .success(let response):
+                XCTAssertTrue(response.success)
                 expectation.fulfill()
             case .failure:
                 XCTFail("We should have sucessfully sent this")
@@ -127,8 +127,8 @@ final class AnalyticsLoggerTests: XCTestCase {
         let sut = makeSut()
         sut.track(testEvent) { result in
             switch result {
-            case .success(let isSuccess):
-                XCTAssertFalse(isSuccess)
+            case .success(let response):
+                XCTAssertFalse(response.success)
                 expectation.fulfill()
             case .failure:
                 XCTFail("We should have sucessfully sent this")

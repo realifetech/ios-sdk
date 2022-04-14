@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias EventLoggedCompletion = (Result<Bool, Error>) -> Void
+public typealias EventLoggedCompletion = (Result<PutAnalyticEventResponse, Error>) -> Void
 
 struct AnalyticEventAndCompletion: Identifiable {
 

@@ -69,9 +69,9 @@ class AnalyticsLogger {
         performPutAnalyticEventMutation(event: queueItem.item.analyticEvent) { result in
             queueItem.item.analyticCompletion?(result)
             switch result {
-            case .success(let success):
+            case .success(let response):
                 queueItem.releaseQueue(.removeFirst)
-                guard success else {
+                guard response.success else {
                     DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
                         self.startLoop()
                     }
@@ -88,7 +88,7 @@ class AnalyticsLogger {
 
     private func performPutAnalyticEventMutation(
         event: AnalyticEvent,
-        completion: @escaping (Result<Bool, Error>) -> Void
+        completion: @escaping EventLoggedCompletion
     ) {
         let input = ApolloType.AnalyticEvent(
             type: event.type,
@@ -103,8 +103,12 @@ class AnalyticsLogger {
             cacheResultToPersistence: false
         ) { result in
             switch result {
-            case .success(let success):
-                completion(.success(success.data?.putAnalyticEvent.success ?? false))
+            case .success(let response):
+                guard let response = PutAnalyticEventResponse(response: response.data) else {
+                    completion(.failure(GraphQLManagerError.noDataError))
+                    return
+                }
+                completion(.success(response))
             case .failure(let error):
                 completion(.failure(error))
             }

@@ -30,7 +30,7 @@ public class IdentityImplementing: Identity {
     /// ```
     public func identify(userId: String,
                          traits: [RLTTraitType: Any],
-                         completion: ((Result<Bool, Error>) -> Void)?) {
+                         completion: EventLoggedCompletion?) {
         identityPersister.persist(userId: userId)
         let stringKeyTraits: [String: Any] = Dictionary(uniqueKeysWithValues: traits.map { key, value in
                                                             (key.stringValue, value)
@@ -45,7 +45,7 @@ public class IdentityImplementing: Identity {
     /// ```
     public func alias(aliasType: RLTAliasType,
                       aliasId: String,
-                      completion: ((Result<Bool, Error>) -> Void)?) {
+                      completion: EventLoggedCompletion?) {
         track(.alias, new: [aliasType.stringValue: aliasId], completion: completion)
     }
 
@@ -64,7 +64,7 @@ public class IdentityImplementing: Identity {
 
     private func track(_ action: AnalyticEventAction,
                        new: [String: Any],
-                       completion: ((Result<Bool, Error>) -> Void)?) {
+                       completion: EventLoggedCompletion?) {
         let event = AnalyticEvent(type: "user", action: action.rawValue, new: new, version: "TODO-make-optional")
         analyticsLogger.track(event, completion: completion ?? {_ in})
     }

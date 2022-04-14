@@ -7,5 +7,22 @@
 //
 
 import Foundation
+#if !COCOAPODS
+import GraphQL
+#endif
 
 public typealias Analytics = AnalyticsLogging
+
+public struct PutAnalyticEventResponse {
+    public var success: Bool
+    public var message: String?
+}
+
+extension PutAnalyticEventResponse {
+
+    init?(response: ApolloType.PutAnalyticEventMutation.Data?) {
+        guard let putAnalyticEvent = response?.putAnalyticEvent else { return nil }
+        success = putAnalyticEvent.success
+        message = putAnalyticEvent.message
+    }
+}

@@ -13,9 +13,11 @@ import Foundation
 final class MockAnalyticsLogger: AnalyticsLogging, LogEventSending {
 
     var eventsLogged: [AnalyticEvent] = []
-    var completionToSend: Result<Bool, Error> = .success(true)
+    var completionToSend: Result<PutAnalyticEventResponse, Error> = .success(PutAnalyticEventResponse(
+        success: true,
+        message: "message"))
 
-    func track(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func track(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
         self.eventsLogged.append(event)
         completion(completionToSend)
     }

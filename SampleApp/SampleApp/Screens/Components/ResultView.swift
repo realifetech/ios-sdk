@@ -19,6 +19,7 @@ struct ResultView: View {
                 .font(.headline)
                 .foregroundColor(.secondary)
             Text(message)
+                .fixedSize(horizontal: false, vertical: true)
                 .font(.body)
                 .foregroundColor(.primary)
         }

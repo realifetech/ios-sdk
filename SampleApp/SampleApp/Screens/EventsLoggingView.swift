@@ -25,10 +25,10 @@ final class LoggedEventViewModel: ObservableObject {
             old: nil,
             version: "1.0",
             timestamp: Date())
-        RealifeTech.Analytics.track(event) { [weak self] response in
-            switch response {
-            case .success(let isLogged):
-                self?.result = "Success with result isLogged: \(isLogged)"
+        RealifeTech.Analytics.track(event) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.result = "isLogged: \(response.success)\n\(response.message ?? "")"
             case .failure(let error):
                 self?.result = "Error with: \(error.localizedDescription)"
             }
@@ -49,7 +49,7 @@ final class LoggedEventViewModel: ObservableObject {
 
 struct EventsLoggingView: View {
 
-    @StateObject var viewModel = LoggedEventViewModel()
+    @ObservedObject var viewModel = LoggedEventViewModel()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {

@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol AnalyticsLogging {
-    func track(_ event: AnalyticEvent, completion: @escaping (Result<Bool, Error>) -> Void)
+    func track(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion)
 }
