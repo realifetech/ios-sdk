@@ -52,27 +52,29 @@ struct EventsLoggingView: View {
     @StateObject var viewModel = LoggedEventViewModel()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            TextField("Type", text: $viewModel.type)
-                .roundedBorderTextField()
-            TextField("Action", text: $viewModel.action)
-                .roundedBorderTextField()
-            TextField("UserId", text: $viewModel.userId)
-                .roundedBorderTextField()
-            TextField("Provider", text: $viewModel.provider)
-                .roundedBorderTextField()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                TextField("Type", text: $viewModel.type)
+                    .roundedBorderTextField()
+                TextField("Action", text: $viewModel.action)
+                    .roundedBorderTextField()
+                TextField("UserId", text: $viewModel.userId)
+                    .roundedBorderTextField()
+                TextField("Provider", text: $viewModel.provider)
+                    .roundedBorderTextField()
 
-            Button("Log") {
-                viewModel.trackEvents()
+                Button("Log") {
+                    viewModel.trackEvents()
+                }
+
+                Divider()
+                resultView
             }
+            .navigationBarTitle("Log Events")
+            .padding()
 
-            Divider()
-            resultView
+            Spacer()
         }
-        .navigationBarTitle("Log Events")
-        .padding()
-
-        Spacer()
     }
 
     var resultView: some View {
