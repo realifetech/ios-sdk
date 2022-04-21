@@ -17,32 +17,34 @@ struct IdentityView: View {
     @State var result = ""
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            TextInput(placeholder: "User ID", input: "") { value in
-                userId = value
-            }
-            TextInput(placeholder: "firstName", input: "") { value in
-                firstName = value
-            }
-            TextInput(placeholder: "email", input: "") { value in
-                email = value
-            }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                TextInput(placeholder: "User ID", input: "") { value in
+                    userId = value
+                }
+                TextInput(placeholder: "firstName", input: "") { value in
+                    firstName = value
+                }
+                TextInput(placeholder: "email", input: "") { value in
+                    email = value
+                }
 
-            Button("Identify") {
-                identify()
-            }
+                Button("Identify") {
+                    identify()
+                }
 
-            Button("Clear") {
-                clear()
-            }
+                Button("Clear") {
+                    clear()
+                }
 
-            Divider()
-            resultView
+                Divider()
+                resultView
+            }
+            .navigationBarTitle("Identity Control")
+            .padding()
+
+            Spacer()
         }
-        .navigationBarTitle("Identity Control")
-        .padding()
-
-        Spacer()
     }
 
     var resultView: some View {
