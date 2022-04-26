@@ -40,7 +40,7 @@ struct AudienceCheckingView: View {
     }
 
     private func checkAudience() {
-        RealifeTech.Audiences.deviceIsMemberOfAudience(audienceId: audienceId) { response in
+        RealifeTech.Audiences?.deviceIsMemberOfAudience(audienceId: audienceId) { response in
             switch response {
             case .success(let isMember):
                 result = "Success with result isMember: \(isMember)"

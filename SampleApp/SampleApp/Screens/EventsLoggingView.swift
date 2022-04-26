@@ -25,7 +25,7 @@ final class LoggedEventViewModel: ObservableObject {
             old: nil,
             version: "1.0",
             timestamp: Date())
-        RealifeTech.Analytics.track(event) { [weak self] response in
+        RealifeTech.Analytics?.track(event) { [weak self] response in
             switch response {
             case .success(let isLogged):
                 self?.result = "Success with result isLogged: \(isLogged)"
@@ -49,7 +49,7 @@ final class LoggedEventViewModel: ObservableObject {
 
 struct EventsLoggingView: View {
 
-    @StateObject var viewModel = LoggedEventViewModel()
+    @ObservedObject var viewModel = LoggedEventViewModel()
 
     var body: some View {
         ScrollView {

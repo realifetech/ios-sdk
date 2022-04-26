@@ -54,7 +54,7 @@ struct IdentityView: View {
     }
 
     private func identify() {
-        RealifeTech.Identity.identify(userId: userId,
+        RealifeTech.Identity?.identify(userId: userId,
                                       traits: [.firstName: firstName,
                                                .email: email,
                                                .lastName: "ABC",
@@ -69,7 +69,7 @@ struct IdentityView: View {
     }
 
     private func clear() {
-        RealifeTech.Identity.clear()
+        RealifeTech.Identity?.clear()
         result = "Cleared. Your Analytic Events should now not contain a userId."
     }
 }

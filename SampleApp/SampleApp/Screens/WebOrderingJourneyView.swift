@@ -15,7 +15,7 @@ struct WebOrderingJourneyView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            TextInput(placeholder: "URL", input: RealifeTech.Sell.orderingJourneyUrl) { value in
+            TextInput(placeholder: "URL", input: RealifeTech.Sell?.orderingJourneyUrl ?? "") { value in
                 overrideWebOrderingJourneyUrl(value)
             }
 
@@ -23,7 +23,7 @@ struct WebOrderingJourneyView: View {
                 isModal.toggle()
             }
             .sheet(isPresented: $isModal) {
-                RealifeTech.Sell.createOrderingJourneyView()
+                RealifeTech.Sell?.createOrderingJourneyView()
             }
         }
         .navigationBarTitle("Web Ordering Journey")

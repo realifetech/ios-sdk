@@ -41,7 +41,7 @@ struct WebPageTypeGetterView: View {
     }
 
     private func getWebPageType() {
-        RealifeTech.Content.getWebPage(forType: selectedType) { response in
+        RealifeTech.Content?.getWebPage(forType: selectedType) { response in
             switch response {
             case .success(let webPage):
                 result = "Web Page for type: \(selectedType.rawValue) with URL: \(webPage.url)"
