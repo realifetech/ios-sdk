@@ -11,6 +11,7 @@ import RealifeTech
 
 struct AudienceCheckingView: View {
 
+    @EnvironmentObject private var errorHandler: ErrorHandler
     @State var audienceId = ""
     @State var result = ""
 
@@ -21,7 +22,11 @@ struct AudienceCheckingView: View {
             }
 
             Button("Check") {
-                checkAudience()
+                do {
+                    try checkAudience()
+                } catch {
+                    errorHandler.handle(error: error)
+                }
             }
 
             Divider()
@@ -39,8 +44,11 @@ struct AudienceCheckingView: View {
             message: result)
     }
 
-    private func checkAudience() {
-        RealifeTech.Audiences.deviceIsMemberOfAudience(audienceId: audienceId) { response in
+    private func checkAudience() throws {
+        guard let audiences = RealifeTech.Audiences else {
+            throw StandardError.deviceNotRegistration
+        }
+        audiences.deviceIsMemberOfAudience(audienceId: audienceId) { response in
             switch response {
             case .success(let isMember):
                 result = "Success with result isMember: \(isMember)"

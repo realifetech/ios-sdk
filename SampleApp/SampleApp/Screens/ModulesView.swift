@@ -18,7 +18,7 @@ struct ModulesView: View {
                     NavigationLink("Register Device", destination: DeviceRegistrationView())
                 }
                 Section(header: Text("Analytics")) {
-                    NavigationLink("Log Events", destination: EventsLoggingView(store: LoggedEventStore()))
+                    NavigationLink("Log Events", destination: EventsLoggingView())
                 }
                 Section(header: Text("Audience")) {
                     NavigationLink("Audience Checking", destination: AudienceCheckingView())
@@ -33,9 +33,7 @@ struct ModulesView: View {
                     Text("Login")
                 }
                 Section(header: Text("Campaign Automation")) {
-                    let viewFetcher = setupRLTViewFetcher()
-                    let viewModel = CreatableViewModel(viewFetcher: viewFetcher)
-                    NavigationLink("Creatables Example", destination: CreatablesView(viewModel: viewModel))
+                    NavigationLink("Creatables Example", destination: CreatablesView())
                 }
                 Section(header: Text("Identity")) {
                     NavigationLink("Identity Control", destination: IdentityView())
@@ -44,11 +42,6 @@ struct ModulesView: View {
             .navigationBarTitle("Realife Tech SDK")
         }
         .navigationViewStyle(.stack)
-    }
-
-    private func setupRLTViewFetcher() -> RLTViewFetcher {
-        let viewFetcher = RealifeTech.CampaignAutomation.viewFetcher
-        viewFetcher.factories = [.banner: BannerViewFactory()]
-        return viewFetcher
+        .withErrorHandling()
     }
 }

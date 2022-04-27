@@ -11,11 +11,11 @@ import RealifeTech
 
 struct CreatablesView: View {
 
-    @ObservedObject private var viewModel: CreatableViewModel
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject private var errorHandler: ErrorHandler
+    @ObservedObject private var viewModel = CreatableViewModel()
 
-    init(viewModel: CreatableViewModel) {
-        self.viewModel = viewModel
+    init() {
         Theme.navigationBarColors(background: .white, titleColor: UIColor(Color("client")))
     }
 
@@ -45,7 +45,11 @@ struct CreatablesView: View {
         }
         .ignoresSafeArea()
         .onAppear(perform: {
-            viewModel.fetchCreatables()
+            do {
+                try viewModel.fetchCreatables()
+            } catch {
+                errorHandler.handle(error: error)
+            }
         })
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
@@ -69,13 +73,17 @@ final class CreatableViewModel: ObservableObject {
 
     @Published var error: String = ""
     @Published var views: [GenericCreatableViews] = []
-    private let viewFetcher: RLTViewFetcher
 
-    init(viewFetcher: RLTViewFetcher) {
-        self.viewFetcher = viewFetcher
+    private var viewFetcher: RLTViewFetcher? {
+        let viewFetcher = RealifeTech.CampaignAutomation?.viewFetcher
+        viewFetcher?.factories = [.banner: BannerViewFactory()]
+        return viewFetcher
     }
 
-    func fetchCreatables(location: String = "homepage-top-view") {
+    func fetchCreatables(location: String = "homepage-top-view") throws {
+        guard let viewFetcher = viewFetcher else {
+            throw StandardError.deviceNotRegistration
+        }
         viewFetcher.fetch(location: location) { [weak self] result in
             switch result {
             case .success(let fetchedCreatables):
