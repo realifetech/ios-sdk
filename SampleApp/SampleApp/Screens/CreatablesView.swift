@@ -41,7 +41,7 @@ struct CreatablesView: View {
                     Text(viewModel.error)
                     Spacer()
                 }
-            }.padding(EdgeInsets(top: 122, leading: 16, bottom: 16, trailing: 16))
+            }.padding(EdgeInsets(top: 100, leading: 16, bottom: 16, trailing: 16))
         }
         .ignoresSafeArea()
         .onAppear(perform: {
