@@ -11,6 +11,7 @@ import RealifeTech
 
 struct CreatablesView: View {
 
+    @EnvironmentObject private var errorHandler: ErrorHandler
     @ObservedObject private var viewModel = CreatableViewModel()
 
     var body: some View {
@@ -26,7 +27,11 @@ struct CreatablesView: View {
         }
         .padding(16)
         .onAppear(perform: {
-            viewModel.fetchCreatables()
+            do {
+                try viewModel.fetchCreatables()
+            } catch {
+                errorHandler.handle(error: error)
+            }
         })
     }
 }
@@ -47,8 +52,11 @@ final class CreatableViewModel: ObservableObject {
         return viewFetcher
     }
 
-    func fetchCreatables(location: String = "homepage-top-view") {
-        viewFetcher?.fetch(location: location) { [weak self] result in
+    func fetchCreatables(location: String = "homepage-top-view") throws {
+        guard let viewFetcher = viewFetcher else {
+            throw StandardError.deviceNotRegistration
+        }
+        viewFetcher.fetch(location: location) { [weak self] result in
             switch result {
             case .success(let fetchedCreatables):
                 self?.views = fetchedCreatables

@@ -16,7 +16,10 @@ final class LoggedEventViewModel: ObservableObject {
     @Published var provider = ""
     @Published var result = ""
 
-    func trackEvents() {
+    func trackEvents() throws {
+        guard let analytics = RealifeTech.Analytics else {
+            throw StandardError.deviceNotRegistration
+        }
         let parameters = setupParameters(userId: userId, provider: provider)
         let event = AnalyticEvent(
             type: type,
@@ -25,10 +28,10 @@ final class LoggedEventViewModel: ObservableObject {
             old: nil,
             version: "1.0",
             timestamp: Date())
-        RealifeTech.Analytics?.track(event) { [weak self] response in
+        analytics.track(event) { [weak self] response in
             switch response {
             case .success(let isLogged):
-                self?.result = "Success with result isLogged: \(isLogged)"
+                self?.result = "Result isLogged: \(isLogged)"
             case .failure(let error):
                 self?.result = "Error with: \(error.localizedDescription)"
             }
@@ -49,6 +52,7 @@ final class LoggedEventViewModel: ObservableObject {
 
 struct EventsLoggingView: View {
 
+    @EnvironmentObject private var errorHandler: ErrorHandler
     @ObservedObject var viewModel = LoggedEventViewModel()
 
     var body: some View {
@@ -64,7 +68,11 @@ struct EventsLoggingView: View {
                     .roundedBorderTextField()
 
                 Button("Log") {
-                    viewModel.trackEvents()
+                    do {
+                        try viewModel.trackEvents()
+                    } catch {
+                        errorHandler.handle(error: error)
+                    }
                 }
 
                 Divider()

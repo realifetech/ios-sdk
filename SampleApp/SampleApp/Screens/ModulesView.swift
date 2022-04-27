@@ -42,5 +42,6 @@ struct ModulesView: View {
             .navigationBarTitle("Realife Tech SDK")
         }
         .navigationViewStyle(.stack)
+        .withErrorHandling()
     }
 }
