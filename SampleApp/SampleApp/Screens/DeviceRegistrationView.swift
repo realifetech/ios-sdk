@@ -29,7 +29,6 @@ final class DeviceRegistrationViewModel: ObservableObject {
         RealifeTech.General.registerDevice { [weak self] in
             let isReady = RealifeTech.General.sdkReady ? "Yes!" : "No!"
             self?.result = "Is SDK ready?  \(isReady)"
-
             NotificationRegistrationHelper().registerForRemoteNotification()
        }
     }

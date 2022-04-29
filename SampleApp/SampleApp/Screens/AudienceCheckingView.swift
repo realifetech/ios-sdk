@@ -46,7 +46,7 @@ struct AudienceCheckingView: View {
 
     private func checkAudience() throws {
         guard let audiences = RealifeTech.Audiences else {
-            throw StandardError.deviceNotRegistration
+            throw StandardError.deviceNotRegistered
         }
         audiences.deviceIsMemberOfAudience(audienceId: audienceId) { response in
             switch response {

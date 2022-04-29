@@ -18,7 +18,7 @@ final class LoggedEventViewModel: ObservableObject {
 
     func trackEvents() throws {
         guard let analytics = RealifeTech.Analytics else {
-            throw StandardError.deviceNotRegistration
+            throw StandardError.deviceNotRegistered
         }
         let parameters = setupParameters(userId: userId, provider: provider)
         let event = AnalyticEvent(

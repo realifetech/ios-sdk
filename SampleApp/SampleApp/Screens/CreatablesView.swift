@@ -54,7 +54,7 @@ final class CreatableViewModel: ObservableObject {
 
     func fetchCreatables(location: String = "homepage-top-view") throws {
         guard let viewFetcher = viewFetcher else {
-            throw StandardError.deviceNotRegistration
+            throw StandardError.deviceNotRegistered
         }
         viewFetcher.fetch(location: location) { [weak self] result in
             switch result {

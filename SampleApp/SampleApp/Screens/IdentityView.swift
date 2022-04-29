@@ -64,7 +64,7 @@ struct IdentityView: View {
 
     private func identify() throws {
         guard let identity = RealifeTech.Identity else {
-            throw StandardError.deviceNotRegistration
+            throw StandardError.deviceNotRegistered
         }
         identity.identify(userId: userId,
                           traits: [.firstName: firstName,
@@ -82,7 +82,7 @@ struct IdentityView: View {
 
     private func clear() throws {
         guard let identity = RealifeTech.Identity else {
-            throw StandardError.deviceNotRegistration
+            throw StandardError.deviceNotRegistered
         }
         identity.clear()
         result = "Cleared. Your Analytic Events should now not contain a userId."

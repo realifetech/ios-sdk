@@ -9,11 +9,11 @@
 import Foundation
 
 enum StandardError: LocalizedError {
-    case deviceNotRegistration
+    case deviceNotRegistered
 
     var errorDescription: String? {
         switch self {
-        case .deviceNotRegistration:
+        case .deviceNotRegistered:
             return "Device requires registration."
         }
     }

@@ -47,7 +47,7 @@ struct WebPageTypeGetterView: View {
 
     private func getWebPageType() throws {
         guard let content = RealifeTech.Content else {
-            throw StandardError.deviceNotRegistration
+            throw StandardError.deviceNotRegistered
         }
         content.getWebPage(forType: selectedType) { response in
             switch response {

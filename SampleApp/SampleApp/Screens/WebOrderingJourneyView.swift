@@ -34,7 +34,7 @@ struct WebOrderingJourneyView: View {
         .padding()
         .onAppear(perform: {
             do {
-                try checkEmptySell()
+                try checkForSellModule()
             } catch {
                 errorHandler.handle(error: error, action: {
                     self.presentationMode.wrappedValue.dismiss()
@@ -45,9 +45,9 @@ struct WebOrderingJourneyView: View {
         Spacer()
     }
 
-    private func checkEmptySell() throws {
+    private func checkForSellModule() throws {
         guard RealifeTech.Sell != nil else {
-            throw StandardError.deviceNotRegistration
+            throw StandardError.deviceNotRegistered
         }
     }
 
