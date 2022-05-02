@@ -83,7 +83,7 @@ extension FulfilmentPointRepository: FulfilmentPointProvidable {
     ) {
         graphQLManager.dispatch(
             query: ApolloType.GetFulfilmentPointCategoriesQuery(pageSize: pageSize, page: page),
-            cachePolicy: .returnCacheDataAndFetch
+            cachePolicy: .fetchIgnoringCacheData
         ) { result in
             switch result {
             case .success(let response):
