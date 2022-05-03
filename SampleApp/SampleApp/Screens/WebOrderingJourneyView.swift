@@ -11,11 +11,15 @@ import RealifeTech
 
 struct WebOrderingJourneyView: View {
 
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject private var errorHandler: ErrorHandler
     @State var isModal = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            TextInput(placeholder: "URL", input: RealifeTech.Sell.orderingJourneyUrl) { value in
+            TextInput(placeholder: "URL",
+                      input: RealifeTech.Sell?.orderingJourneyUrl ?? ""
+            ) { value in
                 overrideWebOrderingJourneyUrl(value)
             }
 
@@ -23,16 +27,32 @@ struct WebOrderingJourneyView: View {
                 isModal.toggle()
             }
             .sheet(isPresented: $isModal) {
-                RealifeTech.Sell.createOrderingJourneyView()
+                RealifeTech.Sell?.createOrderingJourneyView()
             }
         }
         .navigationBarTitle("Web Ordering Journey")
         .padding()
+        .onAppear(perform: {
+            do {
+                try checkForSellModule()
+            } catch {
+                errorHandler.handle(error: error, action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                })
+            }
+        })
 
         Spacer()
     }
 
+    private func checkForSellModule() throws {
+        guard RealifeTech.Sell != nil else {
+            throw StandardError.deviceNotRegistered
+        }
+    }
+
     private func overrideWebOrderingJourneyUrl(_ newValue: String) {
+        guard !newValue.isEmpty else { return }
         RealifeTech.set(webOrderingJourneyUrl: newValue)
     }
 }

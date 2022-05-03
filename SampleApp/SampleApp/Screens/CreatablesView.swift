@@ -11,11 +11,8 @@ import RealifeTech
 
 struct CreatablesView: View {
 
-    @ObservedObject private var viewModel: CreatableViewModel
-
-    init(viewModel: CreatableViewModel) {
-        self.viewModel = viewModel
-    }
+    @EnvironmentObject private var errorHandler: ErrorHandler
+    @ObservedObject private var viewModel = CreatableViewModel()
 
     var body: some View {
         ScrollView {
@@ -30,7 +27,11 @@ struct CreatablesView: View {
         }
         .padding(16)
         .onAppear(perform: {
-            viewModel.fetchCreatables()
+            do {
+                try viewModel.fetchCreatables()
+            } catch {
+                errorHandler.handle(error: error)
+            }
         })
     }
 }
@@ -44,13 +45,17 @@ final class CreatableViewModel: ObservableObject {
 
     @Published var error: String = ""
     @Published var views: [GenericCreatableViews] = []
-    private let viewFetcher: RLTViewFetcher
 
-    init(viewFetcher: RLTViewFetcher) {
-        self.viewFetcher = viewFetcher
+    private var viewFetcher: RLTViewFetcher? {
+        let viewFetcher = RealifeTech.CampaignAutomation?.viewFetcher
+        viewFetcher?.factories = [.banner: BannerViewFactory()]
+        return viewFetcher
     }
 
-    func fetchCreatables(location: String = "homepage-top-view") {
+    func fetchCreatables(location: String = "homepage-top-view") throws {
+        guard let viewFetcher = viewFetcher else {
+            throw StandardError.deviceNotRegistered
+        }
         viewFetcher.fetch(location: location) { [weak self] result in
             switch result {
             case .success(let fetchedCreatables):
