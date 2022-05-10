@@ -9,7 +9,6 @@
 import Foundation
 
 public protocol Identity {
-    var ssoProvider: SSOProvidable { get }
     func identify(userId: String, traits: [RLTTraitType: Any], completion: ((Result<Bool, Error>) -> Void)?)
     func alias(aliasType: RLTAliasType, aliasId: String, completion: ((Result<Bool, Error>) -> Void)?)
     func clear()
