@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0903B0DB282C744C0099F71D /* VNWebSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0903B0D9282C743F0099F71D /* VNWebSDK.xcframework */; };
+		0903B0DC282C744C0099F71D /* VNWebSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0903B0D9282C743F0099F71D /* VNWebSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09640C1E2818FD14009C9626 /* StandardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09640C1D2818FD14009C9626 /* StandardError.swift */; };
 		09640C2228190184009C9626 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09640C2128190184009C9626 /* ErrorHandler.swift */; };
 		09AD0B8E27FEF11200958BAD /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AD0B8D27FEF11200958BAD /* BannerView.swift */; };
@@ -29,7 +31,22 @@
 		96AED9A026D00D2400F6C750 /* WebOrderingJourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AED99F26D00D2400F6C750 /* WebOrderingJourneyView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0903B0DD282C744C0099F71D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0903B0DC282C744C0099F71D /* VNWebSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0903B0D9282C743F0099F71D /* VNWebSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = VNWebSDK.xcframework; sourceTree = SOURCE_ROOT; };
 		09640C1D2818FD14009C9626 /* StandardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardError.swift; sourceTree = "<group>"; };
 		09640C2128190184009C9626 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		09AD0B8D27FEF11200958BAD /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -67,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FA1EF186BD30C3A0EB371A8 /* Pods_SampleApp.framework in Frameworks */,
+				0903B0DB282C744C0099F71D /* VNWebSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				965DD254263AE9E900FE0AC1 /* SampleApp.entitlements */,
+				0903B0D9282C743F0099F71D /* VNWebSDK.xcframework */,
 				96AED98F26CFEFAD00F6C750 /* Delegates */,
 				96AED98E26CFEF9C00F6C750 /* Resources */,
 				96AED98D26CFEF8F00F6C750 /* Screens */,
@@ -192,6 +211,7 @@
 				48D6F164251E1ECF006CA623 /* Frameworks */,
 				48D6F165251E1ECF006CA623 /* Resources */,
 				C8B88701594EF2BD8062B8FE /* [CP] Embed Pods Frameworks */,
+				0903B0DD282C744C0099F71D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
