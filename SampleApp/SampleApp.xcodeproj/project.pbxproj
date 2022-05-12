@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09640C1E2818FD14009C9626 /* StandardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09640C1D2818FD14009C9626 /* StandardError.swift */; };
+		09640C2228190184009C9626 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09640C2128190184009C9626 /* ErrorHandler.swift */; };
+		09AD0B8E27FEF11200958BAD /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AD0B8D27FEF11200958BAD /* BannerView.swift */; };
+		09AD0B9127FF20FD00958BAD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AD0B9027FF20FD00958BAD /* ImageLoader.swift */; };
+		09B901BE2817F92F005663F4 /* NotificationRegistrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B901BD2817F92F005663F4 /* NotificationRegistrationHelper.swift */; };
 		3ED5CD1C275E7A0F00C7D877 /* CreatablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */; };
 		3EFB4E4027A4301D0004BE5E /* IdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */; };
 		3FA1EF186BD30C3A0EB371A8 /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB1AA0FB8D493ED0238EC14 /* Pods_SampleApp.framework */; };
@@ -25,6 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09640C1D2818FD14009C9626 /* StandardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardError.swift; sourceTree = "<group>"; };
+		09640C2128190184009C9626 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		09AD0B8D27FEF11200958BAD /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		09AD0B9027FF20FD00958BAD /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		09B901BD2817F92F005663F4 /* NotificationRegistrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegistrationHelper.swift; sourceTree = "<group>"; };
 		3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatablesView.swift; sourceTree = "<group>"; };
 		3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityView.swift; sourceTree = "<group>"; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -63,6 +73,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09AD0B8F27FF202700958BAD /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				09AD0B9027FF20FD00958BAD /* ImageLoader.swift */,
+				09640C1D2818FD14009C9626 /* StandardError.swift */,
+				09640C2128190184009C9626 /* ErrorHandler.swift */,
+				09B901BD2817F92F005663F4 /* NotificationRegistrationHelper.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		0E8356DCB01200646ECB0DB2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +146,7 @@
 				3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */,
 				3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */,
 				96AED99426CFF4B000F6C750 /* Components */,
+				09AD0B8F27FF202700958BAD /* Util */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -153,6 +175,7 @@
 			children = (
 				96AED99526CFF5CA00F6C750 /* ResultView.swift */,
 				96AED99926CFFC3200F6C750 /* TextInput.swift */,
+				09AD0B8D27FEF11200958BAD /* BannerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -271,18 +294,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09AD0B9127FF20FD00958BAD /* ImageLoader.swift in Sources */,
 				3ED5CD1C275E7A0F00C7D877 /* CreatablesView.swift in Sources */,
 				96AED99326CFF4A500F6C750 /* DeviceRegistrationView.swift in Sources */,
 				96AED99126CFEFF600F6C750 /* ModulesView.swift in Sources */,
 				96AED99C26D0079200F6C750 /* AudienceCheckingView.swift in Sources */,
 				96AED9A026D00D2400F6C750 /* WebOrderingJourneyView.swift in Sources */,
+				09640C2228190184009C9626 /* ErrorHandler.swift in Sources */,
 				48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */,
 				96AED99826CFF93300F6C750 /* EventsLoggingView.swift in Sources */,
 				48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */,
+				09640C1E2818FD14009C9626 /* StandardError.swift in Sources */,
 				96AED99E26D00A2100F6C750 /* WebPageTypeGetterView.swift in Sources */,
 				96AED99626CFF5CA00F6C750 /* ResultView.swift in Sources */,
 				3EFB4E4027A4301D0004BE5E /* IdentityView.swift in Sources */,
+				09AD0B8E27FEF11200958BAD /* BannerView.swift in Sources */,
 				96AED99A26CFFC3200F6C750 /* TextInput.swift in Sources */,
+				09B901BE2817F92F005663F4 /* NotificationRegistrationHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +447,7 @@
 			baseConfigurationReference = 6886AC66D12C19DE321F7209 /* Pods-SampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DummyProject/DummyProject.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SampleApp/SampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SampleApp/Resources/Info.plist;
@@ -439,7 +467,7 @@
 			baseConfigurationReference = E4C19406F720CA122B0856C4 /* Pods-SampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DummyProject/DummyProject.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SampleApp/SampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BL7QL4ZK6J;
 				INFOPLIST_FILE = SampleApp/Resources/Info.plist;

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import RealifeTech
 
 struct ModulesView: View {
 
@@ -17,7 +18,7 @@ struct ModulesView: View {
                     NavigationLink("Register Device", destination: DeviceRegistrationView())
                 }
                 Section(header: Text("Analytics")) {
-                    NavigationLink("Log Events", destination: EventsLoggingView(store: LoggedEventStore()))
+                    NavigationLink("Log Events", destination: EventsLoggingView())
                 }
                 Section(header: Text("Audience")) {
                     NavigationLink("Audience Checking", destination: AudienceCheckingView())
@@ -40,11 +41,7 @@ struct ModulesView: View {
             }
             .navigationBarTitle("Realife Tech SDK")
         }
-    }
-}
-
-struct ModulesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ModulesView()
+        .navigationViewStyle(.stack)
+        .withErrorHandling()
     }
 }

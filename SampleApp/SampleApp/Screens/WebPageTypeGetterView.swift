@@ -11,6 +11,7 @@ import RealifeTech
 
 struct WebPageTypeGetterView: View {
 
+    @EnvironmentObject private var errorHandler: ErrorHandler
     @State private var selectedType: WebPageType = .privacy
     @State var result = ""
 
@@ -23,7 +24,11 @@ struct WebPageTypeGetterView: View {
             }
 
             Button("Get") {
-                getWebPageType()
+                do {
+                    try getWebPageType()
+                } catch {
+                    errorHandler.handle(error: error)
+                }
             }
             Divider()
             resultView
@@ -40,8 +45,11 @@ struct WebPageTypeGetterView: View {
             message: result)
     }
 
-    private func getWebPageType() {
-        RealifeTech.Content.getWebPage(forType: selectedType) { response in
+    private func getWebPageType() throws {
+        guard let content = RealifeTech.Content else {
+            throw StandardError.deviceNotRegistered
+        }
+        content.getWebPage(forType: selectedType) { response in
             switch response {
             case .success(let webPage):
                 result = "Web Page for type: \(selectedType.rawValue) with URL: \(webPage.url)"

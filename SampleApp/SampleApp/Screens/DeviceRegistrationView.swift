@@ -9,33 +9,59 @@
 import SwiftUI
 import RealifeTech
 
+final class DeviceRegistrationViewModel: ObservableObject {
+
+    @Published var appCode = ""
+    @Published var clientSecret = ""
+    @Published var result = ""
+
+    private func configureRealifeTechSDK() {
+        let configuration = SDKConfiguration(
+            appCode: appCode,
+            clientSecret: clientSecret,
+            apiUrl: "https://api-staging.livestyled.com/v3",
+            graphQLApiUrl: "https://staging-graphql-eu.realifetech.com")
+        RealifeTech.configureSDK(with: configuration)
+    }
+
+    func registerDevice() {
+        configureRealifeTechSDK()
+        RealifeTech.General.registerDevice { [weak self] in
+            let isReady = RealifeTech.General.sdkReady ? "Yes!" : "No!"
+            self?.result = "Is SDK ready?  \(isReady)"
+            NotificationRegistrationHelper().registerForRemoteNotification()
+       }
+    }
+}
+
 struct DeviceRegistrationView: View {
 
-    @State var result = ""
+    @ObservedObject var viewModel = DeviceRegistrationViewModel()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Button("Register") {
-                RealifeTech.General.registerDevice {
-                    let isReady = RealifeTech.General.sdkReady
-                        ? "Yes!"
-                        : "No!"
-                    result = "Is SDK ready?  \(isReady)"
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                TextField("appCode", text: $viewModel.appCode)
+                    .roundedBorderTextField()
+                TextField("clientSecret", text: $viewModel.clientSecret)
+                    .roundedBorderTextField()
+                Button("Register") {
+                    viewModel.registerDevice()
                 }
+                Divider()
+                resultView
             }
-            Divider()
-            resultView
-        }
-        .navigationBarTitle("Register Device")
-        .padding()
+            .navigationBarTitle("Register Device")
+            .padding()
 
-        Spacer()
+            Spacer()
+        }
     }
 
     var resultView: some View {
         ResultView(
             title: "Registration Result",
-            message: result)
+            message: viewModel.result)
     }
 }
 

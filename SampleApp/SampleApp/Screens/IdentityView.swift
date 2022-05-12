@@ -11,38 +11,49 @@ import RealifeTech
 
 struct IdentityView: View {
 
+    @EnvironmentObject private var errorHandler: ErrorHandler
     @State var userId = ""
     @State var firstName = ""
     @State var email = ""
     @State var result = ""
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            TextInput(placeholder: "User ID", input: "") { value in
-                userId = value
-            }
-            TextInput(placeholder: "firstName", input: "") { value in
-                firstName = value
-            }
-            TextInput(placeholder: "email", input: "") { value in
-                email = value
-            }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                TextInput(placeholder: "User ID", input: "") { value in
+                    userId = value
+                }
+                TextInput(placeholder: "firstName", input: "") { value in
+                    firstName = value
+                }
+                TextInput(placeholder: "email", input: "") { value in
+                    email = value
+                }
 
-            Button("Identify") {
-                identify()
-            }
+                Button("Identify") {
+                    do {
+                        try identify()
+                    } catch {
+                        errorHandler.handle(error: error)
+                    }
+                }
 
-            Button("Clear") {
-                clear()
-            }
+                Button("Clear") {
+                    do {
+                        try clear()
+                    } catch {
+                        errorHandler.handle(error: error)
+                    }
+                }
 
-            Divider()
-            resultView
+                Divider()
+                resultView
+            }
+            .navigationBarTitle("Identity Control")
+            .padding()
+
+            Spacer()
         }
-        .navigationBarTitle("Identity Control")
-        .padding()
-
-        Spacer()
     }
 
     var resultView: some View {
@@ -51,8 +62,15 @@ struct IdentityView: View {
             message: result)
     }
 
-    private func identify() {
-        RealifeTech.Identity.identify(userId: userId, traits: [.firstName: firstName, .email: email]) { response in
+    private func identify() throws {
+        guard let identity = RealifeTech.Identity else {
+            throw StandardError.deviceNotRegistered
+        }
+        identity.identify(userId: userId,
+                          traits: [.firstName: firstName,
+                                   .email: email,
+                                   .lastName: "ABC",
+                                   .dateOfBirth: "1956-03-22T10:21:32Z"]) { response in
             switch response {
             case .success(_):
                 result = "Success. You will now see the userId \(userId) logged as Analytic Events"
@@ -62,8 +80,11 @@ struct IdentityView: View {
         }
     }
 
-    private func clear() {
-        RealifeTech.Identity.clear()
+    private func clear() throws {
+        guard let identity = RealifeTech.Identity else {
+            throw StandardError.deviceNotRegistered
+        }
+        identity.clear()
         result = "Cleared. Your Analytic Events should now not contain a userId."
     }
 }

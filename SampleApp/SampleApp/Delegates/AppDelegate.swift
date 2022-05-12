@@ -17,26 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        let configuration = SDKConfiguration(
-            appCode: "",
-            clientSecret: "",
-            apiUrl: "https://api-staging.livestyled.com/v3",
-            graphQLApiUrl: "https://staging-graphql-eu.realifetech.com")
-        RealifeTech.configureSDK(with: configuration)
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
-            if let error = error {
-                print("D'oh: \(error.localizedDescription)")
-            } else {
-                DispatchQueue.main.async {
-                    application.registerForRemoteNotifications()
-                }
-            }
-        }
+        NotificationRegistrationHelper().registerForRemoteNotification()
         return true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        RealifeTech.Communicate.registerForPushNotifications(tokenData: deviceToken) { result in
+        RealifeTech.Communicate?.registerForPushNotifications(tokenData: deviceToken) { result in
             switch result {
             case .success:
                 print("---> [RealifeTech SDK]")
