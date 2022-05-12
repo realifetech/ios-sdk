@@ -212,7 +212,6 @@
 				48D6F165251E1ECF006CA623 /* Resources */,
 				C8B88701594EF2BD8062B8FE /* [CP] Embed Pods Frameworks */,
 				0903B0DD282C744C0099F71D /* Embed Frameworks */,
-				0903B136282CEE3F0099F71D /* Run Strip Architecture Script */,
 			);
 			buildRules = (
 			);
@@ -269,24 +268,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0903B136282CEE3F0099F71D /* Run Strip Architecture Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Strip Architecture Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n# This script strips unused architectures from any frameworks embedded in an\n# app bundle. It should be called from an Xcode project as a post-build step.\n\nif [ -z \"${TARGET_BUILD_DIR}\" ]; then\n  echo \"This script should be invoked from an Xcode project.\"\n  exit 1\nfi\n\napp_dir=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\nframework_dirs=($(find \"${app_dir}\" -type d -name '*.framework'))\nfor framework_dir in \"${framework_dirs[@]}\"; do\n  framework_name=$(defaults read \"${framework_dir}/Info.plist\" CFBundleExecutable)\n  framework_path=\"${framework_dir}/${framework_name}\"\n\n  echo \"Removing unused architectures from framework: ${framework_name}\"\n  \n  if [ \"${framework_name}\" == 'VNWebSDK' ]; then\n        echo \"ignore framework=${framework_name} because this framework is non-fat file\"\n    else\n        slice_paths=()\n        for arch in ${ARCHS}; do\n          slice_path=\"${framework_path}_${arch}\"\n          fullpath=\"${framework_path}/${framework_name}\"\n          echo \"full path= ${fullpath}\"\n          lipo -info \"${framework_path}\"\n          lipo \"${framework_path}\" -thin \"${arch}\" -output \"${slice_path}\"\n          slice_paths+=(\"${slice_path}\")\n        done\n\n        lipo \"${slice_paths[@]}\" -create -output \"${framework_path}_thinned\"\n        rm -f \"${slice_paths[@]}\"\n\n        rm -f \"${framework_path}\"\n        mv \"${framework_path}_thinned\" \"${framework_path}\"\n  fi\ndone\n\n";
-		};
 		C8B88701594EF2BD8062B8FE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
