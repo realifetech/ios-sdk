@@ -70,8 +70,7 @@ public class RealifeTech {
                                     tokenHelper: apiHelper,
                                     graphQLAPIUrl: configuration.graphQLApiUrl)
         Identity = IdentityFactory.makeModule(analyticsLogger: Analytics,
-                                              identityPersister: identityPersister,
-                                              graphQLManager: graphQLManager)
+                                              identityPersister: identityPersister)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
