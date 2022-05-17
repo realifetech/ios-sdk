@@ -5,7 +5,7 @@
 //  Created by YOU-HSUAN YU on 2022/4/26.
 //  Copyright © 2022 Realife Tech. All rights reserved.
 //
- 
+
 import UIKit
 
 final class NotificationRegistrationHelper {
