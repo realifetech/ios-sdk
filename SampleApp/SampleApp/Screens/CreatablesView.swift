@@ -16,6 +16,13 @@ struct CreatablesView: View {
 
     var body: some View {
         ScrollView {
+            HStack {
+                TextField("location", text: $viewModel.location)
+                    .roundedBorderTextField()
+                Button("CALL") {
+                    fetchCreatables()
+                }
+            }
             VStack {
                 ForEach(viewModel.views, id: \.id) { item in
                     item.creatables
@@ -26,13 +33,14 @@ struct CreatablesView: View {
             }
         }
         .padding(16)
-        .onAppear(perform: {
-            do {
-                try viewModel.fetchCreatables()
-            } catch {
-                errorHandler.handle(error: error)
-            }
-        })
+    }
+
+    private func fetchCreatables() {
+        do {
+            try viewModel.fetchCreatables()
+        } catch {
+            errorHandler.handle(error: error)
+        }
     }
 }
 
@@ -43,6 +51,7 @@ struct GenericCreatableViews {
 
 final class CreatableViewModel: ObservableObject {
 
+    @Published var location: String = "homepage-top-view"
     @Published var error: String = ""
     @Published var views: [GenericCreatableViews] = []
 
@@ -52,7 +61,7 @@ final class CreatableViewModel: ObservableObject {
         return viewFetcher
     }
 
-    func fetchCreatables(location: String = "homepage-top-view") throws {
+    func fetchCreatables() throws {
         guard let viewFetcher = viewFetcher else {
             throw StandardError.deviceNotRegistered
         }
