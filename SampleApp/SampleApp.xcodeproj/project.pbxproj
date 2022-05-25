@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09585055283E3735008E0DAB /* CreatablesExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09585054283E3735008E0DAB /* CreatablesExampleViewController.swift */; };
+		09585058283E4C8C008E0DAB /* CreatablesExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09585057283E4C8C008E0DAB /* CreatablesExampleViewModel.swift */; };
+		0958505D283E57E8008E0DAB /* CreatablesExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0958505B283E57E8008E0DAB /* CreatablesExampleTableViewCell.swift */; };
+		0958505E283E57E8008E0DAB /* CreatablesExampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0958505C283E57E8008E0DAB /* CreatablesExampleTableViewCell.xib */; };
 		09640C1E2818FD14009C9626 /* StandardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09640C1D2818FD14009C9626 /* StandardError.swift */; };
 		09640C2228190184009C9626 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09640C2128190184009C9626 /* ErrorHandler.swift */; };
 		09AD0B8E27FEF11200958BAD /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AD0B8D27FEF11200958BAD /* BannerView.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09585054283E3735008E0DAB /* CreatablesExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatablesExampleViewController.swift; sourceTree = "<group>"; };
+		09585057283E4C8C008E0DAB /* CreatablesExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatablesExampleViewModel.swift; sourceTree = "<group>"; };
+		0958505B283E57E8008E0DAB /* CreatablesExampleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatablesExampleTableViewCell.swift; sourceTree = "<group>"; };
+		0958505C283E57E8008E0DAB /* CreatablesExampleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatablesExampleTableViewCell.xib; sourceTree = "<group>"; };
 		09640C1D2818FD14009C9626 /* StandardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardError.swift; sourceTree = "<group>"; };
 		09640C2128190184009C9626 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		09AD0B8D27FEF11200958BAD /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -73,6 +81,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09585056283E4C60008E0DAB /* CreatablesMVVMExample */ = {
+			isa = PBXGroup;
+			children = (
+				09585054283E3735008E0DAB /* CreatablesExampleViewController.swift */,
+				09585057283E4C8C008E0DAB /* CreatablesExampleViewModel.swift */,
+				0958505B283E57E8008E0DAB /* CreatablesExampleTableViewCell.swift */,
+				0958505C283E57E8008E0DAB /* CreatablesExampleTableViewCell.xib */,
+			);
+			path = CreatablesMVVMExample;
+			sourceTree = "<group>";
+		};
 		09AD0B8F27FF202700958BAD /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +166,7 @@
 				3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */,
 				96AED99426CFF4B000F6C750 /* Components */,
 				09AD0B8F27FF202700958BAD /* Util */,
+				09585056283E4C60008E0DAB /* CreatablesMVVMExample */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -241,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48D6F177251E1ED0006CA623 /* LaunchScreen.storyboard in Resources */,
+				0958505E283E57E8008E0DAB /* CreatablesExampleTableViewCell.xib in Resources */,
 				48D6F174251E1ED0006CA623 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,8 +323,11 @@
 				96AED9A026D00D2400F6C750 /* WebOrderingJourneyView.swift in Sources */,
 				09640C2228190184009C9626 /* ErrorHandler.swift in Sources */,
 				48D6F16B251E1ECF006CA623 /* AppDelegate.swift in Sources */,
+				09585055283E3735008E0DAB /* CreatablesExampleViewController.swift in Sources */,
 				96AED99826CFF93300F6C750 /* EventsLoggingView.swift in Sources */,
 				48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */,
+				09585058283E4C8C008E0DAB /* CreatablesExampleViewModel.swift in Sources */,
+				0958505D283E57E8008E0DAB /* CreatablesExampleTableViewCell.swift in Sources */,
 				09640C1E2818FD14009C9626 /* StandardError.swift in Sources */,
 				96AED99E26D00A2100F6C750 /* WebPageTypeGetterView.swift in Sources */,
 				96AED99626CFF5CA00F6C750 /* ResultView.swift in Sources */,

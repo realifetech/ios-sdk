@@ -40,6 +40,19 @@ public class CampaignAutomationImplementing: CampaignAutomation {
         return defaultFetcher
     }
 
+    public func fetchRLTDataModels(for location: String, completion: @escaping (Result<[RLTItem], Error>) -> Void) {
+        fetchData(location: location) { result in
+            switch result {
+            case .failure(let error): completion(.failure(error))
+            case .success(let responseItems):
+                let items: [RLTItem] = responseItems.compactMap { item in
+                    RLTItem(contentType: item.unwrappedContentType, dataModel: item.unwrappedDataModel)
+                }
+                completion(.success(items))
+            }
+        }
+    }
+
     public func generateCreatables(for location: String,
                                    factories: [RLTContentType: RLTCreatableFactory],
                                    completion: @escaping (Result<[RLTCreatable], Error>) -> Void) {

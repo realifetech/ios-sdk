@@ -37,7 +37,7 @@ struct CreatablesView: View {
 
     private func fetchCreatables() {
         do {
-            try viewModel.fetchCreatables()
+            try viewModel.fetchDataModelsAndApplyToViews()
         } catch {
             errorHandler.handle(error: error)
         }
@@ -60,7 +60,7 @@ final class CreatableViewModel: ObservableObject {
         viewFetcher?.factories = [.banner: BannerViewFactory()]
         return viewFetcher
     }
-
+    // Use case 1: when integrators create RLTCreatable via viewFatcher factory
     func fetchCreatables() throws {
         guard let viewFetcher = viewFetcher else {
             throw StandardError.deviceNotRegistered
@@ -76,6 +76,39 @@ final class CreatableViewModel: ObservableObject {
                 self?.error = error.localizedDescription
             }
         }
+    }
+}
+
+// Use case 2: Integrators to fetch dataModels and get the concrete dataType from associate enum value
+// To conform RLTContentTypeDataModelFetching and use `fetchRLTContentTypeDataModels` function
+extension CreatableViewModel: RLTContentTypeDataModelFetching {
+
+    func fetchDataModelsAndApplyToViews() {
+        fetchRLTContentTypeDataModels(location: location) { result in
+            switch result {
+            case .success(let contentTypeDataModels):
+                var creatables: [GenericCreatableViews] = []
+                contentTypeDataModels.forEach {
+                    switch $0 {
+                    case .banner(let bannerDataModel):
+                        let bannerView = self.createBannerView(with: bannerDataModel)
+                        creatables.append(GenericCreatableViews(creatables: AnyView(bannerView)))
+                    }
+                }
+                self.views = creatables
+            case .failure(let error):
+                self.error = error.localizedDescription
+            }
+        }
+    }
+
+    private func createBannerView(with data: RLTBanner) -> BannerView {
+        return BannerView(
+            title: data.title,
+            subtitle: data.subtitle,
+            imageUrl: data.imageUrl, linkHandler: data.generateLinkHandler(openHandler: { url in
+                UIApplication.shared.open(url, options: [:])
+            }))
     }
 }
 
