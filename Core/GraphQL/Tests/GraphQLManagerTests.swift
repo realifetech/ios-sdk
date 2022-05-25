@@ -205,6 +205,8 @@ private final class MockCache: NormalizedCache {
 
     func removeRecord(for key: CacheKey) throws { }
 
+    func removeRecords(matching pattern: CacheKey) throws { }
+
     func clear() throws {
         clearGetsCalled = true
     }
