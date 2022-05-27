@@ -17,4 +17,5 @@ public protocol Core {
     func clearPrivateCachedData()
     func clearOutdatedCachedData()
     func clearAllCachedData()
+    func clearAllNetworkCachedData()
 }

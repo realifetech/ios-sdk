@@ -16,18 +16,22 @@ final class CoreImplementingTests: XCTestCase {
     private var apiHelper: SpyApiHelper!
     private var graphQLManager: SpyGraphQLManager!
     private var diskCache: SpyDiskCache!
+    private var urlSessionCleaner: URLSessionCacheCleanerSpy!
 
     override func setUp() {
         super.setUp()
         apiHelper = SpyApiHelper()
         graphQLManager = SpyGraphQLManager()
         diskCache = SpyDiskCache()
+        urlSessionCleaner = URLSessionCacheCleanerSpy()
         sut = CoreImplementing(
             deviceHelper: UIDeviceWrapper(),
             reachabilityHelper: ReachabilityChecker(bluetoothManager: BluetoothManagerWrapper()),
             apiHelper: apiHelper,
             graphQLManager: graphQLManager,
-            diskCache: diskCache)
+            diskCache: diskCache,
+            urlSessionCleaner: urlSessionCleaner
+        )
     }
 
     override func tearDown() {
@@ -79,6 +83,13 @@ final class CoreImplementingTests: XCTestCase {
     func test_clearAllCachedData_clearFromGraphQLManager() {
         sut.clearAllCachedData()
         XCTAssertTrue(graphQLManager.didClearAllData)
+    }
+
+    func test_clearAllNetworkCachedData_appropriateCacheCleaned() {
+        sut.clearAllNetworkCachedData()
+        XCTAssertTrue(graphQLManager.didClearAllData)
+        XCTAssertTrue(urlSessionCleaner.removeAllCachedDataWasCalled)
+        XCTAssertEqual(diskCache.receivedDeletionStrategy, .allNonPrivate)
     }
 }
 
@@ -168,5 +179,14 @@ private final class SpyDiskCache: DiskCachable {
 
     func clearItems(deletionStrategy: DiskCacheDeletionStrategy, completion: (() -> Void)?) {
         receivedDeletionStrategy = deletionStrategy
+    }
+}
+
+private class URLSessionCacheCleanerSpy: URLSessionCacheCleaner {
+
+    var removeAllCachedDataWasCalled = false
+
+    override public func removeAllCachedData() {
+        removeAllCachedDataWasCalled = true
     }
 }
