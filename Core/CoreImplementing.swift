@@ -58,10 +58,6 @@ public class CoreImplementing: Core {
         diskCache.clearItems(deletionStrategy: .outdatedOnly, completion: nil)
     }
 
-    public func clearAllCachedData() {
-        graphQLManager.clearAllCachedData(completion: nil)
-    }
-
     public func clearAllNetworkCachedData() {
         graphQLManager.clearAllCachedData(completion: nil)
         urlSessionCacheCleaner.removeAllCachedData()

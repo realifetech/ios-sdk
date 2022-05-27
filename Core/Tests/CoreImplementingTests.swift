@@ -80,11 +80,6 @@ final class CoreImplementingTests: XCTestCase {
         XCTAssertEqual(diskCache.receivedDeletionStrategy, .outdatedOnly)
     }
 
-    func test_clearAllCachedData_clearFromGraphQLManager() {
-        sut.clearAllCachedData()
-        XCTAssertTrue(graphQLManager.didClearAllData)
-    }
-
     func test_clearAllNetworkCachedData_appropriateCacheCleaned() {
         sut.clearAllNetworkCachedData()
         XCTAssertTrue(graphQLManager.didClearAllData)
