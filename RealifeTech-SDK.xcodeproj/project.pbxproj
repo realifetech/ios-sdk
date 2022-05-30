@@ -343,6 +343,8 @@
 		B469FB064974C885C01F0F73 /* Pods_GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9D16B2C12DF74A0CF791FB /* Pods_GraphQL.framework */; };
 		CC97A359B339D0D9FC49BECC /* Pods_RealifeTech_RealifeTechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8228960E451D1C161E317D9F /* Pods_RealifeTech_RealifeTechTests.framework */; };
 		D1A307806D5B3AE84B11702B /* Pods_RealifeTech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */; };
+		FAE11440283FC8E000827564 /* RequesterURLSessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1143F283FC8E000827564 /* RequesterURLSessionProvider.swift */; };
+		FAE114422840A81200827564 /* URLSessionCacheCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE114412840A81200827564 /* URLSessionCacheCleaner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -708,6 +710,8 @@
 		B15A23E46832D3D390247B2D /* Pods-RealifeTech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.release.xcconfig"; sourceTree = "<group>"; };
 		CDE0D6EFC6794CF7E8AB7F2C /* Pods-GraphQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GraphQL.debug.xcconfig"; path = "Target Support Files/Pods-GraphQL/Pods-GraphQL.debug.xcconfig"; sourceTree = "<group>"; };
 		D3E2D270FA4E609522E3AC6F /* Pods_RealifeTech.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealifeTech.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAE1143F283FC8E000827564 /* RequesterURLSessionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequesterURLSessionProvider.swift; sourceTree = "<group>"; };
+		FAE114412840A81200827564 /* URLSessionCacheCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionCacheCleaner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1508,6 +1512,8 @@
 				961C41CB260882BA001D8467 /* Requester.swift */,
 				961C41CC260882BA001D8467 /* RequestTimeLogger.swift */,
 				961C41CD260882BA001D8467 /* RequestDispatcher.swift */,
+				FAE1143F283FC8E000827564 /* RequesterURLSessionProvider.swift */,
+				FAE114412840A81200827564 /* URLSessionCacheCleaner.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2359,6 +2365,7 @@
 				9606ED84267B501800ED24D0 /* ProductProvidable.swift in Sources */,
 				96AED8C526CFA80900F6C750 /* ColorStorable.swift in Sources */,
 				961C4278260882C8001D8467 /* ReachabilityChecking.swift in Sources */,
+				FAE114422840A81200827564 /* URLSessionCacheCleaner.swift in Sources */,
 				487479E825408E8A0048F03D /* Communicate.swift in Sources */,
 				961C4223260882BB001D8467 /* RequestCreator.swift in Sources */,
 				961C1C902682071400BE6F3B /* FulfilmentPointType.swift in Sources */,
@@ -2409,6 +2416,7 @@
 				961C425D260882C8001D8467 /* Date+Formatted.swift in Sources */,
 				964D290D2693317400A69FBC /* Widget.swift in Sources */,
 				3E9CD181271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift in Sources */,
+				FAE11440283FC8E000827564 /* RequesterURLSessionProvider.swift in Sources */,
 				961C4216260882BB001D8467 /* RemoteDiskCacheDataProviding.swift in Sources */,
 				961C4213260882BB001D8467 /* DiskCacheDataProvidingStrategy.swift in Sources */,
 				961B019C2689EFD400D8C481 /* OrderItem.swift in Sources */,
