@@ -39,7 +39,7 @@ public extension Requester {
             let request = Self.applyInterceptors(request: request)
             let dispatcher = RequestDispatcher(
                 request: request,
-                sessionObservable: URLSession.shared.rx.response(request: request))
+                sessionObservable: RequesterURLSessionProvider().session.rx.response(request: request))
             return dispatcher.dispatch()
         }
         // If we have a pre-dispatch action (e.g. in OAuthRefreshOrWaitActionGenerator),

@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "RealifeTech-SDK"
   spec.module_name  = "RealifeTech"
-  spec.version      = "1.3.18"
+  spec.version      = "1.3.19"
   spec.summary      = "Providing integration with the RealifeTech Experience Automation Platform."
 
   spec.description  = "This is RealifeTech SDK, it provides integration with RealifeTech backend services, providing functionality such as device notification management, audience membership, and analytics logging. Creating a better experience of the real world for every person."
@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'RxSwift', '~> 6.1.0'
   spec.dependency 'RxCocoa', '~> 6.1.0'
-  spec.dependency 'Apollo', '~> 0.40.0'
+  spec.dependency 'Apollo', '~> 0.51.2'
   spec.dependency 'Apollo/SQLite'
   spec.dependency 'SwiftLint', '~> 0.43.1'
 

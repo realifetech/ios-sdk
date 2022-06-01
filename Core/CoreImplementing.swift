@@ -15,19 +15,22 @@ public class CoreImplementing: Core {
     public let apiHelper: APITokenManagable
     public let graphQLManager: GraphQLManageable
     public let diskCache: DiskCachable
+    private let urlSessionCacheCleaner: URLSessionCacheCleaner
 
     public init(
         deviceHelper: UIDeviceInterface,
         reachabilityHelper: ReachabilityChecking,
         apiHelper: APITokenManagable,
         graphQLManager: GraphQLManageable,
-        diskCache: DiskCachable
+        diskCache: DiskCachable,
+        urlSessionCleaner: URLSessionCacheCleaner = URLSessionCacheCleaner()
     ) {
         self.deviceHelper = deviceHelper
         self.reachabilityHelper = reachabilityHelper
         self.apiHelper = apiHelper
         self.graphQLManager = graphQLManager
         self.diskCache = diskCache
+        self.urlSessionCacheCleaner = urlSessionCleaner
     }
 
     public func requestValidToken(completion: ((Result<Void, Error>) -> Void)?) {
@@ -55,7 +58,9 @@ public class CoreImplementing: Core {
         diskCache.clearItems(deletionStrategy: .outdatedOnly, completion: nil)
     }
 
-    public func clearAllCachedData() {
+    public func clearAllNetworkCachedData() {
         graphQLManager.clearAllCachedData(completion: nil)
+        urlSessionCacheCleaner.removeAllCachedData()
+        diskCache.clearItems(deletionStrategy: .allNonPrivate, completion: nil)
     }
 }
