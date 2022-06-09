@@ -76,6 +76,20 @@ public class CampaignAutomationImplementing: CampaignAutomation {
         return creatables.compactMap { $0 }
     }
 
+    public func fetchData(for location: String, completion: @escaping (Result<[RLTItem], Error>) -> Void) {
+        fetchData(location: location) { result in
+            switch result {
+            case .failure(let error): completion(.failure(error))
+            case .success(let responseItems):
+                let items: [RLTItem] = responseItems.compactMap {
+                    guard let data = $0.unwrappedDataModel else { return nil }
+                    return RLTItem(contentType: $0.unwrappedContentType, data: data)
+                }
+                completion(.success(items))
+            }
+        }
+    }
+
     private func fetchData(location: String,
                            completion: @escaping (Result<[CAGetContentResponseItem], Error>) -> Void) {
 
