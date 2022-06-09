@@ -19,7 +19,7 @@ class RLTLinkHandlingTests: XCTestCase {
                                subtitle: nil,
                                imageUrl: nil,
                                language: nil,
-                               url: URL(string: urlString)) {
+                               url: urlString) {
             linkHandlerCalled = true
         }
         banner.generateLinkHandler { url in
