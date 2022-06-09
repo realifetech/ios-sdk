@@ -1,5 +1,5 @@
 //
-//  RLTItem.swift
+//  RLTContentItem.swift
 //  RealifeTech
 //
 //  Created by YOU-HSUAN YU on 2022/6/8.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct RLTItem {
+public struct RLTContentItem {
     public let contentType: RLTContentType
     public let data: RLTDataModel
 }
