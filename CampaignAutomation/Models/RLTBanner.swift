@@ -17,7 +17,7 @@ public struct RLTBanner: RLTDataModel, RLTLinkHandling {
     public let subtitle: String?
     public let imageUrl: URL?
     public let language: String?
-    internal let url: URL?
+    internal let url: String?
     internal var linkAnalyticsEvent: (() -> Void)?
 
     public func generateLinkHandler(openHandler: @escaping (URL) -> Void) -> () -> Void {
