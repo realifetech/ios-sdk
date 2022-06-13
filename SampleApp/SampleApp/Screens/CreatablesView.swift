@@ -66,15 +66,36 @@ struct GenericCreatableViews {
     let creatables: AnyView
 }
 
+struct RealifeTechViewConverter {
+
+    private let factories: [RLTContentType: RLTCreatableFactory]
+
+    init(factories: [RLTContentType: RLTCreatableFactory]) {
+        self.factories = factories
+    }
+
+    func convert(items: [RLTContentItem]) -> [GenericCreatableViews] {
+        var views: [GenericCreatableViews] = []
+        let creatables = RLTContentConverter().convert(factories: factories, items: items)
+        creatables.forEach {
+            if let bannerView = $0 as? BannerView {
+                views.append(GenericCreatableViews(creatables: AnyView(bannerView)))
+            }
+        }
+        return views
+    }
+}
+
 final class CreatableViewModel: ObservableObject {
 
     @Published var location: String = "homepage-top-view"
     @Published var error: String = ""
     @Published var views: [GenericCreatableViews] = []
+    private let factories: [RLTContentType: RLTCreatableFactory] = [.banner: BannerViewFactory()]
 
     private var viewFetcher: RLTViewFetcher? {
         let viewFetcher = RealifeTech.CampaignAutomation?.viewFetcher
-        viewFetcher?.factories = [.banner: BannerViewFactory()]
+        viewFetcher?.factories = factories
         return viewFetcher
     }
 
@@ -102,15 +123,8 @@ final class CreatableViewModel: ObservableObject {
         campaignAutomation.fetchData(for: location) { [weak self] result in
             switch result {
             case .success(let items):
-                // TODO: CATD-712 : Implement ability to convert CA data to UI
-                var creatables: [GenericCreatableViews] = []
-                items.forEach {
-                    if let banner = $0.data as? RLTBanner,
-                       let bannerView = BannerViewFactory().create(from: banner) as? BannerView {
-                        creatables.append(GenericCreatableViews(creatables: AnyView(bannerView)))
-                    }
-                }
-                self?.views = creatables
+                guard let self = self else { return }
+                self.views = RealifeTechViewConverter(factories: self.factories).convert(items: items)
             case .failure(let error):
                 self?.error = error.localizedDescription
             }

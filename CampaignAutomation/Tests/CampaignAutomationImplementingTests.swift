@@ -165,19 +165,3 @@ class CampaignAutomationImplementingTests: XCTestCase {
                                                                      "url": "https://google.com/2"])
     ]
 }
-
-private struct MockBannerCreatable: RLTCreatable {
-    let title: String
-    let linkEvent: (() -> Void)?
-}
-
-private class MockBannerFactory: RLTBannerFactory {
-    var urlOpened: URL?
-    func create(from dataModel: RLTBanner) -> RLTCreatable? {
-        let openHandler: (URL) -> Void = { url in
-            self.urlOpened = url
-        }
-        return MockBannerCreatable(title: dataModel.title ?? "",
-                                   linkEvent: dataModel.generateLinkHandler(openHandler: openHandler))
-    }
-}

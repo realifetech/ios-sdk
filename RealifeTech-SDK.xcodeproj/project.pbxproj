@@ -15,6 +15,9 @@
 		095850112833B4A2008E0DAB /* ResponseInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */; };
 		09860AFF275F35E300764142 /* GraphQLErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09860AFE275F35E300764142 /* GraphQLErrorCode.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */; };
+		09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */; };
+		09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */; };
 		3E0C2595276215C700B6F7D1 /* RLTBannerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */; };
 		3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */; };
 		3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */; };
@@ -376,6 +379,9 @@
 		095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInterceptorTests.swift; sourceTree = "<group>"; };
 		09860AFE275F35E300764142 /* GraphQLErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLErrorCode.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
+		09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverter.swift; sourceTree = "<group>"; };
+		09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverterTests.swift; sourceTree = "<group>"; };
+		09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCreatablesAndFactory.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -763,12 +769,22 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		09E05EAC28535615005C7B94 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		3E2D35D627612B1900630598 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				09E05EAC28535615005C7B94 /* Util */,
 				3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */,
 				3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */,
 				3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */,
+				09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -828,6 +844,7 @@
 				3E98B952275A904400E67321 /* RLTLinkHandling.swift */,
 				3E98B950275A901600E67321 /* RLTBanner.swift */,
 				094ACC6E2850AC4400562CAD /* RLTContentItem.swift */,
+				09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2384,6 +2401,7 @@
 				961B01A52689F42A00D8C481 /* OrderRepository.swift in Sources */,
 				961C4265260882C8001D8467 /* QueueError.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
+				09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */,
 				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
 				9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */,
 				964D292726933F0D00A69FBC /* Canvas.swift in Sources */,
@@ -2453,6 +2471,7 @@
 				0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */,
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
+				09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
 				9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */,
 				3E98B951275A901600E67321 /* RLTBanner.swift in Sources */,
@@ -2524,6 +2543,7 @@
 				96B670B026D6AF3D00DB74A4 /* PersistentQueueTests.swift in Sources */,
 				96B6709026D65F0B00DB74A4 /* RequestDispatcherTests.swift in Sources */,
 				964D292B269343DD00A69FBC /* CanvasFactoryTests.swift in Sources */,
+				09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */,
 				961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */,
 				9637475126C54057007DF92D /* CancellationReasonTests.swift in Sources */,
 				9637475726C54439007DF92D /* PaymentIntentTests.swift in Sources */,
