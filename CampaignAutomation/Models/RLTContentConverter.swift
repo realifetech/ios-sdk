@@ -13,9 +13,8 @@ public struct RLTContentConverter {
     public init() { }
 
     public func convert(factories: [RLTContentType: RLTCreatableFactory], items: [RLTContentItem]) -> [RLTCreatable] {
-        return items.map {
-            guard let factory = factories[$0.contentType] else { return nil }
-            return factory.create(from: $0.data)
-        }.compactMap { $0 }
+        return items.compactMap {
+            factories[$0.contentType]?.create(from: $0.data)
+        }
     }
 }
