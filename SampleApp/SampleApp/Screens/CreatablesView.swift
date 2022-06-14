@@ -15,20 +15,29 @@ struct CreatablesView: View {
     @ObservedObject private var viewModel = CreatableViewModel()
 
     var body: some View {
-        ScrollView {
-            HStack {
-                TextField("location", text: $viewModel.location)
-                    .roundedBorderTextField()
-                Button("CALL") {
+        HStack(spacing: 16) {
+            Spacer()
+            TextField("location", text: $viewModel.location)
+                .roundedBorderTextField()
+            VStack {
+                // Use case 1: Use viewFatcher to auto generate view after data comes back
+                Button("FETCH (Creatables)") {
                     fetchCreatables()
                 }
+                // Use case 2: Fetch data without view fetcher
+                Button("FETCH (Data)") {
+                    fetchData()
+                }
             }
+            Spacer()
+        }
+        ScrollView {
             VStack {
                 ForEach(viewModel.views, id: \.id) { item in
                     item.creatables
                 }
                 Text(viewModel.error)
-                .background(Color.white)
+                    .background(Color.white)
                 Spacer()
             }
         }
@@ -38,6 +47,14 @@ struct CreatablesView: View {
     private func fetchCreatables() {
         do {
             try viewModel.fetchCreatables()
+        } catch {
+            errorHandler.handle(error: error)
+        }
+    }
+
+    private func fetchData() {
+        do {
+            try viewModel.fetchData()
         } catch {
             errorHandler.handle(error: error)
         }
@@ -72,6 +89,28 @@ final class CreatableViewModel: ObservableObject {
                     .compactMap { $0.unwrappedGenericView }
                     .compactMap { GenericCreatableViews(creatables: $0) }
                 // if this were a ViewController, you could use RLTViewCreatable.embed(...)
+            case .failure(let error):
+                self?.error = error.localizedDescription
+            }
+        }
+    }
+
+    func fetchData() throws {
+        guard let campaignAutomation = RealifeTech.CampaignAutomation else {
+            throw StandardError.deviceNotRegistered
+        }
+        campaignAutomation.fetchData(for: location) { [weak self] result in
+            switch result {
+            case .success(let items):
+                // TODO: CATD-712 : Implement ability to convert CA data to UI
+                var creatables: [GenericCreatableViews] = []
+                items.forEach {
+                    if let banner = $0.data as? RLTBanner,
+                       let bannerView = BannerViewFactory().create(from: banner) as? BannerView {
+                        creatables.append(GenericCreatableViews(creatables: AnyView(bannerView)))
+                    }
+                }
+                self?.views = creatables
             case .failure(let error):
                 self?.error = error.localizedDescription
             }

@@ -82,33 +82,75 @@ class CampaignAutomationImplementingTests: XCTestCase {
             source: .server,
             dependentKeys: nil)
         graphQLManager.resultReturns = .success(result)
-
-        let expectation = XCTestExpectation(description: "Completion fulfilled")
+        var creatablesResult: Result<[RLTCreatable], Error>?
         sut.generateCreatables(for: "", factories: [.banner: MockBannerFactory()]) { result in
-            guard case let .success(creatables) = result, let banner = creatables.first as? MockBannerCreatable else {
-                return XCTFail("Test failed")
-            }
-            XCTAssertEqual(creatables.count, 1)
-            XCTAssertEqual(banner.title, "Banner title")
-            expectation.fulfill()
+            creatablesResult = result
         }
-        wait(for: [expectation], timeout: 0.01)
+        guard case let .success(creatables) = creatablesResult,
+              let banner = creatables.first as? MockBannerCreatable else {
+            return XCTFail("Test failed")
+        }
+        XCTAssertEqual(creatables.count, 1)
+        XCTAssertEqual(banner.title, "Banner title")
     }
 
     func test_generateCreatables_failure() {
         graphQLManager.resultReturns = .failure(DummyError.failure)
-
-        let expectation = XCTestExpectation(description: "Completion fulfilled")
+        var creatablesResult: Result<[RLTCreatable], Error>?
         sut.generateCreatables(for: "", factories: [.banner: MockBannerFactory()]) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Test failed")
-            }
-            XCTAssertEqual((error as? DummyError), DummyError.failure)
-            // ensure that cache was accessed after server query failure
-            XCTAssertEqual(self.graphQLManager.numberOfQueriesCalled, 2)
-            expectation.fulfill()
+            creatablesResult = result
         }
-        wait(for: [expectation], timeout: 0.01)
+        guard case let .failure(error) = creatablesResult else {
+            return XCTFail("Test failed")
+        }
+        XCTAssertEqual((error as? DummyError), DummyError.failure)
+        // ensure that cache was accessed after server query failure
+        XCTAssertEqual(self.graphQLManager.numberOfQueriesCalled, 2)
+    }
+
+    func test_fechData_success() {
+        let items = responseItems.map {
+            QueryDataType.GetContentByExternalId.Item(
+                contentType: ApolloTypeCA.ContentType(rawValue: $0.contentType ?? ""),
+                data: $0.data)
+        }
+        let getContentByExternalId = QueryDataType.GetContentByExternalId(campaignId: "1",
+                                                                          items: items)
+        let data = QueryDataType(getContentByExternalId: getContentByExternalId)
+        let result = GraphQLResult<QueryDataType>(
+            data: data,
+            extensions: nil,
+            errors: nil,
+            source: .server,
+            dependentKeys: nil)
+        graphQLManager.resultReturns = .success(result)
+        var contentItemsResult: Result<[RLTContentItem], Error>?
+        sut.fetchData(for: "") { result in
+            contentItemsResult = result
+        }
+        guard case let .success(rltItems) = contentItemsResult else {
+            return XCTFail("Test failed")
+        }
+        let responseBannerItems: [RLTBanner] = self.responseItems.compactMap { $0.unwrappedDataModel as? RLTBanner }
+        let bannerItemsResult: [RLTBanner] = rltItems.compactMap { $0.data as? RLTBanner }
+        XCTAssertEqual(bannerItemsResult.count, responseBannerItems.count)
+        for (index, bannerItem) in bannerItemsResult.enumerated() {
+            XCTAssertEqual(responseBannerItems[index].title, bannerItem.title)
+            XCTAssertEqual(responseBannerItems[index].subtitle, bannerItem.subtitle)
+            XCTAssertEqual(responseBannerItems[index].url, bannerItem.url)
+        }
+    }
+
+    func test_fetchData_failure() {
+        graphQLManager.resultReturns = .failure(DummyError.failure)
+        var contentItemsResult: Result<[RLTContentItem], Error>?
+        sut.fetchData(for: "") { result in
+            contentItemsResult = result
+        }
+        guard case let .failure(error) = contentItemsResult else {
+            return XCTFail("Test failed")
+        }
+        XCTAssertEqual((error as? DummyError), DummyError.failure)
     }
 
     private let responseItems = [
