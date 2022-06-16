@@ -75,14 +75,10 @@ struct RealifeTechViewConverter {
     }
 
     func convert(items: [RLTContentItem]) -> [GenericCreatableViews] {
-        var views: [GenericCreatableViews] = []
-        let creatables = RLTContentConverter().convert(factories: factories, items: items)
-        creatables.forEach {
-            if let bannerView = $0 as? BannerView {
-                views.append(GenericCreatableViews(creatables: AnyView(bannerView)))
-            }
-        }
-        return views
+        return RLTContentConverter().convert(factories: factories, items: items)
+            .compactMap { $0 as? RLTViewCreatable }
+            .compactMap { $0.unwrappedGenericView }
+            .compactMap { GenericCreatableViews(creatables: $0) }
     }
 }
 
