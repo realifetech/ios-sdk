@@ -34,6 +34,13 @@ private extension UIViewController {
     func embed(in containerView: UIView, on parentViewController: UIViewController) {
         view.frame = containerView.bounds
         containerView.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: containerView.topAnchor),
+            view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        ])
         parentViewController.addChild(self)
         didMove(toParent: parentViewController)
     }

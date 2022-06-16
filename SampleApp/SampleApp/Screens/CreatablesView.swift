@@ -74,11 +74,9 @@ struct RealifeTechViewConverter {
         self.factories = factories
     }
 
-    func convert(items: [RLTContentItem]) -> [GenericCreatableViews] {
+    func convert(items: [RLTContentItem]) -> [RLTViewCreatable] {
         return RLTContentConverter().convert(factories: factories, items: items)
             .compactMap { $0 as? RLTViewCreatable }
-            .compactMap { $0.unwrappedGenericView }
-            .compactMap { GenericCreatableViews(creatables: $0) }
     }
 }
 
@@ -121,6 +119,8 @@ final class CreatableViewModel: ObservableObject {
             case .success(let items):
                 guard let self = self else { return }
                 self.views = RealifeTechViewConverter(factories: self.factories).convert(items: items)
+                    .compactMap { $0.unwrappedGenericView }
+                    .compactMap { GenericCreatableViews(creatables: $0) }
             case .failure(let error):
                 self?.error = error.localizedDescription
             }
