@@ -8,4 +8,6 @@
 
 import Foundation
 
-public typealias Communicate = PushNotificationRegistering
+public protocol Communicate: PushNotificationRegistering {
+    func trackPush(event: PushEvent, trackInfo: [String: Any], completion: @escaping(Result<Bool, Error>) -> Void)
+}

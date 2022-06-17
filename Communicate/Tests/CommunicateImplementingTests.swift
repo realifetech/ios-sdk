@@ -13,16 +13,20 @@ final class CommunicateImplementingTests: XCTestCase {
 
     private var sut: CommunicateImplementing!
     private var pushNotificationRegistrar: MockPushNotificationRegistrar!
+    private var analytics: MockAnalyticsLogger!
+    private let testTrackInfo = ["user": "info"]
 
     override func setUp() {
         super.setUp()
         pushNotificationRegistrar = MockPushNotificationRegistrar()
-        sut = CommunicateImplementing(pushNotificationRegistrar: pushNotificationRegistrar)
+        analytics = MockAnalyticsLogger()
+        sut = CommunicateImplementing(pushNotificationRegistrar: pushNotificationRegistrar, analytics: analytics)
     }
 
     override func tearDown() {
         sut = nil
         pushNotificationRegistrar = nil
+        analytics = nil
         super.tearDown()
     }
 
@@ -42,6 +46,43 @@ final class CommunicateImplementingTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_trackPush_withPushReceivedEvent() {
+        sut.trackPush(event: .received, trackInfo: testTrackInfo) { result in
+            switch result {
+            case .success:
+                let loggedEvent = self.analytics.eventsLogged.first
+                XCTAssertEqual(loggedEvent?.type, "user")
+                XCTAssertEqual(loggedEvent?.action, "pushReceived")
+                let trackInfoString = self.convertToString(self.testTrackInfo)
+                XCTAssertEqual(loggedEvent?.new, trackInfoString)
+                XCTAssertNil(loggedEvent?.old)
+            case.failure:
+                XCTFail("Should return success")
+            }
+        }
+    }
+
+    func test_trackPush_withPushOpenedEvent() {
+        sut.trackPush(event: .opened, trackInfo: testTrackInfo) { result in
+            switch result {
+            case .success:
+                let loggedEvent = self.analytics.eventsLogged.first
+                XCTAssertEqual(loggedEvent?.type, "user")
+                XCTAssertEqual(loggedEvent?.action, "pushOpened")
+                let trackInfoString = self.convertToString(self.testTrackInfo)
+                XCTAssertEqual(loggedEvent?.new, trackInfoString)
+                XCTAssertNil(loggedEvent?.old)
+            case.failure:
+                XCTFail("Should return success")
+            }
+        }
+    }
+
+    private func convertToString(_ dictionary: [String: Any]) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else { return nil }
+        return String(data: data, encoding: .utf8)
     }
 }
 
