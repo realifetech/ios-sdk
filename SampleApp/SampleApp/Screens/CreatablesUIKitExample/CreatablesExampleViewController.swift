@@ -26,6 +26,7 @@ class CreatablesExampleViewController: UIViewController, CreatablesExampleDelega
     private let viewModel = CreatablesExampleViewModel()
     private let tableView = UITableView()
     private var views: [RLTViewCreatable] = []
+    private let reuseCreatablesCellIdentifier = String(describing: CreatablesExampleTableViewCell.self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class CreatablesExampleViewController: UIViewController, CreatablesExampleDelega
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.register(UINib(nibName: "CreatablesExampleTableViewCell", bundle: .main), forCellReuseIdentifier: "cell")
+        tableView.register(CreatablesExampleTableViewCell.self, forCellReuseIdentifier: reuseCreatablesCellIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -66,7 +67,7 @@ extension CreatablesExampleViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CreatablesExampleTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseCreatablesCellIdentifier, for: indexPath) as? CreatablesExampleTableViewCell else {
             return UITableViewCell()
         }
         views[indexPath.row].embed(in: cell, on: self)

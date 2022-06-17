@@ -32,16 +32,16 @@ public extension RLTViewCreatable where Self: View {
 
 private extension UIViewController {
     func embed(in containerView: UIView, on parentViewController: UIViewController) {
-        view.frame = containerView.bounds
+        parentViewController.addChild(self)
         containerView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.invalidateIntrinsicContentSize()
         NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: containerView.topAnchor),
-            view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+            view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor),
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor),
+            view.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor),
+            view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor)
         ])
-        parentViewController.addChild(self)
         didMove(toParent: parentViewController)
     }
 }

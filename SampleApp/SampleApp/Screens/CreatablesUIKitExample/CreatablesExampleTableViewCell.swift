@@ -8,9 +8,4 @@
 
 import UIKit
 
-class CreatablesExampleTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-}
+class CreatablesExampleTableViewCell: UITableViewCell { }

@@ -15,7 +15,6 @@
 		09E05F53285B03A5005C7B94 /* CreatablesExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05F4F285B03A5005C7B94 /* CreatablesExampleTableViewCell.swift */; };
 		09E05F54285B03A5005C7B94 /* CreatablesExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05F50285B03A5005C7B94 /* CreatablesExampleViewController.swift */; };
 		09E05F55285B03A5005C7B94 /* CreatablesExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05F51285B03A5005C7B94 /* CreatablesExampleViewModel.swift */; };
-		09E05F56285B03A5005C7B94 /* CreatablesExampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E05F52285B03A5005C7B94 /* CreatablesExampleTableViewCell.xib */; };
 		3ED5CD1C275E7A0F00C7D877 /* CreatablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */; };
 		3EFB4E4027A4301D0004BE5E /* IdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */; };
 		3FA1EF186BD30C3A0EB371A8 /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB1AA0FB8D493ED0238EC14 /* Pods_SampleApp.framework */; };
@@ -42,7 +41,6 @@
 		09E05F4F285B03A5005C7B94 /* CreatablesExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatablesExampleTableViewCell.swift; sourceTree = "<group>"; };
 		09E05F50285B03A5005C7B94 /* CreatablesExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatablesExampleViewController.swift; sourceTree = "<group>"; };
 		09E05F51285B03A5005C7B94 /* CreatablesExampleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatablesExampleViewModel.swift; sourceTree = "<group>"; };
-		09E05F52285B03A5005C7B94 /* CreatablesExampleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatablesExampleTableViewCell.xib; sourceTree = "<group>"; };
 		3ED5CD1B275E7A0E00C7D877 /* CreatablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatablesView.swift; sourceTree = "<group>"; };
 		3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityView.swift; sourceTree = "<group>"; };
 		48005DCD253072E900B4E8BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -98,7 +96,6 @@
 				09E05F4F285B03A5005C7B94 /* CreatablesExampleTableViewCell.swift */,
 				09E05F50285B03A5005C7B94 /* CreatablesExampleViewController.swift */,
 				09E05F51285B03A5005C7B94 /* CreatablesExampleViewModel.swift */,
-				09E05F52285B03A5005C7B94 /* CreatablesExampleTableViewCell.xib */,
 			);
 			path = CreatablesUIKitExample;
 			sourceTree = "<group>";
@@ -261,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				48D6F177251E1ED0006CA623 /* LaunchScreen.storyboard in Resources */,
-				09E05F56285B03A5005C7B94 /* CreatablesExampleTableViewCell.xib in Resources */,
 				48D6F174251E1ED0006CA623 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
