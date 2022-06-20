@@ -21,11 +21,11 @@ struct CreatablesView: View {
                 .roundedBorderTextField()
             VStack {
                 // Use case 1: Use viewFatcher to auto generate view after data comes back
-                Button("CALL (Creatables)") {
+                Button("FETCH (Creatables)") {
                     fetchCreatables()
                 }
                 // Use case 2: Fetch data without view fetcher
-                Button("CALL (Data)") {
+                Button("FETCH (Data)") {
                     fetchData()
                 }
             }
