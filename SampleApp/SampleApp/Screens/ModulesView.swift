@@ -32,8 +32,8 @@ struct ModulesView: View {
                 Section(header: Text("Identity")) {
                     Text("Login")
                 }
-                Section(header: Text("Campaign Automation")) {
-                    NavigationLink("Creatables Example", destination: CreatablesView())
+                Section(header: Text("Campaign Automation SwiftUI Example")) {
+                    NavigationLink("Creatables SwiftUI Example", destination: CreatablesView())
                 }
                 Section(header: Text("Campaign Automation UIKit Example")) {
                     NavigationLink("Creatables UIKit Example", destination: CreatablesViewExample())
