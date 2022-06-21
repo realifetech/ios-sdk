@@ -173,9 +173,9 @@
 				96AED99F26D00D2400F6C750 /* WebOrderingJourneyView.swift */,
 				96AED99D26D00A2100F6C750 /* WebPageTypeGetterView.swift */,
 				09DD87D02860632400F503C9 /* CreatablesSwiftUIExample */,
+				09E05F4E285B03A5005C7B94 /* CreatablesUIKitExample */,
 				3EFB4E3F27A4301D0004BE5E /* IdentityView.swift */,
 				FA11F28D285CC2B0007B3D7C /* TrackPushView.swift */,
-				09E05F4E285B03A5005C7B94 /* CreatablesUIKitExample */,
 				96AED99426CFF4B000F6C750 /* Components */,
 				09AD0B8F27FF202700958BAD /* Util */,
 			);
