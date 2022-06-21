@@ -38,6 +38,9 @@ struct ModulesView: View {
                 Section(header: Text("Identity")) {
                     NavigationLink("Identity Control", destination: IdentityView())
                 }
+                Section(header: Text("Communicate")) {
+                    NavigationLink("Track Push Notifications", destination: TrackPushView())
+                }
             }
             .navigationBarTitle("Realife Tech SDK")
         }
