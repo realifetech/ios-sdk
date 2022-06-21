@@ -11,6 +11,7 @@
 		0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */; };
 		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
 		094ACC6F2850AC4400562CAD /* RLTContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ACC6E2850AC4400562CAD /* RLTContentItem.swift */; };
+		0958222A285C5432005D843B /* PushEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09582229285C5432005D843B /* PushEvent.swift */; };
 		0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */; };
 		095850112833B4A2008E0DAB /* ResponseInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */; };
 		09860AFF275F35E300764142 /* GraphQLErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09860AFE275F35E300764142 /* GraphQLErrorCode.swift */; };
@@ -375,6 +376,7 @@
 		0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderStatus.swift; sourceTree = "<group>"; };
 		0913A9DE275511B500DB9D99 /* Order+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Extension.swift"; sourceTree = "<group>"; };
 		094ACC6E2850AC4400562CAD /* RLTContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentItem.swift; sourceTree = "<group>"; };
+		09582229285C5432005D843B /* PushEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushEvent.swift; sourceTree = "<group>"; };
 		0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInterceptor.swift; sourceTree = "<group>"; };
 		095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInterceptorTests.swift; sourceTree = "<group>"; };
 		09860AFE275F35E300764142 /* GraphQLErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLErrorCode.swift; sourceTree = "<group>"; };
@@ -769,6 +771,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		09582228285C53ED005D843B /* PushEvent */ = {
+			isa = PBXGroup;
+			children = (
+				09582229285C5432005D843B /* PushEvent.swift */,
+			);
+			path = PushEvent;
+			sourceTree = "<group>";
+		};
 		09E05EAC28535615005C7B94 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,6 +1038,7 @@
 				487479E725408E8A0048F03D /* Communicate.swift */,
 				487479ED254090E90048F03D /* CommunicateFactory.swift */,
 				48EFE2222539E21100CC6E58 /* CommunicateImplementing.swift */,
+				09582228285C53ED005D843B /* PushEvent */,
 				487479E025408E640048F03D /* PushNotificationRegistration */,
 				96B670C626D7CEF900DB74A4 /* Tests */,
 			);
@@ -2319,6 +2330,7 @@
 				96874871268CC29700DDC5DD /* Card.swift in Sources */,
 				961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */,
 				3E98B946275A8F5B00E67321 /* RLTCreatable.swift in Sources */,
+				0958222A285C5432005D843B /* PushEvent.swift in Sources */,
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
 				3E98B93D275A3F3000E67321 /* CampaignAutomation.swift in Sources */,
 				9687487D268CC4BB00DDC5DD /* CancellationReason.swift in Sources */,

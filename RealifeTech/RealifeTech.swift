@@ -59,7 +59,7 @@ public class RealifeTech {
             reachabilityHelper: reachabilityChecker,
             deviceRegistering: General,
             identityPersister: identityPersister)
-        Communicate = CommunicateFactory.makeCommunicateModule()
+        Communicate = CommunicateFactory.makeCommunicateModule(analytics: Analytics)
         Canvas = CanvasFactory.makeCanvasModule(graphQLManager: graphQLManager)
         Content = ContentFactory.makeContentModule(graphQLManager: graphQLManager)
         Sell = SellFactory.makeSellModule(
