@@ -11,12 +11,13 @@ import SwiftUI
 import RealifeTech
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
         NotificationRegistrationHelper().registerForRemoteNotification()
         return true
     }
@@ -37,6 +38,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("---> [RealifeTech SDK]")
         print("Failed to register for remote notification: \(error.localizedDescription)")
+    }
+
+    // This function will be called when the app receive notification, only when app is in the foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        // show the notification alert (banner), and with sound
+        completionHandler([.alert, .sound])
+    }
+
+        // This function will be called right after user tap on the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//        let userInfo = response.notification.request.content.userInfo
+//        RealifeTech.Communicate().trackPush(event: .opened, trackInfo: userInfo) {
+//            completionHandler()
+//        }
+        let application = UIApplication.shared
+
+        if application.applicationState == .active {
+        }
+
+        if application.applicationState == .inactive {
+
+        }
+        completionHandler()
     }
 
     // MARK: UISceneSession Lifecycle

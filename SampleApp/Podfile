@@ -8,3 +8,8 @@ target 'SampleApp' do
 
   pod 'RealifeTech-SDK', :path => '../'
 end
+
+target 'NotificationServiceExtension' do
+  use_frameworks!
+  pod 'RealifeTech-SDK', :path => '../'
+end
