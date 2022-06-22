@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import RealifeTech
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,8 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        if let response = connectionOptions.notificationResponse {
-            // Call SDK to track opened event
+        if let userInfo = connectionOptions.notificationResponse?.notification.request.content.userInfo as? [String: Any] {
+            RealifeTechSDKConfigurator().fetchAppSecretAndConfigureSDK {
+                RealifeTech.Communicate?.trackPush(event: .opened, trackInfo: userInfo) { _ in }
+            }
         }
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)

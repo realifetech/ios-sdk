@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        RealifeTechSDKConfigurator().fetchAppSecretAndConfigureSDK { }
         UNUserNotificationCenter.current().delegate = self
-        NotificationRegistrationHelper().registerForRemoteNotification()
         return true
     }
 
@@ -42,26 +42,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     // This function will be called when the app receive notification, only when app is in the foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        // show the notification alert (banner), and with sound
-        completionHandler([.alert, .sound])
+        guard let userInfo = notification.request.content.userInfo as? [String: Any] else {
+            return completionHandler([.alert, .sound])
+        }
+        RealifeTech.Communicate?.trackPush(event: .opened, trackInfo: userInfo) { _ in
+            completionHandler([.alert, .sound])
+        }
     }
 
-        // This function will be called right after user tap on the notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        let userInfo = response.notification.request.content.userInfo
-//        RealifeTech.Communicate().trackPush(event: .opened, trackInfo: userInfo) {
-//            completionHandler()
-//        }
-        let application = UIApplication.shared
-
-        if application.applicationState == .active {
+        guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else {
+            return completionHandler()
         }
-
-        if application.applicationState == .inactive {
-
+        RealifeTech.Communicate?.trackPush(event: .opened, trackInfo: userInfo) { _ in
+            completionHandler()
         }
-        completionHandler()
     }
 
     // MARK: UISceneSession Lifecycle

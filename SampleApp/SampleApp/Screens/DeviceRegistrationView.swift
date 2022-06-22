@@ -14,23 +14,15 @@ final class DeviceRegistrationViewModel: ObservableObject {
     @Published var appCode = ""
     @Published var clientSecret = ""
     @Published var result = ""
+    private let configurator = RealifeTechSDKConfigurator()
 
-    private func configureRealifeTechSDK() {
-        let configuration = SDKConfiguration(
-            appCode: appCode,
-            clientSecret: clientSecret,
-            apiUrl: "https://api-staging.livestyled.com/v3",
-            graphQLApiUrl: "https://staging-graphql-eu.realifetech.com")
-        RealifeTech.configureSDK(with: configuration)
-    }
-
-    func registerDevice() {
-        configureRealifeTechSDK()
-        RealifeTech.General.registerDevice { [weak self] in
+    func configureAndRegisterDevice() {
+        configurator.saveAppSecret(appCode: appCode, clientSecret: clientSecret)
+        configurator.configureSDKAndRegisterDevice(appCode: appCode, clientSecret: clientSecret) { [weak self] in
             let isReady = RealifeTech.General.sdkReady ? "Yes!" : "No!"
             self?.result = "Is SDK ready?  \(isReady)"
             NotificationRegistrationHelper().registerForRemoteNotification()
-       }
+        }
     }
 }
 
@@ -46,7 +38,7 @@ struct DeviceRegistrationView: View {
                 TextField("clientSecret", text: $viewModel.clientSecret)
                     .roundedBorderTextField()
                 Button("Register") {
-                    viewModel.registerDevice()
+                    viewModel.configureAndRegisterDevice()
                 }
                 Divider()
                 resultView
