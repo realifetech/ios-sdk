@@ -18,7 +18,8 @@ class NotificationService: UNNotificationServiceExtension {
     override func didReceive(_ request: UNNotificationRequest,
                              withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
-        if let bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent),
+        self.bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+        if let bestAttemptContent = bestAttemptContent,
            let userInfo = bestAttemptContent.userInfo as? [String: Any] {
             configurator.fetchAppSecretAndConfigureSDK {
                 RealifeTech.Communicate.trackPush(event: .received, trackInfo: userInfo) { _ in
@@ -29,7 +30,7 @@ class NotificationService: UNNotificationServiceExtension {
     }
 
     override func serviceExtensionTimeWillExpire() {
-        if let contentHandler = contentHandler, let bestAttemptContent =  bestAttemptContent {
+        if let contentHandler = contentHandler, let bestAttemptContent = bestAttemptContent {
             contentHandler(bestAttemptContent)
         }
     }
