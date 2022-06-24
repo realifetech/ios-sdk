@@ -15,12 +15,13 @@ class NotificationService: UNNotificationServiceExtension {
     private var bestAttemptContent: UNMutableNotificationContent?
     private let configurator = RealifeTechSDKConfigurator()
 
-    override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+    override func didReceive(_ request: UNNotificationRequest,
+                             withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
         if let bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent),
            let userInfo = bestAttemptContent.userInfo as? [String: Any] {
             configurator.fetchAppSecretAndConfigureSDK {
-                RealifeTech.Communicate.trackPush(event: .received, trackInfo: userInfo) { success in
+                RealifeTech.Communicate.trackPush(event: .received, trackInfo: userInfo) { _ in
                     contentHandler(bestAttemptContent)
                 }
             }

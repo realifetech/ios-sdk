@@ -17,7 +17,7 @@ struct CreatablesViewExample: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> CreatablesExampleViewController {
         return CreatablesExampleViewController()
     }
-        
+
     func updateUIViewController(_ uiViewController: CreatablesExampleViewController, context: Context) { }
 }
 
@@ -65,9 +65,10 @@ extension CreatablesExampleViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return views.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseCreatablesCellIdentifier, for: indexPath) as? CreatablesExampleTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseCreatablesCellIdentifier, for: indexPath)
+                as? CreatablesExampleTableViewCell else {
             return UITableViewCell()
         }
         views[indexPath.row].embed(in: cell, on: self)

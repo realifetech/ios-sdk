@@ -45,4 +45,3 @@ class RealifeTechSDKConfigurator {
         appGroupStore?.synchronize()
     }
 }
-
