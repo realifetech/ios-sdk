@@ -8,36 +8,12 @@
 import Foundation
 import os
 
-public class AppGroupUserDefaultsStore {
-
-    private let appGroupStore: CodableStore
-    private let configurationKey = "SDKConfiguration"
-
-    public init(appGroupId: String) {
-        let storage = UserDefaultsStorage(userDefaults: UserDefaults(suiteName: appGroupId) ?? .standard)
-        let store = CodableStore(storage: storage, storagePrefix: "NotificationExtension")
-        self.appGroupStore = store
-    }
-
-    public func saveSDKConfiguration(with configuration: SDKConfiguration) {
-        os_log("[DEBUG] ---saveSDKConfiguration", log: .default, type: .error)
-        try? appGroupStore.save(configuration, for: configurationKey)
-    }
-
-    public func fetchSDKConfiguration() -> SDKConfiguration? {
-        os_log("[DEBUG] ---saveSDKConfiguration", log: .default, type: .error)
-        return try? appGroupStore.fetch(for: configurationKey)
-    }
-}
-
 public class RLTNotificationServiceConfigurator { // only for extension app usage
 
     private let appGroupStore: AppGroupUserDefaultsStore?
 
-    // TODO: refactor
-    public init(appGroupStore: AppGroupUserDefaultsStore = AppGroupUserDefaultsStore(appGroupId: "group.com.concertlive.SampleApp")) {
-        self.appGroupStore = appGroupStore
-        
+    public init(appGroupId: String) {
+        self.appGroupStore = AppGroupUserDefaultsStore(appGroupId: appGroupId)
     }
 
     public func didReceive(_ request: UNNotificationRequest,
