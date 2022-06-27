@@ -19,11 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        if let userInfo = connectionOptions.notificationResponse?.notification.request.content.userInfo as? [String: Any] {
-            RealifeTechSDKConfigurator().fetchAppSecretAndConfigureSDK {
-                RealifeTech.Communicate?.trackPush(event: .opened, trackInfo: userInfo) { _ in }
-            }
-        }
+//        if let userInfo = connectionOptions.notificationResponse?.notification.request.content.userInfo as? [String: Any] {
+//            RealifeTechSDKConfigurator().fetchAppSecretAndConfigureSDK {
+//                RealifeTech.Communicate?.trackPush(event: .opened, trackInfo: userInfo) { _ in }
+//            }
+//        }
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = UIHostingController(rootView: ModulesView())

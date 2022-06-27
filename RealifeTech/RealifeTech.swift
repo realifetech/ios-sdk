@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os
 
 public class RealifeTech {
 
@@ -20,9 +21,16 @@ public class RealifeTech {
     public static var Sell: Sell!
     public static var CampaignAutomation: CampaignAutomation!
     public static var Identity: Identity!
+    public static var AppGroupStore: AppGroupUserDefaultsStore!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
+    }
+
+    // TODO: refactor
+    private static var appGroupId: String {
+        let mainBundleId = Bundle.main.bundleIdentifier ?? "Unknown"
+        return "group." + mainBundleId
     }
 
     /// Provides information required for the SDK to operate.
@@ -71,6 +79,8 @@ public class RealifeTech {
                                     graphQLAPIUrl: configuration.graphQLApiUrl)
         Identity = IdentityFactory.makeModule(analyticsLogger: Analytics,
                                               identityPersister: identityPersister)
+        AppGroupStore = AppGroupUserDefaultsStore(appGroupId: appGroupId)
+        AppGroupStore.saveSDKConfiguration(with: configuration)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
