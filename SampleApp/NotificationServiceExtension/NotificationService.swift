@@ -8,7 +8,6 @@
 
 import UserNotifications
 import RealifeTech
-import os
 
 class NotificationService: UNNotificationServiceExtension {
 
@@ -20,7 +19,6 @@ class NotificationService: UNNotificationServiceExtension {
                              withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
         self.bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
-        os_log("[DEBUG] ---NotificationService didReceive", log: .default, type: .error)
         configurator.didReceive(request, withContentHandler: contentHandler)
     }
 

@@ -9,7 +9,6 @@
 import UIKit
 import SwiftUI
 import RealifeTech
-import os
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -18,15 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        os_log("[DEBUG] ---didFinishLaunchingWithOptions", log: .default, type: .error)
-//        RealifeTechSDKConfigurator().fetchAppSecretAndConfigureSDK { }
         UNUserNotificationCenter.current().delegate = self
         return true
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        os_log("[DEBUG] ---didRegisterForRemoteNotificationsWithDeviceToken %{public}@", log: .default, type: .error, token)
         RealifeTech.Communicate?.registerForPushNotifications(tokenData: deviceToken) { result in
             switch result {
             case .success:
@@ -44,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("Failed to register for remote notification: \(error.localizedDescription)")
     }
 
-    // This function will be called when the app receive notification, only when app is in the foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

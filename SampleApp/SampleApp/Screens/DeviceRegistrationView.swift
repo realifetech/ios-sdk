@@ -11,7 +11,7 @@ import RealifeTech
 
 final class DeviceRegistrationViewModel: ObservableObject {
 
-    @Published var appCode = "LS"
+    @Published var appCode = ""
     @Published var clientSecret = ""
     @Published var result = ""
 
