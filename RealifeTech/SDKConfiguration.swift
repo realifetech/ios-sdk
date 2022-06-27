@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SDKConfiguration {
+public struct SDKConfiguration: Codable {
 
     public let appCode: String
     public let clientSecret: String

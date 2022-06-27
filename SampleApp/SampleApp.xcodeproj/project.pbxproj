@@ -16,8 +16,6 @@
 		09DD87D22860635100F503C9 /* CreatablesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD87D12860635100F503C9 /* CreatablesViewModel.swift */; };
 		09DD87F02861A00000F503C9 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD87EF2861A00000F503C9 /* NotificationService.swift */; };
 		09DD87F42861A00000F503C9 /* NotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 09DD87ED2861A00000F503C9 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		09DD88022863C03200F503C9 /* RealifeTechSDKConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD88012863C03200F503C9 /* RealifeTechSDKConfigurator.swift */; };
-		09DD88032863C06200F503C9 /* RealifeTechSDKConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DD88012863C03200F503C9 /* RealifeTechSDKConfigurator.swift */; };
 		09E05F53285B03A5005C7B94 /* CreatablesExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05F4F285B03A5005C7B94 /* CreatablesExampleTableViewCell.swift */; };
 		09E05F54285B03A5005C7B94 /* CreatablesExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05F50285B03A5005C7B94 /* CreatablesExampleViewController.swift */; };
 		09E05F55285B03A5005C7B94 /* CreatablesExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05F51285B03A5005C7B94 /* CreatablesExampleViewModel.swift */; };
@@ -74,7 +72,6 @@
 		09DD87EF2861A00000F503C9 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		09DD87F12861A00000F503C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09DD87F92861A08200F503C9 /* NotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationServiceExtension.entitlements; sourceTree = "<group>"; };
-		09DD88012863C03200F503C9 /* RealifeTechSDKConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealifeTechSDKConfigurator.swift; sourceTree = "<group>"; };
 		09E05F4F285B03A5005C7B94 /* CreatablesExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatablesExampleTableViewCell.swift; sourceTree = "<group>"; };
 		09E05F50285B03A5005C7B94 /* CreatablesExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatablesExampleViewController.swift; sourceTree = "<group>"; };
 		09E05F51285B03A5005C7B94 /* CreatablesExampleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatablesExampleViewModel.swift; sourceTree = "<group>"; };
@@ -135,7 +132,6 @@
 				09640C1D2818FD14009C9626 /* StandardError.swift */,
 				09640C2128190184009C9626 /* ErrorHandler.swift */,
 				09B901BD2817F92F005663F4 /* NotificationRegistrationHelper.swift */,
-				09DD88012863C03200F503C9 /* RealifeTechSDKConfigurator.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -439,7 +435,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09DD88032863C06200F503C9 /* RealifeTechSDKConfigurator.swift in Sources */,
 				09DD87F02861A00000F503C9 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,7 +456,6 @@
 				09E05F54285B03A5005C7B94 /* CreatablesExampleViewController.swift in Sources */,
 				09E05F53285B03A5005C7B94 /* CreatablesExampleTableViewCell.swift in Sources */,
 				96AED99826CFF93300F6C750 /* EventsLoggingView.swift in Sources */,
-				09DD88022863C03200F503C9 /* RealifeTechSDKConfigurator.swift in Sources */,
 				48D6F16D251E1ECF006CA623 /* SceneDelegate.swift in Sources */,
 				09640C1E2818FD14009C9626 /* StandardError.swift in Sources */,
 				96AED99E26D00A2100F6C750 /* WebPageTypeGetterView.swift in Sources */,
