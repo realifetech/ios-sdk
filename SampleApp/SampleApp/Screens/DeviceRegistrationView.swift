@@ -14,7 +14,6 @@ final class DeviceRegistrationViewModel: ObservableObject {
     @Published var appCode = "LS"
     @Published var clientSecret = ""
     @Published var result = ""
-//    private let configurator = RealifeTechSDKConfigurator()
 
     func configureAndRegisterDevice() {
         let configuration = SDKConfiguration(
@@ -24,16 +23,12 @@ final class DeviceRegistrationViewModel: ObservableObject {
             graphQLApiUrl: "https://staging-graphql-eu.realifetech.com",
             webOrderingJourneyUrl: nil)
         RealifeTech.configureSDK(with: configuration)
+        RealifeTech.setNotificationServiceExtensionWith(appGroupId: "group.com.concertlive.SampleApp", configuration: configuration)
         RealifeTech.General.registerDevice { [weak self] in
             let isReady = RealifeTech.General.sdkReady ? "Yes!" : "No!"
             self?.result = "Is SDK ready?  \(isReady)"
             NotificationRegistrationHelper().registerForRemoteNotification()
         }
-//        configurator.configureSDKAndRegisterDevice(appCode: appCode, clientSecret: clientSecret) { [weak self] in
-//            let isReady = RealifeTech.General.sdkReady ? "Yes!" : "No!"
-//            self?.result = "Is SDK ready?  \(isReady)"
-//            NotificationRegistrationHelper().registerForRemoteNotification()
-//        }
     }
 }
 
