@@ -23,7 +23,9 @@ final class DeviceRegistrationViewModel: ObservableObject {
             graphQLApiUrl: "https://staging-graphql-eu.realifetech.com",
             webOrderingJourneyUrl: nil)
         RealifeTech.configureSDK(with: configuration)
-        RealifeTech.setNotificationServiceExtensionWith(appGroupId: "group.com.concertlive.SampleApp", configuration: configuration)
+        RealifeTech.setNotificationServiceExtensionWith(
+            appGroupId: "group.com.concertlive.SampleApp",
+            configuration: configuration)
         RealifeTech.General.registerDevice { [weak self] in
             let isReady = RealifeTech.General.sdkReady ? "Yes!" : "No!"
             self?.result = "Is SDK ready?  \(isReady)"

@@ -5,7 +5,7 @@
 //  Created by YOU-HSUAN YU on 2022/6/27.
 //
 
-import Foundation
+import UserNotifications
 
 public class RLTNotificationServiceConfigurator {
 
