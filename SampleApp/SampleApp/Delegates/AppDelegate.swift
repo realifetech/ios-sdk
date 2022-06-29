@@ -40,17 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        guard let userInfo = notification.request.content.userInfo as? [String: Any] else {
-            return completionHandler([.alert, .sound])
-        }
-        RealifeTech.Communicate?.trackPush(event: .opened, trackInfo: userInfo) { _ in
-            completionHandler([.alert, .sound])
-        }
-    }
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else {
