@@ -16,7 +16,8 @@ public enum WidgetFetchType: String, Codable {
     case featured
     case feed
     case `static`
-
+    case campaignAutomation
+    
     init?(apolloType: ApolloType.WidgetFetchType?) {
         guard let type = WidgetFetchType(rawValue: apolloType?.rawValue ?? "") else {
             return nil

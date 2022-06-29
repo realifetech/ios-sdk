@@ -27,6 +27,7 @@ public enum WidgetType: String, Codable {
     case socialPost = "SocialPost"
     case fulfilmentPointCategorySelector = "FulfilmentPointCategorySelector"
     case selectedEvent = "SelectedEvent"
+    case dynamic = "Dynamic"
 }
 
 extension WidgetType {

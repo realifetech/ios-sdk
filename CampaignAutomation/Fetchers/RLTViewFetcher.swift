@@ -9,4 +9,5 @@
 public class RLTViewFetcher: RLTMediaTypeFetching {
     public typealias MediaType = RLTViewCreatable
     public var factories: [RLTContentType: RLTCreatableFactory] = [:]
+    public init() {}
 }
