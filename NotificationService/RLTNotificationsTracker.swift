@@ -1,5 +1,5 @@
 //
-//  RLTNotificationServiceConfigurator.swift
+//  RLTNotificationsTracker.swift
 //  RealifeTech-SDK
 //
 //  Created by YOU-HSUAN YU on 2022/6/27.
@@ -7,7 +7,7 @@
 
 import UserNotifications
 
-public class RLTNotificationServiceConfigurator {
+public class RLTNotificationsTracker {
 
     private let appGroupStore: AppGroupUserDefaultsStore?
 

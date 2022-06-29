@@ -20,7 +20,6 @@ public class RealifeTech {
     public static var Sell: Sell!
     public static var CampaignAutomation: CampaignAutomation!
     public static var Identity: Identity!
-    private static var AppGroupStore: AppGroupUserDefaultsStore!
 
     private static var moduleVersionString: String {
         Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -113,8 +112,8 @@ public class RealifeTech {
         Sell.orderingJourneyUrl = webOrderingJourneyUrl
     }
 
-    public static func setNotificationServiceExtensionWith(appGroupId: String, configuration: SDKConfiguration) {
-        AppGroupStore = AppGroupUserDefaultsStore(appGroupId: appGroupId)
-        AppGroupStore.saveSDKConfiguration(with: configuration)
+    public static func configureNotificationServiceExtensionWith(appGroupId: String, configuration: SDKConfiguration) {
+        let appGroupStore = AppGroupUserDefaultsStore(appGroupId: appGroupId)
+        appGroupStore?.saveSDKConfiguration(with: configuration)
     }
 }

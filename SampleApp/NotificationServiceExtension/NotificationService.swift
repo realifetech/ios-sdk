@@ -13,13 +13,13 @@ class NotificationService: UNNotificationServiceExtension {
 
     private var contentHandler: ((UNNotificationContent) -> Void)?
     private var bestAttemptContent: UNMutableNotificationContent?
-    private let configurator = RLTNotificationServiceConfigurator(appGroupId: "group.com.concertlive.SampleApp")
+    private let notificationsTracker = RLTNotificationsTracker(appGroupId: "group.com.concertlive.SampleApp")
 
     override func didReceive(_ request: UNNotificationRequest,
                              withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
         self.bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
-        configurator.didReceive(request, withContentHandler: contentHandler)
+        notificationsTracker.didReceive(request, withContentHandler: contentHandler)
     }
 
     override func serviceExtensionTimeWillExpire() {

@@ -7,14 +7,23 @@
 
 import Foundation
 
+enum AppGroupStoreKey: String {
+    case prefix = "NotificationExtension"
+    case configurationKey = "SDKConfiguration"
+}
+
 class AppGroupUserDefaultsStore {
 
     private let appGroupStore: CodableStore
-    private let configurationKey = "SDKConfiguration"
+    private let configurationKey = AppGroupStoreKey.configurationKey.rawValue
 
-    init(appGroupId: String) {
-        let storage = UserDefaultsStorage(userDefaults: UserDefaults(suiteName: appGroupId) ?? .standard)
-        let store = CodableStore(storage: storage, storagePrefix: "NotificationExtension")
+    init?(appGroupId: String) {
+        guard let appGroupUserDefaults = UserDefaults(suiteName: appGroupId) else {
+            return nil
+        }
+        let store = CodableStore(
+            storage: UserDefaultsStorage(userDefaults: appGroupUserDefaults),
+            storagePrefix: AppGroupStoreKey.prefix.rawValue)
         self.appGroupStore = store
     }
 
@@ -23,6 +32,6 @@ class AppGroupUserDefaultsStore {
     }
 
     func fetchSDKConfiguration() -> SDKConfiguration? {
-        return try? appGroupStore.fetch(for: configurationKey)
+        try? appGroupStore.fetch(for: configurationKey)
     }
 }
