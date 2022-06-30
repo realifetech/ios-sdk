@@ -86,13 +86,6 @@ final class CommunicateImplementingTests: XCTestCase {
         guard let data = try? JSONSerialization.data(withJSONObject: dictionary ?? [:], options: []) else { return nil }
         return String(data: data, encoding: .utf8)
     }
-
-    private func extractTrackInfo(with trackInfo: [String: Any]) -> [String: Any]? {
-        guard let custom = trackInfo["custom"] as? [String: Any], let track = custom["track"] as? [String: Any] else {
-            return nil
-        }
-        return track
-    }
 }
 
 private final class MockPushNotificationRegistrar: PushNotificationRegistering {
