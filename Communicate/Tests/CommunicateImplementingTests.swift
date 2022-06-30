@@ -55,8 +55,8 @@ final class CommunicateImplementingTests: XCTestCase {
                 let loggedEvent = self.analytics.eventsLogged.first
                 XCTAssertEqual(loggedEvent?.type, "user")
                 XCTAssertEqual(loggedEvent?.action, "pushReceived")
-                let extractTrack = self.extractTrackInfo(with: self.testTrackInfo)
-                let trackInfoString = self.convertToString(extractTrack)
+                let expectedExtractTrack = ["pushId": "123"]
+                let trackInfoString = self.convertToString(expectedExtractTrack)
                 XCTAssertEqual(loggedEvent?.new, trackInfoString)
                 XCTAssertNil(loggedEvent?.old)
             case.failure:
@@ -72,8 +72,8 @@ final class CommunicateImplementingTests: XCTestCase {
                 let loggedEvent = self.analytics.eventsLogged.first
                 XCTAssertEqual(loggedEvent?.type, "user")
                 XCTAssertEqual(loggedEvent?.action, "pushOpened")
-                let extractTrack = self.extractTrackInfo(with: self.testTrackInfo)
-                let trackInfoString = self.convertToString(extractTrack)
+                let expectedExtractTrack = ["pushId": "123"]
+                let trackInfoString = self.convertToString(expectedExtractTrack)
                 XCTAssertEqual(loggedEvent?.new, trackInfoString)
                 XCTAssertNil(loggedEvent?.old)
             case.failure:
