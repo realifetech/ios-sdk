@@ -24,8 +24,16 @@ public final class CommunicateImplementing: Communicate {
         trackInfo: [String: Any],
         completion: @escaping (Result<Bool, Error>) -> Void
     ) {
-        let event = AnalyticEvent(type: "user", action: event.rawValue, new: trackInfo, old: nil, version: "1.0")
+        let new = extractTrackInfo(with: trackInfo)
+        let event = AnalyticEvent(type: "user", action: event.rawValue, new: new, old: nil, version: "1.0")
         analytics.track(event, completion: completion)
+    }
+
+    private func extractTrackInfo(with trackInfo: [String: Any]) -> [String: Any]? {
+        guard let custom = trackInfo["custom"] as? [String: Any], let track = custom["track"] as? [String: Any] else {
+            return nil
+        }
+        return track
     }
 }
 

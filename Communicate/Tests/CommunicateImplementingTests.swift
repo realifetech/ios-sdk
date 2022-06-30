@@ -14,7 +14,7 @@ final class CommunicateImplementingTests: XCTestCase {
     private var sut: CommunicateImplementing!
     private var pushNotificationRegistrar: MockPushNotificationRegistrar!
     private var analytics: MockAnalyticsLogger!
-    private let testTrackInfo = ["user": "info"]
+    private let testTrackInfo = ["custom": ["track": ["pushId": "123"]]]
 
     override func setUp() {
         super.setUp()
@@ -55,7 +55,8 @@ final class CommunicateImplementingTests: XCTestCase {
                 let loggedEvent = self.analytics.eventsLogged.first
                 XCTAssertEqual(loggedEvent?.type, "user")
                 XCTAssertEqual(loggedEvent?.action, "pushReceived")
-                let trackInfoString = self.convertToString(self.testTrackInfo)
+                let expectedExtractTrack = ["pushId": "123"]
+                let trackInfoString = self.convertToString(expectedExtractTrack)
                 XCTAssertEqual(loggedEvent?.new, trackInfoString)
                 XCTAssertNil(loggedEvent?.old)
             case.failure:
@@ -71,7 +72,8 @@ final class CommunicateImplementingTests: XCTestCase {
                 let loggedEvent = self.analytics.eventsLogged.first
                 XCTAssertEqual(loggedEvent?.type, "user")
                 XCTAssertEqual(loggedEvent?.action, "pushOpened")
-                let trackInfoString = self.convertToString(self.testTrackInfo)
+                let expectedExtractTrack = ["pushId": "123"]
+                let trackInfoString = self.convertToString(expectedExtractTrack)
                 XCTAssertEqual(loggedEvent?.new, trackInfoString)
                 XCTAssertNil(loggedEvent?.old)
             case.failure:
@@ -80,8 +82,8 @@ final class CommunicateImplementingTests: XCTestCase {
         }
     }
 
-    private func convertToString(_ dictionary: [String: Any]) -> String? {
-        guard let data = try? JSONSerialization.data(withJSONObject: dictionary, options: []) else { return nil }
+    private func convertToString(_ dictionary: [String: Any]?) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: dictionary ?? [:], options: []) else { return nil }
         return String(data: data, encoding: .utf8)
     }
 }
