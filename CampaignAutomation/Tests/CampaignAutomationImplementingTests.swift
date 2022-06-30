@@ -11,7 +11,7 @@ import XCTest
 @testable import GraphQL
 import Apollo
 
-private typealias QueryDataType = ApolloTypeCA.GetContentByExternalIdQuery.Data
+private typealias QueryDataType = ApolloType.GetContentByExternalIdQuery.Data
 
 class CampaignAutomationImplementingTests: XCTestCase {
 
@@ -111,7 +111,7 @@ class CampaignAutomationImplementingTests: XCTestCase {
     func test_fechData_success() {
         let items = responseItems.map {
             QueryDataType.GetContentByExternalId.Item(
-                contentType: ApolloTypeCA.ContentType(rawValue: $0.contentType ?? ""),
+                contentType: ApolloType.ContentType(rawValue: $0.contentType ?? ""),
                 data: $0.data)
         }
         let getContentByExternalId = QueryDataType.GetContentByExternalId(campaignId: "1",
