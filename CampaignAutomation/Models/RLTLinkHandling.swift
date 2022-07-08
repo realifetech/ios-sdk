@@ -9,7 +9,7 @@
 import Foundation
 
 internal protocol RLTLinkHandling {
-    var url: URL? { get }
+    var url: String? { get }
     var linkAnalyticsEvent: (() -> Void)? { get set }
 }
 
@@ -18,12 +18,12 @@ internal protocol RLTLinkHandling {
  through the individual data models, but that doesn't seem possible
  */
 internal extension RLTLinkHandling {
-    static func generateLinkHandler(url: URL?,
+    static func generateLinkHandler(url: String?,
                                     linkAnalyticsEvent: (() -> Void)?,
                                     openHandler: @escaping (URL) -> Void) -> () -> Void {
         return {
             linkAnalyticsEvent?()
-            guard let url = url else { return }
+            guard let urlString = url, let url = URL(string: urlString) else { return }
             openHandler(url)
         }
     }

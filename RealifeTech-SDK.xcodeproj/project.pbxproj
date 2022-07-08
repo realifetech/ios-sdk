@@ -10,10 +10,15 @@
 		09008ECE27E1F74200F6155D /* ProductModifierItemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */; };
 		0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */; };
 		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
+		094ACC6F2850AC4400562CAD /* RLTContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ACC6E2850AC4400562CAD /* RLTContentItem.swift */; };
+		0958222A285C5432005D843B /* PushEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09582229285C5432005D843B /* PushEvent.swift */; };
 		0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */; };
 		095850112833B4A2008E0DAB /* ResponseInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */; };
 		09860AFF275F35E300764142 /* GraphQLErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09860AFE275F35E300764142 /* GraphQLErrorCode.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */; };
+		09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */; };
+		09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */; };
 		3E0C2595276215C700B6F7D1 /* RLTBannerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */; };
 		3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */; };
 		3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */; };
@@ -370,10 +375,15 @@
 		09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemStatus.swift; sourceTree = "<group>"; };
 		0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderStatus.swift; sourceTree = "<group>"; };
 		0913A9DE275511B500DB9D99 /* Order+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Extension.swift"; sourceTree = "<group>"; };
+		094ACC6E2850AC4400562CAD /* RLTContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentItem.swift; sourceTree = "<group>"; };
+		09582229285C5432005D843B /* PushEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushEvent.swift; sourceTree = "<group>"; };
 		0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInterceptor.swift; sourceTree = "<group>"; };
 		095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInterceptorTests.swift; sourceTree = "<group>"; };
 		09860AFE275F35E300764142 /* GraphQLErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLErrorCode.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
+		09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverter.swift; sourceTree = "<group>"; };
+		09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverterTests.swift; sourceTree = "<group>"; };
+		09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCreatablesAndFactory.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -761,12 +771,30 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		09582228285C53ED005D843B /* PushEvent */ = {
+			isa = PBXGroup;
+			children = (
+				09582229285C5432005D843B /* PushEvent.swift */,
+			);
+			path = PushEvent;
+			sourceTree = "<group>";
+		};
+		09E05EAC28535615005C7B94 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		3E2D35D627612B1900630598 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				09E05EAC28535615005C7B94 /* Util */,
 				3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */,
 				3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */,
 				3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */,
+				09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -825,6 +853,8 @@
 				3E98B94B275A8FE000E67321 /* RLTDataModel.swift */,
 				3E98B952275A904400E67321 /* RLTLinkHandling.swift */,
 				3E98B950275A901600E67321 /* RLTBanner.swift */,
+				094ACC6E2850AC4400562CAD /* RLTContentItem.swift */,
+				09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1008,6 +1038,7 @@
 				487479E725408E8A0048F03D /* Communicate.swift */,
 				487479ED254090E90048F03D /* CommunicateFactory.swift */,
 				48EFE2222539E21100CC6E58 /* CommunicateImplementing.swift */,
+				09582228285C53ED005D843B /* PushEvent */,
 				487479E025408E640048F03D /* PushNotificationRegistration */,
 				96B670C626D7CEF900DB74A4 /* Tests */,
 			);
@@ -2299,6 +2330,7 @@
 				96874871268CC29700DDC5DD /* Card.swift in Sources */,
 				961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */,
 				3E98B946275A8F5B00E67321 /* RLTCreatable.swift in Sources */,
+				0958222A285C5432005D843B /* PushEvent.swift in Sources */,
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
 				3E98B93D275A3F3000E67321 /* CampaignAutomation.swift in Sources */,
 				9687487D268CC4BB00DDC5DD /* CancellationReason.swift in Sources */,
@@ -2340,6 +2372,7 @@
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
 				09008ECE27E1F74200F6155D /* ProductModifierItemStatus.swift in Sources */,
 				961B01942689EB6900D8C481 /* Order.swift in Sources */,
+				094ACC6F2850AC4400562CAD /* RLTContentItem.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				3E98B94A275A8FBF00E67321 /* RLTCreatableFactory.swift in Sources */,
 				961C1CC126839CC500BE6F3B /* BasketRepository.swift in Sources */,
@@ -2380,6 +2413,7 @@
 				961B01A52689F42A00D8C481 /* OrderRepository.swift in Sources */,
 				961C4265260882C8001D8467 /* QueueError.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
+				09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */,
 				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
 				9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */,
 				964D292726933F0D00A69FBC /* Canvas.swift in Sources */,
@@ -2449,6 +2483,7 @@
 				0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */,
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
+				09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
 				9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */,
 				3E98B951275A901600E67321 /* RLTBanner.swift in Sources */,
@@ -2520,6 +2555,7 @@
 				96B670B026D6AF3D00DB74A4 /* PersistentQueueTests.swift in Sources */,
 				96B6709026D65F0B00DB74A4 /* RequestDispatcherTests.swift in Sources */,
 				964D292B269343DD00A69FBC /* CanvasFactoryTests.swift in Sources */,
+				09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */,
 				961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */,
 				9637475126C54057007DF92D /* CancellationReasonTests.swift in Sources */,
 				9637475726C54439007DF92D /* PaymentIntentTests.swift in Sources */,
@@ -2697,7 +2733,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.19;
+				MARKETING_VERSION = 1.3.20;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2730,7 +2766,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.19;
+				MARKETING_VERSION = 1.3.20;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

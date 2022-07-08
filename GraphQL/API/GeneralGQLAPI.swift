@@ -17,7 +17,7 @@ public enum ApolloType {
     ///   - version
     ///   - timestamp
     ///   - userId
-    public init(type: String, action: String, new: Swift.Optional<String?> = nil, old: Swift.Optional<String?> = nil, version: String, timestamp: String, userId: Swift.Optional<String?> = nil) {
+    public init(type: String, action: String, new: Swift.Optional<String?> = nil, old: Swift.Optional<String?> = nil, version: Swift.Optional<String?> = nil, timestamp: String, userId: Swift.Optional<String?> = nil) {
       graphQLMap = ["type": type, "action": action, "new": new, "old": old, "version": version, "timestamp": timestamp, "userId": userId]
     }
 
@@ -57,9 +57,9 @@ public enum ApolloType {
       }
     }
 
-    public var version: String {
+    public var version: Swift.Optional<String?> {
       get {
-        return graphQLMap["version"] as! String
+        return graphQLMap["version"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "version")
@@ -2356,8 +2356,9 @@ public enum ApolloType {
 
     /// - Parameters:
     ///   - categories
-    public init(categories: Swift.Optional<[GraphQLID]?> = nil) {
-      graphQLMap = ["categories": categories]
+    ///   - status
+    public init(categories: Swift.Optional<[GraphQLID]?> = nil, status: Swift.Optional<String?> = nil) {
+      graphQLMap = ["categories": categories, "status": status]
     }
 
     public var categories: Swift.Optional<[GraphQLID]?> {
@@ -2368,6 +2369,15 @@ public enum ApolloType {
         graphQLMap.updateValue(newValue, forKey: "categories")
       }
     }
+
+    public var status: Swift.Optional<String?> {
+      get {
+        return graphQLMap["status"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "status")
+      }
+    }
   }
 
   public struct ProductFilter: GraphQLMapConvertible {
@@ -2376,8 +2386,9 @@ public enum ApolloType {
     /// - Parameters:
     ///   - fulfilmentPoints
     ///   - categories
-    public init(fulfilmentPoints: Swift.Optional<[GraphQLID?]?> = nil, categories: Swift.Optional<[GraphQLID?]?> = nil) {
-      graphQLMap = ["fulfilmentPoints": fulfilmentPoints, "categories": categories]
+    ///   - status
+    public init(fulfilmentPoints: Swift.Optional<[GraphQLID?]?> = nil, categories: Swift.Optional<[GraphQLID?]?> = nil, status: Swift.Optional<String?> = nil) {
+      graphQLMap = ["fulfilmentPoints": fulfilmentPoints, "categories": categories, "status": status]
     }
 
     public var fulfilmentPoints: Swift.Optional<[GraphQLID?]?> {
@@ -2395,6 +2406,15 @@ public enum ApolloType {
       }
       set {
         graphQLMap.updateValue(newValue, forKey: "categories")
+      }
+    }
+
+    public var status: Swift.Optional<String?> {
+      get {
+        return graphQLMap["status"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "status")
       }
     }
   }
@@ -2673,6 +2693,7 @@ public enum ApolloType {
     case socialPost
     case fulfilmentPointCategorySelector
     case selectedEvent
+    case `dynamic`
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -2692,6 +2713,7 @@ public enum ApolloType {
         case "SocialPost": self = .socialPost
         case "FulfilmentPointCategorySelector": self = .fulfilmentPointCategorySelector
         case "SelectedEvent": self = .selectedEvent
+        case "Dynamic": self = .dynamic
         default: self = .__unknown(rawValue)
       }
     }
@@ -2712,6 +2734,7 @@ public enum ApolloType {
         case .socialPost: return "SocialPost"
         case .fulfilmentPointCategorySelector: return "FulfilmentPointCategorySelector"
         case .selectedEvent: return "SelectedEvent"
+        case .dynamic: return "Dynamic"
         case .__unknown(let value): return value
       }
     }
@@ -2732,6 +2755,7 @@ public enum ApolloType {
         case (.socialPost, .socialPost): return true
         case (.fulfilmentPointCategorySelector, .fulfilmentPointCategorySelector): return true
         case (.selectedEvent, .selectedEvent): return true
+        case (.dynamic, .dynamic): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -2753,6 +2777,7 @@ public enum ApolloType {
         .socialPost,
         .fulfilmentPointCategorySelector,
         .selectedEvent,
+        .dynamic,
       ]
     }
   }
@@ -2762,6 +2787,7 @@ public enum ApolloType {
     case featured
     case feed
     case `static`
+    case campaignAutomation
     /// Auto generated constant for unknown enum values
     case __unknown(RawValue)
 
@@ -2770,6 +2796,7 @@ public enum ApolloType {
         case "featured": self = .featured
         case "feed": self = .feed
         case "static": self = .static
+        case "campaignAutomation": self = .campaignAutomation
         default: self = .__unknown(rawValue)
       }
     }
@@ -2779,6 +2806,7 @@ public enum ApolloType {
         case .featured: return "featured"
         case .feed: return "feed"
         case .static: return "static"
+        case .campaignAutomation: return "campaignAutomation"
         case .__unknown(let value): return value
       }
     }
@@ -2788,6 +2816,7 @@ public enum ApolloType {
         case (.featured, .featured): return true
         case (.feed, .feed): return true
         case (.static, .static): return true
+        case (.campaignAutomation, .campaignAutomation): return true
         case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
         default: return false
       }
@@ -2798,6 +2827,7 @@ public enum ApolloType {
         .featured,
         .feed,
         .static,
+        .campaignAutomation,
       ]
     }
   }

@@ -16,4 +16,5 @@ public protocol CampaignAutomation {
     func generateCreatables(for location: String,
                             factories: [RLTContentType: RLTCreatableFactory],
                             completion: @escaping (Result<[RLTCreatable], Error>) -> Void)
+    func fetchData(for location: String, completion: @escaping (Result<[RLTContentItem], Error>) -> Void)
 }
