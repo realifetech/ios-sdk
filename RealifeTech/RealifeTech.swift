@@ -66,9 +66,7 @@ public class RealifeTech {
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
-        configureCampaignAutomation(deviceId: deviceHelper.deviceId,
-                                    tokenHelper: apiHelper,
-                                    graphQLAPIUrl: configuration.graphQLApiUrl)
+        CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: graphQLManager, analyticsLogger: Analytics)
         Identity = IdentityFactory.makeModule(analyticsLogger: Analytics,
                                               identityPersister: identityPersister)
     }
@@ -80,17 +78,6 @@ public class RealifeTech {
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl,
             notificationCenter: NotificationCenter.default)
-    }
-
-    private static func configureCampaignAutomation(deviceId: String,
-                                                    tokenHelper: APITokenManagable,
-                                                    graphQLAPIUrl: String) {
-        let caGraphQLManager = GraphQLFactory.makeGraphQLManager(
-            deviceId: deviceId,
-            tokenHelper: tokenHelper,
-            graphQLAPIUrl: URL(string: "\(graphQLAPIUrl)/ca/graphql") ?? URL(fileURLWithPath: ""))
-        CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: caGraphQLManager,
-                                                                  analyticsLogger: Analytics)
     }
 
     public static func clearAllInterfaces() {
