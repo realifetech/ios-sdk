@@ -93,7 +93,7 @@ public class CampaignAutomationImplementing: CampaignAutomation {
     private func fetchData(location: String,
                            completion: @escaping (Result<[CAGetContentResponseItem], Error>) -> Void) {
 
-        let dealWithResponse: (GraphQLResult<ApolloTypeCA.GetContentByExternalIdQuery.Data>) -> Void = { response in
+        let dealWithResponse: (GraphQLResult<ApolloType.GetContentByExternalIdQuery.Data>) -> Void = { response in
             guard let data = response.data?.getContentByExternalId,
                   let items = data.items else { return completion(.success([])) }
             let responseItems = items.map({ item in
@@ -106,7 +106,7 @@ public class CampaignAutomationImplementing: CampaignAutomation {
 
         let makeCall: (GraphNetworkCachePolicy, (() -> Void)?) -> Void = { cachePolicy, retry in
             self.graphQLManager.dispatch(
-                query: ApolloTypeCA.GetContentByExternalIdQuery(externalId: location),
+                query: ApolloType.GetContentByExternalIdQuery(externalId: location),
                 cachePolicy: cachePolicy) { result in
                 switch result {
                 case .success(let response): dealWithResponse(response)
