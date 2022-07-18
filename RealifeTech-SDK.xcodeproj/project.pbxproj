@@ -45,8 +45,6 @@
 		3E98B95B275A93C800E67321 /* RLTViewFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */; };
 		3E9CD181271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */; };
 		3E9CD183271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */; };
-		3EEB5C34278F347B00B6396E /* campaignautomationschema.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EEB5C33278F347B00B6396E /* campaignautomationschema.json */; };
-		3EEB5C3D278F35FE00B6396E /* CampaignAutomationGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */; };
 		3EEB5C3E278F35FE00B6396E /* GeneralGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */; };
 		3EFB4E3C27A41CF40004BE5E /* IdentityPersisting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3B27A41CF40004BE5E /* IdentityPersisting.swift */; };
 		3EFB4E3E27A41D130004BE5E /* IdentityPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB4E3D27A41D130004BE5E /* IdentityPersister.swift */; };
@@ -411,8 +409,6 @@
 		3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTViewFetcher.swift; sourceTree = "<group>"; };
 		3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptLanguageHeaderRequestInserting.swift; sourceTree = "<group>"; };
 		3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptLanguageHeaderRequestInsertingTests.swift; sourceTree = "<group>"; };
-		3EEB5C33278F347B00B6396E /* campaignautomationschema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = campaignautomationschema.json; sourceTree = "<group>"; };
-		3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignAutomationGQLAPI.swift; sourceTree = "<group>"; };
 		3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralGQLAPI.swift; sourceTree = "<group>"; };
 		3EFB4E3B27A41CF40004BE5E /* IdentityPersisting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityPersisting.swift; sourceTree = "<group>"; };
 		3EFB4E3D27A41D130004BE5E /* IdentityPersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityPersister.swift; sourceTree = "<group>"; };
@@ -803,7 +799,6 @@
 			isa = PBXGroup;
 			children = (
 				961C41AB260882BA001D8467 /* schema.json */,
-				3EEB5C33278F347B00B6396E /* campaignautomationschema.json */,
 				3E78BCED26B8226800BF3026 /* Info.plist */,
 				09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */,
 				961C419B260882BA001D8467 /* API */,
@@ -1444,7 +1439,6 @@
 			isa = PBXGroup;
 			children = (
 				3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */,
-				3EEB5C3B278F35FE00B6396E /* CampaignAutomationGQLAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2105,7 +2099,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EEB5C34278F347B00B6396E /* campaignautomationschema.json in Resources */,
 				3E78BD2226B83F0300BF3026 /* schema.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2218,7 +2211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/GraphQL\"\ncd $GRAPHQL_PATH\n\n# --- DOWNLOAD SCHEMAS ---\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com/ca/graphql\" campaignautomationschema.json --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\n# --- GENERATE SWIFT FILES ---\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/General/*.graphql --passthroughCustomScalars --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" \"${GRAPHQL_PATH}/API/GeneralGQLAPI.swift\"\n\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloTypeCA\" --includes=${GRAPHQL_PATH}/GraphQLFiles/CampaignAutomation/*.graphql --passthroughCustomScalars --localSchemaFile=\"${GRAPHQL_PATH}/campaignautomationschema.json\" \"${GRAPHQL_PATH}/API/CampaignAutomationGQLAPI.swift\"\n";
+			shellScript = "SCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\nGRAPHQL_PATH=\"${SRCROOT}/GraphQL\"\ncd $GRAPHQL_PATH\n\n# --- DOWNLOAD SCHEMAS ---\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh schema:download --endpoint=\"https://staging-graphql-eu.realifetech.com\" --header=\"Authorization: Bearer NGZjZjViZDE2YTk5MjU1YzJlMzk3MDYxYzhmZjc4MzBlMDQxYzg2MjYwMTNmYTAwY2IyMzI4NzlkNWI3YzEzNw\"\n\n# --- GENERATE SWIFT FILES ---\n#\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --namespace=\"ApolloType\" --includes=${GRAPHQL_PATH}/GraphQLFiles/General/*.graphql --passthroughCustomScalars --localSchemaFile=\"${GRAPHQL_PATH}/schema.json\" \"${GRAPHQL_PATH}/API/GeneralGQLAPI.swift\"\n";
 		};
 		C727D3220B094BF8B35EE985 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2272,7 +2265,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E78BD0526B8231800BF3026 /* (null) in Sources */,
-				3EEB5C3D278F35FE00B6396E /* CampaignAutomationGQLAPI.swift in Sources */,
 				3EEB5C3E278F35FE00B6396E /* GeneralGQLAPI.swift in Sources */,
 				3E78BD1826B8231800BF3026 /* (null) in Sources */,
 				3E78BCF826B8231800BF3026 /* (null) in Sources */,
@@ -2733,7 +2725,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.20;
+				MARKETING_VERSION = 1.3.21;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2766,7 +2758,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.20;
+				MARKETING_VERSION = 1.3.21;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
