@@ -11,13 +11,13 @@ import SwiftUI
 import RealifeTech
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        NotificationRegistrationHelper().registerForRemoteNotification()
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
@@ -37,6 +37,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("---> [RealifeTech SDK]")
         print("Failed to register for remote notification: \(error.localizedDescription)")
+    }
+
+    // Display notifications when app is in foreground.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else {
+            return completionHandler()
+        }
+        RealifeTech.Communicate?.trackPush(event: .opened, trackInfo: userInfo) { _ in
+            completionHandler()
+        }
     }
 
     // MARK: UISceneSession Lifecycle

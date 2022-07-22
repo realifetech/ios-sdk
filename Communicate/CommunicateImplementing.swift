@@ -37,7 +37,7 @@ public final class CommunicateImplementing: Communicate {
     }
 }
 
-extension CommunicateImplementing: PushNotificationRegistering {
+extension CommunicateImplementing {
 
     public func registerForPushNotifications(token: String, completion: @escaping (Result<Void, Error>) -> Void) {
         pushNotificationRegistrar.registerForPushNotifications(token: token, completion: completion)
