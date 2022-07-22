@@ -98,4 +98,9 @@ public class RealifeTech {
     public static func set(webOrderingJourneyUrl: String) {
         Sell.orderingJourneyUrl = webOrderingJourneyUrl
     }
+
+    public static func configureNotificationServiceExtensionWith(appGroupId: String, configuration: SDKConfiguration) {
+        let appGroupStore = AppGroupUserDefaultsStore(appGroupId: appGroupId)
+        appGroupStore?.saveSDKConfiguration(with: configuration)
+    }
 }

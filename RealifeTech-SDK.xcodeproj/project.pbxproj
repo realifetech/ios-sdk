@@ -15,6 +15,9 @@
 		0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */; };
 		095850112833B4A2008E0DAB /* ResponseInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */; };
 		09860AFF275F35E300764142 /* GraphQLErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09860AFE275F35E300764142 /* GraphQLErrorCode.swift */; };
+		098A51CA286AC1C50087EBB4 /* AppGroupUserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51C9286AC1C50087EBB4 /* AppGroupUserDefaultsStore.swift */; };
+		098A51CD286AC2600087EBB4 /* RLTNotificationsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */; };
+		098A51D6286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
 		09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */; };
 		09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */; };
@@ -378,6 +381,9 @@
 		0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInterceptor.swift; sourceTree = "<group>"; };
 		095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInterceptorTests.swift; sourceTree = "<group>"; };
 		09860AFE275F35E300764142 /* GraphQLErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLErrorCode.swift; sourceTree = "<group>"; };
+		098A51C9286AC1C50087EBB4 /* AppGroupUserDefaultsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStore.swift; sourceTree = "<group>"; };
+		098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTNotificationsTracker.swift; sourceTree = "<group>"; };
+		098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStoreTests.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
 		09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverter.swift; sourceTree = "<group>"; };
 		09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverterTests.swift; sourceTree = "<group>"; };
@@ -775,6 +781,24 @@
 			path = PushEvent;
 			sourceTree = "<group>";
 		};
+		098A51CB286AC1FB0087EBB4 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */,
+				098A51C9286AC1C50087EBB4 /* AppGroupUserDefaultsStore.swift */,
+				098A51D4286B2E960087EBB4 /* Tests */,
+			);
+			path = NotificationService;
+			sourceTree = "<group>";
+		};
+		098A51D4286B2E960087EBB4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		09E05EAC28535615005C7B94 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -985,6 +1009,7 @@
 				3E98B93B275A3E3300E67321 /* CampaignAutomation */,
 				3E7F338327A2F8250054ACF1 /* Identity */,
 				48D6F13B251E158E006CA623 /* RealifeTech */,
+				098A51CB286AC1FB0087EBB4 /* NotificationService */,
 				3E78BCEB26B8226800BF3026 /* GraphQL */,
 				48E67730251BA7F0007E2741 /* Products */,
 				B1BDC011F175BC58499305BC /* Pods */,
@@ -2454,6 +2479,7 @@
 				488958A52539D04B00B978A9 /* AudiencesImplementing.swift in Sources */,
 				964D291E269336B100A69FBC /* CanvasRepository.swift in Sources */,
 				961B019E2689EFE700D8C481 /* OrderState.swift in Sources */,
+				098A51CA286AC1C50087EBB4 /* AppGroupUserDefaultsStore.swift in Sources */,
 				961C427D260882C8001D8467 /* UIDeviceWrapper.swift in Sources */,
 				964A3BE62680AA6F00C42C35 /* FulfilmentPointCategory.swift in Sources */,
 				4889587D2539D04B00B978A9 /* AudienceChecking.swift in Sources */,
@@ -2473,6 +2499,7 @@
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
 				3EFB4E3E27A41D130004BE5E /* IdentityPersister.swift in Sources */,
 				0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */,
+				098A51CD286AC2600087EBB4 /* RLTNotificationsTracker.swift in Sources */,
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */,
@@ -2560,6 +2587,7 @@
 				4889595F2539D8A500B978A9 /* AnalyticsImplementingTests.swift in Sources */,
 				9647D9AA26861D11006F5B7F /* BasketRepositoryMutationTests.swift in Sources */,
 				96B670AE26D6A6F100DB74A4 /* UserDefaultsStorageTests.swift in Sources */,
+				098A51D6286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift in Sources */,
 				9637476F26C572B9007DF92D /* ProductModifierListTests.swift in Sources */,
 				961C4288260882E8001D8467 /* APIErrorTests.swift in Sources */,
 				48EFE25B2539E56000CC6E58 /* GeneralImplementingTests.swift in Sources */,
@@ -2725,7 +2753,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.21;
+				MARKETING_VERSION = 1.3.22;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2758,7 +2786,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.21;
+				MARKETING_VERSION = 1.3.22;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

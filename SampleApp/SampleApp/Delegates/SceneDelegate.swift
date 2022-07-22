@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import RealifeTech
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

@@ -18,7 +18,7 @@ final class ImageLoader: ObservableObject {
 
     private func loadImageFromUrl(_ url: URL?) {
         guard let url = url else { return }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard error == nil, let data = data else { return }
             DispatchQueue.main.async {
                 guard let loadedImage = UIImage(data: data) else {

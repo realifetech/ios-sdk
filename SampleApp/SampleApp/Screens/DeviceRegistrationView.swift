@@ -15,22 +15,37 @@ final class DeviceRegistrationViewModel: ObservableObject {
     @Published var clientSecret = ""
     @Published var result = ""
 
-    private func configureRealifeTechSDK() {
-        let configuration = SDKConfiguration(
-            appCode: appCode,
-            clientSecret: clientSecret,
-            apiUrl: "https://api-staging.livestyled.com/v3",
-            graphQLApiUrl: "https://staging-graphql-eu.realifetech.com")
-        RealifeTech.configureSDK(with: configuration)
+    func initialiseRealifeTechSDK() {
+        configureSDK()
+        registerDevice()
+        configureNotificationServiceExtension() // Configure Notification Service Extension only if you want to track Push Notification received.
     }
 
-    func registerDevice() {
-        configureRealifeTechSDK()
+    private func configureSDK() {
+        RealifeTech.configureSDK(with: makeSDKConfiguration())
+    }
+
+    private func registerDevice() {
         RealifeTech.General.registerDevice { [weak self] in
             let isReady = RealifeTech.General.sdkReady ? "Yes!" : "No!"
             self?.result = "Is SDK ready?  \(isReady)"
             NotificationRegistrationHelper().registerForRemoteNotification()
-       }
+        }
+    }
+
+    private func configureNotificationServiceExtension() {
+        RealifeTech.configureNotificationServiceExtensionWith(
+            appGroupId: "group.com.concertlive.SampleApp",
+            configuration: makeSDKConfiguration())
+    }
+
+    private func makeSDKConfiguration() -> SDKConfiguration {
+        return SDKConfiguration(
+            appCode: appCode,
+            clientSecret: clientSecret,
+            apiUrl: "https://api-staging.livestyled.com/v3",
+            graphQLApiUrl: "https://staging-graphql-eu.realifetech.com",
+            webOrderingJourneyUrl: nil)
     }
 }
 
@@ -46,7 +61,7 @@ struct DeviceRegistrationView: View {
                 TextField("clientSecret", text: $viewModel.clientSecret)
                     .roundedBorderTextField()
                 Button("Register") {
-                    viewModel.registerDevice()
+                    viewModel.initialiseRealifeTechSDK()
                 }
                 Divider()
                 resultView

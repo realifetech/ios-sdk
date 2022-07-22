@@ -10,7 +10,7 @@ import SwiftUI
 import RealifeTech
 
 final class TrackPushViewModel: ObservableObject {
-    
+
     private let requestInProgressString = "In progress..."
 
     @Published var campaignId = "campaignId123"
@@ -21,7 +21,7 @@ final class TrackPushViewModel: ObservableObject {
     var trackButtonDisabled: Bool {
         campaignId.isEmpty || pushContentId.isEmpty || pushMessageId.isEmpty || result == requestInProgressString
     }
-    
+
     func trackPush(event: PushEvent) throws {
         guard let communicate = RealifeTech.Communicate else {
             throw StandardError.deviceNotRegistered
@@ -36,7 +36,7 @@ final class TrackPushViewModel: ObservableObject {
             }
         }
     }
-    
+
     private func createPushPayload() -> [String: Any] {
         var payload: [String: Any] = [:]
         payload["campaignId"] = campaignId
@@ -47,16 +47,16 @@ final class TrackPushViewModel: ObservableObject {
 }
 
 struct TrackPushView: View {
-    
+
     @EnvironmentObject private var errorHandler: ErrorHandler
     @ObservedObject var viewModel = TrackPushViewModel()
-    
+
     var resultView: some View {
         ResultView(
             title: "Tracking Result",
             message: viewModel.result)
     }
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -82,7 +82,7 @@ struct TrackPushView: View {
             Spacer()
         }
     }
-    
+
     private func tackPush(event: PushEvent) {
         do {
             try viewModel.trackPush(event: event)
