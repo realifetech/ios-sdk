@@ -99,8 +99,6 @@
 		96AED99B26D0079200F6C750 /* AudienceCheckingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceCheckingView.swift; sourceTree = "<group>"; };
 		96AED99D26D00A2100F6C750 /* WebPageTypeGetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageTypeGetterView.swift; sourceTree = "<group>"; };
 		96AED99F26D00D2400F6C750 /* WebOrderingJourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebOrderingJourneyView.swift; sourceTree = "<group>"; };
-		D44252E7D5EC503A01F83463 /* Pods-DummyProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.debug.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.debug.xcconfig"; sourceTree = "<group>"; };
-		DF57AA305C3C26555AFAEF3A /* Pods-DummyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyProject.release.xcconfig"; path = "Target Support Files/Pods-DummyProject/Pods-DummyProject.release.xcconfig"; sourceTree = "<group>"; };
 		E4C19406F720CA122B0856C4 /* Pods-SampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleApp.release.xcconfig"; path = "Target Support Files/Pods-SampleApp/Pods-SampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		FA11F28D285CC2B0007B3D7C /* TrackPushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPushView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,8 +166,6 @@
 		0E8356DCB01200646ECB0DB2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D44252E7D5EC503A01F83463 /* Pods-DummyProject.debug.xcconfig */,
-				DF57AA305C3C26555AFAEF3A /* Pods-DummyProject.release.xcconfig */,
 				6886AC66D12C19DE321F7209 /* Pods-SampleApp.debug.xcconfig */,
 				E4C19406F720CA122B0856C4 /* Pods-SampleApp.release.xcconfig */,
 				2B8DAC5C8E1C8CAC73D3DC8D /* Pods-NotificationServiceExtension.debug.xcconfig */,

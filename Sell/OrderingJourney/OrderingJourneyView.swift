@@ -9,11 +9,23 @@
 import SwiftUI
 import WebKit
 
+public class OrderingJourneyViewModel: ObservableObject {
+    @Published private(set) var canGoBack = false
+    @Published private(set) var canGoForward = false
+
+    func updateCanGoBack(with value: Bool) {
+        canGoBack = value
+    }
+
+    func updateCanGoForward(with value: Bool) {
+        canGoForward = value
+    }
+}
+
 public struct OrderingJourneyView: View {
 
     @ObservedObject var store = WebViewStore()
-    @State private var canGoBack = false
-    @State private var canGoForward = false
+    @ObservedObject private var viewModel = OrderingJourneyViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     // NOTE: This is only assigned from UIHostController
@@ -59,10 +71,10 @@ public struct OrderingJourneyView: View {
                 backgroundColor: colorStore.getColor(for: .primary),
                 titleColor: colorStore.getColor(for: .onPrimary))
             .onReceive(store.canGoBack.receive(on: scheduler)) { value in
-                canGoBack = value
+                viewModel.updateCanGoBack(with: value)
             }
             .onReceive(store.canGoForward.receive(on: scheduler)) { value in
-                canGoForward = value
+                viewModel.updateCanGoForward(with: value)
             }
         }
     }
@@ -78,18 +90,18 @@ private extension OrderingJourneyView {
                 } label: {
                     Image(systemName: "chevron.left")
                 }
-                .foregroundColor(getButtonColor(by: canGoBack))
+                .foregroundColor(getButtonColor(by: viewModel.canGoBack))
                 .onReceive(inspection.notice) { inspection.visit(self, $0) }
-                .disabled(!canGoBack)
+                .disabled(!viewModel.canGoBack)
 
                 Button {
                     store.webViewNavigationPublisher.send(.forward)
                 } label: {
                     Image(systemName: "chevron.right")
                 }
-                .foregroundColor(getButtonColor(by: canGoForward))
+                .foregroundColor(getButtonColor(by: viewModel.canGoForward))
                 .onReceive(inspection.notice) { inspection.visit(self, $0) }
-                .disabled(!canGoForward)
+                .disabled(!viewModel.canGoForward)
 
                 Spacer()
             }

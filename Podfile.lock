@@ -17,7 +17,6 @@ PODS:
     - SQLite.swift/standard (= 0.13.3)
   - SQLite.swift/standard (0.13.3)
   - SwiftLint (0.43.1)
-  - ViewInspector (0.8.1)
 
 DEPENDENCIES:
   - Apollo (~> 0.51.2)
@@ -26,13 +25,11 @@ DEPENDENCIES:
   - RxSwift (~> 6.1.0)
   - RxTest (~> 6.1.0)
   - SwiftLint (~> 0.43.1)
-  - ViewInspector
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Apollo
     - SQLite.swift
-    - ViewInspector
   trunk:
     - RxCocoa
     - RxRelay
@@ -48,8 +45,7 @@ SPEC CHECKSUMS:
   RxTest: 9d26616eaff4a7e75f4ecae9b2c24840f2e8218d
   SQLite.swift: 903bfa3bc9ab06345fdfbb578e34f47cfcf417da
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
-  ViewInspector: 8f12eb0709a6159991afc8d7b27fae72cca50dc6
 
-PODFILE CHECKSUM: 38a1f60fb6875f531f4ae07bfe0d8133682b2dd6
+PODFILE CHECKSUM: eeb6c840fa1030be14c8279c15d74d8d640fadf2
 
 COCOAPODS: 1.10.1
