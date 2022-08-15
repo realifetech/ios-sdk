@@ -186,7 +186,7 @@ When your app is in foreground, user cannot see the push alert popup on the devi
 - Ensure that your push notification payload contains `"content-available": 1`
 
 #### Steps
-In the application(_:didReceiveRemoteNotification:fetchCompletionHandler, you call SDK Communicate().trackPush function with:
+In `application(_:didReceiveRemoteNotification:fetchCompletionHandler`, call the SDK's `Communicate().trackPush` function passing:
 * event: .received
 * trackInfo: userInfo
 
