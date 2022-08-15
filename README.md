@@ -157,22 +157,22 @@ guard RealifeTech.General.sdkReady else {
 # Tracking Push Notification Analytics
 ## Tracking Receives
 ### Option 1: Track even if app is force quit
-This option is more involved, but will give you the ability to track push notifications when the app is foreground, background, or inactive (force-quit).
+This option is more involved, but will give you the ability to track push notifications when the app is in the foreground, background, or inactive (force-quit).
 
 The general approach to doing so is that you must implement a “Notification Service Extension” and when its didReceive function is called, call our SDK in order to track.
 #### Requirements
-Ensure that your push notification payload contains "mutable-content": 1 
+Ensure that your push notification payload contains `"mutable-content": 1`
 
 #### Steps
 - **Add Notification Service Extension (NSE) target in Xcode**
-- **Enable App Group capability with appGroupId - this allows the app to execute code when our app is closed.**
+- **Enable App Group capability with appGroupId** - this allows the app to execute code when our app is closed.
 - **Pass appGroupId to configure NSE in SDK:**
-    - Call configureNotificationExtensionWith(appGroupId:configuration)in your didFinishLaunchingWithOptions function.
+    - Call `configureNotificationExtensionWith(appGroupId:configuration)` in your didFinishLaunchingWithOptions function.
 - **Use RLTNotificationsTracker in NSE target to track push received:**
-    - Initialise RLTNotificationsTracker with AppGroup ID, and call didReceive(request:withContentHandler:) in NotificationService.swift didReceive function. 
+    - Initialise RLTNotificationsTracker with AppGroup ID, and call `didReceive(request:withContentHandler:)` in NotificationService.swift's didReceive function. 
 
 ### Option 2: Only track if app is in foreground or background
-If you don’t want to use “Notification Service Extension“, and are comfortable that you will not receive tracking events for pushes received when the app has been force-quit, you can use the below function in AppDelegate to track notifications received, and in turn call our SDK.
+If you don’t want to use a Notification Service Extension, and are comfortable that you will not receive tracking events for pushes received when the app has been force-quit, you can use the below function in AppDelegate to track notifications received, and in turn call our SDK.
 ``` swift
 application(_:didReceiveRemoteNotification:fetchCompletionHandler: @escaping (UIBackgroundFetchResult) -> Void)
 ```
@@ -197,12 +197,12 @@ RealifeTech.Communicate().trackPush(event: .received, trackInfo: userInfo) {
 ```
 
 ## Tracking Opens
-- Make AppDelegate confirm to the UNUserNotificationCenterDelegate protocol
-- This function can track whether app is in background, foreground and in-active(force-quit).
+- This functionality can track regardless of whether the app is in the background, foreground or in-active(force-quit).
+- Make AppDelegate conform to the UNUserNotificationCenterDelegate protocol
 - Assign the AppDelegate as the delegate of the protocol:
 ``` swift
 func application(_:didFinishLaunchingWithOptions) {
-  UNUserNotificationCenter.current().delegate = self
+    UNUserNotificationCenter.current().delegate = self
 }
 ```
 
