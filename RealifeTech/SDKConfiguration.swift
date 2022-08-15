@@ -15,6 +15,7 @@ public struct SDKConfiguration: Codable {
     public let apiUrl: String
     public let graphQLApiUrl: String
     public let webOrderingJourneyUrl: String
+    public let deviceId: String?
 
     static let defaultApiUrl =  "https://api.livestyled.com/v3"
     static let defaultGraphQLApiUrl = "https://graphql-eu.realifetech.com"
@@ -29,12 +30,14 @@ public struct SDKConfiguration: Codable {
     public init(
         appCode: String,
         clientSecret: String,
+        deviceId: String? = nil,
         apiUrl: String? = nil,
         graphQLApiUrl: String? = nil,
         webOrderingJourneyUrl: String? = nil
     ) {
         self.appCode = appCode
         self.clientSecret = clientSecret
+        self.deviceId = deviceId
         self.apiUrl = apiUrl ?? Self.defaultApiUrl
         self.graphQLApiUrl = graphQLApiUrl ?? Self.defaultGraphQLApiUrl
         self.webOrderingJourneyUrl = webOrderingJourneyUrl ?? Self.defaultWebOrderingJourneyUrl

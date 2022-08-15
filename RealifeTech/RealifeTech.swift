@@ -31,7 +31,7 @@ public class RealifeTech {
     /// - Parameters
     ///   - configuration: Struct containing the desired SDK configuration
     public static func configureSDK(with configuration: SDKConfiguration) {
-        let deviceHelper = UIDeviceFactory.makeUIDeviceHelper()
+        let deviceHelper = UIDeviceFactory.makeUIDeviceHelper(deviceId: configuration.deviceId)
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
         let apiHelper = createAPIHelper(with: configuration, deviceId: deviceHelper.deviceId)
         let graphQLManager = GraphQLFactory.makeGraphQLManager(
