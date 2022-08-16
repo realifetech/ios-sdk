@@ -24,6 +24,7 @@ public struct SDKConfiguration: Codable {
     /// - Parameters:
     ///   - appCode: String used to identify the application which uses the RealifeTech SDK
     ///   - clientSecret: String which is used to authenticate with the RealifeTech backend
+    ///   - deviceId: [Optional] Provide a string value as deviceId in the request header. If the value is not provided, SDK uses device's identifierForVendor value from Apple as deviceId in the request header.
     ///   - apiUrl: [Optional] Provide a string value of a URL to override the SDK default
     ///   - graphQLApiUrl: [Optional] Provide a string value of a URL to override the SDK default
     ///   - webOrderingJourneyUrl: [Optional] Provide a string value of a URL to override the SDK default
