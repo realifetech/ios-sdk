@@ -341,7 +341,7 @@
 		96B670C826D7CF0E00DB74A4 /* CommunicateImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B670C726D7CF0E00DB74A4 /* CommunicateImplementingTests.swift */; };
 		96B670CA26D7D0D100DB74A4 /* PushNotificationRegistrarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B670C926D7D0D100DB74A4 /* PushNotificationRegistrarTests.swift */; };
 		96B670CC26D7E11500DB74A4 /* AudiencesImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B670CB26D7E11500DB74A4 /* AudiencesImplementingTests.swift */; };
-		96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */; };
+		96CE697826CE54DD0026CC13 /* OrderingJourneyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE697726CE54DD0026CC13 /* OrderingJourneyViewModelTests.swift */; };
 		96CE698226CEA02E0026CC13 /* SellImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */; };
 		96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */; };
 		96F1BF2326CD32AD008D1363 /* WebViewWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1BF2226CD32AD008D1363 /* WebViewWrapperTests.swift */; };
@@ -714,7 +714,7 @@
 		96B670C726D7CF0E00DB74A4 /* CommunicateImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicateImplementingTests.swift; sourceTree = "<group>"; };
 		96B670C926D7D0D100DB74A4 /* PushNotificationRegistrarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrarTests.swift; sourceTree = "<group>"; };
 		96B670CB26D7E11500DB74A4 /* AudiencesImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiencesImplementingTests.swift; sourceTree = "<group>"; };
-		96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewTests.swift; sourceTree = "<group>"; };
+		96CE697726CE54DD0026CC13 /* OrderingJourneyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewModelTests.swift; sourceTree = "<group>"; };
 		96CE698126CEA02E0026CC13 /* SellImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellImplementingTests.swift; sourceTree = "<group>"; };
 		96F1BF1D26CD2F3C008D1363 /* OrderingJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingJourneyViewController.swift; sourceTree = "<group>"; };
 		96F1BF2226CD32AD008D1363 /* WebViewWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewWrapperTests.swift; sourceTree = "<group>"; };
@@ -1974,7 +1974,7 @@
 			isa = PBXGroup;
 			children = (
 				96F1BF3B26CD6AC6008D1363 /* OrderingJourneyViewControllerTests.swift */,
-				96CE697726CE54DD0026CC13 /* OrderingJourneyViewTests.swift */,
+				96CE697726CE54DD0026CC13 /* OrderingJourneyViewModelTests.swift */,
 				96F1BF2226CD32AD008D1363 /* WebViewWrapperTests.swift */,
 			);
 			path = Tests;
@@ -2520,7 +2520,7 @@
 				9637473526C42237007DF92D /* TimeslotTests.swift in Sources */,
 				96B670C526D7CE4B00DB74A4 /* FilterParamTests.swift in Sources */,
 				96302CED26C4104C000A91EC /* BasketTests.swift in Sources */,
-				96CE697826CE54DD0026CC13 /* OrderingJourneyViewTests.swift in Sources */,
+				96CE697826CE54DD0026CC13 /* OrderingJourneyViewModelTests.swift in Sources */,
 				3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */,
 				96AED8D526CFC71900F6C750 /* ColorTypeTests.swift in Sources */,
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
@@ -2753,7 +2753,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.22;
+				MARKETING_VERSION = 1.4.0;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2786,7 +2786,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.22;
+				MARKETING_VERSION = 1.4.0;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

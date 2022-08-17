@@ -9,18 +9,23 @@
 import UIKit
 
 public struct UIDeviceWrapper {
+    let id: String?
     let device: UIDevice
 
-    init(device: UIDevice = UIDevice.current) {
+    /// - Parameters:
+    ///   - device: UIDevice.current
+    ///   - id: The deviceId from SDKConfiguration
+    init(device: UIDevice = UIDevice.current, id: String?) {
         self.device = device
+        self.id = id
     }
 }
 
 extension UIDeviceWrapper: UIDeviceInterface {
 
-    /// Returns a string created from the UUID, such as “E621E1F8-C36C-495A-93FC-0C247A3E6E5F”
+    /// If deviceId from SDKConfiguration is nil, returns a device IDFV string from Apple, such as “E621E1F8-C36C-495A-93FC-0C247A3E6E5F”
     public var deviceId: String {
-        return device.identifierForVendor?.uuidString ?? ""
+        return id ?? device.identifierForVendor?.uuidString ?? ""
     }
 
     /// The model of the device.

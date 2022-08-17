@@ -35,12 +35,15 @@ Use the following function to configure the SDK for use. You will be provided th
 let configuration = CoreConfiguration(
     appCode: "APPLICATION_CODE",
     clientSecret: "API_SECRET",
+    deviceId: "DEVICE_ID" // OPTIONAL
     apiUrl: "http://API_URL", // OPTIONAL
     graphQLApiUrl: "http://GRAPH_API_URL" // OPTIONAL
 )
 RealifeTech.configureSDK(with: configuration)
 ```
 To ensure the SDK is configured before any other functionality is used, we recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)`.
+
+Note, although deviceId is optional, we do recommend initialising the configuration object with a deviceId, as the system's identifierForVendor will be used if not, and it has been known to change between installs.
 
 # Setup core services
 RealifeTech-SDK provides factory methods in `CoreFactory` to allow you to initialise the services.
@@ -152,5 +155,66 @@ Note: You may wish to check whether the SDK is ready before calling:
 ``` swift
 guard RealifeTech.General.sdkReady else {
     // Handle SDK not yet ready //
+}
+```
+# Tracking Push Notification Analytics
+## Tracking Receives
+### Option 1: Track even if app is force quit
+This option is more involved, but will give you the ability to track push notifications when the app is in the foreground, background, or inactive (force-quit).
+
+The general approach to doing so is that you must implement a “Notification Service Extension” and when its didReceive function is called, call our SDK in order to track.
+#### Requirements
+Ensure that your push notification payload contains `"mutable-content": 1`
+
+#### Steps
+- **Add Notification Service Extension (NSE) target in Xcode**
+- **Enable App Group capability with appGroupId** - this allows the app to execute code when our app is closed.
+- **Pass appGroupId to configure NSE in SDK:**
+    - Call `configureNotificationExtensionWith(appGroupId:configuration)` in your didFinishLaunchingWithOptions function.
+- **Use RLTNotificationsTracker in NSE target to track push received:**
+    - Initialise RLTNotificationsTracker with AppGroup ID, and call `didReceive(request:withContentHandler:)` in NotificationService.swift's didReceive function. 
+
+### Option 2: Only track if app is in foreground or background
+If you don’t want to use a Notification Service Extension, and are comfortable that you will not receive tracking events for pushes received when the app has been force-quit, you can use the below function in AppDelegate to track notifications received, and in turn call our SDK.
+``` swift
+application(_:didReceiveRemoteNotification:fetchCompletionHandler: @escaping (UIBackgroundFetchResult) -> Void)
+```
+#### Limitations
+This function won’t get fired when app is in-active (force-quit) which means you can only track the notifications received when app is in foreground and background.
+
+When your app is in foreground, user cannot see the push alert popup on the device. You will need to write code to manually show an alert yourself.
+
+#### Requirements
+- Enable “Background Modes - Remote notifications” capability in Xcode
+- Ensure that your push notification payload contains `"content-available": 1`
+
+#### Steps
+In `application(_:didReceiveRemoteNotification:fetchCompletionHandler`, call the SDK's `Communicate().trackPush` function passing:
+* event: .received
+* trackInfo: userInfo
+
+``` swift
+RealifeTech.Communicate().trackPush(event: .received, trackInfo: userInfo) {
+  completionHandler(.noData)
+}
+```
+
+## Tracking Opens
+- This functionality can track regardless of whether the app is in the background, foreground or in-active(force-quit).
+- Make AppDelegate conform to the UNUserNotificationCenterDelegate protocol
+- Assign the AppDelegate as the delegate of the protocol:
+``` swift
+func application(_:didFinishLaunchingWithOptions) {
+    UNUserNotificationCenter.current().delegate = self
+}
+```
+
+Implement the following:
+``` swift
+func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    let userInfo = response.notification.request.content.userInfo
+    RealifeTech.Communicate().trackPush(event: .opened, trackInfo: userInfo) {
+        completionHandler()
+    }
 }
 ```

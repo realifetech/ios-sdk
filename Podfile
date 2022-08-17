@@ -18,7 +18,6 @@ target 'RealifeTech' do
 
   target 'RealifeTechTests' do
     pod 'RxTest', '~> 6.1.0'
-    pod 'ViewInspector'
   end
 end
 
