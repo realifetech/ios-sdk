@@ -25,7 +25,7 @@ final class CoreImplementingTests: XCTestCase {
         diskCache = SpyDiskCache()
         urlSessionCleaner = URLSessionCacheCleanerSpy()
         sut = CoreImplementing(
-            deviceHelper: UIDeviceWrapper(),
+            deviceHelper: UIDeviceWrapper(id: nil),
             reachabilityHelper: ReachabilityChecker(bluetoothManager: BluetoothManagerWrapper()),
             apiHelper: apiHelper,
             graphQLManager: graphQLManager,

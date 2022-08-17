@@ -35,12 +35,15 @@ Use the following function to configure the SDK for use. You will be provided th
 let configuration = CoreConfiguration(
     appCode: "APPLICATION_CODE",
     clientSecret: "API_SECRET",
+    deviceId: "DEVICE_ID" // OPTIONAL
     apiUrl: "http://API_URL", // OPTIONAL
     graphQLApiUrl: "http://GRAPH_API_URL" // OPTIONAL
 )
 RealifeTech.configureSDK(with: configuration)
 ```
 To ensure the SDK is configured before any other functionality is used, we recommend adding the code to your `AppDelegate`'s `applicationDidFinishLaunching(_:)`.
+
+Note, although deviceId is optional, we do recommend initialising the configuration object with a deviceId, as the system's identifierForVendor will be used if not, and it has been known to change between installs.
 
 # Setup core services
 RealifeTech-SDK provides factory methods in `CoreFactory` to allow you to initialise the services.

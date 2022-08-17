@@ -15,6 +15,7 @@ public struct SDKConfiguration: Codable {
     public let apiUrl: String
     public let graphQLApiUrl: String
     public let webOrderingJourneyUrl: String
+    public let deviceId: String?
 
     static let defaultApiUrl =  "https://api.livestyled.com/v3"
     static let defaultGraphQLApiUrl = "https://graphql-eu.realifetech.com"
@@ -23,18 +24,22 @@ public struct SDKConfiguration: Codable {
     /// - Parameters:
     ///   - appCode: String used to identify the application which uses the RealifeTech SDK
     ///   - clientSecret: String which is used to authenticate with the RealifeTech backend
+    ///   - deviceId: [Optional] Provide a string value as deviceId in the request header.
+    ///     If deviceId is not provided, SDK uses identifierForVendor value from Apple as deviceId.
     ///   - apiUrl: [Optional] Provide a string value of a URL to override the SDK default
     ///   - graphQLApiUrl: [Optional] Provide a string value of a URL to override the SDK default
     ///   - webOrderingJourneyUrl: [Optional] Provide a string value of a URL to override the SDK default
     public init(
         appCode: String,
         clientSecret: String,
+        deviceId: String? = nil,
         apiUrl: String? = nil,
         graphQLApiUrl: String? = nil,
         webOrderingJourneyUrl: String? = nil
     ) {
         self.appCode = appCode
         self.clientSecret = clientSecret
+        self.deviceId = deviceId
         self.apiUrl = apiUrl ?? Self.defaultApiUrl
         self.graphQLApiUrl = graphQLApiUrl ?? Self.defaultGraphQLApiUrl
         self.webOrderingJourneyUrl = webOrderingJourneyUrl ?? Self.defaultWebOrderingJourneyUrl
