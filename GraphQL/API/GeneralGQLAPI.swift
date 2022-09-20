@@ -4277,6 +4277,103 @@ public enum ApolloType {
     }
   }
 
+  public final class DeleteMyAccountMutation: GraphQLMutation {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      mutation deleteMyAccount {
+        deleteMyAccount {
+          __typename
+          success
+          message
+        }
+      }
+      """
+
+    public let operationName: String = "deleteMyAccount"
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Mutation"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("deleteMyAccount", type: .object(DeleteMyAccount.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(deleteMyAccount: DeleteMyAccount? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "deleteMyAccount": deleteMyAccount.flatMap { (value: DeleteMyAccount) -> ResultMap in value.resultMap }])
+      }
+
+      public var deleteMyAccount: DeleteMyAccount? {
+        get {
+          return (resultMap["deleteMyAccount"] as? ResultMap).flatMap { DeleteMyAccount(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "deleteMyAccount")
+        }
+      }
+
+      public struct DeleteMyAccount: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["MutationResponse"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("success", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("message", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(success: Bool, message: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "MutationResponse", "success": success, "message": message])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var success: Bool {
+          get {
+            return resultMap["success"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "success")
+          }
+        }
+
+        public var message: String? {
+          get {
+            return resultMap["message"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "message")
+          }
+        }
+      }
+    }
+  }
+
   public final class AddPaymentSourceToMyWalletMutation: GraphQLMutation {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
