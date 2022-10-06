@@ -66,9 +66,12 @@ public class RealifeTech {
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
-        CampaignAutomation = CampaignAutomationFactory.makeModule(graphQLManager: graphQLManager, analyticsLogger: Analytics)
+        CampaignAutomation = CampaignAutomationFactory.makeModule(
+            graphQLManager: graphQLManager,
+            analyticsLogger: Analytics)
         Identity = IdentityFactory.makeModule(analyticsLogger: Analytics,
-                                              identityPersister: identityPersister)
+                                              identityPersister: identityPersister,
+                                              graphQLManager: graphQLManager)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
