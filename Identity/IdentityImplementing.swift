@@ -7,16 +7,39 @@
 //
 
 import Foundation
+#if !COCOAPODS
+import GraphQL
+#endif
 
 public class IdentityImplementing: Identity {
 
     private let analyticsLogger: Analytics
     private let identityPersister: IdentityPersisting
+    private let graphQLManager: GraphQLManageable
 
     init(analyticsLogger: Analytics,
-         identityPersister: IdentityPersisting) {
+         identityPersister: IdentityPersisting,
+         graphQLManager: GraphQLManageable) {
         self.analyticsLogger = analyticsLogger
         self.identityPersister = identityPersister
+        self.graphQLManager = graphQLManager
+    }
+
+    public func deleteMyAccount(completion: @escaping (Result<Bool, Error>) -> Void) {
+        graphQLManager.dispatchMutation(
+            mutation: ApolloType.DeleteMyAccountMutation(),
+            cacheResultToPersistence: false
+        ) { result in
+            switch result {
+            case .success(let response):
+                guard let isSuccess = response.data?.deleteMyAccount?.success else {
+                    return completion(.failure(GraphQLManagerError.noDataError))
+                }
+                completion(.success(isSuccess))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     /// Identify the user to our system, along with any traits known about them
