@@ -72,7 +72,7 @@ class IdentityImplementingTests: XCTestCase {
         XCTAssertNil(identityPersister.retrieveUserId())
     }
 
-    func test_deletMyAccount_completeWithSuccess() {
+    func test_deleteMyAccount_completeWithSuccess() {
         let successResult = true
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.DeleteMyAccountMutation.Data.self)
         let successResponse = ApolloType.DeleteMyAccountMutation.Data.DeleteMyAccount(
@@ -97,7 +97,7 @@ class IdentityImplementingTests: XCTestCase {
         XCTAssertEqual(returnedBool, successResult)
     }
 
-    func test_deletMyAccount_completeWithFailure() {
+    func test_deleteMyAccount_completeWithFailure() {
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.DeleteMyAccountMutation.Data.self)
         graphQLManager.resultReturns = .failure(DummyError.failure)
 
@@ -116,7 +116,7 @@ class IdentityImplementingTests: XCTestCase {
     ) -> (graphQLManager: MockGraphQLManager<DataType>, sut: Identity) {
         let graphQLManager = MockGraphQLManager<DataType>()
         let spy = MockAnalyticsLogger()
-        let defaults = UserDefaults(suiteName: "test_deletMyAccount") ?? .standard
+        let defaults = UserDefaults(suiteName: "test_deleteMyAccount") ?? .standard
         let identityPersister = IdentityPersister(defaults: defaults)
         let sut = IdentityFactory.makeModule(analyticsLogger: spy,
                                              identityPersister: identityPersister,
