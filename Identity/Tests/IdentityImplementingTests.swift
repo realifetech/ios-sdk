@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Apollo
+import GraphQL
 @testable import RealifeTech
 
 class IdentityImplementingTests: XCTestCase {
@@ -16,7 +18,8 @@ class IdentityImplementingTests: XCTestCase {
         let defaults = UserDefaults(suiteName: "test_identify_logged_userId_Persisted") ?? .standard
         let identityPersister = IdentityPersister(defaults: defaults)
         let sut = IdentityFactory.makeModule(analyticsLogger: spy,
-                                             identityPersister: identityPersister)
+                                             identityPersister: identityPersister,
+                                             graphQLManager: MockGraphQLManager<Void>())
         sut.identify(userId: "123", traits: [.firstName: "John",
                                              .lastName: "Smith",
                                              .dynamic(rawValue: "otherKey"): "AAA"]) { result in
@@ -40,7 +43,8 @@ class IdentityImplementingTests: XCTestCase {
         let defaults = UserDefaults(suiteName: "test_alias_logged") ?? .standard
         let identityPersister = IdentityPersister(defaults: defaults)
         let sut = IdentityFactory.makeModule(analyticsLogger: spy,
-                                             identityPersister: identityPersister)
+                                             identityPersister: identityPersister,
+                                             graphQLManager: MockGraphQLManager<Void>())
         sut.alias(aliasType: .dynamic(rawValue: "ABC"), aliasId: "123") { result in
             switch result {
             case .success:
@@ -59,12 +63,64 @@ class IdentityImplementingTests: XCTestCase {
         let defaults = UserDefaults(suiteName: "test_clear") ?? .standard
         let identityPersister = IdentityPersister(defaults: defaults)
         let sut = IdentityFactory.makeModule(analyticsLogger: spy,
-                                             identityPersister:
-                                                identityPersister)
+                                             identityPersister: identityPersister,
+                                             graphQLManager: MockGraphQLManager<Void>())
         XCTAssertNil(identityPersister.retrieveUserId())
         sut.identify(userId: "aaa", traits: [:], completion: nil)
         XCTAssertEqual(identityPersister.retrieveUserId(), "aaa")
         sut.clear()
         XCTAssertNil(identityPersister.retrieveUserId())
+    }
+
+    func test_deleteMyAccount_completeWithSuccess() {
+        let successResult = true
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.DeleteMyAccountMutation.Data.self)
+        let successResponse = ApolloType.DeleteMyAccountMutation.Data.DeleteMyAccount(
+            success: successResult,
+            message: "success")
+        let data = ApolloType.DeleteMyAccountMutation.Data(deleteMyAccount: successResponse)
+        let expectedResult = GraphQLResult<ApolloType.DeleteMyAccountMutation.Data>(
+            data: data,
+            extensions: nil,
+            errors: nil,
+            source: .cache,
+            dependentKeys: nil)
+        graphQLManager.resultReturns = .success(expectedResult)
+
+        var returnedBool: Bool?
+        sut.deleteMyAccount { result in
+            guard case let .success(returnedResponse) = result else {
+                return XCTFail("This test should return success")
+            }
+            returnedBool = returnedResponse
+        }
+        XCTAssertEqual(returnedBool, successResult)
+    }
+
+    func test_deleteMyAccount_completeWithFailure() {
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.DeleteMyAccountMutation.Data.self)
+        graphQLManager.resultReturns = .failure(DummyError.failure)
+
+        var returnedError: Error?
+        sut.deleteMyAccount { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("This test should return failure")
+            }
+            returnedError = error
+        }
+        XCTAssertEqual(returnedError as? DummyError, DummyError.failure)
+    }
+
+    private func makeGraphQLManagerAndSUT<DataType>(
+        ofType type: DataType.Type
+    ) -> (graphQLManager: MockGraphQLManager<DataType>, sut: Identity) {
+        let graphQLManager = MockGraphQLManager<DataType>()
+        let spy = MockAnalyticsLogger()
+        let defaults = UserDefaults(suiteName: "test_deleteMyAccount") ?? .standard
+        let identityPersister = IdentityPersister(defaults: defaults)
+        let sut = IdentityFactory.makeModule(analyticsLogger: spy,
+                                             identityPersister: identityPersister,
+                                             graphQLManager: graphQLManager)
+        return (graphQLManager: graphQLManager, sut: sut)
     }
 }
