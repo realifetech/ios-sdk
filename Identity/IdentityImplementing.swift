@@ -25,6 +25,22 @@ public class IdentityImplementing: Identity {
         self.graphQLManager = graphQLManager
     }
 
+    public func getSSO(provider: String, completion: @escaping (Result<String?, Error>) -> Void) {
+        graphQLManager.dispatch(
+            query: ApolloType.GetSsoQuery(provider: provider),
+            cachePolicy: .fetchIgnoringCacheData
+        ) { result in
+            switch result {
+            case .success(let response):
+                guard let sso = response.data?.getSso else {
+                    return completion(.failure(GraphQLManagerError.noDataError))
+                }
+                completion(.success(sso.authUrl))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
     public func deleteMyAccount(completion: @escaping (Result<Bool, Error>) -> Void) {
         graphQLManager.dispatchMutation(
             mutation: ApolloType.DeleteMyAccountMutation(),

@@ -111,6 +111,43 @@ class IdentityImplementingTests: XCTestCase {
         XCTAssertEqual(returnedError as? DummyError, DummyError.failure)
     }
 
+    func test_getSSO_completeWithSuccess() {
+        let expectedUrl = "https://testUrl.com"
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetSsoQuery.Data.self)
+        let successResponse = ApolloType.GetSsoQuery.Data.GetSso(authUrl: expectedUrl)
+        let data = ApolloType.GetSsoQuery.Data(getSso: successResponse)
+        let expectedResult = GraphQLResult<ApolloType.GetSsoQuery.Data>(
+            data: data,
+            extensions: nil,
+            errors: nil,
+            source: .cache,
+            dependentKeys: nil)
+        graphQLManager.resultReturns = .success(expectedResult)
+
+        var returnedUrl: String?
+        sut.getSSO(provider: "axs") { result in
+            guard case let .success(returnedResponse) = result else {
+                return XCTFail("This test should return success")
+            }
+            returnedUrl = returnedResponse
+        }
+        XCTAssertEqual(returnedUrl, expectedUrl)
+    }
+
+    func test_getSSO_completeWithFailure() {
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetSsoQuery.Data.self)
+        graphQLManager.resultReturns = .failure(DummyError.failure)
+
+        var returnedError: Error?
+        sut.getSSO(provider: "axs") { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("This test should return failure")
+            }
+            returnedError = error
+        }
+        XCTAssertEqual(returnedError as? DummyError, DummyError.failure)
+    }
+
     private func makeGraphQLManagerAndSUT<DataType>(
         ofType type: DataType.Type
     ) -> (graphQLManager: MockGraphQLManager<DataType>, sut: Identity) {
