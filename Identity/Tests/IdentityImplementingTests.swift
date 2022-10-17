@@ -124,14 +124,14 @@ class IdentityImplementingTests: XCTestCase {
             dependentKeys: nil)
         graphQLManager.resultReturns = .success(expectedResult)
 
-        var returnedUrl: String?
+        var returnedSSO: SSO?
         sut.getSSO(provider: "axs") { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
-            returnedUrl = returnedResponse
+            returnedSSO = returnedResponse
         }
-        XCTAssertEqual(returnedUrl, expectedUrl)
+        XCTAssertEqual(returnedSSO?.authUrl, expectedUrl)
     }
 
     func test_getSSO_completeWithFailure() {

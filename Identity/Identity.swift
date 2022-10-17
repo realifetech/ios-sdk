@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol Identity {
-    func getSSO(provider: String, completion: @escaping (Result<String?, Error>) -> Void)
+    func getSSO(provider: String, completion: @escaping (Result<SSO?, Error>) -> Void)
     func deleteMyAccount(completion: @escaping (Result<Bool, Error>) -> Void)
     func identify(userId: String, traits: [RLTTraitType: Any], completion: ((Result<Bool, Error>) -> Void)?)
     func alias(aliasType: RLTAliasType, aliasId: String, completion: ((Result<Bool, Error>) -> Void)?)
