@@ -19,6 +19,7 @@
 		098A51CD286AC2600087EBB4 /* RLTNotificationsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */; };
 		098A51D6286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		09B9D2CC28FD32C2006D4C94 /* SSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9D2CB28FD32C2006D4C94 /* SSO.swift */; };
 		09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */; };
 		09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */; };
 		09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */; };
@@ -385,6 +386,7 @@
 		098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTNotificationsTracker.swift; sourceTree = "<group>"; };
 		098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStoreTests.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
+		09B9D2CB28FD32C2006D4C94 /* SSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSO.swift; sourceTree = "<group>"; };
 		09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverter.swift; sourceTree = "<group>"; };
 		09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverterTests.swift; sourceTree = "<group>"; };
 		09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCreatablesAndFactory.swift; sourceTree = "<group>"; };
@@ -799,6 +801,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		09B9D2CA28FD3299006D4C94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09B9D2CB28FD32C2006D4C94 /* SSO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		09E05EAC28535615005C7B94 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,6 +843,7 @@
 		3E7F338327A2F8250054ACF1 /* Identity */ = {
 			isa = PBXGroup;
 			children = (
+				09B9D2CA28FD3299006D4C94 /* Models */,
 				3EFB4E3A27A41CDC0004BE5E /* Persistence */,
 				3E7F338627A2F86C0054ACF1 /* Identity.swift */,
 				3E7F338427A2F86C0054ACF1 /* IdentityFactory.swift */,
@@ -2310,6 +2321,7 @@
 				961C1C8E2682070100BE6F3B /* Timeslot.swift in Sources */,
 				968CA5C425EE7AEB0000C2E2 /* ContentError.swift in Sources */,
 				961C427E260882C8001D8467 /* UIDeviceInterface.swift in Sources */,
+				09B9D2CC28FD32C2006D4C94 /* SSO.swift in Sources */,
 				3EFB4E3C27A41CF40004BE5E /* IdentityPersisting.swift in Sources */,
 				96874865268CBDF100DDC5DD /* PaymentProvidable.swift in Sources */,
 				961C41EB260882BA001D8467 /* Core.swift in Sources */,
@@ -2753,7 +2765,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.6.0;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2786,7 +2798,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.6.0;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
