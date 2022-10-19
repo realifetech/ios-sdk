@@ -4374,6 +4374,99 @@ public enum ApolloType {
     }
   }
 
+  public final class GetSsoQuery: GraphQLQuery {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      query GetSSO($provider: String!) {
+        getSSO(provider: $provider) {
+          __typename
+          authUrl
+        }
+      }
+      """
+
+    public let operationName: String = "GetSSO"
+
+    public var provider: String
+
+    public init(provider: String) {
+      self.provider = provider
+    }
+
+    public var variables: GraphQLMap? {
+      return ["provider": provider]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Query"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("getSSO", arguments: ["provider": GraphQLVariable("provider")], type: .object(GetSso.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(getSso: GetSso? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getSSO": getSso.flatMap { (value: GetSso) -> ResultMap in value.resultMap }])
+      }
+
+      public var getSso: GetSso? {
+        get {
+          return (resultMap["getSSO"] as? ResultMap).flatMap { GetSso(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "getSSO")
+        }
+      }
+
+      public struct GetSso: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["SSO"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("authUrl", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(authUrl: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "SSO", "authUrl": authUrl])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var authUrl: String? {
+          get {
+            return resultMap["authUrl"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "authUrl")
+          }
+        }
+      }
+    }
+  }
+
   public final class AddPaymentSourceToMyWalletMutation: GraphQLMutation {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
