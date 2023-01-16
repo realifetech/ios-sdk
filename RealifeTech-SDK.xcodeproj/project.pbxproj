@@ -20,6 +20,11 @@
 		098A51D6286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
 		09B9D2CC28FD32C2006D4C94 /* SSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9D2CB28FD32C2006D4C94 /* SSO.swift */; };
+		09BAAE1A296E9E07009FCD19 /* Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE19296E9E07009FCD19 /* Access.swift */; };
+		09BAAE1D296EA0F1009FCD19 /* WalletPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */; };
+		09BAAE1F296EAAC1009FCD19 /* AccessFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */; };
+		09BAAE21296EAB26009FCD19 /* AccessImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */; };
+		09BAAE37297510F0009FCD19 /* AccessImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */; };
 		09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */; };
 		09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */; };
 		09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */; };
@@ -387,6 +392,11 @@
 		098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStoreTests.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
 		09B9D2CB28FD32C2006D4C94 /* SSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSO.swift; sourceTree = "<group>"; };
+		09BAAE19296E9E07009FCD19 /* Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Access.swift; sourceTree = "<group>"; };
+		09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPass.swift; sourceTree = "<group>"; };
+		09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessFactory.swift; sourceTree = "<group>"; };
+		09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementing.swift; sourceTree = "<group>"; };
+		09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementingTests.swift; sourceTree = "<group>"; };
 		09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverter.swift; sourceTree = "<group>"; };
 		09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverterTests.swift; sourceTree = "<group>"; };
 		09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCreatablesAndFactory.swift; sourceTree = "<group>"; };
@@ -809,6 +819,34 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		09BAAE18296E9DDF009FCD19 /* Access */ = {
+			isa = PBXGroup;
+			children = (
+				09BAAE19296E9E07009FCD19 /* Access.swift */,
+				09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */,
+				09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */,
+				09BAAE1B296EA0E3009FCD19 /* Models */,
+				09BAAE35297510C5009FCD19 /* Tests */,
+			);
+			path = Access;
+			sourceTree = "<group>";
+		};
+		09BAAE1B296EA0E3009FCD19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		09BAAE35297510C5009FCD19 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		09E05EAC28535615005C7B94 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1012,6 +1050,7 @@
 				961C415F26088298001D8467 /* Core */,
 				48E6774F251BA843007E2741 /* General */,
 				48E67771251BA86D007E2741 /* Communicate */,
+				09BAAE18296E9DDF009FCD19 /* Access */,
 				03EEB89D252E04DB00C868AD /* Audiences */,
 				4889594E2539D7E200B978A9 /* Analytics */,
 				964D290A2693316300A69FBC /* Canvas */,
@@ -2314,6 +2353,7 @@
 			files = (
 				961C41D4260882BA001D8467 /* APIRequester.swift in Sources */,
 				487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */,
+				09BAAE21296EAB26009FCD19 /* AccessImplementing.swift in Sources */,
 				3E98B95B275A93C800E67321 /* RLTViewFetcher.swift in Sources */,
 				9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */,
 				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
@@ -2369,6 +2409,7 @@
 				961C1CCF2684EF9C00BE6F3B /* ProductModifierItemSelectionInput.swift in Sources */,
 				964D290326932CDC00A69FBC /* CoreImplementing.swift in Sources */,
 				961C41D3260882BA001D8467 /* OAuthTokenRefreshWatcher.swift in Sources */,
+				09BAAE1D296EA0F1009FCD19 /* WalletPass.swift in Sources */,
 				0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */,
 				961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */,
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
@@ -2488,6 +2529,7 @@
 				968CA5DB25EE7C410000C2E2 /* ContentImplementing.swift in Sources */,
 				961C427A260882C8001D8467 /* BluetoothManagerWrapper.swift in Sources */,
 				961C41D2260882BA001D8467 /* AuthorisationWorker.swift in Sources */,
+				09BAAE1A296E9E07009FCD19 /* Access.swift in Sources */,
 				488958A52539D04B00B978A9 /* AudiencesImplementing.swift in Sources */,
 				964D291E269336B100A69FBC /* CanvasRepository.swift in Sources */,
 				961B019E2689EFE700D8C481 /* OrderState.swift in Sources */,
@@ -2506,6 +2548,7 @@
 				487479BE2540423D0048F03D /* AnalyticsLogger.swift in Sources */,
 				961C1CB526839A5100BE6F3B /* Basket.swift in Sources */,
 				961C4260260882C8001D8467 /* DiskStorage.swift in Sources */,
+				09BAAE1F296EAAC1009FCD19 /* AccessFactory.swift in Sources */,
 				968CA5D525EE7BEC0000C2E2 /* WebPageCreatable.swift in Sources */,
 				96874875268CC3CC00DDC5DD /* PaymentIntentInput.swift in Sources */,
 				961C427B260882C8001D8467 /* UIDeviceFactory.swift in Sources */,
@@ -2576,6 +2619,7 @@
 				961C436D2608936E001D8467 /* OAuthTokenRefreshWatcherTests.swift in Sources */,
 				9637472D26C41801007DF92D /* CollectionPreferenceTypeTests.swift in Sources */,
 				964D292526933EDB00A69FBC /* CanvasRepositoryWidgetTests.swift in Sources */,
+				09BAAE37297510F0009FCD19 /* AccessImplementingTests.swift in Sources */,
 				96B670A826D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
 				3E0C2595276215C700B6F7D1 /* RLTBannerFactoryTests.swift in Sources */,

@@ -12,6 +12,7 @@ public class RealifeTech {
 
     public static var Core: Core!
     public static var General: General!
+    public static var Access: Access!
     public static var Audiences: AudienceChecking!
     public static var Analytics: Analytics!
     public static var Communicate: Communicate!
@@ -72,6 +73,7 @@ public class RealifeTech {
         Identity = IdentityFactory.makeModule(analyticsLogger: Analytics,
                                               identityPersister: identityPersister,
                                               graphQLManager: graphQLManager)
+        Access = AccessFactory.makeModule(graphQLManager: graphQLManager)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
@@ -94,6 +96,7 @@ public class RealifeTech {
         Sell = nil
         CampaignAutomation = nil
         Identity = nil
+        Access = nil
     }
 
     /// Override the webOrderingJourneyUrl
