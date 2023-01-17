@@ -21,8 +21,8 @@ public struct WalletPass {
 
 extension WalletPass {
 
-//    init?(response: ApolloType.GetMyTicketWalletPassQuery.Data) {
-//        guard let ticketWalletPass = response.getMyTicketWalletPass else { return nil }
-//        url = ticketWalletPass.url
-//    }
+    init?(response: ApolloType.GetMyTicketWalletPassQuery.Data) {
+        guard let ticketWalletPass = response.getMyTicketWalletPass else { return nil }
+        url = ticketWalletPass.url
+    }
 }

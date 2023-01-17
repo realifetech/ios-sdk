@@ -20,8 +20,20 @@ public class AccessImplementing: Access {
     }
 
     public func getWalletPass(ticketId: String, completion: @escaping (Result<WalletPass?, Error>) -> Void) {
-        // TODO: implement getMyTicketWallet
-        let walletPass = WalletPass(url: "https://release.audienceview.net:8080/app/pass?ticket_token=1,7503837d,63af04ab,29181931-D92D-4FDE-B543-65880863D83E,1Skp7T44QfYkPEyAvND3YM6jLHE=")
-        completion(.success(walletPass))
-    }
+        graphQLManager.dispatch(
+            query: ApolloType.GetMyTicketWalletPassQuery(ticketId: ticketId),
+            cachePolicy: .returnCacheDataElseFetch
+        ) { result in
+                switch result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        return completion(.failure(GraphQLManagerError.noDataError))
+                    }
+                    let walletPass = WalletPass(response: data)
+                    completion(.success(walletPass))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
 }
