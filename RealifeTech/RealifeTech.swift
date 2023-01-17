@@ -12,13 +12,13 @@ public class RealifeTech {
 
     public static var Core: Core!
     public static var General: General!
+    public static var Access: Access!
     public static var Audiences: AudienceChecking!
     public static var Analytics: Analytics!
     public static var Communicate: Communicate!
     public static var Canvas: Canvas!
     public static var Content: Content!
     public static var Sell: Sell!
-    public static var CampaignAutomation: CampaignAutomation!
     public static var Identity: Identity!
 
     private static var moduleVersionString: String {
@@ -66,12 +66,10 @@ public class RealifeTech {
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
-        CampaignAutomation = CampaignAutomationFactory.makeModule(
-            graphQLManager: graphQLManager,
-            analyticsLogger: Analytics)
         Identity = IdentityFactory.makeModule(analyticsLogger: Analytics,
                                               identityPersister: identityPersister,
                                               graphQLManager: graphQLManager)
+        Access = AccessFactory.makeModule(graphQLManager: graphQLManager)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
@@ -92,8 +90,8 @@ public class RealifeTech {
         Canvas = nil
         Content = nil
         Sell = nil
-        CampaignAutomation = nil
         Identity = nil
+        Access = nil
     }
 
     /// Override the webOrderingJourneyUrl

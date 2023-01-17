@@ -22,7 +22,6 @@ final class RealifeTechTests: XCTestCase {
         XCTAssertNotNil(RealifeTech.Canvas)
         XCTAssertNotNil(RealifeTech.Content)
         XCTAssertNotNil(RealifeTech.Sell)
-        XCTAssertNotNil(RealifeTech.CampaignAutomation)
         XCTAssertNotNil(RealifeTech.Identity)
     }
 
@@ -37,7 +36,6 @@ final class RealifeTechTests: XCTestCase {
         XCTAssertNil(RealifeTech.Canvas)
         XCTAssertNil(RealifeTech.Content)
         XCTAssertNil(RealifeTech.Sell)
-        XCTAssertNil(RealifeTech.CampaignAutomation)
         XCTAssertNil(RealifeTech.Identity)
     }
 
