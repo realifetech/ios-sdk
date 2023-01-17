@@ -1,0 +1,5 @@
+query getMyTicketWalletPass($ticketId: ID!) {
+  getMyTicketWalletPass(ticketId: $ticketId) {
+    url
+  }
+}
