@@ -19,7 +19,6 @@ public class RealifeTech {
     public static var Canvas: Canvas!
     public static var Content: Content!
     public static var Sell: Sell!
-    public static var CampaignAutomation: CampaignAutomation!
     public static var Identity: Identity!
 
     private static var moduleVersionString: String {
@@ -67,9 +66,6 @@ public class RealifeTech {
             graphQLManager: graphQLManager,
             orderingJourneyUrl: configuration.webOrderingJourneyUrl,
             colorStore: General)
-        CampaignAutomation = CampaignAutomationFactory.makeModule(
-            graphQLManager: graphQLManager,
-            analyticsLogger: Analytics)
         Identity = IdentityFactory.makeModule(analyticsLogger: Analytics,
                                               identityPersister: identityPersister,
                                               graphQLManager: graphQLManager)
@@ -94,7 +90,6 @@ public class RealifeTech {
         Canvas = nil
         Content = nil
         Sell = nil
-        CampaignAutomation = nil
         Identity = nil
         Access = nil
     }

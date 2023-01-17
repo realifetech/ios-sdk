@@ -10,7 +10,6 @@
 		09008ECE27E1F74200F6155D /* ProductModifierItemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */; };
 		0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */; };
 		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
-		094ACC6F2850AC4400562CAD /* RLTContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ACC6E2850AC4400562CAD /* RLTContentItem.swift */; };
 		0958222A285C5432005D843B /* PushEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09582229285C5432005D843B /* PushEvent.swift */; };
 		0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */; };
 		095850112833B4A2008E0DAB /* ResponseInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */; };
@@ -25,12 +24,6 @@
 		09BAAE1F296EAAC1009FCD19 /* AccessFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */; };
 		09BAAE21296EAB26009FCD19 /* AccessImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */; };
 		09BAAE37297510F0009FCD19 /* AccessImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */; };
-		09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */; };
-		09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */; };
-		09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */; };
-		3E0C2595276215C700B6F7D1 /* RLTBannerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */; };
-		3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */; };
-		3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */; };
 		3E78BCF826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD0526B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD1826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -39,19 +32,6 @@
 		3E7F338827A2F86C0054ACF1 /* IdentityImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F338527A2F86C0054ACF1 /* IdentityImplementing.swift */; };
 		3E7F338927A2F86C0054ACF1 /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F338627A2F86C0054ACF1 /* Identity.swift */; };
 		3E7F338C27A3100F0054ACF1 /* IdentityImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F338B27A3100F0054ACF1 /* IdentityImplementingTests.swift */; };
-		3E98B93D275A3F3000E67321 /* CampaignAutomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */; };
-		3E98B93F275A41A800E67321 /* CampaignAutomationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */; };
-		3E98B941275A41D000E67321 /* CampaignAutomationImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B940275A41D000E67321 /* CampaignAutomationImplementing.swift */; };
-		3E98B946275A8F5B00E67321 /* RLTCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B945275A8F5B00E67321 /* RLTCreatable.swift */; };
-		3E98B948275A8F8700E67321 /* RLTMediaTypeFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B947275A8F8700E67321 /* RLTMediaTypeFetching.swift */; };
-		3E98B94A275A8FBF00E67321 /* RLTCreatableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B949275A8FBF00E67321 /* RLTCreatableFactory.swift */; };
-		3E98B94C275A8FE000E67321 /* RLTDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B94B275A8FE000E67321 /* RLTDataModel.swift */; };
-		3E98B94E275A8FF900E67321 /* RLTContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B94D275A8FF900E67321 /* RLTContentType.swift */; };
-		3E98B951275A901600E67321 /* RLTBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B950275A901600E67321 /* RLTBanner.swift */; };
-		3E98B953275A904400E67321 /* RLTLinkHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B952275A904400E67321 /* RLTLinkHandling.swift */; };
-		3E98B955275A909400E67321 /* RLTViewCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B954275A909400E67321 /* RLTViewCreatable.swift */; };
-		3E98B958275A910600E67321 /* RLTBannerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B957275A910600E67321 /* RLTBannerFactory.swift */; };
-		3E98B95B275A93C800E67321 /* RLTViewFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */; };
 		3E9CD181271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */; };
 		3E9CD183271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */; };
 		3EEB5C3E278F35FE00B6396E /* GeneralGQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */; };
@@ -382,7 +362,6 @@
 		09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemStatus.swift; sourceTree = "<group>"; };
 		0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderStatus.swift; sourceTree = "<group>"; };
 		0913A9DE275511B500DB9D99 /* Order+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Extension.swift"; sourceTree = "<group>"; };
-		094ACC6E2850AC4400562CAD /* RLTContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentItem.swift; sourceTree = "<group>"; };
 		09582229285C5432005D843B /* PushEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushEvent.swift; sourceTree = "<group>"; };
 		0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInterceptor.swift; sourceTree = "<group>"; };
 		095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInterceptorTests.swift; sourceTree = "<group>"; };
@@ -397,34 +376,15 @@
 		09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessFactory.swift; sourceTree = "<group>"; };
 		09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementing.swift; sourceTree = "<group>"; };
 		09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementingTests.swift; sourceTree = "<group>"; };
-		09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverter.swift; sourceTree = "<group>"; };
-		09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentConverterTests.swift; sourceTree = "<group>"; };
-		09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCreatablesAndFactory.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTBannerFactoryTests.swift; sourceTree = "<group>"; };
-		3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTLinkHandlingTests.swift; sourceTree = "<group>"; };
-		3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationImplementingTests.swift; sourceTree = "<group>"; };
 		3E78BCEA26B8226800BF3026 /* GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E78BCED26B8226800BF3026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E7F338427A2F86C0054ACF1 /* IdentityFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityFactory.swift; sourceTree = "<group>"; };
 		3E7F338527A2F86C0054ACF1 /* IdentityImplementing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentityImplementing.swift; sourceTree = "<group>"; };
 		3E7F338627A2F86C0054ACF1 /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		3E7F338B27A3100F0054ACF1 /* IdentityImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityImplementingTests.swift; sourceTree = "<group>"; };
-		3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomation.swift; sourceTree = "<group>"; };
-		3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationFactory.swift; sourceTree = "<group>"; };
-		3E98B940275A41D000E67321 /* CampaignAutomationImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignAutomationImplementing.swift; sourceTree = "<group>"; };
-		3E98B945275A8F5B00E67321 /* RLTCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTCreatable.swift; sourceTree = "<group>"; };
-		3E98B947275A8F8700E67321 /* RLTMediaTypeFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTMediaTypeFetching.swift; sourceTree = "<group>"; };
-		3E98B949275A8FBF00E67321 /* RLTCreatableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTCreatableFactory.swift; sourceTree = "<group>"; };
-		3E98B94B275A8FE000E67321 /* RLTDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTDataModel.swift; sourceTree = "<group>"; };
-		3E98B94D275A8FF900E67321 /* RLTContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTContentType.swift; sourceTree = "<group>"; };
-		3E98B950275A901600E67321 /* RLTBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTBanner.swift; sourceTree = "<group>"; };
-		3E98B952275A904400E67321 /* RLTLinkHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTLinkHandling.swift; sourceTree = "<group>"; };
-		3E98B954275A909400E67321 /* RLTViewCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTViewCreatable.swift; sourceTree = "<group>"; };
-		3E98B957275A910600E67321 /* RLTBannerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTBannerFactory.swift; sourceTree = "<group>"; };
-		3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLTViewFetcher.swift; sourceTree = "<group>"; };
 		3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptLanguageHeaderRequestInserting.swift; sourceTree = "<group>"; };
 		3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptLanguageHeaderRequestInsertingTests.swift; sourceTree = "<group>"; };
 		3EEB5C3C278F35FE00B6396E /* GeneralGQLAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralGQLAPI.swift; sourceTree = "<group>"; };
@@ -847,26 +807,6 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		09E05EAC28535615005C7B94 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				09E05EAD28535631005C7B94 /* MockCreatablesAndFactory.swift */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
-		3E2D35D627612B1900630598 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				09E05EAC28535615005C7B94 /* Util */,
-				3E2D35D727612B6300630598 /* CampaignAutomationImplementingTests.swift */,
-				3E0C2594276215C700B6F7D1 /* RLTBannerFactoryTests.swift */,
-				3E0C259627621C4A00B6F7D1 /* RLTLinkHandlingTests.swift */,
-				09E05EA828531C83005C7B94 /* RLTContentConverterTests.swift */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
 		3E78BCEB26B8226800BF3026 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -897,61 +837,6 @@
 				3E7F338B27A3100F0054ACF1 /* IdentityImplementingTests.swift */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		3E98B93B275A3E3300E67321 /* CampaignAutomation */ = {
-			isa = PBXGroup;
-			children = (
-				3E98B93C275A3F3000E67321 /* CampaignAutomation.swift */,
-				3E98B93E275A41A800E67321 /* CampaignAutomationFactory.swift */,
-				3E98B940275A41D000E67321 /* CampaignAutomationImplementing.swift */,
-				3E98B94F275A900500E67321 /* Models */,
-				3E98B956275A90EF00E67321 /* Creatable */,
-				3ED5CD1A275E378400C7D877 /* Factories */,
-				3E98B959275A93BB00E67321 /* Fetchers */,
-				3E2D35D627612B1900630598 /* Tests */,
-			);
-			path = CampaignAutomation;
-			sourceTree = "<group>";
-		};
-		3E98B94F275A900500E67321 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				3E98B94D275A8FF900E67321 /* RLTContentType.swift */,
-				3E98B94B275A8FE000E67321 /* RLTDataModel.swift */,
-				3E98B952275A904400E67321 /* RLTLinkHandling.swift */,
-				3E98B950275A901600E67321 /* RLTBanner.swift */,
-				094ACC6E2850AC4400562CAD /* RLTContentItem.swift */,
-				09E05EA628531BB0005C7B94 /* RLTContentConverter.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		3E98B956275A90EF00E67321 /* Creatable */ = {
-			isa = PBXGroup;
-			children = (
-				3E98B945275A8F5B00E67321 /* RLTCreatable.swift */,
-				3E98B954275A909400E67321 /* RLTViewCreatable.swift */,
-			);
-			path = Creatable;
-			sourceTree = "<group>";
-		};
-		3E98B959275A93BB00E67321 /* Fetchers */ = {
-			isa = PBXGroup;
-			children = (
-				3E98B947275A8F8700E67321 /* RLTMediaTypeFetching.swift */,
-				3E98B95A275A93C800E67321 /* RLTViewFetcher.swift */,
-			);
-			path = Fetchers;
-			sourceTree = "<group>";
-		};
-		3ED5CD1A275E378400C7D877 /* Factories */ = {
-			isa = PBXGroup;
-			children = (
-				3E98B949275A8FBF00E67321 /* RLTCreatableFactory.swift */,
-				3E98B957275A910600E67321 /* RLTBannerFactory.swift */,
-			);
-			path = Factories;
 			sourceTree = "<group>";
 		};
 		3EFB4E3A27A41CDC0004BE5E /* Persistence */ = {
@@ -1056,7 +941,6 @@
 				964D290A2693316300A69FBC /* Canvas */,
 				968CA5B625EE79960000C2E2 /* Content */,
 				9606ED7F267B4FD300ED24D0 /* Sell */,
-				3E98B93B275A3E3300E67321 /* CampaignAutomation */,
 				3E7F338327A2F8250054ACF1 /* Identity */,
 				48D6F13B251E158E006CA623 /* RealifeTech */,
 				098A51CB286AC1FB0087EBB4 /* NotificationService */,
@@ -2354,7 +2238,6 @@
 				961C41D4260882BA001D8467 /* APIRequester.swift in Sources */,
 				487479EE254090E90048F03D /* CommunicateFactory.swift in Sources */,
 				09BAAE21296EAB26009FCD19 /* AccessImplementing.swift in Sources */,
-				3E98B95B275A93C800E67321 /* RLTViewFetcher.swift in Sources */,
 				9606ED99267B64B600ED24D0 /* SellFactory.swift in Sources */,
 				48EFE24C2539E52D00CC6E58 /* GeneralFactory.swift in Sources */,
 				96874867268CBE1400DDC5DD /* PaymentSource.swift in Sources */,
@@ -2372,7 +2255,6 @@
 				961C4263260882C8001D8467 /* CodableStore.swift in Sources */,
 				961C41CF260882BA001D8467 /* APITokenManagable.swift in Sources */,
 				961C4214260882BB001D8467 /* LocalDiskCacheDataProviding.swift in Sources */,
-				3E98B948275A8F8700E67321 /* RLTMediaTypeFetching.swift in Sources */,
 				3E7F338727A2F86C0054ACF1 /* IdentityFactory.swift in Sources */,
 				48EFE2552539E55400CC6E58 /* DeviceRegistering.swift in Sources */,
 				964D2917269335B400A69FBC /* WidgetParam.swift in Sources */,
@@ -2380,8 +2262,6 @@
 				968CA5BC25EE79DD0000C2E2 /* Content.swift in Sources */,
 				9606ED86267B504900ED24D0 /* PaginatedObject.swift in Sources */,
 				487479C22540425C0048F03D /* AnalyticsEventAndCompletion.swift in Sources */,
-				3E98B93F275A41A800E67321 /* CampaignAutomationFactory.swift in Sources */,
-				3E98B955275A909400E67321 /* RLTViewCreatable.swift in Sources */,
 				961C425F260882C8001D8467 /* UserDefaultStorage.swift in Sources */,
 				961C41E3260882BA001D8467 /* OAuthRequester.swift in Sources */,
 				964D292926933F3700A69FBC /* CanvasFactory.swift in Sources */,
@@ -2398,10 +2278,8 @@
 				961C4227260882BB001D8467 /* RequestDispatcher.swift in Sources */,
 				96874871268CC29700DDC5DD /* Card.swift in Sources */,
 				961C1CC72684D3F200BE6F3B /* BasketError.swift in Sources */,
-				3E98B946275A8F5B00E67321 /* RLTCreatable.swift in Sources */,
 				0958222A285C5432005D843B /* PushEvent.swift in Sources */,
 				964A3BF12680B94E00C42C35 /* GraphQLManagerError.swift in Sources */,
-				3E98B93D275A3F3000E67321 /* CampaignAutomation.swift in Sources */,
 				9687487D268CC4BB00DDC5DD /* CancellationReason.swift in Sources */,
 				961C1C9F26833C8800BE6F3B /* StandardTitleTranslation.swift in Sources */,
 				9606ED8B267B512900ED24D0 /* Product.swift in Sources */,
@@ -2442,9 +2320,7 @@
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
 				09008ECE27E1F74200F6155D /* ProductModifierItemStatus.swift in Sources */,
 				961B01942689EB6900D8C481 /* Order.swift in Sources */,
-				094ACC6F2850AC4400562CAD /* RLTContentItem.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
-				3E98B94A275A8FBF00E67321 /* RLTCreatableFactory.swift in Sources */,
 				961C1CC126839CC500BE6F3B /* BasketRepository.swift in Sources */,
 				961C4225260882BB001D8467 /* Requester.swift in Sources */,
 				964D29112693353000A69FBC /* WidgetStyle.swift in Sources */,
@@ -2453,7 +2329,6 @@
 				961C426F260882C8001D8467 /* Device.swift in Sources */,
 				961C1CCD2684EF8600BE6F3B /* BasketItemInput.swift in Sources */,
 				9606ED81267B4FE400ED24D0 /* Sell.swift in Sources */,
-				3E98B941275A41D000E67321 /* CampaignAutomationImplementing.swift in Sources */,
 				961C41EC260882BA001D8467 /* RequestLoggingInterceptor.swift in Sources */,
 				961C1CA52683404300BE6F3B /* ProductModifierItem.swift in Sources */,
 				3E7F338927A2F86C0054ACF1 /* Identity.swift in Sources */,
@@ -2473,9 +2348,7 @@
 				961C4223260882BB001D8467 /* RequestCreator.swift in Sources */,
 				961C1C902682071400BE6F3B /* FulfilmentPointType.swift in Sources */,
 				961C426E260882C8001D8467 /* DeviceToken.swift in Sources */,
-				3E98B958275A910600E67321 /* RLTBannerFactory.swift in Sources */,
 				961C425E260882C8001D8467 /* Storage.swift in Sources */,
-				3E98B94C275A8FE000E67321 /* RLTDataModel.swift in Sources */,
 				96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */,
 				961C4212260882BB001D8467 /* DiskCacheCodableInterface.swift in Sources */,
 				961C4266260882C8001D8467 /* QueueAction.swift in Sources */,
@@ -2483,12 +2356,10 @@
 				961B01A52689F42A00D8C481 /* OrderRepository.swift in Sources */,
 				961C4265260882C8001D8467 /* QueueError.swift in Sources */,
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
-				09E05EA728531BB0005C7B94 /* RLTContentConverter.swift in Sources */,
 				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
 				9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */,
 				964D292726933F0D00A69FBC /* Canvas.swift in Sources */,
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
-				3E98B953275A904400E67321 /* RLTLinkHandling.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
@@ -2540,7 +2411,6 @@
 				964D291A269335E000A69FBC /* WidgetProvidable.swift in Sources */,
 				96AED8C326CFA54400F6C750 /* ColorType.swift in Sources */,
 				96874873268CC2A800DDC5DD /* PaymentIntent.swift in Sources */,
-				3E98B94E275A8FF900E67321 /* RLTContentType.swift in Sources */,
 				968CA5CD25EE7B4C0000C2E2 /* String+ContentLocalization.swift in Sources */,
 				960415DB26CBD8B20096DF80 /* WebViewStore.swift in Sources */,
 				961C1CC326839D7300BE6F3B /* BasketInput.swift in Sources */,
@@ -2557,10 +2427,8 @@
 				098A51CD286AC2600087EBB4 /* RLTNotificationsTracker.swift in Sources */,
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
-				09E05EAE28535631005C7B94 /* MockCreatablesAndFactory.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
 				9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */,
-				3E98B951275A901600E67321 /* RLTBanner.swift in Sources */,
 				961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */,
 				961C1CB726839AE100BE6F3B /* CollectionPreferenceType.swift in Sources */,
 			);
@@ -2576,7 +2444,6 @@
 				96B670C526D7CE4B00DB74A4 /* FilterParamTests.swift in Sources */,
 				96302CED26C4104C000A91EC /* BasketTests.swift in Sources */,
 				96CE697826CE54DD0026CC13 /* OrderingJourneyViewModelTests.swift in Sources */,
-				3E0C259727621C4A00B6F7D1 /* RLTLinkHandlingTests.swift in Sources */,
 				96AED8D526CFC71900F6C750 /* ColorTypeTests.swift in Sources */,
 				488A67BE2541D797005C030E /* AnalyticsFactoryTests.swift in Sources */,
 				9647D9AC26861DF2006F5B7F /* BasketRepositoryTestHelper.swift in Sources */,
@@ -2622,7 +2489,6 @@
 				09BAAE37297510F0009FCD19 /* AccessImplementingTests.swift in Sources */,
 				96B670A826D68E3400DB74A4 /* DefaultDiskCacheStrategyProvidingTests.swift in Sources */,
 				48EFE25A2539E56000CC6E58 /* GeneralFactoryTests.swift in Sources */,
-				3E0C2595276215C700B6F7D1 /* RLTBannerFactoryTests.swift in Sources */,
 				961C438F2608939C001D8467 /* UIDeviceHelperTests.swift in Sources */,
 				96B670CC26D7E11500DB74A4 /* AudiencesImplementingTests.swift in Sources */,
 				961C1CAE26834AC000BE6F3B /* ProductRepositoryTests.swift in Sources */,
@@ -2630,7 +2496,6 @@
 				96B670B026D6AF3D00DB74A4 /* PersistentQueueTests.swift in Sources */,
 				96B6709026D65F0B00DB74A4 /* RequestDispatcherTests.swift in Sources */,
 				964D292B269343DD00A69FBC /* CanvasFactoryTests.swift in Sources */,
-				09E05EA928531C83005C7B94 /* RLTContentConverterTests.swift in Sources */,
 				961C438526089389001D8467 /* APIRequesterHelperTests.swift in Sources */,
 				9637475126C54057007DF92D /* CancellationReasonTests.swift in Sources */,
 				9637475726C54439007DF92D /* PaymentIntentTests.swift in Sources */,
@@ -2684,7 +2549,6 @@
 				9637475326C541D1007DF92D /* OrderTypeTests.swift in Sources */,
 				9637474D26C53D83007DF92D /* OrderItemTests.swift in Sources */,
 				9637474F26C53E5D007DF92D /* OrderModelTestsHelper.swift in Sources */,
-				3E2D35D827612B6300630598 /* CampaignAutomationImplementingTests.swift in Sources */,
 				488A67CA2541DA9A005C030E /* AnalyticsEventAndCompletionTests.swift in Sources */,
 				961C42CF26088377001D8467 /* DiskCacheTests.swift in Sources */,
 				961C43782608937C001D8467 /* RequestHeaderTests.swift in Sources */,
