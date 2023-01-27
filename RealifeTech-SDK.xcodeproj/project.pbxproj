@@ -18,12 +18,16 @@
 		098A51CD286AC2600087EBB4 /* RLTNotificationsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */; };
 		098A51D6286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		09B29F242983BCA4000B3897 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F232983BCA4000B3897 /* Date+Extension.swift */; };
 		09B9D2CC28FD32C2006D4C94 /* SSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9D2CB28FD32C2006D4C94 /* SSO.swift */; };
 		09BAAE1A296E9E07009FCD19 /* Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE19296E9E07009FCD19 /* Access.swift */; };
 		09BAAE1D296EA0F1009FCD19 /* WalletPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */; };
 		09BAAE1F296EAAC1009FCD19 /* AccessFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */; };
 		09BAAE21296EAB26009FCD19 /* AccessImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */; };
 		09BAAE37297510F0009FCD19 /* AccessImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */; };
+		09BAAEB3298270BF009FCD19 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB2298270BE009FCD19 /* Ticket.swift */; };
+		09BAAEB5298390D9009FCD19 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB4298390D9009FCD19 /* Currency.swift */; };
+		09BAAEB82983913D009FCD19 /* AdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB72983913D009FCD19 /* AdditionalField.swift */; };
 		3E78BCF826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD0526B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD1826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -370,12 +374,16 @@
 		098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTNotificationsTracker.swift; sourceTree = "<group>"; };
 		098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStoreTests.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
+		09B29F232983BCA4000B3897 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		09B9D2CB28FD32C2006D4C94 /* SSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSO.swift; sourceTree = "<group>"; };
 		09BAAE19296E9E07009FCD19 /* Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Access.swift; sourceTree = "<group>"; };
 		09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPass.swift; sourceTree = "<group>"; };
 		09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessFactory.swift; sourceTree = "<group>"; };
 		09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementing.swift; sourceTree = "<group>"; };
 		09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementingTests.swift; sourceTree = "<group>"; };
+		09BAAEB2298270BE009FCD19 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		09BAAEB4298390D9009FCD19 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		09BAAEB72983913D009FCD19 /* AdditionalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalField.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -795,6 +803,7 @@
 			isa = PBXGroup;
 			children = (
 				09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */,
+				09BAAEB6298390E1009FCD19 /* Ticket */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -805,6 +814,16 @@
 				09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		09BAAEB6298390E1009FCD19 /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				09BAAEB72983913D009FCD19 /* AdditionalField.swift */,
+				09BAAEB4298390D9009FCD19 /* Currency.swift */,
+				09BAAEB2298270BE009FCD19 /* Ticket.swift */,
+			);
+			path = Ticket;
 			sourceTree = "<group>";
 		};
 		3E78BCEB26B8226800BF3026 /* GraphQL */ = {
@@ -1667,6 +1686,7 @@
 				9630DDDB26AEDFC20005BA24 /* FilterParam.swift */,
 				961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */,
 				961C1C9E26833C8800BE6F3B /* StandardTitleTranslation.swift */,
+				09B29F232983BCA4000B3897 /* Date+Extension.swift */,
 				96B670C326D7CE3A00DB74A4 /* Tests */,
 			);
 			path = Utils;
@@ -2307,6 +2327,7 @@
 				961C1CBB26839C2500BE6F3B /* BasketItem.swift in Sources */,
 				480BCD95251E254D00266617 /* RealifeTech.swift in Sources */,
 				961C1CDD2685F86200BE6F3B /* String+ISO8601Date.swift in Sources */,
+				09BAAEB5298390D9009FCD19 /* Currency.swift in Sources */,
 				961C4269260882C8001D8467 /* QueueItem.swift in Sources */,
 				961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
 				96874877268CC3F000DDC5DD /* OrderType.swift in Sources */,
@@ -2341,6 +2362,7 @@
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
 				964D291C269335F300A69FBC /* ScreenType.swift in Sources */,
 				9606ED84267B501800ED24D0 /* ProductProvidable.swift in Sources */,
+				09BAAEB3298270BF009FCD19 /* Ticket.swift in Sources */,
 				96AED8C526CFA80900F6C750 /* ColorStorable.swift in Sources */,
 				961C4278260882C8001D8467 /* ReachabilityChecking.swift in Sources */,
 				FAE114422840A81200827564 /* URLSessionCacheCleaner.swift in Sources */,
@@ -2358,6 +2380,7 @@
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
 				9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */,
+				09B29F242983BCA4000B3897 /* Date+Extension.swift in Sources */,
 				964D292726933F0D00A69FBC /* Canvas.swift in Sources */,
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
@@ -2428,6 +2451,7 @@
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
+				09BAAEB82983913D009FCD19 /* AdditionalField.swift in Sources */,
 				9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */,
 				961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */,
 				961C1CB726839AE100BE6F3B /* CollectionPreferenceType.swift in Sources */,
