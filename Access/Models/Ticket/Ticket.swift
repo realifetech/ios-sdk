@@ -113,12 +113,12 @@ public struct Ticket: Equatable {
 
 extension Ticket {
 
-    var statusState: TicketStatusState? {
+    public var statusState: TicketStatusState? {
         return TicketStatusState(rawValue: status ?? "")
     }
 }
 
-enum TicketStatusState: String {
+public enum TicketStatusState: String {
     case active, disabled, shared, redeemed
 }
 

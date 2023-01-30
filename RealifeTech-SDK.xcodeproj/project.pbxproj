@@ -19,6 +19,9 @@
 		098A51D6286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
 		09B29F242983BCA4000B3897 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F232983BCA4000B3897 /* Date+Extension.swift */; };
+		09B29F292983D2AC000B3897 /* TicketAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F282983D2AC000B3897 /* TicketAuth.swift */; };
+		09B29F2B29878EDA000B3897 /* UserLinkedTicketEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2A29878EDA000B3897 /* UserLinkedTicketEmail.swift */; };
+		09B29F2D29878F2B000B3897 /* TicketIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2C29878F2B000B3897 /* TicketIntegration.swift */; };
 		09B9D2CC28FD32C2006D4C94 /* SSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9D2CB28FD32C2006D4C94 /* SSO.swift */; };
 		09BAAE1A296E9E07009FCD19 /* Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE19296E9E07009FCD19 /* Access.swift */; };
 		09BAAE1D296EA0F1009FCD19 /* WalletPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */; };
@@ -375,6 +378,9 @@
 		098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStoreTests.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
 		09B29F232983BCA4000B3897 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		09B29F282983D2AC000B3897 /* TicketAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAuth.swift; sourceTree = "<group>"; };
+		09B29F2A29878EDA000B3897 /* UserLinkedTicketEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLinkedTicketEmail.swift; sourceTree = "<group>"; };
+		09B29F2C29878F2B000B3897 /* TicketIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketIntegration.swift; sourceTree = "<group>"; };
 		09B9D2CB28FD32C2006D4C94 /* SSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSO.swift; sourceTree = "<group>"; };
 		09BAAE19296E9E07009FCD19 /* Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Access.swift; sourceTree = "<group>"; };
 		09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPass.swift; sourceTree = "<group>"; };
@@ -779,6 +785,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		09B29F272983D13C000B3897 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				09B29F232983BCA4000B3897 /* Date+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		09B9D2CA28FD3299006D4C94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,6 +809,7 @@
 				09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */,
 				09BAAE1B296EA0E3009FCD19 /* Models */,
 				09BAAE35297510C5009FCD19 /* Tests */,
+				09B29F272983D13C000B3897 /* Utils */,
 			);
 			path = Access;
 			sourceTree = "<group>";
@@ -822,6 +837,9 @@
 				09BAAEB72983913D009FCD19 /* AdditionalField.swift */,
 				09BAAEB4298390D9009FCD19 /* Currency.swift */,
 				09BAAEB2298270BE009FCD19 /* Ticket.swift */,
+				09B29F282983D2AC000B3897 /* TicketAuth.swift */,
+				09B29F2A29878EDA000B3897 /* UserLinkedTicketEmail.swift */,
+				09B29F2C29878F2B000B3897 /* TicketIntegration.swift */,
 			);
 			path = Ticket;
 			sourceTree = "<group>";
@@ -1686,7 +1704,6 @@
 				9630DDDB26AEDFC20005BA24 /* FilterParam.swift */,
 				961C1CAA2683409C00BE6F3B /* StandardDescriptionTranslation.swift */,
 				961C1C9E26833C8800BE6F3B /* StandardTitleTranslation.swift */,
-				09B29F232983BCA4000B3897 /* Date+Extension.swift */,
 				96B670C326D7CE3A00DB74A4 /* Tests */,
 			);
 			path = Utils;
@@ -2308,6 +2325,7 @@
 				964D290326932CDC00A69FBC /* CoreImplementing.swift in Sources */,
 				961C41D3260882BA001D8467 /* OAuthTokenRefreshWatcher.swift in Sources */,
 				09BAAE1D296EA0F1009FCD19 /* WalletPass.swift in Sources */,
+				09B29F292983D2AC000B3897 /* TicketAuth.swift in Sources */,
 				0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */,
 				961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */,
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
@@ -2368,6 +2386,7 @@
 				FAE114422840A81200827564 /* URLSessionCacheCleaner.swift in Sources */,
 				487479E825408E8A0048F03D /* Communicate.swift in Sources */,
 				961C4223260882BB001D8467 /* RequestCreator.swift in Sources */,
+				09B29F2B29878EDA000B3897 /* UserLinkedTicketEmail.swift in Sources */,
 				961C1C902682071400BE6F3B /* FulfilmentPointType.swift in Sources */,
 				961C426E260882C8001D8467 /* DeviceToken.swift in Sources */,
 				961C425E260882C8001D8467 /* Storage.swift in Sources */,
@@ -2384,6 +2403,7 @@
 				964D292726933F0D00A69FBC /* Canvas.swift in Sources */,
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
+				09B29F2D29878F2B000B3897 /* TicketIntegration.swift in Sources */,
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				961C4274260882C8001D8467 /* NetworkConnectivityChecker.swift in Sources */,

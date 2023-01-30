@@ -78,6 +78,25 @@ public class AccessImplementing: Access {
             }
     }
 
+    public func getTicketAuths(completion: @escaping (Result<[TicketAuth], Error>) -> Void) {
+        graphQLManager.dispatch(
+            query: ApolloType.GetMyTicketAuthsQuery(),
+            cachePolicy: .fetchIgnoringCacheData) { result in
+                switch result {
+                case .success(let response):
+                    guard let data = response.data else {
+                        return completion(.failure(GraphQLManagerError.noDataError))
+                    }
+                    let ticketAuths = data.getMyTicketAuths?.compactMap {
+                        TicketAuth(response: $0?.fragments.fragmentTicketAuth)
+                    } ?? []
+                    completion(.success(ticketAuths))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+        }
+    }
+
     public func getWalletPass(ticketId: String, completion: @escaping (Result<WalletPass?, Error>) -> Void) {
         graphQLManager.dispatch(
             query: ApolloType.GetMyTicketWalletPassQuery(ticketId: ticketId),

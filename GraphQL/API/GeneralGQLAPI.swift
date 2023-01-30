@@ -3342,6 +3342,111 @@ public enum ApolloType {
     }
   }
 
+  public final class GetMyTicketAuthsQuery: GraphQLQuery {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      query getMyTicketAuths {
+        getMyTicketAuths {
+          __typename
+          ...FragmentTicketAuth
+        }
+      }
+      """
+
+    public let operationName: String = "getMyTicketAuths"
+
+    public var queryDocument: String {
+      var document: String = operationDefinition
+      document.append("\n" + FragmentTicketAuth.fragmentDefinition)
+      return document
+    }
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Query"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("getMyTicketAuths", type: .list(.object(GetMyTicketAuth.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(getMyTicketAuths: [GetMyTicketAuth?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getMyTicketAuths": getMyTicketAuths.flatMap { (value: [GetMyTicketAuth?]) -> [ResultMap?] in value.map { (value: GetMyTicketAuth?) -> ResultMap? in value.flatMap { (value: GetMyTicketAuth) -> ResultMap in value.resultMap } } }])
+      }
+
+      public var getMyTicketAuths: [GetMyTicketAuth?]? {
+        get {
+          return (resultMap["getMyTicketAuths"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [GetMyTicketAuth?] in value.map { (value: ResultMap?) -> GetMyTicketAuth? in value.flatMap { (value: ResultMap) -> GetMyTicketAuth in GetMyTicketAuth(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [GetMyTicketAuth?]) -> [ResultMap?] in value.map { (value: GetMyTicketAuth?) -> ResultMap? in value.flatMap { (value: GetMyTicketAuth) -> ResultMap in value.resultMap } } }, forKey: "getMyTicketAuths")
+        }
+      }
+
+      public struct GetMyTicketAuth: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["TicketAuth"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLFragmentSpread(FragmentTicketAuth.self),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var fragmentTicketAuth: FragmentTicketAuth {
+            get {
+              return FragmentTicketAuth(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
   public final class GetMyTicketsQuery: GraphQLQuery {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
@@ -8029,6 +8134,248 @@ public enum ApolloType {
         }
         set {
           resultMap.updateValue(newValue, forKey: "value")
+        }
+      }
+    }
+  }
+
+  public struct FragmentTicketAuth: GraphQLFragment {
+    /// The raw GraphQL definition of this fragment.
+    public static let fragmentDefinition: String =
+      """
+      fragment FragmentTicketAuth on TicketAuth {
+        __typename
+        id
+        userEmail {
+          __typename
+          id
+          email
+          valid
+        }
+        ticketIntegration {
+          __typename
+          id
+          name
+        }
+        accessToken
+        refreshToken
+        expireAt
+        clientEmail
+        clientId
+      }
+      """
+
+    public static let possibleTypes: [String] = ["TicketAuth"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(Int.self)),
+        GraphQLField("userEmail", type: .object(UserEmail.selections)),
+        GraphQLField("ticketIntegration", type: .object(TicketIntegration.selections)),
+        GraphQLField("accessToken", type: .scalar(String.self)),
+        GraphQLField("refreshToken", type: .scalar(String.self)),
+        GraphQLField("expireAt", type: .scalar(String.self)),
+        GraphQLField("clientEmail", type: .scalar(String.self)),
+        GraphQLField("clientId", type: .scalar(String.self)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(id: Int? = nil, userEmail: UserEmail? = nil, ticketIntegration: TicketIntegration? = nil, accessToken: String? = nil, refreshToken: String? = nil, expireAt: String? = nil, clientEmail: String? = nil, clientId: String? = nil) {
+      self.init(unsafeResultMap: ["__typename": "TicketAuth", "id": id, "userEmail": userEmail.flatMap { (value: UserEmail) -> ResultMap in value.resultMap }, "ticketIntegration": ticketIntegration.flatMap { (value: TicketIntegration) -> ResultMap in value.resultMap }, "accessToken": accessToken, "refreshToken": refreshToken, "expireAt": expireAt, "clientEmail": clientEmail, "clientId": clientId])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var id: Int? {
+      get {
+        return resultMap["id"] as? Int
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "id")
+      }
+    }
+
+    public var userEmail: UserEmail? {
+      get {
+        return (resultMap["userEmail"] as? ResultMap).flatMap { UserEmail(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "userEmail")
+      }
+    }
+
+    public var ticketIntegration: TicketIntegration? {
+      get {
+        return (resultMap["ticketIntegration"] as? ResultMap).flatMap { TicketIntegration(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "ticketIntegration")
+      }
+    }
+
+    public var accessToken: String? {
+      get {
+        return resultMap["accessToken"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "accessToken")
+      }
+    }
+
+    public var refreshToken: String? {
+      get {
+        return resultMap["refreshToken"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "refreshToken")
+      }
+    }
+
+    public var expireAt: String? {
+      get {
+        return resultMap["expireAt"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "expireAt")
+      }
+    }
+
+    public var clientEmail: String? {
+      get {
+        return resultMap["clientEmail"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "clientEmail")
+      }
+    }
+
+    public var clientId: String? {
+      get {
+        return resultMap["clientId"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "clientId")
+      }
+    }
+
+    public struct UserEmail: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["UserEmail"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("email", type: .scalar(String.self)),
+          GraphQLField("valid", type: .scalar(Bool.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID? = nil, email: String? = nil, valid: Bool? = nil) {
+        self.init(unsafeResultMap: ["__typename": "UserEmail", "id": id, "email": email, "valid": valid])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID? {
+        get {
+          return resultMap["id"] as? GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var valid: Bool? {
+        get {
+          return resultMap["valid"] as? Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "valid")
+        }
+      }
+    }
+
+    public struct TicketIntegration: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["TicketIntegration"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(Int.self)),
+          GraphQLField("name", type: .scalar(String.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: Int? = nil, name: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "TicketIntegration", "id": id, "name": name])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: Int? {
+        get {
+          return resultMap["id"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
         }
       }
     }

@@ -11,7 +11,7 @@ import Foundation
 import GraphQL
 #endif
 
-public struct AdditionalField: Codable, Equatable {
+public struct AdditionalField: Equatable {
     public let name: String?
     public let value: String?
 
