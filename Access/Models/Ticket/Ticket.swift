@@ -12,7 +12,7 @@ import GraphQL
 #endif
 
 public struct Ticket: Codable, Equatable {
-    public let id: String?
+    public let id: String
     public let seat: String?
     public let qrCodeUrl: String?
     public let sessionDate: String?
@@ -45,7 +45,7 @@ public struct Ticket: Codable, Equatable {
     public let printed: Bool?
 
     public init(
-        id: String?,
+        id: String,
         seat: String?,
         qrCodeUrl: String?,
         sessionDate: String?,
@@ -125,8 +125,8 @@ public enum TicketStatusState: String {
 extension Ticket {
 
     init?(response: ApolloType.FragmentTicket?) {
-        guard let response = response else { return nil }
-        id = response.id
+        guard let response = response, let ticketId = response.id else { return nil }
+        id = ticketId
         seat = response.seat
         qrCodeUrl = response.qrCodeUrl
         sessionDate = response.sessionDate
