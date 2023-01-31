@@ -11,7 +11,7 @@ import Foundation
 import GraphQL
 #endif
 
-public struct Ticket: Equatable {
+public struct Ticket: Codable, Equatable {
     public let id: String?
     public let seat: String?
     public let qrCodeUrl: String?
