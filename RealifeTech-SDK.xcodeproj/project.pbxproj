@@ -20,7 +20,7 @@
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
 		09B29F242983BCA4000B3897 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F232983BCA4000B3897 /* Date+Extension.swift */; };
 		09B29F292983D2AC000B3897 /* TicketAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F282983D2AC000B3897 /* TicketAuth.swift */; };
-		09B29F2B29878EDA000B3897 /* UserLinkedTicketEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2A29878EDA000B3897 /* UserLinkedTicketEmail.swift */; };
+		09B29F2B29878EDA000B3897 /* UserEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2A29878EDA000B3897 /* UserEmail.swift */; };
 		09B29F2D29878F2B000B3897 /* TicketIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2C29878F2B000B3897 /* TicketIntegration.swift */; };
 		09B9D2CC28FD32C2006D4C94 /* SSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9D2CB28FD32C2006D4C94 /* SSO.swift */; };
 		09BAAE1A296E9E07009FCD19 /* Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE19296E9E07009FCD19 /* Access.swift */; };
@@ -379,7 +379,7 @@
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
 		09B29F232983BCA4000B3897 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		09B29F282983D2AC000B3897 /* TicketAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAuth.swift; sourceTree = "<group>"; };
-		09B29F2A29878EDA000B3897 /* UserLinkedTicketEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLinkedTicketEmail.swift; sourceTree = "<group>"; };
+		09B29F2A29878EDA000B3897 /* UserEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmail.swift; sourceTree = "<group>"; };
 		09B29F2C29878F2B000B3897 /* TicketIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketIntegration.swift; sourceTree = "<group>"; };
 		09B9D2CB28FD32C2006D4C94 /* SSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSO.swift; sourceTree = "<group>"; };
 		09BAAE19296E9E07009FCD19 /* Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Access.swift; sourceTree = "<group>"; };
@@ -838,7 +838,7 @@
 				09BAAEB4298390D9009FCD19 /* Currency.swift */,
 				09BAAEB2298270BE009FCD19 /* Ticket.swift */,
 				09B29F282983D2AC000B3897 /* TicketAuth.swift */,
-				09B29F2A29878EDA000B3897 /* UserLinkedTicketEmail.swift */,
+				09B29F2A29878EDA000B3897 /* UserEmail.swift */,
 				09B29F2C29878F2B000B3897 /* TicketIntegration.swift */,
 			);
 			path = Ticket;
@@ -2386,7 +2386,7 @@
 				FAE114422840A81200827564 /* URLSessionCacheCleaner.swift in Sources */,
 				487479E825408E8A0048F03D /* Communicate.swift in Sources */,
 				961C4223260882BB001D8467 /* RequestCreator.swift in Sources */,
-				09B29F2B29878EDA000B3897 /* UserLinkedTicketEmail.swift in Sources */,
+				09B29F2B29878EDA000B3897 /* UserEmail.swift in Sources */,
 				961C1C902682071400BE6F3B /* FulfilmentPointType.swift in Sources */,
 				961C426E260882C8001D8467 /* DeviceToken.swift in Sources */,
 				961C425E260882C8001D8467 /* Storage.swift in Sources */,

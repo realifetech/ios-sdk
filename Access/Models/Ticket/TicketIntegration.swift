@@ -19,7 +19,7 @@ public enum TicketingIntegrationName: String {
     case unknown
 }
 
-public struct TicketIntegration {
+public struct TicketIntegration: Codable {
     public let id: Int?
     public let integrationName: String?
 
@@ -33,7 +33,7 @@ public struct TicketIntegration {
 }
 
 extension TicketIntegration {
-    var type: TicketingIntegrationName {
+    public var type: TicketingIntegrationName {
         guard let integrationName = integrationName,
               let integrationType = TicketingIntegrationName(rawValue: integrationName)
         else { return .unknown }

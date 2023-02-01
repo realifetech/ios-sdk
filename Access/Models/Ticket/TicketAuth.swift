@@ -11,9 +11,9 @@ import Foundation
 import GraphQL
 #endif
 
-public struct TicketAuth {
+public struct TicketAuth: Codable {
     public let id: Int?
-    public let userEmail: UserLinkedTicketEmail?
+    public let userEmail: UserEmail?
     public let ticketIntegration: TicketIntegration?
     public let accessToken: String?
     public let refreshToken: String?
@@ -23,7 +23,7 @@ public struct TicketAuth {
 
     public init(
         id: Int?,
-        userEmail: UserLinkedTicketEmail?,
+        userEmail: UserEmail?,
         ticketIntegration: TicketIntegration?,
         accessToken: String?,
         refreshToken: String?,
@@ -46,7 +46,7 @@ extension TicketAuth {
 
     init(response: ApolloType.FragmentTicketAuth?) {
         self.id = response?.id
-        self.userEmail = UserLinkedTicketEmail(response: response?.userEmail)
+        self.userEmail = UserEmail(response: response?.userEmail)
         self.ticketIntegration = TicketIntegration(response: response?.ticketIntegration)
         self.accessToken = response?.accessToken
         self.refreshToken = response?.refreshToken

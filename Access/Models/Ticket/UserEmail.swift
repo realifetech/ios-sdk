@@ -1,5 +1,5 @@
 //
-//  UserLinkedTicketEmail.swift
+//  UserEmail.swift
 //  RealifeTech
 //
 //  Created by YOU-HSUAN YU on 2023/1/30.
@@ -11,7 +11,7 @@ import Foundation
 import GraphQL
 #endif
 
-public struct UserLinkedTicketEmail {
+public struct UserEmail: Codable {
     public let id: String?
     public let email: String?
     public let valid: Bool?
@@ -27,7 +27,7 @@ public struct UserLinkedTicketEmail {
     }
 }
 
-extension UserLinkedTicketEmail {
+extension UserEmail {
 
     init(response: ApolloType.FragmentTicketAuth.UserEmail?) {
         self.id = response?.id
