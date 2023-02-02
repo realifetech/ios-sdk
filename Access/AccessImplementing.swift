@@ -59,7 +59,7 @@ public class AccessImplementing: Access {
 
     public func getNextUpcomingTicket(completion: @escaping (Result<Ticket?, Error>) -> Void) {
         graphQLManager.dispatch(
-            query: ApolloType.GetUpcomingTicketsQuery(
+            query: ApolloType.GetMyTicketsQuery(
                 pageSize: 1,
                 filters: ApolloType.TicketFilter(
                     status: "active",

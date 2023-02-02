@@ -3451,8 +3451,8 @@ public enum ApolloType {
     /// The raw GraphQL definition of this operation.
     public let operationDefinition: String =
       """
-      query getMyTickets($pageSize: Int!) {
-        getMyTickets(pageSize: $pageSize) {
+      query getMyTickets($pageSize: Int!, $filters: TicketFilter, $order: TicketOrder) {
+        getMyTickets(pageSize: $pageSize, filters: $filters, order: $order) {
           __typename
           edges {
             __typename
@@ -3472,13 +3472,17 @@ public enum ApolloType {
     }
 
     public var pageSize: Int
+    public var filters: TicketFilter?
+    public var order: TicketOrder?
 
-    public init(pageSize: Int) {
+    public init(pageSize: Int, filters: TicketFilter? = nil, order: TicketOrder? = nil) {
       self.pageSize = pageSize
+      self.filters = filters
+      self.order = order
     }
 
     public var variables: GraphQLMap? {
-      return ["pageSize": pageSize]
+      return ["pageSize": pageSize, "filters": filters, "order": order]
     }
 
     public struct Data: GraphQLSelectionSet {
@@ -3486,7 +3490,7 @@ public enum ApolloType {
 
       public static var selections: [GraphQLSelection] {
         return [
-          GraphQLField("getMyTickets", arguments: ["pageSize": GraphQLVariable("pageSize")], type: .object(GetMyTicket.selections)),
+          GraphQLField("getMyTickets", arguments: ["pageSize": GraphQLVariable("pageSize"), "filters": GraphQLVariable("filters"), "order": GraphQLVariable("order")], type: .object(GetMyTicket.selections)),
         ]
       }
 
@@ -3699,164 +3703,6 @@ public enum ApolloType {
           }
           set {
             resultMap.updateValue(newValue, forKey: "url")
-          }
-        }
-      }
-    }
-  }
-
-  public final class GetUpcomingTicketsQuery: GraphQLQuery {
-    /// The raw GraphQL definition of this operation.
-    public let operationDefinition: String =
-      """
-      query getUpcomingTickets($pageSize: Int!, $filters: TicketFilter, $order: TicketOrder) {
-        getMyTickets(pageSize: $pageSize, filters: $filters, order: $order) {
-          __typename
-          edges {
-            __typename
-            ...FragmentTicket
-          }
-        }
-      }
-      """
-
-    public let operationName: String = "getUpcomingTickets"
-
-    public var queryDocument: String {
-      var document: String = operationDefinition
-      document.append("\n" + FragmentTicket.fragmentDefinition)
-      return document
-    }
-
-    public var pageSize: Int
-    public var filters: TicketFilter?
-    public var order: TicketOrder?
-
-    public init(pageSize: Int, filters: TicketFilter? = nil, order: TicketOrder? = nil) {
-      self.pageSize = pageSize
-      self.filters = filters
-      self.order = order
-    }
-
-    public var variables: GraphQLMap? {
-      return ["pageSize": pageSize, "filters": filters, "order": order]
-    }
-
-    public struct Data: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["Query"]
-
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("getMyTickets", arguments: ["pageSize": GraphQLVariable("pageSize"), "filters": GraphQLVariable("filters"), "order": GraphQLVariable("order")], type: .object(GetMyTicket.selections)),
-        ]
-      }
-
-      public private(set) var resultMap: ResultMap
-
-      public init(unsafeResultMap: ResultMap) {
-        self.resultMap = unsafeResultMap
-      }
-
-      public init(getMyTickets: GetMyTicket? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Query", "getMyTickets": getMyTickets.flatMap { (value: GetMyTicket) -> ResultMap in value.resultMap }])
-      }
-
-      public var getMyTickets: GetMyTicket? {
-        get {
-          return (resultMap["getMyTickets"] as? ResultMap).flatMap { GetMyTicket(unsafeResultMap: $0) }
-        }
-        set {
-          resultMap.updateValue(newValue?.resultMap, forKey: "getMyTickets")
-        }
-      }
-
-      public struct GetMyTicket: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["TicketEdge"]
-
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("edges", type: .list(.object(Edge.selections))),
-          ]
-        }
-
-        public private(set) var resultMap: ResultMap
-
-        public init(unsafeResultMap: ResultMap) {
-          self.resultMap = unsafeResultMap
-        }
-
-        public init(edges: [Edge?]? = nil) {
-          self.init(unsafeResultMap: ["__typename": "TicketEdge", "edges": edges.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }])
-        }
-
-        public var __typename: String {
-          get {
-            return resultMap["__typename"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        public var edges: [Edge?]? {
-          get {
-            return (resultMap["edges"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Edge?] in value.map { (value: ResultMap?) -> Edge? in value.flatMap { (value: ResultMap) -> Edge in Edge(unsafeResultMap: value) } } }
-          }
-          set {
-            resultMap.updateValue(newValue.flatMap { (value: [Edge?]) -> [ResultMap?] in value.map { (value: Edge?) -> ResultMap? in value.flatMap { (value: Edge) -> ResultMap in value.resultMap } } }, forKey: "edges")
-          }
-        }
-
-        public struct Edge: GraphQLSelectionSet {
-          public static let possibleTypes: [String] = ["Ticket"]
-
-          public static var selections: [GraphQLSelection] {
-            return [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLFragmentSpread(FragmentTicket.self),
-            ]
-          }
-
-          public private(set) var resultMap: ResultMap
-
-          public init(unsafeResultMap: ResultMap) {
-            self.resultMap = unsafeResultMap
-          }
-
-          public var __typename: String {
-            get {
-              return resultMap["__typename"]! as! String
-            }
-            set {
-              resultMap.updateValue(newValue, forKey: "__typename")
-            }
-          }
-
-          public var fragments: Fragments {
-            get {
-              return Fragments(unsafeResultMap: resultMap)
-            }
-            set {
-              resultMap += newValue.resultMap
-            }
-          }
-
-          public struct Fragments {
-            public private(set) var resultMap: ResultMap
-
-            public init(unsafeResultMap: ResultMap) {
-              self.resultMap = unsafeResultMap
-            }
-
-            public var fragmentTicket: FragmentTicket {
-              get {
-                return FragmentTicket(unsafeResultMap: resultMap)
-              }
-              set {
-                resultMap += newValue.resultMap
-              }
-            }
           }
         }
       }

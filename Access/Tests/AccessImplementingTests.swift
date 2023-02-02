@@ -82,12 +82,12 @@ final class AccessImplementingTests: XCTestCase {
     }
 
     func test_getNextUpcomingTicket_completeWithSuccess() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetUpcomingTicketsQuery.Data.self)
-        var edge = ApolloType.GetUpcomingTicketsQuery.Data.GetMyTicket.Edge(unsafeResultMap: [:])
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyTicketsQuery.Data.self)
+        var edge = ApolloType.GetMyTicketsQuery.Data.GetMyTicket.Edge(unsafeResultMap: [:])
         edge.fragments.fragmentTicket = ticketFragment
-        let getMyTicketsResponse = ApolloType.GetUpcomingTicketsQuery.Data.GetMyTicket(edges: [edge])
-        let data = ApolloType.GetUpcomingTicketsQuery.Data.init(getMyTickets: getMyTicketsResponse)
-        let expectedResult = GraphQLResult<ApolloType.GetUpcomingTicketsQuery.Data>(
+        let getMyTicketsResponse = ApolloType.GetMyTicketsQuery.Data.GetMyTicket(edges: [edge])
+        let data = ApolloType.GetMyTicketsQuery.Data.init(getMyTickets: getMyTicketsResponse)
+        let expectedResult = GraphQLResult<ApolloType.GetMyTicketsQuery.Data>(
             data: data,
             extensions: nil,
             errors: nil,
@@ -105,7 +105,7 @@ final class AccessImplementingTests: XCTestCase {
     }
 
     func test_getNextUpcomingTicket_completeWithFailure() {
-        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetUpcomingTicketsQuery.Data.self)
+        let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyTicketsQuery.Data.self)
         graphQLManager.resultReturns = .failure(DummyError.failure)
         sut.getNextUpcomingTicket { result in
             guard case let .failure(returnedError) = result else {
