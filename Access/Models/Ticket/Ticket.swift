@@ -26,7 +26,7 @@ public struct Ticket: Codable, Equatable {
     public let section: String?
     public let row: String?
     public let clientEmail: String?
-    public let price: Int?
+    public let price: Double?
     public let currency: Currency?
     public let externalCustomerRef: String?
     public let externalCardRef: String?
@@ -59,7 +59,7 @@ public struct Ticket: Codable, Equatable {
         section: String?,
         row: String?,
         clientEmail: String?,
-        price: Int?,
+        price: Double?,
         currency: Currency?,
         externalCustomerRef: String?,
         externalCardRef: String?,

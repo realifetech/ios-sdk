@@ -7702,7 +7702,7 @@ public enum ApolloType {
         GraphQLField("section", type: .scalar(String.self)),
         GraphQLField("row", type: .scalar(String.self)),
         GraphQLField("clientEmail", type: .scalar(String.self)),
-        GraphQLField("price", type: .scalar(Int.self)),
+        GraphQLField("price", type: .scalar(Double.self)),
         GraphQLField("currency", type: .object(Currency.selections)),
         GraphQLField("externalCustomerRef", type: .scalar(String.self)),
         GraphQLField("externalCardRef", type: .scalar(String.self)),
@@ -7728,7 +7728,7 @@ public enum ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID? = nil, seat: String? = nil, qrCodeUrl: String? = nil, sessionDate: String? = nil, title: String? = nil, eventUId: String? = nil, barCode: String? = nil, sectorName: String? = nil, venueName: String? = nil, venueRoom: String? = nil, clientName: String? = nil, section: String? = nil, row: String? = nil, clientEmail: String? = nil, price: Int? = nil, currency: Currency? = nil, externalCustomerRef: String? = nil, externalCardRef: String? = nil, entrance: String? = nil, shareLink: String? = nil, canShare: Bool? = nil, legalLongText: String? = nil, legalShortText: String? = nil, mapImageUrl: String? = nil, mapUrl: String? = nil, status: String? = nil, redeemedAt: String? = nil, redeemerEmail: String? = nil, sharerEmail: String? = nil, additionalFields: [AdditionalField?]? = nil, printed: Bool? = nil) {
+    public init(id: GraphQLID? = nil, seat: String? = nil, qrCodeUrl: String? = nil, sessionDate: String? = nil, title: String? = nil, eventUId: String? = nil, barCode: String? = nil, sectorName: String? = nil, venueName: String? = nil, venueRoom: String? = nil, clientName: String? = nil, section: String? = nil, row: String? = nil, clientEmail: String? = nil, price: Double? = nil, currency: Currency? = nil, externalCustomerRef: String? = nil, externalCardRef: String? = nil, entrance: String? = nil, shareLink: String? = nil, canShare: Bool? = nil, legalLongText: String? = nil, legalShortText: String? = nil, mapImageUrl: String? = nil, mapUrl: String? = nil, status: String? = nil, redeemedAt: String? = nil, redeemerEmail: String? = nil, sharerEmail: String? = nil, additionalFields: [AdditionalField?]? = nil, printed: Bool? = nil) {
       self.init(unsafeResultMap: ["__typename": "Ticket", "id": id, "seat": seat, "qrCodeUrl": qrCodeUrl, "sessionDate": sessionDate, "title": title, "eventUId": eventUId, "barCode": barCode, "sectorName": sectorName, "venueName": venueName, "venueRoom": venueRoom, "clientName": clientName, "section": section, "row": row, "clientEmail": clientEmail, "price": price, "currency": currency.flatMap { (value: Currency) -> ResultMap in value.resultMap }, "externalCustomerRef": externalCustomerRef, "externalCardRef": externalCardRef, "entrance": entrance, "shareLink": shareLink, "canShare": canShare, "legalLongText": legalLongText, "legalShortText": legalShortText, "mapImageUrl": mapImageUrl, "mapUrl": mapUrl, "status": status, "redeemedAt": redeemedAt, "redeemerEmail": redeemerEmail, "sharerEmail": sharerEmail, "additionalFields": additionalFields.flatMap { (value: [AdditionalField?]) -> [ResultMap?] in value.map { (value: AdditionalField?) -> ResultMap? in value.flatMap { (value: AdditionalField) -> ResultMap in value.resultMap } } }, "printed": printed])
     }
 
@@ -7867,9 +7867,9 @@ public enum ApolloType {
       }
     }
 
-    public var price: Int? {
+    public var price: Double? {
       get {
-        return resultMap["price"] as? Int
+        return resultMap["price"] as? Double
       }
       set {
         resultMap.updateValue(newValue, forKey: "price")
