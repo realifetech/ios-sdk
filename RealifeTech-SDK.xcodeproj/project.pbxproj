@@ -30,7 +30,7 @@
 		09BAAE37297510F0009FCD19 /* AccessImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */; };
 		09BAAEB3298270BF009FCD19 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB2298270BE009FCD19 /* Ticket.swift */; };
 		09BAAEB5298390D9009FCD19 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB4298390D9009FCD19 /* Currency.swift */; };
-		09BAAEB82983913D009FCD19 /* AdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB72983913D009FCD19 /* AdditionalField.swift */; };
+		09BAAEB82983913D009FCD19 /* TicketAdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB72983913D009FCD19 /* TicketAdditionalField.swift */; };
 		3E78BCF826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD0526B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD1826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -389,7 +389,7 @@
 		09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementingTests.swift; sourceTree = "<group>"; };
 		09BAAEB2298270BE009FCD19 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		09BAAEB4298390D9009FCD19 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		09BAAEB72983913D009FCD19 /* AdditionalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalField.swift; sourceTree = "<group>"; };
+		09BAAEB72983913D009FCD19 /* TicketAdditionalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAdditionalField.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -834,7 +834,7 @@
 		09BAAEB6298390E1009FCD19 /* Ticket */ = {
 			isa = PBXGroup;
 			children = (
-				09BAAEB72983913D009FCD19 /* AdditionalField.swift */,
+				09BAAEB72983913D009FCD19 /* TicketAdditionalField.swift */,
 				09BAAEB4298390D9009FCD19 /* Currency.swift */,
 				09BAAEB2298270BE009FCD19 /* Ticket.swift */,
 				09B29F282983D2AC000B3897 /* TicketAuth.swift */,
@@ -2471,7 +2471,7 @@
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
-				09BAAEB82983913D009FCD19 /* AdditionalField.swift in Sources */,
+				09BAAEB82983913D009FCD19 /* TicketAdditionalField.swift in Sources */,
 				9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */,
 				961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */,
 				961C1CB726839AE100BE6F3B /* CollectionPreferenceType.swift in Sources */,

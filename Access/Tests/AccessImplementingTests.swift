@@ -81,7 +81,7 @@ final class AccessImplementingTests: XCTestCase {
         }
     }
 
-    func test_getUpcomingTicket_completeWithSuccess() {
+    func test_getNextUpcomingTicket_completeWithSuccess() {
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetUpcomingTicketsQuery.Data.self)
         var edge = ApolloType.GetUpcomingTicketsQuery.Data.GetMyTicket.Edge(unsafeResultMap: [:])
         edge.fragments.fragmentTicket = ticketFragment
@@ -95,7 +95,7 @@ final class AccessImplementingTests: XCTestCase {
             dependentKeys: nil)
         graphQLManager.resultReturns = .success(expectedResult)
         var ticket: Ticket?
-        sut.getUpcomingTicket { result in
+        sut.getNextUpcomingTicket { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
@@ -104,10 +104,10 @@ final class AccessImplementingTests: XCTestCase {
         XCTAssertEqual(ticket?.id, ticketFragment.id)
     }
 
-    func test_getUpcomingTicket_completeWithFailure() {
+    func test_getNextUpcomingTicket_completeWithFailure() {
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetUpcomingTicketsQuery.Data.self)
         graphQLManager.resultReturns = .failure(DummyError.failure)
-        sut.getUpcomingTicket { result in
+        sut.getNextUpcomingTicket { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
             }

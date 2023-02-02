@@ -1,5 +1,5 @@
 //
-//  AdditionalField.swift
+//  TicketAdditionalField.swift
 //  RealifeTech
 //
 //  Created by YOU-HSUAN YU on 2023/1/27.
@@ -11,7 +11,7 @@ import Foundation
 import GraphQL
 #endif
 
-public struct AdditionalField: Codable, Equatable {
+public struct TicketAdditionalField: Codable, Equatable {
     public let name: String?
     public let value: String?
 
@@ -21,7 +21,7 @@ public struct AdditionalField: Codable, Equatable {
     }
 }
 
-extension AdditionalField {
+extension TicketAdditionalField {
 
     init(response: ApolloType.FragmentTicket.AdditionalField?) {
         self.name = response?.name

@@ -41,7 +41,7 @@ public struct Ticket: Codable, Equatable {
     public let redeemedAt: String?
     public let redeemerEmail: String?
     public let sharerEmail: String?
-    public let additionalFields: [AdditionalField]?
+    public let additionalFields: [TicketAdditionalField]?
     public let printed: Bool?
 
     public init(
@@ -74,7 +74,7 @@ public struct Ticket: Codable, Equatable {
         redeemedAt: String?,
         redeemerEmail: String?,
         sharerEmail: String?,
-        additionalFields: [AdditionalField]?,
+        additionalFields: [TicketAdditionalField]?,
         printed: Bool?
     ) {
         self.id = id
@@ -156,7 +156,7 @@ extension Ticket {
         redeemerEmail = response.redeemerEmail
         sharerEmail = response.sharerEmail
         additionalFields = (response.additionalFields?.compactMap {
-            AdditionalField(response: $0)
+            TicketAdditionalField(response: $0)
         })
         printed = response.printed
     }
