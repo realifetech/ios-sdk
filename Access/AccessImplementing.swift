@@ -22,7 +22,7 @@ public class AccessImplementing: Access {
     public func getMyTickets(pageSize: Int, completion: @escaping (Result<PaginatedObject<Ticket>, Error>) -> Void) {
         graphQLManager.dispatch(
             query: ApolloType.GetMyTicketsQuery(pageSize: pageSize),
-            cachePolicy: .fetchIgnoringCacheData
+            cachePolicy: .returnCacheDataAndFetch
         ) { result in
             switch result {
             case .success(let response):
@@ -42,7 +42,7 @@ public class AccessImplementing: Access {
     public func getMyTicketById(id: Int, completion: @escaping (Result<Ticket, Error>) -> Void) {
         graphQLManager.dispatch(
             query: ApolloType.GetMyTicketQuery(id: String(id)),
-            cachePolicy: .fetchIgnoringCacheData) { result in
+            cachePolicy: .returnCacheDataAndFetch) { result in
                 switch result {
                 case .success(let response):
                     guard let data = response.data,
@@ -65,7 +65,7 @@ public class AccessImplementing: Access {
                     status: "active",
                     sessionDateAfter: "\(Date().startOfCurrentDay.twentyFourHourDateTimeStamp)"),
                 order: ApolloType.TicketOrder(direction: "asc")),
-            cachePolicy: .fetchIgnoringCacheData) { result in
+            cachePolicy: .returnCacheDataAndFetch) { result in
                 switch result {
                 case .success(let response):
                     let tickets = response.data?.getMyTickets?.edges?.compactMap {
