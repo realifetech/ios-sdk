@@ -18,12 +18,19 @@
 		098A51CD286AC2600087EBB4 /* RLTNotificationsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */; };
 		098A51D6286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */; };
 		09A6F9FC26E7BD20009AF856 /* JSON+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */; };
+		09B29F242983BCA4000B3897 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F232983BCA4000B3897 /* Date+Extension.swift */; };
+		09B29F292983D2AC000B3897 /* TicketAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F282983D2AC000B3897 /* TicketAuth.swift */; };
+		09B29F2B29878EDA000B3897 /* UserEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2A29878EDA000B3897 /* UserEmail.swift */; };
+		09B29F2D29878F2B000B3897 /* TicketIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2C29878F2B000B3897 /* TicketIntegration.swift */; };
 		09B9D2CC28FD32C2006D4C94 /* SSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9D2CB28FD32C2006D4C94 /* SSO.swift */; };
 		09BAAE1A296E9E07009FCD19 /* Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE19296E9E07009FCD19 /* Access.swift */; };
 		09BAAE1D296EA0F1009FCD19 /* WalletPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */; };
 		09BAAE1F296EAAC1009FCD19 /* AccessFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */; };
 		09BAAE21296EAB26009FCD19 /* AccessImplementing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */; };
 		09BAAE37297510F0009FCD19 /* AccessImplementingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */; };
+		09BAAEB3298270BF009FCD19 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB2298270BE009FCD19 /* Ticket.swift */; };
+		09BAAEB5298390D9009FCD19 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB4298390D9009FCD19 /* Currency.swift */; };
+		09BAAEB82983913D009FCD19 /* TicketAdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB72983913D009FCD19 /* TicketAdditionalField.swift */; };
 		3E78BCF826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD0526B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD1826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -370,12 +377,19 @@
 		098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTNotificationsTracker.swift; sourceTree = "<group>"; };
 		098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStoreTests.swift; sourceTree = "<group>"; };
 		09A6F9FB26E7BD20009AF856 /* JSON+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Helper.swift"; sourceTree = "<group>"; };
+		09B29F232983BCA4000B3897 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		09B29F282983D2AC000B3897 /* TicketAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAuth.swift; sourceTree = "<group>"; };
+		09B29F2A29878EDA000B3897 /* UserEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmail.swift; sourceTree = "<group>"; };
+		09B29F2C29878F2B000B3897 /* TicketIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketIntegration.swift; sourceTree = "<group>"; };
 		09B9D2CB28FD32C2006D4C94 /* SSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSO.swift; sourceTree = "<group>"; };
 		09BAAE19296E9E07009FCD19 /* Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Access.swift; sourceTree = "<group>"; };
 		09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPass.swift; sourceTree = "<group>"; };
 		09BAAE1E296EAAC1009FCD19 /* AccessFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessFactory.swift; sourceTree = "<group>"; };
 		09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementing.swift; sourceTree = "<group>"; };
 		09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessImplementingTests.swift; sourceTree = "<group>"; };
+		09BAAEB2298270BE009FCD19 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		09BAAEB4298390D9009FCD19 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		09BAAEB72983913D009FCD19 /* TicketAdditionalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAdditionalField.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
 		3A2CC4D70E6F02FA1EE712F2 /* Pods-RealifeTech-RealifeTechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -771,6 +785,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		09B29F272983D13C000B3897 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				09B29F232983BCA4000B3897 /* Date+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		09B9D2CA28FD3299006D4C94 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +809,7 @@
 				09BAAE20296EAB26009FCD19 /* AccessImplementing.swift */,
 				09BAAE1B296EA0E3009FCD19 /* Models */,
 				09BAAE35297510C5009FCD19 /* Tests */,
+				09B29F272983D13C000B3897 /* Utils */,
 			);
 			path = Access;
 			sourceTree = "<group>";
@@ -795,6 +818,7 @@
 			isa = PBXGroup;
 			children = (
 				09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */,
+				09BAAEB6298390E1009FCD19 /* Ticket */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -805,6 +829,19 @@
 				09BAAE36297510F0009FCD19 /* AccessImplementingTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		09BAAEB6298390E1009FCD19 /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				09BAAEB72983913D009FCD19 /* TicketAdditionalField.swift */,
+				09BAAEB4298390D9009FCD19 /* Currency.swift */,
+				09BAAEB2298270BE009FCD19 /* Ticket.swift */,
+				09B29F282983D2AC000B3897 /* TicketAuth.swift */,
+				09B29F2A29878EDA000B3897 /* UserEmail.swift */,
+				09B29F2C29878F2B000B3897 /* TicketIntegration.swift */,
+			);
+			path = Ticket;
 			sourceTree = "<group>";
 		};
 		3E78BCEB26B8226800BF3026 /* GraphQL */ = {
@@ -2288,6 +2325,7 @@
 				964D290326932CDC00A69FBC /* CoreImplementing.swift in Sources */,
 				961C41D3260882BA001D8467 /* OAuthTokenRefreshWatcher.swift in Sources */,
 				09BAAE1D296EA0F1009FCD19 /* WalletPass.swift in Sources */,
+				09B29F292983D2AC000B3897 /* TicketAuth.swift in Sources */,
 				0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */,
 				961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */,
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
@@ -2307,6 +2345,7 @@
 				961C1CBB26839C2500BE6F3B /* BasketItem.swift in Sources */,
 				480BCD95251E254D00266617 /* RealifeTech.swift in Sources */,
 				961C1CDD2685F86200BE6F3B /* String+ISO8601Date.swift in Sources */,
+				09BAAEB5298390D9009FCD19 /* Currency.swift in Sources */,
 				961C4269260882C8001D8467 /* QueueItem.swift in Sources */,
 				961C41D0260882BA001D8467 /* OAuthRefreshOrWaitActionGenerator.swift in Sources */,
 				96874877268CC3F000DDC5DD /* OrderType.swift in Sources */,
@@ -2341,11 +2380,13 @@
 				961C426D260882C8001D8467 /* DeviceRepository.swift in Sources */,
 				964D291C269335F300A69FBC /* ScreenType.swift in Sources */,
 				9606ED84267B501800ED24D0 /* ProductProvidable.swift in Sources */,
+				09BAAEB3298270BF009FCD19 /* Ticket.swift in Sources */,
 				96AED8C526CFA80900F6C750 /* ColorStorable.swift in Sources */,
 				961C4278260882C8001D8467 /* ReachabilityChecking.swift in Sources */,
 				FAE114422840A81200827564 /* URLSessionCacheCleaner.swift in Sources */,
 				487479E825408E8A0048F03D /* Communicate.swift in Sources */,
 				961C4223260882BB001D8467 /* RequestCreator.swift in Sources */,
+				09B29F2B29878EDA000B3897 /* UserEmail.swift in Sources */,
 				961C1C902682071400BE6F3B /* FulfilmentPointType.swift in Sources */,
 				961C426E260882C8001D8467 /* DeviceToken.swift in Sources */,
 				961C425E260882C8001D8467 /* Storage.swift in Sources */,
@@ -2358,9 +2399,11 @@
 				4889595D2539D89C00B978A9 /* AnalyticsImplementing.swift in Sources */,
 				961C1C922682082D00BE6F3B /* FulfilmentPointFilter.swift in Sources */,
 				9687487F268CC4F500DDC5DD /* PaymentActionType.swift in Sources */,
+				09B29F242983BCA4000B3897 /* Date+Extension.swift in Sources */,
 				964D292726933F0D00A69FBC /* Canvas.swift in Sources */,
 				961C4267260882C8001D8467 /* Identifiable.swift in Sources */,
 				48EFE2252539E21100CC6E58 /* PushNotificationRegistering.swift in Sources */,
+				09B29F2D29878F2B000B3897 /* TicketIntegration.swift in Sources */,
 				961C41E7260882BA001D8467 /* APIRequesterHelper.swift in Sources */,
 				488A68222546ECE0005C030E /* StaticDeviceInformation.swift in Sources */,
 				961C4274260882C8001D8467 /* NetworkConnectivityChecker.swift in Sources */,
@@ -2428,6 +2471,7 @@
 				964A3BEF2680B54900C42C35 /* FulfilmentPointRepository.swift in Sources */,
 				9606EDAB267B7CF900ED24D0 /* GraphQLManager.swift in Sources */,
 				961C4279260882C8001D8467 /* ReachabilityFactory.swift in Sources */,
+				09BAAEB82983913D009FCD19 /* TicketAdditionalField.swift in Sources */,
 				9687486B268CC15E00DDC5DD /* PaymentSourceInput.swift in Sources */,
 				961C1CA92683407B00BE6F3B /* ProductCategory.swift in Sources */,
 				961C1CB726839AE100BE6F3B /* CollectionPreferenceType.swift in Sources */,
@@ -2673,7 +2717,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.0;
+				MARKETING_VERSION = 1.8.0;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2706,7 +2750,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.0;
+				MARKETING_VERSION = 1.8.0;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
