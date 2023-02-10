@@ -45,10 +45,7 @@ public struct GraphQLFactory {
         apiHelper: APITokenManagable,
         graphQLAPIUrl: URL
     ) -> NetworkTransport {
-        var headers: [String: String] = ["X-Ls-DeviceId": deviceId]
-        if apiHelper.tokenIsValid, let token = apiHelper.token {
-            headers["Authorization"] = "Bearer \(token)"
-        }
+        let headers = createAdditionalHeaders(with: deviceId, apiHelper: apiHelper)
         return RequestChainNetworkTransport(
             interceptorProvider: GraphQLInterceptorProvider(
                 store: store,
@@ -56,5 +53,17 @@ public struct GraphQLFactory {
                 tokenHelper: apiHelper),
             endpointURL: graphQLAPIUrl,
             additionalHeaders: headers)
+    }
+
+    private static func createAdditionalHeaders(
+        with deviceId: String,
+        apiHelper: APITokenManagable
+    ) -> [String: String] {
+        var headers: [String: String] = ["X-Ls-DeviceId": deviceId]
+        if apiHelper.tokenIsValid, let token = apiHelper.token {
+            headers["Authorization"] = "Bearer \(token)"
+        }
+        headers["Accept-Language"] = LanguageIdCreator().getLanguageId()
+        return headers
     }
 }

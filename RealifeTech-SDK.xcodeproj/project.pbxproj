@@ -22,6 +22,8 @@
 		09B29F292983D2AC000B3897 /* TicketAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F282983D2AC000B3897 /* TicketAuth.swift */; };
 		09B29F2B29878EDA000B3897 /* UserEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2A29878EDA000B3897 /* UserEmail.swift */; };
 		09B29F2D29878F2B000B3897 /* TicketIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B29F2C29878F2B000B3897 /* TicketIntegration.swift */; };
+		09B85A8E29960C19009546E2 /* LanguageIdCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B85A8D29960C19009546E2 /* LanguageIdCreator.swift */; };
+		09B85A9029960C40009546E2 /* LanguageIdCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B85A8F29960C40009546E2 /* LanguageIdCreatorTests.swift */; };
 		09B9D2CC28FD32C2006D4C94 /* SSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9D2CB28FD32C2006D4C94 /* SSO.swift */; };
 		09BAAE1A296E9E07009FCD19 /* Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE19296E9E07009FCD19 /* Access.swift */; };
 		09BAAE1D296EA0F1009FCD19 /* WalletPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */; };
@@ -381,6 +383,8 @@
 		09B29F282983D2AC000B3897 /* TicketAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAuth.swift; sourceTree = "<group>"; };
 		09B29F2A29878EDA000B3897 /* UserEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmail.swift; sourceTree = "<group>"; };
 		09B29F2C29878F2B000B3897 /* TicketIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketIntegration.swift; sourceTree = "<group>"; };
+		09B85A8D29960C19009546E2 /* LanguageIdCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageIdCreator.swift; sourceTree = "<group>"; };
+		09B85A8F29960C40009546E2 /* LanguageIdCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageIdCreatorTests.swift; sourceTree = "<group>"; };
 		09B9D2CB28FD32C2006D4C94 /* SSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSO.swift; sourceTree = "<group>"; };
 		09BAAE19296E9E07009FCD19 /* Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Access.swift; sourceTree = "<group>"; };
 		09BAAE1C296EA0F1009FCD19 /* WalletPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPass.swift; sourceTree = "<group>"; };
@@ -1375,6 +1379,7 @@
 				961C416C260882BA001D8467 /* JSONContentTypeHeaderRequestInserting.swift */,
 				961C416D260882BA001D8467 /* OAuthHeaderRequestInserting.swift */,
 				3E9CD180271DBF1B001B0939 /* AcceptLanguageHeaderRequestInserting.swift */,
+				09B85A8D29960C19009546E2 /* LanguageIdCreator.swift */,
 			);
 			path = RequestInserters;
 			sourceTree = "<group>";
@@ -1395,6 +1400,7 @@
 				961C4171260882BA001D8467 /* RequestHeaderTests.swift */,
 				961C4175260882BA001D8467 /* StandardSenderResponseTests.swift */,
 				3E9CD182271DC1A9001B0939 /* AcceptLanguageHeaderRequestInsertingTests.swift */,
+				09B85A8F29960C40009546E2 /* LanguageIdCreatorTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2331,6 +2337,7 @@
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
 				9637475926C54545007DF92D /* PaymentIntentNextAction.swift in Sources */,
 				961C41D5260882BA001D8467 /* DeviceIdHeaderRequestInserting.swift in Sources */,
+				09B85A8E29960C19009546E2 /* LanguageIdCreator.swift in Sources */,
 				961C41D7260882BA001D8467 /* OAuthHeaderRequestInserting.swift in Sources */,
 				961C41E8260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift in Sources */,
 				961C1CA12683400500BE6F3B /* ProductImage.swift in Sources */,
@@ -2601,6 +2608,7 @@
 				961C42A226088315001D8467 /* DeviceTests.swift in Sources */,
 				961C438A2608938D001D8467 /* OAuthRefreshOrWaitActionGeneratorTests.swift in Sources */,
 				96B670CA26D7D0D100DB74A4 /* PushNotificationRegistrarTests.swift in Sources */,
+				09B85A9029960C40009546E2 /* LanguageIdCreatorTests.swift in Sources */,
 				96F1BF2326CD32AD008D1363 /* WebViewWrapperTests.swift in Sources */,
 				96B6708626D63B7200DB74A4 /* CoreImplementingTests.swift in Sources */,
 			);
