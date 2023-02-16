@@ -144,13 +144,21 @@ final class GraphQLManagerTests: XCTestCase {
         XCTAssertEqual(transport.additionalHeaders["Authorization"], "Bearer token")
     }
 
-    func test_updateHeadersToNetworkTransport_invalidToken_doesntAdBearerTokenToHeader() throws {
+    func test_updateHeadersToNetworkTransport_invalidToken_doesntAddBearerTokenToHeader() throws {
         let apiHelper = SpyApiHelper()
         apiHelper.tokenIsValidReturns = false
         sut.updateHeadersToNetworkTransport(deviceId: "A", apiHelper: apiHelper)
         let transport = try XCTUnwrap(sut.networkTransport as? RequestChainNetworkTransport)
         XCTAssertEqual(transport.additionalHeaders["X-Ls-DeviceId"], "A")
         XCTAssertNil(transport.additionalHeaders["Authorization"])
+    }
+
+    func test_updateHeadersToNetworkTransport_addAcceptLanguageToHeader() throws {
+        let apiHelper = SpyApiHelper()
+        apiHelper.tokenIsValidReturns = false
+        sut.updateHeadersToNetworkTransport(deviceId: "A", apiHelper: apiHelper)
+        let transport = try XCTUnwrap(sut.networkTransport as? RequestChainNetworkTransport)
+        XCTAssertEqual(transport.additionalHeaders["Accept-Language"], "en")
     }
 }
 

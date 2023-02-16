@@ -11,8 +11,10 @@ import XCTest
 
 class AcceptLanguageHeaderRequestInsertingTests: XCTestCase {
 
-    func test_languageHeader_prefix() {
-        XCTAssertEqual(MockAPIRequester.getLanguageId(preferredLanguages: ["en-GB", "us", "de-de"]), "en")
+    func test_requstContainsLanguageHeader() {
+        var request = URLRequest(url: URL(string: "www.test.com")!)
+        request = MockAPIRequester.addLanguageHeader(toRequest: request)
+        XCTAssertNotNil(request.allHTTPHeaderFields?["Accept-Language"])
     }
 }
 
