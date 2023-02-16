@@ -16,15 +16,8 @@ extension AcceptLanguageHeaderRequestInserting {
 
     public static func addLanguageHeader(toRequest request: URLRequest) -> URLRequest {
         var request = request
-        request.addValue(getLanguageId(), forHTTPHeaderField: "Accept-Language")
+        let languageId = LanguageIdCreator().getLanguageId()
+        request.addValue(languageId, forHTTPHeaderField: "Accept-Language")
         return request
-    }
-
-    static func getLanguageId(preferredLanguages: [String] = Locale.preferredLanguages) -> String {
-        var languageId = "en"
-        if let preferredLanguage = preferredLanguages.first {
-            languageId = String(preferredLanguage.prefix(2))
-        }
-        return languageId
     }
 }
