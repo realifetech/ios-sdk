@@ -1719,6 +1719,154 @@ public enum ApolloType {
     }
   }
 
+  public struct DeviceInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - token
+    ///   - type
+    ///   - status
+    ///   - appVersion
+    ///   - osVersion
+    ///   - model
+    ///   - manufacturer
+    ///   - bluetoothOn
+    ///   - wifiConnected
+    ///   - tokens
+    public init(token: String, type: Swift.Optional<String?> = nil, status: Swift.Optional<String?> = nil, appVersion: Swift.Optional<String?> = nil, osVersion: Swift.Optional<String?> = nil, model: Swift.Optional<String?> = nil, manufacturer: Swift.Optional<String?> = nil, bluetoothOn: Swift.Optional<Bool?> = nil, wifiConnected: Swift.Optional<Bool?> = nil, tokens: Swift.Optional<[DeviceTokenInput?]?> = nil) {
+      graphQLMap = ["token": token, "type": type, "status": status, "appVersion": appVersion, "osVersion": osVersion, "model": model, "manufacturer": manufacturer, "bluetoothOn": bluetoothOn, "wifiConnected": wifiConnected, "tokens": tokens]
+    }
+
+    public var token: String {
+      get {
+        return graphQLMap["token"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "token")
+      }
+    }
+
+    public var type: Swift.Optional<String?> {
+      get {
+        return graphQLMap["type"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "type")
+      }
+    }
+
+    public var status: Swift.Optional<String?> {
+      get {
+        return graphQLMap["status"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "status")
+      }
+    }
+
+    public var appVersion: Swift.Optional<String?> {
+      get {
+        return graphQLMap["appVersion"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "appVersion")
+      }
+    }
+
+    public var osVersion: Swift.Optional<String?> {
+      get {
+        return graphQLMap["osVersion"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "osVersion")
+      }
+    }
+
+    public var model: Swift.Optional<String?> {
+      get {
+        return graphQLMap["model"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "model")
+      }
+    }
+
+    public var manufacturer: Swift.Optional<String?> {
+      get {
+        return graphQLMap["manufacturer"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "manufacturer")
+      }
+    }
+
+    public var bluetoothOn: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["bluetoothOn"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "bluetoothOn")
+      }
+    }
+
+    public var wifiConnected: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["wifiConnected"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "wifiConnected")
+      }
+    }
+
+    public var tokens: Swift.Optional<[DeviceTokenInput?]?> {
+      get {
+        return graphQLMap["tokens"] as? Swift.Optional<[DeviceTokenInput?]?> ?? Swift.Optional<[DeviceTokenInput?]?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "tokens")
+      }
+    }
+  }
+
+  public struct DeviceTokenInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - provider
+    ///   - providerToken
+    ///   - payload
+    public init(provider: String, providerToken: String, payload: Swift.Optional<JSON?> = nil) {
+      graphQLMap = ["provider": provider, "providerToken": providerToken, "payload": payload]
+    }
+
+    public var provider: String {
+      get {
+        return graphQLMap["provider"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "provider")
+      }
+    }
+
+    public var providerToken: String {
+      get {
+        return graphQLMap["providerToken"] as! String
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "providerToken")
+      }
+    }
+
+    public var payload: Swift.Optional<JSON?> {
+      get {
+        return graphQLMap["payload"] as? Swift.Optional<JSON?> ?? Swift.Optional<JSON?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "payload")
+      }
+    }
+  }
+
   public struct PaymentSourceInput: GraphQLMapConvertible {
     public var graphQLMap: GraphQLMap
 
@@ -4666,6 +4814,99 @@ public enum ApolloType {
           }
           set {
             resultMap.updateValue(newValue, forKey: "url")
+          }
+        }
+      }
+    }
+  }
+
+  public final class SyncDeviceMutation: GraphQLMutation {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      mutation syncDevice($input: DeviceInput!) {
+        syncDevice(input: $input) {
+          __typename
+          acknowledged
+        }
+      }
+      """
+
+    public let operationName: String = "syncDevice"
+
+    public var input: DeviceInput
+
+    public init(input: DeviceInput) {
+      self.input = input
+    }
+
+    public var variables: GraphQLMap? {
+      return ["input": input]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Mutation"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("syncDevice", arguments: ["input": GraphQLVariable("input")], type: .object(SyncDevice.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(syncDevice: SyncDevice? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "syncDevice": syncDevice.flatMap { (value: SyncDevice) -> ResultMap in value.resultMap }])
+      }
+
+      public var syncDevice: SyncDevice? {
+        get {
+          return (resultMap["syncDevice"] as? ResultMap).flatMap { SyncDevice(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "syncDevice")
+        }
+      }
+
+      public struct SyncDevice: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["SyncDeviceResponse"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("acknowledged", type: .nonNull(.scalar(Bool.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(acknowledged: Bool) {
+          self.init(unsafeResultMap: ["__typename": "SyncDeviceResponse", "acknowledged": acknowledged])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var acknowledged: Bool {
+          get {
+            return resultMap["acknowledged"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "acknowledged")
           }
         }
       }
