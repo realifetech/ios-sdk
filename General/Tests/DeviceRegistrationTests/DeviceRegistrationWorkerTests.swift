@@ -30,13 +30,13 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
 
     private var sut: DeviceRegistrationWorker!
     private var reachabilityChecker: MockReachabilityChecker!
-    private var deviceRepository: MockDeviceRepository.Type!
+    private var deviceRepository: MockDeviceRepository!
     private var store: MockCodableStore!
     private var scheduler: TestScheduler!
 
     override func setUp() {
         reachabilityChecker = MockReachabilityChecker()
-        deviceRepository = MockDeviceRepository.self
+        deviceRepository = MockDeviceRepository()
         store = MockCodableStore()
         // Real time [sec]/resolution = virtual time [ticks]
         scheduler = TestScheduler(initialClock: 0, resolution: 0.001)
@@ -126,15 +126,15 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
     }
 }
 
-private struct MockDeviceRepository: DeviceProviding {
+private class MockDeviceRepository: DeviceProviding {
 
-    static var registerDevice = PublishSubject<Bool>()
+    var registerDevice = PublishSubject<Bool>()
 
-    static func reset() {
+    func reset() {
         registerDevice = PublishSubject<Bool>()
     }
 
-    static func registerDevice(_ device: Device) -> Observable<Bool> {
+    func registerDevice(_ device: Device) -> Observable<Bool> {
         return registerDevice.asObservable()
     }
 

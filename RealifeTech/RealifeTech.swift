@@ -51,7 +51,8 @@ public class RealifeTech {
             sdkVersion: moduleVersionString)
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
-            reachabilityChecker: reachabilityChecker)
+            reachabilityChecker: reachabilityChecker,
+            graphQLManager: graphQLManager)
         Audiences = AudiencesImplementing(graphQLManager: graphQLManager)
         let identityPersister = IdentityPersister(defaults: UserDefaults(suiteName: "RLT") ?? .standard)
         Analytics = AnalyticsFactory.makeAnalyticsModule(

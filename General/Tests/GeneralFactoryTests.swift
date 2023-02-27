@@ -20,7 +20,8 @@ final class GeneralFactoryTests: XCTestCase {
             sdkVersion: "goes")
         let sut = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
-            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper())
+            reachabilityChecker: ReachabilityFactory.makeReachabilityHelper(),
+            graphQLManager: MockGraphQLManager<Data.Type>())
         XCTAssertEqual(testId, sut.deviceId)
     }
 }

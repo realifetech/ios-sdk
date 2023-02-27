@@ -19,7 +19,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
 
     private let staticDeviceInformation: StaticDeviceInformation
     private let reachabilityChecker: ReachabilityChecking
-    private let deviceProvider: DeviceProviding.Type
+    private let deviceProvider: DeviceProviding
     private let deviceRegistrationMaxAttempts: Int
     private let retryRegistrationInterval: RxTimeInterval
     private let store: Storeable
@@ -33,7 +33,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
         Device(
             deviceId: staticDeviceInformation.deviceId,
             model: staticDeviceInformation.deviceModel,
-            sdkVersion: "SDK_" + staticDeviceInformation.sdkVersion,
+            sdkVersion: "SDK_" + staticDeviceInformation.sdkVersion, // to fix
             osVersion: staticDeviceInformation.osVersion,
             bluetoothOn: reachabilityChecker.isBluetoothConnected,
             wifiConnected: reachabilityChecker.isConnectedToWifi)
@@ -42,8 +42,8 @@ class DeviceRegistrationWorker: DeviceRegistering {
     init(
         staticDeviceInformation: StaticDeviceInformation,
         reachabilityChecker: ReachabilityChecking,
-        deviceProvider: DeviceProviding.Type = DeviceRepository.self,
-        deviceRegistrationMaxAttempts: Int = .max,
+        deviceProvider: DeviceProviding,
+        deviceRegistrationMaxAttempts: Int = .max, // to fix
         retryRegistrationInterval: Double = 10,
         store: Storeable,
         subscriptionScheduler: SchedulerType = SerialDispatchQueueScheduler(

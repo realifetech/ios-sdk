@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Device: Codable, Equatable {
-    let token: String? // Device ID
+    let token: String // Device ID
     let type: String?
     let model: String?
     let manufacturer: String?
@@ -32,7 +32,7 @@ public struct Device: Codable, Equatable {
         self.type = type
         self.model = model
         self.manufacturer = manufacturer
-        self.appVersion = sdkVersion
+        self.appVersion = sdkVersion // to fix
         self.osVersion = osVersion
         self.wifiConnected = wifiConnected
         self.bluetoothOn = bluetoothOn

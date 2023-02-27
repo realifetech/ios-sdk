@@ -14,13 +14,13 @@ public struct DeviceRequester: Requester, APIRequester {
 
 extension DeviceRequester {
 
-    static func register(device: Device) -> URLRequest {
-        return RequestCreator.createRequest(
-            withRoot: root(),
-            andEndpoint: endpoint + "/register",
-            httpMethod: .POST,
-            body: device.jsonRepresentation)
-    }
+//    static func register(device: Device) -> URLRequest {
+//        return RequestCreator.createRequest(
+//            withRoot: root(),
+//            andEndpoint: endpoint + "/register",
+//            httpMethod: .POST,
+//            body: device.jsonRepresentation)
+//    }
 
     static func register(tokenForPushNotificationsWithDeviceToken deviceToken: DeviceToken) -> URLRequest {
         var body: [String: Any] = [:]
