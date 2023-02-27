@@ -21,10 +21,6 @@ public class RealifeTech {
     public static var Sell: Sell!
     public static var Identity: Identity!
 
-    private static var moduleVersionString: String {
-        Bundle(for: self.self).infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
-    }
-
     /// Provides information required for the SDK to operate.
     /// This MUST be called before any other SDK functionality is acessed.
     /// Calling this function more than once will have no effect.
@@ -48,7 +44,7 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
-            sdkVersion: moduleVersionString)
+            appVersion: configuration.appVersion)
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker,

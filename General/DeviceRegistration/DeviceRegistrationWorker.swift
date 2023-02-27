@@ -33,7 +33,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
         Device(
             deviceId: staticDeviceInformation.deviceId,
             model: staticDeviceInformation.deviceModel,
-            sdkVersion: "SDK_" + staticDeviceInformation.sdkVersion, // to fix
+            appVersion: staticDeviceInformation.appVersion,
             osVersion: staticDeviceInformation.osVersion,
             bluetoothOn: reachabilityChecker.isBluetoothConnected,
             wifiConnected: reachabilityChecker.isConnectedToWifi)
@@ -43,7 +43,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
         staticDeviceInformation: StaticDeviceInformation,
         reachabilityChecker: ReachabilityChecking,
         deviceProvider: DeviceProviding,
-        deviceRegistrationMaxAttempts: Int = .max, // to fix
+        deviceRegistrationMaxAttempts: Int = .max,
         retryRegistrationInterval: Double = 10,
         store: Storeable,
         subscriptionScheduler: SchedulerType = SerialDispatchQueueScheduler(

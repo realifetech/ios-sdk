@@ -23,7 +23,7 @@ public struct Device: Codable, Equatable {
         type: String = "IOS",
         model: String,
         manufacturer: String = "APPLE",
-        sdkVersion: String,
+        appVersion: String,
         osVersion: String,
         bluetoothOn: Bool,
         wifiConnected: Bool
@@ -32,7 +32,7 @@ public struct Device: Codable, Equatable {
         self.type = type
         self.model = model
         self.manufacturer = manufacturer
-        self.appVersion = sdkVersion // to fix
+        self.appVersion = appVersion
         self.osVersion = osVersion
         self.wifiConnected = wifiConnected
         self.bluetoothOn = bluetoothOn

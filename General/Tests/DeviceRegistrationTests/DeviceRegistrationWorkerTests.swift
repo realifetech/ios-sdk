@@ -21,12 +21,12 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
     private let testId = "123abc"
     private let testModel = "whooze"
     private let osVersion = "dunny"
-    private let sdkVersion = "mittens"
+    private let appVersion = "mittens"
     private lazy var staticInformation = StaticDeviceInformation(
         deviceId: testId,
         deviceModel: testModel,
         osVersion: osVersion,
-        sdkVersion: sdkVersion)
+        appVersion: appVersion)
 
     private var sut: DeviceRegistrationWorker!
     private var reachabilityChecker: MockReachabilityChecker!
@@ -44,7 +44,7 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
             deviceId: testId,
             deviceModel: testModel,
             osVersion: osVersion,
-            sdkVersion: sdkVersion)
+            appVersion: appVersion)
         sut = DeviceRegistrationWorker(
             staticDeviceInformation: staticInformation,
             reachabilityChecker: reachabilityChecker,

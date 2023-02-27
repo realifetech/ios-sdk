@@ -11,6 +11,7 @@ import Foundation
 public struct SDKConfiguration: Codable {
 
     public let appCode: String
+    public let appVersion: String
     public let clientSecret: String
     public let apiUrl: String
     public let graphQLApiUrl: String
@@ -23,6 +24,7 @@ public struct SDKConfiguration: Codable {
 
     /// - Parameters:
     ///   - appCode: String used to identify the application which uses the RealifeTech SDK
+    ///   - appVersion: String which is used in register device mutation
     ///   - clientSecret: String which is used to authenticate with the RealifeTech backend
     ///   - deviceId: [Optional] Provide a string value as deviceId in the request header.
     ///     If deviceId is not provided, SDK uses identifierForVendor value from Apple as deviceId.
@@ -31,6 +33,7 @@ public struct SDKConfiguration: Codable {
     ///   - webOrderingJourneyUrl: [Optional] Provide a string value of a URL to override the SDK default
     public init(
         appCode: String,
+        appVersion: String,
         clientSecret: String,
         deviceId: String? = nil,
         apiUrl: String? = nil,
@@ -38,6 +41,7 @@ public struct SDKConfiguration: Codable {
         webOrderingJourneyUrl: String? = nil
     ) {
         self.appCode = appCode
+        self.appVersion = appVersion
         self.clientSecret = clientSecret
         self.deviceId = deviceId
         self.apiUrl = apiUrl ?? Self.defaultApiUrl

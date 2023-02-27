@@ -12,5 +12,5 @@ public struct StaticDeviceInformation {
     let deviceId: String
     let deviceModel: String
     let osVersion: String
-    let sdkVersion: String
+    let appVersion: String
 }
