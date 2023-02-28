@@ -253,7 +253,7 @@ final class MockDeviceRegistering: DeviceRegistering {
     var sdkReady: Bool { shouldBeReady }
     let deviceId: String = ""
 
-    func registerDevice(_: @escaping () -> Void) { }
+    func registerDevice(_: @escaping (Bool) -> Void) { }
 }
 
 private final class MockQueue<Queue: Codable & Identifiable>: QueueProviding {

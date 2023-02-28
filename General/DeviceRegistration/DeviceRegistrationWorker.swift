@@ -67,7 +67,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
         return (try? store.fetch(for: storeKey)) ?? false
     }
 
-    func registerDevice(_ completion: @escaping () -> Void) {
+    func registerDevice(_ completion: @escaping (Bool) -> Void) {
         deviceProvider.registerDevice(device)
             .subscribe(on: subscriptionScheduler)
             .observe(on: observationScheduler)
@@ -83,10 +83,10 @@ class DeviceRegistrationWorker: DeviceRegistering {
             .subscribe(onNext: { [self] value in
                 try? store.save(value, for: storeKey)
                 deviceRegisteredSubject.send(value)
-                completion()
+                completion(value)
             }, onError: { [self] _ in
                 deviceRegisteredSubject.send(false)
-                completion()
+                completion(false)
             })
             .disposed(by: bag)
     }

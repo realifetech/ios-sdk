@@ -89,7 +89,7 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
         let observable: TestableObservable<Bool> = scheduler
             .createColdObservable([.next(10, true)])
         let expectation = XCTestExpectation(description: "Completion handler gets called")
-        sut.registerDevice { [self] in
+        sut.registerDevice { [self] _ in
             XCTAssertNotNil(store.valueSaved)
             XCTAssertTrue(sut.sdkReady)
             expectation.fulfill()
@@ -105,7 +105,7 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
         let observable: TestableObservable<Bool> = scheduler
             .createHotObservable([.error(10, TestError.registrationError("error"))])
         let expectation = XCTestExpectation(description: "Completion handler gets called")
-        sut.registerDevice { [self] in
+        sut.registerDevice { [self] _ in
             XCTAssertNil(store.valueSaved)
             XCTAssertFalse(sut.sdkReady)
             expectation.fulfill()
