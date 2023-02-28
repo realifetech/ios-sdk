@@ -8,7 +8,9 @@
 
 import Foundation
 import RxSwift
+#if !COCOAPODS
 import GraphQL
+#endif
 
 public protocol DeviceProviding {
 
