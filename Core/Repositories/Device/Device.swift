@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Device: Codable, Equatable {
-    let token: String // Device ID
+    public let token: String // Device ID
     let type: String?
     let model: String?
     let manufacturer: String?
