@@ -11,6 +11,10 @@ import Foundation
 import GraphQL
 #endif
 
+enum LoggerError: Error {
+    case sdkNotReady
+}
+
 class AnalyticsLogger {
 
     typealias PeristentQueueItem = QueueItem<AnalyticEventAndCompletion>
@@ -38,58 +42,64 @@ class AnalyticsLogger {
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
         self.deviceRegistering = deviceRegistering
         self.identityPersister = identityPersister
-        startLoop()
+//        startLoop()
     }
 
-    private func startLoop() {
-        DispatchQueue.main.async { [self] in
-            loopIsRunning = true
-            let nextItemResult = persistentQueue.next
-            switch nextItemResult {
-            case .success(let frontOfQueue):
-                loopStep(queueItem: frontOfQueue)
-            case .failure:
-                loopIsRunning = false
-            }
-        }
-    }
+//    private func startLoop() {
+//        DispatchQueue.main.async { [self] in
+//            loopIsRunning = true
+//            let nextItemResult = persistentQueue.next
+//            switch nextItemResult {
+//            case .success(let frontOfQueue):
+//                loopStep(queueItem: frontOfQueue)
+//            case .failure:
+//                loopIsRunning = false
+//            }
+//        }
+//    }
 
-    private func loopStep(queueItem: PeristentQueueItem) {
-        let delayTimeForFailure: DispatchTime = .now() + .milliseconds(failureDebounceMilliseconds)
-        guard
-            reachabilityHelper.hasNetworkConnection,
-            deviceRegistering.sdkReady
-        else {
-            DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
-                queueItem.releaseQueue(.doNothing)
-                self.startLoop()
-            }
-            return
-        }
-        performPutAnalyticEventMutation(event: queueItem.item.analyticEvent) { result in
-            queueItem.item.analyticCompletion?(result)
-            switch result {
-            case .success(let success):
-                queueItem.releaseQueue(.removeFirst)
-                guard success else {
-                    DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
-                        self.startLoop()
-                    }
-                    return
-                }
-                self.startLoop()
-            case .failure:
-                DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
-                    self.startLoop()
-                }
-            }
-        }
-    }
+//    private func loopStep(queueItem: PeristentQueueItem) {
+//        let delayTimeForFailure: DispatchTime = .now() + .milliseconds(failureDebounceMilliseconds)
+//        guard
+//            reachabilityHelper.hasNetworkConnection,
+//            deviceRegistering.sdkReady
+//        else {
+//            DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
+//                queueItem.releaseQueue(.doNothing)
+//                self.startLoop()
+//            }
+//            return
+//        }
+//        performPutAnalyticEventMutation(event: queueItem.item.analyticEvent) { result in
+//            queueItem.item.analyticCompletion?(result)
+//            switch result {
+//            case .success(let success):
+//                queueItem.releaseQueue(.removeFirst)
+//                guard success else {
+//                    DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
+//                        self.startLoop()
+//                    }
+//                    return
+//                }
+//                self.startLoop()
+//            case .failure:
+//                DispatchQueue.main.asyncAfter(deadline: delayTimeForFailure) {
+//                    self.startLoop()
+//                }
+//            }
+//        }
+//    }
 
     private func performPutAnalyticEventMutation(
         event: AnalyticEvent,
         completion: @escaping (Result<Bool, Error>) -> Void
     ) {
+        guard
+            reachabilityHelper.hasNetworkConnection,
+            deviceRegistering.sdkReady
+        else {
+            return completion(.failure(LoggerError.sdkNotReady))
+        }
         let input = ApolloType.AnalyticEvent(
             type: event.type,
             action: event.action,
@@ -115,14 +125,15 @@ class AnalyticsLogger {
 extension AnalyticsLogger: AnalyticsLogging {
 
     public func track(_ event: AnalyticEvent, completion: @escaping EventLoggedCompletion) {
-        var eventToPersist = event
-        if let userId = identityPersister.retrieveUserId() {
-            eventToPersist.userId = userId
-        }
-        let eventAndCompletion = AnalyticEventAndCompletion(
-            analyticEvent: eventToPersist,
-            analyticCompletion: completion)
-        persistentQueue.addToQueue(eventAndCompletion)
-        if !loopIsRunning { startLoop() }
+        performPutAnalyticEventMutation(event: event, completion: completion)
+//        var eventToPersist = event
+//        if let userId = identityPersister.retrieveUserId() {
+//            eventToPersist.userId = userId
+//        }
+//        let eventAndCompletion = AnalyticEventAndCompletion(
+//            analyticEvent: eventToPersist,
+//            analyticCompletion: completion)
+//        persistentQueue.addToQueue(eventAndCompletion)
+//        if !loopIsRunning { startLoop() }
     }
 }
