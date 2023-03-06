@@ -23,7 +23,7 @@ class AnalyticsLogger {
     private let identityPersister: IdentityPersisting
 
     private var attempts = 0
-    private let maxAttempts = 2
+    private let maxAttempts: Int
     private var loopIsRunning = false
 
     public init(
@@ -32,7 +32,8 @@ class AnalyticsLogger {
         persistentQueue: AnyQueue<AnalyticEventAndCompletion>,
         failureDebounceSeconds: Double = 45,
         deviceRegistering: DeviceRegistering,
-        identityPersister: IdentityPersisting
+        identityPersister: IdentityPersisting,
+        maxAttempts: Int = 2
     ) {
         self.graphQLManager = graphQLManager
         self.reachabilityHelper = reachabilityHelper
@@ -40,6 +41,7 @@ class AnalyticsLogger {
         self.failureDebounceMilliseconds = Int(failureDebounceSeconds * 1000)
         self.deviceRegistering = deviceRegistering
         self.identityPersister = identityPersister
+        self.maxAttempts = maxAttempts
         startLoop()
     }
 
@@ -121,9 +123,9 @@ class AnalyticsLogger {
         event: AnalyticEvent,
         completion: @escaping (Result<Bool, Error>) -> Void
     ) {
-        if self.attempts < self.maxAttempts {
-            self.attempts += 1
-            self.performPutAnalyticEventMutation(event: event, completion: completion)
+        if attempts < maxAttempts {
+            attempts += 1
+            performPutAnalyticEventMutation(event: event, completion: completion)
         } else {
             completion(.failure(error))
         }
