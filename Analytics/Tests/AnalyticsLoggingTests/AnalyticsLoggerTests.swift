@@ -257,7 +257,7 @@ final class AnalyticsLoggerTests: XCTestCase {
         sut.track(testEvent) { result in
             switch result {
             case .success:
-                XCTFail("We should have faliure sent this")
+                XCTFail("This should hit the failure case")
             case .failure:
                 expectation.fulfill()
             }
