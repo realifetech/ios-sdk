@@ -30,7 +30,7 @@ final class GeneralImplementingTests: XCTestCase {
     func test_deviceRegistering_forwardsFunctionality() {
         mockDeviceRegistering.deviceId = "HattyTurnip"
         mockDeviceRegistering.sdkReady = true
-        sut.registerDevice { }
+        sut.registerDevice { _ in }
         XCTAssertEqual(sut.deviceId, mockDeviceRegistering.deviceId)
         XCTAssertEqual(sut.sdkReady, mockDeviceRegistering.sdkReady)
         XCTAssertTrue(mockDeviceRegistering.receivedCallToRegisterDevice)
@@ -71,7 +71,7 @@ private final class DeviceRegisteringMock: DeviceRegistering {
     var deviceId: String = ""
     var receivedCallToRegisterDevice: Bool = false
 
-    func registerDevice(_: @escaping () -> Void) {
+    func registerDevice(_: @escaping (Bool) -> Void) {
         receivedCallToRegisterDevice = true
     }
 }

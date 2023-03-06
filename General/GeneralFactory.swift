@@ -13,7 +13,8 @@ public enum GeneralFactory {
 
     public static func makeGeneralModule(
         staticDeviceInformation: StaticDeviceInformation,
-        reachabilityChecker: ReachabilityChecking
+        reachabilityChecker: ReachabilityChecking,
+        graphQLManager: GraphQLManageable
     ) -> General {
         let deviceRegistrationStore = CodableStore(
             storage: UserDefaultsStorage(),
@@ -21,7 +22,7 @@ public enum GeneralFactory {
         let deviceRegistrationWorker = DeviceRegistrationWorker(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker,
-            deviceProvider: DeviceRepository.self,
+            deviceProvider: DeviceRepository(graphQLManager: graphQLManager),
             deviceRegistrationMaxAttempts: .max,
             retryRegistrationInterval: 10,
             store: deviceRegistrationStore)

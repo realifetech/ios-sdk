@@ -16,8 +16,10 @@ final class SDKConfigurationTests: XCTestCase {
         let testClientSecret = "Shuuu"
         let testApiUrl = "1234Marched"
         let testGraphQLApiUrl = "Lemons"
+        let testAppVersion = "15.9"
         let sut = SDKConfiguration(
             appCode: testAppCode,
+            appVersion: testAppVersion,
             clientSecret: testClientSecret,
             apiUrl: testApiUrl,
             graphQLApiUrl: testGraphQLApiUrl)
@@ -34,7 +36,7 @@ final class SDKConfigurationTests: XCTestCase {
     }
 
     func test_defaults_areUsed() {
-        let sut = SDKConfiguration(appCode: "", clientSecret: "")
+        let sut = SDKConfiguration(appCode: "", appVersion: "", clientSecret: "")
         XCTAssertEqual(sut.apiUrl, SDKConfiguration.defaultApiUrl)
         XCTAssertEqual(sut.graphQLApiUrl, SDKConfiguration.defaultGraphQLApiUrl)
         XCTAssertEqual(sut.webOrderingJourneyUrl, SDKConfiguration.defaultWebOrderingJourneyUrl)

@@ -15,6 +15,7 @@ final class AppGroupUserDefaultsStoreTests: XCTestCase {
     private var testUserDefaults: UserDefaults?
     private let testSDKConfiguration = SDKConfiguration(
         appCode: "appCodeTest",
+        appVersion: "testAppVersion",
         clientSecret: "clientSecretTest",
         apiUrl: "any_apiUrl",
         graphQLApiUrl: "any_graphQLApiUrl",
@@ -34,6 +35,7 @@ final class AppGroupUserDefaultsStoreTests: XCTestCase {
         if let configurationData = testUserDefaults?.object(forKey: prefix + configurationKey) as? Data {
             let configuration = try? JSONDecoder().decode(SDKConfiguration.self, from: configurationData)
             XCTAssertEqual(configuration?.appCode, testSDKConfiguration.appCode)
+            XCTAssertEqual(configuration?.appVersion, testSDKConfiguration.appVersion)
             XCTAssertEqual(configuration?.clientSecret, testSDKConfiguration.clientSecret)
             XCTAssertEqual(configuration?.apiUrl, testSDKConfiguration.apiUrl)
             XCTAssertEqual(configuration?.graphQLApiUrl, testSDKConfiguration.graphQLApiUrl)

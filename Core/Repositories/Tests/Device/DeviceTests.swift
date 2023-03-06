@@ -27,7 +27,7 @@ final class DeviceTests: XCTestCase {
         type: "IOS",
         model: "OlivierPhone",
         manufacturer: "APPLE",
-        sdkVersion: "0.0.1alpha",
+        appVersion: "0.0.1alpha",
         osVersion: "4",
         bluetoothOn: false,
         wifiConnected: true)

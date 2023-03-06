@@ -8,29 +8,60 @@
 
 import Foundation
 import RxSwift
+#if !COCOAPODS
+import GraphQL
+#endif
 
 public protocol DeviceProviding {
 
-    static func registerDevice(_ device: Device) -> Observable<Bool>
+    func registerDevice(_ device: Device) -> Observable<Bool>
 
     static func registerForPushNotifications(
         with deviceToken: DeviceToken
     ) -> Observable<TokenRegistrationResponse>
 }
 
-public struct DeviceRepository: RemoteDiskCacheDataProviding {
+public class DeviceRepository: RemoteDiskCacheDataProviding {
 
     public typealias Cdble = StandardSenderResponse
     public typealias Rqstr = DeviceRequester
+
+    private let graphQLManager: GraphQLManageable
+
+    init(graphQLManager: GraphQLManageable) {
+        self.graphQLManager = graphQLManager
+    }
 }
 
 extension DeviceRepository: DeviceProviding {
 
-    public static func registerDevice(_ device: Device) -> Observable<Bool> {
-        return retrieve(
-            type: StandardSenderResponse.self,
-            forRequest: Rqstr.register(device: device),
-            strategy: .remoteWithoutCachingResponse).map { $0.isSuccess }
+    public func registerDevice(_ device: Device) -> Observable<Bool> {
+        let input = ApolloType.DeviceInput(
+            token: device.token,
+            type: device.type,
+            status: nil,
+            appVersion: device.appVersion,
+            osVersion: device.osVersion,
+            model: device.model,
+            manufacturer: device.manufacturer,
+            bluetoothOn: device.bluetoothOn,
+            wifiConnected: device.wifiConnected,
+            tokens: [])
+        return Observable.create { observer in
+            self.graphQLManager.dispatchMutation(
+                mutation: ApolloType.SyncDeviceMutation(input: input),
+                cacheResultToPersistence: false) { result in
+                    switch result {
+                    case .success(let response):
+                        let acknowledged = response.data?.syncDevice?.acknowledged
+                        observer.onNext(acknowledged ?? false)
+                        observer.onCompleted()
+                    case .failure(let error):
+                        observer.onError(error)
+                    }
+                }
+            return Disposables.create()
+        }
     }
 
     public static func registerForPushNotifications(

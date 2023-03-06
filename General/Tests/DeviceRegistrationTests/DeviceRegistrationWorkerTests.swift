@@ -21,22 +21,22 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
     private let testId = "123abc"
     private let testModel = "whooze"
     private let osVersion = "dunny"
-    private let sdkVersion = "mittens"
+    private let appVersion = "mittens"
     private lazy var staticInformation = StaticDeviceInformation(
         deviceId: testId,
         deviceModel: testModel,
         osVersion: osVersion,
-        sdkVersion: sdkVersion)
+        appVersion: appVersion)
 
     private var sut: DeviceRegistrationWorker!
     private var reachabilityChecker: MockReachabilityChecker!
-    private var deviceRepository: MockDeviceRepository.Type!
+    private var deviceRepository: MockDeviceRepository!
     private var store: MockCodableStore!
     private var scheduler: TestScheduler!
 
     override func setUp() {
         reachabilityChecker = MockReachabilityChecker()
-        deviceRepository = MockDeviceRepository.self
+        deviceRepository = MockDeviceRepository()
         store = MockCodableStore()
         // Real time [sec]/resolution = virtual time [ticks]
         scheduler = TestScheduler(initialClock: 0, resolution: 0.001)
@@ -44,7 +44,7 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
             deviceId: testId,
             deviceModel: testModel,
             osVersion: osVersion,
-            sdkVersion: sdkVersion)
+            appVersion: appVersion)
         sut = DeviceRegistrationWorker(
             staticDeviceInformation: staticInformation,
             reachabilityChecker: reachabilityChecker,
@@ -89,7 +89,7 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
         let observable: TestableObservable<Bool> = scheduler
             .createColdObservable([.next(10, true)])
         let expectation = XCTestExpectation(description: "Completion handler gets called")
-        sut.registerDevice { [self] in
+        sut.registerDevice { [self] _ in
             XCTAssertNotNil(store.valueSaved)
             XCTAssertTrue(sut.sdkReady)
             expectation.fulfill()
@@ -105,7 +105,7 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
         let observable: TestableObservable<Bool> = scheduler
             .createHotObservable([.error(10, TestError.registrationError("error"))])
         let expectation = XCTestExpectation(description: "Completion handler gets called")
-        sut.registerDevice { [self] in
+        sut.registerDevice { [self] _ in
             XCTAssertNil(store.valueSaved)
             XCTAssertFalse(sut.sdkReady)
             expectation.fulfill()
@@ -126,15 +126,15 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
     }
 }
 
-private struct MockDeviceRepository: DeviceProviding {
+private class MockDeviceRepository: DeviceProviding {
 
-    static var registerDevice = PublishSubject<Bool>()
+    var registerDevice = PublishSubject<Bool>()
 
-    static func reset() {
+    func reset() {
         registerDevice = PublishSubject<Bool>()
     }
 
-    static func registerDevice(_ device: Device) -> Observable<Bool> {
+    func registerDevice(_ device: Device) -> Observable<Bool> {
         return registerDevice.asObservable()
     }
 

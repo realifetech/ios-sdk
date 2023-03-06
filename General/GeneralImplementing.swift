@@ -25,7 +25,7 @@ extension GeneralImplementing {
     public var sdkReady: Bool { deviceRegistrationWorker.sdkReady }
     public var deviceId: String { deviceRegistrationWorker.deviceId }
 
-    public func registerDevice(_ completion: @escaping() -> Void) {
+    public func registerDevice(_ completion: @escaping(Bool) -> Void) {
         deviceRegistrationWorker.registerDevice(completion)
     }
 }
