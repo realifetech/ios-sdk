@@ -12,5 +12,5 @@ public protocol DeviceRegistering {
     var sdkReady: Bool { get }
     var deviceId: String { get }
 
-    func registerDevice(_: @escaping() -> Void)
+    func registerDevice(_: @escaping(Bool) -> Void)
 }

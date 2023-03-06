@@ -15,6 +15,7 @@ final class MockGraphQLManager<ResultDataType>: GraphQLManageable {
     var dispatchQueryIsCalled = false
     var numberOfQueriesCalled = 0
     var dispatchMutationIsCalled = false
+    var numberOfMutationsCalled = 0
     var resultReturns: Result<GraphQLResult<ResultDataType>, Error> = .failure(DummyError.failure)
     var newApiHelper: APITokenManagable?
     var receivedDeviceId: String?
@@ -40,6 +41,7 @@ final class MockGraphQLManager<ResultDataType>: GraphQLManageable {
         completion:  @escaping (Result<GraphQLResult<Mutation.Data>, Error>) -> Void
     ) {
         dispatchMutationIsCalled = true
+        numberOfMutationsCalled += 1
         if let result = resultReturns as? Result<GraphQLResult<Mutation.Data>, Error> {
             completion(result)
         } else {

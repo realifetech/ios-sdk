@@ -15,6 +15,7 @@ typealias PutAnalyticEventMutationDataType = ApolloType.PutAnalyticEventMutation
 
 final class AnalyticsLoggerTests: XCTestCase {
 
+    private var sut: AnalyticsLogger!
     private var mockGraphQLManager: MockGraphQLManager<PutAnalyticEventMutationDataType>!
     private var mockQueue: MockQueue<AnalyticEventAndCompletion>!
     private var mockReachabilityChecker: MockReachabilityChecker!
@@ -33,6 +34,7 @@ final class AnalyticsLoggerTests: XCTestCase {
         mockQueue = MockQueue<AnalyticEventAndCompletion>()
         mockDeviceRegistering = MockDeviceRegistering()
         identityPersister = IdentityPersister(defaults: .standard)
+        sut = makeSut()
     }
 
     override func tearDown() {
@@ -41,17 +43,19 @@ final class AnalyticsLoggerTests: XCTestCase {
         mockReachabilityChecker = nil
         mockGraphQLManager = nil
         identityPersister.clear()
+        sut = nil
         super.tearDown()
     }
 
-    private func makeSut() -> AnalyticsLogger {
+    private func makeSut(withMaxAttempts maxAttempts: Int = 0) -> AnalyticsLogger {
         return AnalyticsLogger(
             graphQLManager: mockGraphQLManager,
             reachabilityHelper: mockReachabilityChecker,
             persistentQueue: AnyQueue(mockQueue),
             failureDebounceSeconds: 0.01,
             deviceRegistering: mockDeviceRegistering,
-            identityPersister: IdentityPersister(defaults: .standard))
+            identityPersister: IdentityPersister(defaults: .standard),
+            maxAttempts: maxAttempts)
     }
 
     private func makeEvents(from strings: [String]) -> [AnalyticEvent] {
@@ -245,6 +249,22 @@ final class AnalyticsLoggerTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
         XCTAssertEqual(mockQueue.underlyingStorage.first?.analyticEvent.userId, "123")
     }
+
+    func test_track_onFailure_shouldAttemptToRetry() {
+        let expectation = XCTestExpectation(description: "Event sending completed")
+        mockReachabilityChecker.hasNetworkConnection = true
+        mockQueue.underlyingStorage = []
+        sut.track(testEvent) { result in
+            switch result {
+            case .success:
+                XCTFail("This should hit the failure case")
+            case .failure:
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 0.01)
+        XCTAssertEqual(mockGraphQLManager.numberOfMutationsCalled, 2)
+    }
 }
 
 final class MockDeviceRegistering: DeviceRegistering {
@@ -253,7 +273,7 @@ final class MockDeviceRegistering: DeviceRegistering {
     var sdkReady: Bool { shouldBeReady }
     let deviceId: String = ""
 
-    func registerDevice(_: @escaping () -> Void) { }
+    func registerDevice(_: @escaping (Bool) -> Void) { }
 }
 
 private final class MockQueue<Queue: Codable & Identifiable>: QueueProviding {

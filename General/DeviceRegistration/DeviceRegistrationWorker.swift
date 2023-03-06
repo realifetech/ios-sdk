@@ -19,7 +19,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
 
     private let staticDeviceInformation: StaticDeviceInformation
     private let reachabilityChecker: ReachabilityChecking
-    private let deviceProvider: DeviceProviding.Type
+    private let deviceProvider: DeviceProviding
     private let deviceRegistrationMaxAttempts: Int
     private let retryRegistrationInterval: RxTimeInterval
     private let store: Storeable
@@ -33,7 +33,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
         Device(
             deviceId: staticDeviceInformation.deviceId,
             model: staticDeviceInformation.deviceModel,
-            sdkVersion: "SDK_" + staticDeviceInformation.sdkVersion,
+            appVersion: staticDeviceInformation.appVersion,
             osVersion: staticDeviceInformation.osVersion,
             bluetoothOn: reachabilityChecker.isBluetoothConnected,
             wifiConnected: reachabilityChecker.isConnectedToWifi)
@@ -42,7 +42,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
     init(
         staticDeviceInformation: StaticDeviceInformation,
         reachabilityChecker: ReachabilityChecking,
-        deviceProvider: DeviceProviding.Type = DeviceRepository.self,
+        deviceProvider: DeviceProviding,
         deviceRegistrationMaxAttempts: Int = .max,
         retryRegistrationInterval: Double = 10,
         store: Storeable,
@@ -67,7 +67,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
         return (try? store.fetch(for: storeKey)) ?? false
     }
 
-    func registerDevice(_ completion: @escaping () -> Void) {
+    func registerDevice(_ completion: @escaping (Bool) -> Void) {
         deviceProvider.registerDevice(device)
             .subscribe(on: subscriptionScheduler)
             .observe(on: observationScheduler)
@@ -83,10 +83,10 @@ class DeviceRegistrationWorker: DeviceRegistering {
             .subscribe(onNext: { [self] value in
                 try? store.save(value, for: storeKey)
                 deviceRegisteredSubject.send(value)
-                completion()
+                completion(value)
             }, onError: { [self] _ in
                 deviceRegisteredSubject.send(false)
-                completion()
+                completion(false)
             })
             .disposed(by: bag)
     }

@@ -173,7 +173,7 @@ private struct MockDeviceRepository: DeviceProviding {
         getsCalled = false
     }
 
-    static func registerDevice(_ device: Device) -> Observable<Bool> {
+    func registerDevice(_ device: Device) -> Observable<Bool> {
         .never()
     }
 

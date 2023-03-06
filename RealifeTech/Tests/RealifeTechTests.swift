@@ -12,7 +12,7 @@ import XCTest
 final class RealifeTechTests: XCTestCase {
 
     func test_setup_modulesAreAvailable() {
-        let configuration = SDKConfiguration(appCode: "", clientSecret: "")
+        let configuration = SDKConfiguration(appCode: "", appVersion: "", clientSecret: "")
         RealifeTech.configureSDK(with: configuration)
         XCTAssertNotNil(RealifeTech.Core)
         XCTAssertNotNil(RealifeTech.General)
@@ -42,6 +42,7 @@ final class RealifeTechTests: XCTestCase {
     func test_setWebOrderingJourneyUrl_sellsOrderingJourneyUrlIsUpdated() {
         let configuration = SDKConfiguration(
             appCode: "",
+            appVersion: "",
             clientSecret: "",
             webOrderingJourneyUrl: "A")
         RealifeTech.configureSDK(with: configuration)
