@@ -22,6 +22,8 @@ class AnalyticsLogger {
     private let deviceRegistering: DeviceRegistering
     private let identityPersister: IdentityPersisting
 
+    private var attempts = 0
+    private let maxAttempts = 2
     private var loopIsRunning = false
 
     public init(
@@ -106,8 +108,24 @@ class AnalyticsLogger {
             case .success(let success):
                 completion(.success(success.data?.putAnalyticEvent.success ?? false))
             case .failure(let error):
-                completion(.failure(error))
+                self.attemptToRetryWhenFailed(
+                    with: error,
+                    event: event,
+                    completion: completion)
             }
+        }
+    }
+
+    private func attemptToRetryWhenFailed(
+        with error: Error,
+        event: AnalyticEvent,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        if self.attempts < self.maxAttempts {
+            self.attempts += 1
+            self.performPutAnalyticEventMutation(event: event, completion: completion)
+        } else {
+            completion(.failure(error))
         }
     }
 }
