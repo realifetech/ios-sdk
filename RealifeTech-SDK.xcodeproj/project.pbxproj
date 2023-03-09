@@ -10,6 +10,7 @@
 		09008ECE27E1F74200F6155D /* ProductModifierItemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */; };
 		0913A9BB2750B7B400DB9D99 /* PaymentOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */; };
 		0913A9DF275511B500DB9D99 /* Order+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913A9DE275511B500DB9D99 /* Order+Extension.swift */; };
+		093DD3C529B9FA25006FDFB9 /* UIDevice+ModelDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DD3C429B9FA25006FDFB9 /* UIDevice+ModelDescription.swift */; };
 		0958222A285C5432005D843B /* PushEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09582229285C5432005D843B /* PushEvent.swift */; };
 		0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */; };
 		095850112833B4A2008E0DAB /* ResponseInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */; };
@@ -372,6 +373,7 @@
 		09008ECD27E1F74200F6155D /* ProductModifierItemStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModifierItemStatus.swift; sourceTree = "<group>"; };
 		0913A9BA2750B7B400DB9D99 /* PaymentOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrderStatus.swift; sourceTree = "<group>"; };
 		0913A9DE275511B500DB9D99 /* Order+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Extension.swift"; sourceTree = "<group>"; };
+		093DD3C429B9FA25006FDFB9 /* UIDevice+ModelDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelDescription.swift"; sourceTree = "<group>"; };
 		09582229285C5432005D843B /* PushEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushEvent.swift; sourceTree = "<group>"; };
 		0958500E2833B1C1008E0DAB /* ResponseInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseInterceptor.swift; sourceTree = "<group>"; };
 		095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInterceptorTests.swift; sourceTree = "<group>"; };
@@ -1662,6 +1664,7 @@
 				961C4256260882C8001D8467 /* UIDeviceFactory.swift */,
 				961C425A260882C8001D8467 /* UIDeviceInterface.swift */,
 				961C4259260882C8001D8467 /* UIDeviceWrapper.swift */,
+				093DD3C429B9FA25006FDFB9 /* UIDevice+ModelDescription.swift */,
 				961C4257260882C8001D8467 /* Tests */,
 			);
 			path = UIDeviceHelper;
@@ -2337,6 +2340,7 @@
 				09B29F292983D2AC000B3897 /* TicketAuth.swift in Sources */,
 				0958500F2833B1C1008E0DAB /* ResponseInterceptor.swift in Sources */,
 				961C4211260882BB001D8467 /* ReadOnlyCurrentValue.swift in Sources */,
+				093DD3C529B9FA25006FDFB9 /* UIDevice+ModelDescription.swift in Sources */,
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
 				9637475926C54545007DF92D /* PaymentIntentNextAction.swift in Sources */,
 				961C41D5260882BA001D8467 /* DeviceIdHeaderRequestInserting.swift in Sources */,
@@ -2729,7 +2733,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10.0;
+				MARKETING_VERSION = 1.11.0;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2762,7 +2766,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10.0;
+				MARKETING_VERSION = 1.11.0;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.concertlive.RealifeTech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
