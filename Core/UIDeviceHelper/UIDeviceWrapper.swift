@@ -29,9 +29,9 @@ extension UIDeviceWrapper: UIDeviceInterface {
     }
 
     /// The model of the device.
-    /// - Possible examples of model strings are @”iPhone” and @”iPod touch”.
+    /// - Possible examples of model strings are @”iPhone X” and @”iPod touch”.
     public var model: String {
-        return device.model
+        return device.modelDescription
     }
 
     /// The current version of the operating system.
