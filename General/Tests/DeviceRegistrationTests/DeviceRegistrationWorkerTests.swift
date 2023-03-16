@@ -10,7 +10,7 @@ import XCTest
 import RxSwift
 import RxTest
 @testable import RealifeTech
-/*
+
 final class DeviceRegistrationWorkerTests: XCTestCase {
 
     private enum TestError: Error, Equatable {
@@ -22,19 +22,23 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
     private let testModel = "whooze"
     private let osVersion = "dunny"
     private let appVersion = "mittens"
+    private let appGroupId = "test_appGroupId"
     private lazy var staticInformation = StaticDeviceInformation(
         deviceId: testId,
         deviceModel: testModel,
         osVersion: osVersion,
-        appVersion: appVersion)
+        appVersion: appVersion,
+        appGroupId: appGroupId)
 
     private var sut: DeviceRegistrationWorker!
     private var reachabilityChecker: MockReachabilityChecker!
     private var deviceRepository: MockDeviceRepository!
     private var store: MockCodableStore!
     private var scheduler: TestScheduler!
+    private var appGroupStore: AppGroupUserDefaultsStore!
 
     override func setUp() {
+        appGroupStore = AppGroupUserDefaultsStore(appGroupId: appGroupId)
         reachabilityChecker = MockReachabilityChecker()
         deviceRepository = MockDeviceRepository()
         store = MockCodableStore()
@@ -44,8 +48,10 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
             deviceId: testId,
             deviceModel: testModel,
             osVersion: osVersion,
-            appVersion: appVersion)
+            appVersion: appVersion,
+            appGroupId: appGroupId)
         sut = DeviceRegistrationWorker(
+            appGroupStore: appGroupStore,
             staticDeviceInformation: staticInformation,
             reachabilityChecker: reachabilityChecker,
             deviceProvider: deviceRepository,
@@ -73,6 +79,7 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
     func test_initialisation_readsFromStore() {
         store.valueToReturn = true
         let sutWithCustomStore = DeviceRegistrationWorker(
+            appGroupStore: appGroupStore,
             staticDeviceInformation: staticInformation,
             reachabilityChecker: reachabilityChecker,
             deviceProvider: deviceRepository,
@@ -169,4 +176,3 @@ private final class MockCodableStore: Storeable {
 
     func delete(key: String) { }
 }
-*/

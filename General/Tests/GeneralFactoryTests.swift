@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import RealifeTech
-/*
+
 final class GeneralFactoryTests: XCTestCase {
 
     func test_setsDeviceId() {
@@ -17,7 +17,8 @@ final class GeneralFactoryTests: XCTestCase {
             deviceId: testId,
             deviceModel: "any",
             osVersion: "thing",
-            appVersion: "goes")
+            appVersion: "goes",
+            appGroupId: "appGroupId")
         let sut = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: ReachabilityFactory.makeReachabilityHelper(),
@@ -25,4 +26,3 @@ final class GeneralFactoryTests: XCTestCase {
         XCTAssertEqual(testId, sut.deviceId)
     }
 }
-*/
