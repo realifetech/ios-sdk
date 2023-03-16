@@ -68,8 +68,6 @@ public class RealifeTech {
                                               identityPersister: identityPersister,
                                               graphQLManager: graphQLManager)
         Access = AccessFactory.makeModule(graphQLManager: graphQLManager)
-
-        // For Notification Service Extension app, SDKConfiguration needs to stored in AppGroupUserDefault in order to configureSDK in NSE app.
         saveToAppGroupStore(with: configuration)
     }
 
@@ -101,6 +99,9 @@ public class RealifeTech {
         Sell.orderingJourneyUrl = webOrderingJourneyUrl
     }
 
+    /// This is for Notification Service Extension target.
+    /// SDKConfiguration needs to be stored in AppGroupUserDefaultsStore,
+    /// in order to share SDKConfiguration in notification extension target (RLTNotificationsTracker.swift).
     private static func saveToAppGroupStore(with sdkConfiguration: SDKConfiguration) {
         let appGroupStore = AppGroupUserDefaultsStore(appGroupId: sdkConfiguration.appGroupId)
         appGroupStore?.saveSDKConfiguration(with: sdkConfiguration)
