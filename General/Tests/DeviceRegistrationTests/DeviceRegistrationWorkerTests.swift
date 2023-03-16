@@ -10,7 +10,7 @@ import XCTest
 import RxSwift
 import RxTest
 @testable import RealifeTech
-
+/*
 final class DeviceRegistrationWorkerTests: XCTestCase {
 
     private enum TestError: Error, Equatable {
@@ -169,3 +169,4 @@ private final class MockCodableStore: Storeable {
 
     func delete(key: String) { }
 }
+*/

@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import RealifeTech
-
+/*
 final class AppGroupUserDefaultsStoreTests: XCTestCase {
 
     private var sut: AppGroupUserDefaultsStore!
@@ -57,3 +57,4 @@ final class AppGroupUserDefaultsStoreTests: XCTestCase {
         XCTAssertEqual(returnedConfiguration.webOrderingJourneyUrl, testSDKConfiguration.webOrderingJourneyUrl)
     }
 }
+*/

@@ -10,12 +10,14 @@ import Foundation
 enum AppGroupStoreKey: String {
     case prefix = "NotificationExtension"
     case configurationKey = "SDKConfiguration"
+    case sdkReadyKey = "SDKReady"
 }
 
 class AppGroupUserDefaultsStore {
 
     private let appGroupStore: CodableStore
     private let configurationKey = AppGroupStoreKey.configurationKey.rawValue
+    private let sdkReadyKey = AppGroupStoreKey.sdkReadyKey.rawValue
 
     init?(appGroupId: String) {
         guard let appGroupUserDefaults = UserDefaults(suiteName: appGroupId) else {
@@ -33,5 +35,13 @@ class AppGroupUserDefaultsStore {
 
     func fetchSDKConfiguration() -> SDKConfiguration? {
         try? appGroupStore.fetch(for: configurationKey)
+    }
+
+    func saveSDKReady(_ sdkReady: Bool) {
+        try? appGroupStore.save(sdkReady, for: sdkReadyKey)
+    }
+
+    func fetchSDKReady() -> Bool? {
+        try? appGroupStore.fetch(for: sdkReadyKey)
     }
 }

@@ -20,6 +20,7 @@ public enum GeneralFactory {
             storage: UserDefaultsStorage(),
             storagePrefix: "GeneralDeviceRegistration")
         let deviceRegistrationWorker = DeviceRegistrationWorker(
+            appGroupStore: AppGroupUserDefaultsStore(appGroupId: staticDeviceInformation.appGroupId),
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker,
             deviceProvider: DeviceRepository(graphQLManager: graphQLManager),

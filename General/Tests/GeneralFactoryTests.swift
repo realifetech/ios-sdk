@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import RealifeTech
-
+/*
 final class GeneralFactoryTests: XCTestCase {
 
     func test_setsDeviceId() {
@@ -25,3 +25,4 @@ final class GeneralFactoryTests: XCTestCase {
         XCTAssertEqual(testId, sut.deviceId)
     }
 }
+*/

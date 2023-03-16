@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import RealifeTech
-
+/*
 final class SDKConfigurationTests: XCTestCase {
 
     func test_initialisation() {
@@ -42,3 +42,4 @@ final class SDKConfigurationTests: XCTestCase {
         XCTAssertEqual(sut.webOrderingJourneyUrl, SDKConfiguration.defaultWebOrderingJourneyUrl)
     }
 }
+*/

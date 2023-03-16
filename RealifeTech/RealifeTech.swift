@@ -44,7 +44,8 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
-            appVersion: configuration.appVersion)
+            appVersion: configuration.appVersion,
+            appGroupId: configuration.appGroupId)
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker,
