@@ -32,6 +32,5 @@ public class RLTNotificationsTracker {
             return completion(false)
         }
         RealifeTech.configureSDK(with: sdkConfiguration)
-        RealifeTech.General.registerDevice(completion)
     }
 }

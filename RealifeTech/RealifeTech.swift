@@ -68,6 +68,9 @@ public class RealifeTech {
                                               identityPersister: identityPersister,
                                               graphQLManager: graphQLManager)
         Access = AccessFactory.makeModule(graphQLManager: graphQLManager)
+
+        // For Notification Service Extension app, SDKConfiguration needs to stored in AppGroupUserDefault in order to configureSDK in NSE app.
+        saveToAppGroupStore(with: configuration)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
@@ -98,8 +101,8 @@ public class RealifeTech {
         Sell.orderingJourneyUrl = webOrderingJourneyUrl
     }
 
-    public static func configureNotificationServiceExtensionWith(appGroupId: String, configuration: SDKConfiguration) {
-        let appGroupStore = AppGroupUserDefaultsStore(appGroupId: appGroupId)
-        appGroupStore?.saveSDKConfiguration(with: configuration)
+    private static func saveToAppGroupStore(with sdkConfiguration: SDKConfiguration) {
+        let appGroupStore = AppGroupUserDefaultsStore(appGroupId: sdkConfiguration.appGroupId)
+        appGroupStore?.saveSDKConfiguration(with: sdkConfiguration)
     }
 }
