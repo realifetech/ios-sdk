@@ -44,7 +44,8 @@ public class RealifeTech {
             deviceId: deviceHelper.deviceId,
             deviceModel: deviceHelper.model,
             osVersion: deviceHelper.osVersion,
-            appVersion: configuration.appVersion)
+            appVersion: configuration.appVersion,
+            appGroupId: configuration.appGroupId)
         General = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: reachabilityChecker,
@@ -67,6 +68,7 @@ public class RealifeTech {
                                               identityPersister: identityPersister,
                                               graphQLManager: graphQLManager)
         Access = AccessFactory.makeModule(graphQLManager: graphQLManager)
+        saveToAppGroupStore(with: configuration)
     }
 
     private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
@@ -97,8 +99,11 @@ public class RealifeTech {
         Sell.orderingJourneyUrl = webOrderingJourneyUrl
     }
 
-    public static func configureNotificationServiceExtensionWith(appGroupId: String, configuration: SDKConfiguration) {
-        let appGroupStore = AppGroupUserDefaultsStore(appGroupId: appGroupId)
-        appGroupStore?.saveSDKConfiguration(with: configuration)
+    /// This is for Notification Service Extension target.
+    /// SDKConfiguration needs to be stored in AppGroupUserDefaultsStore,
+    /// in order to share SDKConfiguration in notification extension target (RLTNotificationsTracker.swift).
+    private static func saveToAppGroupStore(with sdkConfiguration: SDKConfiguration) {
+        let appGroupStore = AppGroupUserDefaultsStore(appGroupId: sdkConfiguration.appGroupId)
+        appGroupStore?.saveSDKConfiguration(with: sdkConfiguration)
     }
 }

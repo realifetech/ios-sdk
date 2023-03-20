@@ -46,7 +46,7 @@ final class UIDeviceHelperTests: XCTestCase {
             return UUID(uuidString: "00000000-4321-1234-4321-000000000000")
         }
 
-        override var model: String {
+        override var modelDescription: String {
             return "iPhone"
         }
 

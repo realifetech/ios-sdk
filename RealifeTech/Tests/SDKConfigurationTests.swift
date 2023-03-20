@@ -17,16 +17,19 @@ final class SDKConfigurationTests: XCTestCase {
         let testApiUrl = "1234Marched"
         let testGraphQLApiUrl = "Lemons"
         let testAppVersion = "15.9"
+        let testAppGroupId = "group.com.bundleId"
         let sut = SDKConfiguration(
             appCode: testAppCode,
             appVersion: testAppVersion,
             clientSecret: testClientSecret,
+            appGroupId: testAppGroupId,
             apiUrl: testApiUrl,
             graphQLApiUrl: testGraphQLApiUrl)
         XCTAssertEqual(testAppCode, sut.appCode)
         XCTAssertEqual(testClientSecret, sut.clientSecret)
         XCTAssertEqual(testApiUrl, sut.apiUrl)
         XCTAssertEqual(testGraphQLApiUrl, sut.graphQLApiUrl)
+        XCTAssertEqual(testAppGroupId, sut.appGroupId)
     }
 
     func test_defaults_areUrls() {
@@ -36,9 +39,10 @@ final class SDKConfigurationTests: XCTestCase {
     }
 
     func test_defaults_areUsed() {
-        let sut = SDKConfiguration(appCode: "", appVersion: "", clientSecret: "")
+        let sut = SDKConfiguration(appCode: "", appVersion: "", clientSecret: "", appGroupId: "")
         XCTAssertEqual(sut.apiUrl, SDKConfiguration.defaultApiUrl)
         XCTAssertEqual(sut.graphQLApiUrl, SDKConfiguration.defaultGraphQLApiUrl)
         XCTAssertEqual(sut.webOrderingJourneyUrl, SDKConfiguration.defaultWebOrderingJourneyUrl)
     }
 }
+

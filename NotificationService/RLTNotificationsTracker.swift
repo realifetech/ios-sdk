@@ -19,19 +19,13 @@ public class RLTNotificationsTracker {
                            withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         if let bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent),
            let userInfo = bestAttemptContent.userInfo as? [String: Any] {
-            configureSDKAndRegisterDevice { _ in
-                RealifeTech.Communicate?.trackPush(event: .received, trackInfo: userInfo) { _ in
-                    contentHandler(bestAttemptContent)
-                }
+            guard let sdkConfiguration = appGroupStore?.fetchSDKConfiguration() else {
+                return contentHandler(bestAttemptContent)
+            }
+            RealifeTech.configureSDK(with: sdkConfiguration)
+            RealifeTech.Communicate?.trackPush(event: .received, trackInfo: userInfo) { _ in
+                contentHandler(bestAttemptContent)
             }
         }
-    }
-
-    private func configureSDKAndRegisterDevice(completion: @escaping (Bool) -> Void) {
-        guard let sdkConfiguration = appGroupStore?.fetchSDKConfiguration() else {
-            return completion(false)
-        }
-        RealifeTech.configureSDK(with: sdkConfiguration)
-        RealifeTech.General.registerDevice(completion)
     }
 }
