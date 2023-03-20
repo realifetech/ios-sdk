@@ -17,12 +17,14 @@ final class AppGroupUserDefaultsStoreTests: XCTestCase {
         appCode: "appCodeTest",
         appVersion: "testAppVersion",
         clientSecret: "clientSecretTest",
+        appGroupId: "group.app.bundleId",
         apiUrl: "any_apiUrl",
         graphQLApiUrl: "any_graphQLApiUrl",
         webOrderingJourneyUrl: "any_url")
     private let testId = "AppGroupUserDefaultsStoreTests"
     private let prefix = AppGroupStoreKey.prefix.rawValue
     private let configurationKey = AppGroupStoreKey.configurationKey.rawValue
+    private let sdkReadyKey = AppGroupStoreKey.sdkReadyKey.rawValue
 
     override func setUp() {
         super.setUp()
@@ -55,5 +57,25 @@ final class AppGroupUserDefaultsStoreTests: XCTestCase {
         XCTAssertEqual(returnedConfiguration.apiUrl, testSDKConfiguration.apiUrl)
         XCTAssertEqual(returnedConfiguration.graphQLApiUrl, testSDKConfiguration.graphQLApiUrl)
         XCTAssertEqual(returnedConfiguration.webOrderingJourneyUrl, testSDKConfiguration.webOrderingJourneyUrl)
+    }
+
+    func test_saveSDKReady() {
+        let sdkIsReady = true
+        sut.saveSDKReady(sdkIsReady)
+        if let result = testUserDefaults?.object(forKey: prefix + sdkReadyKey) as? Data,
+           let expextedResult = try? JSONDecoder().decode(Bool.self, from: result) {
+            XCTAssertEqual(expextedResult, sdkIsReady)
+        } else {
+            XCTFail("Failed with saveSDKReady")
+        }
+    }
+
+    func test_fetchSDKReady() {
+        let sdkIsReady = false
+        sut.saveSDKReady(sdkIsReady)
+        guard let returnedBool = sut.fetchSDKReady() else {
+            return XCTFail("Failed with fetchSDKReady")
+        }
+        XCTAssertEqual(returnedBool, sdkIsReady)
     }
 }

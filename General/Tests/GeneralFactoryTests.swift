@@ -17,7 +17,8 @@ final class GeneralFactoryTests: XCTestCase {
             deviceId: testId,
             deviceModel: "any",
             osVersion: "thing",
-            appVersion: "goes")
+            appVersion: "goes",
+            appGroupId: "appGroupId")
         let sut = GeneralFactory.makeGeneralModule(
             staticDeviceInformation: staticDeviceInformation,
             reachabilityChecker: ReachabilityFactory.makeReachabilityHelper(),

@@ -13,4 +13,5 @@ public struct StaticDeviceInformation {
     let deviceModel: String
     let osVersion: String
     let appVersion: String
+    let appGroupId: String
 }

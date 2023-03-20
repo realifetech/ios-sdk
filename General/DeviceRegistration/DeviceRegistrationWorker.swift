@@ -17,6 +17,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
     }
     var deviceId: String { staticDeviceInformation.deviceId }
 
+    private let appGroupStore: AppGroupUserDefaultsStore?
     private let staticDeviceInformation: StaticDeviceInformation
     private let reachabilityChecker: ReachabilityChecking
     private let deviceProvider: DeviceProviding
@@ -40,6 +41,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
     }
 
     init(
+        appGroupStore: AppGroupUserDefaultsStore?,
         staticDeviceInformation: StaticDeviceInformation,
         reachabilityChecker: ReachabilityChecking,
         deviceProvider: DeviceProviding,
@@ -50,6 +52,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
             internalSerialQueueName: "Device registration queue"),
         observationScheduler: SchedulerType = MainScheduler.instance
     ) {
+        self.appGroupStore = appGroupStore
         self.staticDeviceInformation = staticDeviceInformation
         self.reachabilityChecker = reachabilityChecker
         self.deviceProvider = deviceProvider
@@ -64,7 +67,7 @@ class DeviceRegistrationWorker: DeviceRegistering {
     }
 
     func getStoredRegistrationValue() -> Bool {
-        return (try? store.fetch(for: storeKey)) ?? false
+        return (try? store.fetch(for: storeKey)) ?? appGroupStore?.fetchSDKReady() ?? false
     }
 
     func registerDevice(_ completion: @escaping (Bool) -> Void) {
@@ -82,9 +85,11 @@ class DeviceRegistrationWorker: DeviceRegistering {
             }
             .subscribe(onNext: { [self] value in
                 try? store.save(value, for: storeKey)
+                appGroupStore?.saveSDKReady(value)
                 deviceRegisteredSubject.send(value)
                 completion(value)
             }, onError: { [self] _ in
+                appGroupStore?.saveSDKReady(false)
                 deviceRegisteredSubject.send(false)
                 completion(false)
             })
