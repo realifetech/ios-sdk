@@ -1579,6 +1579,94 @@ public enum ApolloType {
     }
   }
 
+  public struct NotificationConsentFilter: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - status
+    public init(status: Swift.Optional<ConsentStatus?> = nil) {
+      graphQLMap = ["status": status]
+    }
+
+    public var status: Swift.Optional<ConsentStatus?> {
+      get {
+        return graphQLMap["status"] as? Swift.Optional<ConsentStatus?> ?? Swift.Optional<ConsentStatus?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "status")
+      }
+    }
+  }
+
+  public enum ConsentStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case active
+    case disabled
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "ACTIVE": self = .active
+        case "DISABLED": self = .disabled
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .active: return "ACTIVE"
+        case .disabled: return "DISABLED"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: ConsentStatus, rhs: ConsentStatus) -> Bool {
+      switch (lhs, rhs) {
+        case (.active, .active): return true
+        case (.disabled, .disabled): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [ConsentStatus] {
+      return [
+        .active,
+        .disabled,
+      ]
+    }
+  }
+
+  public struct DeviceNotificationConsentInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - notificationConsentId
+    ///   - enabled
+    public init(notificationConsentId: GraphQLID, enabled: Bool) {
+      graphQLMap = ["notificationConsentId": notificationConsentId, "enabled": enabled]
+    }
+
+    public var notificationConsentId: GraphQLID {
+      get {
+        return graphQLMap["notificationConsentId"] as! GraphQLID
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "notificationConsentId")
+      }
+    }
+
+    public var enabled: Bool {
+      get {
+        return graphQLMap["enabled"] as! Bool
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "enabled")
+      }
+    }
+  }
+
   public enum WebPageType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
     public typealias RawValue = String
     case audioGuidesHelp
@@ -4716,6 +4804,463 @@ public enum ApolloType {
             public var fragmentWidget: FragmentWidget {
               get {
                 return FragmentWidget(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public final class GetMyDeviceNotificationConsentsQuery: GraphQLQuery {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      query getMyDeviceNotificationConsents {
+        getMyDeviceNotificationConsents {
+          __typename
+          id
+          enabled
+          consent {
+            __typename
+            ...NotificationConsentFragment
+          }
+        }
+      }
+      """
+
+    public let operationName: String = "getMyDeviceNotificationConsents"
+
+    public var queryDocument: String {
+      var document: String = operationDefinition
+      document.append("\n" + NotificationConsentFragment.fragmentDefinition)
+      return document
+    }
+
+    public init() {
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Query"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("getMyDeviceNotificationConsents", type: .list(.object(GetMyDeviceNotificationConsent.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(getMyDeviceNotificationConsents: [GetMyDeviceNotificationConsent?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getMyDeviceNotificationConsents": getMyDeviceNotificationConsents.flatMap { (value: [GetMyDeviceNotificationConsent?]) -> [ResultMap?] in value.map { (value: GetMyDeviceNotificationConsent?) -> ResultMap? in value.flatMap { (value: GetMyDeviceNotificationConsent) -> ResultMap in value.resultMap } } }])
+      }
+
+      public var getMyDeviceNotificationConsents: [GetMyDeviceNotificationConsent?]? {
+        get {
+          return (resultMap["getMyDeviceNotificationConsents"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [GetMyDeviceNotificationConsent?] in value.map { (value: ResultMap?) -> GetMyDeviceNotificationConsent? in value.flatMap { (value: ResultMap) -> GetMyDeviceNotificationConsent in GetMyDeviceNotificationConsent(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [GetMyDeviceNotificationConsent?]) -> [ResultMap?] in value.map { (value: GetMyDeviceNotificationConsent?) -> ResultMap? in value.flatMap { (value: GetMyDeviceNotificationConsent) -> ResultMap in value.resultMap } } }, forKey: "getMyDeviceNotificationConsents")
+        }
+      }
+
+      public struct GetMyDeviceNotificationConsent: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["DeviceNotificationConsent"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("enabled", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("consent", type: .nonNull(.object(Consent.selections))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, enabled: Bool, consent: Consent) {
+          self.init(unsafeResultMap: ["__typename": "DeviceNotificationConsent", "id": id, "enabled": enabled, "consent": consent.resultMap])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var enabled: Bool {
+          get {
+            return resultMap["enabled"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "enabled")
+          }
+        }
+
+        public var consent: Consent {
+          get {
+            return Consent(unsafeResultMap: resultMap["consent"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "consent")
+          }
+        }
+
+        public struct Consent: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["NotificationConsent"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLFragmentSpread(NotificationConsentFragment.self),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+
+          public struct Fragments {
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public var notificationConsentFragment: NotificationConsentFragment {
+              get {
+                return NotificationConsentFragment(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public final class GetNotificationConsentsQuery: GraphQLQuery {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      query getNotificationConsents($filter: NotificationConsentFilter) {
+        getNotificationConsents(filter: $filter) {
+          __typename
+          ...NotificationConsentFragment
+        }
+      }
+      """
+
+    public let operationName: String = "getNotificationConsents"
+
+    public var queryDocument: String {
+      var document: String = operationDefinition
+      document.append("\n" + NotificationConsentFragment.fragmentDefinition)
+      return document
+    }
+
+    public var filter: NotificationConsentFilter?
+
+    public init(filter: NotificationConsentFilter? = nil) {
+      self.filter = filter
+    }
+
+    public var variables: GraphQLMap? {
+      return ["filter": filter]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Query"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("getNotificationConsents", arguments: ["filter": GraphQLVariable("filter")], type: .list(.object(GetNotificationConsent.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(getNotificationConsents: [GetNotificationConsent?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Query", "getNotificationConsents": getNotificationConsents.flatMap { (value: [GetNotificationConsent?]) -> [ResultMap?] in value.map { (value: GetNotificationConsent?) -> ResultMap? in value.flatMap { (value: GetNotificationConsent) -> ResultMap in value.resultMap } } }])
+      }
+
+      public var getNotificationConsents: [GetNotificationConsent?]? {
+        get {
+          return (resultMap["getNotificationConsents"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [GetNotificationConsent?] in value.map { (value: ResultMap?) -> GetNotificationConsent? in value.flatMap { (value: ResultMap) -> GetNotificationConsent in GetNotificationConsent(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [GetNotificationConsent?]) -> [ResultMap?] in value.map { (value: GetNotificationConsent?) -> ResultMap? in value.flatMap { (value: GetNotificationConsent) -> ResultMap in value.resultMap } } }, forKey: "getNotificationConsents")
+        }
+      }
+
+      public struct GetNotificationConsent: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["NotificationConsent"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLFragmentSpread(NotificationConsentFragment.self),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var fragments: Fragments {
+          get {
+            return Fragments(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+
+        public struct Fragments {
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var notificationConsentFragment: NotificationConsentFragment {
+            get {
+              return NotificationConsentFragment(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public final class UpdateMyDeviceNotificationConsentMutation: GraphQLMutation {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      mutation updateMyDeviceNotificationConsent($input: DeviceNotificationConsentInput!) {
+        updateMyDeviceNotificationConsent(input: $input) {
+          __typename
+          id
+          enabled
+          consent {
+            __typename
+            ...NotificationConsentFragment
+          }
+        }
+      }
+      """
+
+    public let operationName: String = "updateMyDeviceNotificationConsent"
+
+    public var queryDocument: String {
+      var document: String = operationDefinition
+      document.append("\n" + NotificationConsentFragment.fragmentDefinition)
+      return document
+    }
+
+    public var input: DeviceNotificationConsentInput
+
+    public init(input: DeviceNotificationConsentInput) {
+      self.input = input
+    }
+
+    public var variables: GraphQLMap? {
+      return ["input": input]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Mutation"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("updateMyDeviceNotificationConsent", arguments: ["input": GraphQLVariable("input")], type: .object(UpdateMyDeviceNotificationConsent.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(updateMyDeviceNotificationConsent: UpdateMyDeviceNotificationConsent? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "updateMyDeviceNotificationConsent": updateMyDeviceNotificationConsent.flatMap { (value: UpdateMyDeviceNotificationConsent) -> ResultMap in value.resultMap }])
+      }
+
+      public var updateMyDeviceNotificationConsent: UpdateMyDeviceNotificationConsent? {
+        get {
+          return (resultMap["updateMyDeviceNotificationConsent"] as? ResultMap).flatMap { UpdateMyDeviceNotificationConsent(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "updateMyDeviceNotificationConsent")
+        }
+      }
+
+      public struct UpdateMyDeviceNotificationConsent: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["DeviceNotificationConsent"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("enabled", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("consent", type: .nonNull(.object(Consent.selections))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, enabled: Bool, consent: Consent) {
+          self.init(unsafeResultMap: ["__typename": "DeviceNotificationConsent", "id": id, "enabled": enabled, "consent": consent.resultMap])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var enabled: Bool {
+          get {
+            return resultMap["enabled"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "enabled")
+          }
+        }
+
+        public var consent: Consent {
+          get {
+            return Consent(unsafeResultMap: resultMap["consent"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "consent")
+          }
+        }
+
+        public struct Consent: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["NotificationConsent"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLFragmentSpread(NotificationConsentFragment.self),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+
+          public struct Fragments {
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public var notificationConsentFragment: NotificationConsentFragment {
+              get {
+                return NotificationConsentFragment(unsafeResultMap: resultMap)
               }
               set {
                 resultMap += newValue.resultMap
@@ -8923,6 +9468,151 @@ public enum ApolloType {
           set {
             resultMap.updateValue(newValue, forKey: "title")
           }
+        }
+      }
+    }
+  }
+
+  public struct NotificationConsentFragment: GraphQLFragment {
+    /// The raw GraphQL definition of this fragment.
+    public static let fragmentDefinition: String =
+      """
+      fragment NotificationConsentFragment on NotificationConsent {
+        __typename
+        id
+        name
+        sortId
+        status
+        translations {
+          __typename
+          name
+          language
+        }
+      }
+      """
+
+    public static let possibleTypes: [String] = ["NotificationConsent"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("name", type: .nonNull(.scalar(String.self))),
+        GraphQLField("sortId", type: .nonNull(.scalar(Int.self))),
+        GraphQLField("status", type: .nonNull(.scalar(ConsentStatus.self))),
+        GraphQLField("translations", type: .list(.object(Translation.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(id: GraphQLID, name: String, sortId: Int, status: ConsentStatus, translations: [Translation?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "NotificationConsent", "id": id, "name": name, "sortId": sortId, "status": status, "translations": translations.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }])
+    }
+
+    public var __typename: String {
+      get {
+        return resultMap["__typename"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var id: GraphQLID {
+      get {
+        return resultMap["id"]! as! GraphQLID
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "id")
+      }
+    }
+
+    public var name: String {
+      get {
+        return resultMap["name"]! as! String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "name")
+      }
+    }
+
+    public var sortId: Int {
+      get {
+        return resultMap["sortId"]! as! Int
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "sortId")
+      }
+    }
+
+    public var status: ConsentStatus {
+      get {
+        return resultMap["status"]! as! ConsentStatus
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "status")
+      }
+    }
+
+    public var translations: [Translation?]? {
+      get {
+        return (resultMap["translations"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Translation?] in value.map { (value: ResultMap?) -> Translation? in value.flatMap { (value: ResultMap) -> Translation in Translation(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [Translation?]) -> [ResultMap?] in value.map { (value: Translation?) -> ResultMap? in value.flatMap { (value: Translation) -> ResultMap in value.resultMap } } }, forKey: "translations")
+      }
+    }
+
+    public struct Translation: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["NotificationConsentTranslation"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLField("language", type: .nonNull(.scalar(String.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(name: String, language: String) {
+        self.init(unsafeResultMap: ["__typename": "NotificationConsentTranslation", "name": name, "language": language])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var name: String {
+        get {
+          return resultMap["name"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var language: String {
+        get {
+          return resultMap["language"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "language")
         }
       }
     }
