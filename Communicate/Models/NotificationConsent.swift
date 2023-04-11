@@ -22,6 +22,20 @@ public struct NotificationConsent {
     public let sortId: Int
     public let status: NotificationConsentStatus
     public let translations: [StandardTitleTranslation]?
+
+    public init(
+        id: String,
+        name: String,
+        sortId: Int,
+        status: NotificationConsentStatus,
+        translations: [StandardTitleTranslation]?
+    ) {
+        self.id = id
+        self.name = name
+        self.sortId = sortId
+        self.status = status
+        self.translations = translations
+    }
 }
 
 extension NotificationConsent {

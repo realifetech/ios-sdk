@@ -15,4 +15,14 @@ public struct DeviceNotificationConsent {
     public let id: String
     public let enabled: Bool
     public let consent: NotificationConsent
+
+    public init(
+        id: String,
+        enabled: Bool,
+        consent: NotificationConsent
+    ) {
+        self.id = id
+        self.enabled = enabled
+        self.consent = consent
+    }
 }
