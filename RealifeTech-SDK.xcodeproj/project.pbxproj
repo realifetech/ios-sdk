@@ -34,6 +34,8 @@
 		09BAAEB3298270BF009FCD19 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB2298270BE009FCD19 /* Ticket.swift */; };
 		09BAAEB5298390D9009FCD19 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB4298390D9009FCD19 /* Currency.swift */; };
 		09BAAEB82983913D009FCD19 /* TicketAdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BAAEB72983913D009FCD19 /* TicketAdditionalField.swift */; };
+		09D9121E29DFD860009FFE89 /* NotificationConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9121D29DFD860009FFE89 /* NotificationConsent.swift */; };
+		09D9122029DFE543009FFE89 /* DeviceNotificationConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D9121F29DFE543009FFE89 /* DeviceNotificationConsent.swift */; };
 		09E252CC29ACCC37001AF48A /* DeviceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E252CB29ACCC37001AF48A /* DeviceRepositoryTests.swift */; };
 		3E78BCF826B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		3E78BD0526B8231800BF3026 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -397,6 +399,8 @@
 		09BAAEB2298270BE009FCD19 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		09BAAEB4298390D9009FCD19 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		09BAAEB72983913D009FCD19 /* TicketAdditionalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAdditionalField.swift; sourceTree = "<group>"; };
+		09D9121D29DFD860009FFE89 /* NotificationConsent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConsent.swift; sourceTree = "<group>"; };
+		09D9121F29DFE543009FFE89 /* DeviceNotificationConsent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceNotificationConsent.swift; sourceTree = "<group>"; };
 		09E252CB29ACCC37001AF48A /* DeviceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepositoryTests.swift; sourceTree = "<group>"; };
 		1AEB0DA8BD2631E8F26720C5 /* Pods-RealifeTech-RealifeTechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech-RealifeTechTests.release.xcconfig"; path = "Target Support Files/Pods-RealifeTech-RealifeTechTests/Pods-RealifeTech-RealifeTechTests.release.xcconfig"; sourceTree = "<group>"; };
 		3702AE9C18F340B82ED9978C /* Pods-RealifeTech.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealifeTech.debug.xcconfig"; path = "Target Support Files/Pods-RealifeTech/Pods-RealifeTech.debug.xcconfig"; sourceTree = "<group>"; };
@@ -852,6 +856,15 @@
 			path = Ticket;
 			sourceTree = "<group>";
 		};
+		09D9121C29DFD835009FFE89 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09D9121D29DFD860009FFE89 /* NotificationConsent.swift */,
+				09D9121F29DFE543009FFE89 /* DeviceNotificationConsent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3E78BCEB26B8226800BF3026 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -1037,6 +1050,7 @@
 				487479E725408E8A0048F03D /* Communicate.swift */,
 				487479ED254090E90048F03D /* CommunicateFactory.swift */,
 				48EFE2222539E21100CC6E58 /* CommunicateImplementing.swift */,
+				09D9121C29DFD835009FFE89 /* Models */,
 				09582228285C53ED005D843B /* PushEvent */,
 				487479E025408E640048F03D /* PushNotificationRegistration */,
 				96B670C626D7CEF900DB74A4 /* Tests */,
@@ -2344,6 +2358,7 @@
 				961C41D1260882BA001D8467 /* AuthorisationStore.swift in Sources */,
 				9637475926C54545007DF92D /* PaymentIntentNextAction.swift in Sources */,
 				961C41D5260882BA001D8467 /* DeviceIdHeaderRequestInserting.swift in Sources */,
+				09D9122029DFE543009FFE89 /* DeviceNotificationConsent.swift in Sources */,
 				09B85A8E29960C19009546E2 /* LanguageIdCreator.swift in Sources */,
 				961C41D7260882BA001D8467 /* OAuthHeaderRequestInserting.swift in Sources */,
 				961C41E8260882BA001D8467 /* DefaultDiskCacheStrategyProviding.swift in Sources */,
@@ -2405,6 +2420,7 @@
 				961C426E260882C8001D8467 /* DeviceToken.swift in Sources */,
 				961C425E260882C8001D8467 /* Storage.swift in Sources */,
 				96F1BF1E26CD2F3C008D1363 /* OrderingJourneyViewController.swift in Sources */,
+				09D9121E29DFD860009FFE89 /* NotificationConsent.swift in Sources */,
 				961C4212260882BB001D8467 /* DiskCacheCodableInterface.swift in Sources */,
 				961C4266260882C8001D8467 /* QueueAction.swift in Sources */,
 				96AED8C726CFA82700F6C750 /* CustomisedColor.swift in Sources */,
