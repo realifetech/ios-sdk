@@ -74,4 +74,8 @@ private final class DeviceRegisteringMock: DeviceRegistering {
     func registerDevice(_: @escaping (Bool) -> Void) {
         receivedCallToRegisterDevice = true
     }
+
+    func updateMyDeviceConsent(_ deviceConsent: DeviceConsent, completion: @escaping (Result<Bool, Error>) -> Void) {
+        completion(.success(true))
+    }
 }

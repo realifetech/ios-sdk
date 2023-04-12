@@ -177,6 +177,10 @@ private struct MockDeviceRepository: DeviceProviding {
         .never()
     }
 
+    func updateMyDeviceConsent(_ deviceConsent: DeviceConsent) -> Observable<Bool> {
+        .never()
+    }
+
     static func registerForPushNotifications(with deviceToken: DeviceToken) -> Observable<TokenRegistrationResponse> {
         getsCalled = true
         return tokenRegistrationReturns.asObservable()

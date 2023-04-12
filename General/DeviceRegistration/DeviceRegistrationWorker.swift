@@ -95,4 +95,16 @@ class DeviceRegistrationWorker: DeviceRegistering {
             })
             .disposed(by: bag)
     }
+
+    func updateMyDeviceConsent(_ deviceConsent: DeviceConsent, completion: @escaping (Result<Bool, Error>) -> Void) {
+        deviceProvider.updateMyDeviceConsent(deviceConsent)
+            .subscribe(on: subscriptionScheduler)
+            .observe(on: observationScheduler)
+            .subscribe(onNext: { result in
+                completion(.success(result))
+            }, onError: { error in
+                completion(.failure(error))
+            })
+            .disposed(by: bag)
+    }
 }
