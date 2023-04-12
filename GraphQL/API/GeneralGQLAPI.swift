@@ -1955,6 +1955,115 @@ public enum ApolloType {
     }
   }
 
+  public struct DeviceConsentInput: GraphQLMapConvertible {
+    public var graphQLMap: GraphQLMap
+
+    /// - Parameters:
+    ///   - locationCapture
+    ///   - locationGranular
+    ///   - camera
+    ///   - calendar
+    ///   - photoSharing
+    ///   - pushNotification
+    public init(locationCapture: Swift.Optional<Bool?> = nil, locationGranular: Swift.Optional<LocationGranular?> = nil, camera: Swift.Optional<Bool?> = nil, calendar: Swift.Optional<Bool?> = nil, photoSharing: Swift.Optional<Bool?> = nil, pushNotification: Swift.Optional<Bool?> = nil) {
+      graphQLMap = ["locationCapture": locationCapture, "locationGranular": locationGranular, "camera": camera, "calendar": calendar, "photoSharing": photoSharing, "pushNotification": pushNotification]
+    }
+
+    public var locationCapture: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["locationCapture"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "locationCapture")
+      }
+    }
+
+    public var locationGranular: Swift.Optional<LocationGranular?> {
+      get {
+        return graphQLMap["locationGranular"] as? Swift.Optional<LocationGranular?> ?? Swift.Optional<LocationGranular?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "locationGranular")
+      }
+    }
+
+    public var camera: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["camera"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "camera")
+      }
+    }
+
+    public var calendar: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["calendar"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "calendar")
+      }
+    }
+
+    public var photoSharing: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["photoSharing"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "photoSharing")
+      }
+    }
+
+    public var pushNotification: Swift.Optional<Bool?> {
+      get {
+        return graphQLMap["pushNotification"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+      }
+      set {
+        graphQLMap.updateValue(newValue, forKey: "pushNotification")
+      }
+    }
+  }
+
+  public enum LocationGranular: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+    public typealias RawValue = String
+    case always
+    case appInUse
+    /// Auto generated constant for unknown enum values
+    case __unknown(RawValue)
+
+    public init?(rawValue: RawValue) {
+      switch rawValue {
+        case "always": self = .always
+        case "appInUse": self = .appInUse
+        default: self = .__unknown(rawValue)
+      }
+    }
+
+    public var rawValue: RawValue {
+      switch self {
+        case .always: return "always"
+        case .appInUse: return "appInUse"
+        case .__unknown(let value): return value
+      }
+    }
+
+    public static func == (lhs: LocationGranular, rhs: LocationGranular) -> Bool {
+      switch (lhs, rhs) {
+        case (.always, .always): return true
+        case (.appInUse, .appInUse): return true
+        case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+        default: return false
+      }
+    }
+
+    public static var allCases: [LocationGranular] {
+      return [
+        .always,
+        .appInUse,
+      ]
+    }
+  }
+
   public struct PaymentSourceInput: GraphQLMapConvertible {
     public var graphQLMap: GraphQLMap
 
@@ -5452,6 +5561,154 @@ public enum ApolloType {
           }
           set {
             resultMap.updateValue(newValue, forKey: "acknowledged")
+          }
+        }
+      }
+    }
+  }
+
+  public final class UpdateMyDeviceConsentMutation: GraphQLMutation {
+    /// The raw GraphQL definition of this operation.
+    public let operationDefinition: String =
+      """
+      mutation updateMyDeviceConsent($input: DeviceConsentInput!) {
+        updateMyDeviceConsent(input: $input) {
+          __typename
+          id
+          calendar
+          camera
+          locationCapture
+          photoSharing
+          pushNotification
+        }
+      }
+      """
+
+    public let operationName: String = "updateMyDeviceConsent"
+
+    public var input: DeviceConsentInput
+
+    public init(input: DeviceConsentInput) {
+      self.input = input
+    }
+
+    public var variables: GraphQLMap? {
+      return ["input": input]
+    }
+
+    public struct Data: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Mutation"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("updateMyDeviceConsent", arguments: ["input": GraphQLVariable("input")], type: .object(UpdateMyDeviceConsent.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(updateMyDeviceConsent: UpdateMyDeviceConsent? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Mutation", "updateMyDeviceConsent": updateMyDeviceConsent.flatMap { (value: UpdateMyDeviceConsent) -> ResultMap in value.resultMap }])
+      }
+
+      public var updateMyDeviceConsent: UpdateMyDeviceConsent? {
+        get {
+          return (resultMap["updateMyDeviceConsent"] as? ResultMap).flatMap { UpdateMyDeviceConsent(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "updateMyDeviceConsent")
+        }
+      }
+
+      public struct UpdateMyDeviceConsent: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["DeviceConsent"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("calendar", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("camera", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("locationCapture", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("photoSharing", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("pushNotification", type: .nonNull(.scalar(Bool.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, calendar: Bool, camera: Bool, locationCapture: Bool, photoSharing: Bool, pushNotification: Bool) {
+          self.init(unsafeResultMap: ["__typename": "DeviceConsent", "id": id, "calendar": calendar, "camera": camera, "locationCapture": locationCapture, "photoSharing": photoSharing, "pushNotification": pushNotification])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var calendar: Bool {
+          get {
+            return resultMap["calendar"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "calendar")
+          }
+        }
+
+        public var camera: Bool {
+          get {
+            return resultMap["camera"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "camera")
+          }
+        }
+
+        public var locationCapture: Bool {
+          get {
+            return resultMap["locationCapture"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "locationCapture")
+          }
+        }
+
+        public var photoSharing: Bool {
+          get {
+            return resultMap["photoSharing"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "photoSharing")
+          }
+        }
+
+        public var pushNotification: Bool {
+          get {
+            return resultMap["pushNotification"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "pushNotification")
           }
         }
       }
