@@ -11,12 +11,12 @@ import Foundation
 import GraphQL
 #endif
 
-public enum LocationGranularStatus: String {
+public enum LocationGranularStatus: String, Codable {
     case always
     case appInUse
 }
 
-public struct DeviceConsent {
+public struct DeviceConsent: Codable {
 
     public let calendar: Bool
     public let camera: Bool
