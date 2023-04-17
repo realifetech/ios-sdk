@@ -26,7 +26,7 @@ final class AccessImplementingTests: XCTestCase {
             source: .cache,
             dependentKeys: nil)
         graphQLManager.resultReturns = .success(expectedResult)
-        sut.getMyTickets(pageSize: 10) { result in
+        sut.getMyTickets(forceUpdate: false, pageSize: 10) { result in
             guard case let .success(returnedResponse) = result else {
                 return XCTFail("This test should return success")
             }
@@ -42,7 +42,7 @@ final class AccessImplementingTests: XCTestCase {
     func test_getMyTickets_completeWithFailure() {
         let (graphQLManager, sut) = makeGraphQLManagerAndSUT(ofType: ApolloType.GetMyTicketsQuery.Data.self)
         graphQLManager.resultReturns = .failure(DummyError.failure)
-        sut.getMyTickets(pageSize: 10) { result in
+        sut.getMyTickets(forceUpdate: false, pageSize: 10) { result in
             guard case let .failure(returnedError) = result else {
                 return XCTFail("This test should return failure")
             }

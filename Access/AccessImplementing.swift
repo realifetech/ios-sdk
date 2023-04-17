@@ -19,10 +19,12 @@ public class AccessImplementing: Access {
         self.graphQLManager = graphQLManager
     }
 
-    public func getMyTickets(pageSize: Int, completion: @escaping (Result<PaginatedObject<Ticket>, Error>) -> Void) {
+    public func getMyTickets(forceUpdate: Bool,
+                             pageSize: Int,
+                             completion: @escaping (Result<PaginatedObject<Ticket>, Error>) -> Void) {
         graphQLManager.dispatch(
             query: ApolloType.GetMyTicketsQuery(pageSize: pageSize),
-            cachePolicy: .returnCacheDataAndFetch
+            cachePolicy: forceUpdate ? .fetchIgnoringCacheData : .returnCacheDataAndFetch
         ) { result in
             switch result {
             case .success(let response):
