@@ -13,4 +13,5 @@ public protocol DeviceRegistering {
     var deviceId: String { get }
 
     func registerDevice(_: @escaping(Bool) -> Void)
+    func updateMyDeviceConsent(_ deviceConsent: DeviceConsent, completion: @escaping (Result<Bool, Error>) -> Void)
 }

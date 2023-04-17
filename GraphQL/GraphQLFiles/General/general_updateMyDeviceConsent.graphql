@@ -1,0 +1,11 @@
+mutation updateMyDeviceConsent($input: DeviceConsentInput!) {
+  updateMyDeviceConsent(input: $input) {
+    id
+    calendar
+    camera
+    locationCapture
+    locationGranular
+    photoSharing
+    pushNotification
+  }
+}
