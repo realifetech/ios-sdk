@@ -66,7 +66,7 @@ public final class CommunicateImplementing: Communicate {
     public func getMyNotificationConsents(completion: @escaping (Result<[DeviceNotificationConsent], Error>) -> Void) {
         graphQLManager.dispatch(
             query: ApolloType.GetMyDeviceNotificationConsentsQuery(),
-            cachePolicy: .returnCacheDataAndFetch) { result in
+            cachePolicy: .fetchIgnoringCacheData) { result in
                 switch result {
                 case .success(let response):
                     guard let data = response.data else {
