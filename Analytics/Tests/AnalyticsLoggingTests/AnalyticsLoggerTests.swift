@@ -274,6 +274,9 @@ final class MockDeviceRegistering: DeviceRegistering {
     let deviceId: String = ""
 
     func registerDevice(_: @escaping (Bool) -> Void) { }
+    func updateMyDeviceConsent(_ deviceConsent: DeviceConsent, completion: @escaping (Result<Bool, Error>) -> Void) {
+        completion(.success(true))
+    }
 }
 
 private final class MockQueue<Queue: Codable & Identifiable>: QueueProviding {

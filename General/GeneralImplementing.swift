@@ -25,8 +25,12 @@ extension GeneralImplementing {
     public var sdkReady: Bool { deviceRegistrationWorker.sdkReady }
     public var deviceId: String { deviceRegistrationWorker.deviceId }
 
-    public func registerDevice(_ completion: @escaping(Bool) -> Void) {
+    public func registerDevice(_ completion: @escaping (Bool) -> Void) {
         deviceRegistrationWorker.registerDevice(completion)
+    }
+
+    public func updateMyDeviceConsent(_ deviceConsent: DeviceConsent, completion: @escaping (Result<Bool, Error>) -> Void) {
+        deviceRegistrationWorker.updateMyDeviceConsent(deviceConsent, completion: completion)
     }
 }
 

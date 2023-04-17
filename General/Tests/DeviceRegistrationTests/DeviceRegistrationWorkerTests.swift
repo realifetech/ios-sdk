@@ -17,6 +17,14 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
         case registrationError(String)
     }
 
+    private let testDeviceConsent = DeviceConsent(
+        calendar: true,
+        camera: true,
+        locationCapture: true,
+        locationGranular: nil,
+        photoSharing: true,
+        pushNotification: true)
+
     private var bag = DisposeBag()
     private let testId = "123abc"
     private let testModel = "whooze"
@@ -131,11 +139,48 @@ final class DeviceRegistrationWorkerTests: XCTestCase {
         scheduler.start()
         wait(for: [retryFirstTimeExpectation, retrySecondimeExpectation, expectation], timeout: 0.05)
     }
+
+    func test_updateMyDeviceConsent_completeWithSuccess() {
+        let observable: TestableObservable<Bool> = scheduler
+            .createHotObservable([.next(10, true)])
+        let expectation = XCTestExpectation(description: "completion should get called")
+        sut.updateMyDeviceConsent(testDeviceConsent) { result in
+            guard case .success(let value) = result else {
+                return XCTFail("test should enter success case")
+            }
+            XCTAssertTrue(value)
+            expectation.fulfill()
+        }
+        observable
+            .bind(to: deviceRepository.updateDeviceConsentResult)
+            .disposed(by: bag)
+        scheduler.start()
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func test_updateMyDeviceConsent_completeWithFaliure() {
+        let observable: TestableObservable<Bool> = scheduler
+            .createHotObservable([.error(10, DummyError.failure)])
+        let expectation = XCTestExpectation(description: "completion should get called")
+        sut.updateMyDeviceConsent(testDeviceConsent) { result in
+            guard case .failure(let error) = result else {
+                return XCTFail("test should enter failure case")
+            }
+            XCTAssertEqual(error as? DummyError, .failure)
+            expectation.fulfill()
+        }
+        observable
+            .bind(to: deviceRepository.updateDeviceConsentResult)
+            .disposed(by: bag)
+        scheduler.start()
+        wait(for: [expectation], timeout: 0.01)
+    }
 }
 
 private class MockDeviceRepository: DeviceProviding {
 
     var registerDevice = PublishSubject<Bool>()
+    var updateDeviceConsentResult = PublishSubject<Bool>()
 
     func reset() {
         registerDevice = PublishSubject<Bool>()
@@ -143,6 +188,10 @@ private class MockDeviceRepository: DeviceProviding {
 
     func registerDevice(_ device: Device) -> Observable<Bool> {
         return registerDevice.asObservable()
+    }
+
+    func updateMyDeviceConsent(_ deviceConsent: DeviceConsent) -> Observable<Bool> {
+        return updateDeviceConsentResult.asObservable()
     }
 
     static func registerForPushNotifications(with deviceToken: DeviceToken) -> Observable<TokenRegistrationResponse> {

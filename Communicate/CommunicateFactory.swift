@@ -10,11 +10,14 @@ import Foundation
 
 enum CommunicateFactory {
 
-    static func makeCommunicateModule(analytics: Analytics) -> Communicate {
+    static func makeCommunicateModule(analytics: Analytics, graphQLManager: GraphQLManageable) -> Communicate {
         let storage = CodableStore(storage: UserDefaultsStorage(), storagePrefix: "apnToken")
         let pushNotificationRegistrar = PushNotificationRegistrar(
             tokenStore: storage,
             deviceRepository: DeviceRepository.self)
-        return CommunicateImplementing(pushNotificationRegistrar: pushNotificationRegistrar, analytics: analytics)
+        return CommunicateImplementing(
+            pushNotificationRegistrar: pushNotificationRegistrar,
+            analytics: analytics,
+            graphQLManager: graphQLManager)
     }
 }
