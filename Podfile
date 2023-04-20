@@ -6,7 +6,7 @@ inhibit_all_warnings!
 workspace 'RealifeTech-SDK'
 project 'RealifeTech-SDK'
 
-pod 'SwiftLint', '~> 0.43.1'
+pod 'SwiftLint', '~> 0.51.0'
 pod 'RxSwift', '~> 6.1.0'
 pod 'RxCocoa', '~> 6.1.0'
 pod 'Apollo', '~> 0.51.2'
