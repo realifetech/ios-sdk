@@ -31,6 +31,6 @@ Pod::Spec.new do |spec|
   spec.dependency 'RxCocoa', '~> 6.1.0'
   spec.dependency 'Apollo', '~> 0.51.2'
   spec.dependency 'Apollo/SQLite'
-  spec.dependency 'SwiftLint', '~> 0.43.1'
+  spec.dependency 'SwiftLint', '~> 0.51.0'
 
 end
