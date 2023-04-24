@@ -32,8 +32,10 @@ struct AuthorisationStore: AuthorisationStoring {
 
     private let keychain: KeychainSwift
 
-    init(keychain: KeychainSwift = KeychainSwift()) {
+    init(keychain: KeychainSwift = KeychainSwift(), keychainSharingId: String) {
         self.keychain = keychain
+        keychain.synchronizable = true
+        self.keychain.accessGroup = keychainSharingId // To check: migration??
     }
 
     var accessToken: String? {

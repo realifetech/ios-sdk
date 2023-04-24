@@ -18,6 +18,7 @@ final class AppGroupUserDefaultsStoreTests: XCTestCase {
         appVersion: "testAppVersion",
         clientSecret: "clientSecretTest",
         appGroupId: "group.app.bundleId",
+        keychainSharingId: "test_keychainSharingId",
         apiUrl: "any_apiUrl",
         graphQLApiUrl: "any_graphQLApiUrl",
         webOrderingJourneyUrl: "any_url")
@@ -42,6 +43,7 @@ final class AppGroupUserDefaultsStoreTests: XCTestCase {
             XCTAssertEqual(configuration?.apiUrl, testSDKConfiguration.apiUrl)
             XCTAssertEqual(configuration?.graphQLApiUrl, testSDKConfiguration.graphQLApiUrl)
             XCTAssertEqual(configuration?.webOrderingJourneyUrl, testSDKConfiguration.webOrderingJourneyUrl)
+            XCTAssertEqual(configuration?.keychainSharingId, testSDKConfiguration.keychainSharingId)
         } else {
             XCTFail("Failed with saveSDKConfiguration")
         }

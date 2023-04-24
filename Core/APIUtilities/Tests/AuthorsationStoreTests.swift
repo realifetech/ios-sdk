@@ -20,7 +20,7 @@ final class AuthorisationStoreTests: XCTestCase {
 
     override func setUp() {
         self.keychain = KeychainSubclassSpy()
-        self.sut = AuthorisationStore(keychain: keychain)
+        self.sut = AuthorisationStore(keychain: keychain, keychainSharingId: "") //to add tests
     }
 
     func test_emptyStorage() {

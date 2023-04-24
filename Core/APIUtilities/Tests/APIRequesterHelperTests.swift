@@ -15,6 +15,7 @@ final class APIRequesterHelperTests: XCTestCase {
     private let testClientId = "client456"
     private let testClientSecret = "secret789"
     private let testBaseUrl = "baseUrl123"
+    private let testKeychainSharingId = "testKeychainSharingId"
     private var tokenManager: APITokenManagable?
 
     override func setUp() {
@@ -24,7 +25,8 @@ final class APIRequesterHelperTests: XCTestCase {
             clientId: testClientId,
             clientSecret: testClientSecret,
             baseUrl: testBaseUrl,
-            notificationCenter: NotificationCenter.default)
+            notificationCenter: NotificationCenter.default,
+            keychainSharingId: testKeychainSharingId)
     }
 
     override func tearDown() {

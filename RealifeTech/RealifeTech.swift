@@ -77,7 +77,8 @@ public class RealifeTech {
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl,
-            notificationCenter: NotificationCenter.default)
+            notificationCenter: NotificationCenter.default,
+            keychainSharingId: configuration.keychainSharingId)
     }
 
     public static func clearAllInterfaces() {
