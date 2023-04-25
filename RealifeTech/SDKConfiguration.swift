@@ -28,6 +28,8 @@ public struct SDKConfiguration: Codable {
     ///   - appCode: String used to identify the application which uses the RealifeTech SDK
     ///   - appVersion: String which is used in register device mutation
     ///   - clientSecret: String which is used to authenticate with the RealifeTech backend
+    ///   - appGroupId: String which is used for sharing UserDefault's value to Notification Service Extension target.
+    ///   - keychainSharingId: String which is used for sharing Keychain credentials to Notification Service Extension target.
     ///   - deviceId: [Optional] Provide a string value as deviceId in the request header.
     ///     If deviceId is not provided, SDK uses identifierForVendor value from Apple as deviceId.
     ///   - apiUrl: [Optional] Provide a string value of a URL to override the SDK default
@@ -55,4 +57,3 @@ public struct SDKConfiguration: Codable {
         self.webOrderingJourneyUrl = webOrderingJourneyUrl ?? Self.defaultWebOrderingJourneyUrl
     }
 }
-
