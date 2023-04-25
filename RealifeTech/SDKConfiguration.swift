@@ -18,7 +18,7 @@ public struct SDKConfiguration: Codable {
     public let webOrderingJourneyUrl: String
     public let deviceId: String?
     let appGroupId: String
-    let keychainSharingId: String
+    let keychainSharingId: String?
 
     static let defaultApiUrl =  "https://api.livestyled.com/v3"
     static let defaultGraphQLApiUrl = "https://graphql-eu.realifetech.com"
@@ -29,7 +29,7 @@ public struct SDKConfiguration: Codable {
     ///   - appVersion: String which is used in register device mutation
     ///   - clientSecret: String which is used to authenticate with the RealifeTech backend
     ///   - appGroupId: String which is used for sharing UserDefault's value to Notification Service Extension target.
-    ///   - keychainSharingId: String which is used for sharing Keychain credentials to Notification Service Extension target.
+    ///   - keychainSharingId: [Optional] String which is used for sharing Keychain credentials to Notification Service Extension target. If the value is nil, app is using the default keychain that cannot be shared with NSE target.
     ///   - deviceId: [Optional] Provide a string value as deviceId in the request header.
     ///     If deviceId is not provided, SDK uses identifierForVendor value from Apple as deviceId.
     ///   - apiUrl: [Optional] Provide a string value of a URL to override the SDK default
@@ -40,7 +40,7 @@ public struct SDKConfiguration: Codable {
         appVersion: String,
         clientSecret: String,
         appGroupId: String,
-        keychainSharingId: String,
+        keychainSharingId: String? = nil,
         deviceId: String? = nil,
         apiUrl: String? = nil,
         graphQLApiUrl: String? = nil,

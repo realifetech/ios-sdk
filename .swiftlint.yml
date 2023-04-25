@@ -11,3 +11,7 @@ identifier_name:
   
 inclusive_language:
   override_allowed_terms: ['ticketmaster']
+
+line_length:
+    warning: 200
+    ignores_comments: true

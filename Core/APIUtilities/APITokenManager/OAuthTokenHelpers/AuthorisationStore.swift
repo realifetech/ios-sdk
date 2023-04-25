@@ -38,7 +38,7 @@ struct AuthorisationStore: AuthorisationStoring {
 
     init(oldKeychain: KeychainSwift = KeychainSwift(),
          keychainSharing: KeychainSwift = KeychainSwift(),
-         keychainSharingId: String) {
+         keychainSharingId: String?) {
         self.oldKeychain = oldKeychain
         self.keychainSharing = keychainSharing
         self.keychainSharing.synchronizable = true
