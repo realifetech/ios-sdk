@@ -12,15 +12,18 @@ import XCTest
 final class AuthorisationStoreTests: XCTestCase {
 
     var sut: AuthorisationStoring!
-    private var keychain: KeychainSubclassSpy!
+    private var oldKeychain: KeychainSubclassSpy!
+    private var keychainSharing: KeychainSharingSubclassSpy!
     private let tokenKey = AuthorisationStore.KeychainKey.token.rawValue
     private let expiryKey = AuthorisationStore.KeychainKey.expiryDate.rawValue
     private let refreshTokenKey = AuthorisationStore.KeychainKey.refreshToken.rawValue
     private let refreshTokenExpiryKey = AuthorisationStore.KeychainKey.refreshTokenExpiryDate.rawValue
+    private let keychainSharingId = "testKeychainSharingId"
 
     override func setUp() {
-        self.keychain = KeychainSubclassSpy()
-        self.sut = AuthorisationStore(keychain: keychain, keychainSharingId: "") //to add tests
+        self.oldKeychain = KeychainSubclassSpy()
+        self.keychainSharing = KeychainSharingSubclassSpy()
+        self.sut = AuthorisationStore(oldKeychain: oldKeychain, keychainSharing: keychainSharing, keychainSharingId: keychainSharingId)
     }
 
     func test_emptyStorage() {
@@ -28,43 +31,54 @@ final class AuthorisationStoreTests: XCTestCase {
         XCTAssertFalse(sut.accessTokenValid)
     }
 
+    func test_migrateExistedKeychainToKeychainSharing() {
+        let existedToken = "existedToken"
+        let _ = oldKeychain.set(existedToken, forKey: tokenKey)
+        let keychainSharingSUT = AuthorisationStore(
+            oldKeychain: oldKeychain,
+            keychainSharing: keychainSharing,
+            keychainSharingId: keychainSharingId)
+        XCTAssertEqual(oldKeychain.deletedKeys.first, tokenKey)
+        XCTAssertEqual(existedToken, keychainSharingSUT.accessToken)
+    }
+
     func test_haveToken() {
         let testToken = "I_AM_TOKEN"
-        keychain.valuesToReturn[tokenKey] = testToken
+        keychainSharing.valuesToReturn[tokenKey] = testToken
         XCTAssertEqual(testToken, sut.accessToken)
     }
 
     func test_tokenValidity_valid() {
         let futureDate = Date().addingTimeInterval(TimeInterval(floatLiteral: 2000))
         let futureDateString = String(futureDate.toMilliseconds())
-        keychain.valuesToReturn[expiryKey] = futureDateString
+        keychainSharing.valuesToReturn[expiryKey] = futureDateString
         XCTAssertTrue(sut.accessTokenValid)
     }
-
+ 
     func test_tokenValidity_invalid() {
         let futureDate = Date().addingTimeInterval(TimeInterval(floatLiteral: -2000))
         let futureDateString = String(futureDate.toMilliseconds())
-        keychain.valuesToReturn[expiryKey] = futureDateString
+        keychainSharing.valuesToReturn[expiryKey] = futureDateString
         XCTAssertFalse(sut.accessTokenValid)
     }
 
     func test_haveRefreshToken() {
         let refreshToken = "REFRESH_TOKEN"
-        keychain.valuesToReturn[refreshTokenKey] = refreshToken
+        keychainSharing.valuesToReturn[refreshTokenKey] = refreshToken
         XCTAssertEqual(sut.refreshToken, refreshToken)
     }
 
     func test_refreshTokenValidity_valid() {
         let futureDate = Date().addingTimeInterval(TimeInterval(floatLiteral: 2000))
         let futureDateString = String(futureDate.toMilliseconds())
-        keychain.valuesToReturn[refreshTokenExpiryKey] = futureDateString
+        keychainSharing.valuesToReturn[refreshTokenExpiryKey] = futureDateString
         XCTAssertTrue(sut.refreshTokenValid)
     }
 
     func test_refreshTokenValidity_invalid() {
         let futureDate = Date().addingTimeInterval(TimeInterval(floatLiteral: -2000))
         let futureDateString = String(futureDate.toMilliseconds())
-        keychain.valuesToReturn[refreshTokenExpiryKey] = futureDateString
+        keychainSharing.valuesToReturn[refreshTokenExpiryKey] = futureDateString
         XCTAssertFalse(sut.refreshTokenValid)
     }
 
@@ -75,11 +89,11 @@ final class AuthorisationStoreTests: XCTestCase {
             .addingTimeInterval(Double(testExpirySeconds))
             .toMilliseconds()
         sut.saveCredentials(token: testToken, secondsExpiresIn: testExpirySeconds, refreshToken: nil)
-        XCTAssertEqual(keychain.mutatedKeyValues[tokenKey], testToken)
+        XCTAssertEqual(keychainSharing.mutatedKeyValues[tokenKey], testToken)
         // NOTE: The store will calculate its expiry value later than we make our expected result
         //       This means the expiry times can differ by 1ms, so we check for a range
         guard
-            let resultString = keychain.mutatedKeyValues[expiryKey],
+            let resultString = keychainSharing.mutatedKeyValues[expiryKey],
             let resultExpiryInt = Int(resultString)
             else {
                 return XCTFail("Token expiry was not an Int")
@@ -95,12 +109,12 @@ final class AuthorisationStoreTests: XCTestCase {
             .addingTimeInterval(Double(testExpirySeconds))
             .toMilliseconds()
         sut.saveCredentials(token: testToken, secondsExpiresIn: testExpirySeconds, refreshToken: testToken)
-        XCTAssertEqual(keychain.mutatedKeyValues[tokenKey], testToken)
-        XCTAssertEqual(keychain.mutatedKeyValues[refreshTokenKey], testToken)
+        XCTAssertEqual(keychainSharing.mutatedKeyValues[tokenKey], testToken)
+        XCTAssertEqual(keychainSharing.mutatedKeyValues[refreshTokenKey], testToken)
         // NOTE: The store will calculate its expiry value later than we make our expected result
         //       This means the expiry times can differ by 1ms, so we check for a range
         guard
-            let resultString = keychain.mutatedKeyValues[expiryKey],
+            let resultString = keychainSharing.mutatedKeyValues[expiryKey],
             let resultExpiryInt = Int(resultString)
             else {
                 return XCTFail("Token expiry was not an Int")
@@ -111,8 +125,8 @@ final class AuthorisationStoreTests: XCTestCase {
 
     func test_removeCredentials() {
         sut.removeCredentials()
-        XCTAssertTrue(keychain.deletedKeys.contains(tokenKey))
-        XCTAssertTrue(keychain.deletedKeys.contains(expiryKey))
+        XCTAssertTrue(keychainSharing.deletedKeys.contains(tokenKey))
+        XCTAssertTrue(keychainSharing.deletedKeys.contains(expiryKey))
     }
 }
 
@@ -138,6 +152,35 @@ private final class KeychainSubclassSpy: KeychainSwift {
         forKey key: String,
         withAccess access: KeychainSwiftAccessOptions? = nil
     ) -> Bool {
+        valuesToReturn[key] = value
+        mutatedKeyValues[key] = value
+        return true
+    }
+}
+
+private final class KeychainSharingSubclassSpy: KeychainSwift {
+
+    var deletedKeys: [String] = []
+    var retrievedKeys: [String] = []
+    var mutatedKeyValues: [String: String] = [:]
+    var valuesToReturn: [String: String] = [:]
+
+    override func delete(_ key: String) -> Bool {
+        deletedKeys.append(key)
+        return true
+    }
+
+    override func get(_ key: String) -> String? {
+        retrievedKeys.append(key)
+        return valuesToReturn[key]
+    }
+
+    override func set(
+        _ value: String,
+        forKey key: String,
+        withAccess access: KeychainSwiftAccessOptions? = nil
+    ) -> Bool {
+        valuesToReturn[key] = value
         mutatedKeyValues[key] = value
         return true
     }
