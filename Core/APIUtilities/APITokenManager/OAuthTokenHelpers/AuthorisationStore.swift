@@ -94,21 +94,28 @@ struct AuthorisationStore: AuthorisationStoring {
     }
 
     private func migrateExistedCredentialsToKeychainSharingIfNeeded() {
-        if accessToken == nil, let oldAccessToken = oldKeychain.get(KeychainKey.token.rawValue) {
-            keychainSharing.set(oldAccessToken, forKey: KeychainKey.token.rawValue)
+        if accessToken != nil {
             oldKeychain.delete(KeychainKey.token.rawValue)
+        } else if let oldAccessToken = oldKeychain.get(KeychainKey.token.rawValue) {
+            keychainSharing.set(oldAccessToken, forKey: KeychainKey.token.rawValue)
         }
-        if keychainSharing.get(KeychainKey.expiryDate.rawValue) == nil, let oldExpiryDate = oldKeychain.get(KeychainKey.expiryDate.rawValue) {
-            keychainSharing.set(oldExpiryDate, forKey: KeychainKey.expiryDate.rawValue)
-            oldKeychain.delete(KeychainKey.expiryDate.rawValue)
-        }
-        if refreshToken == nil, let oldRefreshToken = oldKeychain.get(KeychainKey.refreshToken.rawValue) {
-            keychainSharing.set(oldRefreshToken, forKey: KeychainKey.refreshToken.rawValue)
+
+        if refreshToken != nil {
             oldKeychain.delete(KeychainKey.refreshToken.rawValue)
+        } else if let oldRefreshToken = oldKeychain.get(KeychainKey.refreshToken.rawValue) {
+            keychainSharing.set(oldRefreshToken, forKey: KeychainKey.refreshToken.rawValue)
         }
-        if keychainSharing.get(KeychainKey.refreshTokenExpiryDate.rawValue) == nil, let oldRefreshTokenExpiryDate = oldKeychain.get(KeychainKey.refreshTokenExpiryDate.rawValue) {
-            keychainSharing.set(oldRefreshTokenExpiryDate, forKey: KeychainKey.refreshTokenExpiryDate.rawValue)
+
+        if keychainSharing.get(KeychainKey.expiryDate.rawValue) != nil {
+            oldKeychain.delete(KeychainKey.expiryDate.rawValue)
+        } else if let oldExpiryDate = oldKeychain.get(KeychainKey.expiryDate.rawValue) {
+            keychainSharing.set(oldExpiryDate, forKey: KeychainKey.expiryDate.rawValue)
+        }
+
+        if keychainSharing.get(KeychainKey.refreshTokenExpiryDate.rawValue) != nil {
             oldKeychain.delete(KeychainKey.refreshTokenExpiryDate.rawValue)
+        } else if let oldRefreshTokenExpiryDate = oldKeychain.get(KeychainKey.refreshTokenExpiryDate.rawValue) {
+            keychainSharing.set(oldRefreshTokenExpiryDate, forKey: KeychainKey.refreshTokenExpiryDate.rawValue)
         }
     }
 }

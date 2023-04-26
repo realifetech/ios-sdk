@@ -31,14 +31,24 @@ final class AuthorisationStoreTests: XCTestCase {
         XCTAssertFalse(sut.accessTokenValid)
     }
 
-    func test_migrateExistedKeychainToKeychainSharing() {
+    func test_migrateExistedKeychainToKeychainSharing_whenKeychainSharingNotNil_shouldDeleteOldKeychain() {
         let existedToken = "existedToken"
-        let _ = oldKeychain.set(existedToken, forKey: tokenKey)
+        let _ = keychainSharing.set(existedToken, forKey: tokenKey)
         let keychainSharingSUT = AuthorisationStore(
             oldKeychain: oldKeychain,
             keychainSharing: keychainSharing,
             keychainSharingId: keychainSharingId)
-        XCTAssertEqual(oldKeychain.deletedKeys.first, tokenKey)
+        XCTAssertEqual(oldKeychain.mutatedKeyValues.count, 0)
+    }
+
+    func test_migrateExistedKeychainToKeychainSharing_whenKeychainSharingNil_shouldMigrateOldKeychain() {
+        let existedToken = "existedToken"
+        let _ = oldKeychain.set(existedToken, forKey: tokenKey)
+        XCTAssertEqual(keychainSharing.mutatedKeyValues.count, 0)
+        let keychainSharingSUT = AuthorisationStore(
+            oldKeychain: oldKeychain,
+            keychainSharing: keychainSharing,
+            keychainSharingId: keychainSharingId)
         XCTAssertEqual(existedToken, keychainSharingSUT.accessToken)
     }
 
