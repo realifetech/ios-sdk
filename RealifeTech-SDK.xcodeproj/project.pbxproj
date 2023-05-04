@@ -16,6 +16,7 @@
 		095850112833B4A2008E0DAB /* ResponseInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */; };
 		096B41E329E66CC200AB9857 /* DeviceConsent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096B41E229E66CC200AB9857 /* DeviceConsent.swift */; };
 		09860AFF275F35E300764142 /* GraphQLErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09860AFE275F35E300764142 /* GraphQLErrorCode.swift */; };
+		09872F082A039E1200FCE5F3 /* NSError+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09872F072A039E1200FCE5F3 /* NSError+Extensions.swift */; };
 		098A51CA286AC1C50087EBB4 /* AppGroupUserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51C9286AC1C50087EBB4 /* AppGroupUserDefaultsStore.swift */; };
 		098A51CD286AC2600087EBB4 /* RLTNotificationsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */; };
 		098A51D6286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */; };
@@ -382,6 +383,7 @@
 		095850102833B4A2008E0DAB /* ResponseInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseInterceptorTests.swift; sourceTree = "<group>"; };
 		096B41E229E66CC200AB9857 /* DeviceConsent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConsent.swift; sourceTree = "<group>"; };
 		09860AFE275F35E300764142 /* GraphQLErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLErrorCode.swift; sourceTree = "<group>"; };
+		09872F072A039E1200FCE5F3 /* NSError+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Extensions.swift"; sourceTree = "<group>"; };
 		098A51C9286AC1C50087EBB4 /* AppGroupUserDefaultsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStore.swift; sourceTree = "<group>"; };
 		098A51CC286AC2600087EBB4 /* RLTNotificationsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTNotificationsTracker.swift; sourceTree = "<group>"; };
 		098A51D5286B2EC00087EBB4 /* AppGroupUserDefaultsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaultsStoreTests.swift; sourceTree = "<group>"; };
@@ -1521,6 +1523,7 @@
 			isa = PBXGroup;
 			children = (
 				961C41B8260882BA001D8467 /* APIError.swift */,
+				09872F072A039E1200FCE5F3 /* NSError+Extensions.swift */,
 				961C41B9260882BA001D8467 /* String+RequestIdentifier.swift */,
 			);
 			path = Util;
@@ -2398,6 +2401,7 @@
 				961C1CAB2683409C00BE6F3B /* StandardDescriptionTranslation.swift in Sources */,
 				487479C82540432E0048F03D /* Analytics.swift in Sources */,
 				09008ECE27E1F74200F6155D /* ProductModifierItemStatus.swift in Sources */,
+				09872F082A039E1200FCE5F3 /* NSError+Extensions.swift in Sources */,
 				961B01942689EB6900D8C481 /* Order.swift in Sources */,
 				487479E225408E7D0048F03D /* PushNotificationRegistrar.swift in Sources */,
 				961C1CC126839CC500BE6F3B /* BasketRepository.swift in Sources */,
