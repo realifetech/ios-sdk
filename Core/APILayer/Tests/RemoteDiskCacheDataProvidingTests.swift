@@ -8,6 +8,7 @@
 import XCTest
 import RxSwift
 import RxTest
+import CFNetwork
 @testable import RealifeTech
 
 final class RemoteDiskCacheDataProvidingTests: XCTestCase {
@@ -120,6 +121,38 @@ final class RemoteDiskCacheDataProvidingTests: XCTestCase {
             .disposed(by: bag)
         wait(for: [expectation], timeout: 0.01)
     }
+
+    func test_retrieve_whenNoConnection_shouldReturnTheLocal() {
+        RemoteDiskCacheDataProvider.Rqstr.shouldReturnNoConnectionError = true
+        mockDiskCache.shouldReturnedFile = true
+        var emitCount = 0
+        RemoteDiskCacheDataProvider.retrieve(type: TestObject.self, strategy: .localAndRemote)
+            .subscribe(onNext: { object in
+                emitCount += 1
+                if emitCount == 1 {
+                    XCTAssertEqual(object.id, TestObject.local.id)
+                } else if emitCount == 2 {
+                    XCTAssertEqual(object.id, TestObject.local.id)
+                }
+            })
+            .disposed(by: bag)
+    }
+
+    func test_retrieve_whenHasConnection_shouldReturnConcatTheLocalAndTheRemote() {
+        RemoteDiskCacheDataProvider.Rqstr.shouldReturnNoConnectionError = false
+        mockDiskCache.shouldReturnedFile = true
+        var emitCount = 0
+        RemoteDiskCacheDataProvider.retrieve(type: TestObject.self, strategy: .localAndRemote)
+            .subscribe(onNext: { object in
+                emitCount += 1
+                if emitCount == 1 {
+                    XCTAssertEqual(object.id, TestObject.local.id)
+                } else if emitCount == 2 {
+                    XCTAssertEqual(object.id, TestObject.remote.id)
+                }
+            })
+            .disposed(by: bag)
+    }
 }
 
 // MARK: - Mocks
@@ -127,6 +160,8 @@ final class RemoteDiskCacheDataProvidingTests: XCTestCase {
 private let mockDiskCache = MockDiskCache()
 
 private final class MockRequester: Requester {
+
+    static var shouldReturnNoConnectionError = false
 
     static func root() -> String {
         return "localhost://"
@@ -147,6 +182,11 @@ private final class MockRequester: Requester {
     }
 
     class func response(forRequest request: URLRequest) -> Observable<Data> {
+        if shouldReturnNoConnectionError {
+            let cfError = CFNetworkErrors.cfurlErrorNotConnectedToInternet
+            let error: Error = CFErrorCreate(kCFAllocatorDefault, "" as CFErrorDomain, CFIndex(cfError.rawValue), nil)
+            return .error(error)
+        }
         return .from(optional: TestObject.remoteData)
     }
 }
