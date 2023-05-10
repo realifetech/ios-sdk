@@ -32,18 +32,24 @@ struct AuthorisationStore: AuthorisationStoring {
 
     /// AVS-621 Before enabling Keychain Sharing capability for Notification Service Extension, we were using default KeychainSwift() to save credentials.
     /// However, after enabling Keychain Sharing, we need to migrate the existed credential that saved in old Keychain(without access group) to new Keychain(with access group).
-    /// By calling `migrateExistedCredentialsToKeychainSharing` function when initializing the AuthorisationStore class.
+    /// By calling `migrateExistedCredentialsToKeychainSharifromNotificationServiceng` function when initializing the AuthorisationStore class.
     private let oldKeychain: KeychainSwift
     private let keychainSharing: KeychainSwift
 
     init(oldKeychain: KeychainSwift = KeychainSwift(),
          keychainSharing: KeychainSwift = KeychainSwift(),
-         keychainSharingId: String?) {
+         keychainSharingId: String?,
+         fromNotificationService: Bool
+    ) {
         self.oldKeychain = oldKeychain
-        self.keychainSharing = keychainSharing
-        self.keychainSharing.synchronizable = true
-        self.keychainSharing.accessGroup = keychainSharingId
-        migrateExistedCredentialsToKeychainSharingIfNeeded()
+        if fromNotificationService { // Do not migrate keychain when it's from NSE. Only do keychain migration when init from main target.
+            self.keychainSharing = oldKeychain
+        } else {
+            self.keychainSharing = keychainSharing
+            self.keychainSharing.synchronizable = true
+            self.keychainSharing.accessGroup = keychainSharingId
+            migrateExistedCredentialsToKeychainSharingIfNeeded()
+        }
     }
 
     var accessToken: String? {

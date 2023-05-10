@@ -26,10 +26,10 @@ public class RealifeTech {
     /// Calling this function more than once will have no effect.
     /// - Parameters
     ///   - configuration: Struct containing the desired SDK configuration
-    public static func configureSDK(with configuration: SDKConfiguration) {
+    public static func configureSDK(with configuration: SDKConfiguration, fromNotificationService: Bool) {
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper(deviceId: configuration.deviceId)
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
-        let apiHelper = createAPIHelper(with: configuration, deviceId: deviceHelper.deviceId)
+        let apiHelper = createAPIHelper(with: configuration, deviceId: deviceHelper.deviceId, fromNotificationService: fromNotificationService)
         let graphQLManager = GraphQLFactory.makeGraphQLManager(
             deviceId: deviceHelper.deviceId,
             tokenHelper: apiHelper,
@@ -71,14 +71,15 @@ public class RealifeTech {
         saveToAppGroupStore(with: configuration)
     }
 
-    private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
+    private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String, fromNotificationService: Bool) -> APITokenManagable {
         return APIRequesterHelper.setupAPI(
             deviceId: deviceId,
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl,
             notificationCenter: NotificationCenter.default,
-            keychainSharingId: configuration.keychainSharingId)
+            keychainSharingId: configuration.keychainSharingId,
+            fromNotificationService: fromNotificationService)
     }
 
     public static func clearAllInterfaces() {

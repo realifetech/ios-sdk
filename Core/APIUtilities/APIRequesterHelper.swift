@@ -26,18 +26,21 @@ public struct APIRequesterHelper {
         clientSecret: String,
         baseUrl: String,
         notificationCenter: NotificationCenter,
-        keychainSharingId: String?
+        keychainSharingId: String?,
+        fromNotificationService: Bool = false
     ) -> APITokenManagable {
         OAuthRequester.setDefaultOAuthParameters(clientId: clientId, clientSecret: clientSecret)
         self.baseUrl = baseUrl
         self.deviceId = deviceId
-        let apiTokenManager = constructTokenManager(notificationCenter: notificationCenter, keychainSharingId: keychainSharingId)
+        let apiTokenManager = constructTokenManager(notificationCenter: notificationCenter,
+                                                    keychainSharingId: keychainSharingId,
+                                                    fromNotificationService: fromNotificationService)
         self.tokenManager = apiTokenManager
         return apiTokenManager
     }
 
-    private static func constructTokenManager(notificationCenter: NotificationCenter, keychainSharingId: String?) -> APITokenManagable {
-        let authorisationStore = AuthorisationStore(keychainSharingId: keychainSharingId)
+    private static func constructTokenManager(notificationCenter: NotificationCenter, keychainSharingId: String?, fromNotificationService: Bool) -> APITokenManagable {
+        let authorisationStore = AuthorisationStore(keychainSharingId: keychainSharingId, fromNotificationService: fromNotificationService)
         let authorisationWorker = AuthorisationWorker(authorisationStore: authorisationStore)
         let oAuthTokenRefreshWatcher = OAuthTokenRefreshWatcher()
         let oAuthRefreshOrWaitActionGenerator = OAuthRefreshOrWaitActionGenerator(

@@ -23,7 +23,7 @@ final class AuthorisationStoreTests: XCTestCase {
     override func setUp() {
         self.oldKeychain = KeychainSubclassSpy()
         self.keychainSharing = KeychainSharingSubclassSpy()
-        self.sut = AuthorisationStore(oldKeychain: oldKeychain, keychainSharing: keychainSharing, keychainSharingId: keychainSharingId)
+        self.sut = AuthorisationStore(oldKeychain: oldKeychain, keychainSharing: keychainSharing, keychainSharingId: keychainSharingId, fromNotificationService: false)
     }
 
     func test_emptyStorage() {
@@ -37,7 +37,8 @@ final class AuthorisationStoreTests: XCTestCase {
         let keychainSharingSUT = AuthorisationStore(
             oldKeychain: oldKeychain,
             keychainSharing: keychainSharing,
-            keychainSharingId: keychainSharingId)
+            keychainSharingId: keychainSharingId,
+            fromNotificationService: false)
         XCTAssertEqual(oldKeychain.mutatedKeyValues.count, 0)
     }
 
@@ -48,7 +49,8 @@ final class AuthorisationStoreTests: XCTestCase {
         let keychainSharingSUT = AuthorisationStore(
             oldKeychain: oldKeychain,
             keychainSharing: keychainSharing,
-            keychainSharingId: keychainSharingId)
+            keychainSharingId: keychainSharingId,
+            fromNotificationService: false)
         XCTAssertEqual(existedToken, keychainSharingSUT.accessToken)
     }
 
