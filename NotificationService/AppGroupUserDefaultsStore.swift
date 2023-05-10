@@ -11,6 +11,7 @@ enum AppGroupStoreKey: String {
     case prefix = "NotificationExtension"
     case configurationKey = "SDKConfiguration"
     case sdkReadyKey = "SDKReady"
+    case hasMigratedKeychainKey = "HasMigratedKeychain"
 }
 
 class AppGroupUserDefaultsStore {
@@ -18,6 +19,7 @@ class AppGroupUserDefaultsStore {
     private let appGroupStore: CodableStore
     private let configurationKey = AppGroupStoreKey.configurationKey.rawValue
     private let sdkReadyKey = AppGroupStoreKey.sdkReadyKey.rawValue
+    private let hasMigratedKeychainKey = AppGroupStoreKey.hasMigratedKeychainKey.rawValue
 
     init?(appGroupId: String) {
         guard let appGroupUserDefaults = UserDefaults(suiteName: appGroupId) else {
@@ -43,5 +45,13 @@ class AppGroupUserDefaultsStore {
 
     func fetchSDKReady() -> Bool? {
         try? appGroupStore.fetch(for: sdkReadyKey)
+    }
+
+    func saveHasMigratedKeychain(_ hasMigratedKeychain: Bool) {
+        try? appGroupStore.save(hasMigratedKeychain, for: hasMigratedKeychainKey)
+    }
+
+    func fetchHasMigratedKeychain() -> Bool? {
+        try? appGroupStore.fetch(for: hasMigratedKeychainKey)
     }
 }

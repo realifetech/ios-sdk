@@ -8,6 +8,11 @@
 
 import Foundation
 
+public enum BundleTarget {
+    case main
+    case notificationServiceExtension
+}
+
 public class RealifeTech {
 
     public static var Core: Core!
@@ -26,10 +31,13 @@ public class RealifeTech {
     /// Calling this function more than once will have no effect.
     /// - Parameters
     ///   - configuration: Struct containing the desired SDK configuration
-    public static func configureSDK(with configuration: SDKConfiguration) {
+    public static func configureSDK(with configuration: SDKConfiguration, from target: BundleTarget = .main) {
         let deviceHelper = UIDeviceFactory.makeUIDeviceHelper(deviceId: configuration.deviceId)
         let reachabilityChecker = ReachabilityFactory.makeReachabilityHelper()
-        let apiHelper = createAPIHelper(with: configuration, deviceId: deviceHelper.deviceId)
+        let keychainProvider = KeychainProvider(from: target,
+                                                keychainSharingId: configuration.keychainSharingId,
+                                                appGroupStore: AppGroupUserDefaultsStore(appGroupId: configuration.appGroupId))
+        let apiHelper = createAPIHelper(with: configuration, deviceId: deviceHelper.deviceId, keychainProvider: keychainProvider)
         let graphQLManager = GraphQLFactory.makeGraphQLManager(
             deviceId: deviceHelper.deviceId,
             tokenHelper: apiHelper,
@@ -71,14 +79,14 @@ public class RealifeTech {
         saveToAppGroupStore(with: configuration)
     }
 
-    private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String) -> APITokenManagable {
+    private static func createAPIHelper(with configuration: SDKConfiguration, deviceId: String, keychainProvider: KeychainProvider) -> APITokenManagable {
         return APIRequesterHelper.setupAPI(
             deviceId: deviceId,
             clientId: configuration.appCode,
             clientSecret: configuration.clientSecret,
             baseUrl: configuration.apiUrl,
             notificationCenter: NotificationCenter.default,
-            keychainSharingId: configuration.keychainSharingId)
+            keychainProvider: keychainProvider)
     }
 
     public static func clearAllInterfaces() {

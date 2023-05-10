@@ -20,6 +20,65 @@ protocol AuthorisationStoring {
     func removeCredentials()
 }
 
+class KeychainProvider {
+
+    var keychain: KeychainSwift {
+        return getKeychain()
+    }
+
+    private let defaultKeychain: KeychainSwift
+    private let keychainSharing: KeychainSwift
+    private let appGroupStore: AppGroupUserDefaultsStore?
+    private var hasAlreadyMigrated: Bool {
+        appGroupStore?.fetchHasMigratedKeychain() ?? false
+    }
+
+    private let bundleTarget: BundleTarget
+
+    init(from bundleTarget: BundleTarget,
+         defaultKeychain: KeychainSwift = KeychainSwift(),
+         keychainSharing: KeychainSwift = KeychainSwift(),
+         keychainSharingId: String?,
+         appGroupStore: AppGroupUserDefaultsStore?
+    ) {
+        self.bundleTarget = bundleTarget
+        self.defaultKeychain = defaultKeychain
+        self.keychainSharing = keychainSharing
+        self.keychainSharing.synchronizable = true
+        self.keychainSharing.accessGroup = keychainSharingId
+        self.appGroupStore = appGroupStore
+    }
+
+    private func getKeychain() -> KeychainSwift {
+        if hasAlreadyMigrated {
+            return keychainSharing
+        } else if case .notificationServiceExtension = bundleTarget { // Can be deprecated in the future
+            return defaultKeychain
+        } else {
+            migrateDefaultCredentialsToKeychainSharing()
+            appGroupStore?.saveHasMigratedKeychain(true)
+            return keychainSharing
+        }
+    }
+
+    /// AVS-621 Before enabling Keychain Sharing capability for Notification Service Extension, we were using default KeychainSwift() to save credentials.
+    /// However, after enabling Keychain Sharing, we need to migrate the existed credential that saved in default Keychain(without access group) to new KeychainSharing(with access group).
+    private func migrateDefaultCredentialsToKeychainSharing() {
+        if let accessToken = defaultKeychain.get(AuthorisationStore.KeychainKey.token.rawValue) {
+            keychainSharing.set(accessToken, forKey: AuthorisationStore.KeychainKey.token.rawValue)
+        }
+        if let refreshToken = defaultKeychain.get(AuthorisationStore.KeychainKey.refreshToken.rawValue) {
+            keychainSharing.set(refreshToken, forKey: AuthorisationStore.KeychainKey.refreshToken.rawValue)
+        }
+        if let expiryDate = defaultKeychain.get(AuthorisationStore.KeychainKey.expiryDate.rawValue) {
+            keychainSharing.set(expiryDate, forKey: AuthorisationStore.KeychainKey.expiryDate.rawValue)
+        }
+        if let refreshTokenExpiryDate = defaultKeychain.get(AuthorisationStore.KeychainKey.refreshTokenExpiryDate.rawValue) {
+            keychainSharing.set(refreshTokenExpiryDate, forKey: AuthorisationStore.KeychainKey.refreshTokenExpiryDate.rawValue)
+        }
+    }
+}
+
 /// Implements a secure (keychain based) storage for token storage
 struct AuthorisationStore: AuthorisationStoring {
 
@@ -30,36 +89,26 @@ struct AuthorisationStore: AuthorisationStoring {
         case refreshTokenExpiryDate = "livestyled-refreshTokenExpiryDate"
     }
 
-    /// AVS-621 Before enabling Keychain Sharing capability for Notification Service Extension, we were using default KeychainSwift() to save credentials.
-    /// However, after enabling Keychain Sharing, we need to migrate the existed credential that saved in old Keychain(without access group) to new Keychain(with access group).
-    /// By calling `migrateExistedCredentialsToKeychainSharing` function when initializing the AuthorisationStore class.
-    private let oldKeychain: KeychainSwift
-    private let keychainSharing: KeychainSwift
+    private let keychain: KeychainSwift
 
-    init(oldKeychain: KeychainSwift = KeychainSwift(),
-         keychainSharing: KeychainSwift = KeychainSwift(),
-         keychainSharingId: String?) {
-        self.oldKeychain = oldKeychain
-        self.keychainSharing = keychainSharing
-        self.keychainSharing.synchronizable = true
-        self.keychainSharing.accessGroup = keychainSharingId
-        migrateExistedCredentialsToKeychainSharingIfNeeded()
+    init(keychainProvider: KeychainProvider) {
+        self.keychain = keychainProvider.keychain
     }
 
     var accessToken: String? {
-        return keychainSharing.get(KeychainKey.token.rawValue)
+        return keychain.get(KeychainKey.token.rawValue)
     }
 
     var accessTokenValid: Bool {
-        return expiryDateValid(expiryDateString: keychainSharing.get(KeychainKey.expiryDate.rawValue))
+        return expiryDateValid(expiryDateString: keychain.get(KeychainKey.expiryDate.rawValue))
     }
 
     var refreshToken: String? {
-        return keychainSharing.get(KeychainKey.refreshToken.rawValue)
+        return keychain.get(KeychainKey.refreshToken.rawValue)
     }
 
     var refreshTokenValid: Bool {
-        return expiryDateValid(expiryDateString: keychainSharing.get(KeychainKey.refreshTokenExpiryDate.rawValue))
+        return expiryDateValid(expiryDateString: keychain.get(KeychainKey.refreshTokenExpiryDate.rawValue))
     }
 
     func saveCredentials(token: String, secondsExpiresIn: Int, refreshToken: String?) {
@@ -68,54 +117,28 @@ struct AuthorisationStore: AuthorisationStoring {
     }
 
     func removeCredentials() {
-        keychainSharing.delete(KeychainKey.token.rawValue)
-        keychainSharing.delete(KeychainKey.expiryDate.rawValue)
-        keychainSharing.delete(KeychainKey.refreshToken.rawValue)
-        keychainSharing.delete(KeychainKey.refreshTokenExpiryDate.rawValue)
+        keychain.delete(KeychainKey.token.rawValue)
+        keychain.delete(KeychainKey.expiryDate.rawValue)
+        keychain.delete(KeychainKey.refreshToken.rawValue)
+        keychain.delete(KeychainKey.refreshTokenExpiryDate.rawValue)
     }
 
     private func update(accessToken: String, withSecondsExpiresIn seconds: Int) {
         let expiryDate = "\(Date().addingTimeInterval(Double(seconds)).toMilliseconds())"
-        keychainSharing.set(accessToken, forKey: KeychainKey.token.rawValue)
-        keychainSharing.set(expiryDate, forKey: KeychainKey.expiryDate.rawValue)
+        keychain.set(accessToken, forKey: KeychainKey.token.rawValue)
+        keychain.set(expiryDate, forKey: KeychainKey.expiryDate.rawValue)
     }
 
     private func update(refreshToken: String?, withSecondsExpiresIn seconds: Int?) {
         guard let refreshToken = refreshToken else { return }
-        keychainSharing.set(refreshToken, forKey: KeychainKey.refreshToken.rawValue)
+        keychain.set(refreshToken, forKey: KeychainKey.refreshToken.rawValue)
         let nearlyFourteenDaysInSeconds = seconds ?? 1166400
         let expiryDate = "\(Date().addingTimeInterval(Double(nearlyFourteenDaysInSeconds)).toMilliseconds())"
-        keychainSharing.set(expiryDate, forKey: KeychainKey.refreshTokenExpiryDate.rawValue)
+        keychain.set(expiryDate, forKey: KeychainKey.refreshTokenExpiryDate.rawValue)
     }
 
     private func expiryDateValid(expiryDateString: String?) -> Bool {
         guard let expiryDateString = expiryDateString, let timestamp = Int64(expiryDateString) else { return false }
         return Date().toMilliseconds() < timestamp
-    }
-
-    private func migrateExistedCredentialsToKeychainSharingIfNeeded() {
-        if accessToken != nil {
-            oldKeychain.delete(KeychainKey.token.rawValue)
-        } else if let oldAccessToken = oldKeychain.get(KeychainKey.token.rawValue) {
-            keychainSharing.set(oldAccessToken, forKey: KeychainKey.token.rawValue)
-        }
-
-        if refreshToken != nil {
-            oldKeychain.delete(KeychainKey.refreshToken.rawValue)
-        } else if let oldRefreshToken = oldKeychain.get(KeychainKey.refreshToken.rawValue) {
-            keychainSharing.set(oldRefreshToken, forKey: KeychainKey.refreshToken.rawValue)
-        }
-
-        if keychainSharing.get(KeychainKey.expiryDate.rawValue) != nil {
-            oldKeychain.delete(KeychainKey.expiryDate.rawValue)
-        } else if let oldExpiryDate = oldKeychain.get(KeychainKey.expiryDate.rawValue) {
-            keychainSharing.set(oldExpiryDate, forKey: KeychainKey.expiryDate.rawValue)
-        }
-
-        if keychainSharing.get(KeychainKey.refreshTokenExpiryDate.rawValue) != nil {
-            oldKeychain.delete(KeychainKey.refreshTokenExpiryDate.rawValue)
-        } else if let oldRefreshTokenExpiryDate = oldKeychain.get(KeychainKey.refreshTokenExpiryDate.rawValue) {
-            keychainSharing.set(oldRefreshTokenExpiryDate, forKey: KeychainKey.refreshTokenExpiryDate.rawValue)
-        }
     }
 }
