@@ -69,8 +69,13 @@ public extension RemoteDiskCacheDataProviding {
                 if strategy != .remoteWithoutCachingResponse {
                     saveToDiskCache($0, with: fileName)
                 }
-            })
-
+            }).catch { error in
+                if (error as NSError).isNoConnection,
+                   let theLocal = local(of: type.self, fileName: fileName, includeExpired: true).object {
+                    return theLocal
+                }
+                return Observable.error(error)
+            }
         switch strategy {
         case .localOrRemoteIfExpired:
             guard let theLocal = local(of: type.self, fileName: fileName).object else { return theRemote }
