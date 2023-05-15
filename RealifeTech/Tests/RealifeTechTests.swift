@@ -13,7 +13,7 @@ final class RealifeTechTests: XCTestCase {
 
     func test_setup_modulesAreAvailable() {
         let configuration = SDKConfiguration(appCode: "", appVersion: "", clientSecret: "", appGroupId: "", keychainSharingId: "")
-        RealifeTech.configureSDK(with: configuration, fromNotificationService: false)
+        RealifeTech.configureSDK(with: configuration)
         XCTAssertNotNil(RealifeTech.Core)
         XCTAssertNotNil(RealifeTech.General)
         XCTAssertNotNil(RealifeTech.Audiences)
@@ -47,7 +47,7 @@ final class RealifeTechTests: XCTestCase {
             appGroupId: "",
             keychainSharingId: "",
             webOrderingJourneyUrl: "A")
-        RealifeTech.configureSDK(with: configuration, fromNotificationService: false)
+        RealifeTech.configureSDK(with: configuration)
         XCTAssertEqual(RealifeTech.Sell.orderingJourneyUrl, "A")
         RealifeTech.set(webOrderingJourneyUrl: "B")
         XCTAssertEqual(RealifeTech.Sell.orderingJourneyUrl, "B")

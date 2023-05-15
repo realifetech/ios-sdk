@@ -24,7 +24,7 @@ public class RLTNotificationsTracker {
             }
             /// AVS-621: Before we introduce Keychain Sharing, NSE authentication credentials are stored in old Keychain. And when app configure SDK, app will migrate the old credentials to save to new Keychain(with access group Id).
             /// But the credentials from NSE should not be saved to new Keychain, we
-            RealifeTech.configureSDK(with: sdkConfiguration, fromNotificationService: true)
+            RealifeTech.configureSDK(with: sdkConfiguration, from: .notificationServiceExtension)
             RealifeTech.Communicate?.trackPush(event: .received, trackInfo: userInfo) { _ in
                 contentHandler(bestAttemptContent)
             }

@@ -11,7 +11,7 @@ enum AppGroupStoreKey: String {
     case prefix = "NotificationExtension"
     case configurationKey = "SDKConfiguration"
     case sdkReadyKey = "SDKReady"
-    case NSEOldKeychainHasMigratedAlreadyKey = "NSEOldKeychainHasMigratedAlready"
+    case hasMigratedKeychainKey = "HasMigratedKeychain"
 }
 
 class AppGroupUserDefaultsStore {
@@ -19,7 +19,7 @@ class AppGroupUserDefaultsStore {
     private let appGroupStore: CodableStore
     private let configurationKey = AppGroupStoreKey.configurationKey.rawValue
     private let sdkReadyKey = AppGroupStoreKey.sdkReadyKey.rawValue
-    private let NSEOldKeychainHasMigratedAlreadyKey = AppGroupStoreKey.NSEOldKeychainHasMigratedAlreadyKey.rawValue
+    private let hasMigratedKeychainKey = AppGroupStoreKey.hasMigratedKeychainKey.rawValue
 
     init?(appGroupId: String) {
         guard let appGroupUserDefaults = UserDefaults(suiteName: appGroupId) else {
@@ -47,11 +47,11 @@ class AppGroupUserDefaultsStore {
         try? appGroupStore.fetch(for: sdkReadyKey)
     }
 
-    func saveNSEOldKeychainHasMigratedAlready(_ hasMigrated: Bool) {
-        try? appGroupStore.save(hasMigrated, for: NSEOldKeychainHasMigratedAlreadyKey)
+    func saveHasMigratedKeychain(_ hasMigratedKeychain: Bool) {
+        try? appGroupStore.save(hasMigratedKeychain, for: hasMigratedKeychainKey)
     }
 
-    func fetchNSEOldKeychainHasMigratedAlready() -> Bool? {
-        try? appGroupStore.fetch(for: NSEOldKeychainHasMigratedAlreadyKey)
+    func fetchHasMigratedKeychain() -> Bool? {
+        try? appGroupStore.fetch(for: hasMigratedKeychainKey)
     }
 }

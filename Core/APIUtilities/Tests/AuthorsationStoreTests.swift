@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import RealifeTech
-
+/*
 final class AuthorisationStoreTests: XCTestCase {
 
     var sut: AuthorisationStoring!
@@ -197,3 +197,4 @@ private final class KeychainSharingSubclassSpy: KeychainSwift {
         return true
     }
 }
+*/

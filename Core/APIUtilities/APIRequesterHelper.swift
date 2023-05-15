@@ -20,27 +20,25 @@ public struct APIRequesterHelper {
     /// - Parameter clientID: The id used by the client e.g. "LS_0"
     /// - Parameter clientSecret: Code used to initially authenticate with our backend.
     /// - Parameter baseUrl: The API root which should be used for all queries, e.g. "http://api.website.com/production"
-    public static func setupAPI(
+    static func setupAPI(
         deviceId: String,
         clientId: String,
         clientSecret: String,
         baseUrl: String,
         notificationCenter: NotificationCenter,
-        keychainSharingId: String?,
-        fromNotificationService: Bool = false
+        keychainProvider: KeychainProvider
     ) -> APITokenManagable {
         OAuthRequester.setDefaultOAuthParameters(clientId: clientId, clientSecret: clientSecret)
         self.baseUrl = baseUrl
         self.deviceId = deviceId
         let apiTokenManager = constructTokenManager(notificationCenter: notificationCenter,
-                                                    keychainSharingId: keychainSharingId,
-                                                    fromNotificationService: fromNotificationService)
+                                                    keychainProvider: keychainProvider)
         self.tokenManager = apiTokenManager
         return apiTokenManager
     }
 
-    private static func constructTokenManager(notificationCenter: NotificationCenter, keychainSharingId: String?, fromNotificationService: Bool) -> APITokenManagable {
-        let authorisationStore = AuthorisationStore(keychainSharingId: keychainSharingId, fromNotificationService: fromNotificationService)
+    private static func constructTokenManager(notificationCenter: NotificationCenter, keychainProvider: KeychainProvider) -> APITokenManagable {
+        let authorisationStore = AuthorisationStore(keychainProvider: keychainProvider)
         let authorisationWorker = AuthorisationWorker(authorisationStore: authorisationStore)
         let oAuthTokenRefreshWatcher = OAuthTokenRefreshWatcher()
         let oAuthRefreshOrWaitActionGenerator = OAuthRefreshOrWaitActionGenerator(
