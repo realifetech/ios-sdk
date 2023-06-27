@@ -38,6 +38,7 @@ public struct Ticket: Codable, Equatable {
     public let mapImageUrl: String?
     public let mapUrl: String?
     public let status: String?
+    public let createdAt: String?
     public let redeemedAt: String?
     public let redeemerEmail: String?
     public let sharerEmail: String?
@@ -71,6 +72,7 @@ public struct Ticket: Codable, Equatable {
         mapImageUrl: String?,
         mapUrl: String?,
         status: String?,
+        createdAt: String?,
         redeemedAt: String?,
         redeemerEmail: String?,
         sharerEmail: String?,
@@ -103,6 +105,7 @@ public struct Ticket: Codable, Equatable {
         self.mapImageUrl = mapImageUrl
         self.mapUrl = mapUrl
         self.status = status
+        self.createdAt = createdAt
         self.redeemedAt = redeemedAt
         self.redeemerEmail = redeemerEmail
         self.sharerEmail = sharerEmail
@@ -152,6 +155,7 @@ extension Ticket {
         mapImageUrl = response.mapImageUrl
         mapUrl = response.mapUrl
         status = response.status
+        createdAt = response.createdAt
         redeemedAt = response.redeemedAt
         redeemerEmail = response.redeemerEmail
         sharerEmail = response.sharerEmail

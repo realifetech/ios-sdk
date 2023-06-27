@@ -30,6 +30,7 @@ fragment FragmentTicket on Ticket {
   mapImageUrl
   mapUrl
   status
+  createdAt
   redeemedAt
   redeemerEmail
   sharerEmail
