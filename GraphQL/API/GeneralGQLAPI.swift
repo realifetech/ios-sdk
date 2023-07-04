@@ -8543,6 +8543,7 @@ public enum ApolloType {
         seat
         qrCodeUrl
         sessionDate
+        timezone
         title
         eventUId
         barCode
@@ -8593,6 +8594,7 @@ public enum ApolloType {
         GraphQLField("seat", type: .scalar(String.self)),
         GraphQLField("qrCodeUrl", type: .scalar(String.self)),
         GraphQLField("sessionDate", type: .scalar(String.self)),
+        GraphQLField("timezone", type: .scalar(String.self)),
         GraphQLField("title", type: .scalar(String.self)),
         GraphQLField("eventUId", type: .scalar(String.self)),
         GraphQLField("barCode", type: .scalar(String.self)),
@@ -8630,8 +8632,8 @@ public enum ApolloType {
       self.resultMap = unsafeResultMap
     }
 
-    public init(id: GraphQLID? = nil, seat: String? = nil, qrCodeUrl: String? = nil, sessionDate: String? = nil, title: String? = nil, eventUId: String? = nil, barCode: String? = nil, sectorName: String? = nil, venueName: String? = nil, venueRoom: String? = nil, clientName: String? = nil, section: String? = nil, row: String? = nil, clientEmail: String? = nil, price: Double? = nil, currency: Currency? = nil, externalCustomerRef: String? = nil, externalCardRef: String? = nil, entrance: String? = nil, shareLink: String? = nil, canShare: Bool? = nil, legalLongText: String? = nil, legalShortText: String? = nil, mapImageUrl: String? = nil, mapUrl: String? = nil, status: String? = nil, createdAt: String? = nil, redeemedAt: String? = nil, redeemerEmail: String? = nil, sharerEmail: String? = nil, additionalFields: [AdditionalField?]? = nil, printed: Bool? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Ticket", "id": id, "seat": seat, "qrCodeUrl": qrCodeUrl, "sessionDate": sessionDate, "title": title, "eventUId": eventUId, "barCode": barCode, "sectorName": sectorName, "venueName": venueName, "venueRoom": venueRoom, "clientName": clientName, "section": section, "row": row, "clientEmail": clientEmail, "price": price, "currency": currency.flatMap { (value: Currency) -> ResultMap in value.resultMap }, "externalCustomerRef": externalCustomerRef, "externalCardRef": externalCardRef, "entrance": entrance, "shareLink": shareLink, "canShare": canShare, "legalLongText": legalLongText, "legalShortText": legalShortText, "mapImageUrl": mapImageUrl, "mapUrl": mapUrl, "status": status, "createdAt": createdAt, "redeemedAt": redeemedAt, "redeemerEmail": redeemerEmail, "sharerEmail": sharerEmail, "additionalFields": additionalFields.flatMap { (value: [AdditionalField?]) -> [ResultMap?] in value.map { (value: AdditionalField?) -> ResultMap? in value.flatMap { (value: AdditionalField) -> ResultMap in value.resultMap } } }, "printed": printed])
+    public init(id: GraphQLID? = nil, seat: String? = nil, qrCodeUrl: String? = nil, sessionDate: String? = nil, timezone: String? = nil, title: String? = nil, eventUId: String? = nil, barCode: String? = nil, sectorName: String? = nil, venueName: String? = nil, venueRoom: String? = nil, clientName: String? = nil, section: String? = nil, row: String? = nil, clientEmail: String? = nil, price: Double? = nil, currency: Currency? = nil, externalCustomerRef: String? = nil, externalCardRef: String? = nil, entrance: String? = nil, shareLink: String? = nil, canShare: Bool? = nil, legalLongText: String? = nil, legalShortText: String? = nil, mapImageUrl: String? = nil, mapUrl: String? = nil, status: String? = nil, createdAt: String? = nil, redeemedAt: String? = nil, redeemerEmail: String? = nil, sharerEmail: String? = nil, additionalFields: [AdditionalField?]? = nil, printed: Bool? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Ticket", "id": id, "seat": seat, "qrCodeUrl": qrCodeUrl, "sessionDate": sessionDate, "timezone": timezone, "title": title, "eventUId": eventUId, "barCode": barCode, "sectorName": sectorName, "venueName": venueName, "venueRoom": venueRoom, "clientName": clientName, "section": section, "row": row, "clientEmail": clientEmail, "price": price, "currency": currency.flatMap { (value: Currency) -> ResultMap in value.resultMap }, "externalCustomerRef": externalCustomerRef, "externalCardRef": externalCardRef, "entrance": entrance, "shareLink": shareLink, "canShare": canShare, "legalLongText": legalLongText, "legalShortText": legalShortText, "mapImageUrl": mapImageUrl, "mapUrl": mapUrl, "status": status, "createdAt": createdAt, "redeemedAt": redeemedAt, "redeemerEmail": redeemerEmail, "sharerEmail": sharerEmail, "additionalFields": additionalFields.flatMap { (value: [AdditionalField?]) -> [ResultMap?] in value.map { (value: AdditionalField?) -> ResultMap? in value.flatMap { (value: AdditionalField) -> ResultMap in value.resultMap } } }, "printed": printed])
     }
 
     public var __typename: String {
@@ -8676,6 +8678,15 @@ public enum ApolloType {
       }
       set {
         resultMap.updateValue(newValue, forKey: "sessionDate")
+      }
+    }
+
+    public var timezone: String? {
+      get {
+        return resultMap["timezone"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "timezone")
       }
     }
 
