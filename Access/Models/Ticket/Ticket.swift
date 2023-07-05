@@ -16,6 +16,7 @@ public struct Ticket: Codable, Equatable {
     public let seat: String?
     public let qrCodeUrl: String?
     public let sessionDate: String?
+    public let timezone: String?
     public let title: String?
     public let eventUId: String?
     public let barCode: String?
@@ -50,6 +51,7 @@ public struct Ticket: Codable, Equatable {
         seat: String?,
         qrCodeUrl: String?,
         sessionDate: String?,
+        timezone: String?,
         title: String?,
         eventUId: String?,
         barCode: String?,
@@ -83,6 +85,7 @@ public struct Ticket: Codable, Equatable {
         self.seat = seat
         self.qrCodeUrl = qrCodeUrl
         self.sessionDate = sessionDate
+        self.timezone = timezone
         self.title = title
         self.eventUId = eventUId
         self.barCode = barCode
@@ -133,6 +136,7 @@ extension Ticket {
         seat = response.seat
         qrCodeUrl = response.qrCodeUrl
         sessionDate = response.sessionDate
+        timezone = response.timezone
         title = response.title
         eventUId = response.eventUId
         barCode = response.barCode

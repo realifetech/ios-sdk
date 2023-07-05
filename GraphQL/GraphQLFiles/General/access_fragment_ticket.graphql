@@ -3,6 +3,7 @@ fragment FragmentTicket on Ticket {
   seat
   qrCodeUrl
   sessionDate
+  timezone
   title
   eventUId
   barCode
